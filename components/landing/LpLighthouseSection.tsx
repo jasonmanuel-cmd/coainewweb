@@ -52,7 +52,7 @@ export function LpLighthouseSection() {
     setStatus("Scanning... this takes about 10 seconds");
 
     try {
-      const res = await fetch(`/.netlify/functions/lighthouse?url=${encodeURIComponent(target)}`);
+      const res = await fetch(`/api/lighthouse?url=${encodeURIComponent(target)}`);
       if (!res.ok) throw new Error("Scan failed");
       const data = (await res.json()) as LighthousePayload;
       setScores(data);
