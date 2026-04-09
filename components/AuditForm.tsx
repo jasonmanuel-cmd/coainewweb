@@ -12,7 +12,12 @@ type Result = {
   recommendations: string[];
 };
 
-export function AuditForm() {
+type AuditFormProps = {
+  /** Stacked single-column + compact styling for marketing hero */
+  variant?: "default" | "landing";
+};
+
+export function AuditForm({ variant = "default" }: AuditFormProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<Result | null>(null);
@@ -53,19 +58,21 @@ export function AuditForm() {
     }
   }
 
+  const isLanding = variant === "landing";
+
   return (
-    <section className="panel audit-form-panel">
+    <section className={isLanding ? "panel audit-form-panel lp-landing-audit" : "panel audit-form-panel"}>
       <form action={onSubmit} className="audit-form">
         <div className="audit-form-fields">
           <div className="audit-field">
-            <label className="mono field-label" htmlFor="url-input">
+            <label className={isLanding ? "mono field-label" : "mono field-label"} htmlFor="url-input">
               Website URL
             </label>
             <input
               id="url-input"
               type="url"
               name="url"
-              placeholder="https://yourdomain.com"
+              placeholder={isLanding ? "Your website URL (e.g. myshop.com)" : "https://yourdomain.com"}
               autoComplete="url"
               inputMode="url"
               required
@@ -79,7 +86,7 @@ export function AuditForm() {
               id="company-input"
               type="text"
               name="companyName"
-              placeholder="Company / DBA"
+              placeholder={isLanding ? "Business name (optional)" : "Company / DBA"}
               autoComplete="organization"
             />
           </div>
@@ -91,7 +98,7 @@ export function AuditForm() {
               id="phone-input"
               type="tel"
               name="phone"
-              placeholder="(661) 610-9198"
+              placeholder={isLanding ? "Phone number" : "(661) 610-9198"}
               autoComplete="tel"
               inputMode="tel"
               required
@@ -105,7 +112,7 @@ export function AuditForm() {
               id="email-input"
               type="email"
               name="email"
-              placeholder="you@company.com"
+              placeholder={isLanding ? "Email for results" : "you@company.com"}
               autoComplete="email"
               inputMode="email"
               required
@@ -122,27 +129,37 @@ export function AuditForm() {
             onMouseEnter={() => setHoveringCta(true)}
             onMouseLeave={() => setHoveringCta(false)}
           >
-            {loading ? "Running structural audit..." : "Run RedScreen Audit"}
+            {loading
+              ? "Running structural audit..."
+              : isLanding
+                ? "Run RedScreen Audit →"
+                : "Run RedScreen Audit"}
           </button>
         </div>
       </form>
-      <div className="status-terminal">
-        <div className="status-label">System Status</div>
-        <p className="mono" style={{ margin: "0.35rem 0 0", color: "#9ea39f" }}>
-          {"> env::prod-sim  queue::ready  latency_target::<3s"}
-        </p>
-        {error ? (
-          <p className="status-alert" style={{ margin: "0.35rem 0 0" }}>{`ALERT: ${error}`}</p>
-        ) : hoveringCta ? (
-          <p className="mono" style={{ margin: "0.35rem 0 0", color: "var(--accent)" }}>
-            {"> redscreen::arming extraction protocol..."}
-          </p>
-        ) : (
+      {!isLanding ? (
+        <div className="status-terminal">
+          <div className="status-label">System Status</div>
           <p className="mono" style={{ margin: "0.35rem 0 0", color: "#9ea39f" }}>
-            {"> standby::awaiting target URL..."}
+            {"> env::prod-sim  queue::ready  latency_target::<3s"}
           </p>
-        )}
-      </div>
+          {error ? (
+            <p className="status-alert" style={{ margin: "0.35rem 0 0" }}>{`ALERT: ${error}`}</p>
+          ) : hoveringCta ? (
+            <p className="mono" style={{ margin: "0.35rem 0 0", color: "var(--accent)" }}>
+              {"> redscreen::arming extraction protocol..."}
+            </p>
+          ) : (
+            <p className="mono" style={{ margin: "0.35rem 0 0", color: "#9ea39f" }}>
+              {"> standby::awaiting target URL..."}
+            </p>
+          )}
+        </div>
+      ) : error ? (
+        <p className="status-alert" style={{ fontSize: 13, marginTop: 8 }}>
+          {error}
+        </p>
+      ) : null}
       {result ? (
         <div className="panel" style={{ marginTop: 12 }}>
           <h3>Audit Complete</h3>
