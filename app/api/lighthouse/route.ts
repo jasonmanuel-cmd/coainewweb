@@ -30,7 +30,7 @@ export async function GET(req: NextRequest) {
       bestPractices: Math.round((cats?.['best-practices']?.score || 0) * 100),
     });
 
-  } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: (err as Error).message }, { status: 500 });
   }
 }
