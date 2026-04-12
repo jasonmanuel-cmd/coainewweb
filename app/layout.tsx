@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { JetBrains_Mono, Space_Grotesk, Syne } from "next/font/google";
 import Script from "next/script";
 import type { ReactNode } from "react";
+import { Analytics } from "@vercel/analytics/next";
 import { AnalyticsRouteTracker } from "@/components/AnalyticsRouteTracker";
 import { AppChrome } from "@/components/AppChrome";
 import { JsonLd } from "@/components/JsonLd";
@@ -77,6 +78,7 @@ gtag('config', '${gaId}', { send_page_view: true });`}
         <SplashIntro />
         <JsonLd data={organizationJsonLd()} />
         <AppChrome>{children}</AppChrome>
+        <Analytics />
       </body>
     </html>
   );
