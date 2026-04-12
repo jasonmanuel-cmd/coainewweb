@@ -80,7 +80,7 @@ export function PricingPageBody() {
                 <div className="m-pkg-meta">TIMELINE: 2–3 weeks · PAGES: Up to 6</div>
               </div>
               <div className="m-pkg-foot">
-                <Link href="/intake?pkg=1" className="m-pkg-cta">
+                <Link href="/contact?package=1&from=pricing" className="m-pkg-cta">
                   Start With Package 1 →
                 </Link>
               </div>
@@ -144,7 +144,7 @@ export function PricingPageBody() {
                 <div className="m-pkg-meta">TIMELINE: 3–4 weeks · PRODUCTS: Up to 50</div>
               </div>
               <div className="m-pkg-foot">
-                <Link href="/intake?pkg=2" className="m-pkg-cta">
+                <Link href="/contact?package=2&from=pricing" className="m-pkg-cta">
                   Start With Package 2 →
                 </Link>
               </div>
@@ -207,7 +207,7 @@ export function PricingPageBody() {
                 <div className="m-pkg-meta">TIMELINE: 3–4 weeks · UPTIME: 24/7</div>
               </div>
               <div className="m-pkg-foot">
-                <Link href="/intake?pkg=3" className="m-pkg-cta">
+                <Link href="/contact?package=3&from=pricing" className="m-pkg-cta">
                   Start With Package 3 →
                 </Link>
               </div>

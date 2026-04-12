@@ -1,10 +1,36 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FORMSPREE_ENDPOINT } from "@/lib/forms";
+import { CONTACT } from "@/lib/site";
 
-export function ContactMarketingForm() {
+export type ContactMarketingFormProps = {
+  /** `1` | `2` | `3` — preselects package interest from pricing or deep links */
+  initialPackage?: string;
+  /** e.g. `diagnostic`, `pricing` */
+  inboundSource?: string;
+  /** e.g. `packages`, `jason` */
+  contactIntent?: string;
+};
+
+const PKG_VALUES: Record<string, string> = {
+  "1": "pkg1",
+  "2": "pkg2",
+  "3": "pkg3"
+};
+
+export function ContactMarketingForm({
+  initialPackage,
+  inboundSource,
+  contactIntent
+}: ContactMarketingFormProps) {
   const [done, setDone] = useState(false);
+  const [serviceInterest, setServiceInterest] = useState("");
+
+  useEffect(() => {
+    const v = initialPackage && PKG_VALUES[initialPackage] ? PKG_VALUES[initialPackage] : "";
+    setServiceInterest(v);
+  }, [initialPackage]);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -34,14 +60,22 @@ export function ContactMarketingForm() {
     );
   }
 
+  const subjectBits = ["COAI website contact"];
+  if (inboundSource) subjectBits.push(`from:${inboundSource}`);
+  if (contactIntent) subjectBits.push(`intent:${contactIntent}`);
+
   return (
-    <div className="m-contact-form-wrap">
+    <div className="m-contact-form-wrap" id="contact-form">
       <h2 className="m-contact-form-title">Send a Message</h2>
       <p className="m-contact-form-sub">
-        Fill this out and Jason responds same business day. If it&apos;s urgent, call directly — (661) 610-9198.
+        Submissions go to <strong>{CONTACT.email}</strong> via our form handler. Jason responds same business day. If
+        it&apos;s urgent, call directly — {CONTACT.phoneDisplay}.
       </p>
-      <form id="contact-form" onSubmit={handleSubmit}>
+      <form id="contact-form-fields" onSubmit={handleSubmit}>
         <input type="hidden" name="form_type" value="contact" />
+        <input type="hidden" name="inbound_source" value={inboundSource ?? ""} />
+        <input type="hidden" name="contact_intent" value={contactIntent ?? ""} />
+        <input type="hidden" name="_subject" value={subjectBits.join(" · ")} />
         <div className="m-form-row">
           <div className="m-form-group">
             <label htmlFor="cf-first">First Name</label>
@@ -68,15 +102,20 @@ export function ContactMarketingForm() {
         </div>
         <div className="m-form-group">
           <label htmlFor="cf-svc">What Do You Need?</label>
-          <select id="cf-svc" name="service_interest" defaultValue="">
+          <select
+            id="cf-svc"
+            name="service_interest"
+            value={serviceInterest}
+            onChange={(e) => setServiceInterest(e.target.value)}
+          >
             <option value="">Select a service</option>
-            <option>Signal Foundation Build ($1,200)</option>
-            <option>Commerce Engine Build ($1,600)</option>
-            <option>Sentinel Automation Layer ($2,000)</option>
-            <option>Standalone Structural Audit ($350)</option>
-            <option>AI Receptionist / Cipher Deployment</option>
-            <option>Not Sure — Run the Diagnostic</option>
-            <option>Something Else</option>
+            <option value="pkg1">Signal Foundation Build ($1,200)</option>
+            <option value="pkg2">Commerce Engine Build ($1,600)</option>
+            <option value="pkg3">Sentinel Automation Layer ($2,000)</option>
+            <option value="audit350">Standalone Structural Audit ($350)</option>
+            <option value="cipher">AI Receptionist / Cipher Deployment</option>
+            <option value="diagnostic">Not Sure — Run the Diagnostic</option>
+            <option value="other">Something Else</option>
           </select>
         </div>
         <div className="m-form-group">
@@ -90,7 +129,7 @@ export function ContactMarketingForm() {
         <button type="submit" className="m-submit-btn">
           Send Message →
         </button>
-        <p className="m-form-note">Or skip the form — call (661) 610-9198 directly. Jason picks up.</p>
+        <p className="m-form-note">Or skip the form — call {CONTACT.phoneDisplay} directly. Jason picks up.</p>
       </form>
     </div>
   );

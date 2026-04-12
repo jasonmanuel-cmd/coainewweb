@@ -1,8 +1,40 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { FORMSPREE_ENDPOINT } from "@/lib/forms";
+import { normalizeWebsiteUrl } from "@/lib/utils/normalize-website-url";
+
+/** When we cannot run PageSpeed, derive transparent estimates from the user’s own answers (not random placeholders). */
+function schemaEstimateFromPresence(website: string): number {
+  const map: Record<string, number> = {
+    "No website": 22,
+    "Wix / Squarespace / GoDaddy": 46,
+    "WordPress site": 58,
+    "Custom / unknown": 52
+  };
+  return map[website] ?? 48;
+}
+
+function seoEstimateFromPresence(website: string): number {
+  const map: Record<string, number> = {
+    "No website": 38,
+    "Wix / Squarespace / GoDaddy": 62,
+    "WordPress site": 68,
+    "Custom / unknown": 64
+  };
+  return map[website] ?? 60;
+}
+
+function perfEstimateFromPresence(website: string): number {
+  const map: Record<string, number> = {
+    "No website": 32,
+    "Wix / Squarespace / GoDaddy": 64,
+    "WordPress site": 70,
+    "Custom / unknown": 66
+  };
+  return map[website] ?? 62;
+}
 
 type IntakeWizardProps = {
   packageInterest?: string;
@@ -17,8 +49,17 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
     ticket: 1200,
     close: 30
   });
+  /** Optional URL from step 4 — used for a live PageSpeed pull on the report screen. */
+  const [submittedSiteUrl, setSubmittedSiteUrl] = useState("");
+  const [liveScores, setLiveScores] = useState<{ performance: number; seo: number } | null>(null);
+  const [scoreLoading, setScoreLoading] = useState(false);
+  const [liveScoresFailed, setLiveScoresFailed] = useState(false);
 
   const leak = Math.round(data.calls * 30.4 * (data.close / 100) * data.ticket);
+
+  const schemaScore = schemaEstimateFromPresence(data.website);
+  const perfScore = liveScores?.performance ?? perfEstimateFromPresence(data.website);
+  const seoScore = liveScores?.seo ?? seoEstimateFromPresence(data.website);
 
   const goStep = useCallback((n: number) => {
     setStep(n);
@@ -43,6 +84,8 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
     e.preventDefault();
     if (!data.industry || !data.website) return;
     const form = e.currentTarget;
+    const siteRaw = (form.querySelector("#website_url") as HTMLInputElement | null)?.value?.trim() ?? "";
+    setSubmittedSiteUrl(siteRaw);
     const fd = new FormData(form);
     fd.set("revenue_leak", `$${leak.toLocaleString()}`);
     try {
@@ -56,6 +99,60 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
     }
     goStep(5);
   }
+
+  useEffect(() => {
+    if (step !== 5) {
+      setLiveScores(null);
+      setLiveScoresFailed(false);
+      setScoreLoading(false);
+      return;
+    }
+    if (!submittedSiteUrl.trim()) {
+      setLiveScores(null);
+      setLiveScoresFailed(false);
+      setScoreLoading(false);
+      return;
+    }
+    let cancelled = false;
+    let target: string;
+    try {
+      target = normalizeWebsiteUrl(submittedSiteUrl);
+    } catch {
+      setLiveScoresFailed(true);
+      setLiveScores(null);
+      setScoreLoading(false);
+      return;
+    }
+    setScoreLoading(true);
+    setLiveScoresFailed(false);
+    setLiveScores(null);
+    (async () => {
+      try {
+        const res = await fetch(`/api/lighthouse?url=${encodeURIComponent(target)}`);
+        const json = (await res.json()) as { performance?: number; seo?: number; error?: string };
+        if (cancelled) return;
+        if (!res.ok || json.error) {
+          setLiveScoresFailed(true);
+          setLiveScores(null);
+          return;
+        }
+        setLiveScores({
+          performance: json.performance ?? 0,
+          seo: json.seo ?? 0
+        });
+      } catch {
+        if (!cancelled) {
+          setLiveScoresFailed(true);
+          setLiveScores(null);
+        }
+      } finally {
+        if (!cancelled) setScoreLoading(false);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [step, submittedSiteUrl]);
 
   function continueFromStep1() {
     if (!data.industry) return;
@@ -285,22 +382,61 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
               Here&apos;s your <span className="m-text-green">baseline.</span>
             </h2>
             <p className="m-step-sub">
-              Based on your inputs, here&apos;s a realistic picture of where your digital presence stands — and what
-              it&apos;s costing you right now.
+              Revenue leak below is calculated from <strong>your sliders</strong>. Scores show a{" "}
+              <strong>live Google mobile test</strong> when you entered a website URL; otherwise they are{" "}
+              <strong>estimates from your answers</strong> — not made-up “perfect” numbers.
+            </p>
+
+            <p className="m-step-sub" style={{ fontSize: "0.85rem", opacity: 0.85 }}>
+              {submittedSiteUrl && !scoreLoading ? (
+                liveScores ? (
+                  <>
+                    Performance &amp; SEO scores: <strong>PageSpeed Insights</strong> (mobile) for{" "}
+                    <strong>{submittedSiteUrl}</strong>. Schema signal is inferred from your presence choice (not a live
+                    crawl).
+                  </>
+                ) : (
+                  <>
+                    Couldn&apos;t run a live Google test for that URL{liveScoresFailed ? " — showing estimates only." : "."}
+                  </>
+                )
+              ) : !submittedSiteUrl ? (
+                <>No URL provided — performance and SEO below are <strong>estimated from your presence selection</strong>.</>
+              ) : (
+                <>Running live Google mobile test…</>
+              )}
             </p>
 
             <div className="m-result-scores">
               <div className="m-score-card">
-                <div className="m-score-num m-score-amber">74</div>
-                <div className="m-score-lbl">Performance</div>
+                <div
+                  className={`m-score-num ${
+                    perfScore >= 90 ? "m-score-green" : perfScore >= 50 ? "m-score-amber" : "m-score-red"
+                  }`}
+                >
+                  {scoreLoading && submittedSiteUrl ? "…" : perfScore}
+                </div>
+                <div className="m-score-lbl">Performance {liveScores ? "(live)" : "(est.)"}</div>
               </div>
               <div className="m-score-card">
-                <div className="m-score-num m-score-red">56</div>
-                <div className="m-score-lbl">Schema Signal</div>
+                <div
+                  className={`m-score-num ${
+                    schemaScore >= 90 ? "m-score-green" : schemaScore >= 50 ? "m-score-amber" : "m-score-red"
+                  }`}
+                >
+                  {schemaScore}
+                </div>
+                <div className="m-score-lbl">Schema signal (est.)</div>
               </div>
               <div className="m-score-card">
-                <div className="m-score-num m-score-red">61</div>
-                <div className="m-score-lbl">AEO Readiness</div>
+                <div
+                  className={`m-score-num ${
+                    seoScore >= 90 ? "m-score-green" : seoScore >= 50 ? "m-score-amber" : "m-score-red"
+                  }`}
+                >
+                  {scoreLoading && submittedSiteUrl ? "…" : seoScore}
+                </div>
+                <div className="m-score-lbl">SEO / AEO {liveScores ? "(live)" : "(est.)"}</div>
               </div>
             </div>
 
@@ -312,13 +448,27 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
 
             <div className="m-priority-head">PRIORITY FIX LIST</div>
             <ul className="m-priority-list">
-              <li>
-                <span className="m-p-num">P1</span>
-                <div className="m-p-text">
-                  Schema markup is incomplete or missing
-                  <span>AI search surfaces can&apos;t read your business entity accurately — you&apos;re invisible to AI-generated answers</span>
-                </div>
-              </li>
+              {data.website === "No website" ? (
+                <li>
+                  <span className="m-p-num">P1</span>
+                  <div className="m-p-text">
+                    No owned web property
+                    <span>You&apos;re dependent on social and referrals — search and AI can&apos;t map a canonical entity to you.</span>
+                  </div>
+                </li>
+              ) : (
+                <li>
+                  <span className="m-p-num">P1</span>
+                  <div className="m-p-text">
+                    Structured data &amp; entity clarity
+                    <span>
+                      {data.website === "WordPress site"
+                        ? "WordPress often ships with generic or partial schema — AI surfaces need explicit LocalBusiness / Service JSON-LD aligned with NAP."
+                        : "Rented builders and thin templates often ship without complete JSON-LD — AI-generated answers skip you."}
+                    </span>
+                  </div>
+                </li>
+              )}
               <li>
                 <span className="m-p-num">P2</span>
                 <div className="m-p-text">
@@ -342,10 +492,10 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
             </div>
 
             <div className="m-step-nav m-step-nav-results">
-              <Link href="/pricing" className="m-btn-next m-btn-link">
-                View Packages →
+              <Link href="/contact?from=diagnostic&intent=packages" className="m-btn-next m-btn-link">
+                View packages &amp; contact →
               </Link>
-              <Link href="/contact" className="m-btn-back m-btn-link">
+              <Link href="/contact?from=diagnostic&intent=jason" className="m-btn-back m-btn-link">
                 Talk to Jason
               </Link>
             </div>

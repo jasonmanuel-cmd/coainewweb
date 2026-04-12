@@ -37,13 +37,12 @@ export function LpLighthouseSection() {
   );
 
   async function runScan() {
-    let target = url.trim();
+    const target = url.trim();
     if (!target) {
       setStatusTone("error");
       setStatus("Please enter a URL first.");
       return;
     }
-    if (!target.startsWith("http")) target = `https://${target}`;
 
     setLoading(true);
     setShowCta(false);
@@ -53,8 +52,12 @@ export function LpLighthouseSection() {
 
     try {
       const res = await fetch(`/api/lighthouse?url=${encodeURIComponent(target)}`);
-      if (!res.ok) throw new Error("Scan failed");
-      const data = (await res.json()) as LighthousePayload;
+      const data = (await res.json()) as LighthousePayload & { error?: string };
+      if (!res.ok) {
+        setStatusTone("error");
+        setStatus(data.error?.trim() || "Scan failed. Check the URL and try again.");
+        return;
+      }
       setScores(data);
       setStatusTone("muted");
       setStatus("Scan complete - mobile scores via Google Lighthouse");
@@ -91,7 +94,7 @@ export function LpLighthouseSection() {
                 void runScan();
               }
             }}
-            placeholder="https://yoursite.com"
+            placeholder="yoursite.com or www.yoursite.com"
             aria-label="URL to scan"
           />
           <button id="lh-scan-btn" onClick={() => void runScan()} disabled={loading}>

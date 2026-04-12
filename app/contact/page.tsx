@@ -26,7 +26,14 @@ const TICKER = [
   "CIPHER LIVE 24/7"
 ];
 
-export default function ContactPage() {
+export default async function ContactPage({
+  searchParams
+}: {
+  searchParams: Promise<{ package?: string; from?: string; intent?: string }>;
+}) {
+  const sp = await searchParams;
+  const pkg = sp.package;
+  const initialPackage = pkg && ["1", "2", "3"].includes(pkg) ? pkg : undefined;
   const contactPage = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
@@ -135,7 +142,11 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <ContactMarketingForm />
+        <ContactMarketingForm
+          initialPackage={initialPackage}
+          inboundSource={sp.from}
+          contactIntent={sp.intent}
+        />
       </div>
     </MarketingLayout>
   );

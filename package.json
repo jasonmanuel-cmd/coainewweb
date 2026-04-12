@@ -6,6 +6,7 @@
     "node": ">=20.9.0"
   },
   "scripts": {
+    "1": "npm install && npm run dev",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

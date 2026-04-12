@@ -1,3 +1,5 @@
+import { normalizeWebsiteUrl } from "@/lib/utils/normalize-website-url";
+
 export type AuditResult = {
   performanceScore: number;
   schemaScore: number;
@@ -10,14 +12,6 @@ function clampScore(value: number) {
   return Math.max(0, Math.min(100, Math.round(value)));
 }
 
-function normalizeUrl(input: string): string {
-  try {
-    return new URL(input).toString();
-  } catch {
-    return new URL(`https://${input}`).toString();
-  }
-}
-
 type PageSpeedInsightsResponse = {
   lighthouseResult?: {
     categories?: { performance?: { score?: number } };
@@ -25,7 +19,21 @@ type PageSpeedInsightsResponse = {
 };
 
 export async function runAudit(url: string): Promise<AuditResult> {
-  const targetUrl = normalizeUrl(url);
+  let targetUrl: string;
+  try {
+    targetUrl = normalizeWebsiteUrl(url);
+  } catch {
+    targetUrl = "";
+  }
+  if (!targetUrl) {
+    return {
+      performanceScore: 0,
+      schemaScore: 0,
+      issueCount: 1,
+      recommendations: ["Invalid website URL."],
+      raw: { auditError: "Invalid URL" }
+    };
+  }
   const psiBase = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed";
   const key = process.env.PAGESPEED_API_KEY;
   const query = new URLSearchParams({ url: targetUrl, strategy: "mobile" });

@@ -14,7 +14,7 @@
   --m-purple: #a78bfa;
   --m-white: #f0efe8;
   --m-muted: rgba(240, 239, 232, 0.45);
-  background: var(--m-black);
+  background: transparent;
   color: var(--m-white);
   font-family: var(--font-inter), system-ui, sans-serif;
   overflow-x: hidden;
@@ -1375,7 +1375,7 @@
 }
 
 body:has(.m-page) .neural-canvas {
-  opacity: 0.12;
+  opacity: 1;
 }
 
 body:has(.m-page) .scanline-overlay {
@@ -2421,6 +2421,10 @@ body:has(.m-page) .scanline-overlay {
 
 .m-score-amber {
   color: var(--m-amber);
+}
+
+.m-score-green {
+  color: var(--m-green);
 }
 
 .m-score-lbl {

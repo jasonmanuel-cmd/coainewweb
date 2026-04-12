@@ -20,7 +20,14 @@ export function LpTopNav() {
     <>
       <nav className="lp-nav" aria-label="Primary">
         <Link href="/" className="lp-nav-logo" onClick={() => setOpen(false)}>
-          <Image src="/logo.png" alt="" width={28} height={28} />
+          <Image
+            src="/logo.png"
+            alt="Chaotically Organized AI"
+            width={160}
+            height={32}
+            className="lp-nav-logo-img"
+            priority
+          />
           <span className="lp-nav-logo-text">CHAOTICALLY ORGANIZED AI</span>
         </Link>
         <div className="lp-nav-status" aria-hidden="true">

@@ -337,8 +337,16 @@ export function LandingHome() {
       <footer className="lp-footer">
         <div className="lp-footer-inner">
           <div className="lp-footer-brand">
-            <Image src="/logo.png" alt="" width={100} height={28} style={{ height: 28, width: "auto" }} />
-            <span style={{ fontWeight: 700, fontSize: 13, letterSpacing: "0.08em" }}>CHAOTICALLY ORGANIZED AI</span>
+            <div className="lp-footer-logo-row">
+              <Image
+                src="/logo.png"
+                alt="Chaotically Organized AI"
+                width={180}
+                height={40}
+                className="lp-footer-logo-img"
+              />
+              <span className="lp-footer-wordmark">CHAOTICALLY ORGANIZED AI</span>
+            </div>
             <p className="lp-footer-tagline">
               Website growth systems for Bakersfield businesses. {BRAND_TAGLINE}.
             </p>

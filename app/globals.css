@@ -25,17 +25,24 @@
   box-sizing: border-box;
 }
 
+/* Solid base — never rely on UA white when layers are transparent */
+html {
+  min-height: 100%;
+  background-color: #050505;
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
-  background: var(--bg);
+  background-color: #050505;
   color: var(--text);
   font-family: var(--font-inter), Arial, sans-serif;
 }
 
 body {
   position: relative;
+  min-height: 100%;
 }
 
 main {
@@ -360,7 +367,8 @@ textarea:autofill {
   color: var(--danger);
 }
 
-.neural-canvas {
+.neural-canvas,
+.cipher-canvas {
   position: fixed;
   top: 0;
   left: 0;
@@ -368,6 +376,7 @@ textarea:autofill {
   height: 100vh;
   z-index: -2;
   background: #050505;
+  pointer-events: none;
 }
 
 .scanline-overlay {

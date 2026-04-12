@@ -14,7 +14,7 @@
   --lp-muted: rgba(240, 239, 232, 0.45);
   font-family: var(--font-inter), "Space Grotesk", system-ui, sans-serif;
   color: var(--lp-white);
-  background: var(--lp-black);
+  background: transparent;
   overflow-x: hidden;
 }
 
@@ -84,9 +84,13 @@
 }
 
 .lp-nav-logo img {
-  height: 28px;
+  height: 32px;
   width: auto;
-  filter: invert(1);
+  max-width: 140px;
+  object-fit: contain;
+  object-position: left center;
+  flex-shrink: 0;
+  display: block;
 }
 
 .lp-nav-logo-text {
@@ -1093,10 +1097,30 @@
   gap: 1rem;
 }
 
-.lp-footer-brand img {
-  height: 24px;
-  filter: invert(1);
+.lp-footer-logo-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.lp-footer-brand img,
+.lp-footer-logo-img {
+  height: 36px;
   width: auto;
+  max-width: 160px;
+  object-fit: contain;
+  object-position: left center;
+  flex-shrink: 0;
+  display: block;
+}
+
+.lp-footer-wordmark {
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--lp-white);
+  line-height: 1.2;
 }
 
 .lp-footer-tagline {
@@ -1237,9 +1261,9 @@
   }
 }
 
-/* Soften global neural mesh on marketing home */
+/* Cipher + starfield — keep visible (was 0.12 and looked like a flat static bg) */
 body:has(.lp-page) .neural-canvas {
-  opacity: 0.12;
+  opacity: 1;
 }
 
 body:has(.lp-page) .scanline-overlay {
