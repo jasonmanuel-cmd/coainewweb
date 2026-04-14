@@ -37,7 +37,7 @@ body {
   padding: 0;
   background-color: #050505;
   color: var(--text);
-  font-family: var(--font-inter), Arial, sans-serif;
+  font-family: var(--font-body), Arial, sans-serif;
 }
 
 body {

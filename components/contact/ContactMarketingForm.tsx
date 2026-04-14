@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { FORMSPREE_ENDPOINT } from "@/lib/forms";
+import { TurnstileField } from "@/components/security/TurnstileField";
 import { CONTACT } from "@/lib/site";
 
 export type ContactMarketingFormProps = {
@@ -25,31 +25,52 @@ export function ContactMarketingForm({
   contactIntent
 }: ContactMarketingFormProps) {
   const [done, setDone] = useState(false);
-  const [serviceInterest, setServiceInterest] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [formError, setFormError] = useState<string | null>(null);
+  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
+  const [pkgHidden, setPkgHidden] = useState("");
   useEffect(() => {
     const v = initialPackage && PKG_VALUES[initialPackage] ? PKG_VALUES[initialPackage] : "";
-    setServiceInterest(v);
+    setPkgHidden(v);
   }, [initialPackage]);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setFormError(null);
     const form = e.currentTarget;
+    if (siteKey && !turnstileToken) {
+      setFormError("Complete the verification step.");
+      return;
+    }
+
+    const subjectBits = ["COAI website contact"];
+    if (inboundSource) subjectBits.push(`from:${inboundSource}`);
+    if (contactIntent) subjectBits.push(`intent:${contactIntent}`);
+
+    const fd = new FormData(form);
+    const entries = Object.fromEntries(fd.entries()) as Record<string, string>;
     try {
-      const r = await fetch(FORMSPREE_ENDPOINT, {
+      const r = await fetch("/api/contact", {
         method: "POST",
-        body: new FormData(form),
-        headers: { Accept: "application/json" }
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          ...entries,
+          turnstileToken,
+          _subject: subjectBits.join(" · ")
+        })
       });
       if (r.ok) {
         setDone(true);
         form.reset();
+        setTurnstileToken("");
         return;
       }
+      const errJson = (await r.json().catch(() => null)) as { error?: string } | null;
+      setFormError(errJson?.error || "Something went wrong. Try again or call us.");
     } catch {
-      /* fall through */
+      setFormError("Network error. Try again or call us.");
     }
-    form.submit();
   }
 
   if (done) {
@@ -75,57 +96,61 @@ export function ContactMarketingForm({
         <input type="hidden" name="form_type" value="contact" />
         <input type="hidden" name="inbound_source" value={inboundSource ?? ""} />
         <input type="hidden" name="contact_intent" value={contactIntent ?? ""} />
+        <input type="hidden" name="package_interest" value={pkgHidden} />
         <input type="hidden" name="_subject" value={subjectBits.join(" · ")} />
-        <div className="m-form-row">
-          <div className="m-form-group">
-            <label htmlFor="cf-first">First Name</label>
-            <input id="cf-first" name="first_name" placeholder="First name" required autoComplete="given-name" />
-          </div>
-          <div className="m-form-group">
-            <label htmlFor="cf-last">Last Name</label>
-            <input id="cf-last" name="last_name" placeholder="Last name" required autoComplete="family-name" />
-          </div>
+        <div
+          aria-hidden="true"
+          style={{ position: "absolute", left: "-10000px", top: "auto", width: 1, height: 1, overflow: "hidden" }}
+        >
+          <label htmlFor="cf-company">Company</label>
+          <input id="cf-company" name="company" type="text" tabIndex={-1} autoComplete="off" />
         </div>
         <div className="m-form-group">
-          <label htmlFor="cf-biz">Business Name</label>
-          <input id="cf-biz" name="business_name" placeholder="Your business name" />
-        </div>
-        <div className="m-form-row">
-          <div className="m-form-group">
-            <label htmlFor="cf-phone">Phone</label>
-            <input id="cf-phone" name="phone" type="tel" placeholder="(661) 000-0000" autoComplete="tel" />
-          </div>
-          <div className="m-form-group">
-            <label htmlFor="cf-email">Email</label>
-            <input id="cf-email" name="email" type="email" placeholder="you@yourbiz.com" required autoComplete="email" />
-          </div>
-        </div>
-        <div className="m-form-group">
-          <label htmlFor="cf-svc">What Do You Need?</label>
-          <select
-            id="cf-svc"
-            name="service_interest"
-            value={serviceInterest}
-            onChange={(e) => setServiceInterest(e.target.value)}
-          >
-            <option value="">Select a service</option>
-            <option value="pkg1">Signal Foundation Build ($1,200)</option>
-            <option value="pkg2">Commerce Engine Build ($1,600)</option>
-            <option value="pkg3">Sentinel Automation Layer ($2,000)</option>
-            <option value="audit350">Standalone Structural Audit ($350)</option>
-            <option value="cipher">AI Receptionist / Cipher Deployment</option>
-            <option value="diagnostic">Not Sure — Run the Diagnostic</option>
-            <option value="other">Something Else</option>
-          </select>
-        </div>
-        <div className="m-form-group">
-          <label htmlFor="cf-msg">Tell Us About Your Business</label>
-          <textarea
-            id="cf-msg"
-            name="message"
-            placeholder="What do you do, who are your customers, what's the main problem you need solved..."
+          <label htmlFor="cf-first-name">First Name</label>
+          <input
+            id="cf-first-name"
+            name="first_name"
+            placeholder="First name"
+            required
+            autoComplete="given-name"
           />
         </div>
+        <div className="m-form-group">
+          <label htmlFor="cf-business-name">Business Name</label>
+          <input id="cf-business-name" name="business_name" placeholder="Your business name" required />
+        </div>
+        <div className="m-form-group">
+          <label htmlFor="cf-phone">Phone</label>
+          <input id="cf-phone" name="phone" type="tel" placeholder="(661) 000-0000" required autoComplete="tel" />
+        </div>
+        <div className="m-form-group">
+          <label htmlFor="cf-email">Email</label>
+          <input id="cf-email" name="email" type="email" placeholder="you@yourbiz.com" required autoComplete="email" />
+        </div>
+        <div className="m-form-group">
+          <label htmlFor="cf-web">Business Website</label>
+          <input
+            id="cf-web"
+            name="business_website"
+            type="text"
+            inputMode="url"
+            placeholder="https://yourbusiness.com"
+            required
+            autoComplete="url"
+          />
+          <p className="m-form-note" style={{ marginTop: "0.35rem" }}>
+            No site yet? Enter <strong>none</strong> (lowercase).
+          </p>
+        </div>
+        <TurnstileField
+          className="m-form-group"
+          onToken={(t) => {
+            setTurnstileToken(t);
+            setFormError(null);
+          }}
+          onExpire={() => setTurnstileToken("")}
+        />
+        {formError ? <p className="m-form-note" style={{ color: "var(--accent, #c45)" }}>{formError}</p> : null}
         <button type="submit" className="m-submit-btn">
           Send Message →
         </button>

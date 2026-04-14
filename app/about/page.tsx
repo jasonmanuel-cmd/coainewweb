@@ -4,7 +4,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { MarketingLayout } from "@/components/marketing/MarketingLayout";
 import { pageMetadata } from "@/lib/metadata";
 import { breadcrumbJsonLd } from "@/lib/schema";
-import { ORG_ID } from "@/lib/site";
+import { ORG_ID, SITE_URL } from "@/lib/site";
 
 const TICKER = [
   "ABOUT COAI",
@@ -32,7 +32,7 @@ export default function AboutPage() {
     "@context": "https://schema.org",
     "@type": "AboutPage",
     name: "About Chaotically Organized AI",
-    url: "https://chaoticallyorganizedai.com/about",
+    url: `${SITE_URL}/about`,
     mainEntity: { "@id": ORG_ID }
   };
 

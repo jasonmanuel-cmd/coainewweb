@@ -58,7 +58,8 @@ export function organizationJsonLd() {
           telephone: CONTACT.phoneE164,
           email: CONTACT.email,
           availableLanguage: "English"
-        }
+        },
+        priceRange: "$1,200–$2,000+"
       },
       {
         "@type": "Person",

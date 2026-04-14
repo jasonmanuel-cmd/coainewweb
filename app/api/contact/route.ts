@@ -1,10 +1,8 @@
 import { NextResponse } from "next/server";
-import { getMessagingProvider } from "@/lib/messaging/sms-service";
+import { FORMSPREE_ENDPOINT } from "@/lib/forms";
 import { verifyTurnstileToken } from "@/lib/turnstile/verify";
 import { takeRateLimitToken } from "@/lib/utils/rate-limit";
-
-const MAX_BODY = 640;
-const E164 = /^\+[1-9]\d{6,14}$/;
+import { contactMarketingSchema } from "@/lib/validators/contact-marketing";
 
 function getClientIp(request: Request): string {
   const forwarded = request.headers.get("x-forwarded-for");
@@ -44,43 +42,49 @@ export async function POST(request: Request) {
     if (!contentType.toLowerCase().includes("application/json")) {
       return NextResponse.json({ error: "Unsupported content type." }, { status: 415 });
     }
-    const ip = getClientIp(request);
-    if (!(await takeRateLimitToken(`messages:${ip}`, 20, 60_000))) {
-      return NextResponse.json({ error: "Too many requests. Try again soon." }, { status: 429 });
-    }
+
     if (!isSameSiteRequest(request)) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
-    const payload = (await request.json()) as {
-      to: string;
-      body: string;
-      leadId: string;
-      turnstileToken?: string;
-    };
-    if (!payload?.to || !payload?.body || typeof payload.leadId !== "string") {
-      return NextResponse.json({ error: "Invalid payload" }, { status: 400 });
-    }
-    if (!(await verifyTurnstileToken(payload.turnstileToken, ip))) {
-      return NextResponse.json({ error: "Human verification failed." }, { status: 400 });
-    }
-    if (!E164.test(payload.to.trim())) {
-      return NextResponse.json({ error: "Invalid destination" }, { status: 400 });
-    }
-    if (payload.body.length > MAX_BODY || payload.leadId.length > 120) {
-      return NextResponse.json({ error: "Invalid payload" }, { status: 400 });
+    const ip = getClientIp(request);
+    if (!(await takeRateLimitToken(`contact:${ip}`, 10, 60_000))) {
+      return NextResponse.json({ error: "Too many requests. Try again soon." }, { status: 429 });
     }
 
-    const provider = getMessagingProvider();
-    const result = await provider.sendSms({
-      ...payload,
-      to: payload.to.trim()
+    const raw = await request.json();
+    const parsed = contactMarketingSchema.parse(raw);
+    if (parsed.company.trim()) {
+      // Honeypot filled: silently accept to avoid teaching bots.
+      return NextResponse.json({ ok: true });
+    }
+    if (!(await verifyTurnstileToken(parsed.turnstileToken, ip))) {
+      return NextResponse.json({ error: "Human verification failed." }, { status: 400 });
+    }
+
+    const fd = new FormData();
+    for (const [key, value] of Object.entries(parsed)) {
+      if (key === "turnstileToken" || key === "company") continue;
+      if (value !== undefined && value !== null && value !== "") {
+        fd.set(key, String(value));
+      }
+    }
+
+    const fr = await fetch(FORMSPREE_ENDPOINT, {
+      method: "POST",
+      body: fd,
+      headers: { Accept: "application/json" }
     });
-    return NextResponse.json(result);
+
+    if (!fr.ok) {
+      return NextResponse.json({ error: "Form delivery failed." }, { status: 502 });
+    }
+
+    return NextResponse.json({ ok: true });
   } catch (error) {
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Message dispatch failed" },
-      { status: 500 }
+      { error: error instanceof Error ? error.message : "Contact request failed" },
+      { status: 400 }
     );
   }
 }

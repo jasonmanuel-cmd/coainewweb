@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Space_Grotesk, Syne } from "next/font/google";
 import Script from "next/script";
+import { headers } from "next/headers";
 import type { ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/next";
 import { AnalyticsRouteTracker } from "@/components/AnalyticsRouteTracker";
@@ -14,9 +15,9 @@ import "./globals.css";
 import "./landing-page.css";
 import "./marketing-inner.css";
 
-const inter = Space_Grotesk({
+const bodySans = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-body",
   display: "swap"
 });
 
@@ -55,15 +56,20 @@ export const metadata: Metadata = {
   }
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default async function RootLayout({ children }: { children: ReactNode }) {
   const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+  const nonce = (await headers()).get("x-nonce") ?? "";
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${mono.variable} ${headline.variable}`}>
+      <body className={`${bodySans.variable} ${mono.variable} ${headline.variable}`}>
         {gaId ? (
           <>
-            <Script src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} strategy="afterInteractive" />
-            <Script id="ga4-init" strategy="afterInteractive">
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+              strategy="afterInteractive"
+              nonce={nonce}
+            />
+            <Script id="ga4-init" strategy="afterInteractive" nonce={nonce}>
               {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 window.gtag = gtag;

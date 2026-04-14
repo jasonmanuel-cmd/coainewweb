@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 /** PageSpeed runs can exceed default serverless limits — allow up to 60s on supported Vercel plans. */
 export const maxDuration = 60;
 import { normalizeWebsiteUrl } from "@/lib/utils/normalize-website-url";
+import { takeRateLimitToken } from "@/lib/utils/rate-limit";
 import {
   buildPsiQuery,
   categoryScoreToPercent,
@@ -32,6 +33,12 @@ function psiErrorMessage(data: PsiJson, fallback: string) {
 }
 
 export async function GET(req: NextRequest) {
+  const forwarded = req.headers.get("x-forwarded-for");
+  const ip = (forwarded ? forwarded.split(",")[0] : req.headers.get("x-real-ip")) || "unknown";
+  if (!(await takeRateLimitToken(`lighthouse:${ip}`, 30, 60_000))) {
+    return NextResponse.json({ error: "Too many requests. Try again soon." }, { status: 429 });
+  }
+
   const raw = req.nextUrl.searchParams.get("url");
   if (!raw) {
     return NextResponse.json({ error: "No URL provided" }, { status: 400 });

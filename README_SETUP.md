@@ -18,6 +18,8 @@ Copy `.env.example` to `.env.local` and set:
 - `SUPABASE_SERVICE_ROLE_KEY`
 - `PAGESPEED_API_KEY`
 - `NEXT_PUBLIC_GA_MEASUREMENT_ID` (GA4, e.g. `G-XXXXXXXXXX`)
+- `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` — optional; enables **distributed** rate limits across Vercel instances (create a Redis database in [Upstash](https://upstash.com/) and paste REST credentials)
+- `NEXT_PUBLIC_TURNSTILE_SITE_KEY` / `TURNSTILE_SECRET_KEY` — optional; **Cloudflare Turnstile** for contact, intake, RedScreen audit, JAX waitlist, and `/api/messages`. If `TURNSTILE_SECRET_KEY` is set, the server rejects requests without a valid token; set both keys from the Cloudflare Turnstile dashboard
 - `SMS_PROVIDER` (`console` or `twilio`)
 - `TWILIO_ACCOUNT_SID` (if Twilio)
 - `TWILIO_AUTH_TOKEN` (if Twilio)
@@ -43,9 +45,11 @@ Run files in this order:
 
 ## 5) Security and anti-spam included
 
-- API rate limit: 8 submissions per minute per IP (`/api/register`)
-- Honeypot field check
-- Minimum fill-time check to reject bots
+- API rate limits per IP (`/api/register`, `/api/messages`, `/api/lighthouse`, `/api/audit`, `/api/contact`, `/api/jax-waitlist`) — **in-memory fallback** when Upstash env is unset; **distributed** limits when `UPSTASH_REDIS_*` is set
+- Honeypot field check (RedScreen audit form)
+- Minimum fill-time check to reject bots (`/api/register`)
+- Optional Cloudflare Turnstile on marketing forms and SMS trigger
+- Content-Security-Policy with per-request **nonce** (middleware) for scripts and JSON-LD
 - RLS enabled on all tables
 
 ## 6) Production (Vercel)

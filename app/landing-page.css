@@ -12,7 +12,7 @@
   --lp-amber: #ffb800;
   --lp-white: #f0efe8;
   --lp-muted: rgba(240, 239, 232, 0.45);
-  font-family: var(--font-inter), "Space Grotesk", system-ui, sans-serif;
+  font-family: var(--font-body), "Space Grotesk", system-ui, sans-serif;
   color: var(--lp-white);
   background: transparent;
   overflow-x: hidden;
@@ -323,7 +323,7 @@
 }
 
 .lp-hero h1 {
-  font-family: var(--font-headline), var(--font-inter), sans-serif;
+  font-family: var(--font-headline), var(--font-body), sans-serif;
   font-size: clamp(2.2rem, 6vw, 5rem);
   font-weight: 700;
   line-height: 1.05;
@@ -375,7 +375,7 @@
   padding: 14px 28px;
   border: none;
   border-radius: 4px;
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-body), sans-serif;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -397,7 +397,7 @@
   padding: 14px 28px;
   border: 1px solid var(--lp-border-hot);
   border-radius: 4px;
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-body), sans-serif;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.04em;
@@ -499,7 +499,7 @@
 }
 
 .lp-section h2 {
-  font-family: var(--font-headline), var(--font-inter), sans-serif;
+  font-family: var(--font-headline), var(--font-body), sans-serif;
   font-size: clamp(1.6rem, 4vw, 2.8rem);
   font-weight: 700;
   line-height: 1.1;
@@ -646,7 +646,7 @@
   background: var(--lp-surface2);
   border: 1px solid var(--lp-border);
   color: var(--lp-white);
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-body), sans-serif;
   font-size: 14px;
   padding: 12px 14px;
   border-radius: 4px;
@@ -870,7 +870,7 @@
 .lp-pkg-price span {
   font-size: 14px;
   color: var(--lp-muted);
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-body), sans-serif;
 }
 
 .lp-pkg-features {
@@ -904,7 +904,7 @@
   border: 1px solid var(--lp-green);
   border-radius: 4px;
   padding: 10px;
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-body), sans-serif;
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
@@ -1332,7 +1332,7 @@ body:has(.lp-page) .scanline-overlay {
   font-size: 14px;
   outline: none;
   transition: border-color 0.2s;
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
 }
 
 .lp-lh-input-row input:focus {
@@ -1351,7 +1351,7 @@ body:has(.lp-page) .scanline-overlay {
   white-space: nowrap;
   letter-spacing: 0.02em;
   transition: background 0.2s, opacity 0.2s;
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
 }
 
 .lp-lh-input-row button:hover:not(:disabled) {
@@ -1393,7 +1393,7 @@ body:has(.lp-page) .scanline-overlay {
     border-color 0.2s,
     color 0.2s,
     background 0.2s;
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
 }
 
 .lp-lh-strategy-btn:hover:not(:disabled) {

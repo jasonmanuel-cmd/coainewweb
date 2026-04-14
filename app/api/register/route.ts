@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { runAudit } from "@/lib/audit/run-audit";
 import { getMessagingProvider } from "@/lib/messaging/sms-service";
 import { getSupabaseAdmin } from "@/lib/supabase/client";
+import { verifyTurnstileToken } from "@/lib/turnstile/verify";
 import { createId } from "@/lib/utils/id";
 import { takeRateLimitToken } from "@/lib/utils/rate-limit";
 import { registerSchema } from "@/lib/validators/register";
@@ -14,12 +15,15 @@ export async function POST(request: Request) {
   try {
     const forwarded = request.headers.get("x-forwarded-for");
     const ip = (forwarded ? forwarded.split(",")[0] : request.headers.get("x-real-ip")) || "unknown";
-    if (!takeRateLimitToken(`register:${ip}`, 8, 60_000)) {
+    if (!(await takeRateLimitToken(`register:${ip}`, 8, 60_000))) {
       return NextResponse.json({ error: "Too many requests. Try again soon." }, { status: 429 });
     }
 
     const body = await request.json();
     const parsed = registerSchema.parse(body);
+    if (!(await verifyTurnstileToken(parsed.turnstileToken, ip))) {
+      return NextResponse.json({ error: "Human verification failed." }, { status: 400 });
+    }
     if (parsed.website) {
       return NextResponse.json({ error: "Invalid form submission." }, { status: 400 });
     }

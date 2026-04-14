@@ -7,7 +7,8 @@ export const registerSchema = z.object({
   email: z.string().email(),
   businessName: z.string().optional().default(""),
   website: z.string().optional().default(""),
-  startedAt: z.coerce.number().optional().default(0)
+  startedAt: z.coerce.number().optional().default(0),
+  turnstileToken: z.string().optional().default("")
 });
 
 export type RegisterPayload = z.infer<typeof registerSchema>;

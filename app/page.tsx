@@ -6,11 +6,11 @@ const DESC =
   "Structural digital audits, AEO-ready systems, and AI automation for Bakersfield 661 operators. Stop bleeding leads. Run your free diagnostic.";
 
 export const metadata: Metadata = {
-  title: { absolute: "Chaotically Organized AI | Bakersfield's #1 Growth System" },
+  title: { absolute: "Chaotically Organized AI | Bakersfield Growth Systems & AEO" },
   description: DESC,
   alternates: { canonical: SITE_URL },
   openGraph: {
-    title: "Chaotically Organized AI | Bakersfield's #1 Growth System",
+    title: "Chaotically Organized AI | Bakersfield Growth Systems & AEO",
     description: DESC,
     url: SITE_URL,
     siteName: "Chaotically Organized AI",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Chaotically Organized AI | Bakersfield's #1 Growth System",
+    title: "Chaotically Organized AI | Bakersfield Growth Systems & AEO",
     description: DESC,
     images: ["/logo.png"]
   }

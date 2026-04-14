@@ -4,6 +4,7 @@ import { MarketingLayout } from "@/components/marketing/MarketingLayout";
 import { PricingPageBody } from "@/components/marketing/PricingPageBody";
 import { pageMetadata } from "@/lib/metadata";
 import { breadcrumbJsonLd, serviceJsonLd } from "@/lib/schema";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Pricing — Fixed Sovereign Builds",
@@ -42,7 +43,7 @@ export default function PricingPage() {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: "Pricing",
-    url: "https://chaoticallyorganizedai.com/pricing"
+    url: `${SITE_URL}/pricing`
   };
 
   return (

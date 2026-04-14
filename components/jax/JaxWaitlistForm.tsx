@@ -1,12 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { FORMSPREE_ENDPOINT } from "@/lib/forms";
+import { TurnstileField } from "@/components/security/TurnstileField";
 
 export function JaxWaitlistForm() {
   const [email, setEmail] = useState("");
   const [done, setDone] = useState(false);
   const [disabled, setDisabled] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
   async function joinWaitlist() {
     const trimmed = email.trim();
@@ -14,18 +17,32 @@ export function JaxWaitlistForm() {
       window.alert("Enter a valid email.");
       return;
     }
+    if (siteKey && !turnstileToken) {
+      setError("Complete the verification step.");
+      return;
+    }
+    setError(null);
     setDisabled(true);
     try {
-      await fetch(FORMSPREE_ENDPOINT, {
+      const r = await fetch("/api/jax-waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ email, form_type: "jax_waitlist" })
+        body: JSON.stringify({ email: trimmed, turnstileToken })
       });
+      if (!r.ok) {
+        const j = (await r.json().catch(() => null)) as { error?: string } | null;
+        setError(j?.error || "Could not join waitlist.");
+        setDisabled(false);
+        return;
+      }
     } catch {
-      /* still show success for UX */
+      setError("Network error. Try again.");
+      setDisabled(false);
+      return;
     }
     setDone(true);
     setEmail("");
+    setTurnstileToken("");
   }
 
   return (
@@ -38,10 +55,24 @@ export function JaxWaitlistForm() {
           placeholder="your@business.com"
           aria-label="Email for JAX waitlist"
         />
-        <button type="button" className="m-jax-waitlist-btn" onClick={joinWaitlist} disabled={disabled}>
+        <button
+          type="button"
+          className="m-jax-waitlist-btn"
+          onClick={joinWaitlist}
+          disabled={disabled || (Boolean(siteKey) && !turnstileToken)}
+        >
           Join Waitlist →
         </button>
       </div>
+      <TurnstileField
+        className="m-jax-waitlist-note"
+        onToken={(t) => {
+          setTurnstileToken(t);
+          setError(null);
+        }}
+        onExpire={() => setTurnstileToken("")}
+      />
+      {error ? <p className="m-jax-waitlist-note" style={{ color: "var(--accent, #c45)" }}>{error}</p> : null}
       <p className="m-jax-waitlist-note">Early access · No spam · Launch notification only</p>
       {done ? (
         <div className="m-jax-success" role="status">

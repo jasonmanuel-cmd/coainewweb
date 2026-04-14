@@ -4,6 +4,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { MarketingLayout } from "@/components/marketing/MarketingLayout";
 import { pageMetadata } from "@/lib/metadata";
 import { breadcrumbJsonLd } from "@/lib/schema";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Run My Diagnostic",
@@ -44,7 +45,7 @@ export default async function IntakePage({
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: "Run My Diagnostic",
-    url: "https://chaoticallyorganizedai.com/intake"
+    url: `${SITE_URL}/intake`
   };
 
   return (

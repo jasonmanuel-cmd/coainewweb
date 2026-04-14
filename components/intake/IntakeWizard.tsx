@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { TurnstileField } from "@/components/security/TurnstileField";
 import { FORMSPREE_ENDPOINT } from "@/lib/forms";
 import { CONTACT } from "@/lib/site";
 
@@ -44,6 +45,8 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
   const [step, setStep] = useState(1);
   const [recoveredSession, setRecoveredSession] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
   const [data, setData] = useState<IntakeData>({
     industry: "",
     website: "",
@@ -92,6 +95,9 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
   async function onFormSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!data.industry || !data.website || submitting) return;
+    if (siteKey && !turnstileToken) {
+      return;
+    }
     setSubmitting(true);
 
     const form = e.currentTarget;
@@ -131,7 +137,8 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
         body: JSON.stringify({
           to: smsTo,
           leadId: sessionId,
-          body: `Got it${firstName ? `, ${firstName}` : ""} - Jason from COAI will follow up within 2 hours. Questions? Reply here or call ${CONTACT.phoneDisplay}.`
+          turnstileToken,
+          body: `Got it${firstName ? `, ${firstName}` : ""} — Jason from COAI will follow up within 2 hours. Questions? Reply here or call ${CONTACT.phoneDisplay}.`
         })
       }).catch(() => {
         // Non-blocking by design
@@ -289,44 +296,77 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
 
             <form onSubmit={onFormSubmit} className="m-intake-form">
               <input type="hidden" name="form_type" value="diagnostic_intake" />
+              <div
+                aria-hidden="true"
+                style={{ position: "absolute", left: "-10000px", top: "auto", width: 1, height: 1, overflow: "hidden" }}
+              >
+                <label htmlFor="intake-company">Company</label>
+                <input id="intake-company" name="company" type="text" tabIndex={-1} autoComplete="off" />
+              </div>
+
+              <div className="m-field">
+                <label htmlFor="intake-first-name">First Name</label>
+                <input
+                  id="intake-first-name"
+                  name="first_name"
+                  placeholder="First name"
+                  required
+                  autoComplete="given-name"
+                />
+              </div>
+
+              <div className="m-field">
+                <label htmlFor="intake-business-name">Business Name</label>
+                <input id="intake-business-name" name="business_name" placeholder="Your business name" required />
+              </div>
 
               <div className="m-field-row">
                 <div className="m-field">
-                  <label htmlFor="first_name">First Name</label>
-                  <input id="first_name" name="first_name" placeholder="First name" required autoComplete="given-name" />
+                  <label htmlFor="intake-phone">Phone</label>
+                  <input id="intake-phone" name="phone" type="tel" placeholder="(661) 000-0000" required autoComplete="tel" />
                 </div>
                 <div className="m-field">
-                  <label htmlFor="last_name">Last Name</label>
-                  <input id="last_name" name="last_name" placeholder="Last name" required autoComplete="family-name" />
+                  <label htmlFor="intake-email">Email</label>
+                  <input id="intake-email" name="email" type="email" placeholder="you@business.com" required autoComplete="email" />
                 </div>
               </div>
 
               <div className="m-field">
-                <label htmlFor="business_name">Business Name</label>
-                <input id="business_name" name="business_name" placeholder="Your business name" required />
+                <label htmlFor="intake-web">Business Website</label>
+                <input
+                  id="intake-web"
+                  name="business_website"
+                  type="text"
+                  inputMode="url"
+                  placeholder="https://yourbusiness.com"
+                  required
+                  autoComplete="url"
+                />
+                <p className="m-step-sub" style={{ marginTop: "0.35rem" }}>
+                  No site yet? Enter <strong>none</strong> (lowercase).
+                </p>
               </div>
 
-              <div className="m-field">
-                <label htmlFor="website_url">Your Website (if you have one)</label>
-                <input id="website_url" name="website_url" type="url" placeholder="https://yourbusiness.com" />
-              </div>
-
-              <div className="m-field-row">
-                <div className="m-field">
-                  <label htmlFor="phone">Phone</label>
-                  <input id="phone" name="phone" type="tel" placeholder="(661) 000-0000" required autoComplete="tel" />
-                </div>
-                <div className="m-field">
-                  <label htmlFor="email">Email</label>
-                  <input id="email" name="email" type="email" placeholder="you@business.com" required autoComplete="email" />
-                </div>
-              </div>
+              <TurnstileField
+                className="m-field"
+                onToken={setTurnstileToken}
+                onExpire={() => setTurnstileToken("")}
+              />
+              {siteKey && !turnstileToken ? (
+                <p className="m-step-sub" style={{ color: "var(--accent, #c45)" }}>
+                  Complete the verification above to submit.
+                </p>
+              ) : null}
 
               <div className="m-step-nav">
                 <button type="button" className="m-btn-back" onClick={() => goStep(2)} disabled={submitting}>
                   ← Back
                 </button>
-                <button type="submit" className="m-btn-next" disabled={submitting}>
+                <button
+                  type="submit"
+                  className="m-btn-next"
+                  disabled={submitting || (Boolean(siteKey) && !turnstileToken)}
+                >
                   {submitting ? "Submitting..." : "Submit & Get My Baseline →"}
                 </button>
               </div>

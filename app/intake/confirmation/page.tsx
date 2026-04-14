@@ -4,7 +4,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { MarketingLayout } from "@/components/marketing/MarketingLayout";
 import { pageMetadata } from "@/lib/metadata";
 import { breadcrumbJsonLd } from "@/lib/schema";
-import { CONTACT } from "@/lib/site";
+import { CONTACT, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Diagnostic Submitted",
@@ -32,7 +32,7 @@ export default function IntakeConfirmationPage() {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: "Diagnostic Submission Confirmation",
-    url: "https://chaoticallyorganizedai.com/intake/confirmation"
+    url: `${SITE_URL}/intake/confirmation`
   };
 
   return (

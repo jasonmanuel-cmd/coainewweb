@@ -5,7 +5,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { MarketingLayout } from "@/components/marketing/MarketingLayout";
 import { pageMetadata } from "@/lib/metadata";
 import { breadcrumbJsonLd } from "@/lib/schema";
-import { CONTACT, GOOGLE_BUSINESS_PROFILE_URL, LEGAL_NAME } from "@/lib/site";
+import { BUSINESS_HOURS_LABEL, CONTACT, GOOGLE_BUSINESS_PROFILE_URL, LEGAL_NAME, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Contact — Bakersfield Office",
@@ -38,7 +38,7 @@ export default async function ContactPage({
     "@context": "https://schema.org",
     "@type": "ContactPage",
     name: "Contact Chaotically Organized AI",
-    url: "https://chaoticallyorganizedai.com/contact"
+    url: `${SITE_URL}/contact`
   };
   const crumbs = breadcrumbJsonLd([
     { name: "Home", path: "/" },
@@ -104,22 +104,9 @@ export default async function ContactPage({
 
           <div className="m-info-block">
             <div className="m-info-block-label">Business Hours</div>
-            <div className="m-hours-grid">
-              <span className="m-hours-day">Monday</span>
-              <span className="m-hours-time">9AM – 6PM</span>
-              <span className="m-hours-day">Tuesday</span>
-              <span className="m-hours-time">9AM – 6PM</span>
-              <span className="m-hours-day">Wednesday</span>
-              <span className="m-hours-time">9AM – 6PM</span>
-              <span className="m-hours-day">Thursday</span>
-              <span className="m-hours-time">9AM – 6PM</span>
-              <span className="m-hours-day">Friday</span>
-              <span className="m-hours-time">9AM – 5PM</span>
-              <span className="m-hours-day">Saturday</span>
-              <span className="m-hours-time">By Appointment</span>
-              <span className="m-hours-day">Sunday</span>
-              <span className="m-hours-time">Closed</span>
-            </div>
+            <p className="m-info-line" style={{ marginTop: 0 }}>
+              <span className="m-info-text">{BUSINESS_HOURS_LABEL}</span>
+            </p>
             <div style={{ marginTop: "1rem", fontFamily: "var(--font-mono), monospace", fontSize: 10, color: "var(--m-green)" }}>
               Cipher active 24/7 for after-hours inquiries
             </div>

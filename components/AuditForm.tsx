@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useEffect } from "react";
+import { TurnstileField } from "@/components/security/TurnstileField";
 import { trackEvent } from "@/lib/analytics/client";
 
 type Result = {
@@ -23,12 +24,18 @@ export function AuditForm({ variant = "default" }: AuditFormProps) {
   const [result, setResult] = useState<Result | null>(null);
   const [startedAt, setStartedAt] = useState(0);
   const [hoveringCta, setHoveringCta] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
   useEffect(() => {
     setStartedAt(Date.now());
   }, []);
 
   async function onSubmit(formData: FormData) {
+    if (siteKey && !turnstileToken) {
+      setError("Complete the verification step.");
+      return;
+    }
     setLoading(true);
     setError(null);
     trackEvent("diagnostic_submit_started");
@@ -37,7 +44,7 @@ export function AuditForm({ variant = "default" }: AuditFormProps) {
       const response = await fetch("/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
+        body: JSON.stringify({ ...payload, turnstileToken })
       });
       if (!response.ok) {
         const errJson = (await response.json().catch(() => null)) as { error?: string } | null;
@@ -121,6 +128,13 @@ export function AuditForm({ variant = "default" }: AuditFormProps) {
         </div>
         <input type="text" name="website" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
         <input type="hidden" name="startedAt" value={String(startedAt)} />
+        <TurnstileField
+          onToken={(t) => {
+            setTurnstileToken(t);
+            setError(null);
+          }}
+          onExpire={() => setTurnstileToken("")}
+        />
         <div className="audit-form-actions">
           <button
             disabled={loading}
