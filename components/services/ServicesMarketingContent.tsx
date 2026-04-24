@@ -86,7 +86,7 @@ export function ServicesMarketingContent() {
           </p>
           <ul className="m-service-list">
             <li>
-              <strong>AI receptionist deployment</strong> — Cipher, tuned to your business
+              <strong>AI receptionist deployment</strong> — Cipher (Live Product), tuned to your business
             </li>
             <li>
               <strong>Missed-call text-back</strong> — responds within seconds, not hours
@@ -104,6 +104,18 @@ export function ServicesMarketingContent() {
               <strong>Workflow reporting</strong> — see exactly what&apos;s being captured
             </li>
           </ul>
+          <p style={{ fontSize: "12px", color: "var(--m-muted)", marginTop: "1rem" }}>
+            *Note: Cipher is our production-ready live receptionist. JAX is our separate internal/pre-deployment sentinel system.
+          </p>
+          <div style={{ marginTop: "1.5rem", padding: "1.25rem", borderLeft: "3px solid var(--m-green)", background: "rgba(0, 255, 136, 0.05)" }}>
+            <div style={{ fontSize: "14px", fontStyle: "italic", marginBottom: "0.5rem", color: "var(--m-white)" }}>
+              &ldquo;Jason helped me build a website for my business... also created a phone AI system for me to help direct callers...&rdquo;
+            </div>
+            <div style={{ fontSize: "12px", color: "var(--m-muted)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span>— Christopher Moore</span>
+              <span style={{ color: "var(--m-green)" }}>★★★★★ Google Review</span>
+            </div>
+          </div>
         </div>
         <div className="m-service-panel">
           <div className="m-service-panel-label">Live Deployment</div>
@@ -154,6 +166,15 @@ export function ServicesMarketingContent() {
               <strong>Full handoff</strong> — you own the code, the domain, the data
             </li>
           </ul>
+          <div style={{ marginTop: "1.5rem", padding: "1.25rem", borderLeft: "3px solid var(--m-green)", background: "rgba(0, 255, 136, 0.05)" }}>
+            <div style={{ fontSize: "14px", fontStyle: "italic", marginBottom: "0.5rem", color: "var(--m-white)" }}>
+              &ldquo;Very sleek design... affordability relative to competitors was amazing. Highly recommend!&rdquo;
+            </div>
+            <div style={{ fontSize: "12px", color: "var(--m-muted)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span>— Edwin Ward</span>
+              <span style={{ color: "var(--m-green)" }}>★★★★★ Google Review</span>
+            </div>
+          </div>
         </div>
         <div className="m-service-panel">
           <div className="m-service-panel-label">Build Philosophy</div>

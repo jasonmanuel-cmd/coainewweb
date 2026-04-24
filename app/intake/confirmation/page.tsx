@@ -60,6 +60,9 @@ export default function IntakeConfirmationPage() {
             <Link href="/pricing" className="m-btn-ghost">
               View Packages
             </Link>
+            <a href="https://g.page/r/CXxbvj7-CCGrEBM/review" target="_blank" rel="noopener noreferrer" className="m-btn-ghost" style={{ borderColor: "var(--m-green)", color: "var(--m-green)" }}>
+              Leave a Google review
+            </a>
           </div>
         </div>
       </div>

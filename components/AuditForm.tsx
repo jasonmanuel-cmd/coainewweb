@@ -174,7 +174,13 @@ export function AuditForm({ variant = "default" }: AuditFormProps) {
           {error}
         </p>
       ) : null}
-      {result ? (
+      {isLanding ? (
+        <p className="muted" style={{ marginTop: 12, fontSize: 13, lineHeight: 1.45 }}>
+          This runs real Google Lighthouse data through our RedScreen pipeline. Drop your URL and we&apos;ll expose where
+          speed, schema, and AEO signals are bleeding revenue.
+        </p>
+      ) : null}
+      {result && !isLanding ? (
         <div className="panel" style={{ marginTop: 12 }}>
           <h3>Audit Complete</h3>
           <p>Performance: {result.performanceScore} | Schema: {result.schemaScore}</p>

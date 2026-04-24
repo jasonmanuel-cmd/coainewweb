@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { AuditForm } from "@/components/AuditForm";
 import { JsonLd } from "@/components/JsonLd";
-import { LpRevenueCounter } from "@/components/landing/LpRevenueCounter";
 import { LpRoiBlock } from "@/components/landing/LpRoiBlock";
 import { LpTicker } from "@/components/landing/LpTicker";
 import { LpTopNav } from "@/components/landing/LpTopNav";
@@ -55,9 +54,7 @@ export function LandingHome() {
             <span className="lp-accent">You don&apos;t have to be.</span>
           </h1>
           <p className="lp-hero-sub">
-            <strong>{LEGAL_NAME.split(",")[0]}</strong> runs structural digital audits for Bakersfield operators — fixing
-            slow pages, broken schema, and visibility leaks <em>before</em> you spend a dollar on ads. We build sovereign
-            infrastructure you own outright.
+            Custom websites, structural audits, and AI call systems for Bakersfield businesses.
           </p>
           <div className="lp-hero-actions">
             <Link href="/intake" className="lp-btn-primary">
@@ -86,8 +83,8 @@ export function LandingHome() {
 
       <div className="lp-stat-banner">
         <div className="lp-stat-item">
-          <LpRevenueCounter />
-          <div className="lp-stat-label">Revenue Recovered This Month</div>
+          <div className="lp-stat-num">5.0</div>
+          <div className="lp-stat-label">Google Rating</div>
         </div>
         <div className="lp-stat-item">
           <div className="lp-stat-num">661</div>
@@ -159,6 +156,7 @@ export function LandingHome() {
                 diagnostic light marks exactly where your ranking authority and lead flow are escaping the system.
               </p>
               <AuditForm variant="landing" />
+              <p style={{ fontSize: "11px", color: "var(--lp-muted)", marginTop: "0.5rem" }}>* Scanner provides preliminary structural estimates. A full diagnostic is required for verified baseline metrics.</p>
             </div>
           </div>
         </div>
@@ -175,6 +173,7 @@ export function LandingHome() {
             Model your number below.
           </p>
           <LpRoiBlock />
+          <p style={{ fontSize: "11px", color: "var(--lp-muted)", marginTop: "0.5rem" }}>* Calculator projections are estimates based on standard local conversion rates. Actual recovered revenue depends on business capacity.</p>
         </div>
       </section>
 
@@ -251,39 +250,41 @@ export function LandingHome() {
         </div>
       </section>
 
-      <section className="lp-testimonials lp-section">
+      <section className="lp-testimonials lp-section" id="reviews">
         <div className="lp-container">
-          <div className="lp-section-label">Client Outcome Patterns</div>
+          <div className="lp-section-label">Verified Google reviews from Bakersfield clients</div>
           <h2>
-            Built for <span className="lp-text-green">measurable local growth.</span>
+            5.0 stars on Google · <span className="lp-text-green">8 reviews · Bakersfield, CA</span>
           </h2>
           <div className="lp-testimonials-grid">
             <div className="lp-testi-card">
-              <div className="lp-testi-stars">★★★★★</div>
+              <div className="lp-testi-stars" style={{ color: "var(--lp-green)", fontSize: "20px", marginBottom: "8px" }}>★★★★★</div>
               <p className="lp-testi-text">
-                &ldquo;In 30 days, qualified lead capture increased 22% and average response lag dropped below 12
-                minutes.&rdquo;
+                &ldquo;Jason helped me build a website for my business, increased my online presence... also created a phone AI system for me to help direct callers...&rdquo;
               </p>
-              <div className="lp-testi-author">Anonymized service client</div>
-              <div className="lp-testi-role">Attribution available on request</div>
+              <div className="lp-testi-author">Christopher Moore</div>
+              <a href="https://g.page/r/CXxbvj7-CCGrEBM/review" target="_blank" rel="noopener noreferrer" className="lp-testi-role" style={{textDecoration: "underline", color: "var(--lp-muted)", display: "block", marginTop: "4px"}}>Read on Google</a>
             </div>
             <div className="lp-testi-card">
-              <div className="lp-testi-stars">★★★★★</div>
+              <div className="lp-testi-stars" style={{ color: "var(--lp-green)", fontSize: "20px", marginBottom: "8px" }}>★★★★★</div>
               <p className="lp-testi-text">
-                &ldquo;After launch, quote requests increased 31% with clearer service framing and tighter mobile
-                conversion flow.&rdquo;
+                &ldquo;Very sleek design... affordability relative to competitors was amazing. Highly recommend!&rdquo;
               </p>
-              <div className="lp-testi-author">Anonymized service client</div>
-              <div className="lp-testi-role">Attribution available on request</div>
+              <div className="lp-testi-author">Edwin Ward</div>
+              <a href="https://g.page/r/CXxbvj7-CCGrEBM/review" target="_blank" rel="noopener noreferrer" className="lp-testi-role" style={{textDecoration: "underline", color: "var(--lp-muted)", display: "block", marginTop: "4px"}}>Read on Google</a>
             </div>
             <div className="lp-testi-card">
-              <div className="lp-testi-stars">★★★★★</div>
+              <div className="lp-testi-stars" style={{ color: "var(--lp-green)", fontSize: "20px", marginBottom: "8px" }}>★★★★★</div>
               <p className="lp-testi-text">
-                &ldquo;Missed-call recovery plus web intake routing lifted booked jobs by 18% in the first 45 days.&rdquo;
+                &ldquo;Professional, fast, and delivered exactly what was promised. Great local partner.&rdquo;
               </p>
-              <div className="lp-testi-author">Anonymized service client</div>
-              <div className="lp-testi-role">Attribution available on request</div>
+              <div className="lp-testi-author">Verified Client</div>
+              <a href="https://g.page/r/CXxbvj7-CCGrEBM/review" target="_blank" rel="noopener noreferrer" className="lp-testi-role" style={{textDecoration: "underline", color: "var(--lp-muted)", display: "block", marginTop: "4px"}}>Read on Google</a>
             </div>
+          </div>
+          <div style={{ marginTop: "3rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+            <a href="https://g.page/r/CXxbvj7-CCGrEBM/review" target="_blank" rel="noopener noreferrer" className="lp-btn-primary">Read all reviews on Google</a>
+            <a href="https://g.page/r/CXxbvj7-CCGrEBM/review" target="_blank" rel="noopener noreferrer" className="lp-btn-secondary">Leave a Google review</a>
           </div>
         </div>
       </section>
@@ -426,8 +427,8 @@ export function LandingHome() {
                 <Link href="/contact">Contact</Link>
               </li>
               <li>
-                <a href={GOOGLE_BUSINESS_PROFILE_URL} target="_blank" rel="noopener noreferrer">
-                  Google Business
+                <a href="https://g.page/r/CXxbvj7-CCGrEBM/review" target="_blank" rel="noopener noreferrer">
+                  Read our Google reviews
                 </a>
               </li>
             </ul>

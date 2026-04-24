@@ -158,6 +158,10 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
     <>
       <div className="m-intake-grid-bg" aria-hidden />
       <div className="m-intake-wrap">
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", marginBottom: "1rem", fontSize: "12px", color: "var(--m-muted)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+          <span style={{ color: "var(--m-green)", fontSize: "14px" }}>★★★★★</span>
+          5.0 stars on Google · 8 local reviews
+        </div>
         <div className="m-step-counter">
           <div className="m-step-dots" aria-hidden>
             {[1, 2, 3].map((i) => (
@@ -172,8 +176,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
             <div className="m-step-label">Step 01</div>
             <h1 className="m-step-title">Business Snapshot</h1>
             <p className="m-step-sub">
-              Finish this in about <strong>90 seconds</strong> and get a free visibility baseline. Pick your category and
-              current website setup.
+              Finish this in about <strong>90 seconds</strong>. No spam, no pressure — just a real baseline. Pick your category and current website setup.
             </p>
             <div className="m-choice-grid">
               {(
@@ -220,7 +223,11 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
               ))}
             </div>
 
-            <div className="m-step-nav">
+            <div style={{ marginTop: "1.5rem", fontSize: "12px", color: "var(--m-muted)", textAlign: "center" }}>
+              <strong>Up Next:</strong> Step 2: Revenue Leak Calculator → Step 3: Contact Details
+            </div>
+
+            <div className="m-step-nav" style={{ marginTop: "1rem" }}>
               <button
                 type="button"
                 className="m-btn-next"
@@ -229,9 +236,16 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
               >
                 Continue →
               </button>
-              <Link href="/contact?from=intake&intent=call" className="m-btn-back m-btn-link">
-                Prefer to talk now? Call Jason →
-              </Link>
+            </div>
+
+            <div style={{ marginTop: "2rem", padding: "1.25rem", border: "1px solid var(--m-border)", borderRadius: "6px", background: "rgba(0, 0, 0, 0.2)" }}>
+              <div style={{ fontSize: "14px", fontWeight: "bold", marginBottom: "0.5rem" }}>
+                Prefer to talk now? <a href={`tel:${CONTACT.phoneE164}`} style={{ color: "var(--m-green)", textDecoration: "none" }}>Call {CONTACT.phoneDisplay}</a>
+              </div>
+              <div style={{ fontSize: "13px", fontStyle: "italic", color: "var(--m-muted)", marginBottom: "0.5rem" }}>
+                &ldquo;Jason helped me build a website for my business... also created a phone AI system for me to help direct callers...&rdquo;
+              </div>
+              <div style={{ fontSize: "11px", color: "var(--m-green)" }}>— Christopher Moore, Google Review</div>
             </div>
           </div>
         ) : null}
