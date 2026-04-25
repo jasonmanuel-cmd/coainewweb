@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono, Space_Grotesk, Syne } from "next/font/google";
+import { JetBrains_Mono, Space_Grotesk, Syne, Plus_Jakarta_Sans, DM_Sans } from "next/font/google";
 import Script from "next/script";
 import { headers } from "next/headers";
 import type { ReactNode } from "react";
@@ -14,10 +14,11 @@ import { SITE_DESCRIPTION, SITE_URL } from "@/lib/site";
 import "./globals.css";
 import "./landing-page.css";
 import "./marketing-inner.css";
+import "./revamp.css";
 
 const bodySans = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-body",
+  variable: "--font-space-grotesk",
   display: "swap"
 });
 
@@ -31,6 +32,18 @@ const headline = Syne({
   subsets: ["latin"],
   variable: "--font-headline",
   weight: ["700", "800"],
+  display: "swap"
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-plus-jakarta",
+  display: "swap"
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
   display: "swap"
 });
 
@@ -61,7 +74,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   const nonce = (await headers()).get("x-nonce") ?? "";
   return (
     <html lang="en">
-      <body className={`${bodySans.variable} ${mono.variable} ${headline.variable}`}>
+      <body className={`${bodySans.variable} ${mono.variable} ${headline.variable} ${plusJakarta.variable} ${dmSans.variable}`}>
         {gaId ? (
           <>
             <Script
