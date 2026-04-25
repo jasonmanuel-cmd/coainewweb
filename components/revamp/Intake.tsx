@@ -14,7 +14,7 @@ export function IntakePage() {
       <div className="container" style={{ maxWidth: 600, textAlign: "center" }}>
         <div style={{ fontSize: "4rem", marginBottom: "20px", color: "var(--accent-green)" }}>◉</div>
         <h2 className="section-title">Diagnostic Submitted</h2>
-        <p className="section-sub" style={{ margin: "0 auto 32px" }}>Your roadmap is being generated. Jason will follow up within 24 hours with a prioritized fix list — no fluff, no pressure, just data.</p>
+        <p className="section-sub" style={{ margin: "0 auto 32px" }}>Your roadmap is being generated. Data has been routed to <strong>chaoticallyorganizedai@gmail.com</strong>. Jason will follow up within 24 hours with a prioritized fix list — no fluff, no pressure, just data.</p>
         <div style={{ display: "flex", gap: 12, justifyContent: "center" }}>
           <span style={{ fontFamily: "var(--font-mono)", fontSize: ".72rem", background: "rgba(16,217,138,.1)", border: "1px solid rgba(16,217,138,.22)", color: "#10d98a", padding: "6px 16px", borderRadius: 4, fontWeight: 700 }}>DIAGNOSTIC QUEUED</span>
         </div>
@@ -138,7 +138,8 @@ export function IntakePage() {
             </div>
             
             <p style={{ textAlign: "center", fontSize: ".72rem", color: "var(--text-muted2)", marginTop: "24px" }}>
-              No spam. No cold calls. Just a practical roadmap.
+              No spam. No cold calls. Just a practical roadmap.<br/>
+              Data routed to: chaoticallyorganizedai@gmail.com
             </p>
           </div>
         </div>

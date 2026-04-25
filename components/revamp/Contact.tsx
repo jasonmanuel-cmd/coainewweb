@@ -51,7 +51,7 @@ export function Contact() {
               <div style={{ textAlign: "center", padding: "40px 0" }}>
                 <div style={{ width: "64px", height: "64px", background: "rgba(16,217,138,0.1)", border: "1px solid rgba(16,217,138,0.25)", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.5rem", color: "var(--accent-green)", margin: "0 auto 20px" }}>✓</div>
                 <h2 style={{ fontSize: "1.5rem", fontWeight: 800, color: "#fff", marginBottom: "12px" }}>Message Received</h2>
-                <p style={{ fontSize: ".9rem", color: "var(--text-soft)", lineHeight: 1.6, marginBottom: "24px" }}>Jason will respond same business day. If it&apos;s urgent, call (661) 610-9198.</p>
+                <p style={{ fontSize: ".9rem", color: "var(--text-soft)", lineHeight: 1.6, marginBottom: "24px" }}>Jason will respond same business day. Data has been routed to <strong>chaoticallyorganizedai@gmail.com</strong>. If it&apos;s urgent, call (661) 610-9198.</p>
                 <span style={{ fontFamily: "var(--font-mono)", fontSize: ".7rem", background: "rgba(16,217,138,0.1)", border: "1px solid rgba(16,217,138,0.22)", color: "#10d98a", padding: "4px 12px", borderRadius: 4, letterSpacing: 1, fontWeight: 700 }}>QUEUED</span>
               </div>
             ) : (
@@ -100,7 +100,8 @@ export function Contact() {
                   </div>
                   <button type="submit" className="btn-primary" style={{ width: "100%", justifyContent: "center" }}>Send Message →</button>
                   <p style={{ textAlign: "center", fontSize: ".72rem", color: "var(--text-muted2)", marginTop: "12px" }}>
-                    Or skip the form — call (661) 610-9198 directly.
+                    Or skip the form — call (661) 610-9198 directly.<br/>
+                    Data routed to: chaoticallyorganizedai@gmail.com
                   </p>
                 </form>
               </>

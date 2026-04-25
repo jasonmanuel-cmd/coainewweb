@@ -13,6 +13,60 @@ const CASES = [
     accent: "#f97316"
   },
   {
+    id: "lastnight", category: "events", industry: "Party & Event Services",
+    client: "Last Night 2",
+    location: "Event Production · Bakersfield, CA",
+    desc: "Last Night 2 provides high-energy event production, party rentals, and professional DJ services. COAI built a high-visibility landing page designed to showcase the vibe and capture booking leads in a single session.",
+    built: ["High-Vibe Layout","Booking Funnel","Social Integration","Fast Load Speed","Mobile Optimized"],
+    url: "https://lastnight2.vercel.app/",
+    accent: "#ff00ff"
+  },
+  {
+    id: "williamdean", category: "photo", industry: "Photography",
+    client: "William Dean Photography",
+    location: "Bakersfield, CA · Professional Studio",
+    desc: "Professional photography studio specializing in portraits, events, and commercial work. COAI built a portfolio-first experience that prioritizes image quality and client booking simplicity.",
+    built: ["Image Optimization","Client Booking","Portfolio Grid","Gallery Schema","Contact Funnel"],
+    url: "https://www.williamdeanrealphotography.com",
+    accent: "#ffffff"
+  },
+  {
+    id: "homegrowmoney", category: "apparel", industry: "Apparel & Lifestyle",
+    client: "Home Grow Money",
+    location: "E-commerce · Lifestyle Brand",
+    desc: "A lifestyle and apparel brand focused on community and growth. COAI built a sovereign storefront designed for high-impact brand storytelling and frictionless product discovery.",
+    built: ["Storefront Design","Product Display","Brand Storytelling","Secure Checkout","Mobile Commerce"],
+    url: "https://homegrowmoney.com",
+    accent: "#10d98a"
+  },
+  {
+    id: "tandmbak", category: "logistics", industry: "Hauling & Trash Removal",
+    client: "T&M Bak",
+    location: "Bakersfield, CA · Local Logistics",
+    desc: "T&M Bak provides reliable hauling, junk removal, and site cleanup services. COAI built a utility-focused lead engine that lets clients request quotes and schedule pickups with zero friction.",
+    built: ["Quote Engine","Service Breakdown","Local SEO","Mobile Capture","Fast Response Path"],
+    url: "https://www.tandmbak.com",
+    accent: "#fbbf24"
+  },
+  {
+    id: "dffb", category: "care", industry: "Senior Living Placement",
+    client: "DFFB Senior Living",
+    location: "Placement Services · Bakersfield, CA",
+    desc: "DFFB helps families navigate the complexities of senior living placement with compassion and expertise. COAI built a trust-focused informational hub designed to facilitate delicate conversations and capture qualified leads.",
+    built: ["Trust-Forward UI","Resource Center","Qualified Intake","Privacy Schema","Expert Positioning"],
+    url: "https://dffbseniorliving.com",
+    accent: "#60a5fa"
+  },
+  {
+    id: "poisonwell", category: "music", industry: "Record Label",
+    client: "Poison Well Records",
+    location: "Bakersfield, CA · Independent Music",
+    desc: "An independent record label focused on raw talent and authentic sound. COAI built a dark-mode artist showcase and label hub designed for music discovery and brand authority.",
+    built: ["Dark Mode Aesthetic","Artist Portfolios","Audio Integration","Release Pipeline","Label Branding"],
+    url: "https://poisonwellrecords.com",
+    accent: "#f87171"
+  },
+  {
     id: "edwin", category: "finance", industry: "Credit Restoration",
     client: "Edwin Ward Consulting",
     location: "Credit Restoration Services · USA",
@@ -35,11 +89,14 @@ const CASES = [
 const FILTERS = [
   { id: "all", label: "All Work" },
   { id: "food", label: "Food & Beverage" },
-  { id: "finance", label: "Finance" },
-  { id: "contracting", label: "Contracting" },
+  { id: "logistics", label: "Logistics" },
+  { id: "events", label: "Events" },
+  { id: "care", label: "Senior Living" },
   { id: "apparel", label: "Apparel" },
   { id: "photo", label: "Photography" },
-  { id: "music", label: "Music" }
+  { id: "music", label: "Music" },
+  { id: "finance", label: "Finance" },
+  { id: "contracting", label: "Contracting" }
 ];
 
 interface PortfolioProps {

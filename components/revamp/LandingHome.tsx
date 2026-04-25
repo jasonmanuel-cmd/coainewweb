@@ -13,6 +13,7 @@ import { IntakePage } from "./Intake";
 import { JaxPage } from "./Jax";
 import { Faq } from "./Faq";
 import { Contact } from "./Contact";
+import { Lighthouse } from "./Lighthouse";
 
 export function LandingHomeRevamp() {
   const [page, setPage] = useState("home");
@@ -28,6 +29,7 @@ export function LandingHomeRevamp() {
         return (
           <>
             <Hero onNavigate={navigate} />
+            <Lighthouse />
             <Packages onNavigate={navigate} />
             <Testimonials />
             <section className="final-cta">
