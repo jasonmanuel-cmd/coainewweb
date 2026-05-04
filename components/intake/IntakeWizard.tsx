@@ -1,10 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { TurnstileField } from "@/components/security/TurnstileField";
-import { FORMSPREE_ENDPOINT } from "@/lib/forms";
 import { CONTACT } from "@/lib/site";
 
 type IntakeWizardProps = {
@@ -28,13 +26,6 @@ type DraftPayload = {
 
 const STORAGE_KEY = "coai-intake-draft-v1";
 
-function toSmsPhone(raw: string): string | null {
-  const digits = raw.replace(/\D/g, "");
-  if (digits.length === 10) return `+1${digits}`;
-  if (digits.length === 11 && digits.startsWith("1")) return `+${digits}`;
-  return null;
-}
-
 function newSessionId() {
   return `intk-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
 }
@@ -45,6 +36,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
   const [step, setStep] = useState(1);
   const [recoveredSession, setRecoveredSession] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [turnstileToken, setTurnstileToken] = useState("");
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
   const [data, setData] = useState<IntakeData>({
@@ -98,12 +90,11 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
     if (siteKey && !turnstileToken) {
       return;
     }
+    setSubmitError(null);
     setSubmitting(true);
 
     const form = e.currentTarget;
     const fd = new FormData(form);
-    const firstName = String(fd.get("first_name") || "").trim();
-    const phoneRaw = String(fd.get("phone") || "").trim();
 
     fd.set("form_type", "diagnostic_intake");
     if (packageInterest) fd.set("package_interest", packageInterest);
@@ -119,30 +110,24 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
     fd.set("intake_recovery_tag", recoveredSession ? "recovered_returning_visitor" : "first_session");
     fd.set("intake_abandonment_signal", recoveredSession ? "prior_abandon_detected" : "none_detected");
 
-    try {
-      await fetch(FORMSPREE_ENDPOINT, {
-        method: "POST",
-        body: fd,
-        headers: { Accept: "application/json" }
-      });
-    } catch {
-      // Continue UX path; Formspree may still capture via fallback infra
-    }
+    const payload = Object.fromEntries(fd.entries());
 
-    const smsTo = toSmsPhone(phoneRaw);
-    if (smsTo) {
-      void fetch("/api/messages", {
+    try {
+      const r = await fetch("/api/intake", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          to: smsTo,
-          leadId: sessionId,
-          turnstileToken,
-          body: `Got it${firstName ? `, ${firstName}` : ""} — Jason from COAI will follow up within 2 hours. Questions? Reply here or call ${CONTACT.phoneDisplay}.`
-        })
-      }).catch(() => {
-        // Non-blocking by design
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ ...payload, turnstileToken })
       });
+      if (!r.ok) {
+        const j = (await r.json().catch(() => null)) as { error?: string } | null;
+        setSubmitError(j?.error || "Could not submit. Please try again or call us.");
+        setSubmitting(false);
+        return;
+      }
+    } catch {
+      setSubmitError("Network error. Please try again or call us.");
+      setSubmitting(false);
+      return;
     }
 
     try {
@@ -369,6 +354,11 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
               {siteKey && !turnstileToken ? (
                 <p className="m-step-sub" style={{ color: "var(--accent, #c45)" }}>
                   Complete the verification above to submit.
+                </p>
+              ) : null}
+              {submitError ? (
+                <p className="m-step-sub" style={{ color: "var(--accent, #c45)" }}>
+                  {submitError}
                 </p>
               ) : null}
 

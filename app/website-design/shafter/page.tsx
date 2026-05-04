@@ -4,7 +4,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { MarketingLayout } from "@/components/marketing/MarketingLayout";
 import { pageMetadata } from "@/lib/metadata";
 import { breadcrumbJsonLd, serviceJsonLd } from "@/lib/schema";
-import { CONTACT } from "@/lib/site";
+import { CONTACT, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Website Design Shafter, CA",
@@ -25,9 +25,16 @@ export default function ShafterWebsiteDesignPage() {
     "Shafter website design services",
     "Website design, schema implementation, and conversion architecture for Shafter businesses that need stronger local lead flow."
   );
+  const webPage = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Shafter Website Design",
+    url: `${SITE_URL}/website-design/shafter`
+  };
 
   return (
     <MarketingLayout tickerItems={TICKER} activeHref="/website-design">
+      <JsonLd data={webPage} />
       <JsonLd data={crumbs} />
       <JsonLd data={service} />
       <div className="m-page-hero">
@@ -44,6 +51,18 @@ export default function ShafterWebsiteDesignPage() {
           <div className="m-cta-row">
             <Link href="/intake" className="m-btn-primary">
               Run Shafter Diagnostic →
+            </Link>
+            <Link href="/website-design/kern-county" className="m-btn-ghost">
+              Kern County Hub
+            </Link>
+            <Link href="/website-design/bakersfield" className="m-btn-ghost">
+              Bakersfield
+            </Link>
+            <Link href="/website-design/delano" className="m-btn-ghost">
+              Delano
+            </Link>
+            <Link href="/contact" className="m-btn-ghost">
+              Contact
             </Link>
             <a href={`tel:${CONTACT.phoneE164}`} className="m-btn-ghost">
               Call {CONTACT.phoneDisplay}

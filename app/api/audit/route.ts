@@ -1,11 +1,18 @@
 import { NextResponse } from "next/server";
 import { runAudit } from "@/lib/audit/run-audit";
+import { getClientIp, hasJsonContentType, isSameSiteRequest } from "@/lib/security/request-guards";
 import { takeRateLimitToken } from "@/lib/utils/rate-limit";
 
 export async function POST(request: Request) {
   try {
-    const forwarded = request.headers.get("x-forwarded-for");
-    const ip = (forwarded ? forwarded.split(",")[0] : request.headers.get("x-real-ip")) || "unknown";
+    if (!hasJsonContentType(request)) {
+      return NextResponse.json({ error: "Unsupported content type." }, { status: 415 });
+    }
+    if (!isSameSiteRequest(request)) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
+
+    const ip = getClientIp(request);
     if (!(await takeRateLimitToken(`audit:${ip}`, 12, 60_000))) {
       return NextResponse.json({ error: "Too many requests. Try again soon." }, { status: 429 });
     }

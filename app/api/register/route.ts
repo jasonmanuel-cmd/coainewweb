@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { runAudit } from "@/lib/audit/run-audit";
 import { getMessagingProvider } from "@/lib/messaging/sms-service";
+import { getClientIp, hasJsonContentType, isSameSiteRequest } from "@/lib/security/request-guards";
 import { getSupabaseAdmin } from "@/lib/supabase/client";
 import { verifyTurnstileToken } from "@/lib/turnstile/verify";
 import { createId } from "@/lib/utils/id";
@@ -13,8 +14,14 @@ function assertNoError(error: { message?: string } | null) {
 
 export async function POST(request: Request) {
   try {
-    const forwarded = request.headers.get("x-forwarded-for");
-    const ip = (forwarded ? forwarded.split(",")[0] : request.headers.get("x-real-ip")) || "unknown";
+    if (!hasJsonContentType(request)) {
+      return NextResponse.json({ error: "Unsupported content type." }, { status: 415 });
+    }
+    if (!isSameSiteRequest(request)) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
+
+    const ip = getClientIp(request);
     if (!(await takeRateLimitToken(`register:${ip}`, 8, 60_000))) {
       return NextResponse.json({ error: "Too many requests. Try again soon." }, { status: 429 });
     }

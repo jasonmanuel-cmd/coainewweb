@@ -1,47 +1,15 @@
 import { NextResponse } from "next/server";
 import { getMessagingProvider } from "@/lib/messaging/sms-service";
+import { getClientIp, hasJsonContentType, isSameSiteRequest } from "@/lib/security/request-guards";
 import { verifyTurnstileToken } from "@/lib/turnstile/verify";
 import { takeRateLimitToken } from "@/lib/utils/rate-limit";
 
 const MAX_BODY = 640;
 const E164 = /^\+[1-9]\d{6,14}$/;
 
-function getClientIp(request: Request): string {
-  const forwarded = request.headers.get("x-forwarded-for");
-  if (forwarded) {
-    const first = forwarded.split(",")[0]?.trim();
-    if (first) return first;
-  }
-  const real = request.headers.get("x-real-ip")?.trim();
-  return real || "unknown";
-}
-
-function isSameSiteRequest(request: Request): boolean {
-  const site = process.env.NEXT_PUBLIC_SITE_URL?.trim();
-  if (!site) return true;
-  let expected: string;
-  try {
-    expected = new URL(site).origin;
-  } catch {
-    return true;
-  }
-  const origin = request.headers.get("origin");
-  if (origin) return origin === expected;
-  const referer = request.headers.get("referer");
-  if (referer) {
-    try {
-      return new URL(referer).origin === expected;
-    } catch {
-      return false;
-    }
-  }
-  return process.env.NODE_ENV !== "production";
-}
-
 export async function POST(request: Request) {
   try {
-    const contentType = request.headers.get("content-type") || "";
-    if (!contentType.toLowerCase().includes("application/json")) {
+    if (!hasJsonContentType(request)) {
       return NextResponse.json({ error: "Unsupported content type." }, { status: 415 });
     }
     const ip = getClientIp(request);

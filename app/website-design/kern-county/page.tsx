@@ -4,7 +4,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { MarketingLayout } from "@/components/marketing/MarketingLayout";
 import { pageMetadata } from "@/lib/metadata";
 import { breadcrumbJsonLd, serviceJsonLd } from "@/lib/schema";
-import { CONTACT } from "@/lib/site";
+import { CONTACT, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Kern County Website Design",
@@ -32,9 +32,16 @@ export default function KernCountyWebsiteDesignPage() {
     "Kern County website design services",
     "Conversion-first website design, local SEO/AEO architecture, and schema implementation for Kern County businesses."
   );
+  const webPage = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Kern County Website Design",
+    url: `${SITE_URL}/website-design/kern-county`
+  };
 
   return (
     <MarketingLayout tickerItems={TICKER} activeHref="/website-design">
+      <JsonLd data={webPage} />
       <JsonLd data={crumbs} />
       <JsonLd data={service} />
 
@@ -52,6 +59,12 @@ export default function KernCountyWebsiteDesignPage() {
           <div className="m-cta-row">
             <Link href="/intake" className="m-btn-primary">
               Run My Free Diagnostic →
+            </Link>
+            <Link href="/website-design" className="m-btn-ghost">
+              Website Design Hub
+            </Link>
+            <Link href="/contact" className="m-btn-ghost">
+              Contact
             </Link>
             <a href={`tel:${CONTACT.phoneE164}`} className="m-btn-ghost">
               Call {CONTACT.phoneDisplay}

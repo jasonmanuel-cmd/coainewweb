@@ -1,13 +1,20 @@
 import { NextResponse } from "next/server";
 import { FORMSPREE_ENDPOINT } from "@/lib/forms";
+import { getClientIp, hasJsonContentType, isSameSiteRequest } from "@/lib/security/request-guards";
 import { verifyTurnstileToken } from "@/lib/turnstile/verify";
 import { takeRateLimitToken } from "@/lib/utils/rate-limit";
 import { jaxWaitlistSchema } from "@/lib/validators/contact-marketing";
 
 export async function POST(request: Request) {
   try {
-    const forwarded = request.headers.get("x-forwarded-for");
-    const ip = (forwarded ? forwarded.split(",")[0] : request.headers.get("x-real-ip")) || "unknown";
+    if (!hasJsonContentType(request)) {
+      return NextResponse.json({ error: "Unsupported content type." }, { status: 415 });
+    }
+    if (!isSameSiteRequest(request)) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
+
+    const ip = getClientIp(request);
     if (!(await takeRateLimitToken(`jax:${ip}`, 10, 60_000))) {
       return NextResponse.json({ error: "Too many requests. Try again soon." }, { status: 429 });
     }

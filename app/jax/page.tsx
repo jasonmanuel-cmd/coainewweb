@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { JsonLd } from "@/components/JsonLd";
 import { JaxWaitlistForm } from "@/components/jax/JaxWaitlistForm";
 import { MarketingLayout } from "@/components/marketing/MarketingLayout";
 import { pageMetadata } from "@/lib/metadata";
+import { breadcrumbJsonLd } from "@/lib/schema";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "JAX Sentinel — AI Diagnostic Engine",
@@ -23,8 +26,21 @@ const TICKER = [
 ];
 
 export default function JaxPage() {
+  const crumbs = breadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "JAX Sentinel", path: "/jax" }
+  ]);
+  const webPage = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "JAX Sentinel",
+    url: `${SITE_URL}/jax`
+  };
+
   return (
     <MarketingLayout tickerItems={TICKER} activeHref="/jax">
+      <JsonLd data={crumbs} />
+      <JsonLd data={webPage} />
       <div className="m-jax-main">
         <div className="m-jax-inner">
           <div className="m-jax-system-tag">
@@ -120,6 +136,18 @@ export default function JaxPage() {
 
           <div className="m-jax-waitlist-head">Register for Early Access</div>
           <JaxWaitlistForm />
+
+          <div className="m-cta-row" style={{ justifyContent: "center", marginTop: "1.25rem" }}>
+            <Link href="/intake" className="m-btn-primary">
+              Run My Diagnostic →
+            </Link>
+            <Link href="/contact" className="m-btn-ghost">
+              Talk to Jason
+            </Link>
+            <Link href="/services" className="m-btn-ghost">
+              Explore Services
+            </Link>
+          </div>
 
           <p className="m-jax-foot-link">
             <Link href="/">← Return to COAI</Link>

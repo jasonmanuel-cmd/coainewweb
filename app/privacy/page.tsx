@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/JsonLd";
 import { LegalShell } from "@/components/marketing/LegalShell";
 import { pageMetadata } from "@/lib/metadata";
-import { CONTACT, LEGAL_NAME } from "@/lib/site";
+import { breadcrumbJsonLd } from "@/lib/schema";
+import { CONTACT, LEGAL_NAME, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Privacy Policy",
@@ -12,9 +14,21 @@ export const metadata: Metadata = pageMetadata({
 
 export default function PrivacyPage() {
   const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-ZYCPQEBGTN";
+  const crumbs = breadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Privacy policy", path: "/privacy" }
+  ]);
+  const webPage = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Privacy Policy",
+    url: `${SITE_URL}/privacy`
+  };
 
   return (
     <LegalShell>
+      <JsonLd data={crumbs} />
+      <JsonLd data={webPage} />
       <div className="m-legal-wrap">
         <div className="m-legal-top">
           <div className="m-legal-type">Legal Document</div>

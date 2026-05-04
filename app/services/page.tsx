@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { MarketingLayout } from "@/components/marketing/MarketingLayout";
 import { ServicesMarketingContent } from "@/components/services/ServicesMarketingContent";
@@ -35,6 +36,28 @@ export default function ServicesPage() {
       <JsonLd data={serviceJsonLd("Sovereign infrastructure services", sovereignServiceDescription)} />
       <JsonLd data={crumbs} />
       <ServicesMarketingContent />
+      <div className="m-bottom-cta">
+        <div className="m-section-label">Service Paths</div>
+        <h2>
+          Build your local visibility stack.
+          <br />
+          <span className="m-text-green">Choose your next step.</span>
+        </h2>
+        <div className="m-cta-row">
+          <Link href="/website-design" className="m-btn-primary">
+            Website Design Hub →
+          </Link>
+          <Link href="/website-design/kern-county" className="m-btn-ghost">
+            Kern County Web Design
+          </Link>
+          <Link href="/intake" className="m-btn-ghost">
+            Run Diagnostic
+          </Link>
+          <Link href="/contact" className="m-btn-ghost">
+            Contact
+          </Link>
+        </div>
+      </div>
     </MarketingLayout>
   );
 }

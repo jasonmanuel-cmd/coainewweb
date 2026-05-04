@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { IntakeWizard } from "@/components/intake/IntakeWizard";
 import { JsonLd } from "@/components/JsonLd";
 import { MarketingLayout } from "@/components/marketing/MarketingLayout";
@@ -53,6 +54,17 @@ export default async function IntakePage({
       <JsonLd data={webPage} />
       <JsonLd data={crumbs} />
       <IntakeWizard packageInterest={packageInterest} />
+      <div className="m-cta-row" style={{ justifyContent: "center", marginTop: "1.5rem" }}>
+        <Link href="/services" className="m-btn-ghost">
+          Services
+        </Link>
+        <Link href="/pricing" className="m-btn-ghost">
+          Pricing
+        </Link>
+        <Link href="/contact" className="m-btn-ghost">
+          Contact
+        </Link>
+      </div>
     </MarketingLayout>
   );
 }

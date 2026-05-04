@@ -3,7 +3,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { MarketingLayout } from "@/components/marketing/MarketingLayout";
 import { WebsiteDesignPageBody } from "@/components/marketing/WebsiteDesignPageBody";
 import { pageMetadata } from "@/lib/metadata";
-import { breadcrumbJsonLd } from "@/lib/schema";
+import { breadcrumbJsonLd, serviceJsonLd } from "@/lib/schema";
 import { SITE_URL } from "@/lib/site";
 import Link from "next/link";
 
@@ -39,10 +39,15 @@ export default function WebsiteDesignPage() {
     name: "Website Design",
     url: `${SITE_URL}/website-design`
   };
+  const service = serviceJsonLd(
+    "Website design services",
+    "Conversion-first custom website design for Bakersfield and Kern County operators who need full ownership, technical SEO readiness, and AI answer visibility."
+  );
 
   return (
     <MarketingLayout tickerItems={TICKER} activeHref="/website-design">
       <JsonLd data={webPage} />
+      <JsonLd data={service} />
       <JsonLd data={crumbs} />
       <WebsiteDesignPageBody />
       <div className="m-bottom-cta">
@@ -54,6 +59,9 @@ export default function WebsiteDesignPage() {
           <Link href="/website-design/kern-county" className="m-btn-primary-marketing">
             Kern County Hub →
           </Link>
+          <Link href="/intake" className="m-btn-primary-marketing">
+            Run My Diagnostic →
+          </Link>
           <Link href="/website-design/bakersfield" className="m-btn-ghost-marketing">
             Bakersfield
           </Link>
@@ -62,6 +70,9 @@ export default function WebsiteDesignPage() {
           </Link>
           <Link href="/website-design/shafter" className="m-btn-ghost-marketing">
             Shafter
+          </Link>
+          <Link href="/contact" className="m-btn-ghost-marketing">
+            Contact
           </Link>
         </div>
       </div>

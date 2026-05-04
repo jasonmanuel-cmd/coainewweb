@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/JsonLd";
 import { LegalShell } from "@/components/marketing/LegalShell";
 import { pageMetadata } from "@/lib/metadata";
-import { CONTACT, LEGAL_NAME } from "@/lib/site";
+import { breadcrumbJsonLd } from "@/lib/schema";
+import { CONTACT, LEGAL_NAME, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Terms of Service",
@@ -11,8 +13,21 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function TermsPage() {
+  const crumbs = breadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Terms of service", path: "/terms" }
+  ]);
+  const webPage = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Terms of Service",
+    url: `${SITE_URL}/terms`
+  };
+
   return (
     <LegalShell>
+      <JsonLd data={crumbs} />
+      <JsonLd data={webPage} />
       <div className="m-legal-wrap">
         <div className="m-legal-top">
           <div className="m-legal-type">Legal Document</div>

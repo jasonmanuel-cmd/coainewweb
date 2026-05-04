@@ -29,6 +29,7 @@ export default function Page() {
       <Head>
         <title>sentry-example-page</title>
         <meta name="description" content="Test Sentry for your Next.js app!" />
+        <meta name="robots" content="noindex,nofollow,noarchive,nosnippet" />
       </Head>
 
       <main>
