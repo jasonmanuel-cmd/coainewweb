@@ -405,8 +405,7 @@ img { max-width: 100%; display: block; }
   .audit-form input, .audit-form button { width: 100%; }
   .packages-grid { grid-template-columns: 1fr; }
   .testi-grid { grid-template-columns: 1fr; }
-  .pkg-card .btn-primary, .pkg-card .btn-secondary,
-  .pkg-card .btn-outline { width: 100%; justify-content: center; }
+  .pkg-cta { width: 100%; justify-content: center; text-align: center; }
   .footer-inner { grid-template-columns: 1fr; }
   .stat-banner { grid-template-columns: 1fr; }
 }

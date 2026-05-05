@@ -1548,7 +1548,7 @@ body:has(.lp-page) .scanline-overlay {
   .lp-hero-actions { flex-direction: column; align-items: stretch; }
   .lp-hero-actions a, .lp-hero-actions button { width: 100%; justify-content: center; text-align: center; }
   .lp-packages-grid { grid-template-columns: 1fr; }
-  .lp-package-cta { width: 100%; text-align: center; }
+  .lp-pkg-cta { width: 100%; text-align: center; justify-content: center; }
   .lp-testimonials-grid { grid-template-columns: 1fr; }
   .lp-proof-grid { grid-template-columns: 1fr 1fr; }
   .lp-footer-inner { grid-template-columns: 1fr; }

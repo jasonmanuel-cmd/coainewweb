@@ -429,8 +429,9 @@ export function HubPage() {
 
         /* ── MOBILE (<760px) ── */
         @media (max-width: 760px) {
+          .hub-root { overflow-y: auto; }
           .hub-panels { flex-direction: column; height: auto; min-height: 100vh; }
-          .hub-panel { flex: none; min-height: clamp(220px, 33.33vh, 340px); }
+          .hub-panel { flex: none; min-height: clamp(180px, 33.33vh, 300px); }
           .hub-panel:hover { flex: none; }
           .hub-panel-left::after, .hub-panel-center::after {
             right: auto; top: auto; bottom: 0; left: 10%; right: 10%;
