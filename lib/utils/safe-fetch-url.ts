@@ -27,7 +27,8 @@ function isUnsafeIpv4(host: string): boolean {
 }
 
 function isUnsafeIpv6(host: string): boolean {
-  const h = host.toLowerCase();
+  // URL.hostname returns IPv6 addresses wrapped in brackets (e.g. "[::1]"); strip them first.
+  const h = host.replace(/^\[|\]$/g, "").toLowerCase();
   if (h === "::1") return true;
   if (h.startsWith("fc") || h.startsWith("fd")) return true; // unique local
   if (h.startsWith("fe80:")) return true;
