@@ -1,40 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
 
-type Phase = "smoke" | "title" | "reveal" | "done";
-
 export function HubPage() {
-  const [phase, setPhase] = useState<Phase>("smoke");
-
-  useEffect(() => {
-    const t1 = setTimeout(() => setPhase("title"), 1800);
-    const t2 = setTimeout(() => setPhase("reveal"), 4000);
-    const t3 = setTimeout(() => setPhase("done"), 5800);
-    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
-  }, []);
-
   return (
     <div className="hub-root">
-      {/* Smoke layers */}
-      <div className={`hub-smoke-wrap ${phase === "reveal" || phase === "done" ? "hub-smoke-out" : ""}`}>
-        <div className="hub-smoke hub-smoke-1" />
-        <div className="hub-smoke hub-smoke-2" />
-        <div className="hub-smoke hub-smoke-3" />
-        <div className="hub-smoke hub-smoke-4" />
-        <div className="hub-smoke hub-smoke-5" />
-      </div>
-
-      {/* "Coming This Summer" title */}
-      <div className={`hub-title-wrap ${phase === "title" || phase === "reveal" ? "hub-title-in" : ""} ${phase === "reveal" || phase === "done" ? "hub-title-out" : ""}`}>
-        <p className="hub-eyebrow">Chaotically Organized AI presents</p>
-        <h1 className="hub-title">Coming This Summer</h1>
-        <div className="hub-title-line" />
-      </div>
-
       {/* Three panels */}
-      <div className={`hub-panels ${phase === "done" ? "hub-panels-in" : ""}`}>
+      <div className="hub-panels">
 
         {/* LEFT — LeadShield */}
         <a
@@ -125,109 +97,15 @@ export function HubPage() {
 
       <style>{`
         .hub-root {
-          position: fixed;
-          inset: 0;
-          z-index: 9000;
+          position: relative;
+          min-height: 100svh;
           background: #000;
           display: flex;
-          align-items: center;
+          align-items: stretch;
           justify-content: center;
-          overflow: hidden;
+          overflow-x: hidden;
+          overflow-y: auto;
           font-family: var(--font-space-grotesk, system-ui, sans-serif);
-        }
-
-        /* ── SMOKE ── */
-        .hub-smoke-wrap {
-          position: absolute;
-          inset: 0;
-          pointer-events: none;
-          transition: opacity 1.2s ease;
-        }
-        .hub-smoke-wrap.hub-smoke-out { opacity: 0; }
-        .hub-smoke {
-          position: absolute;
-          border-radius: 50%;
-          filter: blur(80px);
-          opacity: 0;
-          animation: smokeFloat 3.5s ease-in-out forwards;
-        }
-        .hub-smoke-1 {
-          width: 600px; height: 400px;
-          background: radial-gradient(ellipse, rgba(60,60,70,0.9) 0%, transparent 70%);
-          top: 10%; left: -10%;
-          animation-delay: 0s;
-        }
-        .hub-smoke-2 {
-          width: 500px; height: 500px;
-          background: radial-gradient(ellipse, rgba(40,40,55,0.85) 0%, transparent 70%);
-          top: 30%; left: 20%;
-          animation-delay: 0.3s;
-        }
-        .hub-smoke-3 {
-          width: 700px; height: 350px;
-          background: radial-gradient(ellipse, rgba(55,55,65,0.9) 0%, transparent 70%);
-          top: 50%; right: -15%;
-          animation-delay: 0.6s;
-        }
-        .hub-smoke-4 {
-          width: 450px; height: 450px;
-          background: radial-gradient(ellipse, rgba(30,30,45,0.8) 0%, transparent 70%);
-          bottom: 5%; left: 30%;
-          animation-delay: 0.9s;
-        }
-        .hub-smoke-5 {
-          width: 550px; height: 300px;
-          background: radial-gradient(ellipse, rgba(50,50,60,0.85) 0%, transparent 70%);
-          top: 5%; right: 10%;
-          animation-delay: 0.2s;
-        }
-        @keyframes smokeFloat {
-          0%   { opacity: 0; transform: translateX(-30px) translateY(20px) scale(0.85); }
-          30%  { opacity: 1; }
-          70%  { opacity: 0.9; }
-          100% { opacity: 0.7; transform: translateX(30px) translateY(-20px) scale(1.1); }
-        }
-
-        /* ── TITLE ── */
-        .hub-title-wrap {
-          position: absolute;
-          text-align: center;
-          opacity: 0;
-          transform: translateY(12px);
-          transition: opacity 1s ease, transform 1s ease;
-          z-index: 10;
-          pointer-events: none;
-        }
-        .hub-title-wrap.hub-title-in {
-          opacity: 1;
-          transform: translateY(0);
-        }
-        .hub-title-wrap.hub-title-out {
-          opacity: 0;
-          transform: translateY(-16px);
-          transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-        .hub-eyebrow {
-          font-size: 0.75rem;
-          letter-spacing: 0.25em;
-          text-transform: uppercase;
-          color: rgba(255,255,255,0.45);
-          margin: 0 0 12px;
-        }
-        .hub-title {
-          font-family: var(--font-headline, system-ui, sans-serif);
-          font-size: clamp(2.4rem, 6vw, 5rem);
-          font-weight: 800;
-          color: #fff;
-          margin: 0;
-          letter-spacing: -0.02em;
-          text-shadow: 0 0 60px rgba(255,255,255,0.15);
-        }
-        .hub-title-line {
-          width: 80px;
-          height: 2px;
-          background: rgba(255,255,255,0.3);
-          margin: 16px auto 0;
         }
 
         /* ── PANELS ── */
@@ -236,16 +114,7 @@ export function HubPage() {
           align-items: stretch;
           gap: 0;
           width: 100%;
-          height: 100vh;
-          opacity: 0;
-          transform: translateY(40px);
-          transition: opacity 1s ease, transform 1s ease;
-          pointer-events: none;
-        }
-        .hub-panels.hub-panels-in {
-          opacity: 1;
-          transform: translateY(0);
-          pointer-events: all;
+          min-height: 100svh;
         }
 
         .hub-panel {
@@ -430,8 +299,8 @@ export function HubPage() {
         /* ── MOBILE (<760px) ── */
         @media (max-width: 760px) {
           .hub-root { overflow-y: auto; }
-          .hub-panels { flex-direction: column; height: auto; min-height: 100vh; }
-          .hub-panel { flex: none; min-height: clamp(180px, 33.33vh, 300px); }
+          .hub-panels { flex-direction: column; min-height: 100svh; }
+          .hub-panel { flex: none; min-height: clamp(190px, 33.33svh, 300px); }
           .hub-panel:hover { flex: none; }
           .hub-panel-left::after, .hub-panel-center::after {
             right: auto; top: auto; bottom: 0; left: 10%; right: 10%;

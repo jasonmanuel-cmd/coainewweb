@@ -8,7 +8,6 @@ import { AnalyticsRouteTracker } from "@/components/AnalyticsRouteTracker";
 import { AppChrome } from "@/components/AppChrome";
 import { JsonLd } from "@/components/JsonLd";
 import { NeuralMesh } from "@/components/NeuralMesh";
-import { SplashIntro } from "@/components/SplashIntro";
 import { organizationJsonLd, webSiteJsonLd } from "@/lib/schema";
 import { SITE_DESCRIPTION, SITE_URL } from "@/lib/site";
 import "./globals.css";
@@ -95,7 +94,6 @@ gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: true });`}
         ) : null}
         <NeuralMesh />
         <div className="scanline-overlay" aria-hidden="true" />
-        <SplashIntro />
         <JsonLd data={organizationJsonLd()} />
         <JsonLd data={webSiteJsonLd()} />
         <AppChrome>{children}</AppChrome>
