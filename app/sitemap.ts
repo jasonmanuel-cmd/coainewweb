@@ -11,7 +11,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
     "/intake"
   ]);
-  const tier3 = new Set(["/privacy", "/terms", "/intake/confirmation"]);
 
   return [
     "/",
@@ -26,18 +25,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/faq",
     "/about",
     "/contact",
-    "/intake",
-    "/intake/confirmation",
-    "/jax",
-    "/privacy",
-    "/terms"
+    "/intake"
   ].map((path) => {
-    const priority = tier1.has(path) ? 1 : tier3.has(path) ? 0.5 : 0.8;
-    const changeFrequency = tier3.has(path) ? "monthly" : "weekly";
+    const priority = tier1.has(path) ? 1 : 0.8;
+    const lastModified = (path === "/" || path === "/intake") ? "2026-05-01" : "2026-04-01";
     return {
       url: `${base}${path}`,
-      lastModified: new Date(),
-      changeFrequency,
+      lastModified,
+      changeFrequency: "weekly" as const,
       priority
     };
   });

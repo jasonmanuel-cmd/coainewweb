@@ -16,7 +16,7 @@ const TICKER = [
 ];
 
 export const metadata: Metadata = pageMetadata({
-  title: "About | Chaotically Organized AI — Bakersfield 661",
+  title: { absolute: "About | Chaotically Organized AI — Bakersfield 661" },
   description:
     "Jason Robert Manuel — founder of Chaotically Organized AI. 15+ years in operations, trades, and events. Building sovereign infrastructure for Bakersfield operators.",
   path: "/about"

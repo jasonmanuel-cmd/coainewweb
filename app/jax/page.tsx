@@ -7,12 +7,15 @@ import { pageMetadata } from "@/lib/metadata";
 import { breadcrumbJsonLd } from "@/lib/schema";
 import { SITE_URL } from "@/lib/site";
 
-export const metadata: Metadata = pageMetadata({
-  title: "JAX Sentinel — AI Diagnostic Engine",
-  description:
-    "JAX Sentinel — the COAI autonomous AI diagnostic and visibility engine. Pre-deployment. Register for early access.",
-  path: "/jax"
-});
+export const metadata: Metadata = {
+  ...pageMetadata({
+    title: "JAX Sentinel — AI Diagnostic Engine",
+    description:
+      "JAX Sentinel — the COAI autonomous AI diagnostic and visibility engine. Pre-deployment. Register for early access.",
+    path: "/jax"
+  }),
+  robots: { index: false }
+};
 
 const TICKER = [
   "JAX SENTINEL",

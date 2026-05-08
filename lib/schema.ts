@@ -48,10 +48,12 @@ export function organizationJsonLd() {
           closes: BUSINESS_HOURS.weekday.closes
         })),
         founder: { "@id": FOUNDER_ID },
-        areaServed: {
-          "@type": "AdministrativeArea",
-          name: "Bakersfield, CA"
-        },
+        areaServed: [
+          { "@type": "City", name: "Bakersfield", containedInPlace: { "@type": "AdministrativeArea", name: "Kern County, CA" } },
+          { "@type": "City", name: "Delano", containedInPlace: { "@type": "AdministrativeArea", name: "Kern County, CA" } },
+          { "@type": "City", name: "Shafter", containedInPlace: { "@type": "AdministrativeArea", name: "Kern County, CA" } },
+          { "@type": "AdministrativeArea", name: "Kern County, CA" }
+        ],
         contactPoint: {
           "@type": "ContactPoint",
           contactType: "customer service",
@@ -65,6 +67,10 @@ export function organizationJsonLd() {
         "@type": "Person",
         "@id": FOUNDER_ID,
         name: FOUNDER.name,
+        jobTitle: FOUNDER.role,
+        email: FOUNDER.email,
+        url: `${SITE_URL}/about`,
+        description: "Founder of Chaotically Organized AI, Bakersfield CA. 15+ years in operations, trades, and events.",
         worksFor: { "@id": ORG_ID }
       }
     ]
@@ -79,7 +85,12 @@ export function webSiteJsonLd() {
     name: ORG_NAME,
     url: SITE_URL,
     publisher: { "@id": ORG_ID },
-    inLanguage: "en-US"
+    inLanguage: "en-US",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: { "@type": "EntryPoint", urlTemplate: `${SITE_URL}/?s={search_term_string}` },
+      "query-input": "required name=search_term_string"
+    }
   };
 }
 
@@ -96,16 +107,25 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
   };
 }
 
-export function serviceJsonLd(serviceName: string, description: string) {
+export function serviceJsonLd(serviceName: string, description: string, path?: string) {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
     name: serviceName,
     description,
+    serviceType: serviceName,
+    ...(path ? { url: `${SITE_URL}${path}` } : {}),
     provider: { "@id": ORG_ID },
-    areaServed: {
-      "@type": "AdministrativeArea",
-      name: "Bakersfield, CA"
+    areaServed: [
+      { "@type": "City", name: "Bakersfield", containedInPlace: { "@type": "AdministrativeArea", name: "Kern County, CA" } },
+      { "@type": "City", name: "Delano", containedInPlace: { "@type": "AdministrativeArea", name: "Kern County, CA" } },
+      { "@type": "City", name: "Shafter", containedInPlace: { "@type": "AdministrativeArea", name: "Kern County, CA" } },
+      { "@type": "AdministrativeArea", name: "Kern County, CA" }
+    ],
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "USD",
+      priceRange: "$1,200 - $2,000+"
     }
   };
 }
