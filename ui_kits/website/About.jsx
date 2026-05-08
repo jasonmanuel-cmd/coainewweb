@@ -73,7 +73,7 @@ function About({ onNavigate }) {
                 ["Years in Operations", "15+"],
                 ["Industries Worked", "5+"],
                 ["Client Sites Live", "6"],
-                ["Direct Line", "(661) 610-9198"],
+                ["Direct Line", "(661) 569-4244"],
                 ["Operating Framework", "Team Good Protocol"]
               ].map(([label, val]) => (
                 <div key={label} className="founder-stat">
@@ -82,7 +82,7 @@ function About({ onNavigate }) {
                 </div>
               ))}
             </div>
-            <a href="tel:+16616109198" className="btn-green" style={{ marginTop: 20, display: "block", textAlign: "center" }}>
+            <a href="tel:+16615694244" className="btn-green" style={{ marginTop: 20, display: "block", textAlign: "center" }}>
               Call Jason Directly
             </a>
           </div>

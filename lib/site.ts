@@ -17,13 +17,21 @@ export const LEGAL_NAME = "Chaotically Organized AI, LLC";
 
 export const FOUNDER = {
   name: "Jason Robert Manuel",
-  role: "Founder"
+  role: "Founder",
+  email: "jasonm@coaibakersfield.com"
+} as const;
+
+export const CO_FOUNDER = {
+  name: "Frank H",
+  role: "Co-Founder & CFO",
+  email: "frankh@coaibakersfield.com"
 } as const;
 
 export const CONTACT = {
-  email: "jason@coaibakersfield.com",
-  phoneDisplay: "(661) 610-9198",
-  phoneE164: "+16616109198",
+  email: "jasonm@coaibakersfield.com",
+  emailCFO: "frankh@coaibakersfield.com",
+  phoneDisplay: "(661) 569-4244",
+  phoneE164: "+16615694244",
   addressLine: "1712 19th St #216",
   city: "Bakersfield",
   region: "CA",

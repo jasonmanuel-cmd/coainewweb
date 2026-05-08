@@ -66,7 +66,7 @@ function Nav({ activePage, onNavigate }) {
           style: { cursor: "pointer" }
         }, l.label)
       ),
-      React.createElement("a", { href: "tel:+16616109198" }, "(661) 610-9198"),
+      React.createElement("a", { href: "tel:+16615694244" }, "(661) 569-4244"),
       React.createElement("a", {
         className: "nav-cta",
         onClick: () => { onNavigate("intake"); setMenuOpen(false); },

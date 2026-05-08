@@ -44,7 +44,7 @@ function Hero({ onNavigate }) {
         ),
         React.createElement("div", { className: "hero-actions" },
           React.createElement("a", { className: "btn-primary", onClick: () => onNavigate("intake"), style: { cursor: "pointer" } }, "Run My Free Diagnostic →"),
-          React.createElement("a", { className: "btn-secondary", href: "tel:+16616109198" }, "(661) 610-9198")
+          React.createElement("a", { className: "btn-secondary", href: "tel:+16615694244" }, "(661) 569-4244")
         ),
         React.createElement("div", { className: "hero-trust" },
           ["No rented funnels — you own the system", "Clear pricing, no vague retainers", "Local Bakersfield support", "Founded by Jason Robert Manuel"].map(t =>

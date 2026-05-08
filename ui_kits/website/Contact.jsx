@@ -19,7 +19,7 @@ function Contact({ onNavigate }) {
           <span className="section-eyebrow">Contact</span>
           <h1 className="section-title">Let's talk.<br/><span className="text-green">No pressure.</span></h1>
           <p style={{ color: "var(--text-soft)", fontSize: ".98rem", lineHeight: 1.7, maxWidth: 520 }}>
-            Jason responds same business day. If it's urgent, call directly — (661) 610-9198. He picks up.
+            Jason responds same business day. If it's urgent, call directly — (661) 569-4244. He picks up.
           </p>
         </div>
       </div>
@@ -30,12 +30,12 @@ function Contact({ onNavigate }) {
           <div className="contact-info">
             <div className="contact-info-block">
               <div className="contact-info-label">Direct Line</div>
-              <a href="tel:+16616109198" className="contact-info-val contact-phone">(661) 610-9198</a>
+              <a href="tel:+16615694244" className="contact-info-val contact-phone">(661) 569-4244</a>
               <div className="contact-info-sub">Jason picks up. No receptionist gatekeeping.</div>
             </div>
             <div className="contact-info-block">
               <div className="contact-info-label">Email</div>
-              <a href="mailto:jason@coaibakersfield.com" className="contact-info-val">jason@coaibakersfield.com</a>
+              <a href="mailto:jasonm@coaibakersfield.com" className="contact-info-val">jasonm@coaibakersfield.com</a>
             </div>
             <div className="contact-info-block">
               <div className="contact-info-label">Office</div>
@@ -72,13 +72,13 @@ function Contact({ onNavigate }) {
               <div className="contact-success">
                 <div className="contact-success-icon">✓</div>
                 <div className="contact-success-title">Message Received</div>
-                <p>Jason will respond same business day. If it's urgent, call (661) 610-9198.</p>
+                <p>Jason will respond same business day. If it's urgent, call (661) 569-4244.</p>
                 <span style={{ fontFamily: "var(--font-mono)", fontSize: ".7rem", background: "rgba(16,217,138,.1)", border: "1px solid rgba(16,217,138,.22)", color: "#10d98a", padding: "4px 12px", borderRadius: 4, letterSpacing: 1 }}>QUEUED</span>
               </div>
             ) : (
               <>
                 <h2 className="contact-form-title">Send a Message</h2>
-                <p className="contact-form-sub">Submissions go to jason@coaibakersfield.com. Jason responds same business day.</p>
+                <p className="contact-form-sub">Submissions go to jasonm@coaibakersfield.com. Jason responds same business day.</p>
                 <form onSubmit={handleSubmit} className="contact-form">
                   <div className="cf-row">
                     <div className="field-group">
@@ -110,7 +110,7 @@ function Contact({ onNavigate }) {
                   </div>
                   <button type="submit" className="btn-primary" style={{ width: "100%", justifyContent: "center" }}>Send Message →</button>
                   <p style={{ textAlign: "center", fontSize: ".72rem", color: "var(--text-muted2)", marginTop: 12 }}>
-                    Or skip the form — call (661) 610-9198 directly. Jason picks up.
+                    Or skip the form — call (661) 569-4244 directly. Jason picks up.
                   </p>
                 </form>
               </>

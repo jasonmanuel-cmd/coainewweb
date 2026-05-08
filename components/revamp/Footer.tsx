@@ -26,8 +26,8 @@ export function Footer({ onNavigate }: FooterProps) {
           <address className="footer-address">
             1712 19th St #216<br />
             Bakersfield, CA 93301<br />
-            <a href="tel:+16616109198">(661) 610-9198</a><br />
-            <a href="mailto:jason@coaibakersfield.com">jason@coaibakersfield.com</a>
+            <a href="tel:+16615694244">(661) 569-4244</a><br />
+            <a href="mailto:jasonm@coaibakersfield.com">jasonm@coaibakersfield.com</a>
           </address>
         </div>
         {cols.map((col) => (

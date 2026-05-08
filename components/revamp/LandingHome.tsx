@@ -37,7 +37,7 @@ export function LandingHomeRevamp() {
                 <span className="section-eyebrow" style={{ justifyContent: "center", display: "block" }}>Ready to Deploy</span>
                 <h2>Replace manual chaos<br />with a <span className="text-green">growth system.</span></h2>
                 <p>Book a short strategy call and receive a practical roadmap for your next growth phase. No fluff. No pressure. Just data.</p>
-                <a href="tel:+16616109198" className="cta-phone">(661) 610-9198</a>
+                <a href="tel:+16615694244" className="cta-phone">(661) 569-4244</a>
                 <div className="final-cta-actions">
                   <a className="btn-primary" onClick={() => navigate("intake")} style={{ cursor: "pointer" }}>Generate My Growth Roadmap →</a>
                   <a className="btn-secondary" onClick={() => navigate("pricing")} style={{ cursor: "pointer" }}>View Pricing</a>
