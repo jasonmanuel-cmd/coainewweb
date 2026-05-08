@@ -5,7 +5,7 @@ import React from "react";
 export function ServiceBoxes() {
   return (
     <section className="service-boxes">
-      <article className="service-card card-coai">
+      <article id="service-coai" className="service-card card-coai">
         <h3>Chaotically Organized AI Bakersfield</h3>
         <p className="muted">Ground-up custom builds, websites, and AI marketing.</p>
         <ul>
@@ -20,7 +20,7 @@ export function ServiceBoxes() {
         <p className="hustle">Up-and-coming — we hustle to win your business.</p>
       </article>
 
-      <article className="service-card card-siteer">
+      <article id="service-siteer" className="service-card card-siteer">
         <h3>siteER</h3>
         <p className="muted">Website diagnostics, scans, and prioritized fixes.</p>
         <ul>
@@ -35,7 +35,7 @@ export function ServiceBoxes() {
         <p className="hustle">Fast turnaround — we&apos;ll fight to get your site healthy.</p>
       </article>
 
-      <article className="service-card card-leadshield">
+      <article id="service-leadshield" className="service-card card-leadshield">
         <h3>LeadShield</h3>
         <p className="muted">Missed-call recovery, automated texts, and lead scoring.</p>
         <ul>
