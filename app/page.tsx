@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { HubPage } from "@/components/HubPage";
+import { MarketingLayout } from "@/components/marketing/MarketingLayout";
 import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -24,7 +25,9 @@ export default function Home() {
   return (
     <>
       <JsonLd data={homePage} />
-      <HubPage />
+      <MarketingLayout tickerItems={[]} activeHref="/">
+        <HubPage />
+      </MarketingLayout>
     </>
   );
 }
