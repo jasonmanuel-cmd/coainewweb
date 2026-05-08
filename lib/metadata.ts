@@ -2,17 +2,18 @@ import type { Metadata } from "next";
 import { ORG_NAME, SITE_DESCRIPTION, SITE_URL } from "./site";
 
 export function pageMetadata(opts: {
-  title: string;
+  title: string | { absolute: string };
   description: string;
   path: string;
 }): Metadata {
   const url = opts.path === "/" ? SITE_URL : `${SITE_URL}${opts.path}`;
+  const titleStr = typeof opts.title === "string" ? opts.title : opts.title.absolute;
   return {
     title: opts.title,
     description: opts.description,
     alternates: { canonical: url },
     openGraph: {
-      title: opts.title,
+      title: titleStr,
       description: opts.description,
       url,
       siteName: ORG_NAME,
@@ -20,7 +21,7 @@ export function pageMetadata(opts: {
     },
     twitter: {
       card: "summary_large_image",
-      title: opts.title,
+      title: titleStr,
       description: opts.description,
       images: ["/logo.png"]
     }

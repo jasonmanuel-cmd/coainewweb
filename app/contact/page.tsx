@@ -9,7 +9,7 @@ import { BUSINESS_HOURS_LABEL, CONTACT, GOOGLE_BUSINESS_PROFILE_URL, LEGAL_NAME,
 
 export const metadata: Metadata = pageMetadata({
   title: "Contact — Bakersfield Office",
-  description: `Call ${CONTACT.phoneDisplay}, email ${CONTACT.email}, or send a message. ${CONTACT.addressLine}, ${CONTACT.city}, ${CONTACT.region}.`,
+  description: `Contact Chaotically Organized AI in Bakersfield, CA. Same-day response from Jason. Call ${CONTACT.phoneDisplay} or send a message — no gatekeepers.`,
   path: "/contact"
 });
 

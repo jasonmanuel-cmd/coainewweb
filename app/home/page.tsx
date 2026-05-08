@@ -4,7 +4,10 @@ import { LandingHomeRevamp } from "@/components/revamp/LandingHome";
 import { homeMetadata } from "@/lib/metadata";
 import { SITE_URL } from "@/lib/site";
 
-export const metadata: Metadata = homeMetadata;
+export const metadata: Metadata = {
+  ...homeMetadata,
+  robots: { index: false, follow: false }
+};
 
 export default function HomePage() {
   const homePage = {

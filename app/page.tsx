@@ -4,7 +4,7 @@ import { HubPage } from "@/components/HubPage";
 import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Chaotically Organized AI — AI Tools for Local Business",
+  title: { absolute: "AI Tools for Bakersfield Local Business | Chaotically Organized AI" },
   description: "Three AI-powered tools to protect your leads, grow your business, and fix your website. LeadShield, Chaotically Organized AI, and SiteER.",
   openGraph: {
     title: "Chaotically Organized AI",

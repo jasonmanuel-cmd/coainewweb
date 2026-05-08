@@ -6,11 +6,14 @@ import { pageMetadata } from "@/lib/metadata";
 import { breadcrumbJsonLd } from "@/lib/schema";
 import { CONTACT, SITE_URL } from "@/lib/site";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Diagnostic Submitted",
-  description: "Your diagnostic intake was received. Jason follows up within 2 hours during business windows.",
-  path: "/intake/confirmation"
-});
+export const metadata: Metadata = {
+  ...pageMetadata({
+    title: "Diagnostic Submitted",
+    description: "Your diagnostic intake was received. Jason follows up within 2 hours during business windows.",
+    path: "/intake/confirmation"
+  }),
+  robots: { index: false }
+};
 
 const TICKER = [
   "SUBMISSION RECEIVED",

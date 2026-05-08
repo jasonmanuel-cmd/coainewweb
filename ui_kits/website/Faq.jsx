@@ -27,7 +27,7 @@ const FAQ_SECTIONS = [
   {
     id: "ai", title: "AI & Automation",
     items: [
-      { q: "What is the AI receptionist and do I need it?", a: "Cipher is COAI's AI receptionist — a voice and text system that answers missed calls, qualifies leads, and routes bookings 24/7 without you lifting a finger. It's deployed on COAI's own line at (661) 610-9198 — call it and hear exactly what your customers would experience. You don't need it to get a great website. But if you're missing calls after hours — this is the fix." },
+      { q: "What is the AI receptionist and do I need it?", a: "Cipher is COAI's AI receptionist — a voice and text system that answers missed calls, qualifies leads, and routes bookings 24/7 without you lifting a finger. It's deployed on COAI's own line at (661) 569-4244 — call it and hear exactly what your customers would experience. You don't need it to get a great website. But if you're missing calls after hours — this is the fix." },
       { q: "What is AEO and why does it matter?", a: "AEO stands for Answer Engine Optimization — the practice of structuring your site so AI tools like ChatGPT, Google's AI overview, Perplexity, and voice assistants can read and cite your business accurately. When someone asks Siri \"who does AC repair in Bakersfield,\" AEO determines whether your business shows up in that answer. SEO gets you on Google. AEO gets you into AI search surfaces." }
     ]
   },
@@ -58,7 +58,7 @@ function Faq({ onNavigate }) {
         <div className="container" style={{ position: "relative" }}>
           <span className="section-eyebrow">FAQ</span>
           <h1 className="section-title">Every question<br/><span className="text-green">answered straight.</span></h1>
-          <p style={{ color: "var(--text-soft)", fontSize: ".98rem", lineHeight: 1.7, maxWidth: 520 }}>No corporate hedging. If you have a question that isn't here, call Jason directly at (661) 610-9198.</p>
+          <p style={{ color: "var(--text-soft)", fontSize: ".98rem", lineHeight: 1.7, maxWidth: 520 }}>No corporate hedging. If you have a question that isn't here, call Jason directly at (661) 569-4244.</p>
         </div>
       </div>
 
@@ -79,7 +79,7 @@ function Faq({ onNavigate }) {
             </ul>
             <div style={{ marginTop: 32, paddingTop: 24, borderTop: "1px solid rgba(255,255,255,.06)" }}>
               <div style={{ fontSize: ".72rem", color: "var(--text-muted2)", marginBottom: 12, letterSpacing: 1, textTransform: "uppercase", fontWeight: 700 }}>Still have questions?</div>
-              <a href="tel:+16616109198" className="btn-green btn-sm" style={{ display: "block", textAlign: "center" }}>Call Jason</a>
+              <a href="tel:+16615694244" className="btn-green btn-sm" style={{ display: "block", textAlign: "center" }}>Call Jason</a>
             </div>
           </nav>
 

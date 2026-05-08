@@ -50,8 +50,8 @@ export function Hero({ onNavigate }: HeroProps) {
             <a className="btn-primary" onClick={() => onNavigate("intake")} style={{ cursor: "pointer" }}>
               Run My Free Diagnostic →
             </a>
-            <a className="btn-secondary" href="tel:+16616109198">
-              (661) 610-9198
+            <a className="btn-secondary" href="tel:+16615694244">
+              (661) 569-4244
             </a>
           </div>
           <div className="hero-trust">

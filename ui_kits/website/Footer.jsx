@@ -18,8 +18,8 @@ function Footer({ onNavigate }) {
         React.createElement("address", { className: "footer-address" },
           "1712 19th St #216", React.createElement("br"),
           "Bakersfield, CA 93301", React.createElement("br"),
-          React.createElement("a", { href: "tel:+16616109198" }, "(661) 610-9198"), React.createElement("br"),
-          React.createElement("a", { href: "mailto:jason@coaibakersfield.com" }, "jason@coaibakersfield.com")
+          React.createElement("a", { href: "tel:+16615694244" }, "(661) 569-4244"), React.createElement("br"),
+          React.createElement("a", { href: "mailto:jasonm@coaibakersfield.com" }, "jasonm@coaibakersfield.com")
         )
       ),
       cols.map(col =>

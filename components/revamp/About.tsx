@@ -110,8 +110,8 @@ export function About({ onNavigate }: AboutProps) {
                   {[
                     ["Location", "Bakersfield, CA · 661"],
                     ["Experience", "15+ Years in Operations"],
-                    ["Email", "jason@coaibakersfield.com"],
-                    ["Direct Line", "(661) 610-9198"],
+                    ["Email", "jasonm@coaibakersfield.com"],
+                    ["Direct Line", "(661) 569-4244"],
                     ["Focus", "661 Market & Beyond"],
                     ["Philosophy", "Everything is Real Estate"]
                   ].map(([l, v]) => (
@@ -122,7 +122,7 @@ export function About({ onNavigate }: AboutProps) {
                   ))}
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-                  <a href="tel:+16616109198" className="btn-green" style={{ width: "100%", justifyContent: "center" }}>
+                  <a href="tel:+16615694244" className="btn-green" style={{ width: "100%", justifyContent: "center" }}>
                     Call Jason Directly
                   </a>
                   <a className="btn-primary" onClick={() => onNavigate("intake")} style={{ width: "100%", justifyContent: "center", cursor: "pointer" }}>
@@ -234,7 +234,7 @@ export function About({ onNavigate }: AboutProps) {
           </p>
           <div style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap" }}>
             <a className="btn-primary" onClick={() => onNavigate("intake")} style={{ cursor: "pointer" }}>Run My Free Diagnostic →</a>
-            <a href="tel:+16616109198" className="btn-secondary">Call (661) 610-9198</a>
+            <a href="tel:+16615694244" className="btn-secondary">Call (661) 569-4244</a>
           </div>
         </div>
 

@@ -82,7 +82,7 @@ export function Nav({ activePage, onNavigate }: NavProps) {
               {l.label}
             </a>
           ))}
-          <a href="tel:+16616109198">(661) 610-9198</a>
+          <a href="tel:+16615694244">(661) 569-4244</a>
           <a className="nav-cta" onClick={() => handleNav("intake")} style={{ textAlign: "center" }}>
             Run Diagnostic
           </a>

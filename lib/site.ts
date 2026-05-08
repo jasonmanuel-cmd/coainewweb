@@ -17,13 +17,21 @@ export const LEGAL_NAME = "Chaotically Organized AI, LLC";
 
 export const FOUNDER = {
   name: "Jason Robert Manuel",
-  role: "Founder"
+  role: "Founder",
+  email: "jasonm@coaibakersfield.com"
+} as const;
+
+export const CO_FOUNDER = {
+  name: "Frank H",
+  role: "Co-Founder & CFO",
+  email: "frankh@coaibakersfield.com"
 } as const;
 
 export const CONTACT = {
-  email: "jason@coaibakersfield.com",
-  phoneDisplay: "(661) 610-9198",
-  phoneE164: "+16616109198",
+  email: "jasonm@coaibakersfield.com",
+  emailCFO: "frankh@coaibakersfield.com",
+  phoneDisplay: "(661) 569-4244",
+  phoneE164: "+16615694244",
   addressLine: "1712 19th St #216",
   city: "Bakersfield",
   region: "CA",
@@ -50,6 +58,14 @@ export const GOOGLE_BUSINESS_PROFILE_URL = "https://share.google/QASlHnjE2K6FzdN
  * @see https://developers.google.com/search/docs/appearance/structured-data/organization
  */
 export const SAME_AS = [GOOGLE_BUSINESS_PROFILE_URL] as const;
+
+/** Service territory for schema areaServed — update here to propagate across all structured data. */
+export const AREA_SERVED = [
+  { "@type": "City", name: "Bakersfield", containedInPlace: { "@type": "AdministrativeArea", name: "Kern County, CA" } },
+  { "@type": "City", name: "Delano", containedInPlace: { "@type": "AdministrativeArea", name: "Kern County, CA" } },
+  { "@type": "City", name: "Shafter", containedInPlace: { "@type": "AdministrativeArea", name: "Kern County, CA" } },
+  { "@type": "AdministrativeArea", name: "Kern County, CA" }
+] as const;
 
 /**
  * Map / place URL for schema `hasMap` (often the same as your public GBP link).

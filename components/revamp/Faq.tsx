@@ -34,7 +34,7 @@ export function Faq() {
         <div className="container" style={{ position: "relative" }}>
           <span className="section-eyebrow">FAQ</span>
           <h1 className="section-title">Every question<br /><span className="text-green">answered straight.</span></h1>
-          <p className="section-sub">No corporate hedging. If you have a question that isn&apos;t here, call Jason directly at (661) 610-9198.</p>
+          <p className="section-sub">No corporate hedging. If you have a question that isn&apos;t here, call Jason directly at (661) 569-4244.</p>
         </div>
       </section>
 
@@ -52,7 +52,7 @@ export function Faq() {
             </ul>
             <div style={{ marginTop: "32px", paddingTop: "24px", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
               <div style={{ fontSize: ".72rem", color: "var(--text-muted2)", marginBottom: "12px", textTransform: "uppercase", fontWeight: 700 }}>Still have questions?</div>
-              <a href="tel:+16616109198" className="btn-green btn-sm" style={{ width: "100%", justifyContent: "center" }}>Call Jason</a>
+              <a href="tel:+16615694244" className="btn-green btn-sm" style={{ width: "100%", justifyContent: "center" }}>Call Jason</a>
             </div>
           </nav>
 

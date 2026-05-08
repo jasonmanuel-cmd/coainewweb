@@ -18,7 +18,7 @@ const TICKER = [
 ];
 
 export const metadata: Metadata = pageMetadata({
-  title: "FAQ | Chaotically Organized AI — Bakersfield 661",
+  title: { absolute: "FAQ | Chaotically Organized AI — Bakersfield 661" },
   description:
     "Answers to every question Bakersfield business owners ask before hiring COAI. Pricing, timelines, ownership, AI automation — all of it.",
   path: "/faq"
