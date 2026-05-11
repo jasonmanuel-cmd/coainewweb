@@ -7,9 +7,9 @@ import { breadcrumbJsonLd, serviceJsonLd } from "@/lib/schema";
 import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Pricing — Fixed Sovereign Builds",
+  title: "Website Design Pricing Bakersfield — Starting at \$1,200 | COAI",
   description:
-    "Clear, fixed pricing for sovereign website builds and AI automation. No retainers. No surprises. Starting at $1,200.",
+    "Fixed pricing for website design and AI automation in Bakersfield CA. Packages start at \$1,200. One-time cost, full ownership, no monthly fees.",
   path: "/pricing"
 });
 

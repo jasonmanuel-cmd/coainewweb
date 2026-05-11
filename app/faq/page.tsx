@@ -18,7 +18,7 @@ const TICKER = [
 ];
 
 export const metadata: Metadata = pageMetadata({
-  title: { absolute: "FAQ | Chaotically Organized AI — Bakersfield 661" },
+  title: { absolute: "Bakersfield Web Design & AI Automation FAQ | COAI" },
   description:
     "Answers to every question Bakersfield business owners ask before hiring COAI. Pricing, timelines, ownership, AI automation — all of it.",
   path: "/faq"
@@ -41,9 +41,8 @@ export default function FaqPage() {
         <div className="m-page-hero-inner">
           <div className="m-section-label">Answers</div>
           <h1>
-            Every question.
-            <br />
-            <span className="m-text-green">Straight answer.</span>
+            Bakersfield Web Design &amp; AI — FAQ.<br />
+            <span className="m-text-green">Straight answers.</span>
           </h1>
           <p className="m-hero-sub">
             No fluff. No sales language. If you have a question that isn&apos;t here, call {CONTACT.phoneDisplay} or run

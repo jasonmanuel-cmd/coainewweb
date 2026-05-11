@@ -8,7 +8,7 @@ import { breadcrumbJsonLd } from "@/lib/schema";
 import { BUSINESS_HOURS_LABEL, CONTACT, GOOGLE_BUSINESS_PROFILE_URL, LEGAL_NAME, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Contact — Bakersfield Office",
+  title: "Contact Our Bakersfield Web Design Team",
   description: `Contact Chaotically Organized AI in Bakersfield, CA. Same-day response from Jason. Call ${CONTACT.phoneDisplay} or send a message — no gatekeepers.`,
   path: "/contact"
 });

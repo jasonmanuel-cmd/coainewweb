@@ -29,11 +29,11 @@ export function pageMetadata(opts: {
 }
 
 export const homeMetadata: Metadata = {
-  title: "Structural Digital Audits & AEO | Bakersfield 661",
+  title: "Website Design Bakersfield, CA | Chaotically Organized AI",
   description: SITE_DESCRIPTION,
   alternates: { canonical: SITE_URL },
   openGraph: {
-    title: "Structural Digital Audits & AEO | Bakersfield 661",
+    title: "Website Design Bakersfield, CA | Chaotically Organized AI",
     description: SITE_DESCRIPTION,
     url: SITE_URL,
     siteName: ORG_NAME,
@@ -41,7 +41,7 @@ export const homeMetadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Structural Digital Audits & AEO | Bakersfield 661",
+    title: "Website Design Bakersfield, CA | Chaotically Organized AI",
     description: SITE_DESCRIPTION,
     images: ["/logo.png"]
   }

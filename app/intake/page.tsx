@@ -8,9 +8,9 @@ import { breadcrumbJsonLd } from "@/lib/schema";
 import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Run My Diagnostic",
+  title: "Free Website Audit — Bakersfield CA | COAI Diagnostic",
   description:
-    "Run your free digital growth diagnostic. See your visibility score, revenue leak estimate, and priority fix list.",
+    "Get a free website and SEO audit for your Bakersfield business. See your visibility score, lead leak estimate, and a priority fix list. No pitch, no pressure.",
   path: "/intake"
 });
 

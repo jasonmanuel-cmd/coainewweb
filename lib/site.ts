@@ -46,7 +46,7 @@ export const GEO = {
 } as const;
 
 export const SITE_DESCRIPTION =
-  "Structural digital audits, AEO, GEO, and technical SEO for Bakersfield and the 661. Sovereign infrastructure for operators who need speed, schema, and visibility that machines can trust.";
+  "Bakersfield web design and AI answering for local service businesses. Fast websites that convert calls, rank in Google, and show up in AI search — starting at \$1,200. No retainers. You own everything.";
 
 export const BRAND_TAGLINE = "Where Chaos Meets Clarity";
 

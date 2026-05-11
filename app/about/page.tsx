@@ -16,9 +16,9 @@ const TICKER = [
 ];
 
 export const metadata: Metadata = pageMetadata({
-  title: { absolute: "About | Chaotically Organized AI — Bakersfield 661" },
+  title: { absolute: "Web Design & AI Built by a Bakersfield Operator | COAI" },
   description:
-    "Jason Robert Manuel — founder of Chaotically Organized AI. 15+ years in operations, trades, and events. Building sovereign infrastructure for Bakersfield operators.",
+    "Jason Robert Manuel built COAI from 15+ years in Bakersfield operations, trades, and events. Web design and AI automation for local service businesses in the 661.",
   path: "/about"
 });
 
