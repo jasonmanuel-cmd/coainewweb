@@ -17,7 +17,6 @@ export function Nav({ activePage, onNavigate }: NavProps) {
     { href: "about", label: "About" },
     { href: "faq", label: "FAQ" },
     { href: "contact", label: "Contact" },
-    { href: "jax", label: "JAX" },
   ];
 
   const handleNav = (href: string) => {
@@ -27,27 +26,22 @@ export function Nav({ activePage, onNavigate }: NavProps) {
 
   return (
     <>
-      {/* Ticker */}
-      <div className="ticker">
-        <div className="ticker-track">
-          <span>JAX SENTINEL TECHNICAL BRIEF NOW AVAILABLE</span>
-          <span>NODE: STABLE · BAKERSFIELD 661 · SOVEREIGN STACK v1.0</span>
-          <span>WHERE CHAOS MEETS CLARITY · RUN YOUR FREE DIAGNOSTIC TODAY</span>
-          <span>JAX SENTINEL TECHNICAL BRIEF NOW AVAILABLE</span>
-          <span>NODE: STABLE · BAKERSFIELD 661 · SOVEREIGN STACK v1.0</span>
-          <span>WHERE CHAOS MEETS CLARITY · RUN YOUR FREE DIAGNOSTIC TODAY</span>
+      {/* Top bar */}
+      <div className="topbar">
+        <div className="topbar-tagline">
+          <span className="topbar-dot" />
+          <span>Bakersfield, CA · Serving local trades &amp; small businesses</span>
+        </div>
+        <div className="topbar-phone">
+          <a href="tel:6615694244">(661) 569-4244</a>
         </div>
       </div>
 
       {/* Nav bar */}
       <nav className="nav">
-        <div className="nav-logo" onClick={() => handleNav("home")} style={{ cursor: "pointer" }}>
+        <div className="nav-logo" onClick={() => handleNav("home")}>
           <Image src="/logo.png" alt="COAI" width={120} height={30} style={{ objectFit: 'contain', width: 'auto', height: '30px' }} />
-          <span className="nav-logo-text">CHAOTICALLY ORGANIZED AI</span>
-        </div>
-        <div className="nav-status">
-          <span className="status-dot"></span>
-          NODE: STABLE
+          <span className="nav-logo-text">COAI<span>.</span></span>
         </div>
         <ul className="nav-links">
           {links.map((l) => (
@@ -55,16 +49,13 @@ export function Nav({ activePage, onNavigate }: NavProps) {
               <a
                 className={activePage === l.href ? "active" : ""}
                 onClick={() => handleNav(l.href)}
-                style={{ cursor: "pointer" }}
               >
                 {l.label}
               </a>
             </li>
           ))}
         </ul>
-        <a className="nav-cta" onClick={() => handleNav("intake")}>
-          Run Diagnostic
-        </a>
+        <a className="nav-cta" href="tel:6615694244">Call (661) 569-4244</a>
         <button
           className="hamburger"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -78,13 +69,12 @@ export function Nav({ activePage, onNavigate }: NavProps) {
       {menuOpen && (
         <div className="mobile-drawer">
           {links.map((l) => (
-            <a key={l.href} onClick={() => handleNav(l.href)} style={{ cursor: "pointer" }}>
+            <a key={l.href} onClick={() => handleNav(l.href)}>
               {l.label}
             </a>
           ))}
-          <a href="tel:+16616109198">(661) 610-9198</a>
           <a className="nav-cta" onClick={() => handleNav("intake")} style={{ textAlign: "center" }}>
-            Run Diagnostic
+            Get a Free Digital Audit
           </a>
         </div>
       )}

@@ -30,6 +30,16 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // Revamp: old marketing pages redirect to new SPA home
+      { source: "/services", destination: "/", permanent: true },
+      { source: "/pricing", destination: "/", permanent: true },
+      { source: "/portfolio", destination: "/", permanent: true },
+      { source: "/about", destination: "/", permanent: true },
+      { source: "/faq", destination: "/", permanent: true },
+      { source: "/contact", destination: "/", permanent: true },
+      { source: "/website-design", destination: "/", permanent: true },
+      { source: "/website-design/:path*", destination: "/", permanent: true },
+      // Legacy redirects
       { source: "/jax-coming-soon", destination: "/jax", permanent: true },
       { source: "/privacy-policy", destination: "/privacy", permanent: true },
       { source: "/terms-of-service", destination: "/terms", permanent: true },

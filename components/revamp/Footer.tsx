@@ -9,9 +9,9 @@ interface FooterProps {
 
 export function Footer({ onNavigate }: FooterProps) {
   const cols = [
-    { title: "Services", links: [["home","Website Systems"],["pricing","Packages"],["home","Web Design"],["intake","Consultation"]] },
-    { title: "Company", links: [["portfolio","Portfolio"],["about","About"],["faq","FAQ"],["jax","JAX"]] },
-    { title: "Start", links: [["intake","Run Diagnostic"],["pricing","Pricing"],["contact","Contact"]] }
+    { title: "Services", links: [["home", "Websites & AI"], ["pricing", "Packages"], ["home", "LeadShield"], ["home", "SiteER"]] },
+    { title: "Company", links: [["portfolio", "Portfolio"], ["about", "About"], ["faq", "FAQ"], ["contact", "Contact"]] },
+    { title: "Get Started", links: [["intake", "Free Audit"], ["pricing", "Pricing"], ["contact", "Contact"]] }
   ];
 
   return (
@@ -20,15 +20,19 @@ export function Footer({ onNavigate }: FooterProps) {
         <div className="footer-brand">
           <div className="footer-logo-row">
             <Image src="/logo.png" alt="COAI" width={100} height={28} style={{ objectFit: 'contain', width: 'auto', height: '28px' }} />
-            <span className="footer-wordmark">CHAOTICALLY ORGANIZED AI</span>
+            <span className="footer-wordmark">COAI<span>.</span></span>
           </div>
-          <p className="footer-tagline">Website growth systems for Bakersfield businesses. Where Chaos Meets Clarity.</p>
+          <p className="footer-tagline">Sovereign websites, AI automation, and honest tech support for Bakersfield tradesmen and small businesses.</p>
           <address className="footer-address">
             1712 19th St #216<br />
             Bakersfield, CA 93301<br />
-            <a href="tel:+16616109198">(661) 610-9198</a><br />
+            <a href="tel:6615694244">(661) 569-4244</a><br />
             <a href="mailto:jason@coaibakersfield.com">jason@coaibakersfield.com</a>
           </address>
+          <div style={{ marginTop: "12px" }}>
+            <a href="https://leadshield.live" target="_blank" rel="noopener noreferrer" style={{ color: "var(--cream-dim)", fontSize: "13px", marginRight: "16px" }}>LeadShield</a>
+            <a href="https://siteer.dev" target="_blank" rel="noopener noreferrer" style={{ color: "var(--cream-dim)", fontSize: "13px" }}>SiteER</a>
+          </div>
         </div>
         {cols.map((col) => (
           <div key={col.title} className="footer-col">
@@ -36,7 +40,7 @@ export function Footer({ onNavigate }: FooterProps) {
             <ul>
               {col.links.map(([href, label]) => (
                 <li key={label}>
-                  <a onClick={() => onNavigate(href)} style={{ cursor: "pointer" }}>
+                  <a onClick={() => onNavigate(href)}>
                     {label}
                   </a>
                 </li>
@@ -47,12 +51,11 @@ export function Footer({ onNavigate }: FooterProps) {
       </div>
       <div className="footer-bottom container">
         <p>
-          © 2026 Chaotically Organized AI, LLC · <a>Privacy</a> · <a>Terms</a> · Last updated April 2026
+          &copy; 2026 Chaotically Organized AI, LLC &middot; Bakersfield, CA
         </p>
-        <div className="footer-status">
-          <span className="status-dot"></span>
-          NODE: STABLE
-        </div>
+        <p>
+          Websites, AI, and tech support for the Kern County trades community.
+        </p>
       </div>
     </footer>
   );
