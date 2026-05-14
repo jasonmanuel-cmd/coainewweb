@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { ArrowRight, Diamond, Dot, Hexagon } from "lucide-react";
 import Image from "next/image";
 
 const VALUES = [
@@ -126,7 +127,7 @@ export function About({ onNavigate }: AboutProps) {
                     Call Jason Directly
                   </a>
                   <a className="btn-primary" onClick={() => onNavigate("intake")} style={{ width: "100%", justifyContent: "center", cursor: "pointer" }}>
-                    Run My Diagnostic →
+                    Run My Diagnostic <ArrowRight size={16} aria-hidden="true" />
                   </a>
                 </div>
               </div>
@@ -181,12 +182,27 @@ export function About({ onNavigate }: AboutProps) {
           <p className="section-sub">Three roles. All active. No burnout from trying to be everything at once.</p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "20px", marginTop: "40px" }}>
             {[
-              { role: "The Dreamer", name: "Jason Manuel", icon: "◈", desc: "Vision, brand direction, client relationships, market strategy, and final creative decisions. The human at the center." },
-              { role: "The Oracle", name: "Aion / Gemini", icon: "◉", desc: "Pattern recognition, research synthesis, strategic analysis, scenario modeling, and long-horizon thinking." },
-              { role: "The Engineer", name: "Claude", icon: "⬡", desc: "Execution, code writing, system architecture, dev handoff, documentation, and build specs. Never asked to dream." }
+              {
+                role: "The Dreamer",
+                name: "Jason Manuel",
+                icon: <Diamond size={26} aria-hidden="true" />,
+                desc: "Vision, brand direction, client relationships, market strategy, and final creative decisions. The human at the center."
+              },
+              {
+                role: "The Oracle",
+                name: "Aion / Gemini",
+                icon: <Dot size={26} strokeWidth={6} aria-hidden="true" />,
+                desc: "Pattern recognition, research synthesis, strategic analysis, scenario modeling, and long-horizon thinking."
+              },
+              {
+                role: "The Engineer",
+                name: "Claude",
+                icon: <Hexagon size={26} aria-hidden="true" />,
+                desc: "Execution, code writing, system architecture, dev handoff, documentation, and build specs. Never asked to dream."
+              }
             ].map(t => (
               <div key={t.role} className="pkg-card" style={{ padding: "28px" }}>
-                <div style={{ fontSize: "2rem", color: "var(--accent)", marginBottom: "12px" }}>{t.icon}</div>
+                <div style={{ color: "var(--accent)", marginBottom: "12px" }}>{t.icon}</div>
                 <div style={{ fontSize: ".7rem", fontFamily: "var(--font-mono)", color: "var(--text-muted2)", marginBottom: "4px" }}>{t.role}</div>
                 <h3 style={{ fontSize: "1rem", fontWeight: 800, color: "#fff", marginBottom: "12px" }}>{t.name}</h3>
                 <p style={{ fontSize: ".83rem", color: "var(--text-soft)", lineHeight: 1.65 }}>{t.desc}</p>
@@ -233,7 +249,7 @@ export function About({ onNavigate }: AboutProps) {
             Jason runs a free diagnostic on your current digital stack and tells you exactly what&apos;s costing you leads. No pitch deck. Just data. — Jason Manuel | Chaotically Organized AI | 661
           </p>
           <div style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap" }}>
-            <a className="btn-primary" onClick={() => onNavigate("intake")} style={{ cursor: "pointer" }}>Run My Free Diagnostic →</a>
+            <a className="btn-primary" onClick={() => onNavigate("intake")} style={{ cursor: "pointer" }}>Run My Free Diagnostic <ArrowRight size={16} aria-hidden="true" /></a>
             <a href="tel:+16615694244" className="btn-secondary">Call (661) 569-4244</a>
           </div>
         </div>

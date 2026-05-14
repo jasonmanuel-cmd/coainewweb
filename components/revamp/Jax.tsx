@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { ArrowRight, CalendarCheck, Dot, PhoneMissed } from "lucide-react";
 
 interface JaxPageProps {
   onNavigate: (page: string) => void;
@@ -21,20 +22,36 @@ export function JaxPage({ onNavigate }: JaxPageProps) {
               JAX Sentinel is an autonomous AI agent layer for service business operators. It intercepts missed demand, qualifies intent, and routes bookings while you focus on the work.
             </p>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 32 }}>
-              <a className="btn-primary" style={{ background: "linear-gradient(135deg, #00f0ff, #6c63ff)", boxShadow: "0 8px 24px rgba(0,240,255,0.2)" }} onClick={() => onNavigate("intake")}>Join Waitlist →</a>
+              <a className="btn-primary" style={{ background: "linear-gradient(135deg, #00f0ff, #6c63ff)", boxShadow: "0 8px 24px rgba(0,240,255,0.2)" }} onClick={() => onNavigate("intake")}>
+                Join Waitlist <ArrowRight size={16} aria-hidden="true" />
+              </a>
               <a className="btn-outline">Read Technical Brief</a>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
               {[
-                ["◈ Missed-Call Recovery", "Intercepts unanswered calls and auto-routes callback requests"],
-                ["◉ Intent Qualification", "Conversational AI screens leads before human handoff"],
-                ["⬛ Booking Automation", "Routes confirmed intent straight to your calendar"]
-              ].map(([t, d]) => (
-                <div key={t} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
-                  <div style={{ fontFamily: "var(--font-mono)", fontSize: "1.2rem", color: "var(--accent-cyan)", width: 32, flexShrink: 0 }}>{t.split(" ")[0]}</div>
+                {
+                  title: "Missed-Call Recovery",
+                  desc: "Intercepts unanswered calls and auto-routes callback requests",
+                  icon: <PhoneMissed size={20} aria-hidden="true" />
+                },
+                {
+                  title: "Intent Qualification",
+                  desc: "Conversational AI screens leads before human handoff",
+                  icon: <Dot size={20} strokeWidth={6} aria-hidden="true" />
+                },
+                {
+                  title: "Booking Automation",
+                  desc: "Routes confirmed intent straight to your calendar",
+                  icon: <CalendarCheck size={20} aria-hidden="true" />
+                }
+              ].map((f) => (
+                <div key={f.title} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
+                  <div style={{ color: "var(--accent-cyan)", width: 32, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    {f.icon}
+                  </div>
                   <div>
-                    <div style={{ fontSize: "1.05rem", fontWeight: 700, color: "#fff", marginBottom: 4 }}>{t.split(" ").slice(1).join(" ")}</div>
-                    <div style={{ fontSize: ".88rem", color: "var(--text-muted)", lineHeight: 1.6 }}>{d}</div>
+                    <div style={{ fontSize: "1.05rem", fontWeight: 700, color: "#fff", marginBottom: 4 }}>{f.title}</div>
+                    <div style={{ fontSize: ".88rem", color: "var(--text-muted)", lineHeight: 1.6 }}>{f.desc}</div>
                   </div>
                 </div>
               ))}

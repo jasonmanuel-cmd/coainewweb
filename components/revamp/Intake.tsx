@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { ArrowLeft, ArrowRight, CheckCircle2, Dot } from "lucide-react";
 
 export function IntakePage() {
   const [step, setStep] = useState(1);
@@ -12,7 +13,9 @@ export function IntakePage() {
   if (submitted) return (
     <div style={{ padding: "120px 0", minHeight: "80vh", display: "flex", alignItems: "center" }}>
       <div className="container" style={{ maxWidth: 600, textAlign: "center" }}>
-        <div style={{ fontSize: "4rem", marginBottom: "20px", color: "var(--accent)" }}>◉</div>
+        <div style={{ display: "inline-flex", justifyContent: "center", marginBottom: 20, color: "var(--accent)" }}>
+          <Dot size={64} strokeWidth={5} aria-hidden="true" />
+        </div>
         <h2 className="section-title">Diagnostic Submitted</h2>
         <p className="section-sub" style={{ margin: "0 auto 32px" }}>Your roadmap is being generated. Data has been routed to <strong>jasonm@coaibakersfield.com</strong> &amp; <strong>frankh@coaibakersfield.com</strong>. Jason will follow up within 24 hours with a prioritized fix list — no fluff, no pressure, just data.</p>
         <div style={{ display: "flex", gap: 12, justifyContent: "center" }}>
@@ -45,7 +48,7 @@ export function IntakePage() {
                     display: "flex", alignItems: "center", justifyContent: "center",
                     fontSize: ".8rem", fontWeight: 800, flexShrink: 0
                   }}>
-                    {step > i + 1 ? "✓" : i + 1}
+                    {step > i + 1 ? <CheckCircle2 size={18} aria-hidden="true" /> : i + 1}
                   </div>
                   <div>
                     <div style={{ fontSize: ".95rem", fontWeight: 700, color: "#fff", marginBottom: "4px" }}>{t}</div>
@@ -119,21 +122,34 @@ export function IntakePage() {
                       type="tel" value={formData.phone} onChange={e => update("phone", e.target.value)} placeholder="(661) 555-0100" 
                     />
                   </div>
-                  <div style={{ background: "rgba(108,99,255,.06)", border: "1px solid rgba(108,99,255,.15)", borderRadius: 10, padding: "20px" }}>
-                    <div style={{ fontSize: ".78rem", fontWeight: 700, color: "#c4b5fd", marginBottom: "12px", textTransform: "uppercase", letterSpacing: "1px" }}>Your Diagnostic Includes:</div>
-                    {["Prioritized fix roadmap", "Package fit recommendation", "No-obligation scope estimate"].map(i => (
-                      <div key={i} style={{ fontSize: ".82rem", color: "var(--text-soft)", marginBottom: "6px", display: "flex", gap: "8px" }}>
-                        <span style={{ color: "var(--accent)" }}>✓</span> {i}
-                      </div>
-                    ))}
-                  </div>
+                    <div style={{ background: "rgba(108,99,255,.06)", border: "1px solid rgba(108,99,255,.15)", borderRadius: 10, padding: "20px" }}>
+                      <div style={{ fontSize: ".78rem", fontWeight: 700, color: "#c4b5fd", marginBottom: "12px", textTransform: "uppercase", letterSpacing: "1px" }}>Your Diagnostic Includes:</div>
+                      {["Prioritized fix roadmap", "Package fit recommendation", "No-obligation scope estimate"].map(i => (
+                        <div key={i} style={{ fontSize: ".82rem", color: "var(--text-soft)", marginBottom: "6px", display: "flex", gap: "8px" }}>
+                        <CheckCircle2 size={16} aria-hidden="true" style={{ color: "var(--accent)", flexShrink: 0, marginTop: 2 }} />
+                        <span>{i}</span>
+                        </div>
+                      ))}
+                    </div>
                 </>
               )}
 
               <div style={{ display: "flex", gap: "12px", marginTop: "12px" }}>
-                {step > 1 && <button className="btn-secondary" style={{ flex: 1, justifyContent: "center" }} onClick={() => setStep(s => s - 1)}>← Back</button>}
-                {step < 3 && <button className="btn-primary" style={{ flex: 1, justifyContent: "center" }} onClick={() => setStep(s => s + 1)}>Continue →</button>}
-                {step === 3 && <button className="btn-primary" style={{ flex: 1, justifyContent: "center" }} onClick={() => setSubmitted(true)}>Submit Diagnostic →</button>}
+                {step > 1 && (
+                  <button className="btn-secondary" style={{ flex: 1, justifyContent: "center" }} onClick={() => setStep(s => s - 1)}>
+                    <ArrowLeft size={16} aria-hidden="true" /> Back
+                  </button>
+                )}
+                {step < 3 && (
+                  <button className="btn-primary" style={{ flex: 1, justifyContent: "center" }} onClick={() => setStep(s => s + 1)}>
+                    Continue <ArrowRight size={16} aria-hidden="true" />
+                  </button>
+                )}
+                {step === 3 && (
+                  <button className="btn-primary" style={{ flex: 1, justifyContent: "center" }} onClick={() => setSubmitted(true)}>
+                    Submit Diagnostic <ArrowRight size={16} aria-hidden="true" />
+                  </button>
+                )}
               </div>
             </div>
             

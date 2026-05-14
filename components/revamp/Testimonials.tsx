@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { Star } from "lucide-react";
 
 const TESTIMONIALS = [
   {
@@ -31,7 +32,11 @@ export function Testimonials() {
         <div className="testi-grid">
           {TESTIMONIALS.map((t, i) => (
             <div key={i} className="testi-card">
-              <div className="testi-stars">★★★★★</div>
+              <div className="testi-stars" aria-label="5 out of 5 stars">
+                {Array.from({ length: 5 }).map((_, idx) => (
+                  <Star key={idx} size={14} fill="currentColor" aria-hidden="true" />
+                ))}
+              </div>
               <p className="testi-text">“{t.text}”</p>
               <div className="testi-bottom">
                 <div>

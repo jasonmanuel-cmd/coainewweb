@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { ArrowRight, CalendarDays, Shield, Zap, Search } from "lucide-react";
 import { Nav } from "./Nav";
 import { Hero } from "./Hero";
 import { Footer } from "./Footer";
@@ -12,10 +13,11 @@ import { Faq } from "./Faq";
 import { Contact } from "./Contact";
 import { ServicesGrid } from "./ServicesGrid";
 import { ServiceAreaMap } from "./ServiceAreaMap";
+import { Splash } from "./Splash";
 
 const products = [
   {
-    icon: "🛡️",
+    icon: Shield,
     tag: "Missed Call Recovery",
     name: "LeadShield",
     desc: "Never lose a lead to a missed call again. LeadShield instantly texts every missed caller back, scores them HOT/WARM/COLD, and re-engages cold leads automatically.",
@@ -28,7 +30,7 @@ const products = [
     cta: "Learn More",
   },
   {
-    icon: "⚡",
+    icon: Zap,
     tag: "Full Service Agency",
     name: "COAI",
     desc: "Sovereign websites, AI automation, and digital strategy. We build everything you own outright — no platform lock-in, no monthly builder tax, no nonsense.",
@@ -41,7 +43,7 @@ const products = [
     cta: "Explore Services",
   },
   {
-    icon: "🔍",
+    icon: Search,
     tag: "Website Diagnostics",
     name: "SiteER",
     desc: "60-second website audit that grades your site A–F, tells you exactly how much revenue you're leaking, and gives you a treatment plan to fix it.",
@@ -161,7 +163,9 @@ export function LandingHomeRevamp() {
                 <div className="services-grid">
                   {products.map((p) => (
                     <div key={p.name} className="service-card">
-                      <div className="service-card-icon">{p.icon}</div>
+                      <div className="service-card-icon" aria-hidden="true">
+                        <p.icon size={28} strokeWidth={2.2} />
+                      </div>
                       <div className="service-card-tag">{p.tag}</div>
                       <h3>{p.name}</h3>
                       <p>{p.desc}</p>
@@ -170,7 +174,7 @@ export function LandingHomeRevamp() {
                           <li key={f}>{f}</li>
                         ))}
                       </ul>
-                      <span className="service-card-cta">{p.cta} →</span>
+                      <span className="service-card-cta">{p.cta} <ArrowRight size={16} aria-hidden="true" /></span>
                     </div>
                   ))}
                 </div>
@@ -215,7 +219,7 @@ export function LandingHomeRevamp() {
                       ))}
                     </ul>
                     <a className="bundle-cta" href={b.sq} target="_blank" rel="noopener noreferrer">
-                      Buy Now — {b.price} →
+                      Buy Now — {b.price} <ArrowRight size={16} aria-hidden="true" />
                     </a>
                   </div>
                 ))}
@@ -254,8 +258,11 @@ export function LandingHomeRevamp() {
                 <p>Free 20-minute digital audit. We check your site speed, Google profile, schema, and lead flow — and hand you a written report. No pitch, no pressure, just the truth.</p>
                 <a href="tel:6615694244" className="cta-phone">(661) 569-4244</a>
                 <div className="final-cta-actions">
-                  <a className="btn-primary" onClick={() => navigate("intake")} style={{ cursor: "pointer" }}>Get My Free Audit →</a>
-                  <a className="btn-calendar" href="https://calendar.app.google/hswWkCmjqLEKtRuE6" target="_blank" rel="noopener noreferrer">📅 Book Free Audit</a>
+                  <a className="btn-primary" onClick={() => navigate("intake")} style={{ cursor: "pointer" }}>Get My Free Audit <ArrowRight size={16} aria-hidden="true" /></a>
+                  <a className="btn-calendar" href="https://calendar.app.google/hswWkCmjqLEKtRuE6" target="_blank" rel="noopener noreferrer">
+                    <CalendarDays size={18} aria-hidden="true" />
+                    Book Free Audit
+                  </a>
                   <a className="btn-secondary" onClick={() => navigate("pricing")} style={{ cursor: "pointer" }}>See Full Pricing</a>
                 </div>
                 <p className="final-cta-note">Accepting limited new clients this month</p>
@@ -288,6 +295,7 @@ export function LandingHomeRevamp() {
 
   return (
     <div className="revamp-shell">
+      <Splash />
       <Nav activePage={page} onNavigate={navigate} />
       <main>{renderContent()}</main>
       <Footer onNavigate={navigate} />

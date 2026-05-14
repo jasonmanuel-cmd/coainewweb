@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { ArrowRight } from "lucide-react";
 
 const PKGS = [
   { tier: "Package 01", name: "Signal Foundation", tagline: "The core website operating layer. Turns silent traffic into clear local buying signals.", price: "$1,200", meta: "TIMELINE: 2–3 weeks · PAGES: Up to 6", bar: "bar-1",
@@ -44,11 +45,13 @@ export function PricingPage({ onNavigate }: PricingPageProps) {
                 </div>
                 <ul className="pkg-features" style={{ borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "24px" }}>
                   {p.features.map(f => (
-                    <li key={f} style={{ fontSize: ".82rem" }}><span className="feat-arrow">→</span><span>{f}</span></li>
+                    <li key={f} style={{ fontSize: ".82rem" }}><span className="feat-arrow" aria-hidden="true"><ArrowRight size={14} /></span><span>{f}</span></li>
                   ))}
                 </ul>
                 <div style={{ marginTop: "32px" }}>
-                  <a className="btn-primary" onClick={() => onNavigate("intake")} style={{ cursor: "pointer", width: "100%", justifyContent: "center" }}>Get Started →</a>
+                  <a className="btn-primary" onClick={() => onNavigate("intake")} style={{ cursor: "pointer", width: "100%", justifyContent: "center" }}>
+                    Get Started <ArrowRight size={16} aria-hidden="true" />
+                  </a>
                   <div style={{ textAlign: "center", fontSize: ".75rem", color: "var(--text-muted2)", marginTop: "12px" }}>No deposit until scope is agreed</div>
                 </div>
               </div>

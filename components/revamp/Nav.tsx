@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { CalendarDays, Menu, X } from "lucide-react";
 
 interface NavProps {
   activePage: string;
@@ -59,7 +60,8 @@ export function Nav({ activePage, onNavigate }: NavProps) {
           <li><a href="https://siteer.dev" target="_blank" rel="noopener noreferrer" style={{ color: "var(--danger)" }}>SiteER</a></li>
         </ul>
         <a className="btn-calendar" href="https://calendar.app.google/hswWkCmjqLEKtRuE6" target="_blank" rel="noopener noreferrer" style={{ padding: "8px 16px", fontSize: "13px" }}>
-          📅 Book Audit
+          <CalendarDays size={16} aria-hidden="true" />
+          Book Audit
         </a>
         <a className="nav-cta" href="tel:6615694244">Call (661) 569-4244</a>
         <button
@@ -67,7 +69,7 @@ export function Nav({ activePage, onNavigate }: NavProps) {
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Menu"
         >
-          {menuOpen ? "✕" : "☰"}
+          {menuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
         </button>
       </nav>
 
@@ -83,7 +85,8 @@ export function Nav({ activePage, onNavigate }: NavProps) {
             Get a Free Digital Audit
           </a>
           <a className="btn-calendar" href="https://calendar.app.google/hswWkCmjqLEKtRuE6" target="_blank" rel="noopener noreferrer" style={{ textAlign: "center", justifyContent: "center", display: "flex" }}>
-            📅 Book Free Audit
+            <CalendarDays size={16} aria-hidden="true" />
+            Book Free Audit
           </a>
         </div>
       )}

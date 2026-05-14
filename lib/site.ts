@@ -84,3 +84,19 @@ export const BUSINESS_HOURS_LABEL =
 export const ORG_ID = `${SITE_URL}/#organization`;
 export const FOUNDER_ID = `${SITE_URL}/#founder`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
+
+/** Primary service coverage for schema `areaServed`. */
+export const AREA_SERVED = [
+  {
+    "@type": "City",
+    name: "Bakersfield",
+    address: { "@type": "PostalAddress", addressRegion: "CA", addressCountry: "US" }
+  },
+  {
+    "@type": "AdministrativeArea",
+    name: "Kern County",
+    address: { "@type": "PostalAddress", addressRegion: "CA", addressCountry: "US" }
+  },
+  { "@type": "AdministrativeArea", name: "California", address: { "@type": "PostalAddress", addressCountry: "US" } },
+  { "@type": "Country", name: "United States" }
+] as const;

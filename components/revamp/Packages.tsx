@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { ArrowRight } from "lucide-react";
 
 const PACKAGES = [
   {
@@ -75,19 +76,19 @@ export function Packages({ onNavigate }: PackagesProps) {
               <div className="pkg-price">
                 {pkg.price}<span> starting</span>
               </div>
-              <ul className="pkg-features">
-                {pkg.features.map((f) => (
-                  <li key={f}>
-                    <span className="feat-arrow">→</span> {f}
-                  </li>
-                ))}
-              </ul>
+                <ul className="pkg-features">
+                  {pkg.features.map((f) => (
+                    <li key={f}>
+                    <span className="feat-arrow" aria-hidden="true"><ArrowRight size={14} /></span> {f}
+                    </li>
+                  ))}
+                </ul>
               <a
                 className="pkg-cta"
                 onClick={() => onNavigate("pricing")}
                 style={{ cursor: "pointer" }}
               >
-                Inspect Architecture →
+                Inspect Architecture <ArrowRight size={16} aria-hidden="true" />
               </a>
             </div>
           ))}

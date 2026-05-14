@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 export function Contact() {
   const [done, setDone] = useState(false);
@@ -37,20 +38,22 @@ export function Contact() {
               <a href="mailto:jasonm@coaibakersfield.com" style={{ fontSize: "1.2rem", fontWeight: 700, color: "#fff" }}>jasonm@coaibakersfield.com</a><br/>
               <a href="mailto:frankh@coaibakersfield.com" style={{ fontSize: "1rem", fontWeight: 600, color: "var(--cream-muted)" }}>frankh@coaibakersfield.com</a>
             </div>
-            <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "16px", padding: "24px", display: "flex", flexDirection: "column", gap: "12px" }}>
-              {["No high-pressure sales", "Clear scope before any contract", "Free diagnostic, always"].map(t => (
-                <div key={t} style={{ fontSize: ".85rem", color: "var(--text-soft)", display: "flex", gap: "8px" }}>
-                  <span style={{ color: "var(--accent)", fontWeight: 700 }}>✓</span> {t}
-                </div>
-              ))}
-            </div>
+              <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "16px", padding: "24px", display: "flex", flexDirection: "column", gap: "12px" }}>
+                {["No high-pressure sales", "Clear scope before any contract", "Free diagnostic, always"].map(t => (
+                  <div key={t} style={{ fontSize: ".85rem", color: "var(--text-soft)", display: "flex", gap: "8px" }}>
+                  <CheckCircle2 size={16} aria-hidden="true" style={{ color: "var(--accent)", marginTop: 2, flexShrink: 0 }} /> {t}
+                  </div>
+                ))}
+              </div>
           </div>
 
           {/* Form */}
           <div className="pkg-card" style={{ padding: "40px" }}>
             {done ? (
               <div style={{ textAlign: "center", padding: "40px 0" }}>
-                <div style={{ width: "64px", height: "64px", background: "rgba(232,160,32,0.1)", border: "1px solid rgba(232,160,32,0.25)", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.5rem", color: "var(--accent)", margin: "0 auto 20px" }}>✓</div>
+                <div style={{ width: "64px", height: "64px", background: "rgba(232,160,32,0.1)", border: "1px solid rgba(232,160,32,0.25)", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--accent)", margin: "0 auto 20px" }}>
+                  <CheckCircle2 size={28} aria-hidden="true" />
+                </div>
                 <h2 style={{ fontSize: "1.5rem", fontWeight: 800, color: "#fff", marginBottom: "12px" }}>Message Received</h2>
                 <p style={{ fontSize: ".9rem", color: "var(--text-soft)", lineHeight: 1.6, marginBottom: "24px" }}>Jason will respond same business day. Data has been routed to <strong>jasonm@coaibakersfield.com</strong> &amp; <strong>frankh@coaibakersfield.com</strong>. If it&apos;s urgent, call (661) 569-4244.</p>
                 <span style={{ fontFamily: "var(--font-mono)", fontSize: ".7rem", background: "rgba(232,160,32,0.1)", border: "1px solid rgba(232,160,32,0.22)", color: "#E8A020", padding: "4px 12px", borderRadius: 4, letterSpacing: 1, fontWeight: 700 }}>QUEUED</span>
@@ -99,7 +102,9 @@ export function Contact() {
                       rows={5} value={form.message} onChange={e => update("message", e.target.value)} placeholder="What&apos;s your biggest digital challenge right now?" required 
                     />
                   </div>
-                  <button type="submit" className="btn-primary" style={{ width: "100%", justifyContent: "center" }}>Send Message →</button>
+                  <button type="submit" className="btn-primary" style={{ width: "100%", justifyContent: "center" }}>
+                    Send Message <ArrowRight size={16} aria-hidden="true" />
+                  </button>
                   <p style={{ textAlign: "center", fontSize: ".72rem", color: "var(--text-muted2)", marginTop: "12px" }}>
                     Or skip the form — call (661) 569-4244 directly.<br/>
                     Data routed to: jasonm@coaibakersfield.com &amp; frankh@coaibakersfield.com

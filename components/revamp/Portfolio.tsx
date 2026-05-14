@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { ArrowRight } from "lucide-react";
 
 const CASES = [
   {
@@ -172,7 +173,7 @@ export function Portfolio({ onNavigate }: PortfolioProps) {
         <div style={{ marginTop: "100px", textAlign: "center", padding: "60px 40px", background: "rgba(108,99,255,0.05)", borderRadius: "24px", border: "1px solid rgba(108,99,255,0.1)" }}>
           <h2 className="section-title">Your business could be next.</h2>
           <p className="section-sub" style={{ margin: "0 auto 24px" }}>Every build starts with a free diagnostic. No pressure, no pitch — just data.</p>
-          <a className="btn-primary" onClick={() => onNavigate("intake")} style={{ cursor: "pointer" }}>Run My Free Diagnostic →</a>
+          <a className="btn-primary" onClick={() => onNavigate("intake")} style={{ cursor: "pointer" }}>Run My Free Diagnostic <ArrowRight size={16} aria-hidden="true" /></a>
         </div>
       </div>
     </div>

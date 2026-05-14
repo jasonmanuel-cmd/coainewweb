@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { CalendarDays } from "lucide-react";
 
 const SVC = [
   { name: "Sovereign Web Build", cat: "Build", price: "$1,200 – $1,500", freq: "One-time", pri: "High", isnew: 0, desc: "Custom HTML/JS site, schema-embedded for GEO/AEO. Hosted on Vercel/Netlify. You own the asset — no platform lock-in, no monthly Wix tax." },
@@ -145,7 +146,8 @@ export function ServicesGrid() {
             (661) 569-4244
           </a>
           <a className="btn-calendar" href="https://calendar.app.google/hswWkCmjqLEKtRuE6" target="_blank" rel="noopener noreferrer">
-            📅 Book Free Audit
+            <CalendarDays size={18} aria-hidden="true" />
+            Book Free Audit
           </a>
         </div>
       </div>

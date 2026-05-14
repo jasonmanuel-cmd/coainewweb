@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { CalendarDays } from "lucide-react";
 
 interface FooterProps {
   onNavigate: (page: string) => void;
@@ -52,7 +53,8 @@ export function Footer({ onNavigate }: FooterProps) {
       </div>
       <div style={{ textAlign: "center", padding: "16px 0", borderTop: "1px solid var(--navy-border)" }}>
         <a className="btn-calendar" href="https://calendar.app.google/hswWkCmjqLEKtRuE6" target="_blank" rel="noopener noreferrer">
-          📅 Book Your Free Audit — 20 Minutes, No Pressure
+          <CalendarDays size={18} aria-hidden="true" />
+          Book Your Free Audit - 20 Minutes, No Pressure
         </a>
       </div>
       <div className="footer-bottom container">

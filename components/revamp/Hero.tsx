@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { ArrowRight, CalendarDays, CheckCircle2, Star, Wrench } from "lucide-react";
 
 interface HeroProps {
   onNavigate: (page: string) => void;
@@ -74,31 +75,34 @@ export function Hero({ onNavigate }: HeroProps) {
           </p>
           <div className="hero-actions">
             <a className="btn-primary" onClick={() => onNavigate("intake")} style={{ cursor: "pointer" }}>
-              Get Your Free Digital Audit →
+              Get Your Free Digital Audit <ArrowRight size={16} aria-hidden="true" />
             </a>
             <a className="btn-calendar" href="https://calendar.app.google/hswWkCmjqLEKtRuE6" target="_blank" rel="noopener noreferrer">
-              📅 Book Free Audit
+              <CalendarDays size={18} aria-hidden="true" />
+              Book Free Audit
             </a>
             <a className="btn-phone" href="tel:6615694244">
               (661) 569-4244
             </a>
           </div>
           <div className="hero-trust">
-            <div className="trust-item"><span className="check">✓</span> You own the website — no monthly rental</div>
-            <div className="trust-item"><span className="check">✓</span> Clear pricing, no hidden fees</div>
-            <div className="trust-item"><span className="check">✓</span> 6+ trade sites already built and live</div>
-            <div className="trust-item"><span className="check">✓</span> Phone support — talk to a human</div>
+            <div className="trust-item"><CheckCircle2 className="check" size={16} aria-hidden="true" /> You own the website — no monthly rental</div>
+            <div className="trust-item"><CheckCircle2 className="check" size={16} aria-hidden="true" /> Clear pricing, no hidden fees</div>
+            <div className="trust-item"><CheckCircle2 className="check" size={16} aria-hidden="true" /> 6+ trade sites already built and live</div>
+            <div className="trust-item"><CheckCircle2 className="check" size={16} aria-hidden="true" /> Phone support — talk to a human</div>
           </div>
           <div className="trust-badges">
             <Image src="/logo.png" alt="COAI" width={24} height={24} style={{ borderRadius: 4, objectFit: "contain" }} />
             <span className="trust-badge">Based in Bakersfield, CA</span>
-            <span className="trust-badge">5★ Google Rated</span>
+            <span className="trust-badge"><Star size={14} aria-hidden="true" /> 5 Google Rated</span>
           </div>
         </div>
 
         <div className="hero-right">
           <div className="hero-card">
-            <div className="hero-card-icon">🔧</div>
+            <div className="hero-card-icon" aria-hidden="true">
+              <Wrench size={30} strokeWidth={2.2} />
+            </div>
             <h3>What we do, plain and simple:</h3>
             <ul className="hero-card-list">
               <li>Websites you actually own (not rented from Wix)</li>
@@ -156,7 +160,7 @@ export function Hero({ onNavigate }: HeroProps) {
                     </div>
                   )}
                   <a onClick={() => onNavigate("intake")} style={{ display: "block", textAlign: "center", marginTop: "8px", fontSize: "12px", color: "var(--amber)", cursor: "pointer", textDecoration: "underline" }}>
-                    Get the full audit & fix plan →
+                    Get the full audit & fix plan <ArrowRight size={14} aria-hidden="true" />
                   </a>
                 </div>
               )}
