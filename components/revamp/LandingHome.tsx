@@ -11,6 +11,7 @@ import { IntakePage } from "./Intake";
 import { Faq } from "./Faq";
 import { Contact } from "./Contact";
 import { ServicesGrid } from "./ServicesGrid";
+import { ServiceAreaMap } from "./ServiceAreaMap";
 
 const products = [
   {
@@ -67,6 +68,7 @@ const bundles = [
       "30-day follow-up support",
     ],
     best: false,
+    sq: "https://square.link/u/iUDRvBOo",
   },
   {
     name: "Trades Starter Pack",
@@ -80,6 +82,7 @@ const bundles = [
       "Review generation system setup",
     ],
     best: false,
+    sq: "https://square.link/u/Xvp6QAHQ",
   },
   {
     name: "AI Lead Machine",
@@ -93,6 +96,7 @@ const bundles = [
       "Monthly SEO + analytics report",
     ],
     best: true,
+    sq: "https://square.link/u/6X8C4a9M",
   },
   {
     name: "Operational Ecosystem",
@@ -105,6 +109,7 @@ const bundles = [
       "Vercel/Netlify hosting setup",
     ],
     best: false,
+    sq: "https://square.link/u/D1wnMqJt",
   },
 ];
 
@@ -140,10 +145,6 @@ export function LandingHomeRevamp() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleBundleCTA = (name: string) => {
-    navigate("pricing");
-  };
-
   const renderContent = () => {
     switch (page) {
       case "home":
@@ -156,7 +157,7 @@ export function LandingHomeRevamp() {
               <div className="container">
                 <span className="section-eyebrow">What We Do</span>
                 <h2 className="section-title">Three ways we help you <span className="text-amber">win more jobs.</span></h2>
-                <p className="section-sub">Whether you need a website, lead recovery, or a full tech overhaul — we've got you covered under one roof.</p>
+                <p className="section-sub">Whether you need a website, lead recovery, or a full tech overhaul — we&apos;ve got you covered under one roof.</p>
                 <div className="services-grid">
                   {products.map((p) => (
                     <div key={p.name} className="service-card">
@@ -213,8 +214,8 @@ export function LandingHomeRevamp() {
                         <li key={f}>{f}</li>
                       ))}
                     </ul>
-                    <a className="bundle-cta" onClick={() => handleBundleCTA(b.name)} style={{ cursor: "pointer" }}>
-                      Get This Package →
+                    <a className="bundle-cta" href={b.sq} target="_blank" rel="noopener noreferrer">
+                      Buy Now — {b.price} →
                     </a>
                   </div>
                 ))}
@@ -222,7 +223,10 @@ export function LandingHomeRevamp() {
             </section>
 
             {/* Comprehensive Services Grid */}
-            <ServicesGrid onNavigate={navigate} />
+            <ServicesGrid />
+
+            {/* Service Area Map */}
+            <ServiceAreaMap />
 
             {/* Testimonials */}
             <section className="testi-section">
@@ -251,6 +255,7 @@ export function LandingHomeRevamp() {
                 <a href="tel:6615694244" className="cta-phone">(661) 569-4244</a>
                 <div className="final-cta-actions">
                   <a className="btn-primary" onClick={() => navigate("intake")} style={{ cursor: "pointer" }}>Get My Free Audit →</a>
+                  <a className="btn-calendar" href="https://calendar.app.google/hswWkCmjqLEKtRuE6" target="_blank" rel="noopener noreferrer">📅 Book Free Audit</a>
                   <a className="btn-secondary" onClick={() => navigate("pricing")} style={{ cursor: "pointer" }}>See Full Pricing</a>
                 </div>
                 <p className="final-cta-note">Accepting limited new clients this month</p>

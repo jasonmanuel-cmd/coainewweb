@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 
 interface HeroProps {
   onNavigate: (page: string) => void;
@@ -25,6 +26,9 @@ export function Hero({ onNavigate }: HeroProps) {
             <a className="btn-primary" onClick={() => onNavigate("intake")} style={{ cursor: "pointer" }}>
               Get Your Free Digital Audit →
             </a>
+            <a className="btn-calendar" href="https://calendar.app.google/hswWkCmjqLEKtRuE6" target="_blank" rel="noopener noreferrer">
+              📅 Book Free Audit
+            </a>
             <a className="btn-phone" href="tel:6615694244">
               (661) 569-4244
             </a>
@@ -34,6 +38,11 @@ export function Hero({ onNavigate }: HeroProps) {
             <div className="trust-item"><span className="check">✓</span> Clear pricing, no hidden fees</div>
             <div className="trust-item"><span className="check">✓</span> Built for Bakersfield businesses</div>
             <div className="trust-item"><span className="check">✓</span> Phone support — talk to a human</div>
+          </div>
+          <div className="trust-badges">
+            <Image src="/logo.png" alt="COAI" width={24} height={24} style={{ borderRadius: 4, objectFit: "contain" }} />
+            <span className="trust-badge">Serving Bakersfield Since 2024</span>
+            <span className="trust-badge">5★ Google Rated</span>
           </div>
         </div>
 
@@ -48,6 +57,10 @@ export function Hero({ onNavigate }: HeroProps) {
               <li>Google setup so customers can find you</li>
               <li>Free 20-minute audit to show you what&apos;s broken</li>
             </ul>
+            <div className="video-placeholder">
+              <div className="video-placeholder-icon">▶</div>
+              <div className="video-placeholder-text">Video Hero Coming Soon</div>
+            </div>
           </div>
         </div>
       </div>

@@ -8,6 +8,7 @@ import { AnalyticsRouteTracker } from "@/components/AnalyticsRouteTracker";
 import { AppChrome } from "@/components/AppChrome";
 import { JsonLd } from "@/components/JsonLd";
 import { NeuralMesh } from "@/components/NeuralMesh";
+import { CipherChat } from "@/components/revamp/CipherChat";
 import { organizationJsonLd, webSiteJsonLd } from "@/lib/schema";
 import { SITE_DESCRIPTION, SITE_URL } from "@/lib/site";
 import "./globals.css";
@@ -97,6 +98,7 @@ gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: true });`}
         <JsonLd data={organizationJsonLd()} />
         <JsonLd data={webSiteJsonLd()} />
         <AppChrome>{children}</AppChrome>
+        <CipherChat />
         <Analytics />
       </body>
     </html>

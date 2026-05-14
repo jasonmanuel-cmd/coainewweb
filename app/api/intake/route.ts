@@ -61,7 +61,7 @@ export async function POST(request: Request) {
     const smsTo = toSmsPhone(parsed.phone);
     if (smsTo) {
       const provider = getMessagingProvider();
-      const message = `Got it${parsed.first_name ? `, ${parsed.first_name}` : ""} — Jason from COAI will follow up within 2 hours. Questions? Reply here or call (661) 610-9198.`;
+      const message = `Got it${parsed.first_name ? `, ${parsed.first_name}` : ""} — Jason from COAI will follow up within 2 hours. Questions? Reply here or call (661) 569-4244.`;
       void provider
         .sendSms({
           to: smsTo,

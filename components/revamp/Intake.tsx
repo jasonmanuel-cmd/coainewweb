@@ -12,11 +12,11 @@ export function IntakePage() {
   if (submitted) return (
     <div style={{ padding: "120px 0", minHeight: "80vh", display: "flex", alignItems: "center" }}>
       <div className="container" style={{ maxWidth: 600, textAlign: "center" }}>
-        <div style={{ fontSize: "4rem", marginBottom: "20px", color: "var(--accent-green)" }}>◉</div>
+        <div style={{ fontSize: "4rem", marginBottom: "20px", color: "var(--accent)" }}>◉</div>
         <h2 className="section-title">Diagnostic Submitted</h2>
         <p className="section-sub" style={{ margin: "0 auto 32px" }}>Your roadmap is being generated. Data has been routed to <strong>chaoticallyorganizedai@gmail.com</strong>. Jason will follow up within 24 hours with a prioritized fix list — no fluff, no pressure, just data.</p>
         <div style={{ display: "flex", gap: 12, justifyContent: "center" }}>
-          <span style={{ fontFamily: "var(--font-mono)", fontSize: ".72rem", background: "rgba(16,217,138,.1)", border: "1px solid rgba(16,217,138,.22)", color: "#10d98a", padding: "6px 16px", borderRadius: 4, fontWeight: 700 }}>DIAGNOSTIC QUEUED</span>
+          <span style={{ fontFamily: "var(--font-mono)", fontSize: ".72rem", background: "rgba(232,160,32,.1)", border: "1px solid rgba(232,160,32,.22)", color: "#E8A020", padding: "6px 16px", borderRadius: 4, fontWeight: 700 }}>DIAGNOSTIC QUEUED</span>
         </div>
       </div>
     </div>
@@ -28,7 +28,7 @@ export function IntakePage() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "60px" }}>
           <div className="intake-intro">
             <span className="section-eyebrow">Free Diagnostic</span>
-            <h1 className="section-title">Run Your<br /><span className="text-green">Growth Diagnostic</span></h1>
+            <h1 className="section-title">Run Your<br /><span className="text-amber">Growth Diagnostic</span></h1>
             <p className="section-sub">No high-pressure sales process. You get a prioritized fix roadmap and package fit before any implementation begins.</p>
             
             <div style={{ display: "flex", flexDirection: "column", gap: "24px", marginTop: "40px" }}>
@@ -40,7 +40,7 @@ export function IntakePage() {
                 <div key={t} style={{ display: "flex", gap: "16px", alignItems: "flex-start" }}>
                   <div style={{ 
                     width: "32px", height: "32px", borderRadius: "50%", 
-                    background: step > i + 1 ? "var(--accent-green)" : "var(--gradient-brand)", 
+                    background: step > i + 1 ? "var(--accent)" : "var(--gradient-brand)", 
                     color: step > i + 1 ? "#032219" : "#fff",
                     display: "flex", alignItems: "center", justifyContent: "center",
                     fontSize: ".8rem", fontWeight: 800, flexShrink: 0
@@ -123,7 +123,7 @@ export function IntakePage() {
                     <div style={{ fontSize: ".78rem", fontWeight: 700, color: "#c4b5fd", marginBottom: "12px", textTransform: "uppercase", letterSpacing: "1px" }}>Your Diagnostic Includes:</div>
                     {["Prioritized fix roadmap", "Package fit recommendation", "No-obligation scope estimate"].map(i => (
                       <div key={i} style={{ fontSize: ".82rem", color: "var(--text-soft)", marginBottom: "6px", display: "flex", gap: "8px" }}>
-                        <span style={{ color: "var(--accent-green)" }}>✓</span> {i}
+                        <span style={{ color: "var(--accent)" }}>✓</span> {i}
                       </div>
                     ))}
                   </div>

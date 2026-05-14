@@ -520,6 +520,51 @@ img { max-width: 100%; display: block; }
 }
 .btn-phone:hover { background: rgba(232,160,32,0.2); transform: translateY(-2px); }
 
+.btn-calendar {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--amber); color: var(--navy); font-weight: 700;
+  padding: 12px 24px; border-radius: 8px; font-size: 15px;
+  transition: all 0.2s; border: none; cursor: pointer; text-decoration: none;
+}
+.btn-calendar:hover { background: var(--amber-light); transform: translateY(-2px); }
+
+/* ======================================
+   SERVICE AREA MAP
+====================================== */
+.map-section { padding: 100px 0; background: rgba(255,255,255,0.015); }
+.map-section .container { margin-bottom: 40px; }
+.map-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 32px; }
+.map-container { border: 1px solid var(--navy-border); border-radius: 12px; }
+.map-fallback {
+  padding: 60px; text-align: center; border: 1px solid var(--navy-border);
+  border-radius: 12px; background: var(--navy-light); color: var(--cream-dim);
+}
+
+/* ======================================
+   VIDEO HERO PLACEHOLDER
+====================================== */
+.video-placeholder {
+  width: 100%; height: 240px; border-radius: 12px;
+  background: var(--navy-light); border: 1px solid var(--navy-border);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 12px; color: var(--cream-dim); margin-top: 20px;
+}
+.video-placeholder-icon { font-size: 2rem; opacity: 0.5; }
+.video-placeholder-text { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+/* ======================================
+   TRUST BADGES
+====================================== */
+.trust-badges {
+  display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 16px;
+}
+.trust-badge {
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.04); border: 1px solid var(--navy-border);
+  border-radius: 8px; padding: 8px 14px; font-size: 12px; font-weight: 600; color: var(--cream-muted);
+}
+.trust-badge img { width: 24px; height: 24px; border-radius: 4px; object-fit: contain; }
+
 /* ======================================
    RESPONSIVE OVERRIDES
 ====================================== */

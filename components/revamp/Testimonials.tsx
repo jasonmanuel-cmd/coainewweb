@@ -26,7 +26,7 @@ export function Testimonials() {
       <div className="container">
         <div className="section-eyebrow">Client Outcome Patterns</div>
         <h2 className="section-title">
-          Built for <span className="text-green">measurable local growth.</span>
+          Built for <span className="text-amber">measurable local growth.</span>
         </h2>
         <div className="testi-grid">
           {TESTIMONIALS.map((t, i) => (

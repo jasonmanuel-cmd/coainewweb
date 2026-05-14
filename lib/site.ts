@@ -22,8 +22,8 @@ export const FOUNDER = {
 
 export const CONTACT = {
   email: "jason@coaibakersfield.com",
-  phoneDisplay: "(661) 610-9198",
-  phoneE164: "+16616109198",
+  phoneDisplay: "(661) 569-4244",
+  phoneE164: "+16615694244",
   addressLine: "1712 19th St #216",
   city: "Bakersfield",
   region: "CA",

@@ -60,7 +60,7 @@ export function Packages({ onNavigate }: PackagesProps) {
       <div className="container">
         <div className="section-eyebrow">Offer Ladder</div>
         <h2 className="section-title">
-          Website-first. <span className="text-green">AI-layered.</span> Always sovereign.
+          Website-first. <span className="text-amber">AI-layered.</span> Always sovereign.
         </h2>
         <p className="section-sub">
           The website is the core system. AI is applied as a strategic growth layer once your foundation is conversion-ready.

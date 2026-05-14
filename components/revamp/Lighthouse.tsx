@@ -9,10 +9,10 @@ export function Lighthouse() {
   const [scanProgress, setScanProgress] = useState(0);
 
   const baselineScores = [
-    { label: "Performance", value: 100, color: "#10d98a" },
-    { label: "Accessibility", value: 100, color: "#10d98a" },
-    { label: "Best Practices", value: 100, color: "#10d98a" },
-    { label: "SEO", value: 100, color: "#10d98a" }
+    { label: "Performance", value: 100, color: "#E8A020" },
+    { label: "Accessibility", value: 100, color: "#E8A020" },
+    { label: "Best Practices", value: 100, color: "#E8A020" },
+    { label: "SEO", value: 100, color: "#E8A020" }
   ];
 
   const handleScan = (e: React.FormEvent) => {
@@ -41,7 +41,7 @@ export function Lighthouse() {
       <div className="container">
         <div style={{ textAlign: "center", marginBottom: "48px" }}>
           <span className="section-eyebrow">Technical Audit Baseline</span>
-          <h2 className="section-title">We build for <span className="text-green">perfect scores.</span></h2>
+          <h2 className="section-title">We build for <span className="text-amber">perfect scores.</span></h2>
           <p className="section-sub" style={{ margin: "0 auto" }}>
             Most agencies deliver sites that fail basic Core Web Vitals. We don&apos;t. Every COAI build starts with a target baseline of 100/100 across the board.
           </p>
@@ -103,9 +103,9 @@ export function Lighthouse() {
           {isScanning && (
             <div style={{ textAlign: "center" }}>
               <div style={{ height: "4px", background: "rgba(255,255,255,0.05)", borderRadius: "2px", overflow: "hidden", marginBottom: "12px" }}>
-                <div style={{ width: `${scanProgress}%`, height: "100%", background: "var(--accent-green)", transition: "width 0.2s" }}></div>
+                <div style={{ width: `${scanProgress}%`, height: "100%", background: "var(--accent)", transition: "width 0.2s" }}></div>
               </div>
-              <span style={{ fontSize: ".7rem", fontFamily: "var(--font-mono)", color: "var(--accent-green)" }}>ANALYZING SCHEMA, SPEED, AND MOBILE INTEGRITY...</span>
+              <span style={{ fontSize: ".7rem", fontFamily: "var(--font-mono)", color: "var(--accent)" }}>ANALYZING SCHEMA, SPEED, AND MOBILE INTEGRITY...</span>
             </div>
           )}
 
@@ -130,8 +130,8 @@ export function Lighthouse() {
 
         <div style={{ marginTop: "40px", textAlign: "center" }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(16,217,138,0.1)", border: "1px solid rgba(16,217,138,0.2)", padding: "8px 20px", borderRadius: "30px" }}>
-            <span style={{ width: "8px", height: "8px", background: "#10d98a", borderRadius: "50%" }}></span>
-            <span style={{ fontSize: ".75rem", fontWeight: 700, color: "#10d98a", letterSpacing: "0.5px" }}>AUDIT PROTOCOL: JAX SENTINEL STACK v1.0.4</span>
+            <span style={{ width: "8px", height: "8px", background: "#E8A020", borderRadius: "50%" }}></span>
+            <span style={{ fontSize: ".75rem", fontWeight: 700, color: "#E8A020", letterSpacing: "0.5px" }}>AUDIT PROTOCOL: JAX SENTINEL STACK v1.0.4</span>
           </div>
         </div>
       </div>

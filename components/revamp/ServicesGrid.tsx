@@ -71,11 +71,7 @@ const CATS = [
   { key: "Strategy", label: "Strategy" },
 ];
 
-interface ServicesGridProps {
-  onNavigate: (page: string) => void;
-}
-
-export function ServicesGrid({ onNavigate }: ServicesGridProps) {
+export function ServicesGrid() {
   const [activeCat, setActiveCat] = useState("all");
 
   const filtered = activeCat === "all"
@@ -144,9 +140,14 @@ export function ServicesGrid({ onNavigate }: ServicesGridProps) {
         <p style={{ color: "var(--cream-dim)", marginBottom: "20px", fontSize: "15px" }}>
           Don&apos;t see what you need? Call us — we probably do it.
         </p>
-        <a className="btn-primary" href="tel:6615694244" style={{ cursor: "pointer" }}>
-          (661) 569-4244
-        </a>
+        <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
+          <a className="btn-primary" href="tel:6615694244" style={{ cursor: "pointer" }}>
+            (661) 569-4244
+          </a>
+          <a className="btn-calendar" href="https://calendar.app.google/hswWkCmjqLEKtRuE6" target="_blank" rel="noopener noreferrer">
+            📅 Book Free Audit
+          </a>
+        </div>
       </div>
     </div>
   );

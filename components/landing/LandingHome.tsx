@@ -12,7 +12,6 @@ import {
   BRAND_TAGLINE,
   CONTACT,
   FOUNDER,
-  GOOGLE_BUSINESS_PROFILE_URL,
   LEGAL_NAME
 } from "@/lib/site";
 

@@ -105,7 +105,7 @@ export function AuditForm({ variant = "default" }: AuditFormProps) {
               id="phone-input"
               type="tel"
               name="phone"
-              placeholder={isLanding ? "Phone number" : "(661) 610-9198"}
+              placeholder={isLanding ? "Phone number" : "(661) 569-4244"}
               autoComplete="tel"
               inputMode="tel"
               required

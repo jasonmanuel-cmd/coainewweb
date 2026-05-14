@@ -24,7 +24,7 @@ export function PricingPage({ onNavigate }: PricingPageProps) {
       <section style={{ padding: "100px 0 60px", background: "linear-gradient(180deg, rgba(3,3,6,0), rgba(108,99,255,0.05))" }}>
         <div className="container" style={{ position: "relative" }}>
           <span className="section-eyebrow">Pricing</span>
-          <h1 className="section-title">Fixed price. <span className="text-green">Full ownership.</span><br/>No surprises.</h1>
+          <h1 className="section-title">Fixed price. <span className="text-amber">Full ownership.</span><br/>No surprises.</h1>
           <p className="section-sub">Every package is scoped before work starts. You know exactly what you&apos;re getting, what it costs, and what you own at the end. No retainers. No mystery.</p>
         </div>
       </section>
@@ -33,7 +33,7 @@ export function PricingPage({ onNavigate }: PricingPageProps) {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "32px" }}>
           {PKGS.map(p => (
             <div key={p.tier} className="pkg-card" style={{ padding: "0", overflow: "hidden" }}>
-              <div style={{ height: "4px", background: p.bar === 'bar-1' ? 'var(--accent-blue)' : p.bar === 'bar-2' ? 'var(--accent-purple)' : 'var(--accent-green)' }} />
+              <div style={{ height: "4px", background: p.bar === 'bar-1' ? 'var(--accent)' : p.bar === 'bar-2' ? 'var(--accent-muted)' : 'var(--accent-signal)' }} />
               <div style={{ padding: "32px" }}>
                 <div style={{ marginBottom: "24px" }}>
                   <div className="pkg-tier">{p.tier}</div>

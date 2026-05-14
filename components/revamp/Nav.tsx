@@ -55,6 +55,9 @@ export function Nav({ activePage, onNavigate }: NavProps) {
             </li>
           ))}
         </ul>
+        <a className="btn-calendar" href="https://calendar.app.google/hswWkCmjqLEKtRuE6" target="_blank" rel="noopener noreferrer" style={{ padding: "8px 16px", fontSize: "13px" }}>
+          📅 Book Audit
+        </a>
         <a className="nav-cta" href="tel:6615694244">Call (661) 569-4244</a>
         <button
           className="hamburger"
@@ -75,6 +78,9 @@ export function Nav({ activePage, onNavigate }: NavProps) {
           ))}
           <a className="nav-cta" onClick={() => handleNav("intake")} style={{ textAlign: "center" }}>
             Get a Free Digital Audit
+          </a>
+          <a className="btn-calendar" href="https://calendar.app.google/hswWkCmjqLEKtRuE6" target="_blank" rel="noopener noreferrer" style={{ textAlign: "center", justifyContent: "center", display: "flex" }}>
+            📅 Book Free Audit
           </a>
         </div>
       )}

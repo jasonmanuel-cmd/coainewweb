@@ -33,8 +33,8 @@ export function Faq() {
       <section style={{ padding: "100px 0 60px", background: "linear-gradient(180deg, rgba(3,3,6,0), rgba(108,99,255,0.05))" }}>
         <div className="container" style={{ position: "relative" }}>
           <span className="section-eyebrow">FAQ</span>
-          <h1 className="section-title">Every question<br /><span className="text-green">answered straight.</span></h1>
-          <p className="section-sub">No corporate hedging. If you have a question that isn&apos;t here, call Jason directly at (661) 610-9198.</p>
+          <h1 className="section-title">Every question<br /><span className="text-amber">answered straight.</span></h1>
+          <p className="section-sub">No corporate hedging. If you have a question that isn&apos;t here, call Jason directly at (661) 569-4244.</p>
         </div>
       </section>
 
@@ -52,7 +52,7 @@ export function Faq() {
             </ul>
             <div style={{ marginTop: "32px", paddingTop: "24px", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
               <div style={{ fontSize: ".72rem", color: "var(--text-muted2)", marginBottom: "12px", textTransform: "uppercase", fontWeight: 700 }}>Still have questions?</div>
-              <a href="tel:+16616109198" className="btn-green btn-sm" style={{ width: "100%", justifyContent: "center" }}>Call Jason</a>
+              <a href="tel:+16615694244" className="btn-primary btn-sm" style={{ width: "100%", justifyContent: "center" }}>Call Jason</a>
             </div>
           </nav>
 
@@ -67,11 +67,11 @@ export function Faq() {
                   return (
                     <div key={key} style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
                       <button 
-                        style={{ width: "100%", background: "none", border: "none", color: isOpen ? "var(--accent-green)" : "#fff", padding: "20px 0", display: "flex", justifyContent: "space-between", alignItems: "center", cursor: "pointer", textAlign: "left", fontSize: "1rem", fontWeight: 600 }}
+                        style={{ width: "100%", background: "none", border: "none", color: isOpen ? "var(--accent)" : "#fff", padding: "20px 0", display: "flex", justifyContent: "space-between", alignItems: "center", cursor: "pointer", textAlign: "left", fontSize: "1rem", fontWeight: 600 }}
                         onClick={() => toggle(key)}
                       >
                         <span>{item.q}</span>
-                        <span style={{ fontSize: "1.2rem", color: "var(--accent-blue)" }}>{isOpen ? "−" : "+"}</span>
+                        <span style={{ fontSize: "1.2rem", color: "var(--accent)" }}>{isOpen ? "−" : "+"}</span>
                       </button>
                       {isOpen && (
                         <div style={{ paddingBottom: "24px" }}>

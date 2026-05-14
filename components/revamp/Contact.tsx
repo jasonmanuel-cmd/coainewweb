@@ -15,11 +15,11 @@ export function Contact() {
 
   return (
     <div>
-      <section style={{ padding: "100px 0 60px", background: "linear-gradient(180deg, rgba(3,3,6,0), rgba(16,217,138,0.05))" }}>
+      <section style={{ padding: "100px 0 60px", background: "linear-gradient(180deg, rgba(3,3,6,0), rgba(232,160,32,0.05))" }}>
         <div className="container" style={{ position: "relative" }}>
           <span className="section-eyebrow">Contact</span>
-          <h1 className="section-title">Let&apos;s talk.<br /><span className="text-green">No pressure.</span></h1>
-          <p className="section-sub">Jason responds same business day. If it&apos;s urgent, call directly — (661) 610-9198. He picks up.</p>
+          <h1 className="section-title">Let&apos;s talk.<br /><span className="text-amber">No pressure.</span></h1>
+          <p className="section-sub">Jason responds same business day. If it&apos;s urgent, call directly — (661) 569-4244. He picks up.</p>
         </div>
       </section>
 
@@ -29,7 +29,7 @@ export function Contact() {
           <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
             <div>
               <div style={{ fontSize: ".7rem", fontWeight: 800, color: "var(--text-muted2)", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "8px" }}>Direct Line</div>
-              <a href="tel:+16616109198" style={{ fontSize: "1.8rem", fontWeight: 800, color: "var(--accent-green)" }}>(661) 610-9198</a>
+              <a href="tel:+16615694244" style={{ fontSize: "1.8rem", fontWeight: 800, color: "var(--accent)" }}>(661) 569-4244</a>
               <div style={{ fontSize: ".8rem", color: "var(--text-muted)", marginTop: "4px" }}>Jason picks up. No receptionist gatekeeping.</div>
             </div>
             <div>
@@ -39,7 +39,7 @@ export function Contact() {
             <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "16px", padding: "24px", display: "flex", flexDirection: "column", gap: "12px" }}>
               {["No high-pressure sales", "Clear scope before any contract", "Free diagnostic, always"].map(t => (
                 <div key={t} style={{ fontSize: ".85rem", color: "var(--text-soft)", display: "flex", gap: "8px" }}>
-                  <span style={{ color: "var(--accent-green)", fontWeight: 700 }}>✓</span> {t}
+                  <span style={{ color: "var(--accent)", fontWeight: 700 }}>✓</span> {t}
                 </div>
               ))}
             </div>
@@ -49,10 +49,10 @@ export function Contact() {
           <div className="pkg-card" style={{ padding: "40px" }}>
             {done ? (
               <div style={{ textAlign: "center", padding: "40px 0" }}>
-                <div style={{ width: "64px", height: "64px", background: "rgba(16,217,138,0.1)", border: "1px solid rgba(16,217,138,0.25)", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.5rem", color: "var(--accent-green)", margin: "0 auto 20px" }}>✓</div>
+                <div style={{ width: "64px", height: "64px", background: "rgba(232,160,32,0.1)", border: "1px solid rgba(232,160,32,0.25)", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.5rem", color: "var(--accent)", margin: "0 auto 20px" }}>✓</div>
                 <h2 style={{ fontSize: "1.5rem", fontWeight: 800, color: "#fff", marginBottom: "12px" }}>Message Received</h2>
-                <p style={{ fontSize: ".9rem", color: "var(--text-soft)", lineHeight: 1.6, marginBottom: "24px" }}>Jason will respond same business day. Data has been routed to <strong>chaoticallyorganizedai@gmail.com</strong>. If it&apos;s urgent, call (661) 610-9198.</p>
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: ".7rem", background: "rgba(16,217,138,0.1)", border: "1px solid rgba(16,217,138,0.22)", color: "#10d98a", padding: "4px 12px", borderRadius: 4, letterSpacing: 1, fontWeight: 700 }}>QUEUED</span>
+                <p style={{ fontSize: ".9rem", color: "var(--text-soft)", lineHeight: 1.6, marginBottom: "24px" }}>Jason will respond same business day. Data has been routed to <strong>chaoticallyorganizedai@gmail.com</strong>. If it&apos;s urgent, call (661) 569-4244.</p>
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: ".7rem", background: "rgba(232,160,32,0.1)", border: "1px solid rgba(232,160,32,0.22)", color: "#E8A020", padding: "4px 12px", borderRadius: 4, letterSpacing: 1, fontWeight: 700 }}>QUEUED</span>
               </div>
             ) : (
               <>
@@ -100,7 +100,7 @@ export function Contact() {
                   </div>
                   <button type="submit" className="btn-primary" style={{ width: "100%", justifyContent: "center" }}>Send Message →</button>
                   <p style={{ textAlign: "center", fontSize: ".72rem", color: "var(--text-muted2)", marginTop: "12px" }}>
-                    Or skip the form — call (661) 610-9198 directly.<br/>
+                    Or skip the form — call (661) 569-4244 directly.<br/>
                     Data routed to: chaoticallyorganizedai@gmail.com
                   </p>
                 </form>

@@ -37,7 +37,7 @@ const CASES = [
     desc: "A lifestyle and apparel brand focused on community and growth. COAI built a sovereign storefront designed for high-impact brand storytelling and frictionless product discovery.",
     built: ["Storefront Design","Product Display","Brand Storytelling","Secure Checkout","Mobile Commerce"],
     url: "https://homegrowmoney.com",
-    accent: "#10d98a"
+    accent: "#E8A020"
   },
   {
     id: "tandmbak", category: "logistics", industry: "Hauling & Trash Removal",
@@ -82,7 +82,7 @@ const CASES = [
     desc: "Signature 954 is a Miami-area contracting company delivering premium construction and renovation work across South Florida's competitive trades market. COAI built a high-impact project showcase site with a portfolio-forward layout, service category pages, and a quote request funnel engineered for high-ticket residential and commercial contracts.",
     built: ["Project Showcase","Quote Request Funnel","Service Pages","Local SEO","Vercel Deploy","Fast Load Architecture"],
     url: "https://signature954.vercel.app",
-    accent: "#10d98a"
+    accent: "#E8A020"
   }
 ];
 
@@ -112,7 +112,7 @@ export function Portfolio({ onNavigate }: PortfolioProps) {
       <section style={{ padding: "100px 0 60px", background: "linear-gradient(180deg, rgba(3,3,6,0), rgba(108,99,255,0.05))" }}>
         <div className="container">
           <span className="section-eyebrow">Our Work</span>
-          <h1 className="section-title">Sovereign builds.<br /><span className="text-green">Measurable outcomes.</span></h1>
+          <h1 className="section-title">Sovereign builds.<br /><span className="text-amber">Measurable outcomes.</span></h1>
           <p className="section-sub">
             Every project listed here is live, owned by the client, and built without rented-platform dependency.
           </p>
@@ -127,7 +127,7 @@ export function Portfolio({ onNavigate }: PortfolioProps) {
               key={f.id} 
               className={`btn-secondary btn-sm ${cat === f.id ? "active" : ""}`} 
               onClick={() => setCat(f.id)}
-              style={cat === f.id ? { background: "var(--accent-blue)", color: "#fff", borderColor: "var(--accent-blue)" } : {}}
+              style={cat === f.id ? { background: "var(--accent)", color: "#fff", borderColor: "var(--accent)" } : {}}
             >
               {f.label}
             </button>

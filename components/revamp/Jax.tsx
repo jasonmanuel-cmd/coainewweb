@@ -51,7 +51,7 @@ export function JaxPage({ onNavigate }: JaxPageProps) {
               <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "4rem", opacity: 0.1 }}>JAX</div>
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(0deg, rgba(3,3,6,0.8) 0%, transparent 50%)" }} />
               <div style={{ position: "absolute", bottom: "32px", left: "32px", display: "flex", gap: "8px" }}>
-                <span style={{ fontSize: ".65rem", fontWeight: 800, padding: "4px 12px", borderRadius: "4px", background: "rgba(16,217,138,0.15)", color: "var(--accent-green)", border: "1px solid rgba(16,217,138,0.3)" }}>ACTIVE</span>
+                <span style={{ fontSize: ".65rem", fontWeight: 800, padding: "4px 12px", borderRadius: "4px", background: "rgba(232,160,32,0.15)", color: "var(--accent)", border: "1px solid rgba(232,160,32,0.3)" }}>ACTIVE</span>
                 <span style={{ fontSize: ".65rem", fontWeight: 800, padding: "4px 12px", borderRadius: "4px", background: "rgba(0,240,255,0.15)", color: "var(--accent-cyan)", border: "1px solid rgba(0,240,255,0.3)" }}>SENTINEL</span>
               </div>
             </div>
