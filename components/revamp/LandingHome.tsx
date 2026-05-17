@@ -124,19 +124,19 @@ const howSteps = [
 
 const testimonials = [
   {
-    text: "Jason built our plumbing company website from scratch. For the first time, I actually understand what I'm paying for. No more $200/mo for a site I don't own.",
-    author: "Mike R.",
-    role: "Plumber, Bakersfield",
+    text: "Jason is genuinely extremely impressive. He is an adept coder, he can design websites and AI systems in weeks. He has transformed our business, and he can make you almost anything! Go the chaotic way!",
+    author: "Ryan & Ted",
+    role: "Business Owners",
   },
   {
-    text: "The missed-call text-back alone paid for itself in the first week. I was losing jobs to voicemail and didn't even know it.",
-    author: "David T.",
-    role: "HVAC Contractor, Kern County",
+    text: "Jason did an amazing job building my website — from live results to sleek design he did it all. Also more affordable than 85% of the other companies out there.",
+    author: "Edwin Ward",
+    role: "Website Client",
   },
   {
-    text: "My old site was on Wix and nobody could find me. COAI rebuilt it, fixed my Google profile, and I'm actually getting calls now.",
-    author: "Tony M.",
-    role: "Electrician, Bakersfield",
+    text: "Great professional work and talented. I started making money with the website he built me.",
+    author: "Los boricuas",
+    role: "Restaurant Owner, Bakersfield",
   },
 ];
 
@@ -179,7 +179,7 @@ export function LandingHomeRevamp() {
                       {i === 1 && (
                         <div className="service-testi-inline">
                           <span className="service-testi-stars" aria-label="5 out of 5 stars">★★★★★</span>
-                          <p>&ldquo;COAI rebuilt it and I&apos;m actually getting calls now.&rdquo; — <strong>Tony M., Electrician</strong></p>
+                          <p>&ldquo;Jason helped me build a website for my business, increased my online presence.&rdquo; — <strong>Christopher Moore</strong></p>
                         </div>
                       )}
                     </div>
@@ -275,8 +275,8 @@ export function LandingHomeRevamp() {
                 <div className="final-cta-social">
                   <div className="final-cta-testi">
                     <span className="testi-stars" aria-label="5 out of 5 stars">★★★★★</span>
-                    <p>&ldquo;The missed-call text-back alone paid for itself in the first week. I was losing jobs to voicemail and didn&apos;t even know it.&rdquo;</p>
-                    <span className="testi-attribution">— David T., HVAC Contractor, Kern County</span>
+                    <p>&ldquo;Jason just completed a website for our Record Label. He did professional, technical, amazing job on our website.&rdquo;</p>
+                    <span className="testi-attribution">— Matthew Hoover, PWR Records</span>
                   </div>
                   <div className="final-cta-badges">
                     <span className="trust-badge">Local Bakersfield Owners</span>
