@@ -1,3 +1,4 @@
+﻿/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
@@ -53,12 +54,6 @@ const products = [
     ],
     cta: "See Your Grade",
   },
-];
-
-const howSteps = [
-  { step: "1", title: "We Audit", desc: "Free 20-minute screen-share. We check your site speed, Google profile, schema, and lead flow — then hand you a written report with prioritized fixes and dollar-figure revenue impact." },
-  { step: "2", title: "We Build", desc: "No templates, no drag-and-drop. We hand-code a sovereign site you own completely, with clear pricing you approve before we start. Machine-readable schema embedded from day one — AI engines can extract your business facts immediately." },
-  { step: "3", title: "You Win", desc: "More calls, more booked jobs, less stress. Your site works for you 24/7 — capturing leads from Google search, AI chat answers, and missed-call recovery in one unified system." },
 ];
 
 const testimonials = [
