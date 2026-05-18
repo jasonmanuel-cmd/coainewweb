@@ -21,7 +21,7 @@ const products = [
     icon: Shield,
     tag: "Get More Calls",
     name: "LeadShield",
-    desc: "Stop losing jobs to voicemail. LeadShield instantly texts every missed caller back, scores them HOT/WARM/COLD, and re-engages cold leads automatically. One HVAC contractor recovered 12+ new jobs in the first week.",
+    desc: "LeadShield captures every missed call for trades businesses. It auto-texts each missed caller back within seconds, scores leads HOT/WARM/COLD by response, and runs automated follow-up sequences until the lead converts or opts out. One HVAC contractor recovered 12+ new jobs in the first week — paid for itself 3x over in month one.",
     features: [
       "Auto-texts missed callers in seconds",
       "Lead scoring — call the hot leads first",
@@ -34,7 +34,7 @@ const products = [
     icon: Zap,
     tag: "Rank Higher, Get Found",
     name: "COAI",
-    desc: "Generate consistent job leads with a custom website built for trades. We hand-code sovereign sites with geo-targeted schema and AI-optimized content that ranks on Google Maps and surfaces in AI search results. No Wix, no WordPress, no monthly tax.",
+    desc: "COAI websites generate consistent job leads for trades businesses. We hand-code each site with geo-targeted schema and AEO-optimized content that ranks on Google Maps and surfaces inside ChatGPT, Claude, and Perplexity AI answers. HubSpot reports 58% of Google searches now result in zero clicks — COAI websites capture that AI search traffic. No Wix, no WordPress, no monthly tax.",
     features: [
       "Custom-coded website you fully own",
       "AI receptionist (Cipher) answers calls 24/7",
@@ -47,7 +47,7 @@ const products = [
     icon: Search,
     tag: "Find Revenue Leaks",
     name: "SiteER",
-    desc: "See exactly where you're losing calls and jobs online. Free 60-second scan grades your site A–F on performance, schema, and AI readiness — with a prioritized fix list showing what's leaking revenue from your business.",
+    desc: "SiteER audits any website for revenue leaks. The free 60-second scan checks performance, schema coverage, mobile speed, and AI readiness — then assigns an A–F grade with a dollar-figure revenue impact. According to Google, a 1-second mobile delay drops conversions by 20%. SiteER shows exactly what's costing you money.",
     features: [
       "Full speed & schema audit in 60 seconds",
       "A–F grade with dollar revenue impact",
@@ -117,9 +117,9 @@ const bundles = [
 ];
 
 const howSteps = [
-  { step: "1", title: "We Audit", desc: "Free 20-minute screen-share. We check your site speed, Google profile, schema, and lead flow — then hand you a written report." },
-  { step: "2", title: "We Build", desc: "No templates, no drag-and-drop. We hand-code a sovereign site you own completely, with pricing you approve before we start." },
-  { step: "3", title: "You Win", desc: "More calls, more booked jobs, less stress. Your site works for you 24/7 — and you can call us anytime." },
+  { step: "1", title: "We Audit", desc: "Free 20-minute screen-share. We check your site speed, Google profile, schema, and lead flow — then hand you a written report with prioritized fixes and dollar-figure revenue impact." },
+  { step: "2", title: "We Build", desc: "No templates, no drag-and-drop. We hand-code a sovereign site you own completely, with clear pricing you approve before we start. Machine-readable schema embedded from day one — AI engines can extract your business facts immediately." },
+  { step: "3", title: "You Win", desc: "More calls, more booked jobs, less stress. Your site works for you 24/7 — capturing leads from Google search, AI chat answers, and missed-call recovery in one unified system." },
 ];
 
 const testimonials = [

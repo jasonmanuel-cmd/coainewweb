@@ -46,7 +46,7 @@ export const GEO = {
 } as const;
 
 export const SITE_DESCRIPTION =
-  "Structural digital audits, AEO, GEO, and technical SEO for Bakersfield and the 661. Sovereign infrastructure for operators who need speed, schema, and visibility that machines can trust.";
+  "Chaotically Organized AI builds digital lead systems for trades businesses in Bakersfield and Kern County. Sovereign websites with schema markup, AEO-optimized content, AI phone systems, and local SEO. Founder Jason Robert Manuel hand-codes every site.";
 
 export const BRAND_TAGLINE = "Where Chaos Meets Clarity";
 
@@ -57,7 +57,12 @@ export const GOOGLE_BUSINESS_PROFILE_URL = "https://share.google/QASlHnjE2K6FzdN
  * SameAs — start with GBP; add LinkedIn, YouTube, etc. when you have public URLs.
  * @see https://developers.google.com/search/docs/appearance/structured-data/organization
  */
-export const SAME_AS = [GOOGLE_BUSINESS_PROFILE_URL] as const;
+export const SAME_AS = [
+  GOOGLE_BUSINESS_PROFILE_URL,
+  "https://www.linkedin.com/company/chaoticallyorganizedai",
+  "https://x.com/COAIBakersfield",
+  "https://www.facebook.com/profile.php?id=61574535114589"
+] as const;
 
 /**
  * Map / place URL for schema `hasMap` (often the same as your public GBP link).

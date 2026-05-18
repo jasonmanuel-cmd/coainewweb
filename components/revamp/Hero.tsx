@@ -68,10 +68,10 @@ export function Hero({ onNavigate }: HeroProps) {
             Based in Bakersfield, CA · Serving the U.S.
           </div>
            <h1 className="hero-h1">
-             Get More Job Calls Without Increasing Your Ad Spend
+              Get More Job Calls Without Increasing Your Ad Spend
            </h1>
            <p className="hero-sub">
-             <strong>Chaotically Organized AI</strong> builds complete digital lead systems for trades businesses — sovereign websites you own, AI that captures missed calls, and SEO that puts you at the top of Google Maps. No jargon, no contracts, just more jobs.
+              <strong>Chaotically Organized AI</strong> builds complete digital lead systems for trades businesses. Each custom website converts visitors into booked jobs using geo-targeted schema and AI-optimized copy. According to Google, 76% of people who search for a nearby service visit a business within 24 hours — but only if they find you first. COAI websites capture this traffic, text missed callers back instantly, and rank on Google Maps. No jargon, no contracts, just more jobs.
            </p>
           <div className="hero-actions">
             <a className="btn-primary" onClick={() => onNavigate("intake")} style={{ cursor: "pointer" }}>
@@ -90,6 +90,9 @@ export function Hero({ onNavigate }: HeroProps) {
             <div className="trust-item"><CheckCircle2 className="check" size={16} aria-hidden="true" /> Clear pricing, no hidden fees</div>
             <div className="trust-item"><CheckCircle2 className="check" size={16} aria-hidden="true" /> 6+ trade sites already built and live</div>
             <div className="trust-item"><CheckCircle2 className="check" size={16} aria-hidden="true" /> Phone support — talk to a human</div>
+            <div className="trust-item" style={{ gridColumn: "1 / -1", fontSize: "12px", color: "var(--cream-dim)", marginTop: "4px" }}>
+              Source: <a href="https://www.thinkwithgoogle.com/data/near-me-micro-moments-statistics/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--amber)", textDecoration: "underline" }}>Google — 76% of local searchers visit a business within 24 hours</a>
+            </div>
           </div>
           <div className="trust-badges">
             <Image src="/logo.png" alt="COAI" width={24} height={24} style={{ borderRadius: 4, objectFit: "contain" }} />
