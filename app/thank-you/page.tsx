@@ -3,10 +3,10 @@ import Link from "next/link";
 import { CONTACT, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Thank You | Chaotically Organized AI",
+  title: "Purchase Confirmed",
   description: "Your purchase is confirmed. We'll follow up within 2 hours.",
   openGraph: {
-    title: "Thank You | Chaotically Organized AI",
+    title: "Purchase Confirmed",
     description: "Your purchase is confirmed. We'll follow up within 2 hours.",
     url: `${SITE_URL}/thank-you`,
   },

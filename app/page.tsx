@@ -4,7 +4,7 @@ import { SITE_URL, ORG_ID } from "@/lib/site";
 import { JsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "COAI — Get More Job Calls With a Digital Lead System for Your Trades Business",
+  title: "COAI — Digital Lead Systems for Trades",
   description:
     "Stop losing jobs to missed calls and bad websites. COAI builds custom lead systems for trades businesses — websites you own, AI that texts missed callers back, and SEO that puts you on top of Google. Free 20-min audit.",
   openGraph: {

@@ -25,7 +25,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/faq",
     "/about",
     "/contact",
-    "/intake"
+    "/intake",
+    "/privacy",
+    "/terms"
   ].map((path) => {
     const priority = tier1.has(path) ? 1 : 0.8;
     const lastModified = (path === "/" || path === "/intake") ? "2026-05-01" : "2026-04-01";

@@ -19,7 +19,7 @@ const sovereignServiceDescription =
   "Structural digital audits, AI automation, and sovereign website builds for Bakersfield operators — infrastructure you own outright.";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Services | Chaotically Organized AI — Bakersfield 661",
+  title: { absolute: "Services | Chaotically Organized AI — Bakersfield 661" },
   description:
     "Structural audits, AEO systems, AI automation, and sovereign website builds for Bakersfield operators. See exactly what COAI delivers.",
   path: "/services"

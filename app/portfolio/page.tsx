@@ -20,7 +20,7 @@ const TICKER = [
 ];
 
 export const metadata: Metadata = pageMetadata({
-  title: "Portfolio — Proof of Work | Chaotically Organized AI — Bakersfield 661",
+  title: { absolute: "Portfolio — Proof of Work | COAI" },
   description:
     "Real websites built by Chaotically Organized AI for real Bakersfield-area operators. See the work, read the outcomes.",
   path: "/portfolio"

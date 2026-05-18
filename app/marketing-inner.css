@@ -41,7 +41,7 @@
 
 .m-ticker-track span {
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--m-green);
   letter-spacing: 0.14em;
   padding: 0 2rem;
@@ -79,7 +79,7 @@
 
 .m-nav-logo {
   text-decoration: none;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
   color: var(--m-white);
@@ -124,7 +124,7 @@
   align-items: center;
   gap: 6px;
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--m-green);
   opacity: 0.8;
 }
@@ -159,7 +159,7 @@
   color: var(--m-black);
   padding: 8px 14px;
   border-radius: 4px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-decoration: none;
@@ -258,7 +258,7 @@
 
 .m-section-label {
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.2em;
   color: var(--m-green);
   text-transform: uppercase;
@@ -279,7 +279,7 @@
 
 .m-section-label-left {
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.2em;
   color: var(--m-green);
   text-transform: uppercase;
@@ -358,7 +358,7 @@
 }
 
 .m-stat-pill .m-lbl {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--m-muted);
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -379,7 +379,7 @@
   border: 1px solid var(--m-border);
   color: var(--m-muted);
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.12em;
   padding: 7px 16px;
   border-radius: 2px;
@@ -455,7 +455,7 @@
   top: 1.2rem;
   right: 1.2rem;
   font-family: var(--font-mono), monospace;
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   padding: 3px 8px;
   border-radius: 2px;
@@ -470,7 +470,7 @@
 
 .m-card-industry-tag {
   font-family: var(--font-mono), monospace;
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   padding: 3px 10px;
@@ -519,7 +519,7 @@
 
 .m-card-location {
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--m-muted);
   letter-spacing: 0.08em;
 }
@@ -550,7 +550,7 @@
 
 .m-card-built-label {
   font-family: var(--font-mono), monospace;
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.15em;
   color: var(--m-muted);
   text-transform: uppercase;
@@ -566,7 +566,7 @@
 .m-built-tag {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--m-border);
-  font-size: 11px;
+  font-size: 12px;
   color: var(--m-muted);
   padding: 3px 8px;
   border-radius: 2px;
@@ -795,7 +795,7 @@
 
 .m-service-panel-label {
   font-family: var(--font-mono), monospace;
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.16em;
   color: var(--m-muted);
   text-transform: uppercase;
@@ -862,7 +862,7 @@
 }
 
 .m-serve-sub {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--m-muted);
 }
 
@@ -916,7 +916,7 @@
 .m-step-tag {
   display: inline-block;
   font-family: var(--font-mono), monospace;
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.12em;
   background: var(--m-green-dim);
   border: 1px solid rgba(0, 255, 136, 0.2);
@@ -1028,7 +1028,7 @@
 
 .m-founder-title {
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--m-green);
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1078,7 +1078,7 @@
 
 .m-story-year {
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--m-green);
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1123,7 +1123,7 @@
 
 .m-value-code {
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--m-green);
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1165,7 +1165,7 @@
 
 .m-protocol-label {
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--m-green);
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -1214,7 +1214,7 @@
 
 .m-faq-nav-label {
   font-family: var(--font-mono), monospace;
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.18em;
   color: var(--m-muted);
   text-transform: uppercase;
@@ -1263,7 +1263,7 @@
 
 .m-faq-section-title {
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.18em;
   color: var(--m-green);
   text-transform: uppercase;
@@ -1376,7 +1376,7 @@
 }
 
 .m-footer-meta {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--m-muted);
   margin: 0;
 }
@@ -1434,7 +1434,7 @@ body:has(.m-page) .scanline-overlay {
 
 .m-section-label {
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.2em;
   color: var(--m-green);
   text-transform: uppercase;
@@ -1576,7 +1576,7 @@ body:has(.m-page) .scanline-overlay {
   background: var(--m-green);
   color: var(--m-black);
   font-family: var(--font-mono), monospace;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.12em;
   padding: 4px 12px;
@@ -1589,7 +1589,7 @@ body:has(.m-page) .scanline-overlay {
 
 .m-pkg-tier {
   font-family: var(--font-mono), monospace;
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.18em;
   color: var(--m-muted);
   text-transform: uppercase;
@@ -1657,7 +1657,7 @@ body:has(.m-page) .scanline-overlay {
 .m-pkg-features .m-feat-icon {
   color: var(--m-green);
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-size: 12px;
   flex-shrink: 0;
   margin-top: 2px;
 }
@@ -1677,7 +1677,7 @@ body:has(.m-page) .scanline-overlay {
 
 .m-pkg-meta {
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--m-muted);
 }
 
@@ -1731,7 +1731,7 @@ body:has(.m-page) .scanline-overlay {
   padding: 1rem 1.5rem;
   text-align: left;
   font-weight: 600;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--m-muted);
@@ -1961,7 +1961,7 @@ body:has(.m-page) .scanline-overlay {
 
 .m-info-block-label {
   font-family: var(--font-mono), monospace;
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.18em;
   color: var(--m-muted);
   text-transform: uppercase;
@@ -1981,7 +1981,7 @@ body:has(.m-page) .scanline-overlay {
 
 .m-info-icon {
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--m-green);
   min-width: 20px;
 }
@@ -2026,7 +2026,7 @@ body:has(.m-page) .scanline-overlay {
 
 .m-cipher-box-label {
   font-family: var(--font-mono), monospace;
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.18em;
   color: var(--m-green);
   text-transform: uppercase;
@@ -2159,7 +2159,7 @@ body:has(.m-page) .scanline-overlay {
 }
 
 .m-form-note {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--m-muted);
   text-align: center;
   margin-top: 1rem;
@@ -2203,7 +2203,7 @@ body:has(.m-page) .scanline-overlay {
 
 .m-step-counter {
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--m-muted);
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -2240,7 +2240,7 @@ body:has(.m-page) .scanline-overlay {
 
 .m-step-label {
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.18em;
   color: var(--m-green);
   text-transform: uppercase;
@@ -2468,7 +2468,7 @@ body:has(.m-page) .scanline-overlay {
 }
 
 .m-score-lbl {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--m-muted);
   margin-top: 4px;
   text-transform: uppercase;
@@ -2486,7 +2486,7 @@ body:has(.m-page) .scanline-overlay {
 
 .m-r-label {
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--m-green);
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -2509,7 +2509,7 @@ body:has(.m-page) .scanline-overlay {
 
 .m-priority-head {
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--m-green);
   margin-bottom: 1rem;
   letter-spacing: 0.1em;
@@ -2537,7 +2537,7 @@ body:has(.m-page) .scanline-overlay {
 
 .m-p-num {
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--m-green);
   background: var(--m-green-dim);
   border: 1px solid rgba(0, 255, 136, 0.2);
@@ -2651,7 +2651,7 @@ body:has(.m-page) .scanline-overlay {
 
 .m-col-header {
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   margin-bottom: 1.5rem;
@@ -2715,7 +2715,7 @@ body:has(.m-page) .scanline-overlay {
 }
 
 .m-stack-desc {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--m-muted);
 }
 
@@ -2740,7 +2740,7 @@ body:has(.m-page) .scanline-overlay {
   padding: 5px 14px;
   border-radius: 2px;
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.14em;
   color: var(--m-red);
   text-transform: uppercase;
@@ -2794,7 +2794,7 @@ body:has(.m-page) .scanline-overlay {
 
 .m-tb-title {
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.16em;
   color: var(--m-green);
   text-transform: uppercase;
@@ -2802,7 +2802,7 @@ body:has(.m-page) .scanline-overlay {
 
 .m-tb-version {
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--m-muted);
 }
 
@@ -2814,7 +2814,7 @@ body:has(.m-page) .scanline-overlay {
 
 .m-tb-label {
   font-family: var(--font-mono), monospace;
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.14em;
   color: var(--m-muted);
   text-transform: uppercase;
@@ -2841,7 +2841,7 @@ body:has(.m-page) .scanline-overlay {
 
 .m-jax-cap-head {
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--m-green);
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -2872,7 +2872,7 @@ body:has(.m-page) .scanline-overlay {
 
 .m-cap-icon {
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--m-green);
   background: var(--m-green-dim);
   border: 1px solid rgba(0, 255, 136, 0.15);
@@ -2895,7 +2895,7 @@ body:has(.m-page) .scanline-overlay {
 
 .m-jax-waitlist-head {
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--m-muted);
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -2948,7 +2948,7 @@ body:has(.m-page) .scanline-overlay {
 
 .m-jax-waitlist-note {
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--m-muted);
   margin-top: 10px;
   letter-spacing: 0.06em;
@@ -3030,7 +3030,7 @@ body:has(.m-page) .scanline-overlay {
 
 .m-legal-type {
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.18em;
   color: var(--m-green);
   text-transform: uppercase;
@@ -3046,7 +3046,7 @@ body:has(.m-page) .scanline-overlay {
 
 .m-legal-date {
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--m-muted);
 }
 
@@ -3102,7 +3102,7 @@ body:has(.m-page) .scanline-overlay {
 }
 
 .m-legal-foot p {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--m-muted);
   margin: 0;
 }

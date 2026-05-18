@@ -286,6 +286,28 @@ img { max-width: 100%; display: block; }
 .mobile-drawer .nav-cta { text-align: center; margin-top: 12px; }
 
 /* ======================================
+   BREADCRUMB
+====================================== */
+.breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px 32px;
+  background: rgba(11, 20, 38, 0.6);
+  border-bottom: 1px solid var(--navy-border);
+  font-size: 13px;
+}
+.breadcrumb a {
+  color: var(--cream-dim);
+  cursor: pointer;
+  transition: color .15s;
+}
+.breadcrumb a:hover { color: var(--amber); }
+.breadcrumb-sep { color: var(--cream-dim); opacity: 0.4; }
+.breadcrumb-current { color: var(--cream-muted); font-weight: 500; }
+@media (max-width: 640px) {
+  .breadcrumb { padding: 10px 20px; font-size: 12px; }
+}
+
+/* ======================================
    HERO — BIG, FRIENDLY, CLEAR
 ====================================== */
 .hero {
@@ -481,7 +503,7 @@ img { max-width: 100%; display: block; }
 .bundle-badge {
   position: absolute; top: 16px; right: -24px;
   background: var(--amber); color: var(--navy);
-  font-size: 10px; letter-spacing: 0.12em; font-weight: 700;
+  font-size: 11px; letter-spacing: 0.12em; font-weight: 700;
   padding: 4px 34px; transform: rotate(45deg);
   text-transform: uppercase;
 }
@@ -510,7 +532,7 @@ img { max-width: 100%; display: block; }
 }
 .pkg-card:hover { transform: translateY(-6px); border-color: rgba(232,160,32,0.3); box-shadow: 0 25px 60px rgba(0,0,0,0.3); }
 .pkg-featured { border-color: rgba(232,160,32,0.3); background: linear-gradient(135deg, rgba(232,160,32,0.08), rgba(232,160,32,0.03)); }
-.pkg-badge { position: absolute; top: 18px; right: 18px; background: var(--amber); color: var(--navy); font-size: 11px; font-weight: 700; padding: 4px 14px; border-radius: 20px; letter-spacing: 1px; }
+.pkg-badge { position: absolute; top: 18px; right: 18px; background: var(--amber); color: var(--navy); font-size: 12px; font-weight: 700; padding: 4px 14px; border-radius: 20px; letter-spacing: 1px; }
 .pkg-tier { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); margin-bottom: 6px; }
 .pkg-name { font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; color: var(--cream); margin-bottom: 10px; }
 .pkg-desc { font-size: 14px; color: var(--cream-dim); line-height: 1.65; margin-bottom: 16px; }
@@ -573,7 +595,7 @@ img { max-width: 100%; display: block; }
 .svc-card:hover { border-color: rgba(232,160,32,0.25); background: rgba(17,29,53,0.8); }
 .svc-card-top { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .svc-cat {
-  font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
   padding: 3px 8px; border-radius: 3px;
 }
 .svc-cat-Build { background: rgba(55,138,221,0.12); color: #85B7EB; border: 1px solid rgba(55,138,221,0.2); }
@@ -587,12 +609,12 @@ img { max-width: 100%; display: block; }
 .svc-desc { font-size: 13px; color: var(--cream-dim); line-height: 1.6; flex: 1; }
 .svc-bottom { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--navy-border); padding-top: 10px; margin-top: 4px; }
 .svc-price { font-size: 14px; color: var(--amber); font-weight: 600; }
-.svc-freq { font-size: 11px; color: var(--cream-dim); }
+.svc-freq { font-size: 12px; color: var(--cream-dim); }
 .priority-dot { width: 8px; height: 8px; border-radius: 50%; margin-left: auto; flex-shrink: 0; }
 .pd-Immediate { background: var(--teal); box-shadow: 0 0 5px rgba(29,158,117,0.5); }
 .pd-High { background: var(--amber); }
 .pd-Medium { background: #3E3D3A; }
-.new-pill { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 6px; border-radius: 3px; background: rgba(29,158,117,0.15); color: var(--teal); border: 1px solid rgba(29,158,117,0.25); }
+.new-pill { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 6px; border-radius: 3px; background: rgba(29,158,117,0.15); color: var(--teal); border: 1px solid rgba(29,158,117,0.25); }
 .legend { max-width: 1160px; margin: 0 auto; padding: 0 32px 10px; display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
 .li { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--cream-dim); }
 @media (max-width: 640px) {

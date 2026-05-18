@@ -140,6 +140,16 @@ const testimonials = [
   },
 ];
 
+const breadcrumbLabels: Record<string, string> = {
+  home: "Home",
+  pricing: "Pricing",
+  portfolio: "Portfolio",
+  about: "About",
+  faq: "FAQ",
+  contact: "Contact",
+  intake: "Free Diagnostic",
+};
+
 export function LandingHomeRevamp() {
   const [page, setPage] = useState("home");
 
@@ -328,6 +338,13 @@ export function LandingHomeRevamp() {
     <div className="revamp-shell">
       <Splash />
       <Nav activePage={page} onNavigate={navigate} />
+      {page !== "home" && (
+        <nav className="breadcrumb" aria-label="Breadcrumb">
+          <a onClick={() => navigate("home")}>Home</a>
+          <span className="breadcrumb-sep">/</span>
+          <span className="breadcrumb-current">{breadcrumbLabels[page] || page}</span>
+        </nav>
+      )}
       <main>{renderContent()}</main>
       <Footer onNavigate={navigate} />
     </div>

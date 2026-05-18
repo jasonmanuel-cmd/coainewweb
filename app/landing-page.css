@@ -39,7 +39,7 @@
 
 .lp-ticker-track span {
   font-family: var(--font-mono), "JetBrains Mono", monospace;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--lp-green);
   letter-spacing: 0.12em;
   padding: 0 2rem;
@@ -112,7 +112,7 @@
   align-items: center;
   gap: 6px;
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--lp-green);
   opacity: 0.8;
 }
@@ -172,7 +172,7 @@
   color: var(--lp-black);
   padding: 8px 16px;
   border-radius: 4px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-decoration: none;
@@ -306,7 +306,7 @@
   padding: 6px 14px;
   border-radius: 2px;
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.14em;
   color: var(--lp-green);
   margin-bottom: 2rem;
@@ -429,7 +429,7 @@
 
 .lp-trust-item .lp-check {
   color: var(--lp-green);
-  font-size: 10px;
+  font-size: 12px;
 }
 
 /* Stat banner */
@@ -462,7 +462,7 @@
 }
 
 .lp-stat-label {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--lp-muted);
   margin-top: 6px;
   letter-spacing: 0.08em;
@@ -481,7 +481,7 @@
 
 .lp-section-label {
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.2em;
   color: var(--lp-green);
   text-transform: uppercase;
@@ -539,7 +539,7 @@
   background: var(--lp-black);
   padding: 1.5rem;
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-size: 12px;
   overflow: hidden;
   position: relative;
 }
@@ -552,7 +552,7 @@
   border: 1px solid rgba(255, 59, 48, 0.4);
   color: var(--lp-red);
   font-family: var(--font-mono), monospace;
-  font-size: 9px;
+  font-size: 12px;
   padding: 3px 8px;
   letter-spacing: 0.1em;
 }
@@ -769,7 +769,7 @@
 
 .lp-roi-kicker {
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--lp-muted);
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -778,7 +778,7 @@
 
 .lp-roi-formula {
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--lp-muted);
   margin-top: 1rem;
   padding: 8px;
@@ -828,7 +828,7 @@
   transform: translateX(-50%);
   background: var(--lp-green);
   color: var(--lp-black);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.1em;
   padding: 3px 12px;
@@ -839,7 +839,7 @@
 
 .lp-pkg-tier {
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--lp-green);
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -969,7 +969,7 @@
 }
 
 .lp-testi-author {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--lp-white);
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -977,7 +977,7 @@
 }
 
 .lp-testi-role {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--lp-muted);
   margin-top: 2px;
 }
@@ -1132,14 +1132,14 @@
 
 .lp-footer-address {
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--lp-muted);
   margin: 0.5rem 0 0;
   line-height: 1.8;
 }
 
 .lp-footer-col h4 {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1180,7 +1180,7 @@
 }
 
 .lp-footer-bottom p {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--lp-muted);
   margin: 0;
 }
@@ -1199,7 +1199,7 @@
   border: none;
   color: var(--lp-muted);
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   padding: 5px 10px;
   cursor: pointer;
   letter-spacing: 0.05em;
@@ -1246,7 +1246,7 @@
 
 .lp-jax-text {
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--lp-green);
   letter-spacing: 0.08em;
 }
@@ -1289,7 +1289,7 @@ body:has(.lp-page) .scanline-overlay {
 }
 
 .lp-lh-kicker {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -1373,7 +1373,7 @@ body:has(.lp-page) .scanline-overlay {
 }
 
 .lp-lh-strategy-label {
-  font-size: 11px;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: #666;
@@ -1413,7 +1413,7 @@ body:has(.lp-page) .scanline-overlay {
 }
 
 .lp-lh-meta {
-  font-size: 11px;
+  font-size: 12px;
   color: #666;
   text-align: center;
   margin: 0 auto 20px;
@@ -1481,7 +1481,7 @@ body:has(.lp-page) .scanline-overlay {
 }
 
 .lp-lh-card-label {
-  font-size: 11px;
+  font-size: 12px;
   color: #666;
   text-align: center;
   font-weight: 600;
