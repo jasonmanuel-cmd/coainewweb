@@ -70,10 +70,14 @@ export function Hero({ onNavigate }: HeroProps) {
            <h1 className="hero-h1">
               Get More Job Calls Without Increasing Your Ad Spend
            </h1>
-           <p className="hero-sub">
-              <strong>Chaotically Organized AI</strong> builds complete digital lead systems for trades businesses. Each custom website converts visitors into booked jobs using geo-targeted schema and AI-optimized copy. According to Google, 76% of people who search for a nearby service visit a business within 24 hours — but only if they find you first. COAI websites capture this traffic, text missed callers back instantly, and rank on Google Maps. No jargon, no contracts, just more jobs.
-           </p>
-          <div className="hero-actions">
+            <p className="hero-sub">
+               <strong>Chaotically Organized AI</strong> builds complete digital lead systems for trades businesses. Each custom website converts visitors into booked jobs using geo-targeted schema and AI-optimized copy. According to Google, 76% of people who search for a nearby service visit a business within 24 hours — but only if they find you first. COAI websites capture this traffic, text missed callers back instantly, and rank on Google Maps. No jargon, no contracts, just more jobs.
+            </p>
+           <div className="hero-google-rating">
+             <div className="hero-google-stars" aria-label="5.0 out of 5 stars">★★★★★</div>
+             <span className="hero-google-text">5.0 on Google · 8 reviews</span>
+           </div>
+           <div className="hero-actions">
             <a className="btn-primary" onClick={() => onNavigate("intake")} style={{ cursor: "pointer" }}>
               Get Your Free Digital Audit <ArrowRight size={16} aria-hidden="true" />
             </a>
