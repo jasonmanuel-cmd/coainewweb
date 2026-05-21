@@ -72,7 +72,7 @@ const CATS = [
   { key: "Strategy", label: "Strategy" },
 ];
 
-export function ServicesGrid() {
+export function PricingServicesCatalog() {
   const [activeCat, setActiveCat] = useState("all");
 
   const filtered = activeCat === "all"
@@ -80,15 +80,13 @@ export function ServicesGrid() {
     : SVC.filter((s) => s.cat === activeCat);
 
   return (
-    <div id="services">
-      <div className="svc-header">
-        <div className="container">
-          <span className="section-eyebrow">Complete Menu</span>
-          <h2 className="section-title">Every service <span className="text-amber">we offer.</span></h2>
-          <p className="section-sub" style={{ margin: "0 auto 30px" }}>
-            Filter by category. Prices listed are starting points — complex jobs quoted on scope.
-          </p>
-        </div>
+    <section className="pricing-services-catalog">
+      <div className="container">
+        <span className="section-eyebrow">Complete Service Catalog</span>
+        <h2 className="section-title">Every service <span className="text-amber">we offer.</span></h2>
+        <p className="section-sub" style={{ margin: "0 auto 30px" }}>
+          Filter by category. Prices listed are starting points — complex jobs quoted on scope.
+        </p>
       </div>
 
       <div className="legend">
@@ -136,7 +134,6 @@ export function ServicesGrid() {
         )}
       </div>
 
-      {/* CTA at bottom of grid */}
       <div className="container" style={{ textAlign: "center", paddingBottom: "80px" }}>
         <p style={{ color: "var(--cream-dim)", marginBottom: "20px", fontSize: "15px" }}>
           Don&apos;t see what you need? Call us — we probably do it.
@@ -151,6 +148,6 @@ export function ServicesGrid() {
           </a>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

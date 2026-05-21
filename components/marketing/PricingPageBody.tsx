@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PricingServicesCatalog } from "@/components/pricing/PricingServicesCatalog";
 
 export function PricingPageBody() {
   return (
@@ -334,6 +335,10 @@ export function PricingPageBody() {
             </div>
           </div>
         </div>
+      </section>
+
+      <section className="m-full-section">
+        <PricingServicesCatalog />
       </section>
 
       <div className="m-bottom-cta">
