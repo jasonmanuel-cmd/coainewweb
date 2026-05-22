@@ -32,7 +32,6 @@ const nextConfig: NextConfig = {
     return [
       // Revamp: old marketing pages redirect to new SPA home
       { source: "/services", destination: "/", permanent: true },
-      { source: "/pricing", destination: "/", permanent: true },
       { source: "/portfolio", destination: "/", permanent: true },
       { source: "/about", destination: "/", permanent: true },
       { source: "/faq", destination: "/", permanent: true },
