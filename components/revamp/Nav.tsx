@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { CalendarDays, Menu, X } from "lucide-react";
 
 interface NavProps {
@@ -47,12 +48,18 @@ export function Nav({ activePage, onNavigate }: NavProps) {
         <ul className="nav-links">
           {links.map((l) => (
             <li key={l.href}>
-              <a
-                className={activePage === l.href ? "active" : ""}
-                onClick={() => handleNav(l.href)}
-              >
-                {l.label}
-              </a>
+              {l.href === "pricing" ? (
+                <Link href="/pricing" className={activePage === l.href ? "active" : ""}>
+                  {l.label}
+                </Link>
+              ) : (
+                <a
+                  className={activePage === l.href ? "active" : ""}
+                  onClick={() => handleNav(l.href)}
+                >
+                  {l.label}
+                </a>
+              )}
             </li>
           ))}
           <li><a href="https://leadshield.live" target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)" }}>LeadShield</a></li>
@@ -77,9 +84,15 @@ export function Nav({ activePage, onNavigate }: NavProps) {
       {menuOpen && (
         <div className="mobile-drawer">
           {links.map((l) => (
-            <a key={l.href} onClick={() => handleNav(l.href)}>
-              {l.label}
-            </a>
+            l.href === "pricing" ? (
+              <Link key={l.href} href="/pricing" onClick={() => setMenuOpen(false)}>
+                {l.label}
+              </Link>
+            ) : (
+              <a key={l.href} onClick={() => handleNav(l.href)}>
+                {l.label}
+              </a>
+            )
           ))}
           <a className="nav-cta" onClick={() => handleNav("intake")} style={{ textAlign: "center" }}>
             Get a Free Digital Audit

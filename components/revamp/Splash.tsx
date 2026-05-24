@@ -84,9 +84,7 @@ export function Splash({
             <span className="splash__badgeText">COAI SYSTEM ONLINE</span>
           </div>
 
-          <div className="splash__mark" aria-hidden="true">
-            <span className="splash__shield" />
-          </div>
+
 
           <h2 className="splash__title">Welcome to where the future lives</h2>
           <p className="splash__sub">and tradesmen succeed.</p>

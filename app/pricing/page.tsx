@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
-import { MarketingLayout } from "@/components/marketing/MarketingLayout";
+import { PricingShell } from "@/components/pricing/PricingShell";
 import { PricingPageBody } from "@/components/marketing/PricingPageBody";
 import { pageMetadata } from "@/lib/metadata";
 import { breadcrumbJsonLd, serviceJsonLd } from "@/lib/schema";
@@ -12,21 +12,6 @@ export const metadata: Metadata = pageMetadata({
     "Clear, fixed pricing for sovereign website builds and AI automation. No retainers. No surprises. Starting at $1,200.",
   path: "/pricing"
 });
-
-const TICKER = [
-  "PRICING",
-  "FIXED PRICE",
-  "NO RETAINERS",
-  "SOVEREIGN BUILDS",
-  "STARTS AT $1,200",
-  "YOU OWN EVERYTHING",
-  "PRICING",
-  "FIXED PRICE",
-  "NO RETAINERS",
-  "SOVEREIGN BUILDS",
-  "STARTS AT $1,200",
-  "YOU OWN EVERYTHING"
-];
 
 const pricingService = serviceJsonLd(
   "Sovereign website packages and automation implementation",
@@ -47,11 +32,11 @@ export default function PricingPage() {
   };
 
   return (
-    <MarketingLayout tickerItems={TICKER} activeHref="/pricing">
+    <PricingShell>
       <JsonLd data={webPage} />
       <JsonLd data={pricingService} />
       <JsonLd data={crumbs} />
       <PricingPageBody />
-    </MarketingLayout>
+    </PricingShell>
   );
 }

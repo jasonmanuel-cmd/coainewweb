@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { CalendarDays } from "lucide-react";
 
+const isExternal = (href: string) => href.startsWith("http");
+
 interface FooterProps {
   onNavigate: (page: string) => void;
 }
@@ -42,9 +44,13 @@ export function Footer({ onNavigate }: FooterProps) {
             <ul>
               {col.links.map(([href, label]) => (
                 <li key={label}>
-                  <a onClick={() => onNavigate(href)}>
-                    {label}
-                  </a>
+                  {href === "pricing" ? (
+                    <Link href="/pricing">{label}</Link>
+                  ) : isExternal(href) ? (
+                    <a href={href} target="_blank" rel="noopener noreferrer">{label}</a>
+                  ) : (
+                    <a onClick={() => onNavigate(href)}>{label}</a>
+                  )}
                 </li>
               ))}
             </ul>
