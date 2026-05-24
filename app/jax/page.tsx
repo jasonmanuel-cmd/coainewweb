@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { JaxWaitlistForm } from "@/components/jax/JaxWaitlistForm";
@@ -9,24 +9,14 @@ import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: "JAX Sentinel — AI Diagnostic Engine",
+    title: "JAX Sentinel â€” AI Diagnostic Engine",
     description:
-      "JAX Sentinel — the COAI autonomous AI diagnostic and visibility engine. Pre-deployment. Register for early access.",
+      "JAX Sentinel â€” the COAI autonomous AI diagnostic and visibility engine. Pre-deployment. Register for early access.",
     path: "/jax"
   }),
   robots: { index: false }
 };
 
-const TICKER = [
-  "JAX SENTINEL",
-  "PRE-DEPLOYMENT",
-  "EARLY ACCESS",
-  "REDSCREEN v2",
-  "AEO · SCHEMA · GBP",
-  "JAX SENTINEL",
-  "PRE-DEPLOYMENT",
-  "EARLY ACCESS"
-];
 
 export default function JaxPage() {
   const crumbs = breadcrumbJsonLd([
@@ -41,7 +31,7 @@ export default function JaxPage() {
   };
 
   return (
-    <MarketingLayout tickerItems={TICKER} activeHref="/jax">
+    <MarketingLayout activeHref="/jax">
       <JsonLd data={crumbs} />
       <JsonLd data={webPage} />
       <div className="m-jax-main">
@@ -57,15 +47,15 @@ export default function JaxPage() {
           </h1>
           <p className="m-jax-sub">
             COAI&apos;s autonomous AI diagnostic and visibility engine.{" "}
-            <strong>JAX scans your entire digital presence in real time</strong> — performance, schema integrity, AEO
-            readiness, GBP alignment, and competitor gap analysis — and returns a prioritized action report in under 3
+            <strong>JAX scans your entire digital presence in real time</strong> â€” performance, schema integrity, AEO
+            readiness, GBP alignment, and competitor gap analysis â€” and returns a prioritized action report in under 3
             minutes. No form. No call. Just answers.
           </p>
 
           <div className="m-tech-brief" id="technical-brief">
             <div className="m-tb-header">
-              <span className="m-tb-title">Technical Brief · v0.9.2</span>
-              <span className="m-tb-version">Build: 2026.Q2 · Status: BETA</span>
+              <span className="m-tb-title">Technical Brief Â· v0.9.2</span>
+              <span className="m-tb-version">Build: 2026.Q2 Â· Status: BETA</span>
             </div>
             <div className="m-tb-grid">
               <div>
@@ -82,15 +72,15 @@ export default function JaxPage() {
               </div>
               <div>
                 <div className="m-tb-label">AEO Surfaces Checked</div>
-                <div className="m-tb-value">ChatGPT · Perplexity · Gemini · Siri</div>
+                <div className="m-tb-value">ChatGPT Â· Perplexity Â· Gemini Â· Siri</div>
               </div>
               <div>
                 <div className="m-tb-label">GBP Alignment</div>
-                <div className="m-tb-value m-tb-amber">Active · Phase II</div>
+                <div className="m-tb-value m-tb-amber">Active Â· Phase II</div>
               </div>
               <div>
                 <div className="m-tb-label">Competitor Intelligence</div>
-                <div className="m-tb-value m-tb-red">Phase III — Roadmap</div>
+                <div className="m-tb-value m-tb-red">Phase III â€” Roadmap</div>
               </div>
               <div>
                 <div className="m-tb-label">Output Format</div>
@@ -108,7 +98,7 @@ export default function JaxPage() {
             <li>
               <span className="m-cap-icon">SCAN</span>
               <div className="m-cap-text">
-                Full site performance audit — Core Web Vitals, load time, mobile speed, render blocking
+                Full site performance audit â€” Core Web Vitals, load time, mobile speed, render blocking
                 <span className="m-cap-sub">
                   Returns scored report against industry baseline for your business category
                 </span>
@@ -117,21 +107,21 @@ export default function JaxPage() {
             <li>
               <span className="m-cap-icon">SCHEMA</span>
               <div className="m-cap-text">
-                Structured data integrity check — missing entities, malformed markup, coverage gaps
+                Structured data integrity check â€” missing entities, malformed markup, coverage gaps
                 <span className="m-cap-sub">Maps exactly which AI surfaces are misreading or ignoring your business</span>
               </div>
             </li>
             <li>
               <span className="m-cap-icon">AEO</span>
               <div className="m-cap-text">
-                Answer engine readiness — how AI tools currently describe your business
+                Answer engine readiness â€” how AI tools currently describe your business
                 <span className="m-cap-sub">Live test across ChatGPT, Perplexity, Google AI, and voice assistants</span>
               </div>
             </li>
             <li>
               <span className="m-cap-icon">LEAK</span>
               <div className="m-cap-text">
-                Revenue leak calculation — missed call volume × close rate × average ticket
+                Revenue leak calculation â€” missed call volume Ã— close rate Ã— average ticket
                 <span className="m-cap-sub">Converts technical failures into dollar amounts your accountant can read</span>
               </div>
             </li>
@@ -142,7 +132,7 @@ export default function JaxPage() {
 
           <div className="m-cta-row" style={{ justifyContent: "center", marginTop: "1.25rem" }}>
             <Link href="/intake" className="m-btn-primary">
-              Run My Diagnostic →
+              Run My Diagnostic â†’
             </Link>
             <Link href="/contact" className="m-btn-ghost">
               Talk to Jason
@@ -153,7 +143,7 @@ export default function JaxPage() {
           </div>
 
           <p className="m-jax-foot-link">
-            <Link href="/">← Return to COAI</Link>
+            <Link href="/">â† Return to COAI</Link>
           </p>
         </div>
       </div>

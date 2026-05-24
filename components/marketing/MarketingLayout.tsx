@@ -1,21 +1,18 @@
 import type { ReactNode } from "react";
-import { MarketingFooter } from "@/components/marketing/MarketingFooter";
-import { MarketingNav } from "@/components/marketing/MarketingNav";
-import { MarketingTicker } from "@/components/marketing/MarketingTicker";
+import { RevampPageNav } from "@/components/revamp/RevampPageNav";
+import { PageFooter } from "@/components/revamp/PageFooter";
 
 type MarketingLayoutProps = {
-  tickerItems: string[];
   activeHref?: string;
   children: ReactNode;
 };
 
-export function MarketingLayout({ tickerItems, activeHref, children }: MarketingLayoutProps) {
+export function MarketingLayout({ activeHref, children }: MarketingLayoutProps) {
   return (
     <div className="m-page">
-      <MarketingTicker items={tickerItems} />
-      <MarketingNav activeHref={activeHref} />
+      <RevampPageNav activeHref={activeHref} />
       {children}
-      <MarketingFooter />
+      <PageFooter />
     </div>
   );
 }

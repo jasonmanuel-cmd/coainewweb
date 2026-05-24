@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { ContactMarketingForm } from "@/components/contact/ContactMarketingForm";
 import { JsonLd } from "@/components/JsonLd";
@@ -8,23 +8,10 @@ import { breadcrumbJsonLd } from "@/lib/schema";
 import { BUSINESS_HOURS_LABEL, CONTACT, GOOGLE_BUSINESS_PROFILE_URL, LEGAL_NAME, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Contact — Bakersfield Office",
-  description: `Contact Chaotically Organized AI in Bakersfield, CA. Same-day response from Jason. Call ${CONTACT.phoneDisplay} or send a message — no gatekeepers.`,
+  title: "Contact â€” Bakersfield Office",
+  description: `Contact Chaotically Organized AI in Bakersfield, CA. Same-day response from Jason. Call ${CONTACT.phoneDisplay} or send a message â€” no gatekeepers.`,
   path: "/contact"
 });
-
-const TICKER = [
-  "CONTACT",
-  CONTACT.phoneDisplay,
-  "BAKERSFIELD CA",
-  "SAME-DAY RESPONSE",
-  "CIPHER LIVE 24/7",
-  "CONTACT",
-  CONTACT.phoneDisplay,
-  "BAKERSFIELD CA",
-  "SAME-DAY RESPONSE",
-  "CIPHER LIVE 24/7"
-];
 
 export default async function ContactPage({
   searchParams
@@ -46,7 +33,7 @@ export default async function ContactPage({
   ]);
 
   return (
-    <MarketingLayout tickerItems={TICKER} activeHref="/contact">
+    <MarketingLayout activeHref="/contact">
       <JsonLd data={contactPage} />
       <JsonLd data={crumbs} />
 
@@ -61,7 +48,7 @@ export default async function ContactPage({
           </h1>
           <p className="m-hero-sub">
             Call, text, or send a message. Same-day response guaranteed. If you&apos;re outside business hours, Cipher
-            handles the first contact — Jason follows up personally.
+            handles the first contact â€” Jason follows up personally.
           </p>
         </div>
       </div>
@@ -71,7 +58,7 @@ export default async function ContactPage({
           <div className="m-info-block">
             <div className="m-info-block-label">Direct Contact</div>
             <div className="m-info-line">
-              <span className="m-info-icon">☎</span>
+              <span className="m-info-icon">â˜Ž</span>
               <span className="m-info-text">
                 <Link href={`tel:${CONTACT.phoneE164}`}>{CONTACT.phoneDisplay}</Link>
               </span>
@@ -83,7 +70,7 @@ export default async function ContactPage({
               </span>
             </div>
             <div className="m-info-line">
-              <span className="m-info-icon">◉</span>
+              <span className="m-info-icon">â—‰</span>
               <span className="m-info-text">
                 {CONTACT.addressLine}, {CONTACT.city}, {CONTACT.region} {CONTACT.postalCode}
               </span>
@@ -93,7 +80,7 @@ export default async function ContactPage({
           <div className="m-cipher-box">
             <div className="m-cipher-box-label">
               <span className="m-cipher-dot" />
-              Cipher AI — Live 24/7
+              Cipher AI â€” Live 24/7
             </div>
             <p>
               After-hours? Cipher picks up immediately, qualifies your inquiry, and routes to Jason for a
@@ -118,13 +105,13 @@ export default async function ContactPage({
               <span className="m-info-icon">G</span>
               <span className="m-info-text">
                 <Link href={GOOGLE_BUSINESS_PROFILE_URL} target="_blank" rel="noopener noreferrer">
-                  Google Business Profile →
+                  Google Business Profile â†’
                 </Link>
               </span>
             </div>
             <div className="m-info-line">
-              <span className="m-info-icon">◈</span>
-              <span className="m-info-text">{LEGAL_NAME} — registered California LLC</span>
+              <span className="m-info-icon">â—ˆ</span>
+              <span className="m-info-text">{LEGAL_NAME} â€” registered California LLC</span>
             </div>
           </div>
         </div>

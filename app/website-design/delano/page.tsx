@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { MarketingLayout } from "@/components/marketing/MarketingLayout";
@@ -13,7 +13,7 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function DelanoWebsiteDesignPage() {
-  const city = SERVED_CITIES.delano;
+
   const crumbs = breadcrumbJsonLd([
     { name: "Home", path: "/" },
     { name: "Website design", path: "/website-design" },
@@ -28,7 +28,7 @@ export default function DelanoWebsiteDesignPage() {
   };
 
   return (
-    <MarketingLayout tickerItems={city.ticker} activeHref="/website-design">
+    <MarketingLayout activeHref="/website-design">
       <JsonLd data={webPage} />
       <JsonLd data={crumbs} />
       <JsonLd data={service} />
@@ -45,7 +45,7 @@ export default function DelanoWebsiteDesignPage() {
           </p>
           <div className="m-cta-row">
             <Link href="/intake" className="m-btn-primary">
-              Run Delano Diagnostic →
+              Run Delano Diagnostic â†’
             </Link>
             <Link href="/website-design/kern-county" className="m-btn-ghost">
               Kern County Hub
@@ -74,8 +74,8 @@ export default function DelanoWebsiteDesignPage() {
           </h2>
           <div className="m-text-block">
             <p>
-              If your Delano business is relying on a Facebook page or a十年前 website to bring in calls, you&apos;re
-              leaving money on the table. Google prioritizes fast, schema-rich sites for local searches — and most
+              If your Delano business is relying on a Facebook page or aåå¹´å‰ website to bring in calls, you&apos;re
+              leaving money on the table. Google prioritizes fast, schema-rich sites for local searches â€” and most
               Delano trades sites simply don&apos;t have the technical foundation to rank.
             </p>
             <p>
@@ -85,7 +85,7 @@ export default function DelanoWebsiteDesignPage() {
           </div>
           <div className="m-cta-row" style={{ marginTop: "2rem" }}>
             <Link href="/intake" className="m-btn-primary">
-              Free Delano Diagnostic →
+              Free Delano Diagnostic â†’
             </Link>
             <Link href="/pricing" className="m-btn-ghost">
               See Pricing
@@ -102,12 +102,12 @@ export default function DelanoWebsiteDesignPage() {
           </h2>
           <div className="m-feature-grid">
             {[
-              { icon: "📱", title: "Mobile Speed", desc: "Most Delano searches happen on phone. We optimize for sub-3s 4G loads." },
-              { icon: "📍", title: "Local Schema", desc: "LocalBusiness schema tuned for Delano + Kern County search visibility." },
-              { icon: "📞", title: "Click-to-Call", desc: "Every page routes to a phone call or contact form. No dead ends." },
-              { icon: "🔎", title: "Google Maps SEO", desc: "GBP alignment and service-area schema for map pack rankings." },
-              { icon: "🤖", title: "AI Search Ready", desc: "Structured content so AI assistants cite your Delano business." },
-              { icon: "🏠", title: "Total Ownership", desc: "Custom code, your domain. No Wix, no Squarespace, no monthly builder tax." }
+              { icon: "ðŸ“±", title: "Mobile Speed", desc: "Most Delano searches happen on phone. We optimize for sub-3s 4G loads." },
+              { icon: "ðŸ“", title: "Local Schema", desc: "LocalBusiness schema tuned for Delano + Kern County search visibility." },
+              { icon: "ðŸ“ž", title: "Click-to-Call", desc: "Every page routes to a phone call or contact form. No dead ends." },
+              { icon: "ðŸ”Ž", title: "Google Maps SEO", desc: "GBP alignment and service-area schema for map pack rankings." },
+              { icon: "ðŸ¤–", title: "AI Search Ready", desc: "Structured content so AI assistants cite your Delano business." },
+              { icon: "ðŸ ", title: "Total Ownership", desc: "Custom code, your domain. No Wix, no Squarespace, no monthly builder tax." }
             ].map(f => (
               <div key={f.title} className="m-feature-card">
                 <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>{f.icon}</div>
@@ -143,12 +143,12 @@ export default function DelanoWebsiteDesignPage() {
           <span className="m-text-green">that actually brings in calls?</span>
         </h2>
         <p>
-          Free 20-minute diagnostic. We check your current site, Google profile, and lead flow — and hand you a written
+          Free 20-minute diagnostic. We check your current site, Google profile, and lead flow â€” and hand you a written
           report. No pitch, no pressure, just the truth.
         </p>
         <div className="m-cta-row">
           <Link href="/intake" className="m-btn-primary">
-            Get My Free Delano Audit →
+            Get My Free Delano Audit â†’
           </Link>
           <a href={`tel:${CONTACT.phoneE164}`} className="m-btn-ghost">
             Call {CONTACT.phoneDisplay}

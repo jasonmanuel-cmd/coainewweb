@@ -136,6 +136,109 @@ export function WebsiteDesignPageBody() {
         </div>
       </section>
 
+      <section className="m-marketing-section" style={{ background: "var(--m-surface)", borderTop: "1px solid var(--m-border)" }}>
+        <div className="m-container-narrow">
+          <div className="m-section-label">Emergency & Repair</div>
+          <h2 className="m-h2-marketing">
+            Website down or <span className="m-text-green">losing leads?</span>
+          </h2>
+          <p className="m-wd-lead">
+            We handle urgent website repairs for Bakersfield businesses — hacked sites, broken contact forms, SSL
+            errors, performance crashes. Most fixes are live within 48 hours. And if you&apos;re trapped on a platform
+            like Wix or WordPress that&apos;s bleeding your budget, we migrate you to sovereign infrastructure so it
+            never happens again.
+          </p>
+          <div className="m-principles-grid" style={{ marginTop: "1.5rem" }}>
+            {[
+              ["⚡", "Emergency Repairs", "Broken site? We diagnose and deploy fixes fast — typically 24-48 hours for critical issues."],
+              ["🔄", "WordPress Migration", "Ditch the plugin bloat. We migrate WP sites to fast, sovereign code — same content, 10x the performance."],
+              ["📉", "Speed Recovery", "Site slowed to a crawl? We find the bottleneck (hosting, bloat, bad code) and fix it without rebuilding."]
+            ].map(([icon, title, text]) => (
+              <div key={title} className="m-principle-card">
+                <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>{icon}</div>
+                <h3 className="m-principle-title">{title}</h3>
+                <p className="m-principle-text">{text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="m-marketing-section">
+        <div className="m-container-narrow">
+          <div className="m-section-label">WordPress Migration</div>
+          <h2 className="m-h2-marketing">
+            Stop paying the <span className="m-text-green">WordPress tax.</span>
+          </h2>
+          <p className="m-wd-lead">
+            WordPress powers 40% of the web — but for a local Bakersfield service business, it&apos;s usually overkill.
+            You&apos;re paying for hosting, plugins, themes, and constant updates just to keep a 5-page site alive.
+            We migrate WordPress sites to static sovereign code: same content, same SEO rankings, 10x the speed, zero
+            plugin maintenance, zero monthly fees beyond hosting.
+          </p>
+          <div className="m-compare-grid-wd">
+            <div className="m-compare-col m-sovereign">
+              <div className="m-col-header m-col-green">◈ After Migration</div>
+              <ul className="m-compare-list-wd">
+                {[
+                  "Load times under 2 seconds",
+                  "No plugin updates or security patches",
+                  "No WP admin to manage",
+                  "Same URLs — no SEO loss",
+                  "Hosting cost ~$5-20/mo",
+                  "Any developer can maintain it"
+                ].map((t) => (
+                  <li key={t}><span className="m-check">✓</span> {t}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="m-compare-col">
+              <div className="m-col-header m-col-red">✕ Before Migration</div>
+              <ul className="m-compare-list-wd">
+                {[
+                  "Typical 3-6 second load times",
+                  "Monthly plugin and theme updates",
+                  "Security vulnerabilities accumulate",
+                  "Hosting + plugins = $50-200+/mo",
+                  "Admin overhead just to keep it running",
+                  "Locked into WP ecosystem"
+                ].map((t) => (
+                  <li key={t}><span className="m-cross">✗</span> {t}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="m-marketing-section" style={{ background: "var(--m-surface)", borderTop: "1px solid var(--m-border)" }}>
+        <div className="m-container-narrow">
+          <div className="m-section-label">Speed Matters</div>
+          <h2 className="m-h2-marketing">
+            Every second of load time <span className="m-text-green">costs you customers.</span>
+          </h2>
+          <p className="m-wd-lead">
+            Google data shows 53% of mobile users abandon a site that takes longer than 3 seconds to load. For
+            Bakersfield service businesses, that&apos;s a homeowner clicking your competitor instead of calling you.
+            We build for sub-2-second loads on 4G by default — not through caching tricks, but through clean
+            architecture, optimized assets, and edge deployment. Speed is a structural decision, not a tweak.
+          </p>
+          <div className="m-stack-grid">
+            {[
+              ["Under 2s", "Target load time on 4G mobile"],
+              ["90+", "Target Lighthouse performance"],
+              ["Zero", "Render-blocking resources"],
+              ["Edge", "Deployed globally on CDN"]
+            ].map(([stat, label]) => (
+              <div key={stat} className="m-stack-card">
+                <div style={{ fontSize: "1.5rem", fontWeight: 700, color: "var(--m-green)" }}>{stat}</div>
+                <div className="m-stack-desc">{label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="m-marketing-section">
         <div className="m-container-narrow">
           <div className="m-section-label">Tech Stack</div>

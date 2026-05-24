@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { MarketingLayout } from "@/components/marketing/MarketingLayout";
 import { WebsiteDesignPageBody } from "@/components/marketing/WebsiteDesignPageBody";
@@ -8,24 +8,11 @@ import { SITE_URL } from "@/lib/site";
 import Link from "next/link";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Website Design — Sovereign Builds",
+  title: "Website Design â€” Sovereign Builds",
   description:
-    "Custom sovereign website design for Bakersfield service businesses. Not templates. Not Wix. Real code, real performance, full ownership.",
+    "Custom sovereign website design for Bakersfield service businesses. Not templates. Not Wix. Real code, real performance, full ownership. WordPress migration, site speed optimization, and emergency repairs available.",
   path: "/website-design"
 });
-
-const TICKER = [
-  "WEBSITE DESIGN",
-  "SOVEREIGN BUILDS",
-  "NOT TEMPLATES",
-  "FULL OWNERSHIP",
-  "AEO READY",
-  "WEBSITE DESIGN",
-  "SOVEREIGN BUILDS",
-  "NOT TEMPLATES",
-  "FULL OWNERSHIP",
-  "AEO READY"
-];
 
 export default function WebsiteDesignPage() {
   const crumbs = breadcrumbJsonLd([
@@ -45,7 +32,7 @@ export default function WebsiteDesignPage() {
   );
 
   return (
-    <MarketingLayout tickerItems={TICKER} activeHref="/website-design">
+    <MarketingLayout activeHref="/website-design">
       <JsonLd data={webPage} />
       <JsonLd data={service} />
       <JsonLd data={crumbs} />
@@ -57,10 +44,10 @@ export default function WebsiteDesignPage() {
         </h2>
         <div className="m-cta-row">
           <Link href="/website-design/kern-county" className="m-btn-primary-marketing">
-            Kern County Hub →
+            Kern County Hub â†’
           </Link>
           <Link href="/intake" className="m-btn-primary-marketing">
-            Run My Diagnostic →
+            Run My Diagnostic â†’
           </Link>
           <Link href="/website-design/bakersfield" className="m-btn-ghost-marketing">
             Bakersfield

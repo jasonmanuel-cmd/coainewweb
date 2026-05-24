@@ -97,6 +97,62 @@ export const FAQ_MARKETING_SECTIONS: FaqMarketingSection[] = [
     ]
   },
   {
+    id: "support",
+    title: "Support & Services",
+    items: [
+      {
+        question: "What does ongoing maintenance cost after my site is built?",
+        answer:
+          "As-needed support is $75/hour with no minimum. Monthly retainers start at $250 for 4 hours of ongoing care — content updates, monitoring, backups. There's no mandatory maintenance fee. You can take full ownership at launch and never pay COAI another dollar. Support is purely optional, purely on your terms."
+      },
+      {
+        question: "Can you migrate my existing Wix or Squarespace site?",
+        answer:
+          "Yes. Full migration from Wix, Squarespace, GoDaddy, WordPress, or any major platform. We preserve your domain, URLs, content, and SEO rankings — then rebuild on sovereign infrastructure. Typical migration cost is $500-1,500 for a standard 5-10 page site. You'll typically save $50-200/month on hosting and plugin fees after the move."
+      },
+      {
+        question: "Do you offer emergency repairs for sites that are down?",
+        answer:
+          "Yes. If your site is down, hacked, or losing leads due to a technical issue, we offer priority repair service. Most critical fixes are deployed within 24-48 hours. We diagnose the root cause, fix it, and recommend a permanent solution so it doesn't happen again. Emergency rates apply but we're transparent about cost before work begins."
+      },
+      {
+        question: "What happens if my site breaks after launch?",
+        answer:
+          "Your site is built on stable, minimal infrastructure with no plugins or external dependencies that can break from updates — so it's unlikely to break in the first place. If something does go wrong, COAI offers support at $75/hr. Because you own the hosting and code, you can also hire any developer to make fixes."
+      },
+      {
+        question: "Can you migrate my WordPress site to something faster?",
+        answer:
+          "Yes — this is one of our most common services. We migrate WordPress sites to static sovereign code. Same content, same SEO rankings, same domain — but load times go from 3-6 seconds to under 2 seconds, and you eliminate plugin maintenance entirely. No more monthly plugin subscriptions, no more security patches, no more WordPress admin to manage."
+      },
+      {
+        question: "Do you offer hosting?",
+        answer:
+          "We recommend and set up hosting through Vercel or Netlify — both premium platforms with edge deployment, global CDN, and 99.9% uptime. Hosting runs $5-20/month depending on traffic. You own the hosting account directly. We set it up, configure it, and hand you the credentials. If you ever want to move it, you can."
+      },
+      {
+        question: "Can you add new features to my site after it's built?",
+        answer:
+          "Yes. Adding a booking system, e-commerce store, blog, gallery, new service pages, or any feature is available at our standard hourly rate ($75/hr) or included in a monthly retainer if you have ongoing support. We scope each addition before work starts so you know exactly what it costs."
+      },
+      {
+        question: "Can you work with sites you didn't build?",
+        answer:
+          "Sometimes. We can assess third-party sites for repair, optimization, or migration work. If the site is built on clean code, we can typically work with it. If it's locked into a proprietary platform (Wix, Squarespace, GoDaddy page builder), full migration to sovereign infrastructure is usually the better option than trying to patch a rental."
+      },
+      {
+        question: "What is the turnaround time for content updates?",
+        answer:
+          "Standard content updates — pricing changes, new photos, text edits, service additions — are typically completed within 2-3 business days. Emergency fixes are 24-48 hours. Larger feature additions are scoped per project with a timeline agreed on before work starts."
+      },
+      {
+        question: "Do you offer domain registration or management?",
+        answer:
+          "We help you set up domain registration through a provider you control (typically Namecheap or Cloudflare). We configure DNS, SSL certificates, and email routing as part of every build. You own the domain account entirely. We're happy to advise on renewal management, but the account is always yours."
+      }
+    ]
+  },
+  {
     id: "technical",
     title: "Technical",
     items: [

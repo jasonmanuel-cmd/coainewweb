@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { MarketingLayout } from "@/components/marketing/MarketingLayout";
@@ -12,15 +12,6 @@ export const metadata: Metadata = pageMetadata({
     "Website design services for Kern County businesses: conversion-first builds, local schema, and ownership-first infrastructure.",
   path: "/website-design/kern-county"
 });
-
-const TICKER = [
-  "KERN COUNTY WEB DESIGN",
-  "BAKERSFIELD",
-  "DELANO",
-  "SHAFTER",
-  "SOVEREIGN BUILDS",
-  "KERN COUNTY WEB DESIGN"
-];
 
 export default function KernCountyWebsiteDesignPage() {
   const crumbs = breadcrumbJsonLd([
@@ -38,7 +29,7 @@ export default function KernCountyWebsiteDesignPage() {
   };
 
   return (
-    <MarketingLayout tickerItems={TICKER} activeHref="/website-design">
+    <MarketingLayout activeHref="/website-design">
       <JsonLd data={webPage} />
       <JsonLd data={crumbs} />
       <JsonLd data={org} />
@@ -56,7 +47,7 @@ export default function KernCountyWebsiteDesignPage() {
           </p>
           <div className="m-cta-row">
             <Link href="/intake" className="m-btn-primary">
-              Run My Free Diagnostic →
+              Run My Free Diagnostic â†’
             </Link>
             <Link href="/website-design" className="m-btn-ghost">
               Website Design Hub
@@ -79,7 +70,7 @@ export default function KernCountyWebsiteDesignPage() {
           </h2>
           <div className="m-text-block">
             <p>
-              From Bakersfield to Delano, Shafter to Ridgecrest — Kern County operators face the same challenge: getting
+              From Bakersfield to Delano, Shafter to Ridgecrest â€” Kern County operators face the same challenge: getting
               found online by local customers who are searching right now. Most trades websites in the 661 area are built
               on slow platforms with broken schema, buried contact info, and zero AI visibility.
             </p>
@@ -99,12 +90,12 @@ export default function KernCountyWebsiteDesignPage() {
           </h2>
           <div className="m-feature-grid">
             {[
-              { icon: "⚡", title: "Speed", desc: "Sub-3s mobile load times. Kern County searches are overwhelmingly mobile." },
-              { icon: "📍", title: "Local Schema", desc: "LocalBusiness + Service schema for every city we serve." },
-              { icon: "📞", title: "Lead Capture", desc: "Forms, click-to-call, intake — every visitor hits a conversion path." },
-              { icon: "🗺️", title: "GBP Alignment", desc: "Entity schema synced with your Google Business Profile." },
-              { icon: "🤖", title: "AI Readiness", desc: "Content structured for AIO, SGE, and voice assistant citations." },
-              { icon: "🔐", title: "Full Ownership", desc: "Custom code, your domain, your data. No platform lock-in ever." }
+              { icon: "âš¡", title: "Speed", desc: "Sub-3s mobile load times. Kern County searches are overwhelmingly mobile." },
+              { icon: "ðŸ“", title: "Local Schema", desc: "LocalBusiness + Service schema for every city we serve." },
+              { icon: "ðŸ“ž", title: "Lead Capture", desc: "Forms, click-to-call, intake â€” every visitor hits a conversion path." },
+              { icon: "ðŸ—ºï¸", title: "GBP Alignment", desc: "Entity schema synced with your Google Business Profile." },
+              { icon: "ðŸ¤–", title: "AI Readiness", desc: "Content structured for AIO, SGE, and voice assistant citations." },
+              { icon: "ðŸ”", title: "Full Ownership", desc: "Custom code, your domain, your data. No platform lock-in ever." }
             ].map(f => (
               <div key={f.title} className="m-feature-card">
                 <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>{f.icon}</div>
@@ -153,7 +144,7 @@ export default function KernCountyWebsiteDesignPage() {
         </p>
         <div className="m-cta-row">
           <Link href="/intake" className="m-btn-primary">
-            Run My Free Diagnostic →
+            Run My Free Diagnostic â†’
           </Link>
           <Link href="/pricing" className="m-btn-ghost">
             See Pricing

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { MarketingLayout } from "@/components/marketing/MarketingLayout";
@@ -15,15 +15,6 @@ export const metadata: Metadata = {
   robots: { index: false }
 };
 
-const TICKER = [
-  "SUBMISSION RECEIVED",
-  "2-HOUR FOLLOW-UP",
-  "DIRECT LINE TO JASON",
-  "SUBMISSION RECEIVED",
-  "2-HOUR FOLLOW-UP",
-  "DIRECT LINE TO JASON"
-];
-
 export default function IntakeConfirmationPage() {
   const crumbs = breadcrumbJsonLd([
     { name: "Home", path: "/" },
@@ -39,7 +30,7 @@ export default function IntakeConfirmationPage() {
   };
 
   return (
-    <MarketingLayout tickerItems={TICKER} activeHref="/intake">
+    <MarketingLayout activeHref="/intake">
       <JsonLd data={crumbs} />
       <JsonLd data={webPage} />
 

@@ -224,6 +224,106 @@ export function ServicesMarketingContent() {
         </div>
       </div>
 
+      <div className="m-service-block m-reverse">
+        <div>
+          <div className="m-service-num">04</div>
+          <div className="m-section-label-left">Ongoing Care</div>
+          <div className="m-service-title">
+            Website Maintenance <span className="m-text-green">&amp; Support</span>
+          </div>
+          <p className="m-service-desc">
+            Your site is live — now what? COAI offers ongoing maintenance and support for clients who want someone
+            handling updates, monitoring, and backups so you can focus on running your business. No retainers. No
+            long-term commitments. Pay for what you need, when you need it.
+          </p>
+          <ul className="m-service-list">
+            <li>
+              <strong>Content updates</strong> — pricing changes, new photos, service descriptions, seasonal promotions
+            </li>
+            <li>
+              <strong>Performance monitoring</strong> — uptime checks, speed audits, Core Web Vitals tracking
+            </li>
+            <li>
+              <strong>Security &amp; backups</strong> — regular backups, SSL renewal, vulnerability scanning
+            </li>
+            <li>
+              <strong>SEO maintenance</strong> — schema updates, metadata refreshes, Google Business Profile syncing
+            </li>
+            <li>
+              <strong>Emergency fixes</strong> — broken forms, 404 spikes, hosting issues — 48-hour turnaround
+            </li>
+            <li>
+              <strong>Feature additions</strong> — add a new service page, booking form, gallery, or blog section
+            </li>
+          </ul>
+        </div>
+        <div className="m-service-panel">
+          <div className="m-service-panel-label">Support Plans</div>
+          <div className="m-service-stat">
+            <span className="m-big">$75</span>
+            <span className="m-small">/hr — as-needed support</span>
+          </div>
+          <div className="m-service-stat">
+            <span className="m-big">$250</span>
+            <span className="m-small">/mo — 4hr monthly retainer</span>
+          </div>
+          <p className="m-service-panel-note">
+            No long-term contracts. You can cancel anytime. Support is available for COAI-built sites and
+            third-party sites we can work with (assessment required).
+          </p>
+        </div>
+      </div>
+
+      <div className="m-service-block">
+        <div>
+          <div className="m-service-num">05</div>
+          <div className="m-section-label-left">Migration Service</div>
+          <div className="m-service-title">
+            WordPress &amp; Platform <span className="m-text-green">Migration</span>
+          </div>
+          <p className="m-service-desc">
+            Trapped on Wix, Squarespace, GoDaddy, or WordPress? We migrate your entire digital presence to
+            sovereign infrastructure — without losing SEO rankings, content, or functionality. Same domain. Same
+            URLs. Same Google rankings. Just faster, cheaper to run, and fully owned by you.
+          </p>
+          <ul className="m-service-list">
+            <li>
+              <strong>Full content migration</strong> — text, images, pages, blog posts — moved as-is
+            </li>
+            <li>
+              <strong>URL preservation</strong> — no broken links, no lost rankings, 301 redirects where needed
+            </li>
+            <li>
+              <strong>Plugin audit</strong> — we identify what you actually need vs. what was bloat
+            </li>
+            <li>
+              <strong>Form &amp; lead path rebuild</strong> — contact forms, booking widgets, newsletter signups
+            </li>
+            <li>
+              <strong>Custom functionality</strong> — we rebuild essential features in clean code, no plugins
+            </li>
+            <li>
+              <strong>Full handoff</strong> — you own the code, hosting, domain, and data — no monthly fees
+            </li>
+          </ul>
+        </div>
+        <div className="m-service-panel">
+          <div className="m-service-panel-label">Typical Results</div>
+          <div className="m-service-stat">
+            <span className="m-big">3-10x</span>
+            <span className="m-small">speed improvement after migration</span>
+          </div>
+          <div className="m-service-stat">
+            <span className="m-big">$50-200</span>
+            <span className="m-small">/mo saved on hosting &amp; plugins</span>
+          </div>
+          <p className="m-service-panel-note">
+            Most Wix and WordPress sites we migrate go from 40-60 Lighthouse performance scores to 90+.
+            Migration cost depends on complexity — typically $500-1,500 for a standard 5-10 page site.
+          </p>
+        </div>
+      </div>
+
       <section className="m-section-pad" style={{ background: "var(--m-surface)", borderTop: "1px solid var(--m-border)" }}>
         <div className="m-container">
           <div className="m-section-label">Who We Serve</div>

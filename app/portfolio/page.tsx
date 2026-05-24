@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { MarketingLayout } from "@/components/marketing/MarketingLayout";
@@ -8,19 +8,8 @@ import { pageMetadata } from "@/lib/metadata";
 import { breadcrumbJsonLd } from "@/lib/schema";
 import { ORG_ID, SITE_URL } from "@/lib/site";
 
-const TICKER = [
-  "PORTFOLIO",
-  "FOOD & BEVERAGE",
-  "CREDIT RESTORATION",
-  "CONTRACTING",
-  "APPAREL & CANNABIS",
-  "PHOTOGRAPHY",
-  "INDEPENDENT MUSIC",
-  "SOVEREIGN BUILDS"
-];
-
 export const metadata: Metadata = pageMetadata({
-  title: { absolute: "Portfolio — Proof of Work | COAI" },
+  title: { absolute: "Portfolio â€” Proof of Work | COAI" },
   description:
     "Real websites built by Chaotically Organized AI for real Bakersfield-area operators. See the work, read the outcomes.",
   path: "/portfolio"
@@ -35,13 +24,13 @@ export default function PortfolioPage() {
   const collection = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Portfolio — Proof of Work",
+    name: "Portfolio â€” Proof of Work",
     url: `${SITE_URL}/portfolio`,
     publisher: { "@id": ORG_ID }
   };
 
   return (
-    <MarketingLayout tickerItems={TICKER} activeHref="/portfolio">
+    <MarketingLayout activeHref="/portfolio">
       <PortfolioEventBeacon />
       <JsonLd data={collection} />
       <JsonLd data={crumbs} />
@@ -56,7 +45,7 @@ export default function PortfolioPage() {
             <span className="m-text-green">Real infrastructure.</span>
           </h1>
           <p className="m-hero-sub">
-            Every site below is a sovereign build — custom code, owned outright by the client. No rented funnels. No
+            Every site below is a sovereign build â€” custom code, owned outright by the client. No rented funnels. No
             platform dependency. Some portfolio links are still on temporary hosting subdomains pending client DNS
             cutover. Ownership remains with the client.
           </p>
@@ -97,7 +86,7 @@ export default function PortfolioPage() {
         </p>
         <div className="m-cta-actions">
           <Link href="/intake" className="m-btn-primary">
-            Run My Free Diagnostic →
+            Run My Free Diagnostic â†’
           </Link>
           <Link href="/pricing" className="m-btn-ghost">
             View Packages

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { MarketingLayout } from "@/components/marketing/MarketingLayout";
@@ -8,12 +8,12 @@ import { CONTACT, SITE_URL, SERVED_CITIES } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Website Design Bakersfield, CA",
-  description: SERVED_CITIES.bakersfield.description,
+  description: SERVED_CITIES.bakersfield.description + " WordPress migration and speed optimization for Bakersfield operators.",
   path: "/website-design/bakersfield"
 });
 
 export default function BakersfieldWebsiteDesignPage() {
-  const city = SERVED_CITIES.bakersfield;
+
   const crumbs = breadcrumbJsonLd([
     { name: "Home", path: "/" },
     { name: "Website design", path: "/website-design" },
@@ -28,7 +28,7 @@ export default function BakersfieldWebsiteDesignPage() {
   };
 
   return (
-    <MarketingLayout tickerItems={city.ticker} activeHref="/website-design">
+    <MarketingLayout activeHref="/website-design">
       <JsonLd data={webPage} />
       <JsonLd data={crumbs} />
       <JsonLd data={service} />
@@ -45,7 +45,7 @@ export default function BakersfieldWebsiteDesignPage() {
           </p>
           <div className="m-cta-row">
             <Link href="/intake" className="m-btn-primary">
-              Get My Bakersfield Site Audit →
+              Get My Bakersfield Site Audit â†’
             </Link>
             <Link href="/website-design/kern-county" className="m-btn-ghost">
               Kern County Hub
@@ -85,7 +85,7 @@ export default function BakersfieldWebsiteDesignPage() {
           </div>
           <div className="m-cta-row" style={{ marginTop: "2rem" }}>
             <Link href="/intake" className="m-btn-primary">
-              Free Bakersfield Diagnostic →
+              Free Bakersfield Diagnostic â†’
             </Link>
             <Link href="/pricing" className="m-btn-ghost">
               See Pricing
@@ -102,12 +102,12 @@ export default function BakersfieldWebsiteDesignPage() {
           </h2>
           <div className="m-feature-grid">
             {[
-              { icon: "⚡", title: "Mobile-First Speed", desc: "Sub-3s load on 4G. Bakersfield is a mobile-first market — slow sites lose." },
-              { icon: "📍", title: "Local Schema", desc: "LocalBusiness + Service schema tuned for Bakersfield and Kern County." },
-              { icon: "🤖", title: "AI-Ready Content", desc: "Structured so Google AI, SGE, and voice assistants surface you first." },
-              { icon: "📞", title: "Lead Capture", desc: "Forms, click-to-call, intake flows — every path ends in a booked job." },
-              { icon: "🔧", title: "Industry Focus", desc: "Built for HVAC, plumbing, electrical, and service businesses that dominate 661." },
-              { icon: "🏠", title: "Full Ownership", desc: "Custom code, your domain, your data. No builder tax. No platform risk." }
+              { icon: "âš¡", title: "Mobile-First Speed", desc: "Sub-3s load on 4G. Bakersfield is a mobile-first market â€” slow sites lose." },
+              { icon: "ðŸ“", title: "Local Schema", desc: "LocalBusiness + Service schema tuned for Bakersfield and Kern County." },
+              { icon: "ðŸ¤–", title: "AI-Ready Content", desc: "Structured so Google AI, SGE, and voice assistants surface you first." },
+              { icon: "ðŸ“ž", title: "Lead Capture", desc: "Forms, click-to-call, intake flows â€” every path ends in a booked job." },
+              { icon: "ðŸ”§", title: "Industry Focus", desc: "Built for HVAC, plumbing, electrical, and service businesses that dominate 661." },
+              { icon: "ðŸ ", title: "Full Ownership", desc: "Custom code, your domain, your data. No builder tax. No platform risk." }
             ].map(f => (
               <div key={f.title} className="m-feature-card">
                 <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>{f.icon}</div>
@@ -143,12 +143,12 @@ export default function BakersfieldWebsiteDesignPage() {
           <span className="m-text-green">that actually generates calls?</span>
         </h2>
         <p>
-          Free 20-minute diagnostic. We check your current site, Google profile, and lead flow — and hand you a written
+          Free 20-minute diagnostic. We check your current site, Google profile, and lead flow â€” and hand you a written
           report. No pitch, no pressure, just the truth.
         </p>
         <div className="m-cta-row">
           <Link href="/intake" className="m-btn-primary">
-            Get My Free Bakersfield Audit →
+            Get My Free Bakersfield Audit â†’
           </Link>
           <a href={`tel:${CONTACT.phoneE164}`} className="m-btn-ghost">
             Call {CONTACT.phoneDisplay}

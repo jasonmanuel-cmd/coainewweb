@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { IntakeWizard } from "@/components/intake/IntakeWizard";
 import { JsonLd } from "@/components/JsonLd";
@@ -14,18 +14,6 @@ export const metadata: Metadata = pageMetadata({
   path: "/intake"
 });
 
-const TICKER = [
-  "GROWTH DIAGNOSTIC",
-  "FREE · NO PRESSURE",
-  "30 SECONDS",
-  "REAL DATA",
-  "CLEAR ROADMAP",
-  "GROWTH DIAGNOSTIC",
-  "FREE · NO PRESSURE",
-  "30 SECONDS",
-  "REAL DATA",
-  "CLEAR ROADMAP"
-];
 
 export default async function IntakePage({
   searchParams
@@ -50,7 +38,7 @@ export default async function IntakePage({
   };
 
   return (
-    <MarketingLayout tickerItems={TICKER} activeHref="/intake">
+    <MarketingLayout activeHref="/intake">
       <JsonLd data={webPage} />
       <JsonLd data={crumbs} />
       <IntakeWizard packageInterest={packageInterest} />
