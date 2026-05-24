@@ -85,8 +85,8 @@ export function Hero({ onNavigate }: HeroProps) {
               <CalendarDays size={18} aria-hidden="true" />
               Book Free Audit
             </a>
-            <a className="btn-phone" href="tel:6615694244">
-              (661) 569-4244
+            <a className="btn-phone" href="tel:6616591376">
+              (661) 659-1376
             </a>
           </div>
           <div className="hero-trust">

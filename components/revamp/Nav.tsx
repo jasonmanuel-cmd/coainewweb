@@ -35,7 +35,7 @@ export function Nav({ activePage, onNavigate }: NavProps) {
           <span>Based in Bakersfield · Serving businesses nationwide</span>
         </div>
         <div className="topbar-phone">
-          <a href="tel:6615694244">(661) 569-4244</a>
+          <a href="tel:6616591376">(661) 659-1376</a>
         </div>
       </div>
 
@@ -70,7 +70,7 @@ export function Nav({ activePage, onNavigate }: NavProps) {
           <CalendarDays size={16} aria-hidden="true" />
           Book Audit
         </a>
-        <a className="nav-cta" href="tel:6615694244">Call (661) 569-4244</a>
+        <a className="nav-cta" href="tel:6616591376">Call (661) 659-1376</a>
         <button
           className="hamburger"
           onClick={() => setMenuOpen(!menuOpen)}

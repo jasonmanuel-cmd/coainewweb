@@ -20,7 +20,7 @@ export function Contact() {
         <div className="container" style={{ position: "relative" }}>
           <span className="section-eyebrow">Contact</span>
           <h1 className="section-title">Let&apos;s talk.<br /><span className="text-amber">No pressure.</span></h1>
-          <p className="section-sub">Jason responds same business day. If it&apos;s urgent, call directly — (661) 569-4244. He picks up.</p>
+          <p className="section-sub">Jason responds same business day. If it&apos;s urgent, call directly — (661) 659-1376. He picks up.</p>
         </div>
       </section>
 
@@ -30,7 +30,7 @@ export function Contact() {
           <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
             <div>
               <div style={{ fontSize: ".7rem", fontWeight: 800, color: "var(--text-muted2)", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "8px" }}>Direct Line</div>
-              <a href="tel:+16615694244" style={{ fontSize: "1.8rem", fontWeight: 800, color: "var(--accent)" }}>(661) 569-4244</a>
+              <a href="tel:+16616591376" style={{ fontSize: "1.8rem", fontWeight: 800, color: "var(--accent)" }}>(661) 659-1376</a>
               <div style={{ fontSize: ".8rem", color: "var(--text-muted)", marginTop: "4px" }}>Jason picks up. No receptionist gatekeeping.</div>
             </div>
             <div>
@@ -55,7 +55,7 @@ export function Contact() {
                   <CheckCircle2 size={28} aria-hidden="true" />
                 </div>
                 <h2 style={{ fontSize: "1.5rem", fontWeight: 800, color: "#fff", marginBottom: "12px" }}>Message Received</h2>
-                <p style={{ fontSize: ".9rem", color: "var(--text-soft)", lineHeight: 1.6, marginBottom: "24px" }}>Jason will respond same business day. Data has been routed to <strong>jasonm@coaibakersfield.com</strong> &amp; <strong>frankh@coaibakersfield.com</strong>. If it&apos;s urgent, call (661) 569-4244.</p>
+                <p style={{ fontSize: ".9rem", color: "var(--text-soft)", lineHeight: 1.6, marginBottom: "24px" }}>Jason will respond same business day. Data has been routed to <strong>jasonm@coaibakersfield.com</strong> &amp; <strong>frankh@coaibakersfield.com</strong>. If it&apos;s urgent, call (661) 659-1376.</p>
                 <span style={{ fontFamily: "var(--font-mono)", fontSize: ".7rem", background: "rgba(232,160,32,0.1)", border: "1px solid rgba(232,160,32,0.22)", color: "#E8A020", padding: "4px 12px", borderRadius: 4, letterSpacing: 1, fontWeight: 700 }}>QUEUED</span>
               </div>
             ) : (
@@ -106,7 +106,7 @@ export function Contact() {
                     Send Message <ArrowRight size={16} aria-hidden="true" />
                   </button>
                   <p style={{ textAlign: "center", fontSize: ".72rem", color: "var(--text-muted2)", marginTop: "12px" }}>
-                    Or skip the form — call (661) 569-4244 directly.<br/>
+                    Or skip the form — call (661) 659-1376 directly.<br/>
                     Data routed to: jasonm@coaibakersfield.com &amp; frankh@coaibakersfield.com
                   </p>
                 </form>

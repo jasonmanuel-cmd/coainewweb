@@ -226,8 +226,8 @@ export function LandingHomeRevamp() {
                     I'm not a big agency. I'm not trying to scale to 100 clients. I take on a few at a time so each one gets my full attention. If that sounds like how business should work, let's talk.
                   </p>
                   <div className="meet-jason-actions">
-                    <a href="tel:6615694244" className="btn-phone" style={{ display: "inline-flex" }}>
-                      <Phone size={16} aria-hidden="true" /> (661) 569-4244
+                    <a href="tel:6616591376" className="btn-phone" style={{ display: "inline-flex" }}>
+                      <Phone size={16} aria-hidden="true" /> (661) 659-1376
                     </a>
                     <a className="btn-secondary" onClick={() => navigate("about")} style={{ cursor: "pointer" }}>
                       Read More About Me
@@ -356,7 +356,7 @@ export function LandingHomeRevamp() {
                     <span className="trust-badge">No Contracts</span>
                   </div>
                 </div>
-                <a href="tel:6615694244" className="cta-phone">(661) 569-4244</a>
+                <a href="tel:6616591376" className="cta-phone">(661) 659-1376</a>
                 <div className="final-cta-actions">
                   <a className="btn-primary" onClick={() => navigate("intake")} style={{ cursor: "pointer" }}>Get My Free Audit <ArrowRight size={16} aria-hidden="true" /></a>
                   <a className="btn-calendar" href="https://calendar.app.google/hswWkCmjqLEKtRuE6" target="_blank" rel="noopener noreferrer">
@@ -410,7 +410,7 @@ export function LandingHomeRevamp() {
       {/* Sticky Mobile CTA */}
       {page === "home" && (
         <div className="sticky-mobile-cta">
-          <a href="tel:6615694244" className="sticky-mobile-phone">
+          <a href="tel:6616591376" className="sticky-mobile-phone">
             <Phone size={18} aria-hidden="true" />
             Call Now
           </a>

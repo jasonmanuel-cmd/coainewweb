@@ -71,7 +71,7 @@ export const FAQ_MARKETING_SECTIONS: FaqMarketingSection[] = [
       {
         question: "What is the AI receptionist and do I need it?",
         answer:
-          "Cipher is COAI's AI receptionist — a voice and text system that answers missed calls, qualifies leads, and routes bookings 24/7 without you lifting a finger. It's deployed on COAI's own line at (661) 569-4244 — call it and hear exactly what your customers would experience. You don't need it to get a great website. But if you're missing calls after hours, dealing with unqualified leads, or losing jobs to faster-responding competitors — this is the fix."
+          "Cipher is COAI's AI receptionist — a voice and text system that answers missed calls, qualifies leads, and routes bookings 24/7 without you lifting a finger. It's deployed on COAI's own line at (661) 659-1376 — call it and hear exactly what your customers would experience. You don't need it to get a great website. But if you're missing calls after hours, dealing with unqualified leads, or losing jobs to faster-responding competitors — this is the fix."
       },
       {
         question: "What is AEO and why does it matter?",

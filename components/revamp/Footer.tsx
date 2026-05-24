@@ -30,7 +30,7 @@ export function Footer({ onNavigate }: FooterProps) {
           <address className="footer-address">
             1712 19th St #216<br />
             Bakersfield, CA 93301<br />
-            <a href="tel:6615694244">(661) 569-4244</a><br />
+            <a href="tel:6616591376">(661) 659-1376</a><br />
             <a href="mailto:jasonm@coaibakersfield.com">jasonm@coaibakersfield.com</a>
           </address>
           <div style={{ marginTop: "12px" }}>

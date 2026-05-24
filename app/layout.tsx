@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { JetBrains_Mono, Syne, Plus_Jakarta_Sans, DM_Sans } from "next/font/google";
 import Script from "next/script";
 import { headers } from "next/headers";
-import type { ReactNode } from "react";
+import { Suspense, type ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/next";
 import { AnalyticsRouteTracker } from "@/components/AnalyticsRouteTracker";
 import { AppChrome } from "@/components/AppChrome";
@@ -84,7 +84,9 @@ window.gtag = gtag;
 gtag('js', new Date());
 gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: true });`}
             </Script>
-            <AnalyticsRouteTracker />
+            <Suspense fallback={null}>
+              <AnalyticsRouteTracker />
+            </Suspense>
           </>
         ) : null}
         <Script id="speculation-rules" strategy="afterInteractive" nonce={nonce}>

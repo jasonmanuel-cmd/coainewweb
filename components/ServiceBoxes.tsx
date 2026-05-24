@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 
 export function ServiceBoxes() {
   return (
@@ -15,7 +16,7 @@ export function ServiceBoxes() {
         </ul>
         <div className="card-actions">
           <a href="https://coaibakersfield.com/home" target="_blank" rel="noopener noreferrer" className="btn">Visit Bakersfield</a>
-          <a href="/website-design" className="btn btn-ghost">Learn More</a>
+          <Link href="/website-design" className="btn btn-ghost">Learn More</Link>
         </div>
         <p className="hustle">Up-and-coming — we hustle to win your business.</p>
       </article>
@@ -30,7 +31,7 @@ export function ServiceBoxes() {
         </ul>
         <div className="card-actions">
           <a href="https://www.siteer.dev" target="_blank" rel="noopener noreferrer" className="btn">Run a Scan</a>
-          <a href="/pricing" className="btn btn-ghost">See Pricing</a>
+          <Link href="/pricing" className="btn btn-ghost">See Pricing</Link>
         </div>
         <p className="hustle">Fast turnaround — we&apos;ll fight to get your site healthy.</p>
       </article>

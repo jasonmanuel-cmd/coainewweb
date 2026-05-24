@@ -139,8 +139,8 @@ export function PricingServicesCatalog() {
           Don&apos;t see what you need? Call us — we probably do it.
         </p>
         <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
-          <a className="btn-primary" href="tel:6615694244" style={{ cursor: "pointer" }}>
-            (661) 569-4244
+          <a className="btn-primary" href="tel:6616591376" style={{ cursor: "pointer" }}>
+            (661) 659-1376
           </a>
           <a className="btn-calendar" href="https://calendar.app.google/hswWkCmjqLEKtRuE6" target="_blank" rel="noopener noreferrer">
             <CalendarDays size={18} aria-hidden="true" />
