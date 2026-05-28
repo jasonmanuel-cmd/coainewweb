@@ -1,8 +1,10 @@
 import Link from "next/link";
+import { Reveal } from "@/components/revamp/Reveal";
 
 export function WebsiteDesignPageBody() {
   return (
     <>
+      <Reveal>
       <div className="m-page-hero">
         <div className="m-grid-bg" aria-hidden />
         <div className="m-page-hero-inner">
@@ -27,7 +29,9 @@ export function WebsiteDesignPageBody() {
           </div>
         </div>
       </div>
+      </Reveal>
 
+      <Reveal>
       <section className="m-marketing-section">
         <div className="m-container-narrow">
           <div className="m-section-label">Design Principles</div>
@@ -80,7 +84,9 @@ export function WebsiteDesignPageBody() {
           </div>
         </div>
       </section>
+      </Reveal>
 
+      <Reveal>
       <section className="m-marketing-section m-wd-sovereign">
         <div className="m-container-narrow">
           <div className="m-section-label">The Ownership Question</div>
@@ -135,7 +141,9 @@ export function WebsiteDesignPageBody() {
           </div>
         </div>
       </section>
+      </Reveal>
 
+      <Reveal>
       <section className="m-marketing-section" style={{ background: "var(--m-surface)", borderTop: "1px solid var(--m-border)" }}>
         <div className="m-container-narrow">
           <div className="m-section-label">Emergency & Repair</div>
@@ -163,7 +171,9 @@ export function WebsiteDesignPageBody() {
           </div>
         </div>
       </section>
+      </Reveal>
 
+      <Reveal>
       <section className="m-marketing-section">
         <div className="m-container-narrow">
           <div className="m-section-label">WordPress Migration</div>
@@ -210,7 +220,9 @@ export function WebsiteDesignPageBody() {
           </div>
         </div>
       </section>
+      </Reveal>
 
+      <Reveal>
       <section className="m-marketing-section" style={{ background: "var(--m-surface)", borderTop: "1px solid var(--m-border)" }}>
         <div className="m-container-narrow">
           <div className="m-section-label">Speed Matters</div>
@@ -238,7 +250,9 @@ export function WebsiteDesignPageBody() {
           </div>
         </div>
       </section>
+      </Reveal>
 
+      <Reveal>
       <section className="m-marketing-section">
         <div className="m-container-narrow">
           <div className="m-section-label">Tech Stack</div>
@@ -264,7 +278,9 @@ export function WebsiteDesignPageBody() {
           </div>
         </div>
       </section>
+      </Reveal>
 
+      <Reveal>
       <div className="m-bottom-cta">
         <div className="m-section-label">Let&apos;s Build</div>
         <h2 className="m-bottom-cta-h2">
@@ -285,6 +301,7 @@ export function WebsiteDesignPageBody() {
           </Link>
         </div>
       </div>
+      </Reveal>
     </>
   );
 }

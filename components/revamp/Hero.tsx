@@ -98,12 +98,25 @@ export function Hero({ onNavigate }: HeroProps) {
               Source: <a href="https://www.thinkwithgoogle.com/data/near-me-micro-moments-statistics/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--amber)", textDecoration: "underline" }}>Google — 76% of local searchers visit a business within 24 hours</a>
             </div>
           </div>
-          <div className="trust-badges">
-            <Image src="/logo.png" alt="COAI" width={24} height={24} style={{ borderRadius: 4, objectFit: "contain" }} />
-            <span className="trust-badge">Based in Bakersfield, CA</span>
-            <span className="trust-badge"><Star size={14} aria-hidden="true" /> 5 Google Rated</span>
-          </div>
-        </div>
+           <div className="trust-badges">
+             <Image src="/logo.png" alt="COAI" width={24} height={24} style={{ borderRadius: 4, objectFit: "contain" }} />
+             <span className="trust-badge">Based in Bakersfield, CA</span>
+             <span className="trust-badge"><Star size={14} aria-hidden="true" /> 5 Google Rated</span>
+           </div>
+           <div style={{ 
+             fontSize: "12px", 
+             color: "var(--amber)", 
+             fontWeight: 600, 
+             marginTop: "16px",
+             padding: "12px 16px",
+             background: "rgba(232,160,32,0.08)",
+             border: "1px solid rgba(232,160,32,0.2)",
+             borderRadius: "6px",
+             textAlign: "center"
+           }}>
+             🔥 Accepting 2-3 new clients this month. Limited availability.
+           </div>
+         </div>
 
         <div className="hero-right">
           <div className="hero-card">

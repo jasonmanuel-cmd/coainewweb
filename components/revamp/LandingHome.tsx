@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { ArrowRight, CalendarDays, Shield, Zap, Search, Phone, X } from "lucide-react";
+import { ArrowRight, Shield, Zap, Search, Phone, X } from "lucide-react";
 import { Nav } from "./Nav";
 import { Hero } from "./Hero";
 import { Footer } from "./Footer";
@@ -13,6 +13,7 @@ import { IntakePage } from "./Intake";
 import { Faq } from "./Faq";
 import { Contact } from "./Contact";
 import { Splash } from "./Splash";
+import { Reveal } from "./Reveal";
 
 const products = [
   {
@@ -145,6 +146,7 @@ export function LandingHomeRevamp() {
             <Hero onNavigate={navigate} />
 
             {/* Before/After Outcomes — PROOF FIRST */}
+            <Reveal>
             <section className="outcomes-section">
               <div className="container">
                 <span className="section-eyebrow">Real Outcomes</span>
@@ -168,8 +170,10 @@ export function LandingHomeRevamp() {
                 </div>
               </div>
             </section>
+            </Reveal>
 
             {/* Comparison: COAI vs Rented Platforms */}
+            <Reveal>
             <section className="comparison-section">
               <div className="container">
                 <span className="section-eyebrow">Why Sovereign</span>
@@ -197,15 +201,12 @@ export function LandingHomeRevamp() {
                     </tbody>
                   </table>
                 </div>
-                <div style={{ textAlign: "center", marginTop: "24px" }}>
-                  <a className="btn-primary" onClick={() => navigate("pricing")} style={{ cursor: "pointer" }}>
-                    See Full Pricing <ArrowRight size={16} aria-hidden="true" />
-                  </a>
-                </div>
               </div>
             </section>
+            </Reveal>
 
             {/* Meet Jason — Personal Trust */}
+            <Reveal>
             <section className="meet-jason-section">
               <div className="container meet-jason-inner">
                 <div className="meet-jason-photo">
@@ -236,8 +237,10 @@ export function LandingHomeRevamp() {
                 </div>
               </div>
             </section>
+            </Reveal>
 
             {/* Services Overview — LeadShield, COAI, SiteER */}
+            <Reveal>
             <section className="services-overview">
               <div className="container">
                 <span className="section-eyebrow">What We Do</span>
@@ -269,8 +272,10 @@ export function LandingHomeRevamp() {
                 </div>
               </div>
             </section>
+            </Reveal>
 
             {/* Testimonials */}
+            <Reveal>
             <section className="testi-section">
               <div className="container">
                 <span className="section-eyebrow">Real Results</span>
@@ -287,8 +292,10 @@ export function LandingHomeRevamp() {
                 </div>
               </div>
             </section>
+            </Reveal>
 
             {/* ROI Calculator */}
+            <Reveal>
             <section className="roi-section">
               <div className="container">
                 <span className="section-eyebrow">Do the Math</span>
@@ -319,8 +326,10 @@ export function LandingHomeRevamp() {
                 </div>
               </div>
             </section>
+            </Reveal>
 
             {/* Honest Guarantee Banner */}
+            <Reveal>
             <section className="guarantee-banner-section">
               <div className="container">
                 <div className="guarantee-banner">
@@ -331,14 +340,13 @@ export function LandingHomeRevamp() {
                     <h3>No Risk. You Own What We Build.</h3>
                     <p>If you're not happy before we launch, you don't pay. The website code is yours from the moment it goes live — no monthly platform tax, no lock-in, no &ldquo;we own your site until you renew.&rdquo; You can take it anywhere. That's not a marketing guarantee. That's just how I do business.</p>
                   </div>
-                  <a className="btn-primary" onClick={() => navigate("intake")} style={{ cursor: "pointer", flexShrink: 0 }}>
-                    Start Risk-Free <ArrowRight size={16} aria-hidden="true" />
-                  </a>
                 </div>
               </div>
             </section>
+            </Reveal>
 
             {/* Final CTA */}
+            <Reveal>
             <section className="final-cta">
               <div className="container">
                 <span className="section-eyebrow" style={{ justifyContent: "center", display: "block", textAlign: "center" }}>Start Here — Free</span>
@@ -359,15 +367,11 @@ export function LandingHomeRevamp() {
                 <a href="tel:6616591376" className="cta-phone">(661) 659-1376</a>
                 <div className="final-cta-actions">
                   <a className="btn-primary" onClick={() => navigate("intake")} style={{ cursor: "pointer" }}>Get My Free Audit <ArrowRight size={16} aria-hidden="true" /></a>
-                  <a className="btn-calendar" href="https://calendar.app.google/hswWkCmjqLEKtRuE6" target="_blank" rel="noopener noreferrer">
-                    <CalendarDays size={18} aria-hidden="true" />
-                    Book Free Audit
-                  </a>
-                  <a className="btn-secondary" onClick={() => navigate("pricing")} style={{ cursor: "pointer" }}>See Full Pricing</a>
                 </div>
-                <p className="final-cta-note">Accepting limited new clients this month</p>
+                <p className="final-cta-note">🔥 May availability nearly full. Respond today to secure your spot.</p>
               </div>
             </section>
+            </Reveal>
           </>
         );
       case "portfolio":
@@ -420,27 +424,28 @@ export function LandingHomeRevamp() {
         </div>
       )}
 
-      {/* Scroll-Depth Capture Modal */}
-      {showScrollModal && (
-        <div className="scroll-modal-overlay" onClick={() => setShowScrollModal(false)}>
-          <div className="scroll-modal" onClick={e => e.stopPropagation()}>
-            <button className="scroll-modal-close" onClick={() => setShowScrollModal(false)} aria-label="Close">
-              <X size={20} />
-            </button>
-            <span className="scroll-modal-eyebrow">Before You Go</span>
-            <h3>Want a free website audit?</h3>
-            <p>Takes 30 seconds. I'll check your site speed, SEO coverage, and AI readiness — then send you a written report with the fixes that matter most. No pitch, no pressure.</p>
-            <div className="scroll-modal-actions">
-              <a className="btn-primary" onClick={() => { setShowScrollModal(false); navigate("intake"); }} style={{ cursor: "pointer" }}>
-                Run My Free Audit <ArrowRight size={16} aria-hidden="true" />
-              </a>
-              <a className="btn-secondary" onClick={() => setShowScrollModal(false)} style={{ cursor: "pointer" }}>
-                Maybe Later
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
+       {/* Scroll-Depth Capture Modal */}
+       {showScrollModal && (
+         <div className="scroll-modal-overlay" onClick={() => setShowScrollModal(false)}>
+           <div className="scroll-modal" onClick={e => e.stopPropagation()}>
+             <button className="scroll-modal-close" onClick={() => setShowScrollModal(false)} aria-label="Close">
+               <X size={20} />
+             </button>
+             <span className="scroll-modal-eyebrow">Before You Go</span>
+             <h3>Get Your Free Audit — Spots Filling Fast 🔥</h3>
+             <p>Takes 30 seconds. I'll check your site speed, SEO coverage, and AI readiness — then send you a written report with the fixes that matter most. No pitch, no pressure.</p>
+             <p style={{ fontSize: ".85rem", color: "var(--amber)", fontWeight: 600, margin: "12px 0 0 0" }}>⚡ Jason accepts 2-3 new clients monthly. Respond now to secure your spot.</p>
+             <div className="scroll-modal-actions">
+               <a className="btn-primary" onClick={() => { setShowScrollModal(false); navigate("intake"); }} style={{ cursor: "pointer" }}>
+                 Run My Free Audit <ArrowRight size={16} aria-hidden="true" />
+               </a>
+               <a className="btn-secondary" onClick={() => setShowScrollModal(false)} style={{ cursor: "pointer" }}>
+                 Maybe Later
+               </a>
+             </div>
+           </div>
+         </div>
+       )}
     </div>
   );
 }

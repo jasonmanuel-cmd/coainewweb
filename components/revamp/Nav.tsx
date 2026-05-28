@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { CalendarDays, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 interface NavProps {
   activePage: string;
@@ -28,7 +28,7 @@ export function Nav({ activePage, onNavigate }: NavProps) {
 
   return (
     <>
-      {/* Top bar */}
+      {/* Top bar — hidden on mobile for max hero visibility */}
       <div className="topbar">
         <div className="topbar-tagline">
           <span className="topbar-dot" />
@@ -39,13 +39,14 @@ export function Nav({ activePage, onNavigate }: NavProps) {
         </div>
       </div>
 
-      {/* Nav bar */}
+      {/* Nav bar — SIMPLIFIED for conversion focus */}
       <nav className="nav">
         <div className="nav-logo" onClick={() => handleNav("home")}>
           <Image src="/logo.png" alt="COAI" width={120} height={30} style={{ objectFit: 'contain', width: 'auto', height: '30px' }} />
           <span className="nav-logo-text">COAI<span>.</span></span>
         </div>
-        <ul className="nav-links">
+        {/* Hidden navigation links — remove decision paralysis */}
+        <ul className="nav-links" style={{ display: "none" }}>
           {links.map((l) => (
             <li key={l.href}>
               {l.href === "pricing" ? (
@@ -66,11 +67,12 @@ export function Nav({ activePage, onNavigate }: NavProps) {
           <li><a href="https://coaibuilds.com" target="_blank" rel="noopener noreferrer">COAIBuilds</a></li>
           <li><a href="https://siteer.dev" target="_blank" rel="noopener noreferrer" style={{ color: "var(--danger)" }}>SiteER</a></li>
         </ul>
-        <a className="btn-calendar" href="https://calendar.app.google/hswWkCmjqLEKtRuE6" target="_blank" rel="noopener noreferrer" style={{ padding: "8px 16px", fontSize: "13px" }}>
-          <CalendarDays size={16} aria-hidden="true" />
-          Book Audit
+        
+        {/* Minimalist right section — only phone number */}
+        <a className="nav-phone-link" href="tel:6616591376" style={{ marginLeft: "auto", fontSize: "14px", fontWeight: 600, color: "var(--amber)", textDecoration: "none" }}>
+          (661) 659-1376
         </a>
-        <a className="nav-cta" href="tel:6616591376">Call (661) 659-1376</a>
+        
         <button
           className="hamburger"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -80,26 +82,14 @@ export function Nav({ activePage, onNavigate }: NavProps) {
         </button>
       </nav>
 
-      {/* Mobile drawer */}
+      {/* Mobile drawer — simplified for warm traffic */}
       {menuOpen && (
         <div className="mobile-drawer">
-          {links.map((l) => (
-            l.href === "pricing" ? (
-              <Link key={l.href} href="/pricing" onClick={() => setMenuOpen(false)}>
-                {l.label}
-              </Link>
-            ) : (
-              <a key={l.href} onClick={() => handleNav(l.href)}>
-                {l.label}
-              </a>
-            )
-          ))}
-          <a className="nav-cta" onClick={() => handleNav("intake")} style={{ textAlign: "center" }}>
-            Get a Free Digital Audit
+          <a onClick={() => { handleNav("intake"); setMenuOpen(false); }} style={{ fontSize: "16px", fontWeight: 600, padding: "16px", textAlign: "center", borderBottom: "1px solid var(--navy-border)" }}>
+            Get Free Audit
           </a>
-          <a className="btn-calendar" href="https://calendar.app.google/hswWkCmjqLEKtRuE6" target="_blank" rel="noopener noreferrer" style={{ textAlign: "center", justifyContent: "center", display: "flex" }}>
-            <CalendarDays size={16} aria-hidden="true" />
-            Book Free Audit
+          <a href="tel:6616591376" style={{ fontSize: "16px", fontWeight: 600, padding: "16px", textAlign: "center", color: "var(--amber)" }}>
+            Call (661) 659-1376
           </a>
         </div>
       )}

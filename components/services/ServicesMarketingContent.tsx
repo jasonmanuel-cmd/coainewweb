@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { CONTACT } from "@/lib/site";
 import { ShieldCheck } from "lucide-react";
+import { Reveal } from "@/components/revamp/Reveal";
 
 export function ServicesMarketingContent() {
   return (
     <>
+      <Reveal>
       <div className="m-page-hero">
         <div className="m-page-hero-grid" aria-hidden="true" />
         <div className="m-page-hero-inner">
@@ -18,7 +20,9 @@ export function ServicesMarketingContent() {
           </p>
         </div>
       </div>
+      </Reveal>
 
+      <Reveal>
       <div className="m-service-block">
         <div>
           <div className="m-service-num">01</div>
@@ -80,7 +84,9 @@ export function ServicesMarketingContent() {
           </p>
         </div>
       </div>
+      </Reveal>
 
+      <Reveal>
       <div className="m-service-block m-reverse">
         <div>
           <div className="m-service-num">02</div>
@@ -150,7 +156,9 @@ export function ServicesMarketingContent() {
           </p>
         </div>
       </div>
+      </Reveal>
 
+      <Reveal>
       <div className="m-service-block">
         <div>
           <div className="m-service-num">03</div>
@@ -223,7 +231,9 @@ export function ServicesMarketingContent() {
           </div>
         </div>
       </div>
+      </Reveal>
 
+      <Reveal>
       <div className="m-service-block m-reverse">
         <div>
           <div className="m-service-num">04</div>
@@ -273,7 +283,9 @@ export function ServicesMarketingContent() {
           </p>
         </div>
       </div>
+      </Reveal>
 
+      <Reveal>
       <div className="m-service-block">
         <div>
           <div className="m-service-num">05</div>
@@ -323,7 +335,9 @@ export function ServicesMarketingContent() {
           </p>
         </div>
       </div>
+      </Reveal>
 
+      <Reveal>
       <section className="m-section-pad" style={{ background: "var(--m-surface)", borderTop: "1px solid var(--m-border)" }}>
         <div className="m-container">
           <div className="m-section-label">Who We Serve</div>
@@ -354,7 +368,9 @@ export function ServicesMarketingContent() {
           </div>
         </div>
       </section>
+      </Reveal>
 
+      <Reveal>
       <section className="m-section-pad">
         <div className="m-container">
           <div className="m-section-label">How It Works</div>
@@ -396,7 +412,9 @@ export function ServicesMarketingContent() {
           </div>
         </div>
       </section>
+      </Reveal>
 
+      <Reveal>
       <div className="m-bottom-cta">
         <div className="m-section-label">Start Here</div>
         <h2>
@@ -429,6 +447,7 @@ export function ServicesMarketingContent() {
           <span style={{ fontSize: "12px", color: "var(--m-muted)", border: "1px solid var(--m-border)", padding: "0.3rem 0.8rem", borderRadius: "4px" }}>No Contracts</span>
         </div>
       </div>
+      </Reveal>
     </>
   );
 }

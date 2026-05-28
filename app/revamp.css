@@ -338,9 +338,43 @@ img { max-width: 100%; display: block; }
   font-size: clamp(2.5rem, 5.5vw, 4.2rem);
   font-weight: 800; line-height: 1.05;
   letter-spacing: -0.02em; color: var(--cream);
-  margin-bottom: 20px; text-wrap: balance;
+  margin-bottom: 24px; text-wrap: balance;
 }
 .hero-h1 .highlight { color: var(--amber); }
+
+/* HERO PROOF STACK — Social proof immediately after headline */
+.hero-proof-stack {
+  display: flex; flex-direction: column; gap: 12px;
+  margin-bottom: 20px; padding: 16px 0;
+}
+.hero-proof-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.hero-proof-item:last-child { border-bottom: none; }
+
+.hero-proof-rating {
+  display: flex; align-items: center; gap: 8px;
+}
+.hero-proof-stars {
+  color: #fbbf24; font-size: 1rem; letter-spacing: 2px; font-weight: 600;
+}
+.hero-proof-text {
+  font-size: 13px; font-weight: 600; color: var(--cream-muted);
+}
+
+.hero-proof-testimonial {
+  flex-direction: column; gap: 6px; padding: 12px 0;
+}
+.hero-proof-quote {
+  font-size: 14px; font-style: italic; color: var(--cream-muted);
+  line-height: 1.55;
+}
+.hero-proof-author {
+  font-size: 12px; font-weight: 600; color: var(--amber);
+}
+
 .hero-sub {
   font-size: 1.05rem; line-height: 1.7; color: var(--cream-muted);
   margin-bottom: 16px; max-width: 520px;
@@ -426,14 +460,16 @@ img { max-width: 100%; display: block; }
 }
 .service-card {
   background: rgba(17, 29, 53, 0.7);
-  border: 1px solid var(--navy-border); border-radius: 16px;
+  border: 1px solid var(--navy-border); 
+  border-radius: 16px;
   padding: 32px; position: relative; overflow: hidden;
   transition: all .3s;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
 }
 .service-card:hover {
   transform: translateY(-4px);
   border-color: rgba(232,160,32,0.3);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
 }
 .service-card-icon { font-size: 2rem; margin-bottom: 16px; }
 .service-card h3 {
@@ -710,6 +746,7 @@ img { max-width: 100%; display: block; }
   text-decoration: none;
 }
 .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(232,160,32,0.4); }
+.btn-primary:active { transform: scale(0.97); }
 .btn-secondary {
   display: inline-flex; align-items: center; gap: 8px;
   background: transparent; color: var(--cream);
@@ -718,6 +755,7 @@ img { max-width: 100%; display: block; }
   cursor: pointer; transition: all .3s; text-decoration: none;
 }
 .btn-secondary:hover { border-color: var(--amber); color: var(--amber); transform: translateY(-2px); }
+.btn-secondary:active { transform: scale(0.98); }
 .btn-phone {
   display: inline-flex; align-items: center; gap: 8px;
   background: rgba(232,160,32,0.1); color: var(--amber);
@@ -726,6 +764,7 @@ img { max-width: 100%; display: block; }
   cursor: pointer; transition: all .3s; text-decoration: none;
 }
 .btn-phone:hover { background: rgba(232,160,32,0.2); transform: translateY(-2px); }
+.btn-phone:active { transform: scale(0.98); }
 
 .btn-calendar {
   display: inline-flex; align-items: center; gap: 8px;
@@ -734,6 +773,7 @@ img { max-width: 100%; display: block; }
   transition: all 0.2s; border: none; cursor: pointer; text-decoration: none;
 }
 .btn-calendar:hover { background: var(--amber-light); transform: translateY(-2px); }
+.btn-calendar:active { transform: scale(0.97); }
 
 /* ======================================
    SERVICE AREA MAP
@@ -817,6 +857,32 @@ img { max-width: 100%; display: block; }
   .stat-banner { grid-template-columns: 1fr; }
   .services-grid { grid-template-columns: 1fr; }
   .bundles-grid { grid-template-columns: 1fr; }
+
+  /* Mobile Button Touch Targets (48px minimum) */
+  .btn-primary {
+    padding: 16px 32px;
+    font-size: 16px;
+    min-height: 48px;
+  }
+  .btn-secondary {
+    padding: 16px 32px;
+    font-size: 16px;
+    min-height: 48px;
+  }
+  .btn-phone {
+    padding: 16px 32px;
+    font-size: 16px;
+    min-height: 48px;
+  }
+  .btn-calendar {
+    padding: 14px 32px;
+    font-size: 16px;
+    min-height: 48px;
+  }
+  .sticky-cta-button {
+    padding: 16px;
+    min-height: 48px;
+  }
 }
 
 /* ======================================
@@ -894,6 +960,7 @@ img { max-width: 100%; display: block; }
   border-radius: 12px; padding: 24px;
   display: flex; align-items: center; gap: 16px;
   transition: border-color .2s;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
 }
 .outcome-card:hover { border-color: rgba(232,160,32,0.2); }
 .outcome-before, .outcome-after { flex: 1; }
@@ -976,5 +1043,194 @@ img { max-width: 100%; display: block; }
   .sticky-mobile-cta { display: flex; }
   .revamp-shell { padding-bottom: 52px; }
   .scroll-modal { padding: 28px 20px; }
+}
+
+/* ======================================
+   REVEAL SCROLL ANIMATIONS
+====================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-stagger > .reveal:nth-child(1) { transition-delay: 0ms; }
+.reveal-stagger > .reveal:nth-child(2) { transition-delay: 80ms; }
+.reveal-stagger > .reveal:nth-child(3) { transition-delay: 160ms; }
+.reveal-stagger > .reveal:nth-child(4) { transition-delay: 240ms; }
+.reveal-stagger > .reveal:nth-child(5) { transition-delay: 320ms; }
+.reveal-stagger > .reveal:nth-child(6) { transition-delay: 400ms; }
+
+/* ======================================
+   AMBIENT GRADIENT ANIMATION
+====================================== */
+@keyframes ambient-shift {
+  0%   { transform: translate(0, 0) scale(1); }
+  25%  { transform: translate(1.5%, -1%) scale(1.03); }
+  50%  { transform: translate(-1%, 1.5%) scale(0.97); }
+  75%  { transform: translate(0.5%, -0.5%) scale(1.01); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+.hero-mesh {
+  animation: ambient-shift 20s ease-in-out infinite;
+}
+
+/* ======================================
+   NOISE / GRAIN TEXTURE OVERLAY
+====================================== */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.018;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  mix-blend-mode: overlay;
+}
+
+/* ======================================
+   ENHANCED CARD HOVER STATES
+====================================== */
+.service-card {
+  transition: all .35s var(--ease-bounce);
+}
+.service-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  border-color: rgba(232, 160, 32, 0.35);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.35), 0 0 32px var(--amber-subtle);
+}
+
+.testi-card {
+  transition: all .35s var(--ease-bounce);
+}
+.testi-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  border-color: rgba(232, 160, 32, 0.25);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3), 0 0 20px var(--amber-subtle);
+}
+
+.bundle-card {
+  transition: all .35s var(--ease-bounce);
+}
+.bundle-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+.outcome-card {
+  transition: all .3s var(--ease-bounce);
+}
+.outcome-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(232, 160, 32, 0.3);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+}
+
+.how-step {
+  transition: all .35s var(--ease-bounce);
+}
+.how-step:hover {
+  transform: translateY(-5px) scale(1.01);
+  border-color: rgba(232, 160, 32, 0.25);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+}
+
+.svc-card {
+  transition: all .3s var(--ease-bounce);
+}
+.svc-card:hover {
+  transform: translateY(-3px) scale(1.005);
+  border-color: rgba(232, 160, 32, 0.35);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+
+/* ======================================
+   BUTTON :ACTIVE MICRO-INTERACTION
+====================================== */
+.btn-primary:active,
+.btn-secondary:active,
+.btn-phone:active,
+.btn-calendar:active,
+.nav-cta:active {
+  transform: scale(0.97) !important;
+}
+
+/* ======================================
+   DECORATIVE GEOMETRIC ACCENTS
+====================================== */
+.section-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 1px;
+  background: var(--amber);
+  margin-right: 10px;
+  vertical-align: middle;
+  transform: rotate(45deg);
+}
+
+.section-eyebrow:empty::before,
+.section-eyebrow:has(.section-eyebrow)::before {
+  display: none;
+}
+
+/* Dot accent for section backgrounds */
+.services-overview::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  right: 5%;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 160, 32, 0.04), transparent 70%);
+  pointer-events: none;
+}
+
+.roi-section::before {
+  content: '';
+  position: absolute;
+  bottom: 10%;
+  left: 3%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 160, 32, 0.04), transparent 70%);
+  pointer-events: none;
+}
+
+.services-overview,
+.roi-section {
+  position: relative;
+}
+
+/* ======================================
+   MARKETING PAGE RADIUS UNIFICATION
+====================================== */
+.marketing-page .service-card,
+.marketing-page .outcome-card,
+.marketing-page .testi-card {
+  border-radius: 10px;
+}
+
+/* ======================================
+   FORM INPUT FOCUS STATES
+====================================== */
+input:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(232, 160, 32, 0.2);
+  border-color: rgba(232, 160, 32, 0.5) !important;
+  transition: all 0.2s ease;
 }
 
