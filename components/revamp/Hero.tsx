@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { ArrowRight, CalendarDays, CheckCircle2, Star, Wrench } from "lucide-react";
+import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 
 interface HeroProps {
   onNavigate: (page: string) => void;
@@ -37,6 +38,24 @@ export function Hero({ onNavigate }: HeroProps) {
   const [xrayLoading, setXrayLoading] = useState(false);
   const [xrayResult, setXrayResult] = useState<XrayResult | null>(null);
 
+  const cardRef = useRef<HTMLDivElement>(null);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [8, -8]), { stiffness: 200, damping: 30 });
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-8, 8]), { stiffness: 200, damping: 30 });
+
+  const handleCardMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = cardRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    mouseX.set((e.clientX - rect.left) / rect.width - 0.5);
+    mouseY.set((e.clientY - rect.top) / rect.height - 0.5);
+  };
+
+  const handleCardMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
   const runXray = async () => {
     if (!xrayUrl.trim()) return;
     setXrayLoading(true);
@@ -60,9 +79,9 @@ export function Hero({ onNavigate }: HeroProps) {
   };
 
   return (
-    <section className="hero">
-      <div className="hero-mesh" />
-      <div className="container hero-inner">
+    <section className="hero" style={{ position: "relative", overflow: "hidden" }}>
+      <div className="hero-mesh" style={{ zIndex: 1 }} />
+      <div className="container hero-inner" style={{ position: "relative", zIndex: 2 }}>
         <div className="hero-left">
           <div className="hero-pill">
             Based in Bakersfield, CA · Serving the U.S.
@@ -118,8 +137,19 @@ export function Hero({ onNavigate }: HeroProps) {
            </div>
          </div>
 
-        <div className="hero-right">
-          <div className="hero-card">
+        <motion.div
+          className="hero-right"
+          ref={cardRef}
+          onMouseMove={handleCardMouseMove}
+          onMouseLeave={handleCardMouseLeave}
+          style={{
+            rotateX,
+            rotateY,
+            transformStyle: "preserve-3d",
+            perspective: 1000,
+          }}
+        >
+          <div className="hero-card" style={{ transformStyle: "preserve-3d" }}>
             <div className="hero-card-icon" aria-hidden="true">
               <Wrench size={30} strokeWidth={2.2} />
             </div>
@@ -186,10 +216,10 @@ export function Hero({ onNavigate }: HeroProps) {
               )}
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
-      <div className="stat-banner">
+      <div className="stat-banner" style={{ position: "relative", zIndex: 2 }}>
         {[
           { num: "50+", label: "Services Offered" },
           { num: "$50", label: "PC Repair Starting Price" },

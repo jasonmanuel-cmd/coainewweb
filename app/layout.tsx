@@ -9,6 +9,7 @@ import { AppChrome } from "@/components/AppChrome";
 import { JsonLd } from "@/components/JsonLd";
 import { NeuralMesh } from "@/components/NeuralMesh";
 import { CipherChat } from "@/components/revamp/CipherChat";
+import { Scene3DLoader } from "@/components/revamp/Scene3DLoader";
 import { organizationJsonLd, webSiteJsonLd } from "@/lib/schema";
 import { SITE_DESCRIPTION, SITE_URL } from "@/lib/site";
 import "./globals.css";
@@ -98,6 +99,7 @@ gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: true });`}
 }`}
         </Script>
         <NeuralMesh />
+        <Scene3DLoader />
         <div className="scanline-overlay" aria-hidden="true" />
         <JsonLd data={organizationJsonLd()} />
         <JsonLd data={webSiteJsonLd()} />

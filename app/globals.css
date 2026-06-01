@@ -35,9 +35,12 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background-color: #0B1426;
   color: var(--text);
   font-family: var(--font-body), Arial, sans-serif;
+}
+
+body {
+  background: transparent;
 }
 
 body {
