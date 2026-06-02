@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { MarketingLayout } from "@/components/marketing/MarketingLayout";
 import { WebsiteDesignPageBody } from "@/components/marketing/WebsiteDesignPageBody";
@@ -8,7 +8,7 @@ import { SITE_URL } from "@/lib/site";
 import Link from "next/link";
 
 export const metadata: Metadata = pageMetadata({
-  title: “Website Design — Sovereign Builds”,
+  title: "Website Design - Sovereign Builds",
   description:
     "Custom sovereign website design for Bakersfield service businesses. Not templates. Not Wix. Real code, real performance, full ownership. WordPress migration, site speed optimization, and emergency repairs available.",
   path: "/website-design"
@@ -32,7 +32,7 @@ export default function WebsiteDesignPage() {
   );
 
   const article = articleJsonLd({
-    headline: "Website Design — Sovereign Builds for Bakersfield Businesses",
+    headline: "Website Design - Sovereign Builds for Bakersfield Businesses",
     description:
       "Custom sovereign website design for Bakersfield service businesses. Not templates. Not Wix. Real code, real performance, full ownership.",
     path: "/website-design",
@@ -54,10 +54,10 @@ export default function WebsiteDesignPage() {
         </h2>
         <div className="m-cta-row">
           <Link href="/website-design/kern-county" className="m-btn-primary-marketing">
-            Kern County Hub →
+            Kern County Hub ->
           </Link>
           <Link href="/intake" className="m-btn-primary-marketing">
-            Run My Diagnostic →
+            Run My Diagnostic ->
           </Link>
           <Link href="/website-design/bakersfield" className="m-btn-ghost-marketing">
             Bakersfield

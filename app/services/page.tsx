@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { MarketingLayout } from "@/components/marketing/MarketingLayout";
@@ -7,12 +7,12 @@ import { pageMetadata } from "@/lib/metadata";
 import { articleJsonLd, breadcrumbJsonLd, serviceJsonLd } from "@/lib/schema";
 
 const sovereignServiceDescription =
-  “Structural digital audits, AI automation, and sovereign website builds for Bakersfield operators — infrastructure you own outright.”;
+  "Structural digital audits, AI automation, and sovereign website builds for Bakersfield operators - infrastructure you own outright.";
 
 export const metadata: Metadata = pageMetadata({
-  title: { absolute: “Services | Chaotically Organized AI — Bakersfield 661” },
+  title: { absolute: "Services | Chaotically Organized AI - Bakersfield 661" },
   description:
-    “Structural audits, AEO systems, AI automation, sovereign website builds, WordPress migration, and ongoing maintenance for Bakersfield operators. See exactly what COAI delivers.”,
+    "Structural audits, AEO systems, AI automation, sovereign website builds, WordPress migration, and ongoing maintenance for Bakersfield operators. See exactly what COAI delivers.",
   path: "/services"
 });
 
@@ -22,7 +22,7 @@ export default function ServicesPage() {
     { name: "Services", path: "/services" }
   ]);
   const article = articleJsonLd({
-    headline: "Services | Chaotically Organized AI — Bakersfield 661",
+    headline: "Services | Chaotically Organized AI - Bakersfield 661",
     description: sovereignServiceDescription,
     path: "/services",
     datePublished: "2026-01-01",
@@ -44,7 +44,7 @@ export default function ServicesPage() {
         </h2>
         <div className="m-cta-row">
           <Link href="/website-design" className="m-btn-primary">
-            Website Design Hub →
+            Website Design Hub ->
           </Link>
           <Link href="/website-design/kern-county" className="m-btn-ghost">
             Kern County Web Design

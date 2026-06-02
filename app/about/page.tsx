@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { AboutMarketingContent } from "@/components/about/AboutMarketingContent";
 import { JsonLd } from "@/components/JsonLd";
 import { MarketingLayout } from "@/components/marketing/MarketingLayout";
@@ -7,9 +7,9 @@ import { breadcrumbJsonLd } from "@/lib/schema";
 import { ORG_ID, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: { absolute: “About | Chaotically Organized AI — Bakersfield 661” },
+  title: { absolute: "About | Chaotically Organized AI - Bakersfield 661" },
   description:
-    “Jason Robert Manuel — founder of Chaotically Organized AI. 15+ years in operations, trades, and events. Building sovereign infrastructure for Bakersfield operators.”,
+    "Jason Robert Manuel - founder of Chaotically Organized AI. 15+ years in operations, trades, and events. Building sovereign infrastructure for Bakersfield operators.",
   path: "/about"
 });
 

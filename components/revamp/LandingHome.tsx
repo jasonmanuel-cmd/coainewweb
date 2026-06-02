@@ -9,7 +9,6 @@ import { Footer } from "./Footer";
 import { Portfolio } from "./Portfolio";
 import { About } from "./About";
 import { PricingPage } from "./Pricing";
-import { IntakePage } from "./Intake";
 import { Faq } from "./Faq";
 import { Contact } from "./Contact";
 import { Splash } from "./Splash";
@@ -105,7 +104,6 @@ const breadcrumbLabels: Record<string, string> = {
   about: "About",
   faq: "FAQ",
   contact: "Contact",
-  intake: "Free Diagnostic",
 };
 
 export function LandingHomeRevamp() {
@@ -134,6 +132,10 @@ export function LandingHomeRevamp() {
   }, [page]);
 
   const navigate = (p: string) => {
+    if (p === "intake") {
+      window.location.href = "/intake";
+      return;
+    }
     setPage(p);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -380,8 +382,6 @@ export function LandingHomeRevamp() {
         return <About onNavigate={navigate} />;
       case "pricing":
         return <PricingPage onNavigate={navigate} />;
-      case "intake":
-        return <IntakePage />;
       case "faq":
         return <Faq />;
       case "contact":

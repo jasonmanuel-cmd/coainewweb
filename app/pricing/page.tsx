@@ -7,7 +7,7 @@ import { breadcrumbJsonLd, serviceJsonLd } from "@/lib/schema";
 import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Pricing — Fixed Sovereign Builds",
+  title: "Pricing - Fixed Sovereign Builds",
   description:
     "Clear, fixed pricing for sovereign website builds and AI automation. No retainers. No surprises. Starting at $1,200.",
   path: "/pricing"

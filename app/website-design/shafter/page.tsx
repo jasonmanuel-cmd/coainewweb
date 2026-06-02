@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { MarketingLayout } from "@/components/marketing/MarketingLayout";
@@ -45,7 +45,7 @@ export default function ShafterWebsiteDesignPage() {
           </p>
           <div className="m-cta-row">
             <Link href="/intake" className="m-btn-primary">
-              Run Shafter Diagnostic â†’
+              Run Shafter Diagnostic â†'
             </Link>
             <Link href="/website-design/kern-county" className="m-btn-ghost">
               Kern County Hub
@@ -70,7 +70,7 @@ export default function ShafterWebsiteDesignPage() {
         <div className="m-container-wide">
           <div className="m-section-label">Why Shafter</div>
           <h2 className="m-h2-marketing">
-            Shafter businesses deserve a site that <span className="m-text-green">works 24/7 â€” not just during business hours.</span>
+            Shafter businesses deserve a site that <span className="m-text-green">works 24/7 â€" not just during business hours.</span>
           </h2>
           <div className="m-text-block">
             <p>
@@ -85,7 +85,7 @@ export default function ShafterWebsiteDesignPage() {
           </div>
           <div className="m-cta-row" style={{ marginTop: "2rem" }}>
             <Link href="/intake" className="m-btn-primary">
-              Free Shafter Diagnostic â†’
+              Free Shafter Diagnostic â†'
             </Link>
             <Link href="/pricing" className="m-btn-ghost">
               See Pricing
@@ -103,11 +103,11 @@ export default function ShafterWebsiteDesignPage() {
           <div className="m-feature-grid">
             {[
               { icon: "âš¡", title: "Speed-First Build", desc: "Shafter mobile searches demand speed. Sub-3s load guaranteed." },
-              { icon: "ðŸ“", title: "Shafter Local Schema", desc: "LocalBusiness schema tuned for Shafter + Kern County search." },
-              { icon: "ðŸ“ž", title: "Call-First Design", desc: "Phone number prominent on every page. Click-to-call on mobile." },
-              { icon: "ðŸ—ºï¸", title: "Google Maps Priority", desc: "GBP optimization + service-area schema for local map rankings." },
-              { icon: "ðŸ¤–", title: "AI Citation Ready", desc: "Content structured so AI assistants recommend your Shafter business." },
-              { icon: "ðŸ”", title: "Full Sovereignty", desc: "You own the code, the domain, and every lead it generates." }
+              { icon: "ðŸ"", title: "Shafter Local Schema", desc: "LocalBusiness schema tuned for Shafter + Kern County search." },
+              { icon: "ðŸ"ž", title: "Call-First Design", desc: "Phone number prominent on every page. Click-to-call on mobile." },
+              { icon: "ðŸ-ºï¸", title: "Google Maps Priority", desc: "GBP optimization + service-area schema for local map rankings." },
+              { icon: "ðŸ¤-", title: "AI Citation Ready", desc: "Content structured so AI assistants recommend your Shafter business." },
+              { icon: "ðŸ"", title: "Full Sovereignty", desc: "You own the code, the domain, and every lead it generates." }
             ].map(f => (
               <div key={f.title} className="m-feature-card">
                 <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>{f.icon}</div>
@@ -143,12 +143,12 @@ export default function ShafterWebsiteDesignPage() {
           <span className="m-text-green">that brings in more calls?</span>
         </h2>
         <p>
-          Free 20-minute diagnostic. We check your current site, Google profile, and lead flow â€” and hand you a written
+          Free 20-minute diagnostic. We check your current site, Google profile, and lead flow â€" and hand you a written
           report. No pitch, no pressure, just the truth.
         </p>
         <div className="m-cta-row">
           <Link href="/intake" className="m-btn-primary">
-            Get My Free Shafter Audit â†’
+            Get My Free Shafter Audit â†'
           </Link>
           <a href={`tel:${CONTACT.phoneE164}`} className="m-btn-ghost">
             Call {CONTACT.phoneDisplay}

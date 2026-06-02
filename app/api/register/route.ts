@@ -80,10 +80,10 @@ export async function POST(request: Request) {
       _subject: `New X-Ray Lead: ${parsed.url}`,
       email: parsed.email,
       phone: parsed.phone,
-      business: parsed.businessName || parsed.companyName || "—",
+      business: parsed.businessName || parsed.companyName || "-",
       url: parsed.url,
-      performance: String(audit.performanceScore ?? "—"),
-      issues: String(audit.issueCount ?? "—"),
+      performance: String(audit.performanceScore ?? "-"),
+      issues: String(audit.issueCount ?? "-"),
     });
 
     return NextResponse.json({ id, ...audit });

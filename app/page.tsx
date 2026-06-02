@@ -4,11 +4,11 @@ import { SITE_URL, ORG_ID } from "@/lib/site";
 import { JsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "COAI — Digital Lead Systems for Trades",
+  title: "COAI - Digital Lead Systems for Trades",
   description:
-    "Stop losing jobs to missed calls and bad websites. COAI builds custom lead systems for trades businesses — websites you own, AI that texts missed callers back, and SEO that puts you on top of Google. Free 20-min audit.",
+    "Stop losing jobs to missed calls and bad websites. COAI builds custom lead systems for trades businesses - websites you own, AI that texts missed callers back, and SEO that puts you on top of Google. Free 20-min audit.",
   openGraph: {
-    title: "COAI — Digital Lead Systems for Trades Businesses",
+    title: "COAI - Digital Lead Systems for Trades Businesses",
     description:
       "Get more job calls without increasing your ad spend. Websites you own, AI automation, and SEO that actually works.",
     url: SITE_URL,
@@ -51,7 +51,7 @@ const homeFaqSchema = {
       name: "Who owns the website after it's built?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "You own everything. The code, the domain, the hosting account, the customer data — all of it transfers to you at handoff. COAI retains no ongoing control or access."
+        text: "You own everything. The code, the domain, the hosting account, the customer data - all of it transfers to you at handoff. COAI retains no ongoing control or access."
       }
     },
     {
@@ -59,7 +59,7 @@ const homeFaqSchema = {
       name: "What is AEO and why does it matter?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "AEO (Answer Engine Optimization) optimizes content so AI engines like ChatGPT, Claude, and Google AI Overviews cite your business in their answers. 70% of consumers now use ChatGPT for searches — if AI can't extract your business facts, you're invisible in the fastest-growing search channel."
+        text: "AEO (Answer Engine Optimization) optimizes content so AI engines like ChatGPT, Claude, and Google AI Overviews cite your business in their answers. 70% of consumers now use ChatGPT for searches - if AI can't extract your business facts, you're invisible in the fastest-growing search channel."
       }
     },
     {
@@ -67,7 +67,7 @@ const homeFaqSchema = {
       name: "What tech stack do you use?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We build on Next.js with HTML, CSS, and JavaScript — deployed on Vercel or Netlify. You receive full code access and handoff documentation. No proprietary platforms, no locked-in systems."
+        text: "We build on Next.js with HTML, CSS, and JavaScript - deployed on Vercel or Netlify. You receive full code access and handoff documentation. No proprietary platforms, no locked-in systems."
       }
     }
   ]
@@ -92,7 +92,7 @@ const homeProductSchemas = [
     "@context": "https://schema.org",
     "@type": "Product",
     name: "Sentinel Automation",
-    description: "Lead qualification, missed-call text-back recovery, and AI receptionist (Cipher) that answers calls 24/7 — built on top of Signal Foundation.",
+    description: "Lead qualification, missed-call text-back recovery, and AI receptionist (Cipher) that answers calls 24/7 - built on top of Signal Foundation.",
     brand: { "@id": ORG_ID },
     offers: {
       "@type": "Offer",

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-/** PageSpeed runs can exceed default serverless limits — allow up to 60s on supported Vercel plans. */
+/** PageSpeed runs can exceed default serverless limits - allow up to 60s on supported Vercel plans. */
 export const maxDuration = 60;
 import { normalizeWebsiteUrl } from "@/lib/utils/normalize-website-url";
 import { getClientIp, isSameSiteRequest } from "@/lib/security/request-guards";
