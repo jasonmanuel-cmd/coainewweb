@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { FORMSPREE_ENDPOINT } from "@/lib/forms";
+import { FORMSPREE_CONTACT } from "@/lib/forms";
 import { getClientIp, hasJsonContentType, isSameSiteRequest } from "@/lib/security/request-guards";
 import { verifyTurnstileToken } from "@/lib/turnstile/verify";
 import { takeRateLimitToken } from "@/lib/utils/rate-limit";
@@ -38,7 +38,7 @@ export async function POST(request: Request) {
       }
     }
 
-    const fr = await fetch(FORMSPREE_ENDPOINT, {
+    const fr = await fetch(FORMSPREE_CONTACT, {
       method: "POST",
       body: fd,
       headers: { Accept: "application/json" }

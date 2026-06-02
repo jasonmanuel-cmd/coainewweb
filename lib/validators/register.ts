@@ -11,4 +11,3 @@ export const registerSchema = z.object({
   turnstileToken: z.string().optional().default("")
 });
 
-export type RegisterPayload = z.infer<typeof registerSchema>;

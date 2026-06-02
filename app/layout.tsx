@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono, Syne, Plus_Jakarta_Sans, DM_Sans } from "next/font/google";
+import { JetBrains_Mono, Plus_Jakarta_Sans, DM_Sans } from "next/font/google";
 import Script from "next/script";
 import { headers } from "next/headers";
 import { Suspense, type ReactNode } from "react";
@@ -20,13 +20,6 @@ import "./revamp.css";
 const mono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
-  display: "swap"
-});
-
-const headline = Syne({
-  subsets: ["latin"],
-  variable: "--font-headline",
-  weight: ["700", "800"],
   display: "swap"
 });
 
@@ -70,7 +63,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   const nonce = (await headers()).get("x-nonce") ?? "";
   return (
     <html lang="en">
-      <body className={`${mono.variable} ${headline.variable} ${plusJakarta.variable} ${dmSans.variable}`}>
+      <body className={`${mono.variable} ${plusJakarta.variable} ${dmSans.variable}`}>
         {GA_MEASUREMENT_ID ? (
           <>
             <Script
@@ -90,14 +83,14 @@ gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: true });`}
             </Suspense>
           </>
         ) : null}
-        <Script id="speculation-rules" strategy="afterInteractive" nonce={nonce}>
-          {`{
-  "prerender": [{
-    "where": { "href_matches": "/*" },
-    "eagerness": "moderate"
-  }]
-}`}
-        </Script>
+        <script
+          type="speculationrules"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              prerender: [{ where: { href_matches: "/*" }, eagerness: "moderate" }]
+            })
+          }}
+        />
         <NeuralMesh />
         <Scene3DLoader />
         <div className="scanline-overlay" aria-hidden="true" />

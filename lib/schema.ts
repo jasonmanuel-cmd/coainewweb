@@ -171,6 +171,36 @@ export function localServiceJsonLd(slug: CitySlug) {
   };
 }
 
+export function articleJsonLd({
+  headline,
+  description,
+  path,
+  datePublished,
+  dateModified
+}: {
+  headline: string;
+  description: string;
+  path: string;
+  datePublished: string;
+  dateModified?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline,
+    description,
+    url: `${SITE_URL}${path}`,
+    datePublished,
+    dateModified: dateModified ?? datePublished,
+    author: {
+      "@type": "Person",
+      name: FOUNDER.name,
+      url: `${SITE_URL}/about`
+    },
+    publisher: { "@id": ORG_ID }
+  };
+}
+
 export function faqPageJsonLd(qa: { question: string; answer: string }[]) {
   return {
     "@context": "https://schema.org",

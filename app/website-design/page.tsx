@@ -3,12 +3,12 @@ import { JsonLd } from "@/components/JsonLd";
 import { MarketingLayout } from "@/components/marketing/MarketingLayout";
 import { WebsiteDesignPageBody } from "@/components/marketing/WebsiteDesignPageBody";
 import { pageMetadata } from "@/lib/metadata";
-import { breadcrumbJsonLd, serviceJsonLd } from "@/lib/schema";
+import { articleJsonLd, breadcrumbJsonLd, serviceJsonLd } from "@/lib/schema";
 import { SITE_URL } from "@/lib/site";
 import Link from "next/link";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Website Design â€” Sovereign Builds",
+  title: “Website Design — Sovereign Builds”,
   description:
     "Custom sovereign website design for Bakersfield service businesses. Not templates. Not Wix. Real code, real performance, full ownership. WordPress migration, site speed optimization, and emergency repairs available.",
   path: "/website-design"
@@ -31,10 +31,20 @@ export default function WebsiteDesignPage() {
     "Conversion-first custom website design for Bakersfield and Kern County operators who need full ownership, technical SEO readiness, and AI answer visibility."
   );
 
+  const article = articleJsonLd({
+    headline: "Website Design — Sovereign Builds for Bakersfield Businesses",
+    description:
+      "Custom sovereign website design for Bakersfield service businesses. Not templates. Not Wix. Real code, real performance, full ownership.",
+    path: "/website-design",
+    datePublished: "2026-01-01",
+    dateModified: "2026-05-01"
+  });
+
   return (
     <MarketingLayout activeHref="/website-design">
       <JsonLd data={webPage} />
       <JsonLd data={service} />
+      <JsonLd data={article} />
       <JsonLd data={crumbs} />
       <WebsiteDesignPageBody />
       <div className="m-bottom-cta">
@@ -44,10 +54,10 @@ export default function WebsiteDesignPage() {
         </h2>
         <div className="m-cta-row">
           <Link href="/website-design/kern-county" className="m-btn-primary-marketing">
-            Kern County Hub â†’
+            Kern County Hub →
           </Link>
           <Link href="/intake" className="m-btn-primary-marketing">
-            Run My Diagnostic â†’
+            Run My Diagnostic →
           </Link>
           <Link href="/website-design/bakersfield" className="m-btn-ghost-marketing">
             Bakersfield

@@ -7,9 +7,9 @@ import { breadcrumbJsonLd } from "@/lib/schema";
 import { ORG_ID, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: { absolute: "About | Chaotically Organized AI â€” Bakersfield 661" },
+  title: { absolute: “About | Chaotically Organized AI — Bakersfield 661” },
   description:
-    "Jason Robert Manuel â€” founder of Chaotically Organized AI. 15+ years in operations, trades, and events. Building sovereign infrastructure for Bakersfield operators.",
+    “Jason Robert Manuel — founder of Chaotically Organized AI. 15+ years in operations, trades, and events. Building sovereign infrastructure for Bakersfield operators.”,
   path: "/about"
 });
 

@@ -97,6 +97,7 @@ export function About({ onNavigate }: AboutProps) {
                   src="/jason.png"
                   alt="Jason Manuel — Founder of Chaotically Organized AI"
                   fill
+                  priority
                   sizes="(max-width: 768px) 100vw, 400px"
                   style={{ objectFit: "cover", objectPosition: "center top", opacity: 0.95 }}
                   onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}

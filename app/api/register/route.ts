@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { runAudit } from "@/lib/audit/run-audit";
+import { notifyLead } from "@/lib/forms";
 import { getClientIp, hasJsonContentType, isSameSiteRequest } from "@/lib/security/request-guards";
 import { getSupabaseAdmin } from "@/lib/supabase/client";
 import { verifyTurnstileToken } from "@/lib/turnstile/verify";
@@ -74,6 +75,16 @@ export async function POST(request: Request) {
       });
       assertNoError(resultInsert.error);
     }
+
+    void notifyLead({
+      _subject: `New X-Ray Lead: ${parsed.url}`,
+      email: parsed.email,
+      phone: parsed.phone,
+      business: parsed.businessName || parsed.companyName || "—",
+      url: parsed.url,
+      performance: String(audit.performanceScore ?? "—"),
+      issues: String(audit.issueCount ?? "—"),
+    });
 
     return NextResponse.json({ id, ...audit });
   } catch (error) {
