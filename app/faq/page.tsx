@@ -56,7 +56,7 @@ export default function FaqPage() {
         </p>
         <div className="m-cta-row">
           <Link href="/intake" className="m-btn-primary">
-            Run My Free Diagnostic ->
+            Run My Free Diagnostic &gt;
           </Link>
           <a href={`tel:${CONTACT.phoneE164}`} className="m-btn-ghost">
             Call {CONTACT.phoneDisplay}

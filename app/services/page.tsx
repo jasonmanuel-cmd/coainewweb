@@ -44,7 +44,7 @@ export default function ServicesPage() {
         </h2>
         <div className="m-cta-row">
           <Link href="/website-design" className="m-btn-primary">
-            Website Design Hub ->
+            Website Design Hub &gt;
           </Link>
           <Link href="/website-design/kern-county" className="m-btn-ghost">
             Kern County Web Design

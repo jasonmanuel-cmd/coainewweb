@@ -54,10 +54,10 @@ export default function WebsiteDesignPage() {
         </h2>
         <div className="m-cta-row">
           <Link href="/website-design/kern-county" className="m-btn-primary-marketing">
-            Kern County Hub ->
+            Kern County Hub &gt;
           </Link>
           <Link href="/intake" className="m-btn-primary-marketing">
-            Run My Diagnostic ->
+            Run My Diagnostic &gt;
           </Link>
           <Link href="/website-design/bakersfield" className="m-btn-ghost-marketing">
             Bakersfield

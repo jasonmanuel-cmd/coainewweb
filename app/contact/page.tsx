@@ -8,8 +8,8 @@ import { breadcrumbJsonLd } from "@/lib/schema";
 import { BUSINESS_HOURS_LABEL, CONTACT, GOOGLE_BUSINESS_PROFILE_URL, LEGAL_NAME, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Contact â€" Bakersfield Office",
-  description: `Contact Chaotically Organized AI in Bakersfield, CA. Same-day response from Jason. Call ${CONTACT.phoneDisplay} or send a message â€" no gatekeepers.`,
+  title: "Contact - Bakersfield Office",
+  description: `Contact Chaotically Organized AI in Bakersfield, CA. Same-day response from Jason. Call ${CONTACT.phoneDisplay} or send a message - no gatekeepers.`,
   path: "/contact"
 });
 
@@ -48,7 +48,7 @@ export default async function ContactPage({
           </h1>
           <p className="m-hero-sub">
             Call, text, or send a message. Same-day response guaranteed. If you&apos;re outside business hours, Cipher
-            handles the first contact â€" Jason follows up personally.
+            handles the first contact - Jason follows up personally.
           </p>
         </div>
       </div>
@@ -80,7 +80,7 @@ export default async function ContactPage({
           <div className="m-cipher-box">
             <div className="m-cipher-box-label">
               <span className="m-cipher-dot" />
-              Cipher AI â€" Live 24/7
+              Cipher AI - Live 24/7
             </div>
             <p>
               After-hours? Cipher picks up immediately, qualifies your inquiry, and routes to Jason for a
@@ -105,13 +105,13 @@ export default async function ContactPage({
               <span className="m-info-icon">G</span>
               <span className="m-info-text">
                 <Link href={GOOGLE_BUSINESS_PROFILE_URL} target="_blank" rel="noopener noreferrer">
-                  Google Business Profile â†'
+                  Google Business Profile →
                 </Link>
               </span>
             </div>
             <div className="m-info-line">
               <span className="m-info-icon">â-ˆ</span>
-              <span className="m-info-text">{LEGAL_NAME} â€" registered California LLC</span>
+              <span className="m-info-text">{LEGAL_NAME} - registered California LLC</span>
             </div>
           </div>
         </div>
