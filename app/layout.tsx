@@ -47,13 +47,13 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     url: SITE_URL,
     siteName: "Chaotically Organized AI",
-    images: [{ url: "/logo.png", width: 1200, height: 630 }]
+    images: [{ url: "/newlogo.png", width: 1200, height: 630 }]
   },
   twitter: {
     card: "summary_large_image",
     title: "Chaotically Organized AI",
     description: SITE_DESCRIPTION,
-    images: ["/logo.png"]
+    images: ["/newlogo.png"]
   }
 };
 

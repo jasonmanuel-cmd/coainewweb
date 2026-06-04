@@ -35,7 +35,7 @@ export function RevampPageNav({ activeHref }: RevampPageNavProps) {
 
       <nav className="nav">
         <Link href="/" className="nav-logo">
-          <Image src="/logo.png" alt="COAI" width={120} height={30} style={{ objectFit: 'contain', width: 'auto', height: '30px' }} />
+          <Image src="/newlogo.png" alt="COAI" width={120} height={30} style={{ objectFit: 'contain', width: 'auto', height: '30px' }} />
           <span className="nav-logo-text">COAI<span>.</span></span>
         </Link>
         <ul className="nav-links">

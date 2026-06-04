@@ -42,7 +42,7 @@ export function Nav({ activePage, onNavigate }: NavProps) {
       {/* Nav bar — SIMPLIFIED for conversion focus */}
       <nav className="nav">
         <div className="nav-logo" onClick={() => handleNav("home")}>
-          <Image src="/logo.png" alt="COAI" width={120} height={30} style={{ objectFit: 'contain', width: 'auto', height: '30px' }} />
+          <Image src="/newlogo.png" alt="COAI" width={120} height={30} style={{ objectFit: 'contain', width: 'auto', height: '30px' }} />
           <span className="nav-logo-text">COAI<span>.</span></span>
         </div>
         {/* Hidden navigation links — remove decision paralysis */}

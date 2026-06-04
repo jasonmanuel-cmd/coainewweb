@@ -31,8 +31,8 @@ export function Scene3D() {
       uniforms: {
         time:          { value: 0 },
         lightPos:      { value: new THREE.Vector3(2, 2, 4) },
-        baseColor:     { value: new THREE.Color("#00FF88") },
-        glowColor:     { value: new THREE.Color("#00FFCC") },
+        baseColor:     { value: new THREE.Color("#005533") },
+        glowColor:     { value: new THREE.Color("#004422") },
       },
       vertexShader: `
         uniform float time;
@@ -128,11 +128,11 @@ export function Scene3D() {
           // ridge highlights based on displacement
           float ridge = smoothstep(0.05, 0.18, vDisplace);
 
-          vec3 col = mix(baseColor * 0.4, baseColor, diff)
-                   + glowColor * fresnel * 0.7
-                   + glowColor * ridge  * 0.3;
+          vec3 col = mix(baseColor * 0.3, baseColor * 0.7, diff)
+                   + glowColor * fresnel * 0.35
+                   + glowColor * ridge  * 0.15;
 
-          float alpha = 0.55 + fresnel * 0.3;
+          float alpha = 0.2 + fresnel * 0.15;
           gl_FragColor = vec4(col, alpha);
         }
       `,
@@ -148,9 +148,9 @@ export function Scene3D() {
     // ── Outer glow membrane ──────────────────────────────────────────────────
     const glowGeo = new THREE.IcosahedronGeometry(1.55, 6);
     const glowMat = new THREE.MeshBasicMaterial({
-      color: "#00FF88",
+      color: "#004433",
       transparent: true,
-      opacity: 0.04,
+      opacity: 0.015,
       side: THREE.BackSide,
     });
     scene.add(new THREE.Mesh(glowGeo, glowMat));
@@ -177,7 +177,7 @@ export function Scene3D() {
 
     const circuitGroup = new THREE.Group();
     for (let i = 0; i < 8; i++) {
-      circuitGroup.add(makeCircuitRing(1.65 + i * 0.06, 24 + i * 4, "#00FF88", 0.18 - i * 0.015));
+      circuitGroup.add(makeCircuitRing(1.65 + i * 0.06, 24 + i * 4, "#006644", 0.06 - i * 0.005));
     }
     scene.add(circuitGroup);
 
@@ -194,7 +194,7 @@ export function Scene3D() {
     }
     const pGeo = new THREE.BufferGeometry();
     pGeo.setAttribute("position", new THREE.BufferAttribute(pPos, 3));
-    const pMat = new THREE.PointsMaterial({ color: "#00FF88", size: 0.022, transparent: true, opacity: 0.5 });
+    const pMat = new THREE.PointsMaterial({ color: "#006644", size: 0.015, transparent: true, opacity: 0.2 });
     const particles = new THREE.Points(pGeo, pMat);
     scene.add(particles);
 

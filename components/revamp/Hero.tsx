@@ -118,7 +118,7 @@ export function Hero({ onNavigate }: HeroProps) {
             </div>
           </div>
            <div className="trust-badges">
-             <Image src="/logo.png" alt="COAI" width={24} height={24} style={{ borderRadius: 4, objectFit: "contain" }} />
+             <Image src="/newlogo.png" alt="COAI" width={24} height={24} style={{ borderRadius: 4, objectFit: "contain" }} />
              <span className="trust-badge">Based in Bakersfield, CA</span>
              <span className="trust-badge"><Star size={14} aria-hidden="true" /> 5 Google Rated</span>
            </div>

@@ -17,13 +17,13 @@ export function pageMetadata(opts: {
       description: opts.description,
       url,
       siteName: ORG_NAME,
-      images: [{ url: "/logo.png", width: 1200, height: 630 }]
+      images: [{ url: "/newlogo.png", width: 1200, height: 630 }]
     },
     twitter: {
       card: "summary_large_image",
       title: titleStr,
       description: opts.description,
-      images: ["/logo.png"]
+      images: ["/newlogo.png"]
     }
   };
 }
@@ -37,12 +37,12 @@ export const homeMetadata: Metadata = {
     description: SITE_DESCRIPTION,
     url: SITE_URL,
     siteName: ORG_NAME,
-    images: [{ url: "/logo.png", width: 1200, height: 630 }]
+    images: [{ url: "/newlogo.png", width: 1200, height: 630 }]
   },
   twitter: {
     card: "summary_large_image",
     title: "Structural Digital Audits & AEO | Bakersfield 661",
     description: SITE_DESCRIPTION,
-    images: ["/logo.png"]
+    images: ["/newlogo.png"]
   }
 };

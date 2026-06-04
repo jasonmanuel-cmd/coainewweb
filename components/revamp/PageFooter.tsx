@@ -11,7 +11,7 @@ export function PageFooter() {
       <div className="footer-inner container">
         <div className="footer-brand">
           <div className="footer-logo-row">
-            <Image src="/logo.png" alt="COAI" width={100} height={28} style={{ objectFit: 'contain', width: 'auto', height: '28px' }} />
+            <Image src="/newlogo.png" alt="COAI" width={100} height={28} style={{ objectFit: 'contain', width: 'auto', height: '28px' }} />
             <span className="footer-wordmark">COAI<span>.</span></span>
           </div>
           <p className="footer-tagline">Sovereign websites, AI automation, and honest tech support for Bakersfield tradesmen and small businesses.</p>

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
+import Image from "next/image";
 
 type SplashProps = {
   /** Session-only key. */
@@ -78,16 +79,18 @@ export function Splash({
       <div className="splash__backdrop" aria-hidden="true" />
       <div className="splash__frame">
         <div className="splash__glass" />
-        <div className="splash__content">
-          <div className="splash__badge" aria-hidden="true">
-            <span className="splash__badgeDot" />
-            <span className="splash__badgeText">COAI SYSTEM ONLINE</span>
-          </div>
+          <div className="splash__content">
+            <div className="splash__badge" aria-hidden="true">
+              <span className="splash__badgeDot" />
+              <span className="splash__badgeText">COAI SYSTEM ONLINE</span>
+            </div>
 
+            <div className="splash__mark">
+              <Image src="/newlogo.png" alt="COAI" width={160} height={60} style={{ objectFit: "contain", width: "auto", height: "60px" }} />
+            </div>
 
-
-          <h2 className="splash__title">Welcome to where the future lives</h2>
-          <p className="splash__sub">and tradesmen succeed.</p>
+            <h2 className="splash__title">Welcome to where the future lives</h2>
+            <p className="splash__sub">and tradesmen succeed.</p>
 
           <div className="splash__hint">Tap to skip</div>
         </div>

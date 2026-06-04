@@ -14,10 +14,10 @@ const CONFIG = {
   /** Area divisor: more stars on larger screens */
   starAreaDivisor: 52000,
   /** Node dot (network) */
-  nodeColor: "rgba(0, 180, 90, 0.35)",
+  nodeColor: "rgba(0, 180, 90, 0.12)",
   /** Links between nearby nodes */
-  lineRgb: "0, 180, 80",
-  lineOpacityMax: 0.07,
+  lineRgb: "0, 120, 60",
+  lineOpacityMax: 0.025,
   shootingStarFreq: 0.005
 } as const;
 
@@ -114,8 +114,8 @@ export function NeuralMesh() {
     function drawStars(t: number) {
       const phaseScale = t * 0.0014;
       for (const s of stars) {
-        const alpha = 0.03 + ((Math.sin(phaseScale + s.phase) + 1) / 2) * 0.08;
-        c.fillStyle = `rgba(80, 180, 110, ${alpha})`;
+        const alpha = 0.01 + ((Math.sin(phaseScale + s.phase) + 1) / 2) * 0.03;
+        c.fillStyle = `rgba(50, 130, 80, ${alpha})`;
         c.beginPath();
         c.arc(s.x, s.y, s.r, 0, Math.PI * 2);
         c.fill();
@@ -150,7 +150,7 @@ export function NeuralMesh() {
       }
       if (sStar.active) {
         c.beginPath();
-        c.strokeStyle = "rgba(100, 200, 140, 0.25)";
+        c.strokeStyle = "rgba(60, 140, 90, 0.1)";
         c.lineWidth = 1;
         c.moveTo(sStar.x, sStar.y);
         c.lineTo(sStar.x - 60, sStar.y + 60);
