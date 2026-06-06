@@ -58,7 +58,7 @@ export const metadata: Metadata = {
   }
 };
 
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-ZYCPQEBGTN";
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-FJXS8R97E8";
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
   const nonce = (await headers()).get("x-nonce") ?? "";
