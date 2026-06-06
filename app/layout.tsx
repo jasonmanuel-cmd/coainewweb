@@ -4,6 +4,7 @@ import Script from "next/script";
 import { headers } from "next/headers";
 import { Suspense, type ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { AnalyticsRouteTracker } from "@/components/AnalyticsRouteTracker";
 import { AppChrome } from "@/components/AppChrome";
 import { JsonLd } from "@/components/JsonLd";
@@ -99,6 +100,7 @@ gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: true });`}
         <AppChrome>{children}</AppChrome>
         <CipherChat />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
