@@ -2,6 +2,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { ArrowRight, Shield, Zap, Search, Phone, X } from "lucide-react";
 import { Nav } from "./Nav";
 import { Hero } from "./Hero";
@@ -212,9 +213,14 @@ export function LandingHomeRevamp() {
             <section className="meet-jason-section">
               <div className="container meet-jason-inner">
                 <div className="meet-jason-photo">
-                  <div className="meet-jason-placeholder">
-                    <span>JM</span>
-                  </div>
+                  <Image
+                    src="/jason.png"
+                    alt="Jason Manuel — Founder of Chaotically Organized AI"
+                    fill
+                    priority
+                    sizes="(max-width: 768px) 100vw, 400px"
+                    style={{ objectFit: "cover", objectPosition: "center 20%", borderRadius: "16px" }}
+                  />
                 </div>
                 <div className="meet-jason-copy">
                   <span className="section-eyebrow">Who You're Working With</span>

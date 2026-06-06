@@ -7,9 +7,9 @@
   --amber-light: #F5B840;
   --amber-glow: rgba(232, 160, 32, 0.25);
   --amber-subtle: rgba(232, 160, 32, 0.1);
-  --cream: #EDE9E3;
-  --cream-muted: #C4BEB7;
-  --cream-dim: #9E9A93;
+  --cream: #F7F4F0;
+  --cream-muted: #DCD7D0;
+  --cream-dim: #B8B2AA;
   --teal: #1D9E75;
   --teal-subtle: rgba(29, 158, 117, 0.15);
 
@@ -923,7 +923,8 @@ img { max-width: 100%; display: block; }
 ====================================== */
 .meet-jason-section { padding: 100px 0; }
 .meet-jason-inner { display: grid; grid-template-columns: 280px 1fr; gap: 48px; align-items: center; }
-.meet-jason-photo { display: flex; justify-content: center; }
+.meet-jason-photo { display: flex; justify-content: center; position: relative; width: 280px; height: 320px; border-radius: 16px; overflow: hidden; background: linear-gradient(135deg, #0B1426, #0a0a0a); }
+
 .meet-jason-placeholder {
   width: 200px; height: 200px; border-radius: 50%;
   background: linear-gradient(135deg, rgba(232,160,32,0.15), rgba(17,29,53,0.6));
