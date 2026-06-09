@@ -5,14 +5,16 @@ import { JsonLd } from "@/components/JsonLd";
 import { MarketingLayout } from "@/components/marketing/MarketingLayout";
 import { FAQ_MARKETING_SECTIONS, faqMarketingFlat } from "@/lib/faq-marketing-data";
 import { pageMetadata } from "@/lib/metadata";
-import { breadcrumbJsonLd, faqPageJsonLd } from "@/lib/schema";
-import { CONTACT } from "@/lib/site";
+import { articleJsonLd, breadcrumbJsonLd, faqPageJsonLd } from "@/lib/schema";
+import { CONTACT, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: { absolute: "FAQ | Chaotically Organized AI - Bakersfield 661" },
   description:
     "Answers to every question Bakersfield business owners ask before hiring COAI. Pricing, timelines, ownership, AI automation, website maintenance, migration, and ongoing support - all of it.",
-  path: "/faq"
+  path: "/faq",
+  published: "2026-02-01",
+  modified: "2026-04-15",
 });
 
 export default function FaqPage() {
@@ -21,9 +23,18 @@ export default function FaqPage() {
     { name: "Home", path: "/" },
     { name: "FAQ", path: "/faq" }
   ]);
+  const faqArticle = articleJsonLd({
+    headline: "FAQ — Chaotically Organized AI | Bakersfield 661",
+    description:
+      "Answers to every question Bakersfield business owners ask before hiring COAI. Pricing, timelines, ownership, AI automation, website maintenance, migration, and ongoing support.",
+    path: "/faq",
+    datePublished: "2026-02-01",
+    dateModified: "2026-04-15",
+  });
 
   return (
     <MarketingLayout activeHref="/faq">
+      <JsonLd data={faqArticle} />
       <JsonLd data={faqLd} />
       <JsonLd data={crumbs} />
 

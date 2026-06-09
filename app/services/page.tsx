@@ -13,7 +13,9 @@ export const metadata: Metadata = pageMetadata({
   title: { absolute: "Services | Chaotically Organized AI - Bakersfield 661" },
   description:
     "Structural audits, AEO systems, AI automation, sovereign website builds, WordPress migration, and ongoing maintenance for Bakersfield operators. See exactly what COAI delivers.",
-  path: "/services"
+  path: "/services",
+  published: "2026-01-20",
+  modified: "2026-04-15",
 });
 
 export default function ServicesPage() {

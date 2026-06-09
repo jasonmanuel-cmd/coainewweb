@@ -1,22 +1,34 @@
 import type { Metadata } from "next";
 import { LandingHomeRevamp } from "@/components/revamp/LandingHome";
-import { SITE_URL, ORG_ID } from "@/lib/site";
+import { SITE_URL, ORG_ID, FOUNDER } from "@/lib/site";
 import { JsonLd } from "@/components/JsonLd";
+import { articleJsonLd } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "COAI - Digital Lead Systems for Trades",
   description:
-    "Stop losing jobs to missed calls and bad websites. COAI builds custom lead systems for trades businesses - websites you own, AI that texts missed callers back, and SEO that puts you on top of Google. Free 20-min audit.",
+    "COAI builds custom digital lead systems for trades businesses. Sovereign websites, AI call recovery, and local SEO for more job calls. Free 20-min audit.",
   openGraph: {
     title: "COAI - Digital Lead Systems for Trades Businesses",
     description:
-      "Get more job calls without increasing your ad spend. Websites you own, AI automation, and SEO that actually works.",
+      "Sovereign websites with AI automation and local SEO — purpose-built for trades businesses to get more job calls.",
     url: SITE_URL,
   },
   other: {
     "author": "Jason Robert Manuel",
+    "article:published_time": "2026-01-15",
+    "article:modified_time": "2026-05-01",
   },
 };
+
+const homeArticle = articleJsonLd({
+  headline: "COAI — Digital Lead Systems for Trades Businesses",
+  description:
+    "Chaotically Organized AI builds sovereign websites with AI automation for trades businesses in Bakersfield, CA. Each site uses geo-targeted schema and AEO-optimized content to generate job calls.",
+  path: "/",
+  datePublished: "2026-01-15",
+  dateModified: "2026-05-01",
+});
 
 const homeFaqSchema = {
   "@context": "https://schema.org",
@@ -187,6 +199,7 @@ const homeAggregateRating = {
 export default function Home() {
   return (
     <>
+      <JsonLd data={homeArticle} />
       <JsonLd data={homeFaqSchema} />
       <JsonLd data={homeAggregateRating} />
       {homeProductSchemas.map((s, i) => <JsonLd key={`prod-${i}`} data={s} />)}

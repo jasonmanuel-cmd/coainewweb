@@ -11,7 +11,9 @@ export const metadata: Metadata = pageMetadata({
   title: "Website Design - Sovereign Builds",
   description:
     "Custom sovereign website design for Bakersfield service businesses. Not templates. Not Wix. Real code, real performance, full ownership. WordPress migration, site speed optimization, and emergency repairs available.",
-  path: "/website-design"
+  path: "/website-design",
+  published: "2026-02-01",
+  modified: "2026-04-15",
 });
 
 export default function WebsiteDesignPage() {

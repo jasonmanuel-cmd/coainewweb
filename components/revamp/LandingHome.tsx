@@ -20,7 +20,7 @@ const products = [
     icon: Shield,
     tag: "Get More Calls",
     name: "LeadShield",
-    desc: "LeadShield captures every missed call for trades businesses. It auto-texts each missed caller back within seconds, scores leads HOT/WARM/COLD by response, and runs automated follow-up sequences until the lead converts or opts out. One HVAC contractor recovered 12+ new jobs in the first week — paid for itself 3x over in month one.",
+    desc: "LeadShield helps trades businesses recover missed calls. It auto-texts each missed caller within seconds, then scores leads by response quality and runs follow-up sequences until each lead converts or opts out. One HVAC contractor recovered 12+ new jobs in the first week and paid for LeadShield 3x over in month one.\n\n- LeadShield captures every missed call for trades businesses.\n- LeadShield auto-texts each caller back within seconds.\n- LeadShield scores leads HOT/WARM/COLD by response.\n- LeadShield runs automated follow-up sequences until conversion.",
     features: [
       "Auto-texts missed callers in seconds",
       "Lead scoring — call the hot leads first",
@@ -28,12 +28,13 @@ const products = [
       "Works with your existing phone number",
     ],
     cta: "Recover Missed Calls",
+    link: "https://leadshield.live"
   },
   {
     icon: Zap,
     tag: "Rank Higher, Get Found",
     name: "COAI",
-    desc: "COAI websites generate consistent job leads for trades businesses. We hand-code each site with geo-targeted schema and AEO-optimized content that ranks on Google Maps and surfaces inside ChatGPT, Claude, and Perplexity AI answers. HubSpot reports 58% of Google searches now result in zero clicks — COAI websites capture that AI search traffic. No Wix, no WordPress, no monthly tax.",
+    desc: "COAI websites generate consistent job leads for trades businesses. Each site uses geo-targeted schema and AEO-optimized content to rank on Google Maps and surface inside ChatGPT, Claude, and Perplexity AI answers. HubSpot reports 58% of Google searches result in zero clicks — COAI websites capture that AI search traffic with structured data and semantic markup.\n\n- COAI websites generate job leads for trades businesses.\n- COAI hand-codes each site with geo-targeted schema.\n- COAI content ranks on Google Maps for local searches.\n- COAI websites capture AI search traffic with structured markup.",
     features: [
       "Custom-coded website you fully own",
       "AI receptionist (Cipher) answers calls 24/7",
@@ -41,12 +42,13 @@ const products = [
       "Schema markup built for AI search visibility",
     ],
     cta: "Build My Lead System",
+    link: "/pricing"
   },
   {
     icon: Search,
     tag: "Find Revenue Leaks",
     name: "SiteER",
-    desc: "SiteER audits any website for revenue leaks. The free 60-second scan checks performance, schema coverage, mobile speed, and AI readiness — then assigns an A–F grade with a dollar-figure revenue impact. According to Google, a 1-second mobile delay drops conversions by 20%. SiteER shows exactly what's costing you money.",
+    desc: "SiteER audits any website for revenue leaks. The free 60-second scan checks performance, schema coverage, mobile speed, and AI readiness — then assigns an A–F grade with a dollar-figure revenue impact. According to Google, a 1-second mobile delay drops conversions by 20%. SiteER shows business owners exactly what is costing them money.\n\n- SiteER audits websites for revenue leaks.\n- SiteER assigns an A–F grade with dollar impact.\n- SiteER checks performance, schema, and AI readiness.\n- SiteER provides prioritized fix lists starting at $500.",
     features: [
       "Full speed & schema audit in 60 seconds",
       "A–F grade with dollar revenue impact",
@@ -54,6 +56,7 @@ const products = [
       "Treatment plans starting at $500",
     ],
     cta: "See Your Grade",
+    link: "https://siteer.dev"
   },
 ];
 
@@ -268,7 +271,7 @@ export function LandingHomeRevamp() {
                           <li key={f}>{f}</li>
                         ))}
                       </ul>
-                      <span className="service-card-cta">{p.cta} <ArrowRight size={16} aria-hidden="true" /></span>
+                      <a href={p.link} className="service-card-cta">{p.cta} <ArrowRight size={16} aria-hidden="true" /></a>
                       {i === 1 && (
                         <div className="service-testi-inline">
                           <span className="service-testi-stars" aria-label="5 out of 5 stars">★★★★★</span>
