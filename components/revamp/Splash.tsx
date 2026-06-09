@@ -4,19 +4,16 @@ import React, { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 
 type SplashProps = {
-  /** Session-only key. */
   storageKey?: string;
-  /** How long to show before auto-dismissing. */
   durationMs?: number;
-  /** Called after exit animation completes. */
   onDone?: () => void;
 };
 
-type Phase = "enter" | "visible" | "exit";
+type Phase = "enter" | "visible" | "door-open";
 
 export function Splash({
   storageKey = "coai:splash:v1",
-  durationMs = 3500,
+  durationMs = 4000,
   onDone,
 }: SplashProps) {
   const [shouldRender, setShouldRender] = useState(false);
@@ -28,22 +25,19 @@ export function Splash({
   }, []);
 
   useEffect(() => {
-    // Session-only: show once per tab/session.
     try {
       const seen = sessionStorage.getItem(storageKey);
       if (seen === "1") return;
       sessionStorage.setItem(storageKey, "1");
-    } catch {
-      // If storage is blocked, still show the splash.
-    }
+    } catch {}
 
     setShouldRender(true);
     setPhase("enter");
 
     const enterMs = prefersReducedMotion ? 0 : 200;
     const t1 = window.setTimeout(() => setPhase("visible"), enterMs);
-    const t2 = window.setTimeout(() => setPhase("exit"), enterMs + durationMs);
-    const exitMs = prefersReducedMotion ? 0 : 320;
+    const t2 = window.setTimeout(() => setPhase("door-open"), enterMs + durationMs);
+    const exitMs = prefersReducedMotion ? 0 : 900;
     const t3 = window.setTimeout(() => {
       setShouldRender(false);
       onDone?.();
@@ -56,10 +50,10 @@ export function Splash({
     };
   }, [durationMs, onDone, prefersReducedMotion, storageKey]);
 
-  const dismissNow = () => {
-    if (!shouldRender) return;
-    setPhase("exit");
-    const exitMs = prefersReducedMotion ? 0 : 220;
+  const dismiss = () => {
+    if (!shouldRender || phase === "door-open") return;
+    setPhase("door-open");
+    const exitMs = prefersReducedMotion ? 0 : 900;
     window.setTimeout(() => {
       setShouldRender(false);
       onDone?.();
@@ -70,30 +64,29 @@ export function Splash({
 
   return (
     <div
-      className={`splash splash--${phase}`}
+      className={`door-splash door-splash--${prefersReducedMotion ? "exit" : phase}`}
       role="dialog"
       aria-modal="true"
       aria-label="Welcome"
-      onClick={dismissNow}
+      onClick={dismiss}
     >
-      <div className="splash__backdrop" aria-hidden="true" />
-      <div className="splash__frame">
-        <div className="splash__glass" />
-          <div className="splash__content">
-            <div className="splash__badge" aria-hidden="true">
-              <span className="splash__badgeDot" />
-              <span className="splash__badgeText">COAI SYSTEM ONLINE</span>
-            </div>
-
-            <div className="splash__mark">
-              <Image src="/newlogo.png" alt="COAI" width={160} height={60} style={{ objectFit: "contain", width: "auto", height: "60px" }} />
-            </div>
-
-            <h2 className="splash__title">Welcome to where the future lives</h2>
-            <p className="splash__sub">and tradesmen succeed.</p>
-
-          <div className="splash__hint">Tap to skip</div>
+      <div className="door-splash__panel door-splash__panel--left" aria-hidden="true">
+        <div className="door-splash__doorFace" />
+      </div>
+      <div className="door-splash__panel door-splash__panel--right" aria-hidden="true">
+        <div className="door-splash__doorFace" />
+      </div>
+      <div className="door-splash__content">
+        <div className="door-splash__badge">
+          <span className="door-splash__badgeDot" />
+          <span className="door-splash__badgeText">COAI SYSTEM ONLINE</span>
         </div>
+        <div className="door-splash__logo">
+          <Image src="/newlogo.png" alt="COAI" width={200} height={75} style={{ objectFit: "contain", width: "auto", height: "clamp(40px, 8vw, 75px)" }} />
+        </div>
+        <h2 className="door-splash__title">Welcome to where the future lives</h2>
+        <p className="door-splash__sub">and tradesmen succeed.</p>
+        <div className="door-splash__hint">Tap to open</div>
       </div>
     </div>
   );

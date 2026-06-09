@@ -32,56 +32,84 @@ body {
 }
 
 /* ======================================
-   SPLASH INTRO (session-only)
+   DOOR SPLASH INTRO (session-only)
 ====================================== */
-.splash {
+.door-splash {
   position: fixed;
   inset: 0;
   z-index: 500;
   display: grid;
   place-items: center;
   cursor: pointer;
+  perspective: 1600px;
 }
 
-.splash__backdrop {
+.door-splash__panel {
   position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 90% 65% at 20% 35%, rgba(29, 158, 117, 0.08) 0%, transparent 60%),
-    radial-gradient(ellipse 70% 60% at 80% 70%, rgba(232, 160, 32, 0.06) 0%, transparent 60%),
-    rgba(8, 15, 30, 0.96);
-  backdrop-filter: blur(18px);
-}
-
-.splash__frame {
-  position: relative;
-  width: min(720px, calc(100vw - 40px));
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(17, 29, 53, 0.62);
-  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.65);
+  top: 0;
+  height: 100%;
+  width: 50vw;
+  will-change: transform;
+  backface-visibility: hidden;
   overflow: hidden;
 }
 
-.splash__glass {
+.door-splash__panel--left {
+  left: 0;
+  transform-origin: left center;
+}
+
+.door-splash__panel--right {
+  right: 0;
+  transform-origin: right center;
+}
+
+.door-splash__doorFace {
   position: absolute;
-  inset: -2px;
+  inset: 0;
   background:
-    radial-gradient(circle at 20% 30%, rgba(29, 158, 117, 0.18), transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(232, 160, 32, 0.18), transparent 42%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
-  filter: saturate(1.1);
+    radial-gradient(ellipse 90% 65% at 20% 35%, rgba(29, 158, 117, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 60% at 80% 70%, rgba(232, 160, 32, 0.04) 0%, transparent 60%),
+    rgba(8, 15, 30, 0.98);
+}
+
+.door-splash__doorFace::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 28px,
+      rgba(255,255,255,0.015) 28px,
+      rgba(255,255,255,0.015) 29px
+    );
   pointer-events: none;
 }
 
-.splash__content {
-  position: relative;
-  z-index: 1;
-  padding: 44px 44px 34px;
-  text-align: center;
+/* Center seam glow */
+.door-splash__panel--left .door-splash__doorFace::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, rgba(232,160,32,0.1), rgba(29,158,117,0.08), transparent);
 }
 
-.splash__badge {
+.door-splash__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+.door-splash__badge {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -89,10 +117,10 @@ body {
   padding: 8px 14px;
   background: rgba(29, 158, 117, 0.12);
   border: 1px solid rgba(29, 158, 117, 0.22);
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
-.splash__badgeDot {
+.door-splash__badgeDot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -100,7 +128,7 @@ body {
   box-shadow: 0 0 16px rgba(29, 158, 117, 0.55);
 }
 
-.splash__badgeText {
+.door-splash__badgeText {
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.12em;
@@ -108,29 +136,14 @@ body {
   color: rgba(237, 233, 227, 0.9);
 }
 
-.splash__mark {
-  width: 100%;
+.door-splash__logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
-.splash__shield {
-  width: 86px;
-  height: 86px;
-  display: none;
-  background:
-    radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.28), transparent 38%),
-    linear-gradient(135deg, rgba(232, 160, 32, 0.92), rgba(29, 158, 117, 0.7));
-  clip-path: polygon(50% 0%, 86% 14%, 92% 48%, 50% 100%, 8% 48%, 14% 14%);
-  box-shadow:
-    0 14px 40px rgba(0, 0, 0, 0.55),
-    0 0 36px rgba(232, 160, 32, 0.22);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.splash__title {
+.door-splash__title {
   font-size: clamp(1.25rem, 3.5vw, 1.65rem);
   font-weight: 700;
   color: #fff;
@@ -140,13 +153,13 @@ body {
   text-align: center;
 }
 
-.splash__sub {
+.door-splash__sub {
   color: var(--cream-muted);
   font-size: 1.02rem;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
-.splash__hint {
+.door-splash__hint {
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.08em;
@@ -154,25 +167,74 @@ body {
   color: rgba(237, 233, 227, 0.62);
 }
 
-.splash--enter .splash__frame {
-  transform: translateY(10px) scale(0.985);
-  opacity: 0;
+/* --- Phase: enter (doors closed, content starts invisible) --- */
+.door-splash--enter .door-splash__panel--left {
+  transform: rotateY(0deg);
 }
 
-.splash--visible .splash__frame {
-  transform: translateY(0) scale(1);
-  opacity: 1;
-  transition: transform 260ms var(--ease-bounce), opacity 240ms ease;
+.door-splash--enter .door-splash__panel--right {
+  transform: rotateY(0deg);
 }
 
-.splash--exit {
+/* --- Phase: visible (doors stay closed, content fades in) --- */
+.door-splash--visible .door-splash__panel--left,
+.door-splash--visible .door-splash__panel--right {
+}
+
+.door-splash--visible .door-splash__content {
+  animation: doorContentFadeIn 400ms ease forwards;
+}
+
+@keyframes doorContentFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Phase: door-open (swing outward in 3D) --- */
+.door-splash--door-open {
   pointer-events: none;
 }
 
-.splash--exit .splash__frame {
-  transform: translateY(10px) scale(0.99);
+.door-splash--door-open .door-splash__panel--left {
+  transform: rotateY(-115deg);
+  transition: transform 900ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.door-splash--door-open .door-splash__panel--right {
+  transform: rotateY(115deg);
+  transition: transform 900ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.door-splash--door-open .door-splash__content {
   opacity: 0;
-  transition: transform 220ms ease, opacity 220ms ease;
+  transform: scale(0.95);
+  transition: opacity 350ms ease 100ms, transform 350ms ease 100ms;
+}
+
+/* Reduced motion fallback */
+.door-splash--exit {
+  pointer-events: none;
+}
+
+.door-splash--exit .door-splash__content {
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.door-splash--exit .door-splash__panel--left {
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.door-splash--exit .door-splash__panel--right {
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+@keyframes revamp-indeterminate {
+  0% { transform: translateX(-80%); }
+  50% { transform: translateX(80%); }
+  100% { transform: translateX(220%); }
 }
 
 @keyframes revamp-indeterminate {
@@ -182,8 +244,7 @@ body {
 }
 
 @media (max-width: 520px) {
-  .splash__content { padding: 34px 22px 28px; }
-  .splash__shield { width: 76px; height: 76px; }
+  .door-splash__badge { margin-bottom: 20px; }
 }
 a { color: inherit; text-decoration: none; }
 ul { list-style: none; }
