@@ -63,6 +63,14 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   const nonce = (await headers()).get("x-nonce") ?? "";
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.clarity.ms" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.clarity.ms" />
+      </head>
       <body className={`${mono.variable} ${plusJakarta.variable} ${dmSans.variable}`}>
         <noscript>
           <iframe
@@ -84,7 +92,10 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           type="speculationrules"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
-              prerender: [{ where: { href_matches: "/*" }, eagerness: "moderate" }]
+              prerender: [{
+                where: { href_matches: ["/intake", "/pricing", "/services", "/portfolio", "/about", "/faq", "/website-design*"] },
+                eagerness: "moderate"
+              }]
             })
           }}
         />

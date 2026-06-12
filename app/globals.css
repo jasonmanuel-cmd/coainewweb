@@ -19,6 +19,7 @@
   --t-fast: 150ms;
   --t-mid: 240ms;
   --t-scene: 480ms;
+  --font-headline: var(--font-plus-jakarta);
 }
 
 * {
