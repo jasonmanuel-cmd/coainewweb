@@ -12,10 +12,29 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"]
   },
   async headers() {
+    // Static, build-time CSP. Kept out of middleware on purpose: a per-request
+    // nonce forces every route into dynamic SSR (a Vercel Function per hit),
+    // which is what blew up Active CPU. A static policy lets pages stay CDN-cached.
+    const csp = [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://*.clarity.ms",
+      "style-src 'self' 'unsafe-inline'",
+      "img-src 'self' data: blob: https:",
+      "font-src 'self' data:",
+      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://www.googletagmanager.com https://vitals.vercel-insights.com https://*.vercel-insights.com https://challenges.cloudflare.com https://www.clarity.ms https://*.clarity.ms",
+      "frame-src https://challenges.cloudflare.com",
+      "form-action 'self' https://formspree.io",
+      "base-uri 'self'",
+      "object-src 'none'",
+      "frame-ancestors 'self'",
+      "upgrade-insecure-requests"
+    ].join("; ");
+
     return [
       {
         source: "/:path*",
         headers: [
+          { key: "Content-Security-Policy", value: csp },
           { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "X-Frame-Options", value: "SAMEORIGIN" },
