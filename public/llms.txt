@@ -1,0 +1,26 @@
+# Chaotically Organized AI (COAI)
+
+> Digital lead systems for trades & local service businesses in Bakersfield and Kern County, CA. Sovereign hand-coded websites, AI call recovery, schema/AEO optimization, and local SEO — built to generate more job calls. Founder: Jason Robert Manuel.
+
+## Contact
+- Phone: (661) 659-1376
+- Address: 1712 19th St #216, Bakersfield, CA 93301
+- Hours: Monday–Friday, 9:00 a.m.–5:00 p.m. Pacific
+
+## Core Pages
+- [Home](https://coaibakersfield.com/): Services overview for contractors & trades
+- [Intake](https://coaibakersfield.com/intake): Start a project / request the free audit
+- [Pricing](https://coaibakersfield.com/pricing): Fixed-price packages
+
+## Services
+- Signal Foundation ($1,200): Custom-coded sovereign website with geo-targeted schema, AEO-optimized content, lead capture, and Google Business Profile alignment.
+- Sentinel Automation ($2,000+): Lead qualification, missed-call text-back recovery, and a 24/7 AI receptionist (Cipher), built on Signal Foundation.
+- LeadShield: Missed-call recovery — auto-texts every missed caller, scores leads HOT/WARM/COLD, runs automated follow-up.
+
+## Key Facts
+- Every build is a one-time fixed price. No mandatory retainers. The client owns the code, domain, hosting, and data at handoff.
+- Standard builds complete in 2–4 weeks from signed scope to live deployment.
+- Stack: Next.js + HTML/CSS/JS, deployed on Vercel or Netlify. Full code access and handoff docs. No proprietary lock-in.
+
+## Service Area
+Bakersfield, Delano, Shafter, Kern County, California.

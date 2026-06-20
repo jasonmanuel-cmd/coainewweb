@@ -17,6 +17,18 @@ import {
   type CitySlug
 } from "./site";
 
+/**
+ * Real, named client testimonials. Keep ratingCount/reviewCount in sync with the
+ * count of entries here AND with the Google Business Profile review count.
+ */
+export const CLIENT_REVIEWS = [
+  { author: "Ryan & Ted", body: "Jason is genuinely extremely impressive. He is an adept coder, he can design websites and AI systems in weeks. He has transformed our business." },
+  { author: "Edwin Ward", body: "Jason did an amazing job building my website from live results to sleek design he did it all. Also more affordable than 85% of the other companies out there." },
+  { author: "Matthew Hoover", body: "Jason just completed a website for our Record Label. He did professional, technical, amazing job on our website." },
+  { author: "Christopher Moore", body: "Jason at Chaotically Organized AI helped our business build a great website that helped give us better online presence." },
+  { author: "Los boricuas", body: "Great professional work and talented. I started making money with the website he built me." }
+] as const;
+
 export function organizationJsonLd() {
   return {
     "@context": "https://schema.org",
@@ -24,6 +36,19 @@ export function organizationJsonLd() {
       {
         "@type": ["ProfessionalService", "LocalBusiness"],
         "@id": ORG_ID,
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "5.0",
+          bestRating: "5",
+          ratingCount: String(CLIENT_REVIEWS.length),
+          reviewCount: String(CLIENT_REVIEWS.length)
+        },
+        review: CLIENT_REVIEWS.map((r) => ({
+          "@type": "Review",
+          author: { "@type": "Person", name: r.author },
+          reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+          reviewBody: r.body
+        })),
         name: ORG_NAME,
         legalName: LEGAL_NAME,
         url: SITE_URL,

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { LandingHomeRevamp } from "@/components/revamp/LandingHome";
-import { SITE_URL, ORG_ID, FOUNDER } from "@/lib/site";
+import { SITE_URL, ORG_ID } from "@/lib/site";
 import { JsonLd } from "@/components/JsonLd";
 import { articleJsonLd } from "@/lib/schema";
 
@@ -128,82 +128,12 @@ const homeProductSchemas = [
   }
 ];
 
-const homeReviewSchemas = [
-  {
-    "@context": "https://schema.org",
-    "@type": "Review",
-    itemReviewed: {
-      "@type": "LocalBusiness",
-      "@id": ORG_ID
-    },
-    author: { "@type": "Person", name: "Ryan & Ted" },
-    reviewRating: { "@type": "Rating", ratingValue: "5" },
-    reviewBody: "Jason is genuinely extremely impressive. He is an adept coder, he can design websites and AI systems in weeks. He has transformed our business."
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Review",
-    itemReviewed: {
-      "@type": "LocalBusiness",
-      "@id": ORG_ID
-    },
-    author: { "@type": "Person", name: "Edwin Ward" },
-    reviewRating: { "@type": "Rating", ratingValue: "5" },
-    reviewBody: "Jason did an amazing job building my website from live results to sleek design he did it all. Also more affordable than 85% of the other companies out there."
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Review",
-    itemReviewed: {
-      "@type": "LocalBusiness",
-      "@id": ORG_ID
-    },
-    author: { "@type": "Person", name: "Matthew Hoover" },
-    reviewRating: { "@type": "Rating", ratingValue: "5" },
-    reviewBody: "Jason just completed a website for our Record Label. He did professional, technical, amazing job on our website."
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Review",
-    itemReviewed: {
-      "@type": "LocalBusiness",
-      "@id": ORG_ID
-    },
-    author: { "@type": "Person", name: "Christopher Moore" },
-    reviewRating: { "@type": "Rating", ratingValue: "5" },
-    reviewBody: "Jason at Chaotically Organized AI helped our business build a great website that helped give us better online presence."
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Review",
-    itemReviewed: {
-      "@type": "LocalBusiness",
-      "@id": ORG_ID
-    },
-    author: { "@type": "Person", name: "Los boricuas" },
-    reviewRating: { "@type": "Rating", ratingValue: "5" },
-    reviewBody: "Great professional work and talented. I started making money with the website he built me."
-  }
-];
-
-const homeAggregateRating = {
-  "@context": "https://schema.org",
-  "@type": "AggregateRating",
-  itemReviewed: { "@id": ORG_ID },
-  ratingValue: "5.0",
-  bestRating: "5",
-  ratingCount: "8",
-  reviewCount: "8"
-};
-
 export default function Home() {
   return (
     <>
       <JsonLd data={homeArticle} />
       <JsonLd data={homeFaqSchema} />
-      <JsonLd data={homeAggregateRating} />
       {homeProductSchemas.map((s, i) => <JsonLd key={`prod-${i}`} data={s} />)}
-      {homeReviewSchemas.map((s, i) => <JsonLd key={`rev-${i}`} data={s} />)}
       <LandingHomeRevamp />
     </>
   );
