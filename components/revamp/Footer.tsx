@@ -26,7 +26,7 @@ export function Footer({ onNavigate }: FooterProps) {
             <Image src="/newlogo.png" alt="COAI" width={100} height={28} style={{ objectFit: 'contain', width: 'auto', height: '28px' }} />
             <span className="footer-wordmark">COAI<span>.</span></span>
           </div>
-          <p className="footer-tagline">Sovereign websites, AI automation, and honest tech support for Bakersfield tradesmen and small businesses.</p>
+          <p className="footer-tagline">The TradeCall System — custom websites + missed-call recovery for Bakersfield trades. You own the code. Built by a former contractor.</p>
           <address className="footer-address">
             1712 19th St #216<br />
             Bakersfield, CA 93301<br />

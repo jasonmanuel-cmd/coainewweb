@@ -1,5 +1,78 @@
 import Link from "next/link";
-import { PricingServicesCatalog } from "@/components/pricing/PricingServicesCatalog";
+import { CheckCircle2 } from "lucide-react";
+
+const BUNDLES = [
+  {
+    name: "Trades Starter Pack",
+    price: "$1,497 flat",
+    desc: "Everything a trades or HVAC business needs to look sovereign and capture leads — deployed in one shot.",
+    features: [
+      "Sovereign 1-page web build",
+      "Google Business Profile overhaul",
+      "Schema / AEO injection",
+      "Social media profile cleanup",
+      "Review generation system setup",
+    ],
+    best: false,
+    sq: "https://square.link/u/Xvp6QAHQ",
+  },
+  {
+    name: "AI Lead Machine",
+    price: "$1,997 + $297/mo",
+    desc: "Full autonomous lead capture and follow-up. Built for operators serious about dominating the 661 market.",
+    features: [
+      "Sovereign web build",
+      "AI chatbot embed",
+      "LeadShield missed-call text-back",
+      "Review automation system",
+      "Monthly SEO + analytics report",
+    ],
+    best: true,
+    sq: "https://square.link/u/6X8C4a9M",
+  },
+  {
+    name: "Operational Ecosystem",
+    price: "$1,200 + $197/mo",
+    desc: "Custom sovereign site wired into a full CRM and automated SMS follow-up pipeline.",
+    features: [
+      "Custom HTML/JS site + schema",
+      "LeadShield CRM integration",
+      "Automated missed-call SMS",
+      "Vercel/Netlify hosting setup",
+    ],
+    best: false,
+    sq: "https://square.link/u/D1wnMqJt",
+  },
+];
+
+const TRADE_CALL_FEATURES = [
+  "Custom-coded website — you own 100% of the code",
+  "Mobile-fast, conversion layout built for \"call now\"",
+  "Local SEO + schema so Google Maps and AI search can find you",
+  "Google Business Profile alignment",
+  "Missed-call auto text-back in under 30 seconds",
+  "Lead capture forms + click-to-call hardened",
+  "Full handoff — export and leave anytime",
+  "Phone support from a human in Bakersfield",
+];
+
+const ADDONS = [
+  {
+    name: "Bilingual Build (EN/ES)",
+    desc: "Full Spanish translation with proper hreflang markup. Essential for Kern County businesses targeting the 50%+ Spanish-speaking local market.",
+    price: "+$400",
+  },
+  {
+    name: "Ongoing Support Retainer",
+    desc: "Monthly content updates, performance monitoring, schema maintenance, and priority access. Optional — never required.",
+    price: "$197 / month",
+  },
+  {
+    name: "Structural Audit (Standalone)",
+    desc: "Full performance, schema, AEO, and GBP audit with a prioritized fix list. Ideal if you already have a site.",
+    price: "$350 standalone",
+  },
+];
 
 export function PricingPageBody() {
   return (
@@ -9,321 +82,75 @@ export function PricingPageBody() {
         <div className="m-page-hero-inner">
           <div className="m-section-label">Pricing</div>
           <h1 className="m-page-h1">
-            Fixed price. <span className="m-text-green">Full ownership.</span>
+            One price. <span className="m-text-green">Full ownership.</span>
             <br />
             No surprises.
           </h1>
           <p className="m-hero-sub">
-            Every package is scoped before work starts. You know exactly what you&apos;re getting, what it costs, and
-            what you own at the end. No retainers. No mystery.
+            Fixed scope, fixed price. You approve the proposal before a line of code is written.
+            You own everything the day it goes live.
           </p>
         </div>
       </div>
 
       <section className="m-marketing-section">
         <div className="m-container-wide">
-          <div className="m-section-label">Package Ladder</div>
-          <div className="m-pricing-grid">
-            <div className="m-pkg" id="package-1">
-              <div className="m-pkg-top-bar m-bar-1" />
+          {/* Single Primary Offer — TradeCall System */}
+          <div className="m-section-label">The Primary Offer</div>
+          <div style={{ maxWidth: 520, margin: "0 auto" }}>
+            <div className="m-pkg" style={{ borderColor: "rgba(232,160,32,0.3)", borderWidth: "1px", borderStyle: "solid" }}>
+              <div className="m-pkg-top-bar" style={{ background: "var(--accent)" }} />
               <div className="m-pkg-head">
-                <div className="m-pkg-tier">Package 01</div>
-                <div className="m-pkg-name">Signal Foundation</div>
+                <div className="m-pkg-tier" style={{ color: "var(--accent)" }}>TRADECALL SYSTEM&trade;</div>
+                <div className="m-pkg-name" style={{ fontSize: "1.8rem" }}>Custom website + missed-call recovery</div>
                 <div className="m-pkg-tagline">
-                  The core website operating layer. Turns silent traffic into clear local buying signals. The right
-                  starting point for most service businesses.
+                  Built for Bakersfield trades. You own it. No monthly platform tax.
                 </div>
                 <div className="m-pkg-price">
-                  <span className="m-amount">$1,200</span>
-                  <span className="m-suffix">starting price</span>
+                  <span className="m-amount">$1,997</span>
+                  <span className="m-suffix">flat</span>
+                </div>
+                <div style={{ fontSize: ".85rem", color: "var(--cream-dim)", marginTop: "4px" }}>
+                  $997 to start &middot; $1,000 at launch &middot; 2–3 weeks
                 </div>
               </div>
               <div className="m-pkg-body">
                 <ul className="m-pkg-features">
-                  <li className="m-included">
-                    <span className="m-feat-icon">→</span>
-                    <span>
-                      <strong>Conversion-first message hierarchy</strong> — copy structured to move visitors to action
-                    </span>
-                  </li>
-                  <li className="m-included">
-                    <span className="m-feat-icon">→</span>
-                    <span>
-                      <strong>Mobile speed & trust architecture</strong> — sub-3s load on 4G
-                    </span>
-                  </li>
-                  <li className="m-included">
-                    <span className="m-feat-icon">→</span>
-                    <span>
-                      <strong>GEO / SEO / AEO visibility framework</strong> — built for AI and search from day one
-                    </span>
-                  </li>
-                  <li className="m-included">
-                    <span className="m-feat-icon">→</span>
-                    <span>
-                      <strong>Lead capture & call-route hardening</strong> — forms, click-to-call, intake flows
-                    </span>
-                  </li>
-                  <li className="m-included">
-                    <span className="m-feat-icon">→</span>
-                    <span>
-                      <strong>Google Business Profile alignment</strong> — entity schema synced
-                    </span>
-                  </li>
-                  <li className="m-included">
-                    <span className="m-feat-icon">→</span>
-                    <span>
-                      <strong>Full code handoff</strong> — you own everything
-                    </span>
-                  </li>
-                </ul>
-                <div className="m-pkg-divider" />
-                <div className="m-pkg-meta">TIMELINE: 2–3 weeks · PAGES: Up to 6</div>
-              </div>
-              <div className="m-pkg-foot">
-                <Link href="/contact?package=1&from=pricing" className="m-pkg-cta">
-                  Start With Package 1 →
-                </Link>
-              </div>
-            </div>
-
-            <div className="m-pkg m-pkg-featured" id="package-2">
-              <div className="m-pkg-top-bar m-bar-2" />
-              <div className="m-pkg-badge">Most Popular</div>
-              <div className="m-pkg-head">
-                <div className="m-pkg-tier">Package 02</div>
-                <div className="m-pkg-name">Commerce Engine</div>
-                <div className="m-pkg-tagline">
-                  Everything in Signal Foundation plus transaction-grade backend logic. Your site sells, processes, and
-                  manages orders without you touching it.
-                </div>
-                <div className="m-pkg-price">
-                  <span className="m-amount">$1,600</span>
-                  <span className="m-suffix">starting price</span>
-                </div>
-              </div>
-              <div className="m-pkg-body">
-                <ul className="m-pkg-features">
-                  <li className="m-included">
-                    <span className="m-feat-icon">→</span>
-                    <span>
-                      <strong>Everything in Signal Foundation</strong>
-                    </span>
-                  </li>
-                  <li className="m-included">
-                    <span className="m-feat-icon">→</span>
-                    <span>
-                      <strong>Store backend & catalog logic</strong> — sovereign, no Shopify dependency
-                    </span>
-                  </li>
-                  <li className="m-included">
-                    <span className="m-feat-icon">→</span>
-                    <span>
-                      <strong>Up to 50 products</strong> fully configured and live
-                    </span>
-                  </li>
-                  <li className="m-included">
-                    <span className="m-feat-icon">→</span>
-                    <span>
-                      <strong>Checkout, tax & order-flow QA</strong> — tested across devices
-                    </span>
-                  </li>
-                  <li className="m-included">
-                    <span className="m-feat-icon">→</span>
-                    <span>
-                      <strong>Admin dashboard</strong> — manage inventory and orders yourself
-                    </span>
-                  </li>
-                  <li className="m-included">
-                    <span className="m-feat-icon">→</span>
-                    <span>
-                      <strong>Payment gateway integration</strong> — Stripe or equivalent
-                    </span>
-                  </li>
-                </ul>
-                <div className="m-pkg-divider" />
-                <div className="m-pkg-meta">TIMELINE: 3–4 weeks · PRODUCTS: Up to 50</div>
-              </div>
-              <div className="m-pkg-foot">
-                <Link href="/contact?package=2&from=pricing" className="m-pkg-cta">
-                  Start With Package 2 →
-                </Link>
-              </div>
-            </div>
-
-            <div className="m-pkg" id="package-3">
-              <div className="m-pkg-top-bar m-bar-3" />
-              <div className="m-pkg-head">
-                <div className="m-pkg-tier">Package 03</div>
-                <div className="m-pkg-name">Sentinel Automation</div>
-                <div className="m-pkg-tagline">
-                  Signal Foundation plus full AI automation layer. Cipher intercepts missed demand 24/7. Your best leads
-                  never go unanswered again.
-                </div>
-                <div className="m-pkg-price">
-                  <span className="m-amount">$2,000</span>
-                  <span className="m-suffix">starting price</span>
-                </div>
-              </div>
-              <div className="m-pkg-body">
-                <ul className="m-pkg-features">
-                  <li className="m-included">
-                    <span className="m-feat-icon">→</span>
-                    <span>
-                      <strong>Everything in Signal Foundation</strong>
-                    </span>
-                  </li>
-                  <li className="m-included">
-                    <span className="m-feat-icon">→</span>
-                    <span>
-                      <strong>Cipher AI receptionist deployment</strong> — tuned to your business voice
-                    </span>
-                  </li>
-                  <li className="m-included">
-                    <span className="m-feat-icon">→</span>
-                    <span>
-                      <strong>Missed-call text-back</strong> — responds in under 30 seconds
-                    </span>
-                  </li>
-                  <li className="m-included">
-                    <span className="m-feat-icon">→</span>
-                    <span>
-                      <strong>Lead qualification logic</strong> — filters intent before it reaches you
-                    </span>
-                  </li>
-                  <li className="m-included">
-                    <span className="m-feat-icon">→</span>
-                    <span>
-                      <strong>Booking automation & callback routing</strong>
-                    </span>
-                  </li>
-                  <li className="m-included">
-                    <span className="m-feat-icon">→</span>
-                    <span>
-                      <strong>Workflow reporting dashboard</strong>
-                    </span>
-                  </li>
-                </ul>
-                <div className="m-pkg-divider" />
-                <div className="m-pkg-meta">TIMELINE: 3–4 weeks · UPTIME: 24/7</div>
-              </div>
-              <div className="m-pkg-foot">
-                <Link href="/contact?package=3&from=pricing" className="m-pkg-cta">
-                  Start With Package 3 →
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          <div className="m-compare-block">
-            <div className="m-section-label">Feature Comparison</div>
-            <div className="m-compare-wrap">
-              <table className="m-compare-table">
-                <thead>
-                  <tr>
-                    <th style={{ width: "40%" }}>Feature</th>
-                    <th>
-                      Signal
-                      <br />
-                      $1,200
-                    </th>
-                    <th className="m-th-featured">
-                      Commerce
-                      <br />
-                      $1,600
-                    </th>
-                    <th>
-                      Sentinel
-                      <br />
-                      $2,000
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {[
-                    ["Conversion-first layout", "yes", "yes", "yes"],
-                    ["Mobile speed optimization", "yes", "yes", "yes"],
-                    ["GEO / AEO / SEO framework", "yes", "yes", "yes"],
-                    ["Lead capture & call routing", "yes", "yes", "yes"],
-                    ["Schema markup", "yes", "yes", "yes"],
-                    ["Full code ownership", "yes", "yes", "yes"],
-                    ["E-commerce store backend", "no", "yes", "no"],
-                    ["Product catalog (up to 50)", "no", "yes", "no"],
-                    ["Checkout & payment integration", "no", "yes", "no"],
-                    ["Admin dashboard", "no", "yes", "no"],
-                    ["Cipher AI receptionist", "no", "no", "yes"],
-                    ["Missed-call text-back", "no", "no", "yes"],
-                    ["Lead qualification logic", "no", "no", "yes"],
-                    ["Booking automation", "no", "no", "yes"],
-                    ["Pages included", "Up to 6", "Up to 8", "Up to 6"],
-                    ["Build timeline", "2–3 wks", "3–4 wks", "3–4 wks"]
-                  ].map(([label, a, b, c]) => (
-                    <tr key={String(label)}>
-                      <td className="m-feature-name">{label}</td>
-                      <td className={a === "yes" ? "m-yes" : a === "no" ? "m-no" : "m-val"}>
-                        {a === "yes" ? "✓" : a === "no" ? "—" : a}
-                      </td>
-                      <td className={b === "yes" ? "m-yes" : b === "no" ? "m-no" : "m-val"}>
-                        {b === "yes" ? "✓" : b === "no" ? "—" : b}
-                      </td>
-                      <td className={c === "yes" ? "m-yes" : c === "no" ? "m-no" : "m-val"}>
-                        {c === "yes" ? "✓" : c === "no" ? "—" : c}
-                      </td>
-                    </tr>
+                  {TRADE_CALL_FEATURES.map((f, i) => (
+                    <li key={i} className="m-included">
+                      <span className="m-feat-icon">
+                        <CheckCircle2 size={14} style={{ color: "var(--accent)" }} />
+                      </span>
+                      <span>{f}</span>
+                    </li>
                   ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div className="m-addons-block">
-            <div className="m-section-label">Add-On Services</div>
-            <h2 className="m-h2-marketing">
-              Expand any package with <span className="m-text-green">targeted add-ons.</span>
-            </h2>
-            <div className="m-addons-grid">
-              {[
-                [
-                  "Bilingual Build (EN/ES)",
-                  "Full Spanish translation with proper hreflang markup. Essential for Kern County businesses targeting the 50%+ Spanish-speaking local market.",
-                  "+$400"
-                ],
-                [
-                  "Additional Pages",
-                  "Extra service pages, landing pages, or location pages beyond the package limit. Each fully schema-optimized and conversion-ready.",
-                  "+$150 / page"
-                ],
-                [
-                  "Google Business Profile Overhaul",
-                  "Complete GBP audit, entity alignment, photo optimization, Q&A seeding, and category correction. Standalone or bundled with any package.",
-                  "+$300"
-                ],
-                [
-                  "Commerce + Sentinel Bundle",
-                  "E-commerce store backend AND full AI automation stack. The complete sovereign operating system. Best value for high-volume businesses.",
-                  "$2,800 bundle"
-                ],
-                [
-                  "Ongoing Support Retainer",
-                  "Monthly content updates, performance monitoring, schema maintenance, and priority access to COAI for questions and changes. Optional — never required.",
-                  "$197 / month"
-                ],
-                [
-                  "Structural Audit (Standalone)",
-                  "Full performance, schema, AEO, and GBP audit with a prioritized fix list. Ideal if you already have a site but don't know why it isn't performing.",
-                  "$350 standalone"
-                ]
-              ].map(([name, desc, price]) => (
-                <div key={name} className="m-addon-card">
-                  <div className="m-addon-name">{name}</div>
-                  <div className="m-addon-desc">{desc}</div>
-                  <div className="m-addon-price">{price}</div>
+                </ul>
+              </div>
+              <div className="m-pkg-foot">
+                <Link href="/intake" className="m-pkg-cta">
+                  Book Free Job Call Audit &rarr;
+                </Link>
+                <div style={{ textAlign: "center", fontSize: ".75rem", color: "var(--cream-dim)", marginTop: "12px" }}>
+                  No deposit until scope is agreed
                 </div>
-              ))}
+              </div>
             </div>
           </div>
 
-          <div className="m-guarantee-box">
+          {/* Spanish add-on note */}
+          <div className="m-section-label" style={{ marginTop: "60px" }}>Add-Ons</div>
+          <div className="m-addons-grid">
+            {ADDONS.map((a) => (
+              <div key={a.name} className="m-addon-card">
+                <div className="m-addon-name">{a.name}</div>
+                <div className="m-addon-desc">{a.desc}</div>
+                <div className="m-addon-price">{a.price}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Guarantee */}
+          <div className="m-guarantee-box" style={{ marginTop: "60px" }}>
             <div className="m-g-icon">◈</div>
             <div>
               <div className="m-g-title">The Scope Guarantee</div>
@@ -337,24 +164,62 @@ export function PricingPageBody() {
         </div>
       </section>
 
-      <section className="m-full-section">
-        <PricingServicesCatalog />
+      {/* Add-on Bundles */}
+      <section style={{ padding: "80px 0", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+        <div className="m-container-wide">
+          <div className="m-section-label">Already Have a Site?</div>
+          <h2 className="m-h2-marketing">
+            Add-on bundles. <span className="m-text-green">Buy what you need.</span>
+          </h2>
+          <p className="m-hero-sub" style={{ marginTop: "12px" }}>
+            Standalone upgrades for businesses that already have web presence but need specific gaps filled.
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px", marginTop: "40px" }}>
+            {BUNDLES.map((b) => (
+              <div key={b.name} className="m-pkg" style={{ position: "relative" }}>
+                {b.best && <div className="m-pkg-badge">Best Value</div>}
+                <div className="m-pkg-head">
+                  <div className="m-pkg-name" style={{ fontSize: "1.2rem" }}>{b.name}</div>
+                  <div className="m-pkg-tagline" style={{ fontSize: ".85rem" }}>{b.desc}</div>
+                  <div className="m-pkg-price" style={{ margin: "16px 0 0" }}>
+                    <span className="m-amount" style={{ fontSize: "1.4rem" }}>{b.price}</span>
+                  </div>
+                </div>
+                <div className="m-pkg-body">
+                  <ul className="m-pkg-features">
+                    {b.features.map((f) => (
+                      <li key={f} className="m-included">
+                        <span className="m-feat-icon">→</span>
+                        <span>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="m-pkg-foot">
+                  <a href={b.sq} target="_blank" rel="noopener noreferrer" className="m-pkg-cta">
+                    Buy Now &rarr;
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       <div className="m-bottom-cta">
-        <div className="m-section-label">Not Sure Which Package</div>
+        <div className="m-section-label">Not Sure?</div>
         <h2 className="m-bottom-cta-h2">
-          Run the diagnostic first.
+          Run the free audit first.
           <br />
           <span className="m-text-green">It clarifies everything.</span>
         </h2>
         <p>
-          30 minutes with Jason surfaces exactly what your business needs and what it doesn&apos;t. Most clients know
-          which package fits before the call ends.
+          20 minutes with Jason surfaces exactly what&apos;s costing you calls. Most clients know
+          what they need before the call ends.
         </p>
         <div className="m-cta-row">
           <Link href="/intake" className="m-btn-primary-marketing">
-            Run My Free Diagnostic →
+            Book My Free Audit &rarr;
           </Link>
           <Link href="/faq" className="m-btn-ghost-marketing">
             Read the FAQ

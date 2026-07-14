@@ -13,7 +13,7 @@ interface NavProps {
 export function Nav({ activePage, onNavigate }: NavProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const links = [
-    { href: "home", label: "Services" },
+    { href: "home", label: "Home" },
     { href: "pricing", label: "Pricing" },
     { href: "portfolio", label: "Portfolio" },
     { href: "about", label: "About" },
@@ -63,9 +63,7 @@ export function Nav({ activePage, onNavigate }: NavProps) {
               )}
             </li>
           ))}
-          <li><a href="https://leadshield.live" target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)" }}>LeadShield</a></li>
-          <li><a href="https://coaibuilds.com" target="_blank" rel="noopener noreferrer">COAIBuilds</a></li>
-          <li><a href="https://siteer.dev" target="_blank" rel="noopener noreferrer" style={{ color: "var(--danger)" }}>SiteER</a></li>
+      
         </ul>
         
         {/* Minimalist right section — only phone number */}

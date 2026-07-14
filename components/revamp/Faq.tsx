@@ -6,14 +6,14 @@ const FAQ_SECTIONS = [
   {
     id: "pricing", title: "Pricing",
     items: [
-      { q: "What does it cost to work with COAI?", a: "Website builds start at $1,200 for the Signal Foundation package and go up to $2,000+ for the Sentinel Automation layer. Exact pricing is scoped per project — we don't charge extra for complexity you don't need, and we don't pad quotes to hit a number.\n\nThe diagnostic call is free. The proposal is free. You only pay when a clear scope is agreed on and work begins." },
+      { q: "What does it cost to work with COAI?", a: "The TradeCall System is $1,997 flat — $997 to start, $1,000 on launch day. That's a custom-coded website + missed-call auto text-back for trade businesses in the Bakersfield area.\n\nNeed bilingual (EN/ES)? Add $400. Need ongoing support? You can add a $197/mo maintenance retainer. Optional, never required.\n\nThe diagnostic call is free. The proposal is free. You only pay when a clear scope is agreed on and work begins." },
       { q: "Are there monthly fees or retainers?", a: "No mandatory retainers. Every build is a one-time fixed-price engagement. You own the result. There's no ongoing fee to keep your site running. Optional ongoing support is available for clients who want COAI managing updates, monitoring, or expanding the system — but it's never a requirement." }
     ]
   },
   {
     id: "process", title: "Process",
     items: [
-      { q: "How long does a build take?", a: "Standard website builds complete in 2 to 4 weeks from signed scope to live deployment. Simpler builds (Signal Foundation) can be faster. More complex e-commerce or automation stacks take the full 4 weeks. Every milestone has a staging link so you can see it taking shape in real time." }
+      { q: "How long does a build take?", a: "The TradeCall System completes in 2 to 3 weeks from signed scope to live. Every milestone has a staging link so you can see it taking shape in real time." }
     ]
   },
   {

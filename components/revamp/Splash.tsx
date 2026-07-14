@@ -84,8 +84,8 @@ export function Splash({
         <div className="door-splash__logo">
           <Image src="/newlogo.png" alt="COAI" width={200} height={75} priority style={{ objectFit: "contain", width: "auto", height: "clamp(40px, 8vw, 75px)" }} />
         </div>
-        <h2 className="door-splash__title">Welcome to where the future lives</h2>
-        <p className="door-splash__sub">and tradesmen succeed.</p>
+        <h2 className="door-splash__title">Built for Bakersfield trades.</h2>
+        <p className="door-splash__sub">Built by a former contractor.</p>
         <div className="door-splash__hint">Tap to open</div>
       </div>
     </div>

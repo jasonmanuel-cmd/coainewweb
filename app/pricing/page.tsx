@@ -7,17 +7,17 @@ import { articleJsonLd, breadcrumbJsonLd, serviceJsonLd } from "@/lib/schema";
 import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Pricing - Fixed Sovereign Builds",
+  title: "Pricing — TradeCall System | COAI",
   description:
-    "Clear, fixed pricing for sovereign website builds and AI automation. No retainers. No surprises. Starting at $1,200.",
+    "TradeCall System at $1,997 flat. Custom website + missed-call recovery for Bakersfield trades. You own the code. No monthly platform tax.",
   path: "/pricing",
   published: "2026-01-20",
-  modified: "2026-04-20",
+  modified: "2026-07-14",
 });
 
 const pricingService = serviceJsonLd(
-  "Sovereign website packages and automation implementation",
-  "Fixed-price sovereign website packages, commerce builds, and automation implementation for service businesses."
+  "TradeCall System — website and missed-call recovery for trades",
+  "Custom-coded website with missed-call text-back for Bakersfield trade businesses. $1,997 flat. You own everything."
 );
 
 export default function PricingPage() {
@@ -26,12 +26,12 @@ export default function PricingPage() {
     { name: "Pricing", path: "/pricing" }
   ]);
   const pricingArticle = articleJsonLd({
-    headline: "Pricing — Fixed Sovereign Website Builds | COAI",
+    headline: "TradeCall System Pricing — $1,997 Flat | COAI",
     description:
-      "Fixed-price sovereign website packages starting at $1,200 for trades businesses. Signal Foundation, Commerce Engine, and Sentinel Automation — you own everything. No retainers.",
+      "TradeCall System for Bakersfield trades: custom website + missed-call recovery at $1,997 flat. You own the code. Built by a former licensed contractor.",
     path: "/pricing",
     datePublished: "2026-01-20",
-    dateModified: "2026-04-20",
+    dateModified: "2026-07-14",
   });
 
   const webPage = {
