@@ -1,6 +1,6 @@
 /** Canonical business facts — keep NAP identical across schema, footer, GBP, and directories. */
 function normalizeSiteUrl(input: string | undefined): string {
-  const fallback = "https://coaibakersfield.com";
+  const fallback = "https://www.coaibakersfield.com";
   if (!input) return fallback;
   try {
     const parsed = new URL(input);
@@ -30,8 +30,8 @@ export const CO_FOUNDER = {
 export const CONTACT = {
   email: "jasonm@coaibakersfield.com",
   secondaryEmail: "frankh@coaibakersfield.com",
-  phoneDisplay: "(661) 683-0228",
-  phoneE164: "+16616830228",
+  phoneDisplay: "(661) 331-1767",
+  phoneE164: "+16613311767",
   addressLine: "1712 19th St #216",
   city: "Bakersfield",
   region: "CA",

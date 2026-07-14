@@ -29,7 +29,7 @@ export function RevampPageNav({ activeHref }: RevampPageNavProps) {
           <span>Based in Bakersfield · Serving businesses nationwide</span>
         </div>
         <div className="topbar-phone">
-          <a href="tel:6616591376">(661) 659-1376</a>
+          <a href="tel:6613311767">(661) 331-1767</a>
         </div>
       </div>
 
@@ -51,7 +51,7 @@ export function RevampPageNav({ activeHref }: RevampPageNavProps) {
           <CalendarDays size={16} aria-hidden="true" />
           Book Audit
         </a>
-        <a className="nav-cta" href="tel:6616591376" style={{ marginLeft: "8px" }}>Call (661) 659-1376</a>
+        <a className="nav-cta" href="tel:6613311767" style={{ marginLeft: "8px" }}>Call (661) 331-1767</a>
         <button
           className="hamburger"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -68,8 +68,8 @@ export function RevampPageNav({ activeHref }: RevampPageNavProps) {
               {l.label}
             </Link>
           ))}
-          <a className="nav-cta" href="tel:6616591376" onClick={() => setMenuOpen(false)} style={{ textAlign: "center" }}>
-            Call (661) 659-1376
+          <a className="nav-cta" href="tel:6613311767" onClick={() => setMenuOpen(false)} style={{ textAlign: "center" }}>
+            Call (661) 331-1767
           </a>
           <a className="btn-calendar" href="https://calendar.app.google/hswWkCmjqLEKtRuE6" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)} style={{ textAlign: "center", justifyContent: "center", display: "flex", alignItems: "center", gap: "6px", background: "var(--teal)", color: "#fff", borderRadius: "8px", fontWeight: 600, textDecoration: "none", padding: "10px 22px" }}>
             <CalendarDays size={16} aria-hidden="true" />

@@ -9,17 +9,17 @@ const STORY = [
   {
     year: "The Contractor Years",
     title: "Licensed, Bonded, and in the Field",
-    text: "Before I built a single website, I was a licensed building contractor in Florida running multi-trade residential projects. I coordinated plumbing, electrical, HVAC, and framing crews. I owned the P&L. I knew what it felt like when the phone didn't ring — and what it felt like when the phone rang and I couldn't answer because I was on a roof.",
+    text: "Before building a single website, Manuel was a licensed building contractor in Florida running multi-trade residential projects. He coordinated plumbing, electrical, HVAC, and framing crews. He owned the P&L. He knew what it felt like when the phone didn't ring — and what it felt like when the phone rang and he couldn't answer because he was on a roof.",
   },
   {
     year: "The Problem I Kept Seeing",
     title: "Good Trades, Bad Digital",
-    text: "When I moved to Bakersfield, I watched local contractors and service businesses getting crushed by the same things I saw in construction: slow websites they didn't own, unanswered calls going straight to voicemail, Google Maps listings that might as well be invisible. The monthly Wix/GoDaddy tax was just the cherry on top.",
+    text: "After moving to Bakersfield, Manuel watched local contractors and service businesses getting crushed by the same problems he saw in construction: slow websites they didn't own, unanswered calls going straight to voicemail, Google Maps listings that might as well be invisible. The monthly Wix/GoDaddy tax was just the cherry on top.",
   },
   {
     year: "The Fix",
     title: "Own Your Infrastructure. Answer Every Call.",
-    text: "I started COAI to build one thing: a complete digital system for trades that costs less than a monthly truck payment, transfers full ownership at launch, and texts every missed caller back in under 30 seconds. No rented platforms. No locked-in SaaS. Just infrastructure that works because it has to.",
+    text: "Manuel started COAI to build one thing: a complete digital system for trades that costs less than a monthly truck payment, transfers full ownership at launch, and texts every missed caller back in under 30 seconds. No rented platforms. No locked-in SaaS. Just infrastructure that works because it has to.",
   },
 ];
 
@@ -34,9 +34,9 @@ export function About({ onNavigate }: AboutProps) {
       <section style={{ padding: "100px 0 60px", background: "linear-gradient(180deg, rgba(3,3,6,0), rgba(232,160,32,0.05))" }}>
         <div className="container">
           <span className="section-eyebrow">The Operator Behind the System</span>
-          <h1 className="section-title">A former contractor <span className="text-amber">who builds digital systems.</span></h1>
+          <h1 className="section-title">Who built COAI? <span className="text-amber">A contractor who codes.</span></h1>
           <p className="section-sub">
-            I&apos;m Jason Manuel. I live in Bakersfield. I spent 9 years as a licensed building contractor before I wrote my first line of code. I build TradeCall Systems for local trades because I know exactly what it&apos;s like to lose a job to an unanswered phone call.
+            Jason Manuel is the founder of COAI Bakersfield. He spent 9 years as a licensed building contractor before writing his first line of code. He builds TradeCall Systems for local trades because he knows exactly what it&apos;s like to lose a job to an unanswered phone call.
           </p>
         </div>
       </section>

@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { LandingHomeRevamp } from "@/components/revamp/LandingHome";
 import { SITE_URL, ORG_ID } from "@/lib/site";
 import { JsonLd } from "@/components/JsonLd";
-import { articleJsonLd } from "@/lib/schema";
+import { articleJsonLd, breadcrumbJsonLd, serviceJsonLd } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "COAI - Digital Lead Systems for Trades",
   description:
     "COAI builds custom digital lead systems for trades businesses. Sovereign websites, AI call recovery, and local SEO for more job calls. Free 20-min audit.",
+  alternates: { canonical: SITE_URL },
   openGraph: {
     title: "COAI - Digital Lead Systems for Trades Businesses",
     description:
@@ -17,17 +18,17 @@ export const metadata: Metadata = {
   other: {
     "author": "Jason Robert Manuel",
     "article:published_time": "2026-01-15",
-    "article:modified_time": "2026-05-01",
+    "article:modified_time": "2026-07-14",
   },
 };
 
 const homeArticle = articleJsonLd({
-  headline: "COAI — Digital Lead Systems for Trades Businesses",
+  headline: "TradeCall System — AI Lead Systems for Trades | COAI",
   description:
-    "Chaotically Organized AI builds sovereign websites with AI automation for trades businesses in Bakersfield, CA. Each site uses geo-targeted schema and AEO-optimized content to generate job calls.",
+    "Chaotically Organized AI builds the TradeCall System for trades businesses in Bakersfield, CA: custom websites with AI call recovery, geo-targeted schema, and AEO content to generate more job calls.",
   path: "/",
   datePublished: "2026-01-15",
-  dateModified: "2026-05-01",
+  dateModified: "2026-07-14",
 });
 
 const homeFaqSchema = {
@@ -39,7 +40,7 @@ const homeFaqSchema = {
       name: "What does it cost to work with COAI?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Website builds start at $1,200 for Signal Foundation and go up to $2,000+ for Sentinel Automation. The diagnostic call and proposal are free. You only pay when clear scope is agreed and work begins."
+        text: "The TradeCall System is $1,997 flat — $997 to start, $1,000 on launch day. That includes a custom-coded website plus missed-call auto text-back for trade businesses. Bilingual adds $400. Monthly maintenance at $197/mo is optional. The diagnostic call and proposal are free."
       }
     },
     {
@@ -55,7 +56,7 @@ const homeFaqSchema = {
       name: "How long does a build take?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Standard website builds complete in 2 to 4 weeks from signed scope to live deployment. Simpler builds can be faster. Every milestone has a staging link."
+        text: "The TradeCall System completes in 2 to 3 weeks from signed scope to live deployment. Every milestone has a staging link so you can see it taking shape in real time."
       }
     },
     {
@@ -89,50 +90,33 @@ const homeProductSchemas = [
   {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: "Signal Foundation",
-    description: "Core website operating layer. A custom-coded sovereign site with geo-targeted schema, AEO-optimized content, lead capture forms, and Google Business Profile alignment.",
+    name: "TradeCall System",
+    description: "All-in-one digital lead system for trades: custom-coded website with geo-targeted schema, AEO content, lead capture, AI phone answering with bilingual voice agents, missed-call text-back recovery, and automated lead scoring.",
     brand: { "@id": ORG_ID },
     offers: {
       "@type": "Offer",
-      price: "1200",
+      price: "1997",
       priceCurrency: "USD",
       priceValidUntil: new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split("T")[0],
-      availability: "https://schema.org/InStock"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: "Sentinel Automation",
-    description: "Lead qualification, missed-call text-back recovery, and AI receptionist (Cipher) that answers calls 24/7 - built on top of Signal Foundation.",
-    brand: { "@id": ORG_ID },
-    offers: {
-      "@type": "Offer",
-      price: "2000",
-      priceCurrency: "USD",
-      priceValidUntil: new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split("T")[0],
-      availability: "https://schema.org/InStock"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: "LeadShield",
-    description: "Missed-call recovery system that auto-texts every missed caller back, scores leads HOT/WARM/COLD, and runs automated follow-up sequences for trades businesses.",
-    brand: { "@id": ORG_ID },
-    offers: {
-      "@type": "Offer",
-      priceCurrency: "USD",
       availability: "https://schema.org/InStock"
     }
   }
 ];
 
 export default function Home() {
+  const crumbs = breadcrumbJsonLd([
+    { name: "Home", path: "/" }
+  ]);
+  const tradecallService = serviceJsonLd(
+    "TradeCall System",
+    "All-in-one digital lead system for trades: custom website with AI call recovery, geo-targeted schema, AEO content, and lead scoring. $1,997 flat."
+  );
   return (
     <>
       <JsonLd data={homeArticle} />
       <JsonLd data={homeFaqSchema} />
+      <JsonLd data={crumbs} />
+      <JsonLd data={tradecallService} />
       {homeProductSchemas.map((s, i) => <JsonLd key={`prod-${i}`} data={s} />)}
       <LandingHomeRevamp />
     </>

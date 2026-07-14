@@ -18,7 +18,7 @@ export function PageFooter() {
           <address className="footer-address">
             1712 19th St #216<br />
             Bakersfield, CA 93301<br />
-            <a href="tel:6616591376">(661) 659-1376</a><br />
+            <a href="tel:6613311767">(661) 331-1767</a><br />
             <a href="mailto:jasonm@coaibakersfield.com">jasonm@coaibakersfield.com</a>
           </address>
           <div style={{ marginTop: "12px" }}>

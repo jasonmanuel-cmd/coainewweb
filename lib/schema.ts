@@ -36,19 +36,6 @@ export function organizationJsonLd() {
       {
         "@type": ["ProfessionalService", "LocalBusiness"],
         "@id": ORG_ID,
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: "5.0",
-          bestRating: "5",
-          ratingCount: String(CLIENT_REVIEWS.length),
-          reviewCount: String(CLIENT_REVIEWS.length)
-        },
-        review: CLIENT_REVIEWS.map((r) => ({
-          "@type": "Review",
-          author: { "@type": "Person", name: r.author },
-          reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-          reviewBody: r.body
-        })),
         name: ORG_NAME,
         legalName: LEGAL_NAME,
         url: SITE_URL,
@@ -85,7 +72,7 @@ export function organizationJsonLd() {
           email: CONTACT.email,
           availableLanguage: "English"
         },
-        priceRange: "$1,200–$2,000+"
+        priceRange: "$1,997"
       },
       {
         "@type": "Person",
@@ -150,13 +137,8 @@ export function serviceJsonLd(serviceName: string, description: string, path?: s
     areaServed: [...AREA_SERVED],
     offers: {
       "@type": "Offer",
-      priceCurrency: "USD",
-      priceSpecification: {
-        "@type": "PriceSpecification",
-        minPrice: 1200,
-        maxPrice: 2000,
-        priceCurrency: "USD"
-      }
+      price: "1997",
+      priceCurrency: "USD"
     }
   };
 }
@@ -185,13 +167,8 @@ export function localServiceJsonLd(slug: CitySlug) {
     ],
     offers: {
       "@type": "Offer",
-      priceCurrency: "USD",
-      priceSpecification: {
-        "@type": "PriceSpecification",
-        minPrice: 600,
-        maxPrice: 2000,
-        priceCurrency: "USD"
-      }
+      price: "1997",
+      priceCurrency: "USD"
     }
   };
 }

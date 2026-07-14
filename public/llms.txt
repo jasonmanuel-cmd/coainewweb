@@ -10,16 +10,14 @@
 ## Core Pages
 - [Home](https://coaibakersfield.com/): Services overview for contractors & trades
 - [Intake](https://coaibakersfield.com/intake): Start a project / request the free audit
-- [Pricing](https://coaibakersfield.com/pricing): Fixed-price packages
+- [Pricing](https://coaibakersfield.com/pricing): TradeCall System — $1,997 fixed price
 
-## Services
-- Signal Foundation ($1,200): Custom-coded sovereign website with geo-targeted schema, AEO-optimized content, lead capture, and Google Business Profile alignment.
-- Sentinel Automation ($2,000+): Lead qualification, missed-call text-back recovery, and a 24/7 AI receptionist (Cipher), built on Signal Foundation.
-- LeadShield: Missed-call recovery — auto-texts every missed caller, scores leads HOT/WARM/COLD, runs automated follow-up.
+## Service
+- TradeCall System ($1,997): Custom website with local schema, AEO content, lead capture, AI phone answering with bilingual voice agents, missed-call text-back recovery, and automated lead scoring — all in one fixed-price build. 2–3 week turnaround.
 
 ## Key Facts
-- Every build is a one-time fixed price. No mandatory retainers. The client owns the code, domain, hosting, and data at handoff.
-- Standard builds complete in 2–4 weeks from signed scope to live deployment.
+- Single fixed price of $1,997. No mandatory retainers. The client owns the code, domain, hosting, and data at handoff.
+- Standard builds complete in 2–3 weeks from signed scope to live deployment.
 - Stack: Next.js + HTML/CSS/JS, deployed on Vercel or Netlify. Full code access and handoff docs. No proprietary lock-in.
 
 ## Service Area

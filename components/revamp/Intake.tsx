@@ -74,7 +74,7 @@ export function IntakePage() {
            <strong>2. You get a custom roadmap</strong> with prioritized fixes + estimated impact<br/>
            <strong>3. Optional: Strategy call</strong> to discuss implementation & pricing<br/>
            <br/>
-            <strong>Until then:</strong> Check your email for Jason&apos;s follow-up & roadmap. If you have questions, call directly: <a href="tel:6616591376" style={{ color: "var(--amber)", textDecoration: "underline" }}>(661) 659-1376</a>
+            <strong>Until then:</strong> Check your email for Jason&apos;s follow-up & roadmap. If you have questions, call directly: <a href="tel:6613311767" style={{ color: "var(--amber)", textDecoration: "underline" }}>(661) 331-1767</a>
          </div>
 
          <div style={{ 
@@ -84,7 +84,7 @@ export function IntakePage() {
            marginTop: "32px",
            flexWrap: "wrap"
          }}>
-           <a href="tel:6616591376" className="btn-phone" style={{ cursor: "pointer" }}>
+           <a href="tel:6613311767" className="btn-phone" style={{ cursor: "pointer" }}>
              Call Now <ArrowRight size={16} aria-hidden="true" />
            </a>
            <a href="https://calendly.com/jasonm/audit" target="_blank" rel="noopener noreferrer" className="btn-secondary" style={{ cursor: "pointer" }}>

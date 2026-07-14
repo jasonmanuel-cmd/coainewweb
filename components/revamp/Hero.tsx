@@ -91,8 +91,9 @@ export function Hero({ onNavigate }: HeroProps) {
             Get More Job Calls Without Spending More on Ads
           </h1>
           <p className="hero-sub">
-            Custom websites + missed-call text-back for Bakersfield trades.
-            You own the site. No monthly Wix tax. Built by a former licensed contractor
+            COAI Bakersfield builds custom-coded websites and AI lead recovery systems
+            for trades businesses in Kern County. Every build transfers full ownership
+            — no monthly Wix tax, no locked-in SaaS. Founded by a former licensed contractor
             who knows how jobs actually get booked.
           </p>
           <div className="hero-google-rating">

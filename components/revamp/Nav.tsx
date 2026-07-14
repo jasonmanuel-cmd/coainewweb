@@ -35,7 +35,7 @@ export function Nav({ activePage, onNavigate }: NavProps) {
           <span>Based in Bakersfield · Serving businesses nationwide</span>
         </div>
         <div className="topbar-phone">
-          <a href="tel:6616591376">(661) 659-1376</a>
+          <a href="tel:6613311767">(661) 331-1767</a>
         </div>
       </div>
 
@@ -67,8 +67,8 @@ export function Nav({ activePage, onNavigate }: NavProps) {
         </ul>
         
         {/* Minimalist right section — only phone number */}
-        <a className="nav-phone-link" href="tel:6616591376" style={{ marginLeft: "auto", fontSize: "14px", fontWeight: 600, color: "var(--amber)", textDecoration: "none" }}>
-          (661) 659-1376
+        <a className="nav-phone-link" href="tel:6613311767" style={{ marginLeft: "auto", fontSize: "14px", fontWeight: 600, color: "var(--amber)", textDecoration: "none" }}>
+          (661) 331-1767
         </a>
         
         <button
@@ -86,8 +86,8 @@ export function Nav({ activePage, onNavigate }: NavProps) {
           <a onClick={() => { handleNav("intake"); setMenuOpen(false); }} style={{ fontSize: "16px", fontWeight: 600, padding: "16px", textAlign: "center", borderBottom: "1px solid var(--navy-border)" }}>
             Get Free Audit
           </a>
-          <a href="tel:6616591376" style={{ fontSize: "16px", fontWeight: 600, padding: "16px", textAlign: "center", color: "var(--amber)" }}>
-            Call (661) 659-1376
+          <a href="tel:6613311767" style={{ fontSize: "16px", fontWeight: 600, padding: "16px", textAlign: "center", color: "var(--amber)" }}>
+            Call (661) 331-1767
           </a>
         </div>
       )}

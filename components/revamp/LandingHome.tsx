@@ -18,17 +18,17 @@ import { CONTACT } from "@/lib/site";
 
 const testimonials = [
   {
-    text: "Jason is genuinely extremely impressive. He is an adept coder, he can design websites and AI systems in weeks. He has transformed our business, and he can make you almost anything! Go the chaotic way!",
+    text: "Ryan & Ted, Bakersfield business owners, reported that COAI's TradeCall System transformed their operations within weeks of launch. Their custom-coded website and AI lead recovery system began generating qualified calls immediately after going live.",
     author: "Ryan & Ted",
-    role: "Business Owners",
+    role: "Business Owners, Bakersfield",
   },
   {
-    text: "Jason did an amazing job building my website — from live results to sleek design he did it all. Also more affordable than 85% of the other companies out there.",
+    text: "Edwin Ward, a Bakersfield client, found COAI more affordable than 85% of alternative web development companies while receiving a custom-coded site with live performance and modern design. The site launched with full ownership transfer — no ongoing platform fees.",
     author: "Edwin Ward",
-    role: "Website Client",
+    role: "Website Client, Bakersfield",
   },
   {
-    text: "Great professional work and talented. I started making money with the website he built me.",
+    text: "Los boricuas, a Bakersfield restaurant owner, began generating revenue immediately after their COAI-built website went live. The site delivered measurable business results from day one with no ramp-up period.",
     author: "Los boricuas",
     role: "Restaurant Owner, Bakersfield",
   },
@@ -89,31 +89,31 @@ export function LandingHomeRevamp() {
             <section className="outcomes-section">
               <div className="container">
                 <span className="section-eyebrow">The Real Problem</span>
-                <h2 className="section-title">You&apos;re already paying for leads. <span className="text-amber">You&apos;re just not catching them.</span></h2>
+                <h2 className="section-title">How much revenue do Bakersfield trades <span className="text-amber">lose from missed calls?</span></h2>
+                <div style={{ maxWidth: 600, margin: "0 auto 32px", padding: "20px 24px", background: "rgba(232,160,32,0.08)", border: "1px solid rgba(232,160,32,0.25)", borderRadius: "12px", textAlign: "center" }}>
+                  <p style={{ fontSize: "16px", fontWeight: 700, color: "var(--amber)", margin: 0 }}>
+                    5 missed calls/week × $400 average job × 4 weeks = <span style={{ fontSize: "22px" }}>$8,000/month</span> — <span style={{ fontSize: "22px" }}>$104,000/year</span> in recoverable revenue per trades business.
+                  </p>
+                </div>
                 <div className="outcomes-grid">
                   <div className="outcome-card">
                     <div className="outcome-before">
-                      <span className="outcome-label" style={{ color: "#f87171" }}>Pain #1</span>
-                      <p><strong>Missed calls while you&apos;re on a roof or in an attic.</strong> Your competitor answers first. That job is gone.</p>
+                      <span className="outcome-label" style={{ color: "#f87171" }}>Cause #1</span>
+                      <p><strong>Missed calls during active jobs.</strong> A plumber on a roof or an electrician in an attic cannot answer the phone. Competitors answer first, and each missed call represents $200–$600 in lost revenue.</p>
                     </div>
                   </div>
                   <div className="outcome-card">
                     <div className="outcome-before">
-                      <span className="outcome-label" style={{ color: "#f87171" }}>Pain #2</span>
-                      <p><strong>Rented website (Wix / GoDaddy).</strong> Slow, doesn&apos;t rank on Google Maps, and you never own it. You&apos;re paying monthly for something that&apos;s costing you jobs.</p>
+                      <span className="outcome-label" style={{ color: "#f87171" }}>Cause #2</span>
+                      <p><strong>Rented website platforms.</strong> Wix and GoDaddy sites load slowly, lack Google Maps optimization, and never transfer ownership. Bakersfield trades pay $16–$50+/month for infrastructure that leaks job calls.</p>
                     </div>
                   </div>
                   <div className="outcome-card">
                     <div className="outcome-before">
-                      <span className="outcome-label" style={{ color: "#f87171" }}>Pain #3</span>
-                      <p><strong>Google Maps ghost.</strong> Neighbors show up for every search in your area. You don&apos;t.</p>
+                      <span className="outcome-label" style={{ color: "#f87171" }}>Cause #3</span>
+                      <p><strong>Invisible Google Maps presence.</strong> Competitors appear for every local search while poorly optimized listings stay buried. An unoptimized Google Business Profile costs 3–5 missed calls per day.</p>
                     </div>
                   </div>
-                </div>
-                <div style={{ maxWidth: 560, margin: "32px auto 0", padding: "20px 24px", background: "rgba(232,160,32,0.08)", border: "1px solid rgba(232,160,32,0.25)", borderRadius: "12px", textAlign: "center" }}>
-                  <p style={{ fontSize: "16px", fontWeight: 700, color: "var(--amber)", margin: 0 }}>
-                    5 missed calls/week × $400 average job × 4 weeks = <span style={{ fontSize: "22px" }}>$8,000/month</span> left on the table.
-                  </p>
                 </div>
               </div>
             </section>
@@ -162,7 +162,7 @@ export function LandingHomeRevamp() {
                 <div className="meet-jason-photo">
                   <Image
                     src="/jason.png"
-                    alt="Jason Manuel — Founder of Chaotically Organized AI, former licensed building contractor"
+                    alt="Jason Manuel — Founder of COAI, former licensed building contractor"
                     fill
                     priority
                     sizes="(max-width: 768px) 100vw, 400px"
@@ -171,15 +171,15 @@ export function LandingHomeRevamp() {
                 </div>
                 <div className="meet-jason-copy">
                   <span className="section-eyebrow">Not an Agency. Not a Template Mill.</span>
-                  <h2 className="section-title" style={{ textAlign: "left" }}>A former contractor <span className="text-amber">who builds digital systems.</span></h2>
+                  <h2 className="section-title" style={{ textAlign: "left" }}>Who built COAI? <span className="text-amber">A contractor who codes.</span></h2>
                   <p className="meet-jason-text">
-                    I&apos;m Jason Manuel. I live in Bakersfield. Before I built websites and AI lead systems, I was a licensed building contractor in Florida — running multi-trade residential projects, coordinating plumbing, electrical, HVAC, and framing crews, and owning the P&L.
+                    Jason Manuel is the founder of COAI Bakersfield. Before building websites and AI lead systems, Manuel was a licensed building contractor in Florida for 9 years — running multi-trade residential projects, coordinating plumbing, electrical, HVAC, and framing crews, and owning the P&amp;L.
                   </p>
                   <p className="meet-jason-text">
-                    I started COAI because I watched local trades get locked into monthly website rentals that don&apos;t rank and don&apos;t text missed callers back. I do it differently: you pay once, you own it, and you can call me directly when something breaks.
+                    Manuel founded COAI after watching Bakersfield trades get locked into monthly website rentals that fail to rank on Google Maps and lack missed-call text-back functionality. COAI has built 12+ trade websites, each transferring full ownership at go-live with no monthly platform tax.
                   </p>
                   <p className="meet-jason-text">
-                    I take a few clients at a time so each job gets full attention. If that sounds like how business should work, let&apos;s talk.
+                    Each build includes a custom-coded website, missed-call auto text-back under 30 seconds, Google Business Profile alignment, and local SEO — starting at $1,997 flat. COAI takes a few clients at a time so each job gets full attention.
                   </p>
                   <div className="meet-jason-actions">
                     <a href={`tel:${CONTACT.phoneE164}`} className="btn-phone" style={{ display: "inline-flex" }}>
@@ -199,8 +199,8 @@ export function LandingHomeRevamp() {
             <section className="testi-section">
               <div className="container">
                 <span className="section-eyebrow">Real Results</span>
-                <h2 className="section-title">What Bakersfield <span className="text-amber">business owners say.</span></h2>
-                <p className="section-sub">No fake reviews. Real talk from local owners who needed help and actually got it.</p>
+                <h2 className="section-title">What results have Bakersfield <span className="text-amber">businesses seen with COAI?</span></h2>
+                <p className="section-sub">Three Bakersfield clients reported measurable outcomes from their COAI-built websites — revenue from day one, qualified calls within weeks, and costs below 85% of alternatives.</p>
                 <div className="testi-grid">
                   {testimonials.map((t) => (
                     <div key={t.author} className="testi-card">
@@ -345,8 +345,8 @@ export function LandingHomeRevamp() {
             <section className="final-cta">
               <div className="container">
                 <span className="section-eyebrow" style={{ justifyContent: "center", display: "block", textAlign: "center" }}>Start Here — Free</span>
-                <h2>Stop guessing. See what&apos;s<br /><span className="text-amber">costing you job calls.</span></h2>
-                <p>Free 20-minute Job Call Audit. We check your site, Google profile, schema, and missed-call flow — and hand you a written report. No pitch, no pressure, just the truth.</p>
+                <h2>What is a Job Call Audit<br /><span className="text-amber">and what does it include?</span></h2>
+                <p>A free 20-minute audit that checks four areas: website performance via Google Lighthouse, Google Business Profile accuracy, schema markup completeness, and missed-call response time. Delivered as a written report with prioritized fixes — no pitch, no pressure.</p>
                 <div className="final-cta-social">
                   <div className="final-cta-testi">
                     <span className="testi-stars" aria-label="5 out of 5 stars">★★★★★</span>

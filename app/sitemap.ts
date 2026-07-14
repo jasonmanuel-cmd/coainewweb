@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 
+const BUILD_DATE = new Date().toISOString().split("T")[0];
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = SITE_URL;
   const tier1 = new Set([
@@ -30,10 +32,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/terms"
   ].map((path) => {
     const priority = tier1.has(path) ? 1 : 0.8;
-    const lastModified = (path === "/" || path === "/intake") ? "2026-05-01" : "2026-04-01";
     return {
       url: `${base}${path}`,
-      lastModified,
+      lastModified: BUILD_DATE,
       changeFrequency: "weekly" as const,
       priority
     };

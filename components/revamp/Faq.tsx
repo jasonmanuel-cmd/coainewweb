@@ -34,7 +34,7 @@ export function Faq() {
         <div className="container" style={{ position: "relative" }}>
           <span className="section-eyebrow">FAQ</span>
           <h1 className="section-title">Every question<br /><span className="text-amber">answered straight.</span></h1>
-          <p className="section-sub">No corporate hedging. If you have a question that isn&apos;t here, call Jason directly at (661) 659-1376.</p>
+          <p className="section-sub">No corporate hedging. If you have a question that isn&apos;t here, call Jason directly at (661) 331-1767.</p>
         </div>
       </section>
 
@@ -52,7 +52,7 @@ export function Faq() {
             </ul>
             <div style={{ marginTop: "32px", paddingTop: "24px", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
               <div style={{ fontSize: ".72rem", color: "var(--text-muted2)", marginBottom: "12px", textTransform: "uppercase", fontWeight: 700 }}>Still have questions?</div>
-              <a href="tel:+16616591376" className="btn-primary btn-sm" style={{ width: "100%", justifyContent: "center" }}>Call Jason</a>
+              <a href="tel:+16613311767" className="btn-primary btn-sm" style={{ width: "100%", justifyContent: "center" }}>Call Jason</a>
             </div>
           </nav>
 
@@ -66,20 +66,29 @@ export function Faq() {
                   const isOpen = openKey === key;
                   return (
                     <div key={key} style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-                      <button 
+                      <button
                         style={{ width: "100%", background: "none", border: "none", color: isOpen ? "var(--accent)" : "#fff", padding: "20px 0", display: "flex", justifyContent: "space-between", alignItems: "center", cursor: "pointer", textAlign: "left", fontSize: "1rem", fontWeight: 600 }}
                         onClick={() => toggle(key)}
+                        aria-expanded={isOpen}
                       >
                         <span>{item.q}</span>
-                        <span style={{ fontSize: "1.2rem", color: "var(--accent)" }}>{isOpen ? "−" : "+"}</span>
+                        <span style={{ fontSize: "1.2rem", color: "var(--accent)", transition: "transform .2s", transform: isOpen ? "rotate(45deg)" : "rotate(0deg)" }}>+</span>
                       </button>
-                      {isOpen && (
-                        <div style={{ paddingBottom: "24px" }}>
+                      <div
+                        style={{
+                          maxHeight: isOpen ? "500px" : "0",
+                          overflow: "hidden",
+                          transition: "max-height 0.3s ease, padding 0.3s ease",
+                          paddingBottom: isOpen ? "24px" : "0"
+                        }}
+                        role="region"
+                      >
+                        <div>
                           {item.a.split("\n\n").map((p, i) => (
                             <p key={i} style={{ fontSize: ".9rem", color: "var(--text-soft)", lineHeight: 1.7, marginBottom: "12px" }}>{p}</p>
                           ))}
                         </div>
-                      )}
+                      </div>
                     </div>
                   );
                 })}
