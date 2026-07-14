@@ -1,9 +1,9 @@
-﻿/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { ArrowRight, Shield, Zap, Search, Phone, X } from "lucide-react";
+import { ArrowRight, CheckCircle2, Phone, Shield, X } from "lucide-react";
 import { Nav } from "./Nav";
 import { Hero } from "./Hero";
 import { Footer } from "./Footer";
@@ -14,51 +14,7 @@ import { Faq } from "./Faq";
 import { Contact } from "./Contact";
 import { Splash } from "./Splash";
 import { Reveal } from "./Reveal";
-
-const products = [
-  {
-    icon: Shield,
-    tag: "Get More Calls",
-    name: "LeadShield",
-    desc: "LeadShield helps trades businesses recover missed calls. It auto-texts each missed caller within seconds, then scores leads by response quality and runs follow-up sequences until each lead converts or opts out. One HVAC contractor recovered 12+ new jobs in the first week and paid for LeadShield 3x over in month one.\n\n- LeadShield captures every missed call for trades businesses.\n- LeadShield auto-texts each caller back within seconds.\n- LeadShield scores leads HOT/WARM/COLD by response.\n- LeadShield runs automated follow-up sequences until conversion.",
-    features: [
-      "Auto-texts missed callers in seconds",
-      "Lead scoring — call the hot leads first",
-      "Automated follow-up sequences",
-      "Works with your existing phone number",
-    ],
-    cta: "Recover Missed Calls",
-    link: "https://leadshield.live"
-  },
-  {
-    icon: Zap,
-    tag: "Rank Higher, Get Found",
-    name: "COAI",
-    desc: "COAI websites generate consistent job leads for trades businesses. Each site uses geo-targeted schema and AEO-optimized content to rank on Google Maps and surface inside ChatGPT, Claude, and Perplexity AI answers. HubSpot reports 58% of Google searches result in zero clicks — COAI websites capture that AI search traffic with structured data and semantic markup.\n\n- COAI websites generate job leads for trades businesses.\n- COAI hand-codes each site with geo-targeted schema.\n- COAI content ranks on Google Maps for local searches.\n- COAI websites capture AI search traffic with structured markup.",
-    features: [
-      "Custom-coded website you fully own",
-      "AI receptionist (Cipher) answers calls 24/7",
-      "Local SEO that ranks on Google Maps",
-      "Schema markup built for AI search visibility",
-    ],
-    cta: "Build My Lead System",
-    link: "/pricing"
-  },
-  {
-    icon: Search,
-    tag: "Find Revenue Leaks",
-    name: "SiteER",
-    desc: "SiteER audits any website for revenue leaks. The free 60-second scan checks performance, schema coverage, mobile speed, and AI readiness — then assigns an A–F grade with a dollar-figure revenue impact. According to Google, a 1-second mobile delay drops conversions by 20%. SiteER shows business owners exactly what is costing them money.\n\n- SiteER audits websites for revenue leaks.\n- SiteER assigns an A–F grade with dollar impact.\n- SiteER checks performance, schema, and AI readiness.\n- SiteER provides prioritized fix lists starting at $500.",
-    features: [
-      "Full speed & schema audit in 60 seconds",
-      "A–F grade with dollar revenue impact",
-      "Prioritized fix list for your business",
-      "Treatment plans starting at $500",
-    ],
-    cta: "See Your Grade",
-    link: "https://siteer.dev"
-  },
-];
+import { CONTACT } from "@/lib/site";
 
 const testimonials = [
   {
@@ -78,29 +34,6 @@ const testimonials = [
   },
 ];
 
-const outcomes = [
-  {
-    before: "No website. Customers found him through word-of-mouth only.",
-    after: "Live sovereign site with Google schema. First client call within the first week of going live.",
-    author: "— Edwin Ward, Website Client",
-  },
-  {
-    before: "Wix site that loaded slow, didn't rank, and cost $23/month with no lead tracking.",
-    after: "Custom-coded site that's fast, ranks on Google Maps, and captures every lead with AI follow-up.",
-    author: "— Christopher Moore, Trades Business",
-  },
-  {
-    before: "Restaurant had no online presence. Relying entirely on foot traffic.",
-    after: "Built a website that brought in online orders and new customers who found them through search.",
-    author: "— Los boricuas, Restaurant Owner, Bakersfield",
-  },
-  {
-    before: "Record label had an outdated site that didn't reflect their brand.",
-    after: "Professional, sleek website that matches their brand identity and drives engagement.",
-    author: "— Matthew Hoover, PWR Records",
-  },
-];
-
 const breadcrumbLabels: Record<string, string> = {
   home: "Home",
   pricing: "Pricing",
@@ -113,7 +46,7 @@ const breadcrumbLabels: Record<string, string> = {
 export function LandingHomeRevamp() {
   const [page, setPage] = useState("home");
   const [roiMissedCalls, setRoiMissedCalls] = useState(5);
-  const [roiJobValue, setRoiJobValue] = useState(300);
+  const [roiJobValue, setRoiJobValue] = useState(400);
   const [showScrollModal, setShowScrollModal] = useState(false);
   const scrollModalShown = useRef(false);
   const roiMonthlyLoss = roiMissedCalls * roiJobValue * 4;
@@ -151,74 +84,85 @@ export function LandingHomeRevamp() {
           <>
             <Hero onNavigate={navigate} />
 
-            {/* Before/After Outcomes — PROOF FIRST */}
+            {/* BLOCK B — Problem */}
             <Reveal>
             <section className="outcomes-section">
               <div className="container">
-                <span className="section-eyebrow">Real Outcomes</span>
-                <h2 className="section-title">Before and after <span className="text-amber">working with COAI.</span></h2>
-                <p className="section-sub">Real stories from real clients. No inflated numbers, no fake before-and-afters.</p>
+                <span className="section-eyebrow">The Real Problem</span>
+                <h2 className="section-title">You&apos;re already paying for leads. <span className="text-amber">You&apos;re just not catching them.</span></h2>
                 <div className="outcomes-grid">
-                  {outcomes.map((o, i) => (
-                    <div key={i} className="outcome-card">
-                      <div className="outcome-before">
-                        <span className="outcome-label">Before</span>
-                        <p>{o.before}</p>
-                      </div>
-                      <div className="outcome-arrow">→</div>
-                      <div className="outcome-after">
-                        <span className="outcome-label">After</span>
-                        <p>{o.after}</p>
-                      </div>
-                      <div className="outcome-author">{o.author}</div>
+                  <div className="outcome-card">
+                    <div className="outcome-before">
+                      <span className="outcome-label" style={{ color: "#f87171" }}>Pain #1</span>
+                      <p><strong>Missed calls while you&apos;re on a roof or in an attic.</strong> Your competitor answers first. That job is gone.</p>
                     </div>
-                  ))}
+                  </div>
+                  <div className="outcome-card">
+                    <div className="outcome-before">
+                      <span className="outcome-label" style={{ color: "#f87171" }}>Pain #2</span>
+                      <p><strong>Rented website (Wix / GoDaddy).</strong> Slow, doesn&apos;t rank on Google Maps, and you never own it. You&apos;re paying monthly for something that&apos;s costing you jobs.</p>
+                    </div>
+                  </div>
+                  <div className="outcome-card">
+                    <div className="outcome-before">
+                      <span className="outcome-label" style={{ color: "#f87171" }}>Pain #3</span>
+                      <p><strong>Google Maps ghost.</strong> Neighbors show up for every search in your area. You don&apos;t.</p>
+                    </div>
+                  </div>
+                </div>
+                <div style={{ maxWidth: 560, margin: "32px auto 0", padding: "20px 24px", background: "rgba(232,160,32,0.08)", border: "1px solid rgba(232,160,32,0.25)", borderRadius: "12px", textAlign: "center" }}>
+                  <p style={{ fontSize: "16px", fontWeight: 700, color: "var(--amber)", margin: 0 }}>
+                    5 missed calls/week × $400 average job × 4 weeks = <span style={{ fontSize: "22px" }}>$8,000/month</span> left on the table.
+                  </p>
                 </div>
               </div>
             </section>
             </Reveal>
 
-            {/* Comparison: COAI vs Rented Platforms */}
+            {/* BLOCK C — What you get */}
             <Reveal>
             <section className="comparison-section">
               <div className="container">
-                <span className="section-eyebrow">Why Sovereign</span>
-                <h2 className="section-title">What you build with us vs <span className="text-amber">what you rent.</span></h2>
-                <p className="section-sub">No spin. Just the honest difference between owning your digital infrastructure and paying a platform forever.</p>
-                <div className="comparison-table-wrap">
-                  <table className="comparison-table">
-                    <thead>
-                      <tr>
-                        <th></th>
-                        <th className="col-coai">COAI Build</th>
-                        <th className="col-rented">Wix / GoDaddy / Squarespace</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr><td>You own the code</td><td className="yes">Yes — it's yours</td><td className="no">No — you rent it</td></tr>
-                      <tr><td>Monthly platform fee</td><td className="yes">Hosting only (~$10/mo)</td><td className="no">$16–$50+/mo forever</td></tr>
-                      <tr><td>Custom-coded HTML/JS</td><td className="yes">Hand-built, fast</td><td className="no">Drag-and-drop bloat</td></tr>
-                      <tr><td>Can take it anywhere</td><td className="yes">Export and go</td><td className="no">Locked into their platform</td></tr>
-                      <tr><td>Schema / AI-ready markup</td><td className="yes">Built in from day one</td><td className="no">Not available</td></tr>
-                      <tr><td>Missed call text-back</td><td className="yes">Included in bundles</td><td className="no">Not available</td></tr>
-                      <tr><td>AI receptionist (24/7)</td><td className="yes">Cipher chat embed</td><td className="no">Not available</td></tr>
-                      <tr><td>Phone support</td><td className="yes">Talk to a human</td><td className="no">Chatbot or ticket queue</td></tr>
-                      <tr><td>Clear upfront pricing</td><td className="yes">You approve before we start</td><td className="no">Tiered, upgrades hidden</td></tr>
-                    </tbody>
-                  </table>
+                <span className="section-eyebrow">The TradeCall System™</span>
+                <h2 className="section-title">Everything in <span className="text-amber">one flat-rate build.</span></h2>
+                <p className="section-sub">Custom website + missed-call recovery, built for Kern County trades. You own everything the day it goes live.</p>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "16px", margin: "40px 0 32px" }}>
+                  {[
+                    "Custom-coded website — you own 100% of the code",
+                    "Mobile-fast, conversion layout built for \"call now\"",
+                    "Local SEO + schema so Google Maps and AI search can find you",
+                    "Google Business Profile alignment",
+                    "Missed-call auto text-back in under 30 seconds",
+                    "Lead capture forms + click-to-call hardened",
+                    "Full handoff — export and leave anytime",
+                    "Phone support from a human in Bakersfield",
+                  ].map((item, i) => (
+                    <div key={i} className="trust-item" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid var(--navy-border)", borderRadius: "8px", padding: "14px 16px" }}>
+                      <CheckCircle2 className="check" size={16} aria-hidden="true" style={{ flexShrink: 0 }} />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+                <div style={{ textAlign: "center" }}>
+                  <div style={{ fontSize: "28px", fontWeight: 800, color: "var(--amber)", marginBottom: "4px" }}>Starting at $1,997</div>
+                  <div style={{ fontSize: "14px", color: "var(--cream-dim)", marginBottom: "8px" }}>2–3 weeks · No long-term contract · $997 to start, $1,000 at launch</div>
+                  <div style={{ fontSize: "13px", color: "var(--cream-dim)", marginBottom: "24px" }}>Need Spanish for Kern County? +$400 bilingual build.</div>
+                  <a className="btn-primary" onClick={() => navigate("intake")} style={{ cursor: "pointer" }}>
+                    Book Free 20-Min Job Call Audit <ArrowRight size={16} aria-hidden="true" />
+                  </a>
                 </div>
               </div>
             </section>
             </Reveal>
 
-            {/* Meet Jason — Personal Trust */}
+            {/* BLOCK D — Why Jason */}
             <Reveal>
             <section className="meet-jason-section">
               <div className="container meet-jason-inner">
                 <div className="meet-jason-photo">
                   <Image
                     src="/jason.png"
-                    alt="Jason Manuel — Founder of Chaotically Organized AI"
+                    alt="Jason Manuel — Founder of Chaotically Organized AI, former licensed building contractor"
                     fill
                     priority
                     sizes="(max-width: 768px) 100vw, 400px"
@@ -226,23 +170,23 @@ export function LandingHomeRevamp() {
                   />
                 </div>
                 <div className="meet-jason-copy">
-                  <span className="section-eyebrow">Who You're Working With</span>
-                  <h2 className="section-title" style={{ textAlign: "left" }}>Just me. <span className="text-amber">No agency. No middleman.</span></h2>
+                  <span className="section-eyebrow">Not an Agency. Not a Template Mill.</span>
+                  <h2 className="section-title" style={{ textAlign: "left" }}>A former contractor <span className="text-amber">who builds digital systems.</span></h2>
                   <p className="meet-jason-text">
-                    I'm Jason Robert Manuel. I live in Bakersfield, I run this business by myself, and I'm good at what I do. I build websites that work — hand-coded, fast, and designed to bring in actual job calls, not just look pretty.
+                    I&apos;m Jason Manuel. I live in Bakersfield. Before I built websites and AI lead systems, I was a licensed building contractor in Florida — running multi-trade residential projects, coordinating plumbing, electrical, HVAC, and framing crews, and owning the P&L.
                   </p>
                   <p className="meet-jason-text">
-                    I started this because I saw local businesses getting ripped off by template builders who charge monthly for something they should've just given you outright. I do it differently: you pay once, you own it forever, and you can call me directly if something breaks.
+                    I started COAI because I watched local trades get locked into monthly website rentals that don&apos;t rank and don&apos;t text missed callers back. I do it differently: you pay once, you own it, and you can call me directly when something breaks.
                   </p>
                   <p className="meet-jason-text">
-                    I'm not a big agency. I'm not trying to scale to 100 clients. I take on a few at a time so each one gets my full attention. If that sounds like how business should work, let's talk.
+                    I take a few clients at a time so each job gets full attention. If that sounds like how business should work, let&apos;s talk.
                   </p>
                   <div className="meet-jason-actions">
-                    <a href="tel:6616591376" className="btn-phone" style={{ display: "inline-flex" }}>
-                      <Phone size={16} aria-hidden="true" /> (661) 659-1376
+                    <a href={`tel:${CONTACT.phoneE164}`} className="btn-phone" style={{ display: "inline-flex" }}>
+                      <Phone size={16} aria-hidden="true" /> {CONTACT.phoneDisplay}
                     </a>
                     <a className="btn-secondary" onClick={() => navigate("about")} style={{ cursor: "pointer" }}>
-                      Read More About Me
+                      More About Jason
                     </a>
                   </div>
                 </div>
@@ -250,48 +194,13 @@ export function LandingHomeRevamp() {
             </section>
             </Reveal>
 
-            {/* Services Overview — LeadShield, COAI, SiteER */}
-            <Reveal>
-            <section className="services-overview">
-              <div className="container">
-                <span className="section-eyebrow">What We Do</span>
-                <h2 className="section-title">Three ways we help you <span className="text-amber">win more jobs.</span></h2>
-                <p className="section-sub">Whether you need a website, lead recovery, or a full tech overhaul — we&apos;ve got you covered under one roof.</p>
-                <div className="services-grid">
-                  {products.map((p, i) => (
-                    <div key={p.name} className="service-card">
-                      <div className="service-card-icon" aria-hidden="true">
-                        <p.icon size={28} strokeWidth={2.2} />
-                      </div>
-                      <div className="service-card-tag">{p.tag}</div>
-                      <h3>{p.name}</h3>
-                      <p>{p.desc}</p>
-                      <ul>
-                        {p.features.map((f) => (
-                          <li key={f}>{f}</li>
-                        ))}
-                      </ul>
-                      <a href={p.link} className="service-card-cta">{p.cta} <ArrowRight size={16} aria-hidden="true" /></a>
-                      {i === 1 && (
-                        <div className="service-testi-inline">
-                          <span className="service-testi-stars" aria-label="5 out of 5 stars">★★★★★</span>
-                          <p>&ldquo;Jason helped me build a website for my business, increased my online presence.&rdquo; — <strong>Christopher Moore</strong></p>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </section>
-            </Reveal>
-
-            {/* Testimonials */}
+            {/* BLOCK E — Proof / Testimonials */}
             <Reveal>
             <section className="testi-section">
               <div className="container">
                 <span className="section-eyebrow">Real Results</span>
                 <h2 className="section-title">What Bakersfield <span className="text-amber">business owners say.</span></h2>
-                <p className="section-sub">No fake reviews. Just real talk from local tradesmen who needed help and actually got it.</p>
+                <p className="section-sub">No fake reviews. Real talk from local owners who needed help and actually got it.</p>
                 <div className="testi-grid">
                   {testimonials.map((t) => (
                     <div key={t.author} className="testi-card">
@@ -305,13 +214,80 @@ export function LandingHomeRevamp() {
             </section>
             </Reveal>
 
-            {/* ROI Calculator */}
+            {/* BLOCK F — Comparison table */}
+            <Reveal>
+            <section className="comparison-section" style={{ paddingTop: 0 }}>
+              <div className="container">
+                <span className="section-eyebrow">Why Sovereign</span>
+                <h2 className="section-title">What you build with us vs <span className="text-amber">what you rent.</span></h2>
+                <div className="comparison-table-wrap">
+                  <table className="comparison-table">
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th className="col-coai">TradeCall System</th>
+                        <th className="col-rented">Wix / GoDaddy</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>You own the code</td><td className="yes">Yes — it&apos;s yours</td><td className="no">No — you rent it</td></tr>
+                      <tr><td>Monthly platform fee</td><td className="yes">Hosting only (~$10/mo)</td><td className="no">$16–$50+/mo forever</td></tr>
+                      <tr><td>Missed-call text-back</td><td className="yes">Included — under 30 seconds</td><td className="no">Not available</td></tr>
+                      <tr><td>Local human support</td><td className="yes">Call Jason directly</td><td className="no">Chatbot or ticket queue</td></tr>
+                      <tr><td>Clear upfront price</td><td className="yes">You approve before we start</td><td className="no">Tiered, upgrades hidden</td></tr>
+                      <tr><td>Can take it anywhere</td><td className="yes">Export and go</td><td className="no">Locked in forever</td></tr>
+                      <tr><td>Schema / AI-ready markup</td><td className="yes">Built in from day one</td><td className="no">Not available</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+            </Reveal>
+
+            {/* BLOCK G — How it works */}
+            <Reveal>
+            <section className="outcomes-section">
+              <div className="container">
+                <span className="section-eyebrow">The Process</span>
+                <h2 className="section-title">Three steps. <span className="text-amber">No surprises.</span></h2>
+                <div className="outcomes-grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))" }}>
+                  {[
+                    {
+                      step: "1",
+                      title: "Free Job Call Audit (20 min)",
+                      desc: "We review your site, Google Business Profile, and missed-call leak. You get a written report — no pitch, no pressure.",
+                    },
+                    {
+                      step: "2",
+                      title: "Fixed scope & price",
+                      desc: "Written proposal. You approve every line before work starts. $997 to begin, $1,000 at launch.",
+                    },
+                    {
+                      step: "3",
+                      title: "Build & launch (2–3 weeks)",
+                      desc: "You own everything the day it goes live — code, domain, content. Export and leave anytime.",
+                    },
+                  ].map((s) => (
+                    <div key={s.step} className="outcome-card" style={{ textAlign: "left" }}>
+                      <div style={{ fontSize: "36px", fontWeight: 900, color: "var(--amber)", lineHeight: 1, marginBottom: "12px" }}>{s.step}</div>
+                      <div className="outcome-after">
+                        <span className="outcome-label">{s.title}</span>
+                        <p>{s.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+            </Reveal>
+
+            {/* BLOCK — ROI Calculator (keep — it's good) */}
             <Reveal>
             <section className="roi-section">
               <div className="container">
                 <span className="section-eyebrow">Do the Math</span>
                 <h2 className="section-title">How much are <span className="text-amber">missed calls costing you?</span></h2>
-                <p className="section-sub">Plug in your numbers. This isn't a sales pitch — it's just arithmetic.</p>
+                <p className="section-sub">Plug in your numbers. This isn&apos;t a sales pitch — it&apos;s just arithmetic.</p>
                 <div className="roi-calculator">
                   <div className="roi-inputs">
                     <div className="roi-input-group">
@@ -333,36 +309,44 @@ export function LandingHomeRevamp() {
                       <span className="roi-result-value">${roiYearlyLoss.toLocaleString()}</span>
                     </div>
                   </div>
-                  <p className="roi-note">That's what you leave on the table every month when missed calls go unanswered. LeadShield texts them back in seconds — most respond within minutes.</p>
+                  <p className="roi-note">That&apos;s what you leave on the table every month when missed calls go unanswered. The TradeCall System texts them back in seconds — most respond within minutes.</p>
                 </div>
               </div>
             </section>
             </Reveal>
 
-            {/* Honest Guarantee Banner */}
+            {/* BLOCK H — FAQ */}
             <Reveal>
-            <section className="guarantee-banner-section">
+            <section className="outcomes-section">
               <div className="container">
-                <div className="guarantee-banner">
-                  <div className="guarantee-banner-icon">
-                    <Shield size={32} strokeWidth={2} />
-                  </div>
-                  <div className="guarantee-banner-copy">
-                    <h3>No Risk. You Own What We Build.</h3>
-                    <p>If you're not happy before we launch, you don't pay. The website code is yours from the moment it goes live — no monthly platform tax, no lock-in, no &ldquo;we own your site until you renew.&rdquo; You can take it anywhere. That's not a marketing guarantee. That's just how I do business.</p>
-                  </div>
+                <span className="section-eyebrow">Common Questions</span>
+                <h2 className="section-title">Straight answers <span className="text-amber">no agency-speak.</span></h2>
+                <div style={{ maxWidth: 700, margin: "0 auto", display: "flex", flexDirection: "column", gap: "20px" }}>
+                  {[
+                    { q: "How long does it take?", a: "2–3 weeks from signed proposal to launch. You get a real timeline in the proposal, not a vague \"4–6 weeks.\"" },
+                    { q: "Do I own the website?", a: "Yes. The code is yours the day we go live. You can move it to any host, hand it to another developer, or export it entirely. No lock-in." },
+                    { q: "What if I already have a Wix site?", a: "We can migrate your content and replace it with something you own. No Wix account required after launch." },
+                    { q: "Do I need to be techy?", a: "No. You approve the design, supply your logo and photos, and we handle everything else. Most clients need zero technical knowledge." },
+                    { q: "What's not included?", a: "Ad spend (Google/Meta), ongoing monthly content unless you add a retainer ($197/mo), and services outside web+lead — like PC repair. Call me for that separately." },
+                    { q: "Can I pay half now, half at launch?", a: "Yes — $997 to start work, $1,000 when we go live. That's the standard split." },
+                  ].map((faq, i) => (
+                    <div key={i} style={{ background: "rgba(255,255,255,0.03)", border: "1px solid var(--navy-border)", borderRadius: "10px", padding: "20px 24px" }}>
+                      <div style={{ fontWeight: 700, fontSize: "16px", color: "var(--cream)", marginBottom: "8px" }}>{faq.q}</div>
+                      <div style={{ fontSize: "14px", color: "var(--cream-dim)", lineHeight: 1.7 }}>{faq.a}</div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </section>
             </Reveal>
 
-            {/* Final CTA */}
+            {/* BLOCK I — Final CTA */}
             <Reveal>
             <section className="final-cta">
               <div className="container">
                 <span className="section-eyebrow" style={{ justifyContent: "center", display: "block", textAlign: "center" }}>Start Here — Free</span>
-                <h2>Ready to stop guessing<br />and <span className="text-amber">start getting calls?</span></h2>
-                <p>Free 20-minute digital audit. We check your site speed, Google profile, schema, and lead flow — and hand you a written report. No pitch, no pressure, just the truth.</p>
+                <h2>Stop guessing. See what&apos;s<br /><span className="text-amber">costing you job calls.</span></h2>
+                <p>Free 20-minute Job Call Audit. We check your site, Google profile, schema, and missed-call flow — and hand you a written report. No pitch, no pressure, just the truth.</p>
                 <div className="final-cta-social">
                   <div className="final-cta-testi">
                     <span className="testi-stars" aria-label="5 out of 5 stars">★★★★★</span>
@@ -375,11 +359,28 @@ export function LandingHomeRevamp() {
                     <span className="trust-badge">No Contracts</span>
                   </div>
                 </div>
-                <a href="tel:6616591376" className="cta-phone">(661) 659-1376</a>
+                <a href={`tel:${CONTACT.phoneE164}`} className="cta-phone">{CONTACT.phoneDisplay}</a>
                 <div className="final-cta-actions">
-                  <a className="btn-primary" onClick={() => navigate("intake")} style={{ cursor: "pointer" }}>Get My Free Audit <ArrowRight size={16} aria-hidden="true" /></a>
+                  <a className="btn-primary" onClick={() => navigate("intake")} style={{ cursor: "pointer" }}>Book My Free Audit <ArrowRight size={16} aria-hidden="true" /></a>
                 </div>
-                <p className="final-cta-note">🔥 May availability nearly full. Respond today to secure your spot.</p>
+                <p className="final-cta-note" style={{ opacity: 0.7, fontSize: "13px" }}>I only take a few builds per month so quality stays high.</p>
+              </div>
+            </section>
+            </Reveal>
+
+            {/* Guarantee */}
+            <Reveal>
+            <section className="guarantee-banner-section">
+              <div className="container">
+                <div className="guarantee-banner">
+                  <div className="guarantee-banner-icon">
+                    <Shield size={32} strokeWidth={2} />
+                  </div>
+                  <div className="guarantee-banner-copy">
+                    <h3>No Risk. You Own What We Build.</h3>
+                    <p>If you&apos;re not happy before we launch, you don&apos;t pay. The website code is yours from the moment it goes live — no monthly platform tax, no lock-in. You can take it anywhere. That&apos;s not a marketing guarantee. That&apos;s just how I do business.</p>
+                  </div>
+                </div>
               </div>
             </section>
             </Reveal>
@@ -423,9 +424,9 @@ export function LandingHomeRevamp() {
       {/* Sticky Mobile CTA */}
       {page === "home" && (
         <div className="sticky-mobile-cta">
-          <a href="tel:6616591376" className="sticky-mobile-phone">
+          <a href={`tel:${CONTACT.phoneE164}`} className="sticky-mobile-phone">
             <Phone size={18} aria-hidden="true" />
-            Call Now
+            Call Jason
           </a>
           <a className="sticky-mobile-audit" onClick={() => navigate("intake")} style={{ cursor: "pointer" }}>
             Free Audit
@@ -433,28 +434,27 @@ export function LandingHomeRevamp() {
         </div>
       )}
 
-       {/* Scroll-Depth Capture Modal */}
-       {showScrollModal && (
-         <div className="scroll-modal-overlay" onClick={() => setShowScrollModal(false)}>
-           <div className="scroll-modal" onClick={e => e.stopPropagation()}>
-             <button className="scroll-modal-close" onClick={() => setShowScrollModal(false)} aria-label="Close">
-               <X size={20} />
-             </button>
-             <span className="scroll-modal-eyebrow">Before You Go</span>
-             <h3>Get Your Free Audit — Spots Filling Fast 🔥</h3>
-             <p>Takes 30 seconds. I'll check your site speed, SEO coverage, and AI readiness — then send you a written report with the fixes that matter most. No pitch, no pressure.</p>
-             <p style={{ fontSize: ".85rem", color: "var(--amber)", fontWeight: 600, margin: "12px 0 0 0" }}>⚡ Jason accepts 2-3 new clients monthly. Respond now to secure your spot.</p>
-             <div className="scroll-modal-actions">
-               <a className="btn-primary" onClick={() => { setShowScrollModal(false); navigate("intake"); }} style={{ cursor: "pointer" }}>
-                 Run My Free Audit <ArrowRight size={16} aria-hidden="true" />
-               </a>
-               <a className="btn-secondary" onClick={() => setShowScrollModal(false)} style={{ cursor: "pointer" }}>
-                 Maybe Later
-               </a>
-             </div>
-           </div>
-         </div>
-       )}
+      {/* Scroll-Depth Capture Modal */}
+      {showScrollModal && (
+        <div className="scroll-modal-overlay" onClick={() => setShowScrollModal(false)}>
+          <div className="scroll-modal" onClick={e => e.stopPropagation()}>
+            <button className="scroll-modal-close" onClick={() => setShowScrollModal(false)} aria-label="Close">
+              <X size={20} />
+            </button>
+            <span className="scroll-modal-eyebrow">Before You Go</span>
+            <h3>Get Your Free Job Call Audit</h3>
+            <p>Takes 20 minutes. I&apos;ll check your site, Google profile, schema, and missed-call flow — then send you a written report with the fixes that matter most. No pitch, no pressure.</p>
+            <div className="scroll-modal-actions">
+              <a className="btn-primary" onClick={() => { setShowScrollModal(false); navigate("intake"); }} style={{ cursor: "pointer" }}>
+                Book My Free Audit <ArrowRight size={16} aria-hidden="true" />
+              </a>
+              <a className="btn-secondary" onClick={() => setShowScrollModal(false)} style={{ cursor: "pointer" }}>
+                Maybe Later
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

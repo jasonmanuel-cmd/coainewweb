@@ -30,8 +30,8 @@ export const CO_FOUNDER = {
 export const CONTACT = {
   email: "jasonm@coaibakersfield.com",
   secondaryEmail: "frankh@coaibakersfield.com",
-  phoneDisplay: "(661) 659-1376",
-  phoneE164: "+16616591376",
+  phoneDisplay: "(661) 683-0228",
+  phoneE164: "+16616830228",
   addressLine: "1712 19th St #216",
   city: "Bakersfield",
   region: "CA",
