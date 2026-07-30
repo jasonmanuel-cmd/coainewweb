@@ -6,7 +6,7 @@ import { MarketingLayout } from "@/components/marketing/MarketingLayout";
 import { FAQ_MARKETING_SECTIONS, faqMarketingFlat } from "@/lib/faq-marketing-data";
 import { pageMetadata } from "@/lib/metadata";
 import { articleJsonLd, breadcrumbJsonLd, faqPageJsonLd } from "@/lib/schema";
-import { CONTACT, SITE_URL } from "@/lib/site";
+import { CONTACT } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: { absolute: "FAQ | Chaotically Organized AI - Bakersfield 661" },

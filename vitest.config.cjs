@@ -1,11 +1,9 @@
-const path = require('node:path');
-const { fileURLToPath } = require('node:url');
 const { defineConfig } = require('vitest/config');
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 module.exports = defineConfig({
   test: {
+    include: ['__tests__/**/*.test.ts', '__tests__/**/*.test.tsx'],
+    exclude: ['node_modules/**', '.next/**', '.claude/**'],
     environment: 'happy-dom',
     globals: true,
     coverage: {
