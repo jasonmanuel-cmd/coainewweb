@@ -4,20 +4,19 @@ import { PricingShell } from "@/components/pricing/PricingShell";
 import { PricingPageBody } from "@/components/marketing/PricingPageBody";
 import { pageMetadata } from "@/lib/metadata";
 import { articleJsonLd, breadcrumbJsonLd, serviceJsonLd } from "@/lib/schema";
-import { SITE_URL } from "@/lib/site";
+import { OFFERS, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Pricing — TradeCall System | COAI",
-  description:
-    "TradeCall System at $1,997 flat. Custom website + missed-call recovery for Bakersfield trades. You own the code. No monthly platform tax.",
+  title: `Pricing — ${OFFERS.tradecall.name} | COAI`,
+  description: `${OFFERS.tradecall.name} at ${OFFERS.tradecall.price} flat, ${OFFERS.tradecall.terms}. ${OFFERS.continuity.name} optional at ${OFFERS.continuity.price}/month. Every third-party cost published before you sign.`,
   path: "/pricing",
   published: "2026-01-20",
-  modified: "2026-07-14",
+  modified: "2026-08-02",
 });
 
 const pricingService = serviceJsonLd(
-  "TradeCall System — website and missed-call recovery for trades",
-  "Custom-coded website with missed-call text-back for Bakersfield trade businesses. $1,997 flat. You own everything."
+  OFFERS.tradecall.name,
+  `${OFFERS.tradecall.summary} ${OFFERS.tradecall.price} flat.`
 );
 
 export default function PricingPage() {
@@ -26,12 +25,11 @@ export default function PricingPage() {
     { name: "Pricing", path: "/pricing" }
   ]);
   const pricingArticle = articleJsonLd({
-    headline: "TradeCall System Pricing — $1,997 Flat | COAI",
-    description:
-      "TradeCall System for Bakersfield trades: custom website + missed-call recovery at $1,997 flat. You own the code. Built by a former licensed contractor.",
+    headline: `${OFFERS.tradecall.name} pricing — ${OFFERS.tradecall.price} flat | COAI`,
+    description: `Three offers and nothing else: ${OFFERS.scorecard.name}, ${OFFERS.tradecall.name} at ${OFFERS.tradecall.price} flat, and optional ${OFFERS.continuity.name} at ${OFFERS.continuity.price} per month. Exclusions and third-party costs published.`,
     path: "/pricing",
     datePublished: "2026-01-20",
-    dateModified: "2026-07-14",
+    dateModified: "2026-08-02",
   });
 
   const webPage = {

@@ -1,0 +1,169 @@
+/**
+ * COAI design tokens — "Industrial-Strength Revenue Infrastructure".
+ * Ported from the COAI Design System project (f69bc7bd-2cd1-4aa3-b7fd-cbfac65fa270).
+ *
+ * Doctrine: jobsite-grade, not tech-startup. Stamped steel, field manual,
+ * dispatch board, inspection report. No gradients, no glow, no blur, no
+ * circuit-board texture, no scanline overlays.
+ *
+ * Ratio: ~70% Jobsite White / ~20% Forged Charcoal / ~8% Steel Blue /
+ * ~2% safety colors. Signal Orange is the ONLY CTA color — a tool, not wallpaper.
+ */
+
+:root {
+  /* Base palette */
+  --charcoal: #1b1d1d;
+  --charcoal-80: #2a2c2c;
+  --charcoal-60: #4a4c4c;
+  --jobsite-white: #f4f1e8;
+  --jobsite-white-dim: #e8e3d6;
+  --paper: #fbfaf6;
+  --signal-orange: #e85d24;
+  --signal-orange-dim: #c24e1d;
+  --inspection-yellow: #f2b705;
+  --inspection-yellow-dim: #c99804;
+  --steel-blue: #2f5d73;
+  --steel-blue-dim: #24485a;
+  --pass-green: #3e6b4a;
+  --pass-green-dim: #2f5238;
+  --leak-red: #a93828;
+  --leak-red-dim: #87271a;
+
+  /* Surfaces */
+  --surface-page: var(--jobsite-white);
+  --surface-panel: var(--paper);
+  --surface-inverse: var(--charcoal);
+  --surface-inverse-raised: var(--charcoal-80);
+
+  /* Text */
+  --text-primary: var(--charcoal);
+  --text-inverse: var(--jobsite-white);
+  --text-muted: var(--charcoal-60);
+  --text-on-inverse-muted: #b9b7ae;
+
+  /* Borders — hairlines, never soft shadows */
+  --border-default: #d8d3c4;
+  --border-strong: var(--charcoal);
+  --border-inverse: #3c3e3e;
+
+  /* Actions */
+  --cta-bg: var(--signal-orange);
+  --cta-bg-hover: var(--signal-orange-dim);
+  --cta-text: var(--jobsite-white);
+  --link: var(--steel-blue);
+  --link-hover: var(--steel-blue-dim);
+
+  /* Proof states only — never decorative */
+  --status-pass: var(--pass-green);
+  --status-fail: var(--leak-red);
+  --status-caution: var(--inspection-yellow);
+  --status-info: var(--steel-blue);
+
+  /* Type — font families are supplied by next/font in app/layout.tsx */
+  --font-headline: var(--font-barlow-condensed), Impact, "Arial Narrow", sans-serif;
+  --font-body: var(--font-inter), -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-plex-mono), "Courier New", monospace;
+
+  --text-display: clamp(2.75rem, 5vw, 5.5rem);
+  --text-h1: clamp(2.25rem, 4vw, 3.5rem);
+  --text-h2: clamp(1.75rem, 2.6vw, 2.5rem);
+  --text-h3: 1.5rem;
+  --text-h4: 1.125rem;
+  --text-body-lg: 1.125rem;
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+  --text-label: 0.75rem;
+
+  --lh-tight: 1.05;
+  --lh-heading: 1.1;
+  --lh-body: 1.55;
+
+  --tracking-headline: 0.01em;
+  --tracking-label: 0.14em;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  /* Radii — 0-4px system-wide. Never pill-shaped. */
+  --radius-none: 0px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+
+  --rule-hairline: 1px;
+  --rule-strong: 2px;
+
+  /* --shadow-panel is a 1px baseline hairline, not a blur. */
+  --shadow-panel: 0 1px 0 rgba(27, 29, 29, 0.06);
+  /* --shadow-raised is reserved for the single most important panel on a screen. */
+  --shadow-raised: 0 4px 12px rgba(27, 29, 29, 0.14);
+
+  --ease-standard: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --t-fast: 120ms;
+  --t-mid: 200ms;
+}
+
+/* Base reset */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--surface-page);
+}
+
+body {
+  margin: 0;
+  color: var(--text-primary);
+  background: var(--surface-page);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-headline);
+  font-weight: 700;
+  line-height: var(--lh-heading);
+  letter-spacing: var(--tracking-headline);
+  /* Sentence case always — no Title Case Everywhere, no uppercase headlines. */
+  text-transform: none;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { smsConsentField } from "./contact-marketing";
 
 const websiteField = z
   .string()
@@ -26,6 +27,7 @@ export const intakeSubmissionSchema = z.object({
   first_name: z.string().min(1).max(200),
   business_name: z.string().min(1).max(300),
   phone: z.string().min(7).max(80),
+  sms_consent: smsConsentField,
   email: z.string().email().max(320),
   business_website: websiteField,
   company: z.string().max(200).optional().default(""),

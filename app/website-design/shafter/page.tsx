@@ -70,7 +70,7 @@ export default function ShafterWebsiteDesignPage() {
         <div className="m-container-wide">
           <div className="m-section-label">Why Shafter</div>
           <h2 className="m-h2-marketing">
-            Shafter businesses deserve a site that <span className="m-text-green">works 24/7 - not just during business hours.</span>
+            Shafter businesses deserve a site that <span className="m-text-green">catches the call you cannot answer.</span>
           </h2>
           <div className="m-text-block">
             <p>
@@ -102,7 +102,7 @@ export default function ShafterWebsiteDesignPage() {
           </h2>
           <div className="m-feature-grid">
             {[
-              { icon: "⚡", title: "Speed-First Build", desc: "Shafter mobile searches demand speed. Sub-3s load guaranteed." },
+              { icon: "⚡", title: "Speed-First Build", desc: "Shafter searches happen on a phone. We optimize for it and show you the measured Lighthouse score." },
               { icon: "📍", title: "Shafter Local Schema", desc: "LocalBusiness schema tuned for Shafter + Kern County search." },
               { icon: "📞", title: "Call-First Design", desc: "Phone number prominent on every page. Click-to-call on mobile." },
               { icon: "🛠️", title: "Google Maps Priority", desc: "GBP optimization + service-area schema for local map rankings." },

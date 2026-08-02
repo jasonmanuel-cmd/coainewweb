@@ -1,9 +1,23 @@
-/** Marketing FAQ page — visible copy + JSON-LD (keep in sync). */
+import { BUSINESS_HOURS_LABEL, CONTACT, OFFERS, THIRD_PARTY_COSTS } from "./site";
+
+/**
+ * Marketing FAQ — visible copy AND FAQPage JSON-LD come from this one array.
+ *
+ * Because this text is emitted as structured data, AI search engines quote it
+ * verbatim. Rules:
+ * - Every price references OFFERS. Never write a price literal here.
+ * - No statistic without a named source.
+ * - No availability claim that contradicts BUSINESS_HOURS_LABEL.
+ * - No phone number other than CONTACT.phoneDisplay presented as company NAP.
+ */
 export type FaqMarketingSection = {
   id: string;
   title: string;
   items: { question: string; answer: string }[];
 };
+
+const HOSTING = THIRD_PARTY_COSTS[0];
+const MESSAGING = THIRD_PARTY_COSTS[1];
 
 export const FAQ_MARKETING_SECTIONS: FaqMarketingSection[] = [
   {
@@ -12,18 +26,20 @@ export const FAQ_MARKETING_SECTIONS: FaqMarketingSection[] = [
     items: [
       {
         question: "What does it cost to work with COAI?",
-        answer:
-          "Website builds start at $1,200 for the Signal Foundation package and go up to $2,000+ for the Sentinel Automation layer. Exact pricing is scoped per project — we don't charge extra for complexity you don't need, and we don't pad quotes to hit a number.\n\nThe diagnostic call is free. The proposal is free. You only pay when a clear scope is agreed on and work begins. Use the pricing page for the full package breakdown."
+        answer: `We sell three things. The ${OFFERS.scorecard.name} is free for qualified owner-operators; otherwise it is a $350 Structural Audit, credited to the build if you go ahead. The ${OFFERS.tradecall.name} is ${OFFERS.tradecall.price} flat — ${OFFERS.tradecall.terms}. A bilingual English/Spanish build adds ${OFFERS.tradecall.bilingual}. ${OFFERS.continuity.name} is an optional ${OFFERS.continuity.price} per month, ${OFFERS.continuity.terms}.\n\nThe diagnostic call and the proposal are free. You only pay once a written scope is agreed and work begins. The pricing page is the single source of truth for every number.`
       },
       {
         question: "Are there monthly fees or retainers?",
+        answer: `No mandatory retainer. The build is a one-time fixed-price engagement and you own the result.\n\nTwo costs do continue after launch, and you pay them directly to the vendor rather than to COAI: ${HOSTING.item.toLowerCase()} at ${HOSTING.cost} (${HOSTING.paidTo}), and ${MESSAGING.item.toLowerCase()} at ${MESSAGING.cost} (${MESSAGING.paidTo}). ${OFFERS.continuity.name} at ${OFFERS.continuity.price} per month is optional and never required.`
+      },
+      {
+        question: "What is not included in the build price?",
         answer:
-          "No mandatory retainers. Every build is a one-time fixed-price engagement. You own the result. There's no ongoing fee to keep your site running. Optional ongoing support is available for clients who want COAI managing updates, monitoring, or expanding the system — but it's never a requirement. You can take full ownership and run it yourself."
+          "Ad spend, custom third-party integrations, ongoing content beyond the agreed scope, carrier and SMS usage fees, hosting, advanced CRM migration, and around-the-clock human dispatch are not included. Actual third-party costs are listed in writing before you sign, not discovered afterward."
       },
       {
         question: "Do you offer payment plans?",
-        answer:
-          "Yes. Milestone-based payment structures are available on larger builds. Typically 50% to start, 50% on delivery — or a three-milestone split for bigger projects. We work with operators, not against them."
+        answer: `The standard split is built in: ${OFFERS.tradecall.terms}. Milestone-based structures are available on larger builds — typically 50% to start and 50% on delivery, or a three-milestone split. We work with operators, not against them.`
       }
     ]
   },
@@ -34,17 +50,17 @@ export const FAQ_MARKETING_SECTIONS: FaqMarketingSection[] = [
       {
         question: "How long does a build take?",
         answer:
-          "Standard website builds complete in 2 to 4 weeks from signed scope to live deployment. Simpler builds (Signal Foundation) can be faster. More complex e-commerce or automation stacks take the full 4 weeks. We don't rush — we scope it right so we don't have to redo it. Every milestone has a staging link so you can see it taking shape in real time."
+          "Two to three weeks from signed scope to live deployment. Larger e-commerce or automation work is scoped separately with its own timeline agreed before work starts. Every milestone has a staging link so you can see it taking shape in real time."
       },
       {
         question: "What do I need to provide to get started?",
         answer:
-          "At minimum: your business name, services, target market, and any existing branding (logo, colors if you have them). We handle the rest — copy direction, layout, schema structure, and technical architecture. If you have photos, testimonials, or existing content, bring it. If you don't, we work with what exists and build from there. We don't stall projects waiting for perfect assets."
+          "At minimum: your business name, services, service area, and any existing branding. We handle copy direction, layout, schema structure, and technical architecture. If you have photos, reviews, or existing content, bring it. If you do not, we build from what exists. We do not stall projects waiting for perfect assets."
       },
       {
         question: "How involved do I need to be during the build?",
         answer:
-          "Minimal. You review at each milestone checkpoint — that's typically 2 to 3 review sessions over the build period. Each session is focused: specific questions, specific feedback, no open-ended brainstorming that wastes your time. You run your business. We build the system. That's the arrangement."
+          "Minimal. You review at each milestone checkpoint — typically two to three focused sessions over the build period, with specific questions and specific feedback. You run your business. We build the system."
       }
     ]
   },
@@ -53,102 +69,97 @@ export const FAQ_MARKETING_SECTIONS: FaqMarketingSection[] = [
     title: "Ownership",
     items: [
       {
-        question: "Who owns the website after it's built?",
+        question: "Who owns the website after it is built?",
         answer:
-          "You own everything. The code, the domain, the hosting account, the customer data — all of it transfers to you at handoff. COAI retains no ongoing control or access unless you explicitly grant it for support purposes. This is what \"sovereign infrastructure\" means. We build houses, not rental agreements. You never have to worry about COAI going out of business or changing its pricing and losing your site as a result."
+          "You do. You control the domain registrar, hosting account, source code repository, analytics, Search Console, Google Business Profile, and all lead data. We deploy into your accounts, document the setup, and hand over admin access at launch.\n\nCOAI retains no ongoing control or access unless you explicitly grant it for support. You never have to worry about COAI changing its pricing or going away and taking your site with it."
       },
       {
-        question: "What's the difference between a COAI build and Wix or Squarespace?",
+        question: "What is the difference between a COAI build and Wix or Squarespace?",
         answer:
-          "Wix and Squarespace are rented land. You pay monthly to live on their platform. If they raise prices, change features, or shut down, you lose everything you built. Your customer data lives on their servers. Your site disappears if you stop paying. A COAI build is custom code on hosting you control. It loads faster, ranks better, has cleaner schema, and can be handed to any developer in the world to maintain. It's an asset — not a subscription."
+          "A rented platform can be the right choice for a simple brochure site, and we will tell you so if it is. The question is what your revenue operation needs.\n\nCompare on the criteria that matter: who controls the account credentials, whether the system can be exported and the handoff documented, whether missed-call recovery is installed and tested, whether your business facts are kept consistent across the web and Google, and what happens when the vendor leaves. We put our answers to those questions in writing before you buy. Check any platform's answers against the same list."
+      },
+      {
+        question: "Can I update the site myself after handoff?",
+        answer:
+          "Yes. You get handoff documentation and a walkthrough of standard content updates — prices, hours, photos, service descriptions. Larger structural changes are available at an hourly rate. You are never held hostage for routine updates."
       }
     ]
   },
   {
     id: "ai",
-    title: "AI & Automation",
+    title: "Calls and automation",
     items: [
       {
-        question: "What is the AI receptionist and do I need it?",
+        question: "How does missed-call text-back work with my existing number?",
         answer:
-          "Cipher is COAI's AI receptionist — a voice and text system that answers missed calls, qualifies leads, and routes bookings 24/7 without you lifting a finger. It's deployed on COAI's own line at (661) 659-1376 — call it and hear exactly what your customers would experience. You don't need it to get a great website. But if you're missing calls after hours, dealing with unqualified leads, or losing jobs to faster-responding competitors — this is the fix."
+          "Your published number stays yours. When a call goes unanswered, the system sends an automatic text back to the caller and creates a task for you.\n\nAn automated acknowledgement is not the same as a human response, and we do not describe it as one. The system is configured so that a lead nobody has touched escalates to a named person."
+      },
+      {
+        question: "What is the AI receptionist and do I need it?",
+        answer: `Cipher is an optional voice and text agent that answers calls, qualifies leads, and routes bookings. Callers are told they are speaking with an automated agent, calls may be recorded for quality review, and there is a named human escalation path and an emergency exclusion — the details are on our AI disclosure page.\n\nYou do not need it to get a working website. Our published business hours are ${BUSINESS_HOURS_LABEL.toLowerCase()}; any coverage outside those hours is scoped and disclosed explicitly rather than assumed.`
+      },
+      {
+        question: "Is the number I see on your demo the same as your business number?",
+        answer: `No. Our only company number is ${CONTACT.phoneDisplay}. Any other number that appears in our material is a product demo or test line and is labeled as such. One business, one published number — that is the same standard we hold your listings to.`
       },
       {
         question: "What is AEO and why does it matter?",
         answer:
-          "AEO stands for Answer Engine Optimization — the practice of structuring your site so AI tools like ChatGPT, Google's AI overview, Perplexity, and voice assistants can read and cite your business accurately. When someone asks Siri \"who does AC repair in Bakersfield\" or asks ChatGPT \"best plumber near me,\" AEO determines whether your business shows up in that answer. SEO gets you on Google. AEO gets you into AI search surfaces — which are now where high-intent buyers start their research."
+          "AEO stands for Answer Engine Optimization: structuring your site so AI tools like ChatGPT, Google's AI Overviews, Perplexity, and voice assistants can read and cite your business facts accurately.\n\nIn practice it is unglamorous work — making your hours, services, service area, pricing, and FAQs consistent and machine-readable so both customers and search systems can understand the business. We do not claim it makes any engine cite you first, and nobody can promise that."
       }
     ]
   },
   {
     id: "local",
-    title: "Local & 661",
+    title: "Local and 661",
     items: [
       {
         question: "Do you only work with Bakersfield businesses?",
         answer:
-          "No — COAI works with businesses anywhere in the US. The portfolio includes clients in Miami (Signature 954) and national e-commerce brands. But the 661 / Bakersfield market is the primary focus because it's underserved and Jason knows it from the inside. If you're outside Bakersfield, the same systems apply. The diagnostic process is the same. The build quality is the same."
+          "Bakersfield and Kern County are the primary focus because the market is underserved and Jason knows it from the inside. The portfolio does include work outside the area. If you are outside Bakersfield the same systems and the same diagnostic process apply."
       },
       {
         question: "Do you offer Spanish-language builds?",
-        answer:
-          "Yes. Bilingual (EN/ES) builds are available and strongly recommended for Kern County businesses. Over 50% of Bakersfield's population is Spanish-speaking — a monolingual English site is actively ignoring a significant portion of your market. COAI builds dual-language systems with proper hreflang markup for search engines."
+        answer: `Yes. Bilingual English/Spanish builds are available for ${OFFERS.tradecall.bilingual} and are worth considering for most Kern County service businesses — a monolingual site simply cannot be read by part of your market. We build dual-language systems with proper hreflang markup and translation QA.`
       }
     ]
   },
   {
     id: "support",
-    title: "Support & Services",
+    title: "Support and services",
     items: [
       {
-        question: "What does ongoing maintenance cost after my site is built?",
-        answer:
-          "As-needed support is $75/hour with no minimum. Monthly retainers start at $250 for 4 hours of ongoing care — content updates, monitoring, backups. There's no mandatory maintenance fee. You can take full ownership at launch and never pay COAI another dollar. Support is purely optional, purely on your terms."
+        question: "What does ongoing support cost after launch?",
+        answer: `${OFFERS.continuity.name} is ${OFFERS.continuity.price} per month, ${OFFERS.continuity.terms}. It covers the routing, form, and SMS test log, a response-time report, an uncontacted-lead review, a monthly scorecard, minor site and profile corrections, and one improvement priority each month.\n\nAs-needed work outside that is $75 per hour with a one-hour minimum. There is no mandatory maintenance fee — you can take full ownership at launch and never pay us again.`
       },
       {
-        question: "Can you migrate my existing Wix or Squarespace site?",
+        question: "Can you migrate my existing Wix, Squarespace, or WordPress site?",
         answer:
-          "Yes. Full migration from Wix, Squarespace, GoDaddy, WordPress, or any major platform. We preserve your domain, URLs, content, and SEO rankings — then rebuild on sovereign infrastructure. Typical migration cost is $500-1,500 for a standard 5-10 page site. You'll typically save $50-200/month on hosting and plugin fees after the move."
+          "Yes. We migrate from Wix, Squarespace, GoDaddy, WordPress, and other major platforms, preserving your domain, URLs, and content. Migration is scoped and quoted per project — the price depends on page count and how much of the content can move cleanly, and you get that number before work starts."
       },
       {
         question: "Do you offer emergency repairs for sites that are down?",
         answer:
-          "Yes. If your site is down, hacked, or losing leads due to a technical issue, we offer priority repair service. Most critical fixes are deployed within 24-48 hours. We diagnose the root cause, fix it, and recommend a permanent solution so it doesn't happen again. Emergency rates apply but we're transparent about cost before work begins."
+          "Yes. If your site is down, compromised, or losing leads to a technical fault, we offer priority repair. We diagnose the root cause, fix it, and recommend a permanent solution. Rates and expected turnaround are agreed in writing before work begins.\n\nThis is a business-hours service. It is not a 24-hour dispatch desk, and we will not describe it as one."
       },
       {
         question: "What happens if my site breaks after launch?",
         answer:
-          "Your site is built on stable, minimal infrastructure with no plugins or external dependencies that can break from updates — so it's unlikely to break in the first place. If something does go wrong, COAI offers support at $75/hr. Because you own the hosting and code, you can also hire any developer to make fixes."
-      },
-      {
-        question: "Can you migrate my WordPress site to something faster?",
-        answer:
-          "Yes — this is one of our most common services. We migrate WordPress sites to static sovereign code. Same content, same SEO rankings, same domain — but load times go from 3-6 seconds to under 2 seconds, and you eliminate plugin maintenance entirely. No more monthly plugin subscriptions, no more security patches, no more WordPress admin to manage."
+          "The build uses stable, minimal infrastructure with no plugin stack to break on update, so faults are uncommon. If something does go wrong, support is available at $75 per hour. Because you own the hosting and the code, you can also hire any developer you like to fix it."
       },
       {
         question: "Do you offer hosting?",
-        answer:
-          "We recommend and set up hosting through Vercel or Netlify — both premium platforms with edge deployment, global CDN, and 99.9% uptime. Hosting runs $5-20/month depending on traffic. You own the hosting account directly. We set it up, configure it, and hand you the credentials. If you ever want to move it, you can."
-      },
-      {
-        question: "Can you add new features to my site after it's built?",
-        answer:
-          "Yes. Adding a booking system, e-commerce store, blog, gallery, new service pages, or any feature is available at our standard hourly rate ($75/hr) or included in a monthly retainer if you have ongoing support. We scope each addition before work starts so you know exactly what it costs."
-      },
-      {
-        question: "Can you work with sites you didn't build?",
-        answer:
-          "Sometimes. We can assess third-party sites for repair, optimization, or migration work. If the site is built on clean code, we can typically work with it. If it's locked into a proprietary platform (Wix, Squarespace, GoDaddy page builder), full migration to sovereign infrastructure is usually the better option than trying to patch a rental."
-      },
-      {
-        question: "What is the turnaround time for content updates?",
-        answer:
-          "Standard content updates — pricing changes, new photos, text edits, service additions — are typically completed within 2-3 business days. Emergency fixes are 24-48 hours. Larger feature additions are scoped per project with a timeline agreed on before work starts."
+        answer: `We set up hosting in your own account on Vercel and hand you the credentials. It runs ${HOSTING.cost} depending on traffic, paid by you directly to the platform. We configure it; you own it; you can move it whenever you want.`
       },
       {
         question: "Do you offer domain registration or management?",
         answer:
-          "We help you set up domain registration through a provider you control (typically Namecheap or Cloudflare). We configure DNS, SSL certificates, and email routing as part of every build. You own the domain account entirely. We're happy to advise on renewal management, but the account is always yours."
+          "We help you register the domain through a provider you control, then configure DNS, SSL, and email routing as part of the build. The registrar account is always in your name."
+      },
+      {
+        question: "What is the turnaround time for content updates?",
+        answer:
+          "Standard content updates — pricing changes, new photos, text edits, service additions — are typically completed within two to three business days. Larger feature additions are scoped per project with a timeline agreed before work starts."
       }
     ]
   },
@@ -159,12 +170,12 @@ export const FAQ_MARKETING_SECTIONS: FaqMarketingSection[] = [
       {
         question: "What platform or tech stack do you build on?",
         answer:
-          "Depends on the project. Next.js for complex e-commerce and application builds. Sovereign HTML/CSS/JS for fast, lightweight service business sites with maximum performance scores. Deployed to Vercel or Netlify for reliability. The goal is always the fastest, most schema-clean result for your specific use case — not a one-size-fits-all template."
+          "Next.js with TypeScript, deployed on Vercel. You receive full source access and written handoff documentation. No proprietary platforms and no locked-in systems."
       },
       {
-        question: "Can I update the site myself after handoff?",
+        question: "Do you guarantee a particular performance score or ranking?",
         answer:
-          "Yes. COAI builds with handoff documentation and trains you (or your team) on how to make standard content updates — prices, hours, photos, service descriptions. For larger structural changes, ongoing support is available at a flat hourly rate. You will never be held hostage to COAI for routine updates. That's a feature, not a limitation."
+          "No. Performance scores depend on your content, images, and third-party tools, and search rankings are set by Google, not by us. What we do publish is a live Lighthouse scan you can run against any URL, including ours — measured on demand rather than asserted in copy. We will show you the before and after on your own site and let the numbers speak."
       }
     ]
   }

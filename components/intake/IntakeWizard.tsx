@@ -2,8 +2,9 @@
 
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { SmsConsentField } from "@/components/forms/SmsConsentField";
 import { TurnstileField } from "@/components/security/TurnstileField";
-import { CONTACT } from "@/lib/site";
+import { CONTACT, GOOGLE_BUSINESS_PROFILE_URL, OFFERS } from "@/lib/site";
 
 type IntakeWizardProps = {
   packageInterest?: string;
@@ -174,10 +175,10 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
           flexWrap: "wrap"
         }}>
           <span style={{ color: "var(--amber-light)", fontWeight: 600 }}>
-            ⏱ Free audit — limited spots this month
+            {OFFERS.scorecard.name} — {OFFERS.scorecard.turnaround}
           </span>
           <span style={{ color: "var(--cream-dim)", fontSize: "12px" }}>
-            Normally <span style={{ textDecoration: "line-through", color: "var(--cream-muted)" }}>$297</span> — yours free
+            Free for qualified owner-operators. Otherwise a $350 Structural Audit, credited to the build.
           </span>
         </div>
 
@@ -193,8 +194,14 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
           textTransform: "uppercase",
           letterSpacing: "0.05em"
         }}>
-          <span style={{ color: "var(--amber)", fontSize: "14px" }}>★★★★★</span>
-          5.0 stars on Google · 8 local reviews
+          <a
+            href={GOOGLE_BUSINESS_PROFILE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "var(--amber)", textDecoration: "underline" }}
+          >
+            Read our reviews on Google
+          </a>
         </div>
 
         {/* Progress indicator - 2 step */}
@@ -487,7 +494,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
               color: "var(--cream-muted)",
               textAlign: "center"
             }}>
-              💡 Most trades businesses leak <strong style={{ color: "var(--amber)" }}>$2,000–$8,000/month</strong> in missed calls alone
+              These are <strong style={{ color: "var(--amber)" }}>your inputs, not industry facts</strong>. The figure is revenue at risk under your own assumptions — not a loss we have measured or a result we promise.
             </div>
           </div>
         ) : null}
@@ -566,6 +573,8 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
                   No site yet? Enter <strong>none</strong> (lowercase).
                 </p>
               </div>
+
+              <SmsConsentField idPrefix="intake" />
 
               <TurnstileField
                 className="m-field"

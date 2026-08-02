@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { SmsConsentField } from "@/components/forms/SmsConsentField";
 import { TurnstileField } from "@/components/security/TurnstileField";
 import { CONTACT } from "@/lib/site";
 
@@ -142,6 +143,7 @@ export function ContactMarketingForm({
             No site yet? Enter <strong>none</strong> (lowercase).
           </p>
         </div>
+        <SmsConsentField idPrefix="cf" />
         <TurnstileField
           className="m-form-group"
           onToken={(t) => {

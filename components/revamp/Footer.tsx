@@ -1,84 +1,91 @@
-"use client";
-
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { CalendarDays } from "lucide-react";
+import { BUSINESS_HOURS_LABEL, CONTACT, LEGAL_NAME } from "@/lib/site";
+import "./chrome.css";
 
-const isExternal = (href: string) => href.startsWith("http");
+const COLUMNS = [
+  {
+    title: "What we install",
+    links: [
+      ["/services", "Services"],
+      ["/pricing", "Pricing"],
+      ["/portfolio", "Portfolio"],
+      ["/website-design", "Website design"]
+    ]
+  },
+  {
+    title: "Company",
+    links: [
+      ["/about", "About Jason"],
+      ["/faq", "FAQ"],
+      ["/contact", "Contact"],
+      ["/intake", "Get my leak score"]
+    ]
+  }
+] as const;
 
-interface FooterProps {
-  onNavigate: (page: string) => void;
-}
+const LEGAL_LINKS = [
+  ["/privacy", "Privacy"],
+  ["/terms", "Terms"],
+  ["/sms-terms", "SMS terms"],
+  ["/ai-disclosure", "AI disclosure"]
+] as const;
 
-export function Footer({ onNavigate }: FooterProps) {
-  const cols = [
-    { title: "Services", links: [["home", "Websites & AI"], ["pricing", "Packages"], ["home", "LeadShield"], ["home", "SiteER"]] },
-    { title: "Company", links: [["portfolio", "Portfolio"], ["about", "About"], ["faq", "FAQ"], ["contact", "Contact"]] },
-    { title: "Get Started", links: [["intake", "Free Audit"], ["pricing", "Pricing"], ["contact", "Contact"]] }
-  ];
-
+export function Footer() {
   return (
-    <footer className="footer">
-      <div className="footer-inner container">
-        <div className="footer-brand">
-          <div className="footer-logo-row">
-            <Image src="/newlogo.png" alt="COAI" width={100} height={28} style={{ objectFit: 'contain', width: 'auto', height: '28px' }} />
-            <span className="footer-wordmark">COAI<span>.</span></span>
-          </div>
-          <p className="footer-tagline">The TradeCall System — custom websites + missed-call recovery for Bakersfield trades. You own the code. Built by a former contractor.</p>
-          <address className="footer-address">
-            1712 19th St #216<br />
-            Bakersfield, CA 93301<br />
-            <a href="tel:6613311767">(661) 331-1767</a><br />
-            <a href="mailto:jasonm@coaibakersfield.com">jasonm@coaibakersfield.com</a>
+    <footer className="site-footer">
+      <div className="site-footer__inner">
+        <div>
+          <Image
+            src="/newlogo.png"
+            alt="COAI"
+            width={100}
+            height={28}
+            style={{ objectFit: "contain", width: "auto", height: "28px" }}
+          />
+          <p className="site-footer__tagline">
+            Industrial-strength revenue infrastructure for Bakersfield contractors. Call-first website,
+            missed-call response, Google Business cleanup, and lead routing you own.
+          </p>
+          <address className="site-footer__address">
+            {CONTACT.addressLine}
+            <br />
+            {CONTACT.city}, {CONTACT.region} {CONTACT.postalCode}
+            <br />
+            <a href={`tel:${CONTACT.phoneE164}`}>{CONTACT.phoneDisplay}</a>
+            <br />
+            <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
           </address>
-          <div style={{ marginTop: "12px" }}>
-            <a href="https://leadshield.live" target="_blank" rel="noopener noreferrer" style={{ color: "var(--cream-dim)", fontSize: "13px", marginRight: "16px" }}>LeadShield</a>
-            <a href="https://siteer.dev" target="_blank" rel="noopener noreferrer" style={{ color: "var(--cream-dim)", fontSize: "13px" }}>SiteER</a>
-          </div>
+          <p className="site-footer__note">
+            {BUSINESS_HOURS_LABEL}. This is our only company phone number — any other number in our material
+            is a product demo line.
+          </p>
         </div>
-        {cols.map((col) => (
-          <div key={col.title} className="footer-col">
-            <h4 className="footer-col-title">{col.title}</h4>
+
+        {COLUMNS.map((col) => (
+          <div key={col.title} className="site-footer__col">
+            <h4 className="site-footer__col-title">{col.title}</h4>
             <ul>
               {col.links.map(([href, label]) => (
-                <li key={label}>
-                  {href === "pricing" ? (
-                    <Link href="/pricing">{label}</Link>
-                  ) : isExternal(href) ? (
-                    <a href={href} target="_blank" rel="noopener noreferrer">{label}</a>
-                  ) : (
-                    <a onClick={() => onNavigate(href)}>{label}</a>
-                  )}
+                <li key={href}>
+                  <Link href={href}>{label}</Link>
                 </li>
               ))}
             </ul>
           </div>
         ))}
       </div>
-      <div style={{ textAlign: "center", padding: "16px 0", borderTop: "1px solid var(--navy-border)" }}>
-        <a className="btn-calendar" href="https://calendar.app.google/hswWkCmjqLEKtRuE6" target="_blank" rel="noopener noreferrer">
-          <CalendarDays size={18} aria-hidden="true" />
-          Book Your Free Audit - 20 Minutes, No Pressure
-        </a>
-      </div>
-      <div className="footer-trust-row container">
-        <span className="trust-badge" style={{ color: "var(--cream-dim)" }}>Local Bakersfield Business</span>
-        <span className="trust-badge" style={{ color: "var(--cream-dim)" }}>Sovereign Infrastructure</span>
-        <span className="trust-badge" style={{ color: "var(--cream-dim)" }}>No Platform Lock-In</span>
-        <span className="trust-badge" style={{ color: "var(--cream-dim)" }}>You Own the Code</span>
-      </div>
-      <div className="footer-bottom container">
-        <p>
-          &copy; 2026 Chaotically Organized AI, LLC &middot; Bakersfield, CA
-        </p>
-        <p>
-          Websites, AI, and tech support for the Kern County trades community.
-        </p>
-        <div className="footer-legal-links" style={{ marginTop: "12px", display: "flex", gap: "16px", justifyContent: "center", fontSize: "13px" }}>
-          <Link href="/privacy" style={{ color: "var(--cream-dim)", textDecoration: "underline" }}>Privacy Policy</Link>
-          <Link href="/terms" style={{ color: "var(--cream-dim)", textDecoration: "underline" }}>Terms of Service</Link>
+
+      <div className="site-footer__bottom">
+        <span>
+          &copy; {new Date().getFullYear()} {LEGAL_NAME} &middot; {CONTACT.city}, {CONTACT.region}
+        </span>
+        <div className="site-footer__legal">
+          {LEGAL_LINKS.map(([href, label]) => (
+            <Link key={href} href={href}>
+              {label}
+            </Link>
+          ))}
         </div>
       </div>
     </footer>

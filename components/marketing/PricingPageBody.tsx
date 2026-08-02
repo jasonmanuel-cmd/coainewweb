@@ -1,231 +1,181 @@
 import Link from "next/link";
-import { CheckCircle2 } from "lucide-react";
+import { Button, Card, ComparisonTable, Tag } from "@/components/ui";
+import { OFFERS, THIRD_PARTY_COSTS } from "@/lib/site";
+import "@/components/revamp/home.css";
 
-const BUNDLES = [
-  {
-    name: "Trades Starter Pack",
-    price: "$1,497 flat",
-    desc: "Everything a trades or HVAC business needs to look sovereign and capture leads — deployed in one shot.",
-    features: [
-      "Sovereign 1-page web build",
-      "Google Business Profile overhaul",
-      "Schema / AEO injection",
-      "Social media profile cleanup",
-      "Review generation system setup",
-    ],
-    best: false,
-    sq: "https://square.link/u/Xvp6QAHQ",
-  },
-  {
-    name: "AI Lead Machine",
-    price: "$1,997 + $297/mo",
-    desc: "Full autonomous lead capture and follow-up. Built for operators serious about dominating the 661 market.",
-    features: [
-      "Sovereign web build",
-      "AI chatbot embed",
-      "LeadShield missed-call text-back",
-      "Review automation system",
-      "Monthly SEO + analytics report",
-    ],
-    best: true,
-    sq: "https://square.link/u/6X8C4a9M",
-  },
-  {
-    name: "Operational Ecosystem",
-    price: "$1,200 + $197/mo",
-    desc: "Custom sovereign site wired into a full CRM and automated SMS follow-up pipeline.",
-    features: [
-      "Custom HTML/JS site + schema",
-      "LeadShield CRM integration",
-      "Automated missed-call SMS",
-      "Vercel/Netlify hosting setup",
-    ],
-    best: false,
-    sq: "https://square.link/u/D1wnMqJt",
-  },
-];
+/**
+ * The only page that quotes prices in detail. Every number comes from OFFERS in
+ * lib/site.ts — nothing here is a literal. Retired ladders (Trades Starter Pack,
+ * AI Lead Machine, Operational Ecosystem, Signal Foundation, Sentinel
+ * Automation) are gone; do not reintroduce them.
+ */
 
-const TRADE_CALL_FEATURES = [
-  "Custom-coded website — you own 100% of the code",
-  "Mobile-fast, conversion layout built for \"call now\"",
-  "Local SEO + schema so Google Maps and AI search can find you",
-  "Google Business Profile alignment",
-  "Missed-call auto text-back in under 30 seconds",
-  "Lead capture forms + click-to-call hardened",
-  "Full handoff — export and leave anytime",
-  "Phone support from a human in Bakersfield",
-];
+const INCLUDED = [
+  "Call-first, mobile-first website, custom-coded — you own 100% of the source",
+  "One aligned business identity: name, address, phone, hours, services, service areas",
+  "Google Business Profile cleanup and baseline reconciliation",
+  "Click-to-call, form capture, and a tested call-routing path",
+  "Missed-call text-back and lead acknowledgement",
+  "Basic lead pipeline with an owner alert",
+  "Ownership and account map, plus documented handoff",
+  "Launch QA and a 30-day baseline scorecard"
+] as const;
 
-const ADDONS = [
-  {
-    name: "Bilingual Build (EN/ES)",
-    desc: "Full Spanish translation with proper hreflang markup. Essential for Kern County businesses targeting the 50%+ Spanish-speaking local market.",
-    price: "+$400",
-  },
-  {
-    name: "Ongoing Support Retainer",
-    desc: "Monthly content updates, performance monitoring, schema maintenance, and priority access. Optional — never required.",
-    price: "$197 / month",
-  },
-  {
-    name: "Structural Audit (Standalone)",
-    desc: "Full performance, schema, AEO, and GBP audit with a prioritized fix list. Ideal if you already have a site.",
-    price: "$350 standalone",
-  },
-];
+const NOT_INCLUDED = [
+  "Ad spend on Google, Meta, or anywhere else",
+  "Custom third-party integrations",
+  "Ongoing content beyond the agreed scope",
+  "Carrier, SMS, and AI usage fees",
+  "Hosting",
+  "Advanced CRM migration",
+  "Around-the-clock human dispatch"
+] as const;
+
+const PRICE_COLUMNS = ["Offer", "Price", "What it is", "Recurring"] as const;
+
+const PRICE_ROWS = [
+  [
+    OFFERS.scorecard.name,
+    OFFERS.scorecard.price,
+    OFFERS.scorecard.summary,
+    `Otherwise ${OFFERS.scorecard.alt.toLowerCase()}`
+  ],
+  [
+    OFFERS.tradecall.name,
+    `${OFFERS.tradecall.price} flat`,
+    OFFERS.tradecall.summary,
+    `${OFFERS.tradecall.terms}. Hosting and SMS billed by the vendor, not COAI.`
+  ],
+  [
+    "Bilingual build (EN/ES)",
+    OFFERS.tradecall.bilingual,
+    "Full Spanish translation with hreflang markup and translation QA.",
+    "Included in the build"
+  ],
+  [
+    OFFERS.continuity.name,
+    `${OFFERS.continuity.price}/${OFFERS.continuity.period}`,
+    OFFERS.continuity.summary,
+    `Monthly, ${OFFERS.continuity.terms}`
+  ]
+] as const;
 
 export function PricingPageBody() {
   return (
     <>
-      <div className="m-page-hero">
-        <div className="m-grid-bg" aria-hidden />
-        <div className="m-page-hero-inner">
-          <div className="m-section-label">Pricing</div>
-          <h1 className="m-page-h1">
-            One price. <span className="m-text-green">Full ownership.</span>
-            <br />
-            No surprises.
-          </h1>
-          <p className="m-hero-sub">
-            Fixed scope, fixed price. You approve the proposal before a line of code is written.
-            You own everything the day it goes live.
+      <section className="home-hero">
+        <div className="home-container">
+          <div className="home-hero__eyebrow">Pricing</div>
+          <h1 className="home-hero__title">One price list. No surprises after signature.</h1>
+          <p className="home-hero__sub">
+            Fixed scope, fixed price. You approve the proposal before a line of code is written, and every
+            third-party cost is on the table before you sign. This page is the single source of truth — if a
+            number appears somewhere else on this site, it comes from here.
           </p>
         </div>
-      </div>
+      </section>
 
-      <section className="m-marketing-section">
-        <div className="m-container-wide">
-          {/* Single Primary Offer — TradeCall System */}
-          <div className="m-section-label">The Primary Offer</div>
-          <div style={{ maxWidth: 520, margin: "0 auto" }}>
-            <div className="m-pkg" style={{ borderColor: "rgba(232,160,32,0.3)", borderWidth: "1px", borderStyle: "solid" }}>
-              <div className="m-pkg-top-bar" style={{ background: "var(--accent)" }} />
-              <div className="m-pkg-head">
-                <div className="m-pkg-tier" style={{ color: "var(--accent)" }}>TRADECALL SYSTEM&trade;</div>
-                <div className="m-pkg-name" style={{ fontSize: "1.8rem" }}>Custom website + missed-call recovery</div>
-                <div className="m-pkg-tagline">
-                  Built for Bakersfield trades. You own it. No monthly platform tax.
-                </div>
-                <div className="m-pkg-price">
-                  <span className="m-amount">$1,997</span>
-                  <span className="m-suffix">flat</span>
-                </div>
-                <div style={{ fontSize: ".85rem", color: "var(--cream-dim)", marginTop: "4px" }}>
-                  $997 to start &middot; $1,000 at launch &middot; 2–3 weeks
-                </div>
-              </div>
-              <div className="m-pkg-body">
-                <ul className="m-pkg-features">
-                  {TRADE_CALL_FEATURES.map((f, i) => (
-                    <li key={i} className="m-included">
-                      <span className="m-feat-icon">
-                        <CheckCircle2 size={14} style={{ color: "var(--accent)" }} />
-                      </span>
-                      <span>{f}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="m-pkg-foot">
-                <Link href="/intake" className="m-pkg-cta">
-                  Book Free Job Call Audit &rarr;
-                </Link>
-                <div style={{ textAlign: "center", fontSize: ".75rem", color: "var(--cream-dim)", marginTop: "12px" }}>
-                  No deposit until scope is agreed
-                </div>
-              </div>
-            </div>
-          </div>
+      {/* The three offers */}
+      <section className="home-section">
+        <div className="home-container">
+          <span className="home-eyebrow">01 — The whole price list</span>
+          <h2 className="home-h2">Three offers. That is all we sell.</h2>
+          <ComparisonTable columns={PRICE_COLUMNS} rows={PRICE_ROWS} />
+        </div>
+      </section>
 
-          {/* Spanish add-on note */}
-          <div className="m-section-label" style={{ marginTop: "60px" }}>Add-Ons</div>
-          <div className="m-addons-grid">
-            {ADDONS.map((a) => (
-              <div key={a.name} className="m-addon-card">
-                <div className="m-addon-name">{a.name}</div>
-                <div className="m-addon-desc">{a.desc}</div>
-                <div className="m-addon-price">{a.price}</div>
-              </div>
-            ))}
-          </div>
-
-          {/* Guarantee */}
-          <div className="m-guarantee-box" style={{ marginTop: "60px" }}>
-            <div className="m-g-icon">◈</div>
-            <div>
-              <div className="m-g-title">The Scope Guarantee</div>
-              <p className="m-g-text">
-                Every project is scoped in writing before work begins. If COAI misses a deliverable that was in the
-                scope document, we fix it at no additional cost. No scope creep charges. No &quot;that wasn&apos;t
-                included&quot; conversations after you&apos;ve paid. The proposal is the contract — and we honor it.
-              </p>
-            </div>
+      {/* Included / not included */}
+      <section className="home-section">
+        <div className="home-container">
+          <span className="home-eyebrow">02 — What {OFFERS.tradecall.price} buys</span>
+          <h2 className="home-h2">Included, and deliberately not included.</h2>
+          <p className="home-lede">
+            &ldquo;No surprises&rdquo; only means something if the exclusions are published too. Here are both
+            lists.
+          </p>
+          <div className="home-grid-2">
+            <Card>
+              <Tag kind="control">Control installed</Tag>
+              <ul className="pricing-list">
+                {INCLUDED.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </Card>
+            <Card>
+              <Tag kind="leak">Not included</Tag>
+              <ul className="pricing-list">
+                {NOT_INCLUDED.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </Card>
           </div>
         </div>
       </section>
 
-      {/* Add-on Bundles */}
-      <section style={{ padding: "80px 0", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-        <div className="m-container-wide">
-          <div className="m-section-label">Already Have a Site?</div>
-          <h2 className="m-h2-marketing">
-            Add-on bundles. <span className="m-text-green">Buy what you need.</span>
-          </h2>
-          <p className="m-hero-sub" style={{ marginTop: "12px" }}>
-            Standalone upgrades for businesses that already have web presence but need specific gaps filled.
+      {/* Third-party costs */}
+      <section className="home-section home-section--inverse">
+        <div className="home-container">
+          <span className="home-eyebrow">03 — What continues after launch</span>
+          <h2 className="home-h2">Two recurring costs, neither one paid to us.</h2>
+          <p className="home-lede">
+            These run in your own accounts. If you leave, they stay with you — that is the point.
           </p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px", marginTop: "40px" }}>
-            {BUNDLES.map((b) => (
-              <div key={b.name} className="m-pkg" style={{ position: "relative" }}>
-                {b.best && <div className="m-pkg-badge">Best Value</div>}
-                <div className="m-pkg-head">
-                  <div className="m-pkg-name" style={{ fontSize: "1.2rem" }}>{b.name}</div>
-                  <div className="m-pkg-tagline" style={{ fontSize: ".85rem" }}>{b.desc}</div>
-                  <div className="m-pkg-price" style={{ margin: "16px 0 0" }}>
-                    <span className="m-amount" style={{ fontSize: "1.4rem" }}>{b.price}</span>
+          <div className="home-grid-2">
+            {THIRD_PARTY_COSTS.map((cost) => (
+              <Card key={cost.item} inverse>
+                <div className="home-proof">
+                  <div>
+                    <div className="home-proof__label">{cost.item}</div>
+                    <div className="home-offer__desc">{cost.paidTo}</div>
                   </div>
+                  <span className="home-offer__price">{cost.cost}</span>
                 </div>
-                <div className="m-pkg-body">
-                  <ul className="m-pkg-features">
-                    {b.features.map((f) => (
-                      <li key={f} className="m-included">
-                        <span className="m-feat-icon">→</span>
-                        <span>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="m-pkg-foot">
-                  <a href={b.sq} target="_blank" rel="noopener noreferrer" className="m-pkg-cta">
-                    Buy Now &rarr;
-                  </a>
-                </div>
-              </div>
+              </Card>
             ))}
           </div>
         </div>
       </section>
 
-      <div className="m-bottom-cta">
-        <div className="m-section-label">Not Sure?</div>
-        <h2 className="m-bottom-cta-h2">
-          Run the free audit first.
-          <br />
-          <span className="m-text-green">It clarifies everything.</span>
-        </h2>
-        <p>
-          20 minutes with Jason surfaces exactly what&apos;s costing you calls. Most clients know
-          what they need before the call ends.
-        </p>
-        <div className="m-cta-row">
-          <Link href="/intake" className="m-btn-primary-marketing">
-            Book My Free Audit &rarr;
-          </Link>
-          <Link href="/faq" className="m-btn-ghost-marketing">
-            Read the FAQ
-          </Link>
+      {/* Scope commitment */}
+      <section className="home-section">
+        <div className="home-container home-container--narrow">
+          <span className="home-eyebrow">04 — How we handle scope</span>
+          <h2 className="home-h2">The proposal is the contract.</h2>
+          <p className="home-lede">
+            Every project is scoped in writing before work begins. If we miss a deliverable that was in the
+            scope document, we fix it at no additional cost. No scope-creep charges, and no &ldquo;that
+            wasn&apos;t included&rdquo; conversation after you have paid.
+          </p>
+          <p className="home-lede">
+            This is a commitment about scope, not about results. We do not promise a number of calls, a
+            ranking, a rating, or a revenue figure — see the{" "}
+            <Link href="/terms">terms</Link> for what we do and do not warrant.
+          </p>
         </div>
-      </div>
+      </section>
+
+      <section className="home-section home-section--inverse">
+        <div className="home-container home-container--narrow home-cta">
+          <span className="home-eyebrow">Not sure yet</span>
+          <h2 className="home-h2" style={{ maxWidth: "none" }}>
+            Start with the leak score.
+          </h2>
+          <p className="home-lede" style={{ margin: "0 auto var(--space-5)" }}>
+            Three observed leaks on your actual site and Google profile, the assumptions behind each, and the
+            one control we would install first. You keep it either way.
+          </p>
+          <div className="home-cta__actions">
+            <Button href="/intake" variant="primary" size="lg">
+              Get my leak score
+            </Button>
+            <Button href="/faq" variant="inverse" size="lg">
+              Read the FAQ
+            </Button>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

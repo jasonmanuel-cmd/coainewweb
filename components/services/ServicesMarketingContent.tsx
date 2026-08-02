@@ -79,8 +79,9 @@ export function ServicesMarketingContent() {
             <span className="m-small">avg AEO readiness</span>
           </div>
           <p className="m-service-panel-note">
-            Post-build scores typically reach 90+ performance, 85+ schema, 80+ AEO readiness. Every point matters when AI
-            search surfaces are deciding who to surface first.
+            We measure the same four Lighthouse scores before and after, on your own URL, and show you both. We
+            do not publish a target score here — your content, images, and third-party tools set the ceiling,
+            and anyone quoting you a guaranteed number has not looked at your site yet.
           </p>
         </div>
       </div>
@@ -95,15 +96,16 @@ export function ServicesMarketingContent() {
             AI <span className="m-text-green">Automation</span> Stack
           </div>
           <p className="m-service-desc">
-            Your phone is your #1 lead source — but every missed call is a job going to your competitor. We deploy
-            practical AI workflows that <strong>capture every inbound lead</strong> your business is currently
-            hemorrhaging: missed calls that never get returned, voicemails nobody listens to, late-night inquiries
-            that cool off before morning. Cipher, our AI receptionist, handles the front line so every lead gets
-            contacted inside 30 seconds — not 24 hours.
+            Your phone is your main lead source, and every missed call is a job going to whoever answers next.
+            We install the intake path that catches it: missed calls that never get returned, voicemails nobody
+            listens to, late-night inquiries that cool off before morning. Calls received, missed, texted back,
+            qualified, estimates booked — that is the sequence, and each step is a control you can test.
           </p>
           <ul className="m-service-list">
             <li>
-              <strong>AI receptionist deployment</strong> — Cipher, tuned to your business, answers 24/7
+              <strong>AI receptionist deployment</strong> — Cipher, tuned to your business, with disclosure,
+              recording consent, an emergency exclusion, and a named human escalation. Coverage hours are
+              scoped and written down, never assumed.
             </li>
             <li>
               <strong>Missed-call text-back</strong> — responds in seconds, recovers jobs from voicemail
@@ -127,7 +129,7 @@ export function ServicesMarketingContent() {
             <div style={{ marginTop: "1.5rem", padding: "0.75rem 1rem", borderLeft: "3px solid var(--m-green)", background: "rgba(0, 255, 136, 0.04)", display: "flex", gap: "8px", alignItems: "flex-start" }}>
               <ShieldCheck size={16} style={{ color: "var(--m-green)", flexShrink: 0, marginTop: 1 }} />
               <span style={{ fontSize: "13px", color: "var(--m-muted)", lineHeight: 1.5 }}>
-                <strong style={{ color: "var(--m-white)" }}>Lead Recovery Guarantee:</strong> If you don&apos;t see reduced missed calls in the first 30 days, we optimize at no cost.
+                <strong style={{ color: "var(--m-white)" }}>30-day baseline scorecard:</strong> we measure contact speed, uncontacted leads, and booked estimates for the first 30 days, then hand you the numbers — whatever they say.
               </span>
             </div>
             <div style={{ marginTop: "1.25rem", padding: "1.25rem", borderLeft: "3px solid var(--m-green)", background: "rgba(0, 255, 136, 0.05)" }}>
@@ -147,12 +149,13 @@ export function ServicesMarketingContent() {
             <span className="m-small">missed call response time</span>
           </div>
           <div className="m-service-stat">
-            <span className="m-big">24/7</span>
-            <span className="m-small">receptionist uptime</span>
+            <span className="m-big">01</span>
+            <span className="m-small">named human escalation</span>
           </div>
           <p className="m-service-panel-note">
-            COAI&apos;s own AI receptionist Cipher runs on {CONTACT.phoneDisplay}. Call it. That&apos;s the same system we
-            deploy for clients — live, stable, and ready to qualify leads at any hour.
+            Every automated path has a person behind it. Ask for a human at any point and you get one. An
+            automation with no human fallback is not a feature — it is a new way to fail, which is why we
+            scope the escalation before we scope the script.
           </p>
         </div>
       </div>
@@ -164,13 +167,14 @@ export function ServicesMarketingContent() {
           <div className="m-service-num">03</div>
           <div className="m-section-label-left">Foundation</div>
           <div className="m-service-title">
-            Sovereign Website <span className="m-text-green">Builds</span>
+            Call-First Website <span className="m-text-green">Builds</span>
           </div>
           <p className="m-service-desc">
-            Your website should be a <strong>24/7 lead generation engine</strong>, not a digital brochure nobody finds.
-            We hand-code sovereign sites with geo-targeted LocalBusiness schema, AI-optimized content, and conversion
-            paths that turn visitors into paying customers. No templates, no drag-and-drop builders, no platform lock-in.
-            You own the code, the domain, and every single lead it generates.
+            Your website should catch the search and hand the caller a button, not sit there as a brochure
+            nobody finds. We hand-code the site with LocalBusiness schema, consistent business facts, and one
+            obvious path to a call. No templates, no drag-and-drop builders, no platform lock-in.{" "}
+            <strong>You control the domain, hosting, source code, analytics, and lead data</strong>, and the
+            handoff is documented.
           </p>
           <ul className="m-service-list">
             <li>
@@ -195,7 +199,7 @@ export function ServicesMarketingContent() {
             <div style={{ marginTop: "1.5rem", padding: "0.75rem 1rem", borderLeft: "3px solid var(--m-green)", background: "rgba(0, 255, 136, 0.04)", display: "flex", gap: "8px", alignItems: "flex-start" }}>
               <ShieldCheck size={16} style={{ color: "var(--m-green)", flexShrink: 0, marginTop: 1 }} />
               <span style={{ fontSize: "13px", color: "var(--m-muted)", lineHeight: 1.5 }}>
-                <strong style={{ color: "var(--m-white)" }}>Delivery Guarantee:</strong> We launch in 30 days or we work for free until it&apos;s live. No excuses.
+                <strong style={{ color: "var(--m-white)" }}>The proposal is the contract:</strong> scope is agreed in writing before work starts. If we miss something that was in the scope document, we fix it at no extra cost.
               </span>
             </div>
             <div style={{ marginTop: "1.25rem", padding: "1.25rem", borderLeft: "3px solid var(--m-green)", background: "rgba(0, 255, 136, 0.05)" }}>
@@ -294,9 +298,10 @@ export function ServicesMarketingContent() {
             WordPress &amp; Platform <span className="m-text-green">Migration</span>
           </div>
           <p className="m-service-desc">
-            Trapped on Wix, Squarespace, GoDaddy, or WordPress? We migrate your entire digital presence to
-            sovereign infrastructure — without losing SEO rankings, content, or functionality. Same domain. Same
-            URLs. Same Google rankings. Just faster, cheaper to run, and fully owned by you.
+            On Wix, Squarespace, GoDaddy, or WordPress and want out? We migrate the whole presence to code you
+            own — same domain, same URLs, content intact. A platform site can be the right call for a simple
+            brochure; we compare control, export path, performance, maintenance, and five-year cost with you
+            before recommending a move, and sometimes the answer is to stay put.
           </p>
           <ul className="m-service-list">
             <li>
@@ -320,18 +325,19 @@ export function ServicesMarketingContent() {
           </ul>
         </div>
         <div className="m-service-panel">
-          <div className="m-service-panel-label">Typical Results</div>
+          <div className="m-service-panel-label">How we decide</div>
           <div className="m-service-stat">
-            <span className="m-big">3-10x</span>
-            <span className="m-small">speed improvement after migration</span>
+            <span className="m-big">04</span>
+            <span className="m-small">Lighthouse scores, measured before and after</span>
           </div>
           <div className="m-service-stat">
-            <span className="m-big">$50-200</span>
-            <span className="m-small">/mo saved on hosting &amp; plugins</span>
+            <span className="m-big">05</span>
+            <span className="m-small">year cost compared, both options</span>
           </div>
           <p className="m-service-panel-note">
-            Most Wix and WordPress sites we migrate go from 40-60 Lighthouse performance scores to 90+.
-            Migration cost depends on complexity — typically $500-1,500 for a standard 5-10 page site.
+            We run the scan on your current site first and show you the number. Migration is scoped and quoted
+            per project — page count and how cleanly the content moves set the price, and you get it in
+            writing before anything starts.
           </p>
         </div>
       </div>

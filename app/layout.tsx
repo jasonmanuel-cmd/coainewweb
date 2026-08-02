@@ -1,36 +1,39 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono, Plus_Jakarta_Sans, DM_Sans } from "next/font/google";
+import { Barlow_Condensed, IBM_Plex_Mono, Inter } from "next/font/google";
 import Script from "next/script";
 import { type ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { AppChrome } from "@/components/AppChrome";
 import { JsonLd } from "@/components/JsonLd";
-import { NeuralMesh } from "@/components/NeuralMesh";
 import { CipherChat } from "@/components/revamp/CipherChat";
-import { Scene3DLoader } from "@/components/revamp/Scene3DLoader";
 import { organizationJsonLd, webSiteJsonLd } from "@/lib/schema";
 import { SITE_DESCRIPTION, SITE_URL } from "@/lib/site";
+import "./tokens.css";
 import "./globals.css";
-import "./landing-page.css";
 import "./marketing-inner.css";
 import "./revamp.css";
 
-const mono = JetBrains_Mono({
+/** Headline face — condensed industrial sans. Sentence case, never uppercase. */
+const barlowCondensed = Barlow_Condensed({
   subsets: ["latin"],
-  variable: "--font-mono",
+  weight: ["500", "600", "700", "800"],
+  variable: "--font-barlow-condensed",
   display: "swap"
 });
 
-const plusJakarta = Plus_Jakarta_Sans({
+/** Body face. */
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-plus-jakarta",
+  variable: "--font-inter",
   display: "swap"
 });
 
-const dmSans = DM_Sans({
+/** Numerals, labels, and status tabs. */
+const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
-  variable: "--font-dm-sans",
+  weight: ["400", "500", "600"],
+  variable: "--font-plex-mono",
   display: "swap"
 });
 
@@ -69,7 +72,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.clarity.ms" />
       </head>
-      <body className={`${mono.variable} ${plusJakarta.variable} ${dmSans.variable}`}>
+      <body className={`${barlowCondensed.variable} ${inter.variable} ${plexMono.variable}`}>
         <noscript>
           <iframe
             src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
@@ -96,9 +99,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             })
           }}
         />
-        <NeuralMesh />
-        <Scene3DLoader />
-        <div className="scanline-overlay" aria-hidden="true" />
         <JsonLd data={organizationJsonLd()} />
         <JsonLd data={webSiteJsonLd()} />
         <AppChrome>{children}</AppChrome>

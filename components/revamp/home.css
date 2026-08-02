@@ -1,0 +1,396 @@
+/**
+ * Homepage sections — industrial layout.
+ * Mirrors ui_kits/marketing-site/Homepage.jsx from the COAI Design System project.
+ *
+ * Alternating surfaces: charcoal panels for hero / offers / calculator,
+ * jobsite white for proof board / ledger / founder. Nothing gradients into
+ * anything else — each section is a flat panel with a hairline seam.
+ */
+
+.home-section {
+  padding: var(--space-9) var(--space-6);
+  background: var(--surface-page);
+  border-top: 1px solid var(--border-default);
+}
+
+.home-section--inverse {
+  background: var(--surface-inverse);
+  color: var(--text-inverse);
+  border-top-color: var(--border-inverse);
+}
+
+.home-container {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.home-container--narrow {
+  max-width: 680px;
+}
+
+/* Numbered step label: "01 — One buyer journey" */
+.home-eyebrow {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--steel-blue);
+  margin-bottom: var(--space-3);
+}
+
+.home-section--inverse .home-eyebrow {
+  color: var(--inspection-yellow);
+}
+
+.home-h2 {
+  font-size: var(--text-h2);
+  margin-bottom: var(--space-4);
+  max-width: 20ch;
+}
+
+.home-section--inverse .home-h2 {
+  color: var(--jobsite-white);
+}
+
+.home-lede {
+  font-size: var(--text-body-lg);
+  color: var(--text-muted);
+  max-width: 62ch;
+  margin-bottom: var(--space-7);
+}
+
+.home-section--inverse .home-lede {
+  color: var(--text-on-inverse-muted);
+}
+
+/* ---------- Hero ---------- */
+
+.home-hero {
+  background: var(--surface-inverse);
+  padding: var(--space-8) var(--space-6) var(--space-9);
+  border-top: none;
+}
+
+.home-hero__eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--inspection-yellow);
+  margin-bottom: var(--space-5);
+}
+
+.home-hero__title {
+  font-weight: 800;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  color: var(--jobsite-white);
+  line-height: var(--lh-tight);
+  max-width: 18ch;
+  margin-bottom: var(--space-5);
+}
+
+.home-hero__sub {
+  font-size: var(--text-body-lg);
+  color: var(--text-on-inverse-muted);
+  max-width: 60ch;
+  margin-bottom: var(--space-6);
+}
+
+.home-hero__actions {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-8);
+}
+
+.home-hero__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+  border-top: 1px solid var(--border-inverse);
+  padding-top: var(--space-6);
+}
+
+/* ---------- Grids ---------- */
+
+.home-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+
+.home-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+
+/* ---------- Offer cards ---------- */
+
+.home-offer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  height: 100%;
+}
+
+.home-offer__name {
+  font-family: var(--font-headline);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: var(--lh-heading);
+}
+
+.home-offer__price {
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  color: var(--inspection-yellow);
+}
+
+.home-offer__terms {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  color: var(--text-on-inverse-muted);
+}
+
+.home-offer__desc {
+  font-size: var(--text-small);
+  color: var(--text-on-inverse-muted);
+  flex: 1;
+}
+
+/* ---------- Proof board ---------- */
+
+.home-proof {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.home-proof__label {
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+.home-proof__value {
+  font-size: var(--text-small);
+  color: var(--text-muted);
+}
+
+/* ---------- Calculator ---------- */
+
+.home-calc__inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+  margin-bottom: var(--space-5);
+}
+
+.home-calc__results {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-inverse);
+}
+
+.home-calc__band-label {
+  font-size: 11px;
+  color: var(--text-on-inverse-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.home-calc__band-value {
+  font-family: var(--font-headline);
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--jobsite-white);
+  font-variant-numeric: tabular-nums;
+}
+
+/* The base case is the number that matters — Inspection Yellow, not Orange. */
+.home-calc__band--base .home-calc__band-value {
+  color: var(--inspection-yellow);
+}
+
+.home-calc__note {
+  font-size: var(--text-label);
+  color: var(--text-on-inverse-muted);
+  margin-top: var(--space-4);
+  line-height: var(--lh-body);
+}
+
+/* ---------- Pricing lists ---------- */
+
+.pricing-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-4) 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.pricing-list li {
+  font-size: var(--text-small);
+  color: var(--text-muted);
+  padding-left: var(--space-4);
+  position: relative;
+}
+
+/* Squared marker — the system uses no icon set, so a filled square stands in. */
+.pricing-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  background: var(--steel-blue);
+}
+
+/* ---------- Founder ---------- */
+
+.home-founder {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: var(--space-7);
+  align-items: start;
+}
+
+.home-founder__photo {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.home-founder__copy p {
+  margin-bottom: var(--space-4);
+  color: var(--text-muted);
+  max-width: 62ch;
+}
+
+.home-founder__actions {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-top: var(--space-5);
+}
+
+/* ---------- Reviews ---------- */
+
+.home-review__body {
+  font-size: var(--text-body);
+  margin-bottom: var(--space-4);
+}
+
+.home-review__author {
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ---------- Final CTA ---------- */
+
+.home-cta {
+  text-align: center;
+}
+
+.home-cta__phone {
+  display: inline-block;
+  font-family: var(--font-headline);
+  font-weight: 800;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  color: var(--inspection-yellow);
+  text-decoration: none;
+  margin: var(--space-5) 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.home-cta__phone:hover {
+  color: var(--jobsite-white);
+}
+
+.home-cta__actions {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ---------- Sticky mobile call bar ---------- */
+
+.home-sticky {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .home-sticky {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 40;
+    background: var(--charcoal);
+    border-top: var(--rule-strong) solid var(--charcoal);
+  }
+
+  .home-sticky > * {
+    border-radius: 0;
+  }
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .home-founder {
+    grid-template-columns: 1fr;
+  }
+
+  .home-grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .home-hero__stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .home-section,
+  .home-hero {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+
+  .home-section {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-8);
+  }
+
+  .home-grid-2,
+  .home-calc__inputs {
+    grid-template-columns: 1fr;
+  }
+
+  .home-calc__results {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  /* Clear the sticky call bar. */
+  .home-sticky ~ * {
+    padding-bottom: 64px;
+  }
+}

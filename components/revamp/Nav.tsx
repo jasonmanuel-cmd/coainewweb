@@ -1,96 +1,78 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import { CONTACT } from "@/lib/site";
+import "./chrome.css";
 
-interface NavProps {
-  activePage: string;
-  onNavigate: (page: string) => void;
-}
+/** Real routes. No client-side page swapping — every link is crawlable. */
+export const NAV_LINKS = [
+  { href: "/services", label: "Services" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/portfolio", label: "Portfolio" },
+  { href: "/about", label: "About" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/contact", label: "Contact" }
+] as const;
 
-export function Nav({ activePage, onNavigate }: NavProps) {
+export function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const links = [
-    { href: "home", label: "Home" },
-    { href: "pricing", label: "Pricing" },
-    { href: "portfolio", label: "Portfolio" },
-    { href: "about", label: "About" },
-    { href: "faq", label: "FAQ" },
-    { href: "contact", label: "Contact" },
-  ];
-
-  const handleNav = (href: string) => {
-    onNavigate(href);
-    setMenuOpen(false);
-  };
+  const pathname = usePathname();
 
   return (
     <>
-      {/* Top bar — hidden on mobile for max hero visibility */}
-      <div className="topbar">
-        <div className="topbar-tagline">
-          <span className="topbar-dot" />
-          <span>Based in Bakersfield · Serving businesses nationwide</span>
-        </div>
-        <div className="topbar-phone">
-          <a href="tel:6613311767">(661) 331-1767</a>
-        </div>
-      </div>
+      <nav className="site-nav">
+        <Link className="site-nav__brand" href="/">
+          <Image
+            src="/newlogo.png"
+            alt="COAI"
+            width={120}
+            height={30}
+            priority
+            style={{ objectFit: "contain", width: "auto", height: "30px" }}
+          />
+          <span className="site-nav__wordmark">Chaotically Organized AI</span>
+        </Link>
 
-      {/* Nav bar — SIMPLIFIED for conversion focus */}
-      <nav className="nav">
-        <div className="nav-logo" onClick={() => handleNav("home")}>
-          <Image src="/newlogo.png" alt="COAI" width={120} height={30} style={{ objectFit: 'contain', width: 'auto', height: '30px' }} />
-          <span className="nav-logo-text">COAI<span>.</span></span>
-        </div>
-        {/* Hidden navigation links — remove decision paralysis */}
-        <ul className="nav-links" style={{ display: "none" }}>
-          {links.map((l) => (
-            <li key={l.href}>
-              {l.href === "pricing" ? (
-                <Link href="/pricing" className={activePage === l.href ? "active" : ""}>
-                  {l.label}
-                </Link>
-              ) : (
-                <a
-                  className={activePage === l.href ? "active" : ""}
-                  onClick={() => handleNav(l.href)}
-                >
-                  {l.label}
-                </a>
-              )}
+        <ul className="site-nav__links">
+          {NAV_LINKS.map((link) => (
+            <li key={link.href}>
+              <Link href={link.href} aria-current={pathname === link.href ? "page" : undefined}>
+                {link.label}
+              </Link>
             </li>
           ))}
-      
         </ul>
-        
-        {/* Minimalist right section — only phone number */}
-        <a className="nav-phone-link" href="tel:6613311767" style={{ marginLeft: "auto", fontSize: "14px", fontWeight: 600, color: "var(--amber)", textDecoration: "none" }}>
-          (661) 331-1767
+
+        <a className="site-nav__phone" href={`tel:${CONTACT.phoneE164}`}>
+          {CONTACT.phoneDisplay}
         </a>
-        
+
         <button
-          className="hamburger"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Menu"
+          className="site-nav__toggle"
+          type="button"
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-expanded={menuOpen}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
         >
-          {menuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+          {menuOpen ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
         </button>
       </nav>
 
-      {/* Mobile drawer — simplified for warm traffic */}
-      {menuOpen && (
-        <div className="mobile-drawer">
-          <a onClick={() => { handleNav("intake"); setMenuOpen(false); }} style={{ fontSize: "16px", fontWeight: 600, padding: "16px", textAlign: "center", borderBottom: "1px solid var(--navy-border)" }}>
-            Get Free Audit
-          </a>
-          <a href="tel:6613311767" style={{ fontSize: "16px", fontWeight: 600, padding: "16px", textAlign: "center", color: "var(--amber)" }}>
-            Call (661) 331-1767
-          </a>
-        </div>
-      )}
+      <div className={menuOpen ? "site-nav__drawer site-nav__drawer--open" : "site-nav__drawer"}>
+        {NAV_LINKS.map((link) => (
+          <Link key={link.href} href={link.href} onClick={() => setMenuOpen(false)}>
+            {link.label}
+          </Link>
+        ))}
+        <Link href="/intake" onClick={() => setMenuOpen(false)}>
+          Get my leak score
+        </Link>
+        <a href={`tel:${CONTACT.phoneE164}`}>Call {CONTACT.phoneDisplay}</a>
+      </div>
     </>
   );
 }

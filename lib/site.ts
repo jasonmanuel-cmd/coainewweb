@@ -39,6 +39,58 @@ export const CONTACT = {
   country: "US"
 } as const;
 
+/**
+ * Single source of truth for every published price.
+ *
+ * One buyer journey: find the leak -> fix the leak -> run the system.
+ * Nothing else may quote a price. If a number is not in here, it does not
+ * belong on the site. Retired offers (Trades Starter Pack, AI Lead Machine,
+ * Operational Ecosystem, Signal Foundation, Sentinel Automation) are gone —
+ * do not reintroduce them.
+ */
+export const OFFERS = {
+  /** Wedge — qualify the contractor and show one real leak before proposing a system. */
+  scorecard: {
+    stage: "Find the leak",
+    name: "Job-Call Leak Scorecard",
+    price: "Free for qualified owner-operators",
+    alt: "$350 Structural Audit otherwise, credited to the build",
+    turnaround: "24–48 hours",
+    summary:
+      "A one-page scorecard with three observed leaks, the assumptions behind them, screenshots, and one recommended first control."
+  },
+  /** Flagship — the installation of the contractor's revenue intake layer. */
+  tradecall: {
+    stage: "Fix the leak",
+    name: "TradeCall Revenue Infrastructure Build",
+    price: "$1,997",
+    priceNumeric: "1997",
+    terms: "$997 to start / $1,000 at launch",
+    bilingual: "+$400",
+    summary:
+      "Call-first website, one aligned business identity, Google Business Profile cleanup, missed-call text-back, lead pipeline and owner alert, ownership handoff, launch QA, and a 30-day baseline scorecard."
+  },
+  /** Recurring — keeps the revenue intake system working. Not "maintenance". */
+  continuity: {
+    stage: "Run the system",
+    name: "Revenue Continuity",
+    price: "$197",
+    period: "month",
+    terms: "cancel anytime",
+    summary:
+      "Routing, form, and SMS test log. Response-time report. Uncontacted-lead review. Monthly scorecard, minor site and profile corrections, and one improvement priority."
+  }
+} as const;
+
+/**
+ * Third-party costs the client pays directly — never to COAI.
+ * Published before signature so "no surprises" is literally true.
+ */
+export const THIRD_PARTY_COSTS = [
+  { item: "Hosting", cost: "$20–30/mo", paidTo: "Vercel, in your account" },
+  { item: "Phone / SMS", cost: "$15–50/mo per number", paidTo: "Twilio, in your account" }
+] as const;
+
 /** Geocode for 1712 19th St #216, Bakersfield, CA 93301 — update if you verify with Google Maps pin. */
 export const GEO = {
   latitude: 35.3749,
@@ -46,7 +98,13 @@ export const GEO = {
 } as const;
 
 export const SITE_DESCRIPTION =
-  "Chaotically Organized AI builds digital lead systems for trades businesses in Bakersfield and Kern County. Sovereign websites with schema markup, AEO-optimized content, AI phone systems, and local SEO. Founder Jason Robert Manuel hand-codes every site.";
+  "COAI installs a call-first website, instant missed-call response, Google Business Profile cleanup, and lead routing you own — for Bakersfield and Kern County contractors. Built by Jason Robert Manuel, a contractor who codes. You control the domain, hosting, source code, analytics, and lead data.";
+
+/** Category descriptor. Sits beneath the buyer-facing outcome line, never in front of it. */
+export const CATEGORY = "Industrial-Strength Revenue Infrastructure";
+
+/** Buyer-facing outcome line. Lead with this — a contractor does not shop for "infrastructure". */
+export const BUYER_OUTCOME = "Stop losing ready-to-book jobs while you're on the job.";
 
 export const BRAND_TAGLINE = "Where Chaos Meets Clarity";
 

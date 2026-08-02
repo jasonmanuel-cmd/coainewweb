@@ -1,0 +1,332 @@
+/**
+ * COAI primitives — squared panels, hairline borders, no shadow theatrics.
+ * Ported from the COAI Design System project's components/ directory.
+ *
+ * Rules that must not drift:
+ * - border-radius never exceeds var(--radius-md) (4px). No pills.
+ * - Hover darkens. It never lifts, scales up, or adds a shadow.
+ * - Press is scale(0.98). Nothing fancier.
+ * - Signal Orange appears on primary CTAs and leak totals only.
+ */
+
+/* ---------- Button ---------- */
+
+.ui-btn {
+  font-family: var(--font-headline);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  text-decoration: none;
+  transition:
+    background-color var(--t-fast) var(--ease-standard),
+    border-color var(--t-fast) var(--ease-standard),
+    color var(--t-fast) var(--ease-standard),
+    transform var(--t-fast) var(--ease-standard);
+}
+
+.ui-btn:disabled,
+.ui-btn[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.ui-btn:not(:disabled):active {
+  transform: scale(0.98);
+}
+
+.ui-btn:focus-visible {
+  outline: var(--rule-strong) solid var(--steel-blue);
+  outline-offset: 2px;
+}
+
+.ui-btn--sm {
+  padding: var(--space-2) 14px;
+  font-size: var(--text-small);
+  min-height: 36px;
+}
+.ui-btn--md {
+  padding: var(--space-3) 22px;
+  font-size: var(--text-body);
+  min-height: 44px;
+}
+.ui-btn--lg {
+  padding: var(--space-4) 28px;
+  font-size: var(--text-body-lg);
+  min-height: 52px;
+}
+
+.ui-btn--primary {
+  background: var(--cta-bg);
+  color: var(--cta-text);
+  border-color: var(--cta-bg);
+}
+.ui-btn--primary:not(:disabled):hover {
+  background: var(--cta-bg-hover);
+  border-color: var(--cta-bg-hover);
+  color: var(--cta-text);
+}
+
+.ui-btn--secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+}
+.ui-btn--secondary:not(:disabled):hover {
+  background: var(--charcoal);
+  color: var(--jobsite-white);
+}
+
+.ui-btn--ghost {
+  background: transparent;
+  color: var(--steel-blue);
+  border-color: transparent;
+}
+.ui-btn--ghost:not(:disabled):hover {
+  color: var(--link-hover);
+  background: transparent;
+}
+
+.ui-btn--inverse {
+  background: var(--jobsite-white);
+  color: var(--charcoal);
+  border-color: var(--jobsite-white);
+}
+.ui-btn--inverse:not(:disabled):hover {
+  background: var(--jobsite-white-dim);
+  border-color: var(--jobsite-white-dim);
+  color: var(--charcoal);
+}
+
+.ui-btn--block {
+  width: 100%;
+}
+
+/* ---------- Tag (status tab) ---------- */
+
+.ui-tag {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  padding: 5px 10px;
+  border: 1px solid currentColor;
+  white-space: nowrap;
+}
+
+.ui-tag--leak {
+  color: var(--leak-red);
+  background: rgba(169, 56, 40, 0.1);
+}
+.ui-tag--control {
+  color: var(--pass-green);
+  background: rgba(62, 107, 74, 0.1);
+}
+/* Darkened Inspection Yellow — the raw token fails contrast on paper. */
+.ui-tag--proof {
+  color: #8a6a03;
+  background: rgba(242, 183, 5, 0.16);
+}
+.ui-tag--info {
+  color: var(--steel-blue);
+  background: rgba(47, 93, 115, 0.1);
+}
+.ui-tag--neutral {
+  color: var(--text-muted);
+  background: var(--border-default);
+}
+
+/* ---------- Card (squared panel) ---------- */
+
+.ui-card {
+  background: var(--surface-panel);
+  color: var(--text-primary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-panel);
+  padding: var(--space-5);
+  transition: border-color var(--t-mid) var(--ease-standard);
+}
+
+/* Hover shifts the border. It does not pop a shadow. */
+.ui-card--interactive:hover {
+  border-color: var(--border-strong);
+}
+
+.ui-card--inverse {
+  background: var(--surface-inverse);
+  color: var(--text-inverse);
+  border-color: var(--border-inverse);
+}
+.ui-card--inverse.ui-card--interactive:hover {
+  border-color: var(--inspection-yellow);
+}
+
+/* Reserved for the single most important panel on a screen. */
+.ui-card--raised {
+  box-shadow: var(--shadow-raised);
+}
+
+/* ---------- StatBlock ---------- */
+
+.ui-stat__value {
+  font-family: var(--font-headline);
+  font-weight: 800;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--signal-orange);
+}
+.ui-stat--inverse .ui-stat__value {
+  color: var(--inspection-yellow);
+}
+
+.ui-stat__label {
+  font-size: var(--text-label);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: var(--space-2);
+  color: var(--text-muted);
+}
+.ui-stat--inverse .ui-stat__label {
+  color: var(--text-on-inverse-muted);
+}
+
+/* ---------- Field (Input / Select) ---------- */
+
+.ui-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.ui-field__label {
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.ui-field--inverse .ui-field__label {
+  color: var(--text-on-inverse-muted);
+}
+
+.ui-field__control {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--text-primary);
+  background: var(--surface-panel);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+  min-height: 44px;
+  width: 100%;
+  transition: border-color var(--t-fast) var(--ease-standard);
+}
+
+.ui-field__control:focus {
+  outline: none;
+  border-color: var(--steel-blue);
+  box-shadow: inset 0 0 0 1px var(--steel-blue);
+}
+
+/* Numerals get the mono face — calculators, prices, call counts. */
+.ui-field__control--mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.ui-field--inverse .ui-field__control {
+  background: var(--charcoal-80);
+  color: var(--text-inverse);
+  border-color: var(--border-inverse);
+}
+.ui-field--inverse .ui-field__control:focus {
+  border-color: var(--inspection-yellow);
+  box-shadow: inset 0 0 0 1px var(--inspection-yellow);
+}
+
+.ui-field__hint {
+  font-size: var(--text-small);
+  color: var(--text-muted);
+}
+.ui-field--inverse .ui-field__hint {
+  color: var(--text-on-inverse-muted);
+}
+
+.ui-field__error {
+  font-size: var(--text-small);
+  color: var(--leak-red);
+  font-weight: 600;
+}
+
+.ui-field__control[aria-invalid="true"] {
+  border-color: var(--leak-red);
+}
+
+/* ---------- ComparisonTable ---------- */
+
+.ui-table-scroll {
+  overflow-x: auto;
+}
+
+.ui-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-small);
+  background: var(--surface-panel);
+  border: 1px solid var(--border-default);
+}
+
+.ui-table th,
+.ui-table td {
+  text-align: left;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border-default);
+  vertical-align: top;
+}
+
+.ui-table thead th {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  background: var(--charcoal);
+  color: var(--jobsite-white);
+  border-bottom: var(--rule-strong) solid var(--charcoal);
+}
+
+/* First column is the decision being compared — it carries the weight. */
+.ui-table tbody td:first-child {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.ui-table tbody td {
+  color: var(--text-muted);
+}
+
+/* Last column is the COAI standard — steel blue, never orange. */
+.ui-table tbody td:last-child {
+  color: var(--steel-blue);
+  font-weight: 500;
+}
+
+.ui-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+@media (max-width: 640px) {
+  .ui-table {
+    min-width: 560px;
+  }
+}

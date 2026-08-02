@@ -20,12 +20,19 @@ const websiteField = z
     return /^https?:\/\//i.test(t) ? t : `https://${t}`;
   });
 
+/**
+ * Recorded on every submission so we can show what the person actually agreed
+ * to. Defaults to "no" — an absent value is never treated as consent.
+ */
+export const smsConsentField = z.enum(["yes", "no"]).optional().default("no");
+
 export const contactMarketingSchema = z.object({
   turnstileToken: z.string().optional().default(""),
   form_type: z.string().max(80).optional().default("contact"),
   first_name: z.string().min(1).max(200),
   business_name: z.string().min(1).max(300),
   phone: z.string().max(80).optional().default(""),
+  sms_consent: smsConsentField,
   email: z.string().email(),
   business_website: websiteField,
   company: z.string().max(200).optional().default(""),

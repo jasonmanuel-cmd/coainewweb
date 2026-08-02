@@ -1,24 +1,48 @@
 # Chaotically Organized AI (COAI)
 
-> Digital lead systems for trades & local service businesses in Bakersfield and Kern County, CA. Sovereign hand-coded websites, AI call recovery, schema/AEO optimization, and local SEO — built to generate more job calls. Founder: Jason Robert Manuel.
+> Industrial-Strength Revenue Infrastructure for Bakersfield contractors. COAI installs a call-first website, instant missed-call response, Google Business Profile cleanup, and lead routing the client owns. Serving HVAC, plumbing, electrical, roofing, and other high-call service businesses in Bakersfield and Kern County, CA. Founder: Jason Robert Manuel.
 
 ## Contact
-- Phone: (661) 659-1376
+- Phone: (661) 331-1767
+- Email: jasonm@coaibakersfield.com
 - Address: 1712 19th St #216, Bakersfield, CA 93301
 - Hours: Monday–Friday, 9:00 a.m.–5:00 p.m. Pacific
+- This is the only company phone number. Any other number appearing in COAI material is a product demo line, not company contact information.
 
 ## Core Pages
-- [Home](https://coaibakersfield.com/): Services overview for contractors & trades
-- [Intake](https://coaibakersfield.com/intake): Start a project / request the free audit
-- [Pricing](https://coaibakersfield.com/pricing): TradeCall System — $1,997 fixed price
+- [Home](https://www.coaibakersfield.com/): What leaks, what gets installed, who owns it
+- [Pricing](https://www.coaibakersfield.com/pricing): Single source of truth for all prices
+- [Services](https://www.coaibakersfield.com/services): What is installed and what is excluded
+- [Portfolio](https://www.coaibakersfield.com/portfolio): Live client sites
+- [About](https://www.coaibakersfield.com/about): Founder background and accountability
+- [FAQ](https://www.coaibakersfield.com/faq): Ownership, handoff, recurring costs, timelines
+- [Contact](https://www.coaibakersfield.com/contact): Direct line and booking
+- [Intake](https://www.coaibakersfield.com/intake): Request the Job-Call Leak Scorecard
+- [Privacy](https://www.coaibakersfield.com/privacy)
+- [Terms](https://www.coaibakersfield.com/terms)
+- [SMS Terms](https://www.coaibakersfield.com/sms-terms): Consent, STOP/HELP, message rates
+- [AI Disclosure](https://www.coaibakersfield.com/ai-disclosure): How the AI receptionist works, recording, and human escalation
 
-## Service
-- TradeCall System ($1,997): Custom website with local schema, AEO content, lead capture, AI phone answering with bilingual voice agents, missed-call text-back recovery, and automated lead scoring — all in one fixed-price build. 2–3 week turnaround.
+## Offers
+COAI sells three things and nothing else.
 
-## Key Facts
-- Single fixed price of $1,997. No mandatory retainers. The client owns the code, domain, hosting, and data at handoff.
-- Standard builds complete in 2–3 weeks from signed scope to live deployment.
-- Stack: Next.js + HTML/CSS/JS, deployed on Vercel or Netlify. Full code access and handoff docs. No proprietary lock-in.
+1. Job-Call Leak Scorecard — free for qualified owner-operators, otherwise $350 Structural Audit credited to the build. Delivered in 24–48 hours. A one-page scorecard with three observed leaks, the assumptions behind them, screenshots, and one recommended first control.
+2. TradeCall Revenue Infrastructure Build — $1,997 flat ($997 to start, $1,000 at launch). Call-first website, one aligned business identity, Google Business Profile cleanup, missed-call text-back, lead pipeline and owner alert, ownership handoff, launch QA, and a 30-day baseline scorecard. Bilingual EN/ES add-on +$400. Standard turnaround 2–3 weeks from signed scope.
+3. Revenue Continuity — $197/month, cancel anytime. Routing, form, and SMS test log; response-time report; uncontacted-lead review; monthly scorecard; minor site and profile corrections; one improvement priority per month.
+
+## Not Included
+Ad spend, custom integrations, ongoing content beyond scope, carrier/SMS/AI usage fees, hosting, advanced CRM migration, and 24-hour human dispatch are not included in the build price.
+
+## Recurring Third-Party Costs
+These are paid by the client directly to the vendor, never to COAI.
+- Hosting: $20–30/month (Vercel, in the client's own account)
+- Phone/SMS: $15–50/month per number (Twilio, in the client's own account)
+
+## Ownership
+The client controls the domain registrar, hosting account, source code repository, analytics, Search Console, Google Business Profile, and all lead data. COAI deploys into the client's accounts, documents the setup, and hands over admin access. There is no platform lock-in and no monthly platform fee to COAI.
+
+## Stack
+Next.js with TypeScript, deployed on Vercel. Full source access and written handoff documentation.
 
 ## Service Area
 Bakersfield, Delano, Shafter, Kern County, California.

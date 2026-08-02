@@ -21,10 +21,12 @@ export function LegalShell({ children }: LegalShellProps) {
       <footer className="m-legal-foot">
         <p>
           <Link href="/">Home</Link>
-          <Link href="/terms">Terms of Service</Link>
-          <Link href="/privacy">Privacy Policy</Link>
+          <Link href="/terms">Terms</Link>
+          <Link href="/privacy">Privacy</Link>
+          <Link href="/sms-terms">SMS terms</Link>
+          <Link href="/ai-disclosure">AI disclosure</Link>
           <Link href="/contact">Contact</Link>
-          <span className="m-legal-copy"> · © 2026 {LEGAL_NAME}</span>
+          <span className="m-legal-copy"> · © {new Date().getFullYear()} {LEGAL_NAME}</span>
         </p>
       </footer>
     </div>

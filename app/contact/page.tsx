@@ -47,8 +47,9 @@ export default async function ContactPage({
             <span className="m-text-green">Direct line to Jason.</span>
           </h1>
           <p className="m-hero-sub">
-            Call, text, or send a message. Same-day response guaranteed. If you&apos;re outside business hours, Cipher
-            handles the first contact - Jason follows up personally.
+            Call, text, or send a message. We aim to reply the same business day. Outside our published hours
+            an automated agent takes the first contact and Jason follows up personally — you are told it is
+            automated, and you can ask for a person.
           </p>
         </div>
       </div>
@@ -80,11 +81,13 @@ export default async function ContactPage({
           <div className="m-cipher-box">
             <div className="m-cipher-box-label">
               <span className="m-cipher-dot" />
-              Cipher AI - Live 24/7
+              Cipher — automated call agent
             </div>
             <p>
-              After-hours? Cipher picks up immediately, qualifies your inquiry, and routes to Jason for a
-              same-business-day follow-up. Call anytime.
+              Outside our hours, Cipher picks up, qualifies your inquiry, and routes it to Jason for a
+              same-business-day follow-up. It tells you up front that it is automated, calls may be recorded
+              for quality review, and you can ask for a person at any time. Not for emergencies — call 911.{" "}
+              <Link href="/ai-disclosure">How this works</Link>.
             </p>
             <Link href={`tel:${CONTACT.phoneE164}`}>{CONTACT.phoneDisplay}</Link>
           </div>
@@ -95,7 +98,7 @@ export default async function ContactPage({
               <span className="m-info-text">{BUSINESS_HOURS_LABEL}</span>
             </p>
             <div style={{ marginTop: "1rem", fontFamily: "var(--font-mono), monospace", fontSize: 10, color: "var(--m-green)" }}>
-              Cipher active 24/7 for after-hours inquiries
+              Outside these hours an automated agent takes a message and Jason follows up.
             </div>
           </div>
 

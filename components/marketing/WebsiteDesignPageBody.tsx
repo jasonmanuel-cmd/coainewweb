@@ -52,7 +52,7 @@ export function WebsiteDesignPageBody() {
               [
                 "02",
                 "Mobile is the Primary Device",
-                "Over 70% of local service searches in Bakersfield happen on a phone. We build mobile first, desktop second. Load time, tap targets, and call buttons are all optimized for thumb navigation."
+                "Your customers are looking you up from a truck, a jobsite, or a parking lot. We build mobile first, desktop second. Load time, tap targets, and call buttons are all sized for a thumb."
               ],
               [
                 "03",
@@ -159,7 +159,7 @@ export function WebsiteDesignPageBody() {
           <div className="m-principles-grid" style={{ marginTop: "1.5rem" }}>
             {[
               ["⚡", "Emergency Repairs", "Broken site? We diagnose and deploy fixes fast — typically 24-48 hours for critical issues."],
-              ["🔄", "WordPress Migration", "Ditch the plugin bloat. We migrate WP sites to fast, sovereign code — same content, 10x the performance."],
+              ["🔄", "WordPress Migration", "Ditch the plugin bloat. We migrate WP sites to code you own — same content, and we show you the Lighthouse scores before and after."],
               ["📉", "Speed Recovery", "Site slowed to a crawl? We find the bottleneck (hosting, bloat, bad code) and fix it without rebuilding."]
             ].map(([icon, title, text]) => (
               <div key={title} className="m-principle-card">
@@ -181,10 +181,11 @@ export function WebsiteDesignPageBody() {
             Stop paying the <span className="m-text-green">WordPress tax.</span>
           </h2>
           <p className="m-wd-lead">
-            WordPress powers 40% of the web — but for a local Bakersfield service business, it&apos;s usually overkill.
-            You&apos;re paying for hosting, plugins, themes, and constant updates just to keep a 5-page site alive.
-            We migrate WordPress sites to static sovereign code: same content, same SEO rankings, 10x the speed, zero
-            plugin maintenance, zero monthly fees beyond hosting.
+            WordPress runs a large share of the web, and for plenty of businesses it is the right tool. For a
+            local service business with a five-page site, it often means paying for hosting, plugins, themes,
+            and constant updates just to keep the thing alive. We migrate to static code you own: same
+            content, same URLs, no plugin maintenance, and no monthly fee beyond hosting. We run the
+            Lighthouse scan on your current site first so the comparison is measured, not asserted.
           </p>
           <div className="m-compare-grid-wd">
             <div className="m-compare-col m-sovereign">
