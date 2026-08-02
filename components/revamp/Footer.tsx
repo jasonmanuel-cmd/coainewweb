@@ -48,17 +48,16 @@ export function Footer() {
             missed-call response, Google Business cleanup, and lead routing you own.
           </p>
           <address className="site-footer__address">
-            {CONTACT.addressLine}
-            <br />
-            {CONTACT.city}, {CONTACT.region} {CONTACT.postalCode}
+            {CONTACT.city}, {CONTACT.region}
             <br />
             <a href={`tel:${CONTACT.phoneE164}`}>{CONTACT.phoneDisplay}</a>
             <br />
             <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
           </address>
           <p className="site-footer__note">
-            {BUSINESS_HOURS_LABEL}. This is our only company phone number — any other number in our material
-            is a product demo line.
+            {BUSINESS_HOURS_LABEL}. We work remotely and meet clients on site or by call — there is no
+            walk-in office. This is our only company phone number; any other number in our material is a
+            product demo line.
           </p>
         </div>
 

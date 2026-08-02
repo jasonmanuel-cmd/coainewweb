@@ -124,7 +124,7 @@ export default function SmsTermsPage() {
           <p>
             {LEGAL_NAME}
             <br />
-            {CONTACT.addressLine}, {CONTACT.city}, {CONTACT.region} {CONTACT.postalCode}
+            {CONTACT.city}, {CONTACT.region} (remote — no walk-in office)
             <br />
             <a href={`tel:${CONTACT.phoneE164}`}>{CONTACT.phoneDisplay}</a>
             <br />

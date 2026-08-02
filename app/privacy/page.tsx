@@ -42,8 +42,8 @@ export default function PrivacyPage() {
           <h2>1. Who We Are</h2>
           <p>
             Chaotically Organized AI, LLC (&quot;COAI,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) is a
-            digital infrastructure and AI automation company located at {CONTACT.addressLine}, {CONTACT.city},{" "}
-            {CONTACT.region} {CONTACT.postalCode}. We can be reached at{" "}
+            digital infrastructure and AI automation company based in {CONTACT.city}, {CONTACT.region}. We
+            operate remotely and do not maintain a public walk-in office. We can be reached at{" "}
             <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a> or {CONTACT.phoneDisplay}.
           </p>
         </div>
@@ -135,7 +135,7 @@ export default function PrivacyPage() {
           <h2>10. Contact</h2>
           <p>
             Questions about this Privacy Policy: <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a> ·{" "}
-            {CONTACT.phoneDisplay} · {CONTACT.addressLine}, {CONTACT.city}, {CONTACT.region} {CONTACT.postalCode}.
+            {CONTACT.phoneDisplay} · {CONTACT.city}, {CONTACT.region}.
           </p>
         </div>
       </div>

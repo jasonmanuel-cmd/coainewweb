@@ -73,7 +73,7 @@ export default async function ContactPage({
             <div className="m-info-line">
               <span className="m-info-icon">â-‰</span>
               <span className="m-info-text">
-                {CONTACT.addressLine}, {CONTACT.city}, {CONTACT.region} {CONTACT.postalCode}
+                {CONTACT.city}, {CONTACT.region} — we work remotely and come to you. No walk-in office.
               </span>
             </div>
           </div>

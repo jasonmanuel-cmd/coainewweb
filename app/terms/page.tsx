@@ -153,7 +153,7 @@ export default function TermsPage() {
           <h2>12. Contact</h2>
           <p>
             Questions about these Terms: <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a> · {CONTACT.phoneDisplay}{" "}
-            · {CONTACT.addressLine}, {CONTACT.city}, {CONTACT.region} {CONTACT.postalCode}.
+            · {CONTACT.city}, {CONTACT.region}.
           </p>
         </div>
       </div>

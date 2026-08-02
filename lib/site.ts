@@ -27,16 +27,24 @@ export const CO_FOUNDER = {
   email: "frankh@coaibakersfield.com"
 } as const;
 
+/**
+ * The one published phone number and location for the business.
+ *
+ * COAI is a service-area business: the work is done remotely and there is no
+ * walk-in office, so no street address is published. Locality and region are
+ * kept because they are true and carry the local search signal. Do not
+ * reintroduce a `streetAddress` unless there is an actual office to visit.
+ */
 export const CONTACT = {
   email: "jasonm@coaibakersfield.com",
   secondaryEmail: "frankh@coaibakersfield.com",
-  phoneDisplay: "(661) 331-1767",
-  phoneE164: "+16613311767",
-  addressLine: "1712 19th St #216",
+  phoneDisplay: "(661) 683-0228",
+  phoneE164: "+16616830228",
   city: "Bakersfield",
   region: "CA",
-  postalCode: "93301",
-  country: "US"
+  country: "US",
+  /** Shown wherever a location line is expected. */
+  locationLabel: "Bakersfield, CA — remote / service-area business"
 } as const;
 
 /**
@@ -91,7 +99,7 @@ export const THIRD_PARTY_COSTS = [
   { item: "Phone / SMS", cost: "$15–50/mo per number", paidTo: "Twilio, in your account" }
 ] as const;
 
-/** Geocode for 1712 19th St #216, Bakersfield, CA 93301 — update if you verify with Google Maps pin. */
+/** Bakersfield city centroid — a service-area reference point, not an office location. */
 export const GEO = {
   latitude: 35.3749,
   longitude: -119.0187

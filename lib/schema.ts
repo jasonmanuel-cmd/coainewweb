@@ -42,14 +42,20 @@ export function organizationJsonLd() {
         logo: `${SITE_URL}/newlogo.png`,
         telephone: CONTACT.phoneE164,
         email: CONTACT.email,
+        /**
+         * Service-area business: no street address, because there is no office
+         * to visit. Locality and region only — this is the pattern Google
+         * expects for an SAB, and it must match how the Google Business Profile
+         * is configured (address hidden, service area set).
+         */
         address: {
           "@type": "PostalAddress",
-          streetAddress: CONTACT.addressLine,
           addressLocality: CONTACT.city,
           addressRegion: CONTACT.region,
-          postalCode: CONTACT.postalCode,
           addressCountry: CONTACT.country
         },
+        /** Centre of the service area, not an office pin. */
+        serviceArea: [...AREA_SERVED],
         geo: {
           "@type": "GeoCoordinates",
           latitude: GEO.latitude,
