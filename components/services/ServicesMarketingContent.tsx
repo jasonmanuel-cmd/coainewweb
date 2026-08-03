@@ -57,26 +57,26 @@ export function ServicesMarketingContent() {
               <strong>Prioritized fix list</strong> — ranked by revenue impact, not technical severity
             </li>
             </ul>
-            <div style={{ marginTop: "1.5rem", padding: "0.75rem 1rem", borderLeft: "3px solid var(--m-green)", background: "rgba(0, 255, 136, 0.04)", display: "flex", gap: "8px", alignItems: "flex-start" }}>
+            <div style={{ marginTop: "1.5rem", padding: "0.75rem 1rem", borderLeft: "3px solid var(--m-green)", background: "var(--m-green-dim)", display: "flex", gap: "8px", alignItems: "flex-start" }}>
               <ShieldCheck size={16} style={{ color: "var(--m-green)", flexShrink: 0, marginTop: 1 }} />
               <span style={{ fontSize: "13px", color: "var(--m-muted)", lineHeight: 1.5 }}>
-                <strong style={{ color: "var(--m-white)" }}>No-Risk Diagnostic:</strong> If we don&apos;t find at least 3 actionable issues that would generate more calls, your audit is free.
+                <strong style={{ color: "var(--m-white)" }}>No-risk diagnostic:</strong> if we don&apos;t find at least three specific, fixable problems in your call path, the audit is free.
               </span>
             </div>
         </div>
         <div className="m-service-panel">
-          <div className="m-service-panel-label">Typical Baseline Scores</div>
+          <div className="m-service-panel-label">What the audit checks</div>
           <div className="m-service-stat">
-            <span className="m-big">74</span>
-            <span className="m-small">avg performance score on intake</span>
+            <span className="m-big">01</span>
+            <span className="m-small">Lighthouse scan of your live site</span>
           </div>
           <div className="m-service-stat">
-            <span className="m-big">56</span>
-            <span className="m-small">avg schema signal</span>
+            <span className="m-big">02</span>
+            <span className="m-small">schema and business-facts check</span>
           </div>
           <div className="m-service-stat">
-            <span className="m-big">61</span>
-            <span className="m-small">avg AEO readiness</span>
+            <span className="m-big">03</span>
+            <span className="m-small">call path and response-time test</span>
           </div>
           <p className="m-service-panel-note">
             We measure the same four Lighthouse scores before and after, on your own URL, and show you both. We
@@ -126,13 +126,13 @@ export function ServicesMarketingContent() {
           <p style={{ fontSize: "12px", color: "var(--m-muted)", marginTop: "1rem" }}>
             *Note: Cipher is our production-ready live receptionist. JAX is our separate internal/pre-deployment sentinel system.
           </p>
-            <div style={{ marginTop: "1.5rem", padding: "0.75rem 1rem", borderLeft: "3px solid var(--m-green)", background: "rgba(0, 255, 136, 0.04)", display: "flex", gap: "8px", alignItems: "flex-start" }}>
+            <div style={{ marginTop: "1.5rem", padding: "0.75rem 1rem", borderLeft: "3px solid var(--m-green)", background: "var(--m-green-dim)", display: "flex", gap: "8px", alignItems: "flex-start" }}>
               <ShieldCheck size={16} style={{ color: "var(--m-green)", flexShrink: 0, marginTop: 1 }} />
               <span style={{ fontSize: "13px", color: "var(--m-muted)", lineHeight: 1.5 }}>
                 <strong style={{ color: "var(--m-white)" }}>30-day baseline scorecard:</strong> we measure contact speed, uncontacted leads, and booked estimates for the first 30 days, then hand you the numbers — whatever they say.
               </span>
             </div>
-            <div style={{ marginTop: "1.25rem", padding: "1.25rem", borderLeft: "3px solid var(--m-green)", background: "rgba(0, 255, 136, 0.05)" }}>
+            <div style={{ marginTop: "1.25rem", padding: "1.25rem", borderLeft: "3px solid var(--m-green)", background: "var(--m-green-dim)" }}>
               <div style={{ fontSize: "14px", fontStyle: "italic", marginBottom: "0.5rem", color: "var(--m-white)" }}>
                 &ldquo;Jason helped me build a website for my business... also created a phone AI system for me to help direct callers...&rdquo;
               </div>
@@ -196,13 +196,13 @@ export function ServicesMarketingContent() {
               <strong>Full handoff</strong> — you own the code, the domain, the data, and every lead it generates
             </li>
           </ul>
-            <div style={{ marginTop: "1.5rem", padding: "0.75rem 1rem", borderLeft: "3px solid var(--m-green)", background: "rgba(0, 255, 136, 0.04)", display: "flex", gap: "8px", alignItems: "flex-start" }}>
+            <div style={{ marginTop: "1.5rem", padding: "0.75rem 1rem", borderLeft: "3px solid var(--m-green)", background: "var(--m-green-dim)", display: "flex", gap: "8px", alignItems: "flex-start" }}>
               <ShieldCheck size={16} style={{ color: "var(--m-green)", flexShrink: 0, marginTop: 1 }} />
               <span style={{ fontSize: "13px", color: "var(--m-muted)", lineHeight: 1.5 }}>
                 <strong style={{ color: "var(--m-white)" }}>The proposal is the contract:</strong> scope is agreed in writing before work starts. If we miss something that was in the scope document, we fix it at no extra cost.
               </span>
             </div>
-            <div style={{ marginTop: "1.25rem", padding: "1.25rem", borderLeft: "3px solid var(--m-green)", background: "rgba(0, 255, 136, 0.05)" }}>
+            <div style={{ marginTop: "1.25rem", padding: "1.25rem", borderLeft: "3px solid var(--m-green)", background: "var(--m-green-dim)" }}>
               <div style={{ fontSize: "14px", fontStyle: "italic", marginBottom: "0.5rem", color: "var(--m-white)" }}>
                 &ldquo;Very sleek design... affordability relative to competitors was amazing. Highly recommend!&rdquo;
               </div>
@@ -223,7 +223,7 @@ export function ServicesMarketingContent() {
               marginBottom: "1rem"
             }}
           >
-            <div style={{ color: "var(--m-green)" }}>SOVEREIGN HOUSE</div>
+            <div style={{ color: "var(--m-green)" }}>OWNED OUTRIGHT</div>
             <div>→ Custom code you own</div>
             <div>→ No platform fees</div>
             <div>→ No account shutdowns</div>
@@ -403,7 +403,7 @@ export function ServicesMarketingContent() {
               {
                 t: "Launch & Handoff — Full Ownership",
                 p: "We deploy, verify performance scores, run final schema checks, and hand you full ownership credentials — hosting login, domain access, codebase. Ongoing support available but never required. You own the house.",
-                tag: "Sovereign Handoff · Yours Forever"
+                tag: "Documented Handoff · Accounts In Your Name"
               }
             ].map((step, i) => (
               <div key={step.t} className="m-process-step">

@@ -95,7 +95,7 @@ export function AboutMarketingContent() {
                   The goal is simple: make Bakersfield and Central Valley operators{" "}
                   <strong>impossible to ignore online</strong>. Every business COAI builds for increases the data density
                   and proof stack that makes the next build faster and better. The 661 market is underserved by quality
-                  digital infrastructure. COAI is fixing that — one sovereign build at a time.
+                  digital infrastructure. COAI is fixing that — one installed system at a time.
                 </p>
               </div>
             </div>
@@ -127,7 +127,7 @@ export function AboutMarketingContent() {
               },
               {
                 code: "03 · Ownership",
-                title: "Sovereign By Default",
+                title: "You Own It By Default",
                 text: "Every build transfers full ownership to the client. The code, the hosting credentials, the data — all of it belongs to you. COAI builds houses, not rental agreements."
               },
               {

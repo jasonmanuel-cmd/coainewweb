@@ -107,7 +107,7 @@ export default function ShafterWebsiteDesignPage() {
               { icon: "📞", title: "Call-First Design", desc: "Phone number prominent on every page. Click-to-call on mobile." },
               { icon: "🛠️", title: "Google Maps Priority", desc: "GBP optimization + service-area schema for local map rankings." },
               { icon: "🤖", title: "AI Citation Ready", desc: "Content structured so AI assistants recommend your Shafter business." },
-              { icon: "🔐", title: "Full Sovereignty", desc: "You own the code, the domain, and every lead it generates." }
+              { icon: "🔐", title: "You Own It", desc: "The domain, hosting, source code, analytics, and lead data stay in your name." }
             ].map(f => (
               <div key={f.title} className="m-feature-card">
                 <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>{f.icon}</div>

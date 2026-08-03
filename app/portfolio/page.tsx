@@ -47,7 +47,7 @@ export default function PortfolioPage() {
             <span className="m-text-green">Real infrastructure.</span>
           </h1>
           <p className="m-hero-sub">
-            Every site below is a sovereign build - custom code, owned outright by the client. No rented funnels. No
+            Every site below is custom code, owned outright by the client. No rented funnels. No
             platform dependency. Some portfolio links are still on temporary hosting subdomains pending client DNS
             cutover. Ownership remains with the client.
           </p>
@@ -65,7 +65,7 @@ export default function PortfolioPage() {
         </div>
         <div className="m-stat-pill">
           <div className="m-num">100%</div>
-          <div className="m-lbl">Sovereign Builds</div>
+          <div className="m-lbl">Client-Owned Builds</div>
         </div>
         <div className="m-stat-pill">
           <div className="m-num">661+</div>

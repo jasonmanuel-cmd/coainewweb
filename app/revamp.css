@@ -1,30 +1,42 @@
+/**
+ * Legacy names remapped onto the industrial tokens in app/tokens.css.
+ *
+ * These variables are still referenced by older components, so the names stay
+ * but the values now point at the new palette. This is a light-on-dark
+ * inversion: --navy was a page background and --cream was text, so --navy now
+ * resolves to a light surface and --cream to dark ink.
+ *
+ * Do NOT redefine --font-* here. tokens.css owns the typefaces, and this file
+ * is imported after it — redefining them silently reverted the whole site to
+ * the old fonts.
+ */
 :root {
-  --navy: #0B1426;
-  --navy-light: #111D35;
-  --navy-mid: #182845;
-  --navy-border: #1E2D4A;
-  --amber: #E8A020;
-  --amber-light: #F5B840;
-  --amber-glow: rgba(232, 160, 32, 0.25);
-  --amber-subtle: rgba(232, 160, 32, 0.1);
-  --cream: #F7F4F0;
-  --cream-muted: #F5F2EE;
-  --cream-dim: #E8E4DE;
-  --teal: #1D9E75;
-  --teal-subtle: rgba(29, 158, 117, 0.15);
+  --navy: var(--jobsite-white);
+  --navy-light: var(--paper);
+  --navy-mid: var(--jobsite-white-dim);
+  --navy-border: var(--border-default);
+  --amber: var(--signal-orange);
+  --amber-light: var(--signal-orange-dim);
+  --amber-glow: transparent;
+  --amber-subtle: rgba(232, 93, 36, 0.08);
+  --cream: var(--charcoal);
+  --cream-muted: var(--charcoal-60);
+  --cream-dim: var(--text-muted);
+  --teal: var(--steel-blue);
+  --teal-subtle: rgba(47, 93, 115, 0.12);
 
-  --font-body: var(--font-dm-sans), 'DM Sans', system-ui, -apple-system, sans-serif;
-  --font-display: var(--font-plus-jakarta), 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --font-mono: var(--font-mono), 'JetBrains Mono', 'DM Mono', monospace;
+  /* Headline face for legacy selectors. */
+  --font-display: var(--font-headline);
 
-  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* No bounce easing — the system uses one standard ease. */
+  --ease-bounce: var(--ease-standard);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  background: transparent;
-  color: var(--cream);
+  background: var(--surface-page);
+  color: var(--text-primary);
   font-family: var(--font-body);
   font-size: 17px;
   line-height: 1.65;
@@ -354,18 +366,18 @@ img { max-width: 100%; display: block; }
 .breadcrumb {
   display: flex; align-items: center; gap: 8px;
   padding: 12px 32px;
-  background: rgba(11, 20, 38, 0.6);
-  border-bottom: 1px solid var(--navy-border);
+  background: var(--surface-panel);
+  border-bottom: 1px solid var(--border-default);
   font-size: 13px;
 }
 .breadcrumb a {
-  color: var(--cream-dim);
+  color: var(--link);
   cursor: pointer;
   transition: color .15s;
 }
-.breadcrumb a:hover { color: var(--amber); }
-.breadcrumb-sep { color: var(--cream-dim); opacity: 0.4; }
-.breadcrumb-current { color: var(--cream-muted); font-weight: 500; }
+.breadcrumb a:hover { color: var(--link-hover); }
+.breadcrumb-sep { color: var(--text-muted); }
+.breadcrumb-current { color: var(--text-primary); font-weight: 500; }
 @media (max-width: 640px) {
   .breadcrumb { padding: 10px 20px; font-size: 12px; }
 }

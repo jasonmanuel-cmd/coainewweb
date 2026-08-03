@@ -13,7 +13,7 @@ export function WebsiteDesignPageBody() {
             Not a template.
             <br />
             <span className="m-text-green">Not rented land.</span>
-            <br />A sovereign system.
+            <br />A system you own.
           </h1>
           <p className="m-hero-sub">
             Every COAI website is custom-built code on infrastructure you own — designed to convert visitors, rank on
@@ -87,19 +87,19 @@ export function WebsiteDesignPageBody() {
       </Reveal>
 
       <Reveal>
-      <section className="m-marketing-section m-wd-sovereign">
+      <section className="m-marketing-section m-wd-ownership">
         <div className="m-container-narrow">
           <div className="m-section-label">The Ownership Question</div>
           <h2 className="m-h2-marketing">
-            Sovereign house vs. <span className="m-text-green">rented land.</span>
+            Owned outright vs. <span className="m-text-green">rented.</span>
           </h2>
           <p className="m-wd-lead">
             This is the most important decision you&apos;ll make about your digital presence. Everything else is
             secondary.
           </p>
           <div className="m-compare-grid-wd">
-            <div className="m-compare-col m-sovereign">
-              <div className="m-col-header m-col-green">◈ COAI Sovereign Build</div>
+            <div className="m-compare-col m-owned">
+              <div className="m-col-header m-col-green">◈ COAI build — you own it</div>
               <ul className="m-compare-list-wd">
                 {[
                   "You own the code — completely",
@@ -153,7 +153,7 @@ export function WebsiteDesignPageBody() {
           <p className="m-wd-lead">
             We handle urgent website repairs for Bakersfield businesses — hacked sites, broken contact forms, SSL
             errors, performance crashes. Most fixes are live within 48 hours. And if you&apos;re trapped on a platform
-            like Wix or WordPress that&apos;s bleeding your budget, we migrate you to sovereign infrastructure so it
+            like Wix or WordPress that&apos;s bleeding your budget, we migrate you to code you own so it
             never happens again.
           </p>
           <div className="m-principles-grid" style={{ marginTop: "1.5rem" }}>
@@ -188,7 +188,7 @@ export function WebsiteDesignPageBody() {
             Lighthouse scan on your current site first so the comparison is measured, not asserted.
           </p>
           <div className="m-compare-grid-wd">
-            <div className="m-compare-col m-sovereign">
+            <div className="m-compare-col m-owned">
               <div className="m-col-header m-col-green">◈ After Migration</div>
               <ul className="m-compare-list-wd">
                 {[
@@ -258,7 +258,7 @@ export function WebsiteDesignPageBody() {
         <div className="m-container-narrow">
           <div className="m-section-label">Tech Stack</div>
           <h2 className="m-h2-marketing">
-            The tools that build <span className="m-text-green">sovereign infrastructure.</span>
+            The tools behind <span className="m-text-green">a system you own.</span>
           </h2>
           <div className="m-stack-grid">
             {[
@@ -291,7 +291,7 @@ export function WebsiteDesignPageBody() {
         </h2>
         <p>
           Run the diagnostic first — 30 minutes, free, no pitch. See exactly what your current presence is costing you
-          and what a sovereign build would change.
+          and what a rebuild would change.
         </p>
         <div className="m-cta-row">
           <Link href="/intake" className="m-btn-primary-marketing">

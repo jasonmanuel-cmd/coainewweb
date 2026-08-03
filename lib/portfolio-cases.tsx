@@ -22,7 +22,7 @@ export type PortfolioCase = {
   liveUrl: string;
 };
 
-/** Case cards — copy aligned to live sovereign builds */
+/** Case cards — copy aligned to live client-owned builds */
 export const PORTFOLIO_CASES: PortfolioCase[] = [
   {
     id: "phils",
@@ -146,7 +146,7 @@ export const PORTFOLIO_CASES: PortfolioCase[] = [
         imagery moves listings faster, and <strong>custom tattoo artistry</strong> where the portfolio is the entire
         pitch. COAI built a dual-identity portfolio site that lets both audiences land in the right place without
         confusion. Real estate agents and brokers get a clean gallery and booking path. Tattoo clients get a curated flash
-        and custom work showcase with a consultation intake. <strong>One URL, two sovereign audiences.</strong>
+        and custom work showcase with a consultation intake. <strong>One URL, two audiences.</strong>
       </>
     ),
     built: [
@@ -172,7 +172,7 @@ export const PORTFOLIO_CASES: PortfolioCase[] = [
         Poison Well Records is an <strong>independent punk label</strong> — raw, confrontational, and completely
         outside the major label machine. COAI built a site that matches the genre&apos;s energy without flinching:
         dark, high-contrast, built for the community not the algorithm. Roster pages, release archives, merch linkage,
-        and a booking/contact system give the label a <strong>sovereign digital home it actually owns</strong> — no
+        and a booking/contact system give the label a <strong>digital home it actually owns</strong> — no
         streaming platform dependency, no social media landlord. The underground, structured.
       </>
     ),

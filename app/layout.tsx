@@ -63,7 +63,10 @@ const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? "GTM-NMKLXR5R";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    // Font variables live on <html> so tokens.css can read them at :root.
+    // On <body> they are out of scope there and every var() chain resolves to
+    // nothing, silently falling the whole site back to Times New Roman.
+    <html lang="en" className={`${barlowCondensed.variable} ${inter.variable} ${plexMono.variable}`}>
       <head>
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -72,7 +75,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.clarity.ms" />
       </head>
-      <body className={`${barlowCondensed.variable} ${inter.variable} ${plexMono.variable}`}>
+      <body>
         <noscript>
           <iframe
             src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}

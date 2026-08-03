@@ -145,6 +145,38 @@
   background: var(--border-default);
 }
 
+/* On a charcoal panel the paper-surface tag colours drop to ~2:1. These are the
+   same hues lifted to stay legible against --surface-inverse. */
+.ui-card--inverse .ui-tag--info,
+.home-section--inverse .ui-tag--info {
+  color: #7fb4cc;
+  background: rgba(127, 180, 204, 0.14);
+}
+
+.ui-card--inverse .ui-tag--proof,
+.home-section--inverse .ui-tag--proof {
+  color: var(--inspection-yellow);
+  background: rgba(242, 183, 5, 0.14);
+}
+
+.ui-card--inverse .ui-tag--control,
+.home-section--inverse .ui-tag--control {
+  color: #7fc194;
+  background: rgba(127, 193, 148, 0.14);
+}
+
+.ui-card--inverse .ui-tag--leak,
+.home-section--inverse .ui-tag--leak {
+  color: #e8907f;
+  background: rgba(232, 144, 127, 0.14);
+}
+
+.ui-card--inverse .ui-tag--neutral,
+.home-section--inverse .ui-tag--neutral {
+  color: var(--text-on-inverse-muted);
+  background: rgba(185, 183, 174, 0.14);
+}
+
 /* ---------- Card (squared panel) ---------- */
 
 .ui-card {

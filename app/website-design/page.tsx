@@ -8,9 +8,9 @@ import { SITE_URL } from "@/lib/site";
 import Link from "next/link";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Website Design - Sovereign Builds",
+  title: "Website design — call-first builds you own",
   description:
-    "Custom sovereign website design for Bakersfield service businesses. Not templates. Not Wix. Real code, real performance, full ownership. WordPress migration, site speed optimization, and emergency repairs available.",
+    "Call-first website design for Bakersfield service businesses. Custom code, not templates. You control the domain, hosting, source code, analytics, and lead data. WordPress migration, speed work, and emergency repairs available.",
   path: "/website-design",
   published: "2026-02-01",
   modified: "2026-04-15",
@@ -34,9 +34,9 @@ export default function WebsiteDesignPage() {
   );
 
   const article = articleJsonLd({
-    headline: "Website Design - Sovereign Builds for Bakersfield Businesses",
+    headline: "Website design for Bakersfield businesses — built to catch the call",
     description:
-      "Custom sovereign website design for Bakersfield service businesses. Not templates. Not Wix. Real code, real performance, full ownership.",
+      "Call-first website design for Bakersfield service businesses. Custom code, not templates, and a documented handoff so you own what we build.",
     path: "/website-design",
     datePublished: "2026-01-01",
     dateModified: "2026-05-01"

@@ -2638,7 +2638,7 @@ body:has(.m-page) .scanline-overlay {
   margin: 0;
 }
 
-.m-wd-sovereign {
+.m-wd-ownership {
   background: var(--m-surface);
   border-top: 1px solid var(--m-border);
 }
@@ -2657,7 +2657,7 @@ body:has(.m-page) .scanline-overlay {
   padding: 2rem;
 }
 
-.m-compare-col.m-sovereign {
+.m-compare-col.m-owned {
   border-color: var(--m-green);
 }
 
@@ -3295,4 +3295,241 @@ body:has(.m-page) .scanline-overlay {
 /* Marketing card link press */
 .m-card-link:active {
   transform: scale(0.97);
+}
+
+/* ==========================================================================
+   INDUSTRIAL RETHEME
+   --------------------------------------------------------------------------
+   The rules above were written for a dark-navy page with a green accent. This
+   block repoints them at the industrial tokens in app/tokens.css rather than
+   rewriting 3,000 lines: the variables keep their names and change value, and
+   a short list of structural overrides removes the effects the design doctrine
+   forbids (gradients, glow, blur, oversized radii, shadow pops).
+
+   This is a light/dark inversion, so surface and text swap roles:
+   --m-black was the page background and is now the light surface;
+   --m-white was the text colour and is now dark ink.
+   ========================================================================== */
+
+.m-page {
+  --m-black: var(--jobsite-white);
+  --m-surface: var(--paper);
+  --m-surface2: var(--jobsite-white-dim);
+  --m-border: var(--border-default);
+  --m-border-hot: var(--border-strong);
+
+  /* Was the green accent. Steel Blue is the system's utility colour; Signal
+     Orange is reserved for primary CTAs and is applied explicitly below. */
+  --m-green: var(--steel-blue);
+  --m-green-dim: rgba(47, 93, 115, 0.1);
+  --teal: var(--steel-blue);
+  --teal-subtle: rgba(47, 93, 115, 0.12);
+
+  --m-red: var(--leak-red);
+  /* Darkened so it stays legible as text on a light surface. */
+  --m-amber: #8a6a03;
+  --m-blue: var(--steel-blue);
+  --m-pink: var(--steel-blue);
+  --m-purple: var(--pass-green);
+
+  --m-white: var(--charcoal);
+  --m-muted: var(--text-muted);
+
+  background: var(--surface-page);
+  color: var(--text-primary);
+}
+
+/* Headlines take the condensed industrial face, in sentence case. */
+.m-page h1,
+.m-page h2,
+.m-page h3,
+.m-page h4,
+.m-page .m-page-h1,
+.m-page .m-h2-marketing,
+.m-page .m-service-title,
+.m-page .m-bottom-cta-h2 {
+  font-family: var(--font-headline);
+  letter-spacing: var(--tracking-headline);
+  text-transform: none;
+}
+
+/* --- Remove the AI-glow radial washes and the circuit-grid overlays --- */
+.m-page .m-page-hero::before,
+.m-page .m-portfolio-cta::before,
+.m-page .m-bottom-cta::before {
+  content: none;
+  background: none;
+}
+
+.m-page .m-page-hero-grid,
+.m-page .m-grid-bg,
+.m-page .m-intake-grid-bg {
+  display: none;
+}
+
+/* --- No frosted glass; this is a paper aesthetic --- */
+.m-page .m-nav {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background: var(--surface-inverse);
+  border-bottom: 1px solid var(--border-inverse);
+}
+
+/* --- Squared panels: cap every radius at the 0-4px system --- */
+.m-page *,
+.m-page *::before,
+.m-page *::after {
+  border-radius: 0;
+}
+
+.m-page .m-pkg,
+.m-page .m-addon-card,
+.m-page .m-principle-card,
+.m-page .m-service-panel,
+.m-page .m-guarantee-box,
+.m-page .m-compare-col,
+.m-page .m-info-block,
+.m-page .m-cipher-box,
+.m-page .m-contact-form-wrap,
+.m-page .m-legal-section,
+.m-page input,
+.m-page select,
+.m-page textarea,
+.m-page button,
+.m-page .m-btn-primary,
+.m-page .m-btn-ghost,
+.m-page .m-btn-primary-marketing,
+.m-page .m-btn-ghost-marketing,
+.m-page .m-pkg-cta,
+.m-page .m-submit-btn,
+.m-page .m-nav-cta,
+.m-page .m-filter-btn {
+  border-radius: var(--radius-sm);
+}
+
+/* The pulsing status dot stays round — it reads as an indicator, not a panel. */
+.m-page .m-dot {
+  border-radius: 50%;
+}
+
+/* --- Hairlines, not shadow pops --- */
+.m-page .m-pkg,
+.m-page .m-addon-card,
+.m-page .m-principle-card,
+.m-page .m-service-panel,
+.m-page .m-compare-col,
+.m-page .m-info-block {
+  box-shadow: var(--shadow-panel);
+  border: 1px solid var(--border-default);
+  background: var(--surface-panel);
+  transition: border-color var(--t-mid) var(--ease-standard);
+}
+
+.m-page .m-pkg:hover,
+.m-page .m-addon-card:hover,
+.m-page .m-principle-card:hover {
+  border-color: var(--border-strong);
+  transform: none;
+  box-shadow: var(--shadow-panel);
+}
+
+/* --- Primary CTAs: Signal Orange, and only here --- */
+.m-page .m-btn-primary,
+.m-page .m-btn-primary-marketing,
+.m-page .m-pkg-cta,
+.m-page .m-submit-btn,
+.m-page .m-nav-cta {
+  background: var(--cta-bg);
+  color: var(--cta-text);
+  border: 1px solid var(--cta-bg);
+  font-family: var(--font-headline);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  transition:
+    background-color var(--t-fast) var(--ease-standard),
+    border-color var(--t-fast) var(--ease-standard),
+    transform var(--t-fast) var(--ease-standard);
+}
+
+.m-page .m-btn-primary:hover,
+.m-page .m-btn-primary-marketing:hover,
+.m-page .m-pkg-cta:hover,
+.m-page .m-submit-btn:hover,
+.m-page .m-nav-cta:hover {
+  background: var(--cta-bg-hover);
+  border-color: var(--cta-bg-hover);
+  color: var(--cta-text);
+  transform: none;
+  box-shadow: none;
+}
+
+.m-page .m-btn-primary:active,
+.m-page .m-btn-primary-marketing:active,
+.m-page .m-pkg-cta:active,
+.m-page .m-submit-btn:active,
+.m-page .m-nav-cta:active {
+  transform: scale(0.98);
+}
+
+/* Secondary actions read as outlined charcoal, never orange. */
+.m-page .m-btn-ghost,
+.m-page .m-btn-ghost-marketing {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+}
+
+.m-page .m-btn-ghost:hover,
+.m-page .m-btn-ghost-marketing:hover {
+  background: var(--charcoal);
+  color: var(--jobsite-white);
+}
+
+/* --- Form controls on paper --- */
+.m-page input,
+.m-page select,
+.m-page textarea {
+  background: var(--surface-panel);
+  color: var(--text-primary);
+  border: 1px solid var(--border-default);
+  font-family: var(--font-body);
+}
+
+.m-page input:focus,
+.m-page select:focus,
+.m-page textarea:focus {
+  outline: none;
+  border-color: var(--steel-blue);
+  box-shadow: inset 0 0 0 1px var(--steel-blue);
+}
+
+.m-page input::placeholder,
+.m-page textarea::placeholder {
+  color: var(--charcoal-60);
+}
+
+/* --- Tables and rules --- */
+.m-page table {
+  border-color: var(--border-default);
+}
+
+.m-page thead th {
+  background: var(--charcoal);
+  color: var(--jobsite-white);
+}
+
+/* --- Dark sections keep light text --- */
+.m-page .m-nav a,
+.m-page .m-nav .m-nav-link {
+  color: var(--text-on-inverse-muted);
+}
+
+.m-page .m-nav a:hover {
+  color: var(--jobsite-white);
+}
+
+/* --- No bounce, no float --- */
+.m-page * {
+  animation-timing-function: var(--ease-standard);
 }

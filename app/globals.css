@@ -1,25 +1,28 @@
+/**
+ * Legacy names remapped onto the industrial tokens in app/tokens.css.
+ * Same rule as revamp.css: keep the names, repoint the values, and never
+ * redefine --font-* or --ease-standard here — tokens.css owns those and this
+ * file loads after it.
+ */
 :root {
-  color-scheme: dark;
-  --bg: #0B1426;
-  --bg-1: #111D35;
-  --panel: rgba(11, 20, 38, 0.88);
-  --line: #1E2D4A;
-  --line-strong: #2A3D5E;
-  --text: #EDE9E3;
-  --muted: #9E9A93;
-  --accent: #E8A020;
-  --accent-muted: #F5B840;
-  --accent-signal: #FFD580;
-  --input-bg: #0D1A30;
-  --input-bg-focus: #0B1426;
-  --input-text: #EDE9E3;
-  --danger: #E85A4A;
-  --radius: 12px;
-  --ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
-  --t-fast: 150ms;
-  --t-mid: 240ms;
+  color-scheme: light;
+  --bg: var(--jobsite-white);
+  --bg-1: var(--paper);
+  --panel: var(--paper);
+  --line: var(--border-default);
+  --line-strong: var(--border-strong);
+  --text: var(--charcoal);
+  --muted: var(--text-muted);
+  --accent: var(--signal-orange);
+  --accent-muted: var(--signal-orange-dim);
+  --accent-signal: var(--inspection-yellow);
+  --input-bg: var(--paper);
+  --input-bg-focus: var(--jobsite-white);
+  --input-text: var(--charcoal);
+  --danger: var(--leak-red);
+  /* Capped to the 0-4px system. */
+  --radius: var(--radius-md);
   --t-scene: 480ms;
-  --font-headline: var(--font-plus-jakarta);
 }
 
 * {
@@ -28,7 +31,7 @@
 
 html {
   min-height: 100%;
-  background-color: #0B1426;
+  background-color: #f4f1e8;
   scroll-behavior: smooth;
 }
 
@@ -41,7 +44,7 @@ body {
 }
 
 body {
-  background: transparent;
+  background: var(--surface-page);
 }
 
 body {

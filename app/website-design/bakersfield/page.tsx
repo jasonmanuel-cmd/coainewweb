@@ -79,7 +79,7 @@ export default function BakersfieldWebsiteDesignPage() {
               customers calling your competitor instead.
             </p>
             <p>
-              We fix that with hand-coded sovereign sites, geo-targeted LocalBusiness schema, and conversion architecture
+              We fix that with hand-coded sites you own, geo-targeted LocalBusiness schema, and conversion architecture
               that turns visitors into booked jobs. Every site we build in Bakersfield is optimized for the 661 market.
             </p>
           </div>

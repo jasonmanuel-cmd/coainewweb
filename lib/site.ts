@@ -176,7 +176,7 @@ export const AREA_SERVED = [
 const cityData = {
   bakersfield: {
     name: "Bakersfield", region: "CA", slug: "bakersfield",
-    ticker: ["BAKERSFIELD WEB DESIGN", "LOCAL SEO", "AEO READY", "SCHEMA", "SOVEREIGN BUILDS"] as string[],
+    ticker: ["BAKERSFIELD WEB DESIGN", "LOCAL SEO", "AEO READY", "SCHEMA", "CLIENT-OWNED"] as string[],
     description: "Conversion-first websites with local schema, fast mobile performance, and full ownership for Bakersfield service businesses.",
     serviceDesc: "Website design and local search architecture for Bakersfield businesses that need faster conversion and clearer trust signals."
   },

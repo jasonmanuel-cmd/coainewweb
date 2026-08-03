@@ -32,19 +32,19 @@ function newSessionId() {
 }
 
 const INDUSTRY_OPTIONS = [
-  { value: "Trades & Contractors", icon: "🔧", title: "Trades & Contractors", sub: "HVAC, plumbing, electrical, construction" },
-  { value: "Food & Beverage", icon: "🍔", title: "Food & Beverage", sub: "Restaurant, food truck, catering" },
-  { value: "Financial Services", icon: "💳", title: "Financial Services", sub: "Credit, tax, consulting, insurance" },
-  { value: "Retail & E-Commerce", icon: "🛍️", title: "Retail & E-Commerce", sub: "Products, apparel, online store" },
-  { value: "Professional Services", icon: "💼", title: "Professional Services", sub: "Photography, consulting, creative" },
-  { value: "Other", icon: "📋", title: "Other", sub: "Tell us below" },
+  { value: "Trades & Contractors", icon: "", title: "Trades & Contractors", sub: "HVAC, plumbing, electrical, construction" },
+  { value: "Food & Beverage", icon: "", title: "Food & Beverage", sub: "Restaurant, food truck, catering" },
+  { value: "Financial Services", icon: "", title: "Financial Services", sub: "Credit, tax, consulting, insurance" },
+  { value: "Retail & E-Commerce", icon: "", title: "Retail & E-Commerce", sub: "Products, apparel, online store" },
+  { value: "Professional Services", icon: "", title: "Professional Services", sub: "Photography, consulting, creative" },
+  { value: "Other", icon: "", title: "Other", sub: "Tell us below" },
 ];
 
 const WEBSITE_OPTIONS = [
-  { value: "No website", icon: "🚫", title: "No website", sub: "Running on social media or referrals only" },
-  { value: "Rented platform", icon: "🏗️", title: "Wix / Squarespace / GoDaddy", sub: "Rented platform you don't truly own" },
-  { value: "WordPress", icon: "🔌", title: "WordPress site", sub: "Self-managed or agency-built" },
-  { value: "Custom / not sure", icon: "❓", title: "Custom / not sure", sub: "Someone built it, not sure of the stack" },
+  { value: "No website", icon: "", title: "No website", sub: "Running on social media or referrals only" },
+  { value: "Rented platform", icon: "", title: "Wix / Squarespace / GoDaddy", sub: "Rented platform you don't truly own" },
+  { value: "WordPress", icon: "", title: "WordPress site", sub: "Self-managed or agency-built" },
+  { value: "Custom / not sure", icon: "", title: "Custom / not sure", sub: "Someone built it, not sure of the stack" },
 ];
 
 export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
@@ -164,7 +164,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
         <div style={{
           background: "rgba(232, 160, 32, 0.1)",
           border: "1px solid rgba(232, 160, 32, 0.25)",
-          borderRadius: "8px",
+          borderRadius: "2px",
           padding: "10px 16px",
           marginBottom: "1.25rem",
           display: "flex",
@@ -287,7 +287,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
                       alignItems: "center",
                       gap: "6px",
                       padding: "14px 10px",
-                      borderRadius: "10px",
+                      borderRadius: "2px",
                       border: data.industry === opt.value ? "2px solid var(--amber)" : "1px solid var(--navy-border)",
                       background: data.industry === opt.value ? "rgba(232,160,32,0.1)" : "rgba(17,29,53,0.5)",
                       color: data.industry === opt.value ? "var(--cream)" : "var(--cream-dim)",
@@ -325,7 +325,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
                       alignItems: "center",
                       gap: "6px",
                       padding: "14px 10px",
-                      borderRadius: "10px",
+                      borderRadius: "2px",
                       border: data.website === opt.value ? "2px solid var(--amber)" : "1px solid var(--navy-border)",
                       background: data.website === opt.value ? "rgba(232,160,32,0.1)" : "rgba(17,29,53,0.5)",
                       color: data.website === opt.value ? "var(--cream)" : "var(--cream-dim)",
@@ -353,7 +353,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
                 padding: "14px",
                 fontSize: "15px",
                 fontWeight: 700,
-                borderRadius: "10px",
+                borderRadius: "2px",
                 border: "none",
                 background: !data.industry || !data.website ? "rgba(255,255,255,0.08)" : "var(--amber)",
                 color: !data.industry || !data.website ? "var(--cream-dim)" : "var(--navy)",
@@ -387,7 +387,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
               marginTop: "1.5rem",
               padding: "1.25rem",
               border: "1px solid var(--navy-border)",
-              borderRadius: "10px",
+              borderRadius: "2px",
               background: "rgba(0, 0, 0, 0.2)",
               textAlign: "center"
             }}>
@@ -404,7 +404,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
                   textDecoration: "none",
                   padding: "10px 24px",
                   border: "1px solid rgba(232,160,32,0.3)",
-                  borderRadius: "8px",
+                  borderRadius: "2px",
                   background: "rgba(232,160,32,0.08)",
                   marginBottom: "10px"
                 }}
@@ -471,7 +471,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
                   padding: "12px 28px",
                   fontSize: "14px",
                   fontWeight: 700,
-                  borderRadius: "10px",
+                  borderRadius: "2px",
                   border: "none",
                   background: "var(--amber)",
                   color: "var(--navy)",
@@ -489,7 +489,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
               padding: "10px 14px",
               background: "rgba(29, 158, 117, 0.1)",
               border: "1px solid rgba(29, 158, 117, 0.2)",
-              borderRadius: "8px",
+              borderRadius: "2px",
               fontSize: "12px",
               color: "var(--cream-muted)",
               textAlign: "center"
@@ -512,7 +512,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
               padding: "10px 14px",
               background: "rgba(232, 160, 32, 0.08)",
               border: "1px solid rgba(232, 160, 32, 0.15)",
-              borderRadius: "8px",
+              borderRadius: "2px",
               fontSize: "12px",
               color: "var(--amber-light)",
               textAlign: "center",
@@ -608,7 +608,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
                     padding: "14px 32px",
                     fontSize: "15px",
                     fontWeight: 700,
-                    borderRadius: "10px",
+                    borderRadius: "2px",
                     border: "none",
                     background: submitting || (Boolean(siteKey) && !turnstileToken) ? "rgba(255,255,255,0.08)" : "var(--amber)",
                     color: submitting || (Boolean(siteKey) && !turnstileToken) ? "var(--cream-dim)" : "var(--navy)",

@@ -75,7 +75,7 @@ export default function KernCountyWebsiteDesignPage() {
               on slow platforms with broken schema, buried contact info, and zero AI visibility.
             </p>
             <p>
-              We fix that with hand-coded sovereign websites, LocalBusiness schema, and conversion architecture designed
+              We fix that with hand-coded websites you own, LocalBusiness schema, and conversion architecture designed
               for one outcome: more phone calls and booked jobs. No templates, no monthly builder tax, no nonsense.
             </p>
           </div>
