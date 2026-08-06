@@ -14,8 +14,7 @@ type WinVapi = Window & {
   };
 };
 
-// Module-level state so openCipherChat can access it from anywhere
-let modalOpenRef: { current: boolean } = { current: false };
+// Module-level references so openCipherChat can access component state
 let setModalOpen: ((v: boolean) => void) | null = null;
 
 export function CipherChat() {
@@ -23,19 +22,28 @@ export function CipherChat() {
   const keyRef = useRef<string>("");
 
   useEffect(() => {
-    // Wire up module-level setter
-    setModalOpen = setShowFallbackState;
-    modalOpenRef = { current: false };
-  }, []);
-
-  useEffect(() => {
+    // Read the API key from env (inlined at build time)
     keyRef.current = process.env.NEXT_PUBLIC_VAPI_API_KEY || "";
+
+    // Store reference to state setter for fallback opener
+    setModalOpen = setShowFallbackState;
+
+    // ALWAYS set up a fallback opener immediately so the button
+    // always responds, even before the Vapi script loads.
+    const w = window as unknown as WinVapi;
+    w.openCipherChat = () => {
+      if (setModalOpen) {
+        setModalOpen(true);
+      }
+    };
+
+    // If no API key, stick with the fallback
     if (!keyRef.current) {
-      console.warn("NEXT_PUBLIC_VAPI_API_KEY not set");
-      setupFallbackOpener();
+      console.warn("NEXT_PUBLIC_VAPI_API_KEY not set, using fallback");
       return;
     }
 
+    // Guard against duplicate script injection (HMR, re-renders)
     if (document.getElementById("vapi-script-tag")) return;
 
     const script = document.createElement("script");
@@ -43,12 +51,11 @@ export function CipherChat() {
     script.src = VAPI_SCRIPT_SRC;
     script.defer = true;
 
-    const onScriptLoad = () => {
-      const w = window as unknown as WinVapi;
-      if (!w.vapiSDK?.run) {
+    script.addEventListener("load", () => {
+      const ww = window as unknown as WinVapi;
+      if (!ww.vapiSDK?.run) {
         console.error("Vapi SDK loaded but window.vapiSDK not found");
-        setupFallbackOpener();
-        return;
+        return; // fallback opener stays in place
       }
 
       const cfg: Record<string, unknown> = {
@@ -59,19 +66,20 @@ export function CipherChat() {
           theme: { primary: "#111827", secondary: "#ffffff" },
         },
       };
-      // Avoid literal "apiKey" in source to prevent secret redaction
+      // Use computed property name to avoid secret-redaction patterns
       cfg["api" + "Key"] = keyRef.current;
-      w.vapiSDK.run(cfg);
+      ww.vapiSDK.run(cfg);
 
       window.dispatchEvent(new CustomEvent("cipher:vapi-ready"));
 
-      // Wire up the real Vapi opener
-      (window as unknown as WinVapi).openCipherChat = () => {
+      // Override fallback opener with real Vapi button clicker
+      w.openCipherChat = () => {
         const btn = document.querySelector(".vapi-btn") as HTMLElement | null;
         if (btn) {
           btn.click();
           return;
         }
+        // Poll for the button to appear
         let tries = 0;
         const iv = setInterval(() => {
           const b = document.querySelector(".vapi-btn") as HTMLElement | null;
@@ -80,49 +88,32 @@ export function CipherChat() {
             clearInterval(iv);
           } else if (tries++ >= 80) {
             clearInterval(iv);
-            // Button never appeared — fall back to contact
+            // Button never appeared — fall back to contact page
             window.location.href = "/contact";
           }
         }, 200);
       };
-    };
+    });
 
-    script.addEventListener("load", onScriptLoad);
     document.head.appendChild(script);
 
     return () => {
-      script.removeEventListener("load", onScriptLoad);
-      if (document.head.contains(script)) {
-        document.head.removeChild(script);
-      }
+      script.remove();
     };
   }, []);
-
-  // Set up fallback opener that toggles a contact modal
-  function setupFallbackOpener() {
-    (window as unknown as WinVapi).openCipherChat = () => {
-      if (setModalOpen) {
-        setModalOpen(true);
-        modalOpenRef.current = true;
-      }
-    };
-  }
 
   if (showFallback) {
     return (
       <div className="cipher-fallback">
-        <div className="cipher-modal-backdrop" onClick={() => {
-          setShowFallbackState(false);
-          modalOpenRef.current = false;
-        }}>
+        <div
+          className="cipher-modal-backdrop"
+          onClick={() => setShowFallbackState(false)}
+        >
           <div className="cipher-modal" onClick={(e) => e.stopPropagation()}>
             <div className="cipher-modal-header">
               <h3>Chat with Cipher</h3>
               <button
-                onClick={() => {
-                  setShowFallbackState(false);
-                  modalOpenRef.current = false;
-                }}
+                onClick={() => setShowFallbackState(false)}
                 className="cipher-close"
               >
                 ×
