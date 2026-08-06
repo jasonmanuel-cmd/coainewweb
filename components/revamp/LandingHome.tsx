@@ -249,11 +249,65 @@ export function LandingHomeRevamp() {
           </section>
         </Reveal>
 
-        {/* 04 — Ownership ledger */}
+        {/* 04 — AI Diagnostic Engine (JAX) */}
+        <Reveal>
+          <section id="jax-preview" className="home-section home-section--inverse">
+            <div className="home-container">
+              <span className="home-eyebrow">04 — See what the AI sees</span>
+              <h2 className="home-h2">
+                <span className="m-text-steel">JAX Sentinel</span> AI diagnostic scan
+              </h2>
+              <p className="home-lede">
+                JAX is COAI&apos;s autonomous AI diagnostic engine. In under 3 minutes it scans your entire digital
+                presence — performance, schema integrity, AI answer-engine readiness, Google Business Profile alignment,
+                and competitor gap analysis — then returns a prioritized action report in plain dollars.
+              </p>
+              <div className="home-grid-3">
+                <Card inverse interactive>
+                  <div className="home-offer">
+                    <Tag kind="info">SCAN</Tag>
+                    <div className="home-offer__name">Site Performance</div>
+                    <div className="home-offer__desc">
+                      Core Web Vitals, load time, mobile speed, render-blocking resources. Measured on your live URL.
+                    </div>
+                  </div>
+                </Card>
+                <Card inverse interactive>
+                  <div className="home-offer">
+                    <Tag kind="info">SCHEMA</Tag>
+                    <div className="home-offer__name">AI Discoverability</div>
+                    <div className="home-offer__desc">
+                      How ChatGPT, Perplexity, Gemini, and Siri currently describe your business — and the gaps.
+                    </div>
+                  </div>
+                </Card>
+                <Card inverse interactive>
+                  <div className="home-offer">
+                    <Tag kind="info">LEAK</Tag>
+                    <div className="home-offer__name">Revenue Impact</div>
+                    <div className="home-offer__desc">
+                      Converts technical failures into dollar amounts your accountant can read. Prioritized by revenue risk.
+                    </div>
+                  </div>
+                </Card>
+              </div>
+              <div className="home-cta__actions home-cta__actions--mt">
+                <Button href="/jax" variant="primary" size="lg">
+                  See JAX Technical Brief →
+                </Button>
+                <Button href="/intake" variant="ghost" size="lg">
+                  Run the free leak score →
+                </Button>
+              </div>
+            </div>
+          </section>
+        </Reveal>
+
+        {/* 05 — Ownership ledger */}
         <Reveal>
           <section id="ledger" className="home-section">
             <div className="home-container">
-              <span className="home-eyebrow">04 — Ownership ledger</span>
+              <span className="home-eyebrow">05 — Ownership ledger</span>
               <h2 className="home-h2">You control the login. We document the handoff.</h2>
               <p className="home-lede">
                 A rented platform can be the right choice for a simple brochure site. The question is whether
@@ -265,7 +319,7 @@ export function LandingHomeRevamp() {
           </section>
         </Reveal>
 
-        {/* Founder */}
+        {/* 06 — Founder */}
         <Reveal>
           <section className="home-section">
             <div className="home-container home-founder">
@@ -308,7 +362,7 @@ export function LandingHomeRevamp() {
           </section>
         </Reveal>
 
-        {/* Reviews — verbatim, attributed, linked. No paraphrase. */}
+        {/* 07 — Reviews — verbatim, attributed, linked. No paraphrase. */}
         <Reveal>
           <section className="home-section">
             <div className="home-container">
@@ -333,7 +387,7 @@ export function LandingHomeRevamp() {
           </section>
         </Reveal>
 
-        {/* Master Glass testimonial with audio */}
+        {/* 08 — Master Glass testimonial with audio */}
         <Reveal>
           <section className="home-section">
             <div className="home-container">
@@ -364,7 +418,7 @@ export function LandingHomeRevamp() {
           </section>
         </Reveal>
 
-        {/* Final CTA */}
+        {/* 09 — Final CTA */}
         <Reveal>
           <section className="home-section home-section--inverse">
             <div className="home-container home-container--narrow home-cta">
@@ -388,6 +442,12 @@ export function LandingHomeRevamp() {
                   See what it costs
                 </Button>
               </div>
+              <div className="home-cta__chat-row">
+                <span className="home-cta__chat-icon" aria-hidden="true">◉</span>
+                <span className="home-cta__chat-text">
+                  Want answers before you call? Click the <strong>Cipher</strong> button in the corner — it&apos;s COAI&apos;s AI assistant and it can walk you through every part of the system.
+                </span>
+              </div>
             </div>
           </section>
         </Reveal>
@@ -402,6 +462,10 @@ export function LandingHomeRevamp() {
         <Button href="/intake" variant="primary" block>
           Leak score
         </Button>
+        <button type="button" className="home-sticky__chat" aria-label="Chat with Cipher AI">
+          <span className="home-sticky__chat-dot" />
+          Chat with Cipher
+        </button>
       </div>
     </div>
   );

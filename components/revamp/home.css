@@ -357,6 +357,10 @@
   flex-wrap: wrap;
 }
 
+.home-cta__actions--mt {
+  margin-top: var(--space-6);
+}
+
 /* ---------- Sticky mobile call bar ---------- */
 
 .home-sticky {
@@ -366,7 +370,7 @@
 @media (max-width: 768px) {
   .home-sticky {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 1px;
     position: fixed;
     bottom: 0;
@@ -380,6 +384,60 @@
   .home-sticky > * {
     border-radius: 0;
   }
+}
+
+/* ---------- Chat with Cipher (AI assistant) ---------- */
+
+.home-cta__chat-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+  font-size: var(--text-small);
+  color: var(--text-on-inverse-muted);
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-cta__chat-icon {
+  font-size: 1.2em;
+  color: var(--inspection-yellow);
+  flex-shrink: 0;
+}
+
+.home-cta__chat-text strong {
+  color: var(--jobsite-white);
+}
+
+.home-sticky__chat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  background: var(--steel-blue);
+  color: var(--jobsite-white);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-headline);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  width: 100%;
+}
+
+.home-sticky__chat:hover {
+  background: var(--steel-blue-dim);
+}
+
+.home-sticky__chat-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--inspection-yellow);
+  display: inline-block;
 }
 
 /* ---------- Responsive ---------- */
