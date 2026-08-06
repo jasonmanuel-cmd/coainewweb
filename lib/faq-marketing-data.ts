@@ -1,4 +1,4 @@
-import { BUSINESS_HOURS_LABEL, CONTACT, OFFERS, THIRD_PARTY_COSTS } from "./site";
+import { BUSINESS_HOURS_LABEL, CONTACT, FOUNDER, OFFERS, THIRD_PARTY_COSTS } from "./site";
 
 /**
  * Marketing FAQ — visible copy AND FAQPage JSON-LD come from this one array.
@@ -176,6 +176,42 @@ export const FAQ_MARKETING_SECTIONS: FaqMarketingSection[] = [
         question: "Do you guarantee a particular performance score or ranking?",
         answer:
           "No. Performance scores depend on your content, images, and third-party tools, and search rankings are set by Google, not by us. What we do publish is a live Lighthouse scan you can run against any URL, including ours — measured on demand rather than asserted in copy. We will show you the before and after on your own site and let the numbers speak."
+      }
+    ]
+  },
+  {
+    id: "bakersfield",
+    title: "Bakersfield Contractors",
+    items: [
+      {
+        question: "What does Chaotically Organized AI (COAI) do for Bakersfield contractors?",
+        answer:
+          `COAI installs custom revenue infrastructure for trade contractors, including a call-first website, instant missed-call text-back automation, and Google Business Profile cleanup. The system costs a flat ${OFFERS.tradecall.price} to build and ensures contractors capture leads immediately when they cannot answer the phone on a job site.`
+      },
+      {
+        question: `How much does a contractor website and lead system cost with COAI?`,
+        answer:
+          `The ${OFFERS.tradecall.name} costs a flat ${OFFERS.tradecall.price} (${OFFERS.tradecall.terms}) with full client account ownership. Optional ongoing ${OFFERS.continuity.name}, hosting management, and monthly performance updates cost ${OFFERS.continuity.price} per month with no long-term contracts.`
+      },
+      {
+        question: "How fast does the missed-call text-back system respond to prospective clients?",
+        answer:
+          "The automated response system targets a sub-30-second text-back whenever an incoming job call goes unanswered. This immediate response engages the homeowner or client before they can move on to call a competing contractor in Bakersfield."
+      },
+      {
+        question: "Who owns the website domain, source code, and lead data after launch?",
+        answer:
+          "You do. You control the domain registrar, hosting account, source code repository, analytics, Search Console, Google Business Profile, and all lead data. We deploy into your accounts, document the setup, and hand over admin access at launch — COAI retains no ongoing control unless you explicitly grant it for support."
+      },
+      {
+        question: "Who runs COAI and builds the contractor systems?",
+        answer:
+          `COAI was founded and is operated by ${FOUNDER.name}, a former licensed building contractor with 9 years of multi-trade field experience who now builds web and AI systems. Clients work directly with Jason via his direct phone line at ${CONTACT.phoneDisplay}, with no account managers or gatekeepers.`
+      },
+      {
+        question: "How does COAI differ from a standard marketing agency or website builder?",
+        answer:
+          "Standard agencies typically rent proprietary templates on monthly contracts without giving clients direct backend ownership or automated call recovery. COAI delivers a complete, client-owned infrastructure standard built specifically around field call workflows and local contractor economics."
       }
     ]
   }
