@@ -462,7 +462,12 @@ export function LandingHomeRevamp() {
         <Button href="/intake" variant="primary" block>
           Leak score
         </Button>
-        <button type="button" className="home-sticky__chat" aria-label="Chat with Cipher AI">
+        <button
+          type="button"
+          className="home-sticky__chat"
+          aria-label="Chat with Cipher AI"
+          onClick={() => (window as unknown as { openCipherChat?: () => void }).openCipherChat?.()}
+        >
           <span className="home-sticky__chat-dot" />
           Chat with Cipher
         </button>

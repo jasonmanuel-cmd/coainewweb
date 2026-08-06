@@ -49,6 +49,19 @@
   color: var(--jobsite-white);
 }
 
+.site-nav__link-btn {
+  all: unset;
+  color: var(--text-on-inverse-muted);
+  font-size: var(--text-small);
+  text-decoration: none;
+  transition: color var(--t-fast) var(--ease-standard);
+  cursor: pointer;
+}
+
+.site-nav__link-btn:hover {
+  color: var(--jobsite-white);
+}
+
 .site-nav__phone {
   color: var(--inspection-yellow);
   font-family: var(--font-mono);
@@ -96,6 +109,23 @@
   border-bottom: none;
   color: var(--inspection-yellow);
   font-family: var(--font-mono);
+}
+
+.site-nav__drawer-btn {
+  color: var(--inspection-yellow);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  padding: var(--space-4) var(--space-6);
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border-inverse);
+  font-size: var(--text-body);
+}
+
+.site-nav__drawer-btn:last-child {
+  border-bottom: none;
 }
 
 @media (max-width: 900px) {

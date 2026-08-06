@@ -38,6 +38,20 @@ export function CipherChat() {
 
     script.addEventListener("load", handleLoad);
 
+    // Expose a global function so nav/footer buttons can open the widget
+    (window as unknown as VapiWindow & { openCipherChat?: () => void }).openCipherChat = () => {
+      const btn = document.querySelector(".vapi-btn") as HTMLButtonElement | null;
+      if (btn) {
+        btn.click();
+      } else {
+        // Widget not ready yet — dispatch a click after it loads
+        document.addEventListener("vapi-ready", () => {
+          const b = document.querySelector(".vapi-btn") as HTMLButtonElement | null;
+          b?.click();
+        }, { once: true });
+      }
+    };
+
     return () => {
       script.removeEventListener("load", handleLoad);
       if (document.body.contains(script)) {

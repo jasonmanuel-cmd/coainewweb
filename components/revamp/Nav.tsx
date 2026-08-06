@@ -16,7 +16,7 @@ export const NAV_LINKS = [
   { href: "/about", label: "About" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
-  { href: "#", label: "Chat with Cipher", external: true }
+  { href: "#", label: "Chat with Cipher" }
 ] as const;
 
 export function Nav() {
@@ -41,9 +41,21 @@ export function Nav() {
         <ul className="site-nav__links">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
-              <Link href={link.href} aria-current={pathname === link.href ? "page" : undefined}>
-                {link.label}
-              </Link>
+              {link.href === "#" ? (
+                <button
+                  type="button"
+                  onClick={() => {
+                    (window as unknown as { openCipherChat?: () => void }).openCipherChat?.();
+                  }}
+                  className="site-nav__link-btn"
+                >
+                  {link.label}
+                </button>
+              ) : (
+                <Link href={link.href} aria-current={pathname === link.href ? "page" : undefined}>
+                  {link.label}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
@@ -64,11 +76,21 @@ export function Nav() {
       </nav>
 
       <div className={menuOpen ? "site-nav__drawer site-nav__drawer--open" : "site-nav__drawer"}>
-        {NAV_LINKS.map((link) => (
-          <Link key={link.href} href={link.href} onClick={() => setMenuOpen(false)}>
+        {NAV_LINKS.filter((l) => l.href !== "#").map((link) => (
+          <Link key={link.href} href={link.href} onClick={() => setMenuOpen(false)} aria-current={pathname === link.href ? "page" : undefined}>
             {link.label}
           </Link>
         ))}
+        <button
+          type="button"
+          className="site-nav__drawer-btn"
+          onClick={() => {
+            (window as unknown as { openCipherChat?: () => void }).openCipherChat?.();
+            setMenuOpen(false);
+          }}
+        >
+          Chat with Cipher
+        </button>
         <Link href="/intake" onClick={() => setMenuOpen(false)}>
           Get my leak score
         </Link>
