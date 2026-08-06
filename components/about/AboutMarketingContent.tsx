@@ -11,7 +11,7 @@ export function AboutMarketingContent() {
           <h1>
             Built by someone who&apos;s
             <br />
-            <span className="m-text-green">actually been in the field.</span>
+            <span className="m-text-steel">actually been in the field.</span>
           </h1>
           <p className="m-hero-sub">
             Not a developer who discovered marketing. Not a marketer who learned to code. An operations veteran who built
@@ -103,13 +103,13 @@ export function AboutMarketingContent() {
         </div>
       </section>
 
-      <section className="m-section-pad" style={{ background: "var(--m-surface)", borderTop: "1px solid var(--m-border)" }}>
+      <section className="m-section-pad">
         <div className="m-container">
           <div className="m-section-label">Operating Values</div>
           <h2>
-            The <span className="m-text-green">Team Good Protocol.</span>
+            The <span className="m-text-steel">Team Good Protocol.</span>
           </h2>
-          <p style={{ color: "var(--m-muted)", maxWidth: 540 }}>
+          <p className="m-hero-sub">
             Ethics here are behavioral, not decorative. These aren&apos;t mission statement words — they&apos;re rules
             that govern how every project gets built and every client gets treated.
           </p>
@@ -163,7 +163,7 @@ export function AboutMarketingContent() {
         <h2>
           30 minutes with Jason.
           <br />
-          <span className="m-text-green">Real data. Real roadmap.</span>
+          <span className="m-text-steel">Real data. Real roadmap.</span>
         </h2>
         <p>
           No slides. No pitch. Just a live audit of your current digital presence and an honest assessment of what it

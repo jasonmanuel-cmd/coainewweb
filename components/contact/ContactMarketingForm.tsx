@@ -90,7 +90,7 @@ export function ContactMarketingForm({
     <div className="m-contact-form-wrap" id="contact-form">
       <h2 className="m-contact-form-title">Send a Message</h2>
       <p className="m-contact-form-sub">
-        Submissions go to <strong>{CONTACT.email}</strong> &amp; frankh@coaibakersfield.com via our form handler. Jason responds same business day. If
+        Submissions go to <strong>{CONTACT.email}</strong> via our form handler. Jason responds same business day. If
         it&apos;s urgent, call directly — {CONTACT.phoneDisplay}.
       </p>
       <form id="contact-form-fields" onSubmit={handleSubmit}>
@@ -101,7 +101,7 @@ export function ContactMarketingForm({
         <input type="hidden" name="_subject" value={subjectBits.join(" · ")} />
         <div
           aria-hidden="true"
-          style={{ position: "absolute", left: "-10000px", top: "auto", width: 1, height: 1, overflow: "hidden" }}
+          className="m-sr-only-field"
         >
           <label htmlFor="cf-company">Company</label>
           <input id="cf-company" name="company" type="text" tabIndex={-1} autoComplete="off" />
@@ -139,7 +139,7 @@ export function ContactMarketingForm({
             required
             autoComplete="url"
           />
-          <p className="m-form-note" style={{ marginTop: "0.35rem" }}>
+          <p className="m-form-note m-form-note--spaced">
             No site yet? Enter <strong>none</strong> (lowercase).
           </p>
         </div>
@@ -152,7 +152,7 @@ export function ContactMarketingForm({
           }}
           onExpire={() => setTurnstileToken("")}
         />
-        {formError ? <p className="m-form-note" style={{ color: "var(--accent, #c45)" }}>{formError}</p> : null}
+        {formError ? <p className="m-form-note m-form-error">{formError}</p> : null}
         <button type="submit" className="m-submit-btn">
           Send Message →
         </button>

@@ -72,7 +72,7 @@ export function JaxWaitlistForm() {
         }}
         onExpire={() => setTurnstileToken("")}
       />
-      {error ? <p className="m-jax-waitlist-note" style={{ color: "var(--accent, #c45)" }}>{error}</p> : null}
+      {error ? <p className="m-jax-waitlist-note m-jax-waitlist-note--error">{error}</p> : null}
       <p className="m-jax-waitlist-note">Early access · No spam · Launch notification only</p>
       {done ? (
         <div className="m-jax-success" role="status">

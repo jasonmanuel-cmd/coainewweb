@@ -18,7 +18,7 @@ export const LEGAL_NAME = "Chaotically Organized AI, LLC";
 export const FOUNDER = {
   name: "Jason Robert Manuel",
   role: "Founder",
-  email: "jasonm@coaibakersfield.com"
+  email: "chaoticallyorganizedai@gmail.com"
 } as const;
 
 export const CO_FOUNDER = {
@@ -36,10 +36,10 @@ export const CO_FOUNDER = {
  * reintroduce a `streetAddress` unless there is an actual office to visit.
  */
 export const CONTACT = {
-  email: "jasonm@coaibakersfield.com",
+  email: "chaoticallyorganizedai@gmail.com",
   secondaryEmail: "frankh@coaibakersfield.com",
   phoneDisplay: "(661) 683-0228",
-  phoneE164: "+16616830228",
+  phoneE164: "+166****0228",
   city: "Bakersfield",
   region: "CA",
   country: "US",
@@ -150,7 +150,7 @@ export const BUSINESS_HOURS = {
 
 /** Human-readable hours — keep aligned with GBP and `BUSINESS_HOURS`. */
 export const BUSINESS_HOURS_LABEL =
-  "Monday–Friday · 9:00 a.m.–5:00 p.m. Pacific (matches Google Business Profile)";
+  "Open 24 Hours";
 
 export const ORG_ID = `${SITE_URL}/#organization`;
 export const FOUNDER_ID = `${SITE_URL}/#founder`;

@@ -185,5 +185,34 @@ export const PORTFOLIO_CASES: PortfolioCase[] = [
       "Netlify Deploy"
     ],
     liveUrl: "https://poisonwellrecord.netlify.app"
+  },
+  {
+    id: "mgs",
+    category: "contracting",
+    accentClass: "m-accent-contracting",
+    tagClass: "m-tag-contracting",
+    industryLabel: "Industrial Services",
+    client: "Master Glass Solutions",
+    location: "Texas · Commercial Glass & Glazing",
+    description: (
+      <>
+        Master Glass Solutions is a <strong>Texas-based commercial glass and glazing contractor</strong> serving
+        industrial, commercial, and institutional clients across the Lone Star State. COAI built a conversion-first
+        site with a project showcase, embedded testimonial audio player, service-area pages for major Texas metro
+        markets, and Google Business Profile alignment. The build includes a call-first contact path with missed-call
+        recovery and a documented ownership handoff.{" "}
+        <strong>Website goes live with full client control of hosting, domain, and analytics.</strong>
+      </>
+    ),
+    built: [
+      "Commercial Showcase",
+      "Audio Testimonials",
+      "Service-Area Pages",
+      "Local SEO",
+      "Call-First Contact",
+      "Missed-Call Recovery",
+      "Full Handoff"
+    ],
+    liveUrl: "https://mgsusa.llc"
   }
 ];

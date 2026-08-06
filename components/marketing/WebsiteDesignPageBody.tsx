@@ -6,13 +6,13 @@ export function WebsiteDesignPageBody() {
     <>
       <Reveal>
       <div className="m-page-hero">
-        <div className="m-grid-bg" aria-hidden />
+        <div className="m-page-hero-grid" aria-hidden />
         <div className="m-page-hero-inner">
           <div className="m-section-label">Website Design</div>
           <h1 className="m-page-h1">
             Not a template.
             <br />
-            <span className="m-text-green">Not rented land.</span>
+            <span className="m-text-steel">Not rented land.</span>
             <br />A system you own.
           </h1>
           <p className="m-hero-sub">
@@ -36,7 +36,7 @@ export function WebsiteDesignPageBody() {
         <div className="m-container-narrow">
           <div className="m-section-label">Design Principles</div>
           <h2 className="m-h2-marketing">
-            Every decision is <span className="m-text-green">intentional.</span>
+            Every decision is <span className="m-text-steel">intentional.</span>
           </h2>
           <p className="m-wd-lead">
             No decorative choices. No &quot;we thought it looked good.&quot; Every element in a COAI build exists because
@@ -91,7 +91,7 @@ export function WebsiteDesignPageBody() {
         <div className="m-container-narrow">
           <div className="m-section-label">The Ownership Question</div>
           <h2 className="m-h2-marketing">
-            Owned outright vs. <span className="m-text-green">rented.</span>
+            Owned outright vs. <span className="m-text-steel">rented.</span>
           </h2>
           <p className="m-wd-lead">
             This is the most important decision you&apos;ll make about your digital presence. Everything else is
@@ -123,7 +123,7 @@ export function WebsiteDesignPageBody() {
               <ul className="m-compare-list-wd">
                 {[
                   "Platform owns your site — you rent it",
-                  "Can't move it if you leave",
+                  "Can&apos;t move it if you leave",
                   "Data lives on their servers",
                   "Monthly fee forever — price can increase",
                   "Account can be suspended without notice",
@@ -144,11 +144,11 @@ export function WebsiteDesignPageBody() {
       </Reveal>
 
       <Reveal>
-      <section className="m-marketing-section" style={{ background: "var(--m-surface)", borderTop: "1px solid var(--m-border)" }}>
+      <section className="m-marketing-section">
         <div className="m-container-narrow">
           <div className="m-section-label">Emergency & Repair</div>
           <h2 className="m-h2-marketing">
-            Website down or <span className="m-text-green">losing leads?</span>
+            Website down or <span className="m-text-steel">losing leads?</span>
           </h2>
           <p className="m-wd-lead">
             We handle urgent website repairs for Bakersfield businesses — hacked sites, broken contact forms, SSL
@@ -156,14 +156,14 @@ export function WebsiteDesignPageBody() {
             like Wix or WordPress that&apos;s bleeding your budget, we migrate you to code you own so it
             never happens again.
           </p>
-          <div className="m-principles-grid" style={{ marginTop: "1.5rem" }}>
+          <div className="m-principles-grid">
             {[
               ["⚡", "Emergency Repairs", "Broken site? We diagnose and deploy fixes fast — typically 24-48 hours for critical issues."],
               ["🔄", "WordPress Migration", "Ditch the plugin bloat. We migrate WP sites to code you own — same content, and we show you the Lighthouse scores before and after."],
               ["📉", "Speed Recovery", "Site slowed to a crawl? We find the bottleneck (hosting, bloat, bad code) and fix it without rebuilding."]
             ].map(([icon, title, text]) => (
               <div key={title} className="m-principle-card">
-                <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>{icon}</div>
+                <div className="m-principle-icon">{icon}</div>
                 <h3 className="m-principle-title">{title}</h3>
                 <p className="m-principle-text">{text}</p>
               </div>
@@ -178,7 +178,7 @@ export function WebsiteDesignPageBody() {
         <div className="m-container-narrow">
           <div className="m-section-label">WordPress Migration</div>
           <h2 className="m-h2-marketing">
-            Stop paying the <span className="m-text-green">WordPress tax.</span>
+            Stop paying the <span className="m-text-steel">WordPress tax.</span>
           </h2>
           <p className="m-wd-lead">
             WordPress runs a large share of the web, and for plenty of businesses it is the right tool. For a
@@ -224,11 +224,11 @@ export function WebsiteDesignPageBody() {
       </Reveal>
 
       <Reveal>
-      <section className="m-marketing-section" style={{ background: "var(--m-surface)", borderTop: "1px solid var(--m-border)" }}>
+      <section className="m-marketing-section">
         <div className="m-container-narrow">
           <div className="m-section-label">Speed Matters</div>
           <h2 className="m-h2-marketing">
-            Every second of load time <span className="m-text-green">costs you customers.</span>
+            Every second of load time <span className="m-text-steel">costs you customers.</span>
           </h2>
           <p className="m-wd-lead">
             Google data shows 53% of mobile users abandon a site that takes longer than 3 seconds to load. For
@@ -244,7 +244,7 @@ export function WebsiteDesignPageBody() {
               ["Edge", "Deployed globally on CDN"]
             ].map(([stat, label]) => (
               <div key={stat} className="m-stack-card">
-                <div style={{ fontSize: "1.5rem", fontWeight: 700, color: "var(--m-green)" }}>{stat}</div>
+                <div className="m-stack-name m-text-steel">{stat}</div>
                 <div className="m-stack-desc">{label}</div>
               </div>
             ))}
@@ -258,7 +258,7 @@ export function WebsiteDesignPageBody() {
         <div className="m-container-narrow">
           <div className="m-section-label">Tech Stack</div>
           <h2 className="m-h2-marketing">
-            The tools behind <span className="m-text-green">a system you own.</span>
+            The tools behind <span className="m-text-steel">a system you own.</span>
           </h2>
           <div className="m-stack-grid">
             {[
@@ -287,7 +287,7 @@ export function WebsiteDesignPageBody() {
         <h2 className="m-bottom-cta-h2">
           Your site. Your code.
           <br />
-          <span className="m-text-green">Your asset.</span>
+          <span className="m-text-steel">Your asset.</span>
         </h2>
         <p>
           Run the diagnostic first — 30 minutes, free, no pitch. See exactly what your current presence is costing you

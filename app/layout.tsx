@@ -11,7 +11,6 @@ import { organizationJsonLd, webSiteJsonLd } from "@/lib/schema";
 import { SITE_DESCRIPTION, SITE_URL } from "@/lib/site";
 import "./tokens.css";
 import "./globals.css";
-import "./marketing-inner.css";
 import "./revamp.css";
 
 /** Headline face — condensed industrial sans. Sentence case, never uppercase. */

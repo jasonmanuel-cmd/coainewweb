@@ -94,10 +94,10 @@ export default async function ContactPage({
 
           <div className="m-info-block">
             <div className="m-info-block-label">Business Hours</div>
-            <p className="m-info-line" style={{ marginTop: 0 }}>
+            <p className="m-info-line m-info-line--spaced">
               <span className="m-info-text">{BUSINESS_HOURS_LABEL}</span>
             </p>
-            <div style={{ marginTop: "1rem", fontFamily: "var(--font-mono), monospace", fontSize: 10, color: "var(--m-green)" }}>
+            <div className="m-hours-note">
               Outside these hours an automated agent takes a message and Jason follows up.
             </div>
           </div>

@@ -1,6 +1,4 @@
 import Link from "next/link";
-import { CONTACT } from "@/lib/site";
-import { ShieldCheck } from "lucide-react";
 import { Reveal } from "@/components/revamp/Reveal";
 
 export function ServicesMarketingContent() {
@@ -12,7 +10,7 @@ export function ServicesMarketingContent() {
         <div className="m-page-hero-inner">
           <div className="m-section-label">What We Build</div>
           <h1>
-            Systems, not <span className="m-text-green">subscriptions.</span>
+            Systems, not <span className="m-text-steel">subscriptions.</span>
           </h1>
           <p className="m-hero-sub">
             Every service COAI delivers results in infrastructure you own — not a monthly dependency on someone
@@ -28,7 +26,7 @@ export function ServicesMarketingContent() {
           <div className="m-service-num">01</div>
           <div className="m-section-label-left">Core Service</div>
           <div className="m-service-title">
-            Structural Digital <span className="m-text-green">Audit</span>
+            Structural Digital <span className="m-text-steel">Audit</span>
           </div>
           <p className="m-service-desc">
             Most trades businesses leak revenue online and don&apos;t know why — slow sites, missing schema, broken lead
@@ -57,13 +55,7 @@ export function ServicesMarketingContent() {
               <strong>Prioritized fix list</strong> — ranked by revenue impact, not technical severity
             </li>
             </ul>
-            <div style={{ marginTop: "1.5rem", padding: "0.75rem 1rem", borderLeft: "3px solid var(--m-green)", background: "var(--m-green-dim)", display: "flex", gap: "8px", alignItems: "flex-start" }}>
-              <ShieldCheck size={16} style={{ color: "var(--m-green)", flexShrink: 0, marginTop: 1 }} />
-              <span style={{ fontSize: "13px", color: "var(--m-muted)", lineHeight: 1.5 }}>
-                <strong style={{ color: "var(--m-white)" }}>No-risk diagnostic:</strong> if we don&apos;t find at least three specific, fixable problems in your call path, the audit is free.
-              </span>
-            </div>
-        </div>
+          </div>
         <div className="m-service-panel">
           <div className="m-service-panel-label">What the audit checks</div>
           <div className="m-service-stat">
@@ -93,7 +85,7 @@ export function ServicesMarketingContent() {
           <div className="m-service-num">02</div>
           <div className="m-section-label-left">Growth Layer</div>
           <div className="m-service-title">
-            AI <span className="m-text-green">Automation</span> Stack
+            AI <span className="m-text-steel">Automation</span> Stack
           </div>
           <p className="m-service-desc">
             Your phone is your main lead source, and every missed call is a job going to whoever answers next.
@@ -123,24 +115,9 @@ export function ServicesMarketingContent() {
               <strong>Workflow reporting</strong> — see every recovered lead and booked job
             </li>
           </ul>
-          <p style={{ fontSize: "12px", color: "var(--m-muted)", marginTop: "1rem" }}>
+          <p className="m-service-panel-note">
             *Note: Cipher is our production-ready live receptionist. JAX is our separate internal/pre-deployment sentinel system.
           </p>
-            <div style={{ marginTop: "1.5rem", padding: "0.75rem 1rem", borderLeft: "3px solid var(--m-green)", background: "var(--m-green-dim)", display: "flex", gap: "8px", alignItems: "flex-start" }}>
-              <ShieldCheck size={16} style={{ color: "var(--m-green)", flexShrink: 0, marginTop: 1 }} />
-              <span style={{ fontSize: "13px", color: "var(--m-muted)", lineHeight: 1.5 }}>
-                <strong style={{ color: "var(--m-white)" }}>30-day baseline scorecard:</strong> we measure contact speed, uncontacted leads, and booked estimates for the first 30 days, then hand you the numbers — whatever they say.
-              </span>
-            </div>
-            <div style={{ marginTop: "1.25rem", padding: "1.25rem", borderLeft: "3px solid var(--m-green)", background: "var(--m-green-dim)" }}>
-              <div style={{ fontSize: "14px", fontStyle: "italic", marginBottom: "0.5rem", color: "var(--m-white)" }}>
-                &ldquo;Jason helped me build a website for my business... also created a phone AI system for me to help direct callers...&rdquo;
-              </div>
-              <div style={{ fontSize: "12px", color: "var(--m-muted)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <span>— Christopher Moore</span>
-                <span style={{ color: "var(--m-green)" }}>★★★★★ Google Review</span>
-              </div>
-            </div>
         </div>
         <div className="m-service-panel">
           <div className="m-service-panel-label">Live Deployment</div>
@@ -167,7 +144,7 @@ export function ServicesMarketingContent() {
           <div className="m-service-num">03</div>
           <div className="m-section-label-left">Foundation</div>
           <div className="m-service-title">
-            Call-First Website <span className="m-text-green">Builds</span>
+            Call-First Website <span className="m-text-steel">Builds</span>
           </div>
           <p className="m-service-desc">
             Your website should catch the search and hand the caller a button, not sit there as a brochure
@@ -196,42 +173,19 @@ export function ServicesMarketingContent() {
               <strong>Full handoff</strong> — you own the code, the domain, the data, and every lead it generates
             </li>
           </ul>
-            <div style={{ marginTop: "1.5rem", padding: "0.75rem 1rem", borderLeft: "3px solid var(--m-green)", background: "var(--m-green-dim)", display: "flex", gap: "8px", alignItems: "flex-start" }}>
-              <ShieldCheck size={16} style={{ color: "var(--m-green)", flexShrink: 0, marginTop: 1 }} />
-              <span style={{ fontSize: "13px", color: "var(--m-muted)", lineHeight: 1.5 }}>
-                <strong style={{ color: "var(--m-white)" }}>The proposal is the contract:</strong> scope is agreed in writing before work starts. If we miss something that was in the scope document, we fix it at no extra cost.
-              </span>
-            </div>
-            <div style={{ marginTop: "1.25rem", padding: "1.25rem", borderLeft: "3px solid var(--m-green)", background: "var(--m-green-dim)" }}>
-              <div style={{ fontSize: "14px", fontStyle: "italic", marginBottom: "0.5rem", color: "var(--m-white)" }}>
-                &ldquo;Very sleek design... affordability relative to competitors was amazing. Highly recommend!&rdquo;
-              </div>
-              <div style={{ fontSize: "12px", color: "var(--m-muted)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <span>— Edwin Ward</span>
-                <span style={{ color: "var(--m-green)" }}>★★★★★ Google Review</span>
-              </div>
-            </div>
         </div>
         <div className="m-service-panel">
           <div className="m-service-panel-label">Build Philosophy</div>
-          <div
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: 11,
-              color: "var(--m-muted)",
-              lineHeight: 2,
-              marginBottom: "1rem"
-            }}
-          >
-            <div style={{ color: "var(--m-green)" }}>OWNED OUTRIGHT</div>
-            <div>→ Custom code you own</div>
-            <div>→ No platform fees</div>
-            <div>→ No account shutdowns</div>
-            <div>→ Data is yours forever</div>
-            <div style={{ color: "var(--m-red)", marginTop: "0.8rem" }}>RENTED LAND (avoid)</div>
-            <div>→ Wix / Squarespace / GoDaddy</div>
-            <div>→ Platform controls your data</div>
-            <div>→ Price hikes whenever they want</div>
+          <div className="m-philosophy-list">
+            <div className="m-philosophy-item m-philosophy-owned">OWNED OUTRIGHT</div>
+            <div className="m-philosophy-row">→ Custom code you own</div>
+            <div className="m-philosophy-row">→ No platform fees</div>
+            <div className="m-philosophy-row">→ No account shutdowns</div>
+            <div className="m-philosophy-row">→ Data is yours forever</div>
+            <div className="m-philosophy-item m-philosophy-rented">RENTED LAND (avoid)</div>
+            <div className="m-philosophy-row">→ Wix / Squarespace / GoDaddy</div>
+            <div className="m-philosophy-row">→ Platform controls your data</div>
+            <div className="m-philosophy-row">→ Price hikes whenever they want</div>
           </div>
         </div>
       </div>
@@ -243,7 +197,7 @@ export function ServicesMarketingContent() {
           <div className="m-service-num">04</div>
           <div className="m-section-label-left">Ongoing Care</div>
           <div className="m-service-title">
-            Website Maintenance <span className="m-text-green">&amp; Support</span>
+            Website Maintenance <span className="m-text-steel">&amp; Support</span>
           </div>
           <p className="m-service-desc">
             Your site is live — now what? COAI offers ongoing maintenance and support for clients who want someone
@@ -295,7 +249,7 @@ export function ServicesMarketingContent() {
           <div className="m-service-num">05</div>
           <div className="m-section-label-left">Migration Service</div>
           <div className="m-service-title">
-            WordPress &amp; Platform <span className="m-text-green">Migration</span>
+            WordPress &amp; Platform <span className="m-text-steel">Migration</span>
           </div>
           <p className="m-service-desc">
             On Wix, Squarespace, GoDaddy, or WordPress and want out? We migrate the whole presence to code you
@@ -344,13 +298,13 @@ export function ServicesMarketingContent() {
       </Reveal>
 
       <Reveal>
-      <section className="m-section-pad" style={{ background: "var(--m-surface)", borderTop: "1px solid var(--m-border)" }}>
+      <section className="m-section-pad">
         <div className="m-container">
           <div className="m-section-label">Who We Serve</div>
           <h2>
-            Built for <span className="m-text-green">operators</span>, not idea people.
+            Built for <span className="m-text-steel">operators</span>, not idea people.
           </h2>
-          <p style={{ color: "var(--m-muted)", maxWidth: 540 }}>
+          <p className="m-hero-sub">
             If you run a real business with real customers and real revenue leaking from a broken or missing digital
             presence, COAI is built for you.
           </p>
@@ -381,7 +335,7 @@ export function ServicesMarketingContent() {
         <div className="m-container">
           <div className="m-section-label">How It Works</div>
           <h2>
-            From first call to <span className="m-text-green">live system</span> — no mystery.
+            From first call to <span className="m-text-steel">live system</span> — no mystery.
           </h2>
           <div className="m-process-steps">
             {[
@@ -426,18 +380,18 @@ export function ServicesMarketingContent() {
         <h2>
           Run the free diagnostic.
           <br />
-          <span className="m-text-green">See your actual numbers.</span>
+          <span className="m-text-steel">See your actual numbers.</span>
         </h2>
         <p>
           30 minutes. Real data. Clear roadmap. Whether you hire us or not, you leave with actionable intelligence about
           your digital presence.
         </p>
         <div className="m-cta-testi">
-          <span style={{ color: "var(--m-green)", fontSize: "14px", letterSpacing: "1px" }}>★★★★★</span>
-          <p style={{ fontStyle: "italic", color: "var(--m-muted)", fontSize: "13px", margin: "0.5rem 0" }}>
+          <span className="m-cta-rating">★★★★★</span>
+          <p className="m-cta-quote">
             &ldquo;No more $200/mo for a site I don&apos;t own. Finally someone who speaks straight.&rdquo;
           </p>
-          <span style={{ fontSize: "12px", color: "var(--m-white)" }}>— Mike R., Plumber, Bakersfield</span>
+          <span className="m-cta-author">— Mike R., Plumber, Bakersfield</span>
         </div>
         <div className="m-cta-row">
           <Link href="/intake" className="m-btn-primary">
@@ -447,10 +401,10 @@ export function ServicesMarketingContent() {
             See Pricing
           </Link>
         </div>
-        <div className="m-cta-badges" style={{ marginTop: "1.5rem", display: "flex", justifyContent: "center", gap: "1rem", flexWrap: "wrap" }}>
-          <span style={{ fontSize: "12px", color: "var(--m-muted)", border: "1px solid var(--m-border)", padding: "0.3rem 0.8rem", borderRadius: "4px" }}>Local Bakersfield</span>
-          <span style={{ fontSize: "12px", color: "var(--m-muted)", border: "1px solid var(--m-border)", padding: "0.3rem 0.8rem", borderRadius: "4px" }}>You Own Everything</span>
-          <span style={{ fontSize: "12px", color: "var(--m-muted)", border: "1px solid var(--m-border)", padding: "0.3rem 0.8rem", borderRadius: "4px" }}>No Contracts</span>
+        <div className="m-cta-badges">
+          <span className="m-cta-badge">Local Bakersfield</span>
+          <span className="m-cta-badge">You Own Everything</span>
+          <span className="m-cta-badge">No Contracts</span>
         </div>
       </div>
       </Reveal>

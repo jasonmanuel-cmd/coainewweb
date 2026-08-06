@@ -159,10 +159,8 @@ export function PricingPageBody() {
       <section className="home-section home-section--inverse">
         <div className="home-container home-container--narrow home-cta">
           <span className="home-eyebrow">Not sure yet</span>
-          <h2 className="home-h2" style={{ maxWidth: "none" }}>
-            Start with the leak score.
-          </h2>
-          <p className="home-lede" style={{ margin: "0 auto var(--space-5)" }}>
+          <h2 className="home-h2">Start with the leak score.</h2>
+          <p className="home-lede home-lede--spaced">
             Three observed leaks on your actual site and Google profile, the assumptions behind each, and the
             one control we would install first. You keep it either way.
           </p>

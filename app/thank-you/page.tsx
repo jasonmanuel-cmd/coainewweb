@@ -14,22 +14,22 @@ export const metadata: Metadata = {
 
 export default function ThankYouPage() {
   return (
-    <div style={{ padding: "120px 0", minHeight: "80vh", display: "flex", alignItems: "center" }}>
-      <div className="container" style={{ maxWidth: 600, textAlign: "center" }}>
-        <div style={{ fontSize: "4rem", marginBottom: "20px", color: "var(--accent)" }}>✓</div>
+    <div className="m-thankyou-page">
+      <div className="m-thankyou-inner">
+        <div className="m-thankyou-icon">✓</div>
         <h1 className="section-title">Thank You for Your Purchase</h1>
-        <p className="section-sub" style={{ margin: "0 auto 32px" }}>
+        <p className="section-sub">
           Your order has been received. Jason will follow up within <strong>2 hours</strong> during business
           hours to get started on your project. If you need anything immediately, call{" "}
-          <a href={`tel:${CONTACT.phoneE164}`} style={{ color: "var(--accent)", fontWeight: 700 }}>
+          <a href={`tel:${CONTACT.phoneE164}`} className="m-text-link">
             {CONTACT.phoneDisplay}
           </a>.
         </p>
-        <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-          <Link href="/" className="btn-primary" style={{ textDecoration: "none" }}>
+        <div className="m-thankyou-actions">
+          <Link href="/" className="btn-primary">
             Back to Home
           </Link>
-          <a href={`tel:${CONTACT.phoneE164}`} className="btn-secondary" style={{ textDecoration: "none" }}>
+          <a href={`tel:${CONTACT.phoneE164}`} className="btn-secondary">
             Call {CONTACT.phoneDisplay}
           </a>
         </div>

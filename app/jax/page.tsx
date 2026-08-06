@@ -130,7 +130,7 @@ export default function JaxPage() {
           <div className="m-jax-waitlist-head">Register for Early Access</div>
           <JaxWaitlistForm />
 
-          <div className="m-cta-row" style={{ justifyContent: "center", marginTop: "1.25rem" }}>
+          <div className="m-cta-row m-cta-row--center m-cta-row--mt">
             <Link href="/intake" className="m-btn-primary">
               Run My Diagnostic →
             </Link>

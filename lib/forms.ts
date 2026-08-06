@@ -1,7 +1,7 @@
-/** Diagnostic intake form → jasonm@coaibakersfield.com */
+/** Diagnostic intake form → chaoticallyorganizedai@gmail.com */
 export const FORMSPREE_INTAKE = "https://formspree.io/f/xwvzgggl";
 
-/** Contact page + JAX waitlist → jasonm@coaibakersfield.com */
+/** Contact page + JAX waitlist → chaoticallyorganizedai@gmail.com */
 export const FORMSPREE_CONTACT = "https://formspree.io/f/mqeozzkw";
 
 /** Send a lead notification email via Formspree (fire-and-forget, never throws) */

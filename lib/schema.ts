@@ -26,7 +26,8 @@ export const CLIENT_REVIEWS = [
   { author: "Edwin Ward", body: "Jason did an amazing job building my website from live results to sleek design he did it all. Also more affordable than 85% of the other companies out there." },
   { author: "Matthew Hoover", body: "Jason just completed a website for our Record Label. He did professional, technical, amazing job on our website." },
   { author: "Christopher Moore", body: "Jason at Chaotically Organized AI helped our business build a great website that helped give us better online presence." },
-  { author: "Los boricuas", body: "Great professional work and talented. I started making money with the website he built me." }
+  { author: "Los boricuas", body: "Great professional work and talented. I started making money with the website he built me." },
+  { author: "Master Glass Solutions | mgsusa.llc", body: "Jason at COAI built a call-first website that catches our jobs even when we can't answer every call. The site is fast, finds us on Google, and every missed call gets a text-back." }
 ] as const;
 
 export function organizationJsonLd() {

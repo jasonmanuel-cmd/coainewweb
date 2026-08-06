@@ -42,7 +42,7 @@ export default async function IntakePage({
       <JsonLd data={webPage} />
       <JsonLd data={crumbs} />
       <IntakeWizard packageInterest={packageInterest} />
-      <div className="m-cta-row" style={{ justifyContent: "center", marginTop: "1.5rem" }}>
+      <div className="m-cta-row m-cta-row--centered">
         <Link href="/services" className="m-btn-ghost">
           Services
         </Link>

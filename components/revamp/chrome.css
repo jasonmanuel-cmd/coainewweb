@@ -116,94 +116,96 @@
   }
 }
 
-/* ---------- Footer ---------- */
+/* ---------- Footer — horizontal compact ---------- */
 
 .site-footer {
   background: var(--surface-inverse);
   color: var(--text-on-inverse-muted);
   border-top: var(--rule-strong) solid var(--charcoal-80);
+  font-size: 12px;
 }
 
 .site-footer__inner {
   max-width: 1080px;
   margin: 0 auto;
-  padding: var(--space-8) var(--space-6);
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
-  gap: var(--space-7);
+  padding: var(--space-5) var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.site-footer__brand-col {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+
+.site-footer__logo {
+  width: 90px;
+  height: auto;
 }
 
 .site-footer__tagline {
-  font-size: var(--text-small);
-  margin: var(--space-4) 0;
-  max-width: 42ch;
-}
-
-.site-footer__address {
-  font-style: normal;
-  font-size: var(--text-small);
-  line-height: 1.9;
-}
-
-.site-footer__address a {
-  color: var(--inspection-yellow);
-  text-decoration: none;
-  font-family: var(--font-mono);
-}
-
-.site-footer__address a:hover {
-  color: var(--jobsite-white);
-}
-
-/* On the charcoal footer this must use the inverse muted tone — --charcoal-60
-   renders at ~2:1 against the panel and is unreadable. */
-.site-footer__note {
-  font-size: var(--text-label);
-  color: var(--text-on-inverse-muted);
-  margin-top: var(--space-3);
-  max-width: 40ch;
-}
-
-.site-footer__col-title {
-  font-family: var(--font-body);
   font-size: 11px;
-  font-weight: 700;
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
-  color: var(--jobsite-white);
-  margin: 0 0 var(--space-4);
+  color: var(--text-on-inverse-muted);
+  white-space: nowrap;
 }
 
-.site-footer__col ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.site-footer__contact-col {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: 3px;
+  flex-shrink: 0;
 }
 
-.site-footer__col a {
-  color: var(--text-on-inverse-muted);
-  font-size: var(--text-small);
-  text-decoration: none;
-}
-
-.site-footer__col a:hover {
-  color: var(--jobsite-white);
-  text-decoration: underline;
-}
-
-.site-footer__bottom {
-  border-top: 1px solid var(--border-inverse);
-  padding: var(--space-5) var(--space-6);
-  max-width: 1080px;
-  margin: 0 auto;
+.site-footer__contact-row {
   display: flex;
-  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+  font-size: 12px;
+}
+
+.site-footer__contact-label {
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-on-inverse-muted);
+  min-width: 60px;
+}
+
+.site-footer__contact-val {
+  color: var(--jobsite-white);
+}
+
+.site-footer__contact-col a {
+  color: var(--inspection-yellow);
+  text-decoration: none;
+  font-family: var(--font-mono), monospace;
+}
+
+.site-footer__contact-col a:hover {
+  color: var(--jobsite-white);
+}
+
+.site-footer__legal-col {
+  display: flex;
+  align-items: center;
   gap: var(--space-4);
+  flex-shrink: 0;
   flex-wrap: wrap;
-  font-size: var(--text-small);
+  justify-content: flex-end;
+}
+
+.site-footer__note {
+  font-size: 11px;
+  color: var(--text-on-inverse-muted);
+  font-family: var(--font-mono), monospace;
+  letter-spacing: 0.06em;
 }
 
 .site-footer__legal {
@@ -214,25 +216,28 @@
 
 .site-footer__legal a {
   color: var(--text-on-inverse-muted);
-  font-size: var(--text-small);
+  font-size: 11px;
+  text-decoration: none;
 }
 
-@media (max-width: 900px) {
-  .site-footer__inner {
-    grid-template-columns: 1fr 1fr;
-  }
+.site-footer__legal a:hover {
+  color: var(--jobsite-white);
+  text-decoration: underline;
 }
 
 @media (max-width: 640px) {
   .site-footer__inner {
-    grid-template-columns: 1fr;
-    padding: var(--space-7) var(--space-4);
-    gap: var(--space-6);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+    padding: var(--space-6) var(--space-4);
   }
 
-  .site-footer__bottom {
-    padding: var(--space-5) var(--space-4);
-    /* Clear the sticky mobile call bar. */
-    padding-bottom: 80px;
+  .site-footer__legal-col {
+    justify-content: flex-start;
+  }
+
+  .site-footer__brand-col {
+    justify-content: flex-start;
   }
 }

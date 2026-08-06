@@ -56,7 +56,7 @@ export default function PortfolioPage() {
 
       <div className="m-stats-row">
         <div className="m-stat-pill">
-          <div className="m-num">6</div>
+          <div className="m-num">7</div>
           <div className="m-lbl">Live Client Sites</div>
         </div>
         <div className="m-stat-pill">

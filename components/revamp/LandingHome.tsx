@@ -59,7 +59,18 @@ export function LandingHomeRevamp() {
       <main>
         {/* Hero */}
         <section className="home-hero">
+          <div className="home-hero__circuit" aria-hidden="true" />
           <div className="home-container">
+            <div className="home-hero__logo-wrap">
+              <Image
+                src="/newlogo.png"
+                alt="COAI logo — Chaotically Organized AI"
+                className="home-hero__logo"
+                fill
+                sizes="(max-width: 768px) 60vw, 200px"
+                priority
+              />
+            </div>
             <div className="home-hero__eyebrow">Bakersfield contractor revenue infrastructure</div>
             <h1 className="home-hero__title">When you miss the call, you miss the job. Fix the leak.</h1>
             <p className="home-hero__sub">
@@ -176,7 +187,7 @@ export function LandingHomeRevamp() {
                 </Card>
               </div>
 
-              <div style={{ marginTop: "var(--space-5)" }}>
+              <div className="m-xray-wrap">
                 <WebsiteXray />
               </div>
             </div>
@@ -322,15 +333,46 @@ export function LandingHomeRevamp() {
           </section>
         </Reveal>
 
+        {/* Master Glass testimonial with audio */}
+        <Reveal>
+          <section className="home-section">
+            <div className="home-container">
+              <span className="home-eyebrow">Recent Project</span>
+              <h2 className="home-h2">
+                <span className="m-text-steel">Master Glass Solutions</span> — Texas commercial glazing
+              </h2>
+              <p className="home-lede">
+                <a href="https://mgsusa.llc" target="_blank" rel="noopener noreferrer" className="m-text-steel">
+                  mgsusa.llc ↗
+                </a> — full call-first website build with embedded audio testimonial, service-area pages, and missed-call recovery.
+              </p>
+              <div className="home-testimonial-audio">
+                <div className="m-testimonial-player">
+                  <audio
+                    controls
+                    src="/master-glass-testimonial.wav"
+                    preload="none"
+                  >
+                    <a href="/master-glass-testimonial.wav">Download audio testimonial (MP3)</a>
+                  </audio>
+                  <div className="m-testimonial-label">
+                    Master Glass Solutions — voice testimonial
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </Reveal>
+
         {/* Final CTA */}
         <Reveal>
           <section className="home-section home-section--inverse">
             <div className="home-container home-container--narrow home-cta">
               <span className="home-eyebrow">Start here</span>
-              <h2 className="home-h2" style={{ maxWidth: "none" }}>
+              <h2 className="home-h2">
                 Get your job-call leak score.
               </h2>
-              <p className="home-lede" style={{ margin: "0 auto var(--space-5)" }}>
+              <p className="home-lede home-lede--spaced">
                 One page. Three observed leaks on your actual site and Google profile, the assumptions behind
                 each one, screenshots, and the one control we would install first. Back in 24 to 48 hours. You
                 keep the scorecard either way.

@@ -36,9 +36,8 @@ export function PortfolioFilterGrid() {
         {PORTFOLIO_CASES.map((c) => (
           <article
             key={c.id}
-            className="m-case-card"
             data-category={c.category}
-            style={{ display: cat === "all" || cat === c.category ? "flex" : "none" }}
+            className={`m-case-card ${cat === "all" || cat === c.category ? "m-case-card--visible" : "m-case-card--hidden"}`}
           >
             <div className={`m-card-accent ${c.accentClass}`} />
             <div className="m-card-header">

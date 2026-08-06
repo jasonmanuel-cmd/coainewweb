@@ -47,14 +47,14 @@ export default function IntakeConfirmationPage() {
             Jason follows up within <strong>2 hours</strong> during business windows. If this is urgent, call now and
             reference your diagnostic submission.
           </p>
-          <div className="m-cta-row" style={{ justifyContent: "center" }}>
+          <div className="m-cta-row m-cta-row--center">
             <a href={`tel:${CONTACT.phoneE164}`} className="m-btn-primary">
               Call {CONTACT.phoneDisplay}
             </a>
             <Link href="/pricing" className="m-btn-ghost">
               View Packages
             </Link>
-            <a href="https://g.page/r/CXxbvj7-CCGrEBM/review" target="_blank" rel="noopener noreferrer" className="m-btn-ghost" style={{ borderColor: "var(--m-green)", color: "var(--m-green)" }}>
+            <a href="https://g.page/r/CXxbvj7-CCGrEBM/review" target="_blank" rel="noopener noreferrer" className="m-btn-ghost m-btn--green">
               Leave a Google review
             </a>
           </div>
