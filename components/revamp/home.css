@@ -525,3 +525,81 @@
     padding: var(--space-4);
   }
 }
+
+/* Chat with Cipher fallback */
+.cipher-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--steel-blue, #0ea5e9);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  transition: all 0.2s ease;
+}
+
+.cipher-fab:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 24px rgba(14, 165, 233, 0.5);
+}
+
+.cipher-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.cipher-modal {
+  background: var(--surface-page, #fff);
+  border-radius: 12px;
+  padding: 28px;
+  max-width: 420px;
+  width: 90%;
+  color: var(--text-on-page, #111);
+}
+
+.cipher-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.cipher-modal-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.cipher-close {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--text-on-page, #111);
+  opacity: 0.5;
+}
+
+.cipher-close:hover {
+  opacity: 1;
+}
+
+.cipher-modal-body p {
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.cipher-modal-body a {
+  color: var(--steel-blue, #0ea5e9);
+}
