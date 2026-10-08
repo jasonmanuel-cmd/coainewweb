@@ -17,11 +17,11 @@ const nextConfig: NextConfig = {
     // which is what blew up Active CPU. A static policy lets pages stay CDN-cached.
     const csp = [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://*.clarity.ms",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://*.clarity.ms https://scripts.simpleanalyticscdn.com",
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https:",
       "font-src 'self' data:",
-      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://www.googletagmanager.com https://vitals.vercel-insights.com https://*.vercel-insights.com https://challenges.cloudflare.com https://www.clarity.ms https://*.clarity.ms",
+      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://www.googletagmanager.com https://vitals.vercel-insights.com https://*.vercel-insights.com https://challenges.cloudflare.com https://www.clarity.ms https://*.clarity.ms https://queue.simpleanalyticscdn.com",
       "frame-src https://challenges.cloudflare.com",
       "form-action 'self' https://formspree.io",
       "base-uri 'self'",

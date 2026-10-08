@@ -107,6 +107,20 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <CipherChat />
         <Analytics />
         <SpeedInsights />
+        {/* Simple Analytics — privacy-first, honors Do Not Track */}
+        <Script
+          src="https://scripts.simpleanalyticscdn.com/latest.js"
+          strategy="afterInteractive"
+          data-collect-dnt="true"
+        />
+        <noscript>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://queue.simpleanalyticscdn.com/noscript.gif?collect-dnt=true"
+            alt=""
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </noscript>
         <Script id="ms-clarity" strategy="afterInteractive">
           {`(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","x2zh9pih5y");`}
         </Script>
