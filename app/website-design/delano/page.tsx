@@ -74,13 +74,13 @@ export default function DelanoWebsiteDesignPage() {
           </h2>
           <div className="m-text-block">
             <p>
-              If your Delano business is relying on a Facebook page or aåå¹´å‰ website to bring in calls, you&apos;re
-              leaving money on the table. Google prioritizes fast, schema-rich sites for local searches - and most
-              Delano trades sites simply don&apos;t have the technical foundation to rank.
+              If your Delano business relies only on a social profile or an outdated website to bring in calls, customers
+              may struggle to verify your services, location, and next step. A clear mobile path and consistent business
+              facts give both people and search systems better information to work with.
             </p>
             <p>
-              We build custom-coded websites for Delano operators that load in under 3 seconds on mobile, include
-              LocalBusiness schema that Google trusts, and route every visitor toward a call or contact form.
+              We build custom-coded websites for Delano operators with a measured mobile performance budget, eligible
+              LocalBusiness schema, and a clear route toward a call or contact form.
             </p>
           </div>
           <div className="m-cta-row" style={{ marginTop: "2rem" }}>
@@ -98,16 +98,16 @@ export default function DelanoWebsiteDesignPage() {
         <div className="m-container-wide">
           <div className="m-section-label">How We Help</div>
           <h2 className="m-h2-marketing">
-            Delano businesses we work with see <span className="m-text-green">more calls in the first 30 days.</span>
+            A clearer local site creates <span className="m-text-green">a better path from search to contact.</span>
           </h2>
           <div className="m-feature-grid">
             {[
-              { icon: "📱", title: "Mobile Speed", desc: "Most Delano searches happen on phone. We optimize for sub-3s 4G loads." },
-              { icon: "📍", title: "Local Schema", desc: "LocalBusiness schema tuned for Delano + Kern County search visibility." },
-              { icon: "📞", title: "Click-to-Call", desc: "Every page routes to a phone call or contact form. No dead ends." },
-              { icon: "🗺️", title: "Google Maps SEO", desc: "GBP alignment and service-area schema for map pack rankings." },
-              { icon: "🤖", title: "AI Search Ready", desc: "Structured content so AI assistants cite your Delano business." },
-              { icon: "🏠", title: "Total Ownership", desc: "Custom code, your domain. No Wix, no Squarespace, no monthly builder tax." }
+              { icon: "📱", title: "Mobile Performance", desc: "A defined performance budget measured on the deployed URL." },
+              { icon: "📍", title: "Local Schema", desc: "Eligible LocalBusiness and Service data for Delano and Kern County facts." },
+              { icon: "📞", title: "Click-to-Call", desc: "Every primary page provides a clear call or contact path." },
+              { icon: "🗺️", title: "Business Alignment", desc: "Google Business Profile facts reconciled with the website baseline." },
+              { icon: "🤖", title: "Machine-Readable", desc: "Structured content that helps search and answer systems interpret the business." },
+              { icon: "🏠", title: "Total Ownership", desc: "Custom code, client-controlled accounts, and a documented handoff." }
             ].map(f => (
               <div key={f.title} className="m-feature-card">
                 <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>{f.icon}</div>

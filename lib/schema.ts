@@ -1,6 +1,5 @@
 import {
   BUSINESS_HOURS,
-  CO_FOUNDER,
   CONTACT,
   FOUNDER,
   GEO,
@@ -9,6 +8,7 @@ import {
   ORG_ID,
   FOUNDER_ID,
   ORG_NAME,
+  OFFERS,
   SAME_AS,
   SITE_URL,
   AREA_SERVED,
@@ -40,7 +40,7 @@ export function organizationJsonLd() {
         name: ORG_NAME,
         legalName: LEGAL_NAME,
         url: SITE_URL,
-        logo: `${SITE_URL}/newlogo.png`,
+        logo: `${SITE_URL}/coai-mark.svg`,
         telephone: CONTACT.phoneE164,
         email: CONTACT.email,
         /**
@@ -79,7 +79,7 @@ export function organizationJsonLd() {
           email: CONTACT.email,
           availableLanguage: "English"
         },
-        priceRange: "$1,997"
+        priceRange: OFFERS.tradecall.price
       },
       {
         "@type": "Person",
@@ -89,13 +89,6 @@ export function organizationJsonLd() {
         email: FOUNDER.email,
         url: `${SITE_URL}/about`,
         description: "Founder of Chaotically Organized AI, Bakersfield CA. 15+ years in operations, trades, and events.",
-        worksFor: { "@id": ORG_ID }
-      },
-      {
-        "@type": "Person",
-        name: CO_FOUNDER.name,
-        jobTitle: CO_FOUNDER.role,
-        email: CO_FOUNDER.email,
         worksFor: { "@id": ORG_ID }
       }
     ]
@@ -132,7 +125,7 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
   };
 }
 
-export function serviceJsonLd(serviceName: string, description: string, path?: string) {
+export function serviceJsonLd(serviceName: string, description: string, path?: string, price?: string | number) {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -142,11 +135,9 @@ export function serviceJsonLd(serviceName: string, description: string, path?: s
     ...(path ? { url: `${SITE_URL}${path}` } : {}),
     provider: { "@id": ORG_ID },
     areaServed: [...AREA_SERVED],
-    offers: {
-      "@type": "Offer",
-      price: "1997",
-      priceCurrency: "USD"
-    }
+    ...(price !== undefined
+      ? { offers: { "@type": "Offer", price: String(price), priceCurrency: "USD" } }
+      : {})
   };
 }
 
@@ -174,7 +165,7 @@ export function localServiceJsonLd(slug: CitySlug) {
     ],
     offers: {
       "@type": "Offer",
-      price: "1997",
+      price: OFFERS.tradecall.priceNumeric,
       priceCurrency: "USD"
     }
   };

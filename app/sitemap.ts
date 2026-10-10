@@ -7,23 +7,29 @@ import { SITE_URL } from "@/lib/site";
  * signal. Update the entry when the page's content actually changes.
  */
 const LAST_MODIFIED: Record<string, string> = {
-  "/": "2026-08-02",
-  "/pricing": "2026-08-02",
-  "/faq": "2026-08-02",
-  "/services": "2026-08-02",
-  "/contact": "2026-08-02",
-  "/intake": "2026-08-02",
-  "/sms-terms": "2026-08-02",
-  "/ai-disclosure": "2026-08-02"
+  "/": "2026-10-10",
+  "/pricing": "2026-10-10",
+  "/faq": "2026-10-10",
+  "/services": "2026-10-10",
+  "/systems": "2026-10-10",
+  "/portfolio": "2026-10-10",
+  "/about": "2026-10-10",
+  "/contact": "2026-10-10",
+  "/intake": "2026-10-10",
+  "/privacy": "2026-10-10",
+  "/cookies": "2026-10-10",
+  "/sms-terms": "2026-10-10",
+  "/ai-disclosure": "2026-10-10"
 };
 
-const DEFAULT_MODIFIED = "2026-07-14";
+const DEFAULT_MODIFIED = "2026-10-10";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = SITE_URL;
   const tier1 = new Set([
     "/",
     "/services",
+    "/systems",
     "/website-design",
     "/website-design/kern-county",
     "/contact",
@@ -33,6 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     "/",
     "/services",
+    "/systems",
     "/website-design",
     "/website-design/kern-county",
     "/website-design/bakersfield",
@@ -45,6 +52,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
     "/intake",
     "/privacy",
+    "/cookies",
     "/terms",
     "/sms-terms",
     "/ai-disclosure"

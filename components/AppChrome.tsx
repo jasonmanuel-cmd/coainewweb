@@ -1,8 +1,14 @@
-"use client";
-
 import type { ReactNode } from "react";
+import { RevampFooter } from "@/components/revamp/RevampFooter";
+import { RevampNavbar } from "@/components/revamp/RevampNavbar";
 
-/** Marketing-only site: no left rail; inner pages use `MarketingLayout`. */
+/** Root-level shared chrome: exactly one navigation and footer on every public route. */
 export function AppChrome({ children }: { children: ReactNode }) {
-  return <>{children}</>;
+  return (
+    <>
+      <RevampNavbar />
+      {children}
+      <RevampFooter />
+    </>
+  );
 }

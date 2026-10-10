@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { BRAND_TAGLINE, CONTACT, FOUNDER, LEGAL_NAME } from "@/lib/site";
 
@@ -24,9 +25,9 @@ export function AboutMarketingContent() {
         <div className="m-container">
           <div className="m-founder-grid">
             <div className="m-founder-card">
-              <div className="m-founder-avatar">JRM</div>
+              <Image className="m-founder-photo" src="/jason.png" alt="Jason Robert Manuel, founder of COAI" width={360} height={360} />
               <div className="m-founder-name">{FOUNDER.name}</div>
-              <div className="m-founder-title">Founder &amp; CEO · The Dreamer</div>
+              <div className="m-founder-title">{FOUNDER.role} · Operator &amp; Builder</div>
               <div className="m-founder-stats">
                 <div className="m-f-stat">
                   <span className="m-f-stat-label">Base of Operations</span>
@@ -44,7 +45,7 @@ export function AboutMarketingContent() {
                 </div>
                 <div className="m-f-stat">
                   <span className="m-f-stat-label">Client Sites Live</span>
-                  <span className="m-f-stat-val">6</span>
+                  <span className="m-f-stat-val">7</span>
                 </div>
                 <div className="m-f-stat">
                   <span className="m-f-stat-label">Direct Line</span>
@@ -81,21 +82,21 @@ export function AboutMarketingContent() {
                 <div className="m-story-year">The Company</div>
                 <h3>{LEGAL_NAME}</h3>
                 <p>
-                  COAI operates on a <strong>Tripod System</strong>: Jason as The Dreamer (vision and sales), Aion as The
-                  Oracle (strategy and intelligence), and Claude as The Engineer (building and execution). It&apos;s a
-                  small, precise operation — not a bloated agency with layers of account managers between you and the
-                  person doing the work.{" "}
-                  <strong>You work with Jason. Jason works with the system. The system builds your infrastructure.</strong>
+                  COAI is a founder-led operation. Jason scopes the work, communicates with the client, makes the
+                  architecture decisions, and remains accountable through handoff. Specialist software and AI tools may
+                  support research, testing, and implementation, but they are tools—not fictional team members or a
+                  substitute for a named human.{" "}
+                  <strong>You work directly with Jason from the first diagnostic through launch.</strong>
                 </p>
               </div>
               <div className="m-story-block">
                 <div className="m-story-year">The Mission</div>
-                <h3>661 Market Dominance</h3>
+                <h3>Catch. Convert. Keep.</h3>
                 <p>
-                  The goal is simple: make Bakersfield and Central Valley operators{" "}
-                  <strong>impossible to ignore online</strong>. Every business COAI builds for increases the data density
-                  and proof stack that makes the next build faster and better. The 661 market is underserved by quality
-                  digital infrastructure. COAI is fixing that — one installed system at a time.
+                  Most local businesses already get inquiries. What they lose is the space between a raised hand and a
+                  scheduled job — and the space between a finished job and the next one. COAI builds that path:
+                  <strong> capture, answer, qualify, book, remember, review, and return.</strong> The website is one piece.
+                  The systems around it are the rest.
                 </p>
               </div>
             </div>
