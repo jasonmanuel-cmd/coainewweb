@@ -156,7 +156,7 @@ export function ContactMarketingForm({
         <button type="submit" className="m-submit-btn">
           Send Message →
         </button>
-        <p className="m-form-note">Or skip the form — call {CONTACT.phoneDisplay} directly. Jason picks up.</p>
+        <p className="m-form-note">Or skip the form and call {CONTACT.phoneDisplay} during published business hours.</p>
       </form>
     </div>
   );

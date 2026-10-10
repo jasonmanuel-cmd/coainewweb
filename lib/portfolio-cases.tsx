@@ -198,20 +198,20 @@ export const PORTFOLIO_CASES: PortfolioCase[] = [
       <>
         Master Glass Solutions is a <strong>Texas-based commercial glass and glazing contractor</strong> serving
         industrial, commercial, and institutional clients across the Lone Star State. COAI built a conversion-first
-        site with a project showcase, embedded testimonial audio player, service-area pages for major Texas metro
-        markets, and Google Business Profile alignment. The build includes a call-first contact path with missed-call
-        recovery and a documented ownership handoff.{" "}
-        <strong>Website goes live with full client control of hosting, domain, and analytics.</strong>
+        site with a project showcase, service-area pages for major Texas metro markets, and Google Business Profile
+        alignment. The documented scope also includes a customer-facing assistant, an enhanced project quote intake,
+        and a customer review system—each built around the company&apos;s own services and approval rules.{" "}
+        <strong>The delivered website and client-specific systems transfer to the client after final payment.</strong>
       </>
     ),
     built: [
       "Commercial Showcase",
-      "Audio Testimonials",
+      "Enhanced Quote Intake",
+      "Customer Review System",
+      "Website Assistant",
       "Service-Area Pages",
-      "Local SEO",
-      "Call-First Contact",
-      "Missed-Call Recovery",
-      "Full Handoff"
+      "Local Search Structure",
+      "Ownership Handoff"
     ],
     liveUrl: "https://mgsusa.llc"
   }

@@ -16,8 +16,8 @@ export function WebsiteDesignPageBody() {
             <br />A system you own.
           </h1>
           <p className="m-hero-sub">
-            Every COAI website is custom-built code on infrastructure you own — designed to convert visitors, rank on
-            search, and surface on AI platforms from day one.
+            Every COAI website is custom-built code on infrastructure you control — designed for clear conversion paths,
+            crawlable local information, and a documented ownership handoff.
           </p>
           <div className="m-hero-cta-row">
             <Link href="/intake" className="m-btn-primary-marketing">
@@ -57,12 +57,12 @@ export function WebsiteDesignPageBody() {
               [
                 "03",
                 "Schema Baked In, Not Bolted On",
-                "LocalBusiness, Service, FAQ, and Review schema is written into the HTML structure from day one — not added later with a plugin. This is what makes AI search surfaces cite your business accurately."
+                "Eligible LocalBusiness, Service, FAQ, and breadcrumb data is written into the build from the approved business facts — not injected later by a generic plugin."
               ],
               [
                 "04",
                 "Speed is Non-Negotiable",
-                "Target: sub-3 second load on 4G mobile. Achieved through clean code, optimized assets, and edge deployment — not through compressing your site into an unrecognizable husk."
+                "Performance is measured on the finished URL with realistic mobile conditions. Clean code, optimized assets, and edge delivery support the agreed performance budget without a pre-audit guarantee."
               ],
               [
                 "05",
@@ -105,10 +105,10 @@ export function WebsiteDesignPageBody() {
                   "You own the code — completely",
                   "You own the hosting — transfer it anywhere",
                   "You own the customer data — always",
-                  "No monthly platform fee to keep it live",
-                  "No risk of account suspension",
-                  "Custom schema and AEO structure",
-                  "Performance scores 90+ achievable",
+                  "No monthly platform fee paid to COAI",
+                  "Hosting account remains in your control",
+                  "Schema matched to eligible page content",
+                  "Performance measured before handoff",
                   "Any developer can pick it up and maintain it",
                   "One-time cost, no dependency"
                 ].map((t) => (
@@ -192,12 +192,12 @@ export function WebsiteDesignPageBody() {
               <div className="m-col-header m-col-green">◈ After Migration</div>
               <ul className="m-compare-list-wd">
                 {[
-                  "Load times under 2 seconds",
-                  "No plugin updates or security patches",
+                  "Performance measured on the live URL",
+                  "No WordPress plugin update cycle",
                   "No WP admin to manage",
-                  "Same URLs — no SEO loss",
-                  "Hosting cost ~$5-20/mo",
-                  "Any developer can maintain it"
+                  "URL map and redirects documented",
+                  "Hosting cost published before signature",
+                  "Source and handoff documentation included"
                 ].map((t) => (
                   <li key={t}><span className="m-check">✓</span> {t}</li>
                 ))}
@@ -231,17 +231,16 @@ export function WebsiteDesignPageBody() {
             Every second of load time <span className="m-text-steel">costs you customers.</span>
           </h2>
           <p className="m-wd-lead">
-            Google data shows 53% of mobile users abandon a site that takes longer than 3 seconds to load. For
-            Bakersfield service businesses, that&apos;s a homeowner clicking your competitor instead of calling you.
-            We build for sub-2-second loads on 4G by default — not through caching tricks, but through clean
-            architecture, optimized assets, and edge deployment. Speed is a structural decision, not a tweak.
+            Slow mobile pages add friction before a customer reaches the call button. We set a performance budget for
+            the actual scope, optimize assets and delivery, then document the finished result on the live URL. Speed is a
+            structural decision, but the honest number comes from the deployed build—not a universal promise.
           </p>
           <div className="m-stack-grid">
             {[
-              ["Under 2s", "Target load time on 4G mobile"],
-              ["90+", "Target Lighthouse performance"],
-              ["Zero", "Render-blocking resources"],
-              ["Edge", "Deployed globally on CDN"]
+              ["Measured", "Live mobile performance at handoff"],
+              ["Budgeted", "Assets and third-party scripts"],
+              ["Tested", "Forms, calls, and key routes"],
+              ["Documented", "Deployment and ownership map"]
             ].map(([stat, label]) => (
               <div key={stat} className="m-stack-card">
                 <div className="m-stack-name m-text-steel">{stat}</div>
@@ -265,7 +264,7 @@ export function WebsiteDesignPageBody() {
               ["Next.js", "E-commerce and complex app builds"],
               ["HTML5 / CSS3", "Lightweight service sites — max speed"],
               ["Vercel", "Edge deployment, instant scale"],
-              ["Netlify", "Static site hosting, 99.9% uptime"],
+              ["Netlify", "Static site deployment where appropriate"],
               ["Stripe", "Payment processing integration"],
               ["Supabase", "Database and auth for app builds"],
               ["Schema.org", "Structured data for AEO/GEO"],

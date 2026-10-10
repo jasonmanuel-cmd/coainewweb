@@ -1,31 +1,29 @@
-import { withSentryConfig } from "@sentry/nextjs";
+import { withSentryConfig } from "@sentry/nextjs/config";
 import type { NextConfig } from "next";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const nextConfig: NextConfig = {
   // Pin tracing to this app when a parent directory has another lockfile (avoids wrong root on CI/Vercel).
-  outputFileTracingRoot: __dirname,
+  outputFileTracingRoot: process.cwd(),
   images: {
-    formats: ["image/avif", "image/webp"]
+    formats: ["image/avif", "image/webp"],
+    qualities: [75, 88]
   },
   async headers() {
     // Static, build-time CSP. Kept out of middleware on purpose: a per-request
     // nonce forces every route into dynamic SSR (a Vercel Function per hit),
     // which is what blew up Active CPU. A static policy lets pages stay CDN-cached.
+    const developmentEval = process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : "";
     const csp = [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://*.clarity.ms https://scripts.simpleanalyticscdn.com https://cdn.jsdelivr.net",
+      `script-src 'self' 'unsafe-inline'${developmentEval} https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com https://challenges.cloudflare.com`,
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https:",
       "font-src 'self' data:",
-      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://www.googletagmanager.com https://vitals.vercel-insights.com https://*.vercel-insights.com https://challenges.cloudflare.com https://www.clarity.ms https://*.clarity.ms https://queue.simpleanalyticscdn.com https://api.vapi.ai https://*.vapi.ai wss://*.vapi.ai https://*.daily.co wss://*.daily.co https://cdn.jsdelivr.net",
+      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://www.googletagmanager.com https://vitals.vercel-insights.com https://*.vercel-insights.com https://challenges.cloudflare.com",
       "worker-src 'self' blob:",
-      "media-src 'self' blob: data: https:",
-      "frame-src https://challenges.cloudflare.com https://*.daily.co",
-      "form-action 'self' https://formspree.io",
+      "media-src 'self' blob: data:",
+      "frame-src https://www.googletagmanager.com https://challenges.cloudflare.com",
+      "form-action 'self'",
       "base-uri 'self'",
       "object-src 'none'",
       "frame-ancestors 'self'",
@@ -43,7 +41,7 @@ const nextConfig: NextConfig = {
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           {
             key: "Permissions-Policy",
-            value: "camera=(), microphone=(self), geolocation=(), browsing-topics=()"
+            value: "camera=(), microphone=(), geolocation=(), browsing-topics=()"
           }
         ]
       }
@@ -57,7 +55,10 @@ const nextConfig: NextConfig = {
       { source: "/terms-of-service", destination: "/terms", permanent: true },
       { source: "/case-studies", destination: "/portfolio", permanent: true },
       { source: "/dashboard", destination: "/", permanent: true },
-      { source: "/register", destination: "/intake", permanent: true }
+      { source: "/register", destination: "/intake", permanent: true },
+      { source: "/home", destination: "/", permanent: true },
+      { source: "/index.html", destination: "/", permanent: true },
+      { source: "/contact.html", destination: "/contact", permanent: true }
     ];
   },
   async rewrites() {

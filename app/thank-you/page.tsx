@@ -4,23 +4,24 @@ import { CONTACT, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Purchase Confirmed",
-  description: "Your purchase is confirmed. We'll follow up within 2 hours.",
+  description: "Your purchase is confirmed. We'll follow up during the next business window.",
+  robots: { index: false, follow: false },
   openGraph: {
     title: "Purchase Confirmed",
-    description: "Your purchase is confirmed. We'll follow up within 2 hours.",
+    description: "Your purchase is confirmed. We'll follow up during the next business window.",
     url: `${SITE_URL}/thank-you`,
   },
 };
 
 export default function ThankYouPage() {
   return (
-    <div className="m-thankyou-page">
+    <main id="main-content" className="m-thankyou-page">
       <div className="m-thankyou-inner">
         <div className="m-thankyou-icon">✓</div>
         <h1 className="section-title">Thank You for Your Purchase</h1>
         <p className="section-sub">
-          Your order has been received. Jason will follow up within <strong>2 hours</strong> during business
-          hours to get started on your project. If you need anything immediately, call{" "}
+          Your order has been received. Jason will follow up during the <strong>next published business window</strong>
+          to get started on your project. If you need to add context, call{" "}
           <a href={`tel:${CONTACT.phoneE164}`} className="m-text-link">
             {CONTACT.phoneDisplay}
           </a>.
@@ -34,6 +35,6 @@ export default function ThankYouPage() {
           </a>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

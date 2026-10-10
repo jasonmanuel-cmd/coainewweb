@@ -47,24 +47,24 @@ export default function JaxPage() {
           </h1>
           <p className="m-jax-sub">
             COAI&apos;s autonomous AI diagnostic and visibility engine.{" "}
-            <strong>JAX scans your entire digital presence in real time</strong> - performance, schema integrity, AEO
-            readiness, GBP alignment, and competitor gap analysis - and returns a prioritized action report in under 3
-            minutes. No form. No call. Just answers.
+            <strong>JAX is being developed to evaluate a business&apos;s approved digital presence</strong> — performance,
+            schema integrity, answer-engine readiness, and Google Business Profile alignment — then organize the findings
+            into a prioritized technical report. It is not a publicly deployed product yet.
           </p>
 
           <div className="m-tech-brief" id="technical-brief">
             <div className="m-tb-header">
-              <span className="m-tb-title">Technical Brief Â· v0.9.2</span>
-              <span className="m-tb-version">Build: 2026.Q2 Â· Status: BETA</span>
+              <span className="m-tb-title">Technical Brief · Development Preview</span>
+              <span className="m-tb-version">Status: Pre-Deployment</span>
             </div>
             <div className="m-tb-grid">
               <div>
                 <div className="m-tb-label">Scan Engine</div>
-                <div className="m-tb-value m-tb-green">RedScreen v2</div>
+                <div className="m-tb-value m-tb-amber">Internal testing</div>
               </div>
               <div>
-                <div className="m-tb-label">Latency Target</div>
-                <div className="m-tb-value m-tb-green">&lt; 3 seconds</div>
+                <div className="m-tb-label">Public Performance Claim</div>
+                <div className="m-tb-value">Not published before deployment</div>
               </div>
               <div>
                 <div className="m-tb-label">Schema Coverage</div>
@@ -72,11 +72,11 @@ export default function JaxPage() {
               </div>
               <div>
                 <div className="m-tb-label">AEO Surfaces Checked</div>
-                <div className="m-tb-value">ChatGPT Â· Perplexity Â· Gemini Â· Siri</div>
+                <div className="m-tb-value">ChatGPT · Perplexity · Gemini · Siri</div>
               </div>
               <div>
                 <div className="m-tb-label">GBP Alignment</div>
-                <div className="m-tb-value m-tb-amber">Active Â· Phase II</div>
+                <div className="m-tb-value m-tb-amber">In development · Phase II</div>
               </div>
               <div>
                 <div className="m-tb-label">Competitor Intelligence</div>
@@ -88,7 +88,7 @@ export default function JaxPage() {
               </div>
               <div>
                 <div className="m-tb-label">Deployment</div>
-                <div className="m-tb-value m-tb-amber">Q3 2026 Target</div>
+                <div className="m-tb-value m-tb-amber">No public launch date</div>
               </div>
             </div>
           </div>

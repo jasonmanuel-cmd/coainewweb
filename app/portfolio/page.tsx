@@ -14,7 +14,7 @@ export const metadata: Metadata = pageMetadata({
     "Real websites built by Chaotically Organized AI for real Bakersfield-area operators. See the work, read the outcomes.",
   path: "/portfolio",
   published: "2026-01-15",
-  modified: "2026-04-20",
+  modified: "2026-10-10",
 });
 
 export default function PortfolioPage() {

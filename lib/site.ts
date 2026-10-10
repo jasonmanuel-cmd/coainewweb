@@ -1,6 +1,6 @@
 /** Canonical business facts — keep NAP identical across schema, footer, GBP, and directories. */
 function normalizeSiteUrl(input: string | undefined): string {
-  const fallback = "https://www.coaibakersfield.com";
+  const fallback = "https://www.chaoticallyorganizedai.com";
   if (!input) return fallback;
   try {
     const parsed = new URL(input);
@@ -17,14 +17,8 @@ export const LEGAL_NAME = "Chaotically Organized AI, LLC";
 
 export const FOUNDER = {
   name: "Jason Robert Manuel",
-  role: "Founder",
+  role: "Founder & CEO",
   email: "chaoticallyorganizedai@gmail.com"
-} as const;
-
-export const CO_FOUNDER = {
-  name: "Frank Hernandez",
-  role: "Co-Founder",
-  email: "frankh@coaibakersfield.com"
 } as const;
 
 /**
@@ -37,9 +31,8 @@ export const CO_FOUNDER = {
  */
 export const CONTACT = {
   email: "chaoticallyorganizedai@gmail.com",
-  secondaryEmail: "frankh@coaibakersfield.com",
   phoneDisplay: "(661) 683-0228",
-  phoneE164: "+166****0228",
+  phoneE164: "+16616830228",
   city: "Bakersfield",
   region: "CA",
   country: "US",
@@ -106,7 +99,7 @@ export const GEO = {
 } as const;
 
 export const SITE_DESCRIPTION =
-  "COAI installs a call-first website, instant missed-call response, Google Business Profile cleanup, and lead routing you own — for Bakersfield and Kern County contractors. Built by Jason Robert Manuel, a contractor who codes. You control the domain, hosting, source code, analytics, and lead data.";
+  "COAI installs a call-first website, automated missed-call acknowledgement, Google Business Profile cleanup, and lead routing you own — for Bakersfield and Kern County contractors. Built by Jason Robert Manuel, a contractor who codes. You control the domain, hosting, source code, analytics, and lead data.";
 
 /** Category descriptor. Sits beneath the buyer-facing outcome line, never in front of it. */
 export const CATEGORY = "Industrial-Strength Revenue Infrastructure";
@@ -149,8 +142,20 @@ export const BUSINESS_HOURS = {
 } as const;
 
 /** Human-readable hours — keep aligned with GBP and `BUSINESS_HOURS`. */
-export const BUSINESS_HOURS_LABEL =
-  "Open 24 Hours";
+export const BUSINESS_HOURS_LABEL = "Monday–Friday, 9:00 AM–5:00 PM Pacific";
+
+/** Canonical delivery language. Never publish a faster range without a signed scope. */
+export const DELIVERY_TIMELINE = "2–3 weeks";
+
+/** Shared presentation helpers and stable aliases for UI components. */
+export const SITE_NAME = ORG_NAME;
+export const PRIMARY_EMAIL = CONTACT.email;
+export const CTA_BOOKING_URL = "/intake";
+export const BUILD_PRICE = Number(OFFERS.tradecall.priceNumeric);
+export const CONTINUITY_MONTHLY = Number(OFFERS.continuity.price.replace(/[^0-9]/g, ""));
+export function formatUsd(value: number): string {
+  return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(value);
+}
 
 export const ORG_ID = `${SITE_URL}/#organization`;
 export const FOUNDER_ID = `${SITE_URL}/#founder`;

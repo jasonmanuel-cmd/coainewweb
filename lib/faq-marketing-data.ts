@@ -26,7 +26,7 @@ export const FAQ_MARKETING_SECTIONS: FaqMarketingSection[] = [
     items: [
       {
         question: "What does it cost to work with COAI?",
-        answer: `We sell three things. The ${OFFERS.scorecard.name} is free for qualified owner-operators; otherwise it is a $350 Structural Audit, credited to the build if you go ahead. The ${OFFERS.tradecall.name} is ${OFFERS.tradecall.price} flat — ${OFFERS.tradecall.terms}. A bilingual English/Spanish build adds ${OFFERS.tradecall.bilingual}. ${OFFERS.continuity.name} is an optional ${OFFERS.continuity.price} per month, ${OFFERS.continuity.terms}.\n\nThe diagnostic call and the proposal are free. You only pay once a written scope is agreed and work begins. The pricing page is the single source of truth for every number.`
+        answer: `We sell three things. The ${OFFERS.scorecard.name} is free for qualified owner-operators; ${OFFERS.scorecard.alt.toLowerCase()}. The ${OFFERS.tradecall.name} is ${OFFERS.tradecall.price} flat — ${OFFERS.tradecall.terms}. A bilingual English/Spanish build adds ${OFFERS.tradecall.bilingual}. ${OFFERS.continuity.name} is an optional ${OFFERS.continuity.price} per month, ${OFFERS.continuity.terms}.\n\nThe diagnostic call and the proposal are free. You only pay once a written scope is agreed and work begins. The pricing page is the single source of truth for every number.`
       },
       {
         question: "Are there monthly fees or retainers?",
@@ -130,7 +130,11 @@ export const FAQ_MARKETING_SECTIONS: FaqMarketingSection[] = [
     items: [
       {
         question: "What does ongoing support cost after launch?",
-        answer: `${OFFERS.continuity.name} is ${OFFERS.continuity.price} per month, ${OFFERS.continuity.terms}. It covers the routing, form, and SMS test log, a response-time report, an uncontacted-lead review, a monthly scorecard, minor site and profile corrections, and one improvement priority each month.\n\nAs-needed work outside that is $75 per hour with a one-hour minimum. There is no mandatory maintenance fee — you can take full ownership at launch and never pay us again.`
+        answer: `${OFFERS.continuity.name} is ${OFFERS.continuity.price} per month, ${OFFERS.continuity.terms}. It covers the routing, form, and SMS test log, a response-time report, an uncontacted-lead review, a monthly scorecard, minor site and profile corrections, and one improvement priority each month.\n\nLarger as-needed work is scoped and quoted in writing before it begins. There is no mandatory maintenance fee — you can take full ownership at launch and never pay us again.`
+      },
+      {
+        question: "Is every capability in the systems catalog included in the standard build?",
+        answer: `No. The systems catalog is a diagnostic map, not a package inclusion list. The standard ${OFFERS.tradecall.name} remains ${OFFERS.tradecall.price} with the exact baseline published on the pricing page. Advanced integrations and lifecycle modules are scoped separately only when the diagnostic identifies a practical use for them. Your statement of work names every included system before you approve it.`
       },
       {
         question: "Can you migrate my existing Wix, Squarespace, or WordPress site?",
@@ -145,7 +149,7 @@ export const FAQ_MARKETING_SECTIONS: FaqMarketingSection[] = [
       {
         question: "What happens if my site breaks after launch?",
         answer:
-          "The build uses stable, minimal infrastructure with no plugin stack to break on update, so faults are uncommon. If something does go wrong, support is available at $75 per hour. Because you own the hosting and the code, you can also hire any developer you like to fix it."
+          "The build uses stable, minimal infrastructure with no plugin stack to break on update, so faults are uncommon. If something does go wrong, support can be scoped and quoted before repair work begins. Because you own the hosting and code, you can also hire any developer you like to fix it."
       },
       {
         question: "Do you offer hosting?",
@@ -186,17 +190,17 @@ export const FAQ_MARKETING_SECTIONS: FaqMarketingSection[] = [
       {
         question: "What does Chaotically Organized AI (COAI) do for Bakersfield contractors?",
         answer:
-          `COAI installs custom revenue infrastructure for trade contractors, including a call-first website, instant missed-call text-back automation, and Google Business Profile cleanup. The system costs a flat ${OFFERS.tradecall.price} to build and ensures contractors capture leads immediately when they cannot answer the phone on a job site.`
+          `COAI installs custom revenue infrastructure for trade contractors, including a call-first website, missed-call acknowledgement, lead routing, and Google Business Profile cleanup. The system costs a flat ${OFFERS.tradecall.price} to build and creates a tested response path for calls the owner cannot answer on a job site.`
       },
       {
         question: `How much does a contractor website and lead system cost with COAI?`,
         answer:
-          `The ${OFFERS.tradecall.name} costs a flat ${OFFERS.tradecall.price} (${OFFERS.tradecall.terms}) with full client account ownership. Optional ongoing ${OFFERS.continuity.name}, hosting management, and monthly performance updates cost ${OFFERS.continuity.price} per month with no long-term contracts.`
+          `The ${OFFERS.tradecall.name} costs a flat ${OFFERS.tradecall.price} (${OFFERS.tradecall.terms}) with full client account ownership. Optional ${OFFERS.continuity.name} costs ${OFFERS.continuity.price} per month and covers testing, a response-time report, an uncontacted-lead review, minor corrections, and one improvement priority. It is not required to keep the delivered build.`
       },
       {
         question: "How fast does the missed-call text-back system respond to prospective clients?",
         answer:
-          "The automated response system targets a sub-30-second text-back whenever an incoming job call goes unanswered. This immediate response engages the homeowner or client before they can move on to call a competing contractor in Bakersfield."
+          "Response timing depends on the carrier, integration, and approved workflow. COAI configures and tests the acknowledgement path against the written scope, then reports the observed result. We do not publish a universal speed claim before a deployment has a real test log."
       },
       {
         question: "Who owns the website domain, source code, and lead data after launch?",
@@ -206,7 +210,7 @@ export const FAQ_MARKETING_SECTIONS: FaqMarketingSection[] = [
       {
         question: "Who runs COAI and builds the contractor systems?",
         answer:
-          `COAI was founded and is operated by ${FOUNDER.name}, a former licensed building contractor with 9 years of multi-trade field experience who now builds web and AI systems. Clients work directly with Jason via his direct phone line at ${CONTACT.phoneDisplay}, with no account managers or gatekeepers.`
+          `COAI was founded and is led by ${FOUNDER.name}, ${FOUNDER.role}, a former licensed building contractor with 9 years of multi-trade field experience who now builds web and AI systems. Clients work directly with Jason via his direct phone line at ${CONTACT.phoneDisplay}, with no account managers or gatekeepers.`
       },
       {
         question: "How does COAI differ from a standard marketing agency or website builder?",

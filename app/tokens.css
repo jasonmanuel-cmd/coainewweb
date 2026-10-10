@@ -1,87 +1,61 @@
-/**
- * COAI design tokens — "Industrial-Strength Revenue Infrastructure".
- * Ported from the COAI Design System project (f69bc7bd-2cd1-4aa3-b7fd-cbfac65fa270).
- *
- * Doctrine: jobsite-grade, not tech-startup. Stamped steel, field manual,
- * dispatch board, inspection report. No gradients, no glow, no blur, no
- * circuit-board texture, no scanline overlays.
- *
- * Ratio: ~70% Jobsite White / ~20% Forged Charcoal / ~8% Steel Blue /
- * ~2% safety colors. Signal Orange is the ONLY CTA color — a tool, not wallpaper.
- */
-
 :root {
-  /* Base palette */
-  --charcoal: #1b1d1d;
-  --charcoal-80: #2a2c2c;
-  --charcoal-60: #4a4c4c;
-  --jobsite-white: #f4f1e8;
-  --jobsite-white-dim: #e8e3d6;
-  --paper: #fbfaf6;
-  --signal-orange: #e85d24;
-  --signal-orange-dim: #c24e1d;
-  --inspection-yellow: #f2b705;
-  --inspection-yellow-dim: #c99804;
-  --steel-blue: #2f5d73;
-  --steel-blue-dim: #24485a;
-  --pass-green: #3e6b4a;
-  --pass-green-dim: #2f5238;
-  --leak-red: #a93828;
-  --leak-red-dim: #87271a;
+  --charcoal: #080c10;
+  --charcoal-80: #0e151b;
+  --charcoal-60: #18222a;
+  --jobsite-white: #f5f1e8;
+  --jobsite-white-dim: #d9d8d2;
+  --paper: #111920;
+  --signal-orange: #ff5a1f;
+  --signal-orange-dim: #df4612;
+  --inspection-yellow: #ffc21a;
+  --inspection-yellow-dim: #d7a000;
+  --steel-blue: #5ad8ff;
+  --steel-blue-dim: #2ca5cc;
+  --pass-green: #58e6a9;
+  --pass-green-dim: #2da978;
+  --leak-red: #ff6b5f;
+  --leak-red-dim: #d94d43;
 
-  /* Surfaces */
-  --surface-page: var(--jobsite-white);
-  --surface-panel: var(--paper);
-  --surface-inverse: var(--charcoal);
-  --surface-inverse-raised: var(--charcoal-80);
-
-  /* Text */
-  --text-primary: var(--charcoal);
-  --text-inverse: var(--jobsite-white);
-  --text-muted: var(--charcoal-60);
-  --text-on-inverse-muted: #b9b7ae;
-
-  /* Borders — hairlines, never soft shadows */
-  --border-default: #d8d3c4;
-  --border-strong: var(--charcoal);
-  --border-inverse: #3c3e3e;
-
-  /* Actions */
+  --surface-page: #080c10;
+  --surface-panel: #10171d;
+  --surface-elevated: #151f27;
+  --surface-inverse: #080c10;
+  --surface-inverse-raised: #111920;
+  --text-primary: #f5f1e8;
+  --text-inverse: #f5f1e8;
+  --text-muted: #a8b3ba;
+  --text-on-inverse-muted: #a8b3ba;
+  --border-default: rgba(142, 170, 187, 0.2);
+  --border-strong: rgba(90, 216, 255, 0.52);
+  --border-inverse: rgba(142, 170, 187, 0.18);
   --cta-bg: var(--signal-orange);
-  --cta-bg-hover: var(--signal-orange-dim);
-  --cta-text: var(--jobsite-white);
-  --link: var(--steel-blue);
-  --link-hover: var(--steel-blue-dim);
-
-  /* Proof states only — never decorative */
+  --cta-bg-hover: #ff703d;
+  --cta-text: #fffaf2;
+  --link: #7ae1ff;
+  --link-hover: #b9efff;
   --status-pass: var(--pass-green);
   --status-fail: var(--leak-red);
   --status-caution: var(--inspection-yellow);
   --status-info: var(--steel-blue);
 
-  /* Type — font families are supplied by next/font in app/layout.tsx */
-  --font-headline: var(--font-barlow-condensed), Impact, "Arial Narrow", sans-serif;
-  --font-body: var(--font-inter), -apple-system, "Segoe UI", sans-serif;
-  --font-mono: var(--font-plex-mono), "Courier New", monospace;
-
-  --text-display: clamp(2.75rem, 5vw, 5.5rem);
-  --text-h1: clamp(2.25rem, 4vw, 3.5rem);
-  --text-h2: clamp(1.75rem, 2.6vw, 2.5rem);
-  --text-h3: 1.5rem;
+  --font-headline: "Barlow Condensed", Impact, "Arial Narrow", sans-serif;
+  --font-body: "Inter Variable", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", "Courier New", monospace;
+  --text-display: clamp(3.4rem, 8vw, 7.6rem);
+  --text-h1: clamp(2.8rem, 6vw, 5.6rem);
+  --text-h2: clamp(2.2rem, 4.2vw, 4.25rem);
+  --text-h3: clamp(1.5rem, 2.4vw, 2.2rem);
   --text-h4: 1.125rem;
-  --text-body-lg: 1.125rem;
+  --text-body-lg: clamp(1.05rem, 1.4vw, 1.25rem);
   --text-body: 1rem;
   --text-small: 0.875rem;
-  --text-label: 0.75rem;
-
-  --lh-tight: 1.05;
-  --lh-heading: 1.1;
-  --lh-body: 1.55;
-
-  --tracking-headline: 0.01em;
+  --text-label: 0.72rem;
+  --lh-tight: 0.94;
+  --lh-heading: 1;
+  --lh-body: 1.65;
+  --tracking-headline: -0.018em;
   --tracking-label: 0.14em;
 
-  /* Spacing */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -92,34 +66,23 @@
   --space-8: 64px;
   --space-9: 96px;
   --space-10: 128px;
-
-  /* Radii — 0-4px system-wide. Never pill-shaped. */
-  --radius-none: 0px;
-  --radius-sm: 2px;
-  --radius-md: 4px;
-
+  --radius-none: 0;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
   --rule-hairline: 1px;
   --rule-strong: 2px;
-
-  /* --shadow-panel is a 1px baseline hairline, not a blur. */
-  --shadow-panel: 0 1px 0 rgba(27, 29, 29, 0.06);
-  /* --shadow-raised is reserved for the single most important panel on a screen. */
-  --shadow-raised: 0 4px 12px rgba(27, 29, 29, 0.14);
-
-  --ease-standard: cubic-bezier(0.2, 0.6, 0.2, 1);
-  --t-fast: 120ms;
-  --t-mid: 200ms;
+  --shadow-panel: 0 18px 60px rgba(0, 0, 0, 0.22);
+  --shadow-raised: 0 30px 90px rgba(0, 0, 0, 0.42);
+  --glow-cyan: 0 0 40px rgba(90, 216, 255, 0.15);
+  --glow-orange: 0 0 44px rgba(255, 90, 31, 0.2);
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+  --t-fast: 160ms;
+  --t-mid: 320ms;
 }
 
-/* Base reset */
-* {
-  box-sizing: border-box;
-}
-
-html {
-  background: var(--surface-page);
-}
-
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--surface-page); scroll-behavior: smooth; }
 body {
   margin: 0;
   color: var(--text-primary);
@@ -128,42 +91,25 @@ body {
   font-size: var(--text-body);
   line-height: var(--lh-body);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
-
-h1,
-h2,
-h3,
-h4 {
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-headline);
   font-weight: 700;
   line-height: var(--lh-heading);
   letter-spacing: var(--tracking-headline);
-  /* Sentence case always — no Title Case Everywhere, no uppercase headlines. */
-  text-transform: none;
   margin: 0;
 }
-
-p {
-  margin: 0;
-}
-
-a {
-  color: var(--link);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-a:hover {
-  color: var(--link-hover);
-}
+p { margin: 0; }
+a { color: var(--link); text-underline-offset: 3px; }
+a:hover { color: var(--link-hover); }
+::selection { background: var(--signal-orange); color: white; }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }

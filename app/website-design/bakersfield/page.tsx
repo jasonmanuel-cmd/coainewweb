@@ -41,7 +41,7 @@ export default function BakersfieldWebsiteDesignPage() {
           </h1>
           <p className="m-hero-sub">
             We design and deploy high-conversion websites for Bakersfield operators who need speed, local visibility,
-            and a system they fully own. No Wix tax. No platform lock-in. Just a site that generates calls.
+            and a system they fully own. No proprietary builder lock-in—just a clear path from visit to call or inquiry.
           </p>
           <div className="m-cta-row">
             <Link href="/intake" className="m-btn-primary">
@@ -105,8 +105,8 @@ export default function BakersfieldWebsiteDesignPage() {
               { icon: "⚡", title: "Mobile-First Speed", desc: "Sub-3s load on 4G. Bakersfield is a mobile-first market - slow sites lose." },
               { icon: "📍", title: "Local Schema", desc: "LocalBusiness + Service schema tuned for Bakersfield and Kern County." },
               { icon: "🤖", title: "AI-Ready Content", desc: "Structured so Google AI, SGE, and voice assistants surface you first." },
-              { icon: "📞", title: "Lead Capture", desc: "Forms, click-to-call, intake flows - every path ends in a booked job." },
-              { icon: "🧰", title: "Industry Focus", desc: "Built for HVAC, plumbing, electrical, and service businesses that dominate 661." },
+              { icon: "📞", title: "Lead Capture", desc: "Forms, click-to-call, and intake flows create clear contact paths." },
+              { icon: "🧰", title: "Industry Focus", desc: "Built around the questions and actions common to local service buyers." },
               { icon: "🏠", title: "Full Ownership", desc: "Custom code, your domain, your data. No builder tax. No platform risk." }
             ].map(f => (
               <div key={f.title} className="m-feature-card">
@@ -140,7 +140,7 @@ export default function BakersfieldWebsiteDesignPage() {
         <div className="m-section-label">Start Here</div>
         <h2>
           Ready for a Bakersfield site<br />
-          <span className="m-text-green">that actually generates calls?</span>
+          <span className="m-text-green">with a clearer path to contact?</span>
         </h2>
         <p>
           Free 20-minute diagnostic. We check your current site, Google profile, and lead flow - and hand you a written

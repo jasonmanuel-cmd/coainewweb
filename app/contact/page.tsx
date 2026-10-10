@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BadgeCheck, MapPin, Phone } from "lucide-react";
 import { ContactMarketingForm } from "@/components/contact/ContactMarketingForm";
 import { JsonLd } from "@/components/JsonLd";
 import { MarketingLayout } from "@/components/marketing/MarketingLayout";
@@ -48,8 +49,8 @@ export default async function ContactPage({
           </h1>
           <p className="m-hero-sub">
             Call, text, or send a message. We aim to reply the same business day. Outside our published hours
-            an automated agent takes the first contact and Jason follows up personally — you are told it is
-            automated, and you can ask for a person.
+            an automated agent may take the first contact and Jason follows up in the next business window — you are
+            told it is automated, and you can ask for a person.
           </p>
         </div>
       </div>
@@ -59,7 +60,7 @@ export default async function ContactPage({
           <div className="m-info-block">
             <div className="m-info-block-label">Direct Contact</div>
             <div className="m-info-line">
-              <span className="m-info-icon">â˜Ž</span>
+              <span className="m-info-icon"><Phone aria-hidden="true" /></span>
               <span className="m-info-text">
                 <Link href={`tel:${CONTACT.phoneE164}`}>{CONTACT.phoneDisplay}</Link>
               </span>
@@ -71,7 +72,7 @@ export default async function ContactPage({
               </span>
             </div>
             <div className="m-info-line">
-              <span className="m-info-icon">â-‰</span>
+              <span className="m-info-icon"><MapPin aria-hidden="true" /></span>
               <span className="m-info-text">
                 {CONTACT.city}, {CONTACT.region} — we work remotely and come to you. No walk-in office.
               </span>
@@ -84,8 +85,8 @@ export default async function ContactPage({
               Cipher — automated call agent
             </div>
             <p>
-              Outside our hours, Cipher picks up, qualifies your inquiry, and routes it to Jason for a
-              same-business-day follow-up. It tells you up front that it is automated, calls may be recorded
+              When automated coverage is active outside our hours, Cipher can take the initial inquiry and route it to
+              Jason for the next business window. It tells you up front that it is automated, calls may be recorded
               for quality review, and you can ask for a person at any time. Not for emergencies — call 911.{" "}
               <Link href="/ai-disclosure">How this works</Link>.
             </p>
@@ -98,7 +99,7 @@ export default async function ContactPage({
               <span className="m-info-text">{BUSINESS_HOURS_LABEL}</span>
             </p>
             <div className="m-hours-note">
-              Outside these hours an automated agent takes a message and Jason follows up.
+              Outside these hours, available automated coverage may take a message for the next business window.
             </div>
           </div>
 
@@ -113,7 +114,7 @@ export default async function ContactPage({
               </span>
             </div>
             <div className="m-info-line">
-              <span className="m-info-icon">â-ˆ</span>
+              <span className="m-info-icon"><BadgeCheck aria-hidden="true" /></span>
               <span className="m-info-text">{LEGAL_NAME} - registered California LLC</span>
             </div>
           </div>

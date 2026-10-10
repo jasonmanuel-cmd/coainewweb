@@ -37,13 +37,19 @@ export function FaqMarketingAccordion({ sections }: { sections: FaqMarketingSect
               const isOpen = openKey === key;
               return (
                 <div key={key} className={`m-faq-item ${isOpen ? "m-open" : ""}`}>
-                  <button type="button" className="m-faq-question" onClick={() => toggle(key)}>
+                  <button
+                    type="button"
+                    className="m-faq-question"
+                    aria-expanded={isOpen}
+                    aria-controls={`${key}-answer`}
+                    onClick={() => toggle(key)}
+                  >
                     <span>{item.question}</span>
                     <span className="m-faq-toggle" aria-hidden>
                       +
                     </span>
                   </button>
-                  <div className="m-faq-answer">
+                  <div className="m-faq-answer" id={`${key}-answer`}>
                     <div className="m-faq-answer-inner">
                       {item.answer.split("\n\n").map((para, pi) => (
                         <p key={pi}>{para}</p>

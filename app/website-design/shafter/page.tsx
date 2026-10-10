@@ -105,7 +105,7 @@ export default function ShafterWebsiteDesignPage() {
               { icon: "⚡", title: "Speed-First Build", desc: "Shafter searches happen on a phone. We optimize for it and show you the measured Lighthouse score." },
               { icon: "📍", title: "Shafter Local Schema", desc: "LocalBusiness schema tuned for Shafter + Kern County search." },
               { icon: "📞", title: "Call-First Design", desc: "Phone number prominent on every page. Click-to-call on mobile." },
-              { icon: "🛠️", title: "Google Maps Priority", desc: "GBP optimization + service-area schema for local map rankings." },
+              { icon: "🛠️", title: "Business Profile Alignment", desc: "Website facts reconciled with the Google Business Profile baseline." },
               { icon: "🤖", title: "AI Citation Ready", desc: "Content structured so AI assistants recommend your Shafter business." },
               { icon: "🔐", title: "You Own It", desc: "The domain, hosting, source code, analytics, and lead data stay in your name." }
             ].map(f => (
@@ -140,7 +140,7 @@ export default function ShafterWebsiteDesignPage() {
         <div className="m-section-label">Start Here</div>
         <h2>
           Ready for a Shafter site<br />
-          <span className="m-text-green">that brings in more calls?</span>
+          <span className="m-text-green">that makes contacting you easier?</span>
         </h2>
         <p>
           Free 20-minute diagnostic. We check your current site, Google profile, and lead flow - and hand you a written

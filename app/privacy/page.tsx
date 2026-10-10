@@ -7,137 +7,125 @@ import { CONTACT, LEGAL_NAME, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Privacy Policy",
-  description:
-    "Privacy policy for Chaotically Organized AI: data collected for diagnostics, Formspree forms, and Google Analytics.",
+  description: "How Chaotically Organized AI collects, uses, protects, and shares website and inquiry data.",
   path: "/privacy"
 });
 
 export default function PrivacyPage() {
-  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-ZYCPQEBGTN";
   const crumbs = breadcrumbJsonLd([
     { name: "Home", path: "/" },
     { name: "Privacy policy", path: "/privacy" }
   ]);
-  const webPage = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    name: "Privacy Policy",
-    url: `${SITE_URL}/privacy`
-  };
 
   return (
     <LegalShell>
       <JsonLd data={crumbs} />
-      <JsonLd data={webPage} />
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "WebPage", name: "Privacy Policy", url: `${SITE_URL}/privacy` }} />
       <div className="m-legal-wrap">
         <div className="m-legal-top">
           <div className="m-legal-type">Legal Document</div>
           <h1>Privacy Policy</h1>
-          <div className="m-legal-date">
-            Last Updated: April 2026 · {LEGAL_NAME} · Bakersfield, CA
-          </div>
+          <div className="m-legal-date">Last Updated: October 10, 2026 · {LEGAL_NAME} · Bakersfield, CA</div>
         </div>
 
-        <div className="m-legal-section">
+        <section className="m-legal-section">
           <h2>1. Who We Are</h2>
           <p>
-            Chaotically Organized AI, LLC (&quot;COAI,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) is a
-            digital infrastructure and AI automation company based in {CONTACT.city}, {CONTACT.region}. We
-            operate remotely and do not maintain a public walk-in office. We can be reached at{" "}
-            <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a> or {CONTACT.phoneDisplay}.
+            {LEGAL_NAME} (&quot;COAI,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) provides digital infrastructure and AI
+            automation services from {CONTACT.city}, {CONTACT.region}. We operate remotely and do not maintain a public
+            walk-in office. Contact us at <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a> or {CONTACT.phoneDisplay}.
           </p>
-        </div>
+        </section>
 
-        <div className="m-legal-section">
+        <section className="m-legal-section">
           <h2>2. Information We Collect</h2>
-          <p>
-            We collect information you provide directly when using our website, contact forms, diagnostic tools, or
-            engaging our services:
-          </p>
+          <p>When you contact us, request a diagnostic, or engage our services, we may collect:</p>
           <ul>
-            <li>Name, business name, phone number, and email address</li>
-            <li>Website URL and business information you submit in diagnostic forms</li>
-            <li>Messages and inquiries submitted through contact forms</li>
-            <li>Business metrics you provide (call volume, ticket value, etc.) for diagnostic calculations</li>
+            <li>Name, business name, phone number, email address, website URL, and service-area details.</li>
+            <li>Messages, project requirements, and business metrics you choose to submit.</li>
+            <li>Consent records and technical anti-abuse signals connected with a form submission.</li>
           </ul>
           <p>
-            We also collect standard web analytics data automatically, including pages visited, time on site, device
-            type, and general geographic location. This data is aggregated and not tied to individual identities.
+            Website tools may also collect IP address, browser and device details, referring page, pages viewed,
+            approximate region, performance timing, and error diagnostics. We do not ask analytics or error-monitoring
+            providers to record routine session video, and our Sentry configuration disables default PII collection.
           </p>
-        </div>
+        </section>
 
-        <div className="m-legal-section">
-          <h2>3. How We Use Your Information</h2>
+        <section className="m-legal-section">
+          <h2>3. How We Use Information</h2>
           <ul>
-            <li>To respond to your inquiries and provide services you have requested</li>
-            <li>To send your diagnostic results and follow-up communications</li>
-            <li>To improve our website and service offerings</li>
-            <li>To send service-related communications (not marketing) relevant to your engagement</li>
-            <li>To comply with legal obligations</li>
+            <li>Respond to inquiries, prepare diagnostics, and provide requested services.</li>
+            <li>Operate, secure, debug, and improve this website.</li>
+            <li>Measure aggregate traffic and site performance.</li>
+            <li>Maintain records, prevent abuse, and comply with legal obligations.</li>
           </ul>
-          <p>We do not sell, rent, or trade your personal information to third parties. Ever.</p>
-        </div>
+          <p>We do not sell personal information or use it for cross-context behavioral advertising.</p>
+        </section>
 
-        <div className="m-legal-section">
-          <h2>4. Form Submissions</h2>
-          <p>
-            Contact forms and intake forms on this site are processed through Formspree, a third-party form handling
-            service. Submissions are delivered to COAI&apos;s email and stored in accordance with Formspree&apos;s
-            privacy policy. By submitting a form, you consent to this data transfer.
-          </p>
-        </div>
+        <section className="m-legal-section">
+          <h2>4. Service Providers</h2>
+          <p>We disclose limited data to processors only for the functions below:</p>
+          <ul>
+            <li><strong>Formspree</strong> — processes contact and intake form submissions.</li>
+            <li><strong>Cloudflare Turnstile</strong> — detects automated or abusive form traffic.</li>
+            <li><strong>Google Analytics via Google Tag Manager</strong> — measures website use and traffic sources.</li>
+            <li><strong>Vercel Speed Insights</strong> — measures real-user page performance.</li>
+            <li><strong>Sentry</strong> — captures sampled application errors and limited performance diagnostics.</li>
+            <li><strong>Vercel</strong> — hosts and delivers the website and associated server functions.</li>
+          </ul>
+          <p>These providers process information under their own privacy terms and our applicable service settings.</p>
+        </section>
 
-        <div className="m-legal-section">
-          <h2>5. Analytics</h2>
+        <section className="m-legal-section">
+          <h2>5. Cookies and Controls</h2>
           <p>
-            This site uses Google Analytics ({gaId}) to understand aggregate traffic patterns. Google Analytics uses
-            cookies and collects anonymized data about visitor behavior. You can opt out of Google Analytics tracking by
-            using the Google Analytics Opt-out Browser Add-on.
+            Google Analytics may use first-party identifiers to distinguish visits. Security and form tools may set
+            strictly necessary cookies or use equivalent storage. We do not run Microsoft Clarity, routine session
+            replay, or a separate advertising pixel. See our <a href="/cookies">Cookie Notice</a> for browser controls
+            and opt-out links.
           </p>
-        </div>
+        </section>
 
-        <div className="m-legal-section">
-          <h2>6. Data Retention</h2>
+        <section className="m-legal-section">
+          <h2>6. Retention</h2>
           <p>
-            We retain contact and inquiry data for as long as necessary to fulfill the purpose it was collected for, or
-            as required by law. If you would like your data deleted, contact us at{" "}
-            <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a> and we will process your request within 30 days.
+            Inquiry records are generally kept while we respond and for up to 24 months for service history, unless a
+            longer period is required for an active client relationship, dispute, accounting, or law. We configure
+            analytics and error data for limited operational retention where provider controls are available and review
+            those records periodically. You may request deletion at any time; some records may be retained where legally
+            required or necessary to protect legal rights.
           </p>
-        </div>
+        </section>
 
-        <div className="m-legal-section">
-          <h2>7. California Privacy Rights (CCPA)</h2>
+        <section className="m-legal-section">
+          <h2>7. California Privacy Rights</h2>
           <p>
-            If you are a California resident, you have the right to know what personal information we collect about
-            you, request deletion of your personal information, and opt out of any sale of personal information (we do
-            not sell personal information). To exercise these rights, contact us directly.
+            California residents may request access, correction, or deletion of covered personal information and may ask
+            for the categories of information collected, purposes of use, and recipients. COAI does not sell or share
+            personal information for cross-context behavioral advertising. We will not discriminate against you for
+            exercising a privacy right. Email <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a> with “Privacy
+            Request” in the subject. We may need to verify your identity before completing the request.
           </p>
-        </div>
+        </section>
 
-        <div className="m-legal-section">
-          <h2>8. Security</h2>
+        <section className="m-legal-section">
+          <h2>8. Security and Children</h2>
           <p>
-            We implement reasonable technical and organizational measures to protect your personal information. No
-            internet transmission is 100% secure, and we cannot guarantee absolute security of data transmitted to our
-            site.
+            We use reasonable technical and organizational safeguards, but no internet transmission or storage system is
+            completely secure. This business-to-business site is not directed to children under 13, and we do not
+            knowingly collect their personal information.
           </p>
-        </div>
+        </section>
 
-        <div className="m-legal-section">
-          <h2>9. Changes to This Policy</h2>
+        <section className="m-legal-section">
+          <h2>9. Changes and Contact</h2>
           <p>
-            We may update this Privacy Policy from time to time. The date at the top of this page reflects the most
-            recent update. Continued use of the site after changes constitutes acceptance of the updated policy.
+            We may update this policy as our services or processors change. The date above identifies the latest version.
+            Questions or privacy requests: <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a> · {CONTACT.phoneDisplay}
+            · {CONTACT.city}, {CONTACT.region}.
           </p>
-        </div>
-
-        <div className="m-legal-section">
-          <h2>10. Contact</h2>
-          <p>
-            Questions about this Privacy Policy: <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a> ·{" "}
-            {CONTACT.phoneDisplay} · {CONTACT.city}, {CONTACT.region}.
-          </p>
-        </div>
+        </section>
       </div>
     </LegalShell>
   );

@@ -1,30 +1,35 @@
 # Chaotically Organized AI (COAI)
 
-> Industrial-Strength Revenue Infrastructure for Bakersfield contractors. COAI installs a call-first website, instant missed-call response, Google Business Profile cleanup, and lead routing the client owns. Serving HVAC, plumbing, electrical, roofing, and other high-call service businesses in Bakersfield and Kern County, CA. Founder: Jason Robert Manuel.
+> Industrial-Strength Revenue Infrastructure for Bakersfield contractors. COAI installs a call-first website, automated missed-call acknowledgement, Google Business Profile cleanup, and lead routing the client owns. Serving HVAC, plumbing, electrical, roofing, and other high-call service businesses in Bakersfield and Kern County, CA. Founder: Jason Robert Manuel.
 
 ## Contact
 - Phone: (661) 683-0228
-- Email: jasonm@coaibakersfield.com
+- Email: chaoticallyorganizedai@gmail.com
 - Location: Bakersfield, CA. COAI is a remote / service-area business — work is done remotely and on the client's site. There is no public walk-in office, so no street address is published.
 - Hours: Monday–Friday, 9:00 a.m.–5:00 p.m. Pacific
 - This is the only company phone number. Any other number appearing in COAI material is a product demo line, not company contact information.
 
 ## Core Pages
-- [Home](https://www.coaibakersfield.com/): What leaks, what gets installed, who owns it
-- [Pricing](https://www.coaibakersfield.com/pricing): Single source of truth for all prices
-- [Services](https://www.coaibakersfield.com/services): What is installed and what is excluded
-- [Portfolio](https://www.coaibakersfield.com/portfolio): Live client sites
-- [About](https://www.coaibakersfield.com/about): Founder background and accountability
-- [FAQ](https://www.coaibakersfield.com/faq): Ownership, handoff, recurring costs, timelines
-- [Contact](https://www.coaibakersfield.com/contact): Direct line and booking
-- [Intake](https://www.coaibakersfield.com/intake): Request the Job-Call Leak Scorecard
-- [Privacy](https://www.coaibakersfield.com/privacy)
-- [Terms](https://www.coaibakersfield.com/terms)
-- [SMS Terms](https://www.coaibakersfield.com/sms-terms): Consent, STOP/HELP, message rates
-- [AI Disclosure](https://www.coaibakersfield.com/ai-disclosure): How the AI receptionist works, recording, and human escalation
+- [Home](https://www.chaoticallyorganizedai.com/): What leaks, what gets installed, who owns it
+- [Pricing](https://www.chaoticallyorganizedai.com/pricing): Single source of truth for all prices
+- [Services](https://www.chaoticallyorganizedai.com/services): Buyer journey, flagship scope, and exclusions
+- [Systems Catalog](https://www.chaoticallyorganizedai.com/systems): Public capability map across capture, qualification, conversion, discovery, retention, and measurement
+- [Portfolio](https://www.chaoticallyorganizedai.com/portfolio): Live client sites
+- [About](https://www.chaoticallyorganizedai.com/about): Founder background and accountability
+- [FAQ](https://www.chaoticallyorganizedai.com/faq): Ownership, handoff, recurring costs, timelines
+- [Contact](https://www.chaoticallyorganizedai.com/contact): Direct line and booking
+- [Intake](https://www.chaoticallyorganizedai.com/intake): Request the Job-Call Leak Scorecard
+- [Privacy](https://www.chaoticallyorganizedai.com/privacy)
+- [Cookie Notice](https://www.chaoticallyorganizedai.com/cookies)
+- [Terms](https://www.chaoticallyorganizedai.com/terms)
+- [SMS Terms](https://www.chaoticallyorganizedai.com/sms-terms): Consent, STOP/HELP, message rates
+- [AI Disclosure](https://www.chaoticallyorganizedai.com/ai-disclosure): How the AI receptionist works, recording, and human escalation
+
+## Operating Model
+COAI organizes its public systems catalog around a simple path: catch the inquiry, convert the guest, and keep the relationship. The catalog contains optional capabilities—not package promises. A statement of work names every included module before approval. AI is used only where it serves a defined business function, with approved facts and human escalation for judgment calls.
 
 ## Offers
-COAI sells three things and nothing else.
+COAI sells three commercial offers and nothing else.
 
 1. Job-Call Leak Scorecard — free for qualified owner-operators, otherwise $350 Structural Audit credited to the build. Delivered in 24–48 hours. A one-page scorecard with three observed leaks, the assumptions behind them, screenshots, and one recommended first control.
 2. TradeCall Revenue Infrastructure Build — $1,997 flat ($997 to start, $1,000 at launch). Call-first website, one aligned business identity, Google Business Profile cleanup, missed-call text-back, lead pipeline and owner alert, ownership handoff, launch QA, and a 30-day baseline scorecard. Bilingual EN/ES add-on +$400. Standard turnaround 2–3 weeks from signed scope.

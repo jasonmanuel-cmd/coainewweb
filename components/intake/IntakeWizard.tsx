@@ -166,7 +166,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
             {OFFERS.scorecard.name} — {OFFERS.scorecard.turnaround}
           </span>
           <span className="m-urgency-sub">
-            Free for qualified owner-operators. Otherwise a $350 Structural Audit, credited to the build.
+            {OFFERS.scorecard.price}. {OFFERS.scorecard.alt}.
           </span>
         </div>
 
@@ -257,9 +257,9 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
 
             {/* Trust bar */}
             <div className="m-trust-bar">
-              <span>🔒 No spam ever</span>
-              <span>⚡ 60 seconds</span>
-              <span>📋 Real data, not guesswork</span>
+              <span>No spam</span>
+              <span>About 60 seconds</span>
+              <span>Calculated from your inputs</span>
             </div>
 
             {/* Alternative CTA */}
@@ -335,15 +335,15 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
 
         {step === 3 ? (
           <div className="m-step-panel">
-            <div className="m-step-label">Claim Your Free Audit</div>
+            <div className="m-step-label">Request Your Audit</div>
             <h2 className="m-step-title">Where should we send your baseline report?</h2>
             <p className="m-step-sub">
-              Submit and you&rsquo;ll get immediate confirmation. <strong>Jason follows up within 2 hours</strong> during business windows &mdash; usually faster.
+              Submit and you&rsquo;ll get immediate confirmation. <strong>Jason follows up the same business day</strong> when a request arrives during published business hours.
             </p>
 
             {/* Urgency banner */}
             <div className="m-intake-urgency">
-              🎯 <strong>Limited availability:</strong> Accepting 3 new clients this month
+              <strong>Scope check:</strong> qualification, timing, and any paid audit fee are confirmed before work begins.
             </div>
 
             <form onSubmit={onFormSubmit} className="m-intake-form">

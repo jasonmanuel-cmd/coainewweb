@@ -16,7 +16,9 @@ export const metadata: Metadata = pageMetadata({
 
 const pricingService = serviceJsonLd(
   OFFERS.tradecall.name,
-  `${OFFERS.tradecall.summary} ${OFFERS.tradecall.price} flat.`
+  `${OFFERS.tradecall.summary} ${OFFERS.tradecall.price} flat.`,
+  "/pricing",
+  OFFERS.tradecall.priceNumeric
 );
 
 export default function PricingPage() {

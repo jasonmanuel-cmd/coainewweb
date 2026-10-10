@@ -14,7 +14,7 @@ export const metadata: Metadata = pageMetadata({
     "Answers to every question Bakersfield business owners ask before hiring COAI. Pricing, timelines, ownership, AI automation, website maintenance, migration, and ongoing support - all of it.",
   path: "/faq",
   published: "2026-02-01",
-  modified: "2026-04-15",
+  modified: "2026-10-10",
 });
 
 export default function FaqPage() {
@@ -29,7 +29,7 @@ export default function FaqPage() {
       "Answers to every question Bakersfield business owners ask before hiring COAI. Pricing, timelines, ownership, AI automation, website maintenance, migration, and ongoing support.",
     path: "/faq",
     datePublished: "2026-02-01",
-    dateModified: "2026-04-15",
+    dateModified: "2026-10-10",
   });
 
   return (
