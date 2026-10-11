@@ -1,13 +1,27 @@
-/** Canonical business facts — keep NAP identical across schema, footer, GBP, and directories. */
+/**
+ * The one public origin. Canonical tags, Open Graph, JSON-LD, sitemap, robots and
+ * llms.txt all derive from SITE_URL, and every alias host 301s here (next.config.ts).
+ * Changing the primary domain means changing this constant, not an env var.
+ */
+export const CANONICAL_ORIGIN = "https://www.chaoticallyorganizedai.com";
+
+/** Hosts that must permanently redirect to CANONICAL_ORIGIN, path and query preserved. */
+export const ALIAS_HOSTS = ["chaoticallyorganizedai.com", "coaibakersfield.com", "www.coaibakersfield.com"] as const;
+
+/**
+ * NEXT_PUBLIC_SITE_URL is deliberately NOT trusted in deployed builds: a stale value in
+ * a Vercel environment previously split canonical signals across two domains. It is only
+ * honored for localhost so local dev links stay clickable.
+ */
 function normalizeSiteUrl(input: string | undefined): string {
-  const fallback = "https://www.chaoticallyorganizedai.com";
-  if (!input) return fallback;
+  if (!input) return CANONICAL_ORIGIN;
   try {
-    const parsed = new URL(input);
-    return `${parsed.origin}`.replace(/\/+$/, "");
+    const { hostname, origin } = new URL(input);
+    if (hostname === "localhost" || hostname === "127.0.0.1") return origin;
   } catch {
-    return fallback;
+    // fall through to the canonical origin
   }
+  return CANONICAL_ORIGIN;
 }
 
 export const SITE_URL = normalizeSiteUrl(process.env.NEXT_PUBLIC_SITE_URL);

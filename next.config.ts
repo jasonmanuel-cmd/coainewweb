@@ -1,5 +1,6 @@
 import { withSentryConfig } from "@sentry/nextjs/config";
 import type { NextConfig } from "next";
+import { ALIAS_HOSTS, CANONICAL_ORIGIN } from "./lib/site";
 
 const nextConfig: NextConfig = {
   // Pin tracing to this app when a parent directory has another lockfile (avoids wrong root on CI/Vercel).
@@ -49,6 +50,14 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // One domain: retired/alias hosts 301 to the canonical origin (path + query preserved)
+      // so search engines consolidate on a single URL set. Runs before every other rule.
+      ...ALIAS_HOSTS.map((host) => ({
+        source: "/:path*",
+        has: [{ type: "host" as const, value: host.replace(/\./g, "\\.") }],
+        destination: `${CANONICAL_ORIGIN}/:path*`,
+        permanent: true
+      })),
       // Legacy redirects
       { source: "/jax-coming-soon", destination: "/jax", permanent: true },
       { source: "/privacy-policy", destination: "/privacy", permanent: true },

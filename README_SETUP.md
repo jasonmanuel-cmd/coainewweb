@@ -13,7 +13,7 @@ Open `http://localhost:3000`.
 
 Copy `.env.example` to `.env.local` and set:
 
-- `NEXT_PUBLIC_SITE_URL` — exact public canonical origin (`https://chaoticallyorganizedai.com` OR `https://www.chaoticallyorganizedai.com`, choose one)
+- `NEXT_PUBLIC_SITE_URL` — local dev only (`http://localhost:3000`). Deployed builds use the canonical origin hard-coded in `lib/site.ts` (`https://www.chaoticallyorganizedai.com`). If you set it in Vercel it must be exactly that value: `lib/security/request-guards.ts` compares request origins against it.
 - `NEXT_PUBLIC_SUPABASE_URL` — full URL including `https://` (e.g. `https://xxxx.supabase.co`; a malformed value is ignored so the audit form still works without DB writes)
 - `SUPABASE_SERVICE_ROLE_KEY`
 - `PAGESPEED_API_KEY`
