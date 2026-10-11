@@ -40,7 +40,7 @@ export function organizationJsonLd() {
         name: ORG_NAME,
         legalName: LEGAL_NAME,
         url: SITE_URL,
-        logo: `${SITE_URL}/coai-mark.svg`,
+        logo: `${SITE_URL}/coai-logo-square.png`,
         telephone: CONTACT.phoneE164,
         email: CONTACT.email,
         /**

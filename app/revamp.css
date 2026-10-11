@@ -30,10 +30,10 @@
   /* Steel Blue is the system utility colour.
      Signal Orange is reserved for primary CTAs only (applied explicitly below). */
   --m-green: var(--steel-blue);
-  --m-green-dim: rgba(47, 93, 115, 0.1);
-  --m-green-subtle: rgba(47, 93, 115, 0.08);
+  --m-green-dim: rgba(47, 115, 85, 0.1);
+  --m-green-subtle: rgba(47, 115, 85, 0.08);
   --teal: var(--steel-blue);
-  --teal-subtle: rgba(47, 93, 115, 0.12);
+  --teal-subtle: rgba(47, 115, 85, 0.12);
 
   --m-red: var(--leak-red);
   --m-amber: #8a6a03;                       /* darkened for legibility on light */
@@ -49,7 +49,7 @@
   --amber: var(--signal-orange);
   --amber-light: var(--signal-orange-dim);
   --amber-glow: transparent;
-  --amber-subtle: rgba(232, 93, 36, 0.08);
+  --amber-subtle: rgba(125, 255, 157, 0.08);
 
   --cream: var(--charcoal);
   --cream-muted: var(--text-muted);
@@ -219,7 +219,7 @@
 .m-nav-cta-secondary:hover {
   border-color: var(--inspection-yellow);
   color: var(--jobsite-white);
-  background: rgba(242, 183, 5, 0.08);
+  background: rgba(212, 255, 106, 0.08);
 }
 
 .m-hamburger {
@@ -283,7 +283,7 @@
 }
 
 .m-mobile-drawer a:hover {
-  background: rgba(242, 183, 5, 0.08);
+  background: rgba(212, 255, 106, 0.08);
   border-color: var(--inspection-yellow);
   color: var(--jobsite-white);
 }
@@ -761,14 +761,14 @@
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  background: rgba(232, 93, 36, 0.08);
+  background: rgba(125, 255, 157, 0.08);
   color: var(--signal-orange);
   font-family: var(--font-headline);
   font-weight: 700;
   font-size: 18px;
   letter-spacing: 0.04em;
   padding: 0.8rem 1.5rem;
-  border: 1px solid rgba(232, 93, 36, 0.3);
+  border: 1px solid rgba(125, 255, 157, 0.3);
   border-radius: var(--radius-sm);
   cursor: pointer;
   text-decoration: none;
@@ -777,8 +777,8 @@
 }
 
 .m-btn-phone:hover {
-  background: rgba(232, 93, 36, 0.15);
-  border-color: rgba(232, 93, 36, 0.4);
+  background: rgba(125, 255, 157, 0.15);
+  border-color: rgba(125, 255, 157, 0.4);
 }
 
 .m-btn-phone:active {
@@ -911,7 +911,7 @@
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 700;
   margin-bottom: 0.75rem;
-  color: var(--charcoal);
+  color: var(--text-primary);
   letter-spacing: var(--tracking-headline);
 }
 
@@ -949,7 +949,7 @@
 }
 
 .m-service-list li strong {
-  color: var(--charcoal);
+  color: var(--text-primary);
   font-weight: 600;
 }
 
@@ -1060,7 +1060,7 @@
   font-size: 1.1rem;
   font-weight: 700;
   margin: 0;
-  color: var(--charcoal);
+  color: var(--text-primary);
   letter-spacing: var(--tracking-headline);
 }
 
@@ -1102,7 +1102,7 @@
   font-family: var(--font-headline);
   font-size: 1.3rem;
   font-weight: 700;
-  color: var(--charcoal);
+  color: var(--text-primary);
   margin-bottom: 0.25rem;
 }
 
@@ -1157,7 +1157,7 @@
   font-family: var(--font-headline);
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--charcoal);
+  color: var(--text-primary);
   margin: 0;
   letter-spacing: var(--tracking-headline);
 }
@@ -1176,8 +1176,8 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--steel-blue);
-  background: rgba(47, 93, 115, 0.08);
-  border: 1px solid rgba(47, 93, 115, 0.2);
+  background: rgba(47, 115, 85, 0.08);
+  border: 1px solid rgba(47, 115, 85, 0.2);
   padding: 0.3rem 0.8rem;
   border-radius: var(--radius-sm);
   width: fit-content;
@@ -1224,7 +1224,7 @@
   font-family: var(--font-headline);
   font-size: 1.15rem;
   font-weight: 700;
-  color: var(--charcoal);
+  color: var(--text-primary);
   margin: 0;
   letter-spacing: var(--tracking-headline);
 }
@@ -1268,7 +1268,7 @@
 }
 
 .m-protocol-text strong {
-  color: var(--charcoal);
+  color: var(--text-primary);
   font-weight: 600;
 }
 
@@ -1509,7 +1509,7 @@ textarea.m-form-control {
   border: 1px solid var(--border-default);
   border-radius: var(--radius-sm);
   background: var(--surface-panel);
-  color: var(--charcoal);
+  color: var(--text-primary);
   font-family: var(--font-body);
   font-size: 15px;
   transition: border-color var(--t-fast) var(--ease-standard);
@@ -1595,7 +1595,7 @@ textarea.m-form-control {
   border: 1px solid var(--border-default);
   border-radius: var(--radius-sm);
   background: var(--surface-panel);
-  color: var(--charcoal);
+  color: var(--text-primary);
   font-family: var(--font-body);
   font-size: 15px;
   transition: border-color var(--t-fast) var(--ease-standard);
@@ -1647,7 +1647,7 @@ textarea.m-form-control {
   font-family: var(--font-headline);
   font-size: clamp(1.6rem, 4vw, 2.2rem);
   font-weight: 700;
-  color: var(--charcoal);
+  color: var(--text-primary);
   margin: 0 0 0.75rem;
   letter-spacing: var(--tracking-headline);
 }
@@ -1670,7 +1670,7 @@ textarea.m-form-control {
   margin-bottom: 0.5rem;
   font-size: 13px;
   font-weight: 600;
-  color: var(--charcoal);
+  color: var(--text-primary);
 }
 
 .m-slider-label strong {
@@ -1828,7 +1828,7 @@ textarea.m-form-control {
   font-family: var(--font-mono), monospace;
   font-weight: 700;
   font-size: 12px;
-  background: rgba(232, 93, 36, 0.15);
+  background: rgba(125, 255, 157, 0.15);
   color: var(--signal-orange);
   border: 1px solid var(--signal-orange);
   transition: background-color var(--t-fast) var(--ease-standard),
@@ -1862,7 +1862,7 @@ textarea.m-form-control {
   font-family: var(--font-headline);
   font-size: clamp(1.8rem, 4vw, 2.5rem);
   font-weight: 700;
-  color: var(--charcoal);
+  color: var(--text-primary);
   margin-bottom: 1rem;
   letter-spacing: var(--tracking-headline);
 }
@@ -1934,7 +1934,7 @@ textarea.m-form-control {
 .m-testi-author {
   font-size: 13px;
   font-weight: 600;
-  color: var(--charcoal);
+  color: var(--text-primary);
 }
 
 .m-testi-role {
@@ -2020,10 +2020,10 @@ textarea.m-form-control {
 }
 
 .m-tag-food { background: rgba(232, 160, 32, 0.1); color: var(--inspection-yellow); border: 1px solid rgba(232, 160, 32, 0.2); }
-.m-tag-finance { background: rgba(47, 93, 115, 0.1); color: var(--steel-blue); border: 1px solid rgba(47, 93, 115, 0.2); }
-.m-tag-contracting { background: rgba(232, 93, 36, 0.1); color: var(--signal-orange); border: 1px solid rgba(232, 93, 36, 0.2); }
+.m-tag-finance { background: rgba(47, 115, 85, 0.1); color: var(--steel-blue); border: 1px solid rgba(47, 115, 85, 0.2); }
+.m-tag-contracting { background: rgba(125, 255, 157, 0.1); color: var(--signal-orange); border: 1px solid rgba(125, 255, 157, 0.2); }
 .m-tag-apparel { background: rgba(232, 160, 32, 0.08); color: var(--inspection-yellow); border: 1px solid rgba(232, 160, 32, 0.15); }
-.m-tag-photo { background: rgba(47, 93, 115, 0.08); color: var(--steel-blue); border: 1px solid rgba(47, 93, 115, 0.15); }
+.m-tag-photo { background: rgba(47, 115, 85, 0.08); color: var(--steel-blue); border: 1px solid rgba(47, 115, 85, 0.15); }
 .m-tag-music { background: rgba(62, 107, 74, 0.08); color: var(--pass-green); border: 1px solid rgba(62, 107, 74, 0.15); }
 
 .m-card-client {
@@ -2031,7 +2031,7 @@ textarea.m-form-control {
   font-weight: 700;
   margin-bottom: 0.25rem;
   line-height: 1.2;
-  color: var(--charcoal);
+  color: var(--text-primary);
   font-family: var(--font-headline);
 }
 
@@ -2058,7 +2058,7 @@ textarea.m-form-control {
 }
 
 .m-card-desc strong {
-  color: var(--charcoal);
+  color: var(--text-primary);
 }
 
 .m-card-built {
@@ -2122,18 +2122,19 @@ textarea.m-form-control {
 .m-card-link:hover {
   border-color: var(--steel-blue);
   color: var(--steel-blue);
-  background: rgba(47, 93, 115, 0.06);
+  background: rgba(47, 115, 85, 0.06);
 }
 
 .m-card-link.m-primary {
   background: var(--steel-blue);
-  color: var(--jobsite-white);
+  color: var(--cta-text);
   border-color: var(--steel-blue);
 }
 
 .m-card-link.m-primary:hover {
   background: var(--steel-blue-dim);
   border-color: var(--steel-blue-dim);
+  color: var(--cta-text);
 }
 
 /* ==========================================================================
@@ -2189,7 +2190,7 @@ textarea.m-form-control {
 }
 
 .m-info-text {
-  color: var(--charcoal);
+  color: var(--text-primary);
   font-size: 14px;
 }
 
@@ -2234,7 +2235,7 @@ textarea.m-form-control {
   font-family: var(--font-headline);
   font-size: 1.3rem;
   font-weight: 700;
-  color: var(--charcoal);
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
   letter-spacing: var(--tracking-headline);
 }
@@ -2348,7 +2349,7 @@ textarea.m-form-control {
 .m-guarantee-badge-title {
   font-size: 13px;
   font-weight: 700;
-  color: var(--charcoal);
+  color: var(--text-primary);
   margin-bottom: 0.25rem;
 }
 
@@ -2403,14 +2404,14 @@ textarea.m-form-control {
   font-weight: 700;
   color: var(--inspection-yellow);
   text-decoration: none;
-  background: rgba(242, 183, 5, 0.08);
+  background: rgba(212, 255, 106, 0.08);
   border-left: 1px solid var(--inspection-yellow);
   font-family: var(--font-headline);
   letter-spacing: 0.04em;
 }
 
 .m-sticky-mobile-audit:hover {
-  background: rgba(242, 183, 5, 0.15);
+  background: rgba(212, 255, 106, 0.15);
 }
 
 @media (max-width: 768px) {
@@ -2427,7 +2428,7 @@ textarea.m-form-control {
   position: fixed;
   inset: 0;
   z-index: 200;
-  background: rgba(27, 29, 29, 0.8);
+  background: rgba(27, 29, 28, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2461,7 +2462,7 @@ textarea.m-form-control {
 }
 
 .m-scroll-modal-close:hover {
-  color: var(--charcoal);
+  color: var(--text-primary);
   background: var(--border-default);
 }
 
@@ -2480,7 +2481,7 @@ textarea.m-form-control {
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 12px;
-  color: var(--charcoal);
+  color: var(--text-primary);
   letter-spacing: var(--tracking-headline);
 }
 
@@ -2552,7 +2553,7 @@ textarea.m-form-control {
   font-family: var(--font-headline);
   font-size: 1.3rem;
   font-weight: 700;
-  color: var(--charcoal);
+  color: var(--text-primary);
 }
 
 .m-founder-title {
@@ -2591,7 +2592,7 @@ textarea.m-form-control {
 
 .m-f-stat-val {
   font-weight: 600;
-  color: var(--charcoal);
+  color: var(--text-primary);
 }
 
 .m-founder-story {
@@ -2619,7 +2620,7 @@ textarea.m-form-control {
   font-family: var(--font-headline);
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--charcoal);
+  color: var(--text-primary);
   margin: 0;
   letter-spacing: var(--tracking-headline);
 }
@@ -2671,7 +2672,7 @@ textarea.m-form-control {
   text-transform: none;
   margin: 0 0 1rem;
   line-height: 1.08;
-  color: var(--charcoal);
+  color: var(--text-primary);
 }
 
 .m-hero-cta-row {
@@ -2736,8 +2737,8 @@ textarea.m-form-control {
 }
 .m-philosophy-rented {
   color: var(--leak-red);
-  background: rgba(232, 93, 36, 0.08);
-  border: 1px solid rgba(232, 93, 36, 0.2);
+  background: rgba(125, 255, 157, 0.08);
+  border: 1px solid rgba(125, 255, 157, 0.2);
 }
 .m-philosophy-row {
   font-size: 12px;
@@ -2773,7 +2774,7 @@ textarea.m-form-control {
   font-family: var(--font-headline);
   font-size: 1rem;
   font-weight: 700;
-  color: var(--charcoal);
+  color: var(--text-primary);
   margin: 0;
 }
 .m-serve-sub {
@@ -2815,7 +2816,7 @@ textarea.m-form-control {
   font-family: var(--font-headline);
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--charcoal);
+  color: var(--text-primary);
   margin: 0;
   letter-spacing: var(--tracking-headline);
 }
@@ -2832,8 +2833,8 @@ textarea.m-form-control {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--steel-blue);
-  background: rgba(47, 93, 115, 0.08);
-  border: 1px solid rgba(47, 93, 115, 0.2);
+  background: rgba(47, 115, 85, 0.08);
+  border: 1px solid rgba(47, 115, 85, 0.2);
   padding: 0.3rem 0.8rem;
   border-radius: var(--radius-sm);
   width: fit-content;
@@ -2946,8 +2947,8 @@ textarea.m-form-control {
   font-size: 13px;
   flex-wrap: wrap;
   padding: 10px 16px;
-  background: rgba(242, 183, 5, 0.08);
-  border: 1px solid rgba(242, 183, 5, 0.25);
+  background: rgba(212, 255, 106, 0.08);
+  border: 1px solid rgba(212, 255, 106, 0.25);
   border-radius: var(--radius-sm);
   margin-bottom: 1.25rem;
 }
@@ -2993,7 +2994,7 @@ textarea.m-form-control {
   font-family: var(--font-mono), monospace;
   font-weight: 700;
   font-size: 12px;
-  background: rgba(232, 93, 36, 0.15);
+  background: rgba(125, 255, 157, 0.15);
   color: var(--signal-orange);
   border: 1px solid var(--signal-orange);
   transition: background-color var(--t-fast) var(--ease-standard),
@@ -3001,7 +3002,7 @@ textarea.m-form-control {
 }
 .m-step-circle--active {
   background: var(--signal-orange);
-  color: var(--jobsite-white);
+  color: var(--cta-text);
   border-color: var(--signal-orange);
 }
 .m-step-tracker-label {
@@ -3059,7 +3060,7 @@ textarea.m-form-control {
   font-size: 14px;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: var(--charcoal);
+  color: var(--text-primary);
 }
 .m-phone-cta {
   display: inline-block;
@@ -3068,16 +3069,16 @@ textarea.m-form-control {
   font-size: 18px;
   text-decoration: none;
   padding: 0.6rem 1.5rem;
-  border: 1px solid rgba(232, 93, 36, 0.3);
+  border: 1px solid rgba(125, 255, 157, 0.3);
   border-radius: var(--radius-sm);
-  background: rgba(232, 93, 36, 0.08);
+  background: rgba(125, 255, 157, 0.08);
   margin-bottom: 0.5rem;
   transition: background-color var(--t-fast) var(--ease-standard),
     border-color var(--t-fast) var(--ease-standard);
 }
 .m-phone-cta:hover {
-  background: rgba(232, 93, 36, 0.15);
-  border-color: rgba(232, 93, 36, 0.4);
+  background: rgba(125, 255, 157, 0.15);
+  border-color: rgba(125, 255, 157, 0.4);
 }
 .m-alt-cta-sub {
   font-size: 12px;
@@ -3092,8 +3093,8 @@ textarea.m-form-control {
 
 .m-intake-urgency {
   padding: 10px 14px;
-  background: rgba(242, 183, 5, 0.08);
-  border: 1px solid rgba(242, 183, 5, 0.15);
+  background: rgba(212, 255, 106, 0.08);
+  border: 1px solid rgba(212, 255, 106, 0.15);
   border-radius: var(--radius-sm);
   font-size: 12px;
   color: var(--inspection-yellow);
@@ -3142,7 +3143,7 @@ textarea.m-form-control {
   margin: 0 auto 1.5rem;
 }
 .m-hero-sub strong {
-  color: var(--charcoal);
+  color: var(--text-primary);
   font-weight: 600;
 }
 
@@ -3152,7 +3153,7 @@ textarea.m-form-control {
   font-family: var(--font-headline);
   font-size: clamp(1.8rem, 4vw, 2.5rem);
   font-weight: 700;
-  color: var(--charcoal);
+  color: var(--text-primary);
   margin-bottom: 1rem;
   letter-spacing: var(--tracking-headline);
 }
@@ -3237,7 +3238,7 @@ textarea.m-form-control {
 .m-spinner {
   width: 32px;
   height: 32px;
-  border: 3px solid rgba(232, 93, 36, 0.2);
+  border: 3px solid rgba(125, 255, 157, 0.2);
   border-top-color: var(--signal-orange);
   border-radius: var(--radius-sm);
   animation: m-spin 0.8s linear infinite;
@@ -3273,7 +3274,7 @@ textarea.m-form-control {
 
 .m-btn--green:hover {
   background: var(--steel-blue);
-  color: var(--jobsite-white);
+  color: var(--cta-text);
 }
 
 /* ==========================================================================
@@ -3342,8 +3343,8 @@ textarea.m-form-control {
   position: fixed;
   inset: 0;
   background-image:
-    radial-gradient(circle at 1px 1px, rgba(47,93,115,0.03) 1px, transparent 1px),
-    radial-gradient(circle at 1px 1px, rgba(232,93,36,0.02) 1px, transparent 1px);
+    radial-gradient(circle at 1px 1px, rgba(47, 115, 85,0.03) 1px, transparent 1px),
+    radial-gradient(circle at 1px 1px, rgba(125, 255, 157,0.02) 1px, transparent 1px);
   background-size: 80px 80px, 120px 120px;
   background-position: 0 0, 40px 40px;
   pointer-events: none;

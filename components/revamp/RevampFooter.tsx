@@ -32,9 +32,8 @@ export function RevampFooter() {
 
       <div className="revamp-footer-grid">
         <div className="revamp-footer-brand">
-          <Link className="revamp-logo" href="/" aria-label="Chaotically Organized AI — home">
-            <Image className="revamp-logo-mark" src="/coai-mark.svg" alt="" width={42} height={42} />
-            <span className="revamp-logo-copy"><strong>COAI</strong><small>Revenue Infrastructure</small></span>
+          <Link className="revamp-footer-logo" href="/" aria-label="Chaotically Organized AI — home">
+            <Image src="/coai-logo.webp" alt="Chaotically Organized AI" width={910} height={741} sizes="220px" />
           </Link>
           <p>AI-powered lead response and follow-up infrastructure for local service businesses.</p>
           <div className="revamp-footer-status"><i aria-hidden="true" /> Systems online · Bakersfield, California</div>

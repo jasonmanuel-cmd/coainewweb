@@ -26,7 +26,6 @@ export const metadata: Metadata = {
     template: "%s | Chaotically Organized AI"
   },
   description: SITE_DESCRIPTION,
-  icons: { icon: "/icon.svg" },
   openGraph: {
     title: "Chaotically Organized AI",
     description: SITE_DESCRIPTION,
@@ -44,7 +43,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   colorScheme: "dark",
-  themeColor: "#080c10",
+  themeColor: "#08100c",
   width: "device-width",
   initialScale: 1
 };
