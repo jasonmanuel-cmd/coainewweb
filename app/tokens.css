@@ -1,41 +1,46 @@
 :root {
-  --charcoal: #080c10;
-  --charcoal-80: #0e151b;
-  --charcoal-60: #18222a;
-  --jobsite-white: #f5f1e8;
-  --jobsite-white-dim: #d9d8d2;
-  --paper: #111920;
-  --signal-orange: #ff5a1f;
-  --signal-orange-dim: #df4612;
-  --inspection-yellow: #ffc21a;
-  --inspection-yellow-dim: #d7a000;
-  --steel-blue: #5ad8ff;
-  --steel-blue-dim: #2ca5cc;
-  --pass-green: #58e6a9;
-  --pass-green-dim: #2da978;
+  /* Brand palette — sampled from the COAI brain-circuit logo (neon green on near-black).
+     Legacy token names are kept so existing components keep working: --signal-orange is
+     the primary accent (CTA green), --steel-blue the secondary mint, --inspection-yellow
+     the lime highlight. */
+  --charcoal: #070b09;
+  --charcoal-80: #0d1411;
+  --charcoal-60: #151f1a;
+  --jobsite-white: #eefaf1;
+  --jobsite-white-dim: #cfdcd3;
+  --paper: #0f1713;
+  --signal-orange: #7dff9d;
+  --signal-orange-dim: #3fd470;
+  --inspection-yellow: #d4ff6a;
+  --inspection-yellow-dim: #a8cf3a;
+  --steel-blue: #54e0b0;
+  --steel-blue-dim: #2fa882;
+  --pass-green: #7dff9d;
+  --pass-green-dim: #3fd470;
   --leak-red: #ff6b5f;
   --leak-red-dim: #d94d43;
+  --caution-amber: #ffc21a;
 
-  --surface-page: #080c10;
-  --surface-panel: #10171d;
-  --surface-elevated: #151f27;
-  --surface-inverse: #080c10;
-  --surface-inverse-raised: #111920;
-  --text-primary: #f5f1e8;
-  --text-inverse: #f5f1e8;
-  --text-muted: #a8b3ba;
-  --text-on-inverse-muted: #a8b3ba;
-  --border-default: rgba(142, 170, 187, 0.2);
-  --border-strong: rgba(90, 216, 255, 0.52);
-  --border-inverse: rgba(142, 170, 187, 0.18);
+  --surface-page: #070b09;
+  --surface-panel: #0e1612;
+  --surface-elevated: #131d18;
+  --surface-inverse: #070b09;
+  --surface-inverse-raised: #0f1713;
+  --text-primary: #eefaf1;
+  --text-inverse: #eefaf1;
+  --text-muted: #a3b8aa;
+  --text-on-inverse-muted: #a3b8aa;
+  --border-default: rgba(150, 200, 170, 0.2);
+  --border-strong: rgba(125, 255, 157, 0.5);
+  --border-inverse: rgba(150, 200, 170, 0.18);
   --cta-bg: var(--signal-orange);
-  --cta-bg-hover: #ff703d;
-  --cta-text: #fffaf2;
-  --link: #7ae1ff;
-  --link-hover: #b9efff;
+  --cta-bg-hover: #a6ffbb;
+  --cta-text: #04110a;
+  --link: #8dffb8;
+  --link-hover: #c4ffd9;
   --status-pass: var(--pass-green);
   --status-fail: var(--leak-red);
-  --status-caution: var(--inspection-yellow);
+  --status-caution: var(--caution-amber);
   --status-info: var(--steel-blue);
 
   --font-headline: "Barlow Condensed", Impact, "Arial Narrow", sans-serif;
@@ -74,8 +79,8 @@
   --rule-strong: 2px;
   --shadow-panel: 0 18px 60px rgba(0, 0, 0, 0.22);
   --shadow-raised: 0 30px 90px rgba(0, 0, 0, 0.42);
-  --glow-cyan: 0 0 40px rgba(90, 216, 255, 0.15);
-  --glow-orange: 0 0 44px rgba(255, 90, 31, 0.2);
+  --glow-cyan: 0 0 40px rgba(84, 224, 176, 0.18);
+  --glow-orange: 0 0 44px rgba(125, 255, 157, 0.22);
   --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
   --t-fast: 160ms;
   --t-mid: 320ms;
@@ -103,7 +108,7 @@ h1, h2, h3, h4, h5, h6 {
 p { margin: 0; }
 a { color: var(--link); text-underline-offset: 3px; }
 a:hover { color: var(--link-hover); }
-::selection { background: var(--signal-orange); color: white; }
+::selection { background: var(--signal-orange); color: #04110a; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

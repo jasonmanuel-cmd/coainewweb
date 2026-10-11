@@ -81,7 +81,7 @@
 .home-hero__circuit {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle at 1px 1px, rgba(242,183,5,0.06) 1px, transparent 1px);
+  background-image: radial-gradient(circle at 1px 1px, rgba(212, 255, 106,0.06) 1px, transparent 1px);
   background-size: 60px 60px;
   opacity: 0.4;
   pointer-events: none;
@@ -416,7 +416,7 @@
   justify-content: center;
   gap: var(--space-2);
   background: var(--steel-blue);
-  color: var(--jobsite-white);
+  color: var(--cta-text);
   border: none;
   border-radius: var(--radius-sm);
   padding: var(--space-2) var(--space-3);
@@ -430,6 +430,7 @@
 
 .home-sticky__chat:hover {
   background: var(--steel-blue-dim);
+  color: var(--cta-text);
 }
 
 .home-sticky__chat-dot {
@@ -534,11 +535,11 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: var(--steel-blue, #0ea5e9);
+  background: var(--steel-blue, #38bf7c);
   color: #fff;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.4);
+  box-shadow: 0 4px 20px rgba(56, 191, 124, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -548,13 +549,13 @@
 
 .cipher-fab:hover {
   transform: scale(1.08);
-  box-shadow: 0 6px 24px rgba(14, 165, 233, 0.5);
+  box-shadow: 0 6px 24px rgba(56, 191, 124, 0.5);
 }
 
 .cipher-modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.8);
+  background: rgba(15, 42, 29, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -601,5 +602,5 @@
 }
 
 .cipher-modal-body a {
-  color: var(--steel-blue, #0ea5e9);
+  color: var(--steel-blue, #38bf7c);
 }

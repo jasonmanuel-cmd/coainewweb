@@ -53,6 +53,7 @@ export default function HomePage() {
           quality={88}
           sizes="100vw"
         />
+        <Image className="cinematic-hero-mark" src="/coai-mark.webp" alt="" width={512} height={512} priority aria-hidden="true" />
         <div className="cinematic-hero-shade" aria-hidden="true" />
         <div className="cinematic-hero-grid" aria-hidden="true" />
         <div className="cinematic-container cinematic-hero-inner">

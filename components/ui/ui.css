@@ -134,11 +134,11 @@
 /* Darkened Inspection Yellow — the raw token fails contrast on paper. */
 .ui-tag--proof {
   color: #8a6a03;
-  background: rgba(242, 183, 5, 0.16);
+  background: rgba(212, 255, 106, 0.16);
 }
 .ui-tag--info {
   color: var(--steel-blue);
-  background: rgba(47, 93, 115, 0.1);
+  background: rgba(47, 115, 85, 0.1);
 }
 .ui-tag--neutral {
   color: var(--text-muted);
@@ -149,14 +149,14 @@
    same hues lifted to stay legible against --surface-inverse. */
 .ui-card--inverse .ui-tag--info,
 .home-section--inverse .ui-tag--info {
-  color: #7fb4cc;
-  background: rgba(127, 180, 204, 0.14);
+  color: #7fcca6;
+  background: rgba(127, 204, 166, 0.14);
 }
 
 .ui-card--inverse .ui-tag--proof,
 .home-section--inverse .ui-tag--proof {
   color: var(--inspection-yellow);
-  background: rgba(242, 183, 5, 0.14);
+  background: rgba(212, 255, 106, 0.14);
 }
 
 .ui-card--inverse .ui-tag--control,

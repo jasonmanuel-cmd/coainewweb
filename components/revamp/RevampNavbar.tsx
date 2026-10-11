@@ -48,7 +48,7 @@ export function RevampNavbar() {
       <div className="revamp-header-scan" aria-hidden="true" />
       <nav className="revamp-nav" aria-label="Primary navigation">
         <Link className="revamp-logo" href="/" aria-label="Chaotically Organized AI — home">
-          <Image className="revamp-logo-mark" src="/coai-mark.svg" alt="" width={38} height={38} priority />
+          <Image className="revamp-logo-mark" src="/coai-mark.webp" alt="" width={46} height={46} priority />
           <span className="revamp-logo-copy">
             <strong>COAI</strong>
             <small>Revenue Infrastructure</small>
