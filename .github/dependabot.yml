@@ -1,0 +1,17 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    groups:
+      # Framework + runtime move together so a security bump never lands half-applied.
+      framework:
+        patterns: ["next", "react", "react-dom", "eslint-config-next"]
+      sentry:
+        patterns: ["@sentry/*"]
+      test-tooling:
+        patterns: ["vitest", "happy-dom", "@vitest/*"]
+    labels: ["dependencies"]
