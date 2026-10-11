@@ -7,6 +7,7 @@ import { RevenueCalculator } from "@/components/revamp/RevenueCalculator";
 import { REVAMP_PROJECTS } from "@/components/revamp/revampData";
 import { serviceJsonLd } from "@/lib/schema";
 import { BUILD_PRICE, CONTINUITY_MONTHLY, CTA_BOOKING_URL, DELIVERY_TIMELINE, SITE_DESCRIPTION, formatUsd } from "@/lib/site";
+import { PORTFOLIO_STATS, countWord } from "@/lib/portfolio-stats";
 import { SYSTEM_CAPABILITY_COUNT } from "@/lib/systems";
 
 export const metadata: Metadata = {
@@ -112,7 +113,7 @@ export default function HomePage() {
           </div>
           <div className="proof-stats">
             <div><strong>{formatUsd(BUILD_PRICE)}</strong><span>flat flagship build</span></div>
-            <div><strong>7</strong><span>public project links</span></div>
+            <div><strong>{PORTFOLIO_STATS.projectCount}</strong><span>public project links</span></div>
             <div><strong>30 days</strong><span>optimization included</span></div>
             <div><strong>100%</strong><span>ownership transferred</span></div>
           </div>
@@ -163,7 +164,7 @@ export default function HomePage() {
         <div className="cinematic-container">
           <div className="section-heading section-heading-wide">
             <div><span className="section-index">[ 03 / FIELD PROOF ]</span><h2 id="portfolio-title">Built systems. Live URLs. Real operators.</h2></div>
-            <Link className="text-link" href="/portfolio">View all seven projects <ArrowUpRight aria-hidden="true" /></Link>
+            <Link className="text-link" href="/portfolio">View all {countWord(PORTFOLIO_STATS.projectCount)} projects <ArrowUpRight aria-hidden="true" /></Link>
           </div>
           <div className="case-grid">
             {REVAMP_PROJECTS.slice(0, 3).map((project, index) => (

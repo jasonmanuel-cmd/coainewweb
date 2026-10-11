@@ -5,6 +5,7 @@ import { MarketingLayout } from "@/components/marketing/MarketingLayout";
 import { PortfolioFilterGrid } from "@/components/portfolio/PortfolioFilterGrid";
 import { PortfolioEventBeacon } from "@/components/PortfolioEventBeacon";
 import { pageMetadata } from "@/lib/metadata";
+import { PORTFOLIO_STATS, countWord } from "@/lib/portfolio-stats";
 import { breadcrumbJsonLd } from "@/lib/schema";
 import { ORG_ID, SITE_URL } from "@/lib/site";
 
@@ -48,19 +49,19 @@ export default function PortfolioPage() {
           </h1>
           <p className="m-hero-sub">
             Every site below is custom code, owned outright by the client. No rented funnels. No
-            platform dependency. Some portfolio links are still on temporary hosting subdomains pending client DNS
-            cutover. Ownership remains with the client.
+            platform dependency. {PORTFOLIO_STATS.temporaryHostCount} of the {countWord(PORTFOLIO_STATS.projectCount)} links below are still on
+            temporary hosting subdomains pending client DNS cutover. Ownership remains with the client.
           </p>
         </div>
       </div>
 
       <div className="m-stats-row">
         <div className="m-stat-pill">
-          <div className="m-num">7</div>
-          <div className="m-lbl">Live Client Sites</div>
+          <div className="m-num">{PORTFOLIO_STATS.projectCount}</div>
+          <div className="m-lbl">Client Sites Built</div>
         </div>
         <div className="m-stat-pill">
-          <div className="m-num">6</div>
+          <div className="m-num">{PORTFOLIO_STATS.industryCount}</div>
           <div className="m-lbl">Industries Served</div>
         </div>
         <div className="m-stat-pill">
