@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { PORTFOLIO_STATS } from "@/lib/portfolio-stats";
 import { BRAND_TAGLINE, CONTACT, FOUNDER, LEGAL_NAME } from "@/lib/site";
 
 export function AboutMarketingContent() {
@@ -41,11 +42,11 @@ export function AboutMarketingContent() {
                 </div>
                 <div className="m-f-stat">
                   <span className="m-f-stat-label">Industries Worked</span>
-                  <span className="m-f-stat-val">5+</span>
+                  <span className="m-f-stat-val">{PORTFOLIO_STATS.industryCount}</span>
                 </div>
                 <div className="m-f-stat">
-                  <span className="m-f-stat-label">Client Sites Live</span>
-                  <span className="m-f-stat-val">7</span>
+                  <span className="m-f-stat-label">Client Sites Built</span>
+                  <span className="m-f-stat-val">{PORTFOLIO_STATS.projectCount}</span>
                 </div>
                 <div className="m-f-stat">
                   <span className="m-f-stat-label">Direct Line</span>
