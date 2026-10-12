@@ -1,3 +1,5 @@
+import { PublicError } from "../public-error";
+
 /**
  * Blocks obvious SSRF targets for server-side HTTP fetches (metadata, loopback, RFC1918).
  * Does not mitigate DNS rebinding; pair with short timeouts and edge rate limits.
@@ -40,18 +42,18 @@ export function assertUrlSafeForServerFetch(urlString: string): void {
   try {
     u = new URL(urlString);
   } catch {
-    throw new Error("Invalid URL");
+    throw new PublicError("Invalid URL");
   }
   if (u.protocol !== "http:" && u.protocol !== "https:") {
-    throw new Error("URL protocol not allowed");
+    throw new PublicError("URL protocol not allowed");
   }
   const host = u.hostname;
-  if (!host) throw new Error("Missing host");
+  if (!host) throw new PublicError("Missing host");
 
   if (host === "localhost" || host.endsWith(".localhost")) {
-    throw new Error("Host not allowed");
+    throw new PublicError("Host not allowed");
   }
   if (isUnsafeIpv4(host) || isUnsafeIpv6(host)) {
-    throw new Error("Host not allowed");
+    throw new PublicError("Host not allowed");
   }
 }

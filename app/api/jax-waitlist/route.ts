@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { apiErrorResponse } from "@/lib/api-errors";
 import { FORMSPREE_CONTACT } from "@/lib/forms";
 import { getClientIp, hasJsonContentType, isSameSiteRequest } from "@/lib/security/request-guards";
 import { verifyTurnstileToken } from "@/lib/turnstile/verify";
@@ -37,9 +38,6 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ ok: true });
   } catch (error) {
-    return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Waitlist request failed" },
-      { status: 400 }
-    );
+    return apiErrorResponse(error, { route: "jax-waitlist", fallback: "We couldn't add you to the waitlist right now. Please try again." });
   }
 }

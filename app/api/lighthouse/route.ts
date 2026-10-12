@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { apiErrorResponse } from "@/lib/api-errors";
 
 /** PageSpeed runs can exceed default serverless limits - allow up to 60s on supported Vercel plans. */
 export const maxDuration = 60;
@@ -28,9 +29,11 @@ type PsiJson = {
   error?: { message?: string; status?: string };
 };
 
-function psiErrorMessage(data: PsiJson, fallback: string) {
-  const msg = data.error?.message;
-  return typeof msg === "string" && msg.length ? msg : fallback;
+/** Google's own error text can be technical or mention quotas and keys, so visitors only get these. */
+function psiVisitorMessage(status: number): string {
+  if (status === 429) return "Too many requests right now. Try again soon.";
+  if (status >= 400 && status < 500) return "Google couldn't analyze that address. Check it and try again.";
+  return "The speed test is unavailable right now. Please try again.";
 }
 
 export async function GET(req: NextRequest) {
@@ -69,13 +72,13 @@ export async function GET(req: NextRequest) {
     const data = (await response.json()) as PsiJson;
 
     if (!response.ok) {
-      const detail = psiErrorMessage(data, `PageSpeed returned ${response.status}`);
-      return NextResponse.json({ error: detail }, { status: response.status >= 400 && response.status < 600 ? response.status : 502 });
+      console.error("[api/lighthouse] PageSpeed error", response.status, data.error?.status ?? "");
+      const status = response.status === 429 ? 429 : response.status >= 400 && response.status < 500 ? 422 : 502;
+      return NextResponse.json({ error: psiVisitorMessage(response.status) }, { status });
     }
 
     if (!data.lighthouseResult) {
-      const detail = psiErrorMessage(data, "Google could not run Lighthouse for that URL.");
-      return NextResponse.json({ error: detail }, { status: 422 });
+      return NextResponse.json({ error: "Google couldn't run the speed test for that address." }, { status: 422 });
     }
 
     const lr = data.lighthouseResult;
@@ -95,9 +98,6 @@ export async function GET(req: NextRequest) {
       cruxOverall: crux
     });
   } catch (err: unknown) {
-    return NextResponse.json(
-      { error: err instanceof Error ? err.message : "Lighthouse request failed" },
-      { status: 500 }
-    );
+    return apiErrorResponse(err, { route: "lighthouse", fallback: "The speed test is unavailable right now. Please try again." });
   }
 }

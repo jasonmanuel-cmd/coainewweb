@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { apiErrorResponse } from "@/lib/api-errors";
 import { runAudit } from "@/lib/audit/run-audit";
 import { getClientIp, hasJsonContentType, isSameSiteRequest } from "@/lib/security/request-guards";
 import { takeRateLimitToken } from "@/lib/utils/rate-limit";
@@ -22,9 +23,6 @@ export async function POST(request: Request) {
     const result = await runAudit(url);
     return NextResponse.json(result);
   } catch (error) {
-    return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Audit failed" },
-      { status: 500 }
-    );
+    return apiErrorResponse(error, { route: "audit", fallback: "We couldn't run that audit right now. Please try again." });
   }
 }
