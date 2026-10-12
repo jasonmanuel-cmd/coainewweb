@@ -145,6 +145,19 @@
   text-decoration: none;
 }
 .revamp-nav-dropdown a:hover { color: white; background: rgba(84, 224, 176, 0.07); }
+.revamp-nav-dropdown button {
+  display: grid;
+  gap: 4px;
+  width: 100%;
+  padding: 12px 14px;
+  border: 0;
+  border-radius: 7px;
+  color: var(--jobsite-white);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+.revamp-nav-dropdown button:hover { color: white; background: rgba(84, 224, 176, 0.07); }
 .revamp-nav-dropdown span { font: 700 0.83rem/1.2 var(--font-mono); text-transform: uppercase; letter-spacing: 0.04em; }
 .revamp-nav-dropdown small { color: var(--text-muted); font-size: 0.76rem; }
 .revamp-nav-links > .revamp-nav-cta {
@@ -1265,3 +1278,74 @@
 .coai-site a.revamp-btn-light { color: #06110b; }
 .revamp-footer-bottom span, .revamp-footer-bottom a { color: #8aa396; }
 .case-number { color: #8aa396; }
+
+/* ---- Chat with Cipher (fallback launcher + dialog; the Vapi widget brings its own button) ---- */
+.cipher-fab {
+  position: fixed;
+  z-index: 900;
+  right: 20px;
+  bottom: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 20px;
+  border: 1px solid var(--signal-orange);
+  border-radius: 999px;
+  color: var(--cta-text);
+  background: var(--cta-bg);
+  box-shadow: var(--glow-orange), var(--shadow-panel);
+  font: 700 0.74rem/1 var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform var(--t-fast) ease, background var(--t-fast) ease;
+}
+.cipher-fab:hover { background: var(--cta-bg-hover); transform: translateY(-2px); }
+.cipher-fab-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--cta-text); }
+.cipher-modal-backdrop {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(3, 7, 5, 0.72);
+  backdrop-filter: blur(4px);
+}
+.cipher-modal {
+  width: min(440px, 100%);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  background: var(--surface-elevated);
+  box-shadow: var(--shadow-raised), var(--glow-orange);
+}
+.cipher-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--border-default);
+}
+.cipher-modal-header h2 { font-size: 1.5rem; text-transform: uppercase; }
+.cipher-close {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border-default);
+  border-radius: 8px;
+  color: var(--text-primary);
+  background: transparent;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.cipher-close:hover { border-color: var(--signal-orange); color: var(--signal-orange); }
+.cipher-modal-body { display: grid; gap: 14px; padding: 22px; color: var(--text-muted); }
+.cipher-modal-body a { color: var(--link); font-weight: 600; }
+@media (max-width: 640px) {
+  .cipher-fab { right: 14px; bottom: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cipher-fab { transition: none; }
+}
