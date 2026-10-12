@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { apiErrorResponse } from "@/lib/api-errors";
 import { runAudit } from "@/lib/audit/run-audit";
 import { notifyLead } from "@/lib/forms";
 import { getClientIp, hasJsonContentType, isSameSiteRequest } from "@/lib/security/request-guards";
@@ -88,9 +89,6 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ id, ...audit });
   } catch (error) {
-    return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Registration failed" },
-      { status: 400 }
-    );
+    return apiErrorResponse(error, { route: "register", fallback: "We couldn't complete your registration right now. Please try again." });
   }
 }

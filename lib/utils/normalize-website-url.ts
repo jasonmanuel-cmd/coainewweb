@@ -1,3 +1,5 @@
+import { PublicError } from "../public-error";
+
 /**
  * Turns user input (example.com, www.example.com, path URLs) into an absolute URL
  * for PageSpeed / HTTP fetches. Does not require a protocol in the input.
@@ -5,7 +7,7 @@
 export function normalizeWebsiteUrl(input: string): string {
   const raw = input.trim();
   if (!raw) {
-    throw new Error("URL is empty");
+    throw new PublicError("URL is empty");
   }
 
   try {
@@ -17,6 +19,6 @@ export function normalizeWebsiteUrl(input: string): string {
     }
     return new URL(`https://${raw}`).toString();
   } catch {
-    throw new Error("Invalid URL");
+    throw new PublicError("Invalid URL");
   }
 }

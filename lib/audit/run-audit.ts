@@ -36,6 +36,9 @@ export async function runAudit(url: string): Promise<AuditResult> {
       raw: { auditError: "Invalid URL" }
     };
   }
+  // Reject private/loopback targets before doing any work, so the caller gets a clear 400
+  // instead of an audit that quietly reports the site as having no schema.
+  assertUrlSafeForServerFetch(targetUrl);
   const psiBase = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed";
   const key = process.env.PAGESPEED_API_KEY;
   const query = buildPsiQuery({ url: targetUrl, strategy: "mobile", apiKey: key });
@@ -46,18 +49,20 @@ export async function runAudit(url: string): Promise<AuditResult> {
   try {
     const response = await fetch(`${psiBase}?${query.toString()}`, { cache: "no-store" });
     if (!response.ok) {
-      const text = await response.text();
-      throw new Error(`PageSpeed request failed (${response.status}): ${text.slice(0, 180)}`);
+      // Google's error body can name the project and quota; it stays in server logs only.
+      console.error("[audit] PageSpeed request failed", response.status, (await response.text()).slice(0, 180));
+      auditError = `PageSpeed data was unavailable (HTTP ${response.status}).`;
+    } else {
+      data = (await response.json()) as PageSpeedInsightsResponse;
+      perf = Number(data?.lighthouseResult?.categories?.performance?.score ?? 0) * 100;
     }
-    data = (await response.json()) as PageSpeedInsightsResponse;
-    perf = Number(data?.lighthouseResult?.categories?.performance?.score ?? 0) * 100;
   } catch (error) {
-    auditError = error instanceof Error ? error.message : "Unknown PageSpeed error";
+    console.error("[audit] PageSpeed request error", error instanceof Error ? error.message : "unknown");
+    auditError = "PageSpeed data was unavailable.";
   }
 
   let html = "";
   try {
-    assertUrlSafeForServerFetch(targetUrl);
     const htmlRes = await fetch(targetUrl, { cache: "no-store" });
     if (htmlRes.ok) html = await htmlRes.text();
   } catch {

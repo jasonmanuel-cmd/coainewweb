@@ -1,7 +1,13 @@
-import { describe, it, expect, vi, afterEach } from "vitest";
+import { describe, it, expect, vi, afterEach, beforeEach } from "vitest";
 import { runAudit } from "@/lib/audit/run-audit";
+import { PublicError } from "@/lib/public-error";
+
+beforeEach(() => {
+  vi.spyOn(console, "error").mockImplementation(() => undefined);
+});
 
 afterEach(() => {
+  vi.restoreAllMocks();
   vi.unstubAllGlobals();
   vi.unstubAllEnvs();
 });
@@ -86,7 +92,10 @@ describe("runAudit – network scenarios", () => {
 
     const result = await runAudit("https://example.com");
     expect(result.performanceScore).toBe(0);
-    expect(result.raw).toMatchObject({ auditError: expect.stringContaining("Network error") });
+    expect(result.raw).toMatchObject({ auditError: "PageSpeed data was unavailable." });
+    // The underlying error text is logged server-side, never returned.
+    expect(JSON.stringify(result)).not.toContain("Network error");
+    expect(console.error).toHaveBeenCalled();
   });
 
   it("handles a non-ok PageSpeed response", async () => {
@@ -100,6 +109,17 @@ describe("runAudit – network scenarios", () => {
 
     const result = await runAudit("https://example.com");
     expect(result.raw).toMatchObject({ auditError: expect.stringContaining("429") });
+    // The upstream response body must not reach the caller.
+    expect(JSON.stringify(result)).not.toContain("Rate limited");
+  });
+
+  it("rejects loopback and private targets up front instead of auditing them", async () => {
+    const fetchMock = vi.fn();
+    vi.stubGlobal("fetch", fetchMock);
+    for (const target of ["http://localhost:3000", "http://169.254.169.254/latest", "http://10.0.0.5"]) {
+      await expect(runAudit(target)).rejects.toBeInstanceOf(PublicError);
+    }
+    expect(fetchMock).not.toHaveBeenCalled();
   });
 
   it("returns 'No critical violations detected.' when everything passes", async () => {
