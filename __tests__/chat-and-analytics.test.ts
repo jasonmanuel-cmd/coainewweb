@@ -46,6 +46,23 @@ describe("Simple Analytics and Vapi chat wiring", () => {
   });
 });
 
+describe("chat styles live in exactly one stylesheet", () => {
+  it("defines .cipher-* classes only in app/cinematic.css", () => {
+    // Legacy copies in page-scoped CSS (home.css) once overrode the launcher on /pricing:
+    // white text on the green button and a 56px circle that clipped the label.
+    const owners: string[] = [];
+    const walk = (dir: string) => {
+      for (const entry of fs.readdirSync(path.join(process.cwd(), dir), { withFileTypes: true })) {
+        const rel = path.join(dir, entry.name);
+        if (entry.isDirectory()) walk(rel);
+        else if (entry.name.endsWith(".css") && /^\.cipher-/m.test(read(rel))) owners.push(rel);
+      }
+    };
+    ["app", "components"].forEach(walk);
+    expect(owners).toEqual([path.join("app", "cinematic.css")]);
+  });
+});
+
 describe("CipherChat fallback launcher (no Vapi key)", () => {
   let host: HTMLDivElement;
 
