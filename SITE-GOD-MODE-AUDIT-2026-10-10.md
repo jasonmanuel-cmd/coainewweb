@@ -5,6 +5,8 @@
 **Repository:** `jasonmanuel-cmd/coainewweb`  
 **Primary recommendation:** Repair trust, consistency, and the broken design system before adding more visual effects or pages.
 
+> **Status update, 2026-10-12.** Since this audit: the canonical-domain item (§1) is fixed in code and the claim contradictions (§3) are resolved. The framework-advisory item (§5) did not apply to current `main` (Next 16.4.0, `npm audit` 0). The palette and logo were rebuilt and API error leakage was addressed (PR #21, open). Everything else in this document is **still open** unless listed in [docs/PROJECT-RECORD.md](docs/PROJECT-RECORD.md), which holds the full change log, check results and remaining problems.
+
 ---
 
 ## Executive verdict
