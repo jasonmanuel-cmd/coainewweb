@@ -16,14 +16,14 @@ const nextConfig: NextConfig = {
     const developmentEval = process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : "";
     const csp = [
       "default-src 'self'",
-      `script-src 'self' 'unsafe-inline'${developmentEval} https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com https://challenges.cloudflare.com`,
+      `script-src 'self' 'unsafe-inline'${developmentEval} https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com https://challenges.cloudflare.com https://scripts.simpleanalyticscdn.com https://cdn.jsdelivr.net`,
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https:",
       "font-src 'self' data:",
-      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://www.googletagmanager.com https://vitals.vercel-insights.com https://*.vercel-insights.com https://challenges.cloudflare.com",
+      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://www.googletagmanager.com https://vitals.vercel-insights.com https://*.vercel-insights.com https://challenges.cloudflare.com https://queue.simpleanalyticscdn.com https://api.vapi.ai https://*.vapi.ai wss://*.vapi.ai https://*.daily.co wss://*.daily.co https://cdn.jsdelivr.net",
       "worker-src 'self' blob:",
       "media-src 'self' blob: data:",
-      "frame-src https://www.googletagmanager.com https://challenges.cloudflare.com",
+      "frame-src https://www.googletagmanager.com https://challenges.cloudflare.com https://*.daily.co",
       "form-action 'self'",
       "base-uri 'self'",
       "object-src 'none'",
@@ -42,7 +42,7 @@ const nextConfig: NextConfig = {
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           {
             key: "Permissions-Policy",
-            value: "camera=(), microphone=(), geolocation=(), browsing-topics=()"
+            value: "camera=(), microphone=(self), geolocation=(), browsing-topics=()"
           }
         ]
       }

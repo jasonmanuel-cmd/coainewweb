@@ -90,6 +90,17 @@ export function RevampNavbar() {
                   <small>{detail}</small>
                 </Link>
               ))}
+              <button
+                type="button"
+                onClick={() => {
+                  (window as unknown as { openCipherChat?: () => void }).openCipherChat?.();
+                  setMenuOpen(false);
+                  setMoreOpen(false);
+                }}
+              >
+                <span>Chat with Cipher</span>
+                <small>Ask the AI assistant.</small>
+              </button>
             </div>
           </div>
 

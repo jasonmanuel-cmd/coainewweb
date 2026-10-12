@@ -4,6 +4,7 @@ import { type ReactNode } from "react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { AppChrome } from "@/components/AppChrome";
 import { JsonLd } from "@/components/JsonLd";
+import { CipherChat } from "@/components/revamp/CipherChat";
 import { organizationJsonLd, webSiteJsonLd } from "@/lib/schema";
 import { SITE_DESCRIPTION, SITE_URL } from "@/lib/site";
 import "@fontsource-variable/inter/wght.css";
@@ -74,7 +75,22 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <JsonLd data={organizationJsonLd()} />
         <JsonLd data={webSiteJsonLd()} />
         <AppChrome>{children}</AppChrome>
+        <CipherChat />
         <SpeedInsights />
+        {/* Simple Analytics: privacy-first, honors Do Not Track */}
+        <Script
+          src="https://scripts.simpleanalyticscdn.com/latest.js"
+          strategy="afterInteractive"
+          data-collect-dnt="true"
+        />
+        <noscript>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://queue.simpleanalyticscdn.com/noscript.gif?collect-dnt=true"
+            alt=""
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </noscript>
       </body>
     </html>
   );
