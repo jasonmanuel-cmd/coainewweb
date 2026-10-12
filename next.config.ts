@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
     const developmentEval = process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : "";
     const csp = [
       "default-src 'self'",
-      `script-src 'self' 'unsafe-inline'${developmentEval} https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com https://challenges.cloudflare.com https://scripts.simpleanalyticscdn.com https://cdn.jsdelivr.net`,
+      `script-src 'self' 'unsafe-inline'${developmentEval} https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com https://challenges.cloudflare.com https://scripts.simpleanalyticscdn.com https://cdn.jsdelivr.net https://trtc.io`,
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https:",
       "font-src 'self' data:",

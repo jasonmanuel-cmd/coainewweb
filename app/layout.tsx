@@ -91,6 +91,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             referrerPolicy="no-referrer-when-downgrade"
           />
         </noscript>
+        <script
+          src="https://trtc.io/knocket-sdk/sdk.js?identifier=9368e40215abec47a6&v=1791814761160"
+          async
+        />
       </body>
     </html>
   );
