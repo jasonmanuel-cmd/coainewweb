@@ -1,6 +1,6 @@
 import { buildPsiQuery } from "@/lib/pagespeed-insights";
 import { normalizeWebsiteUrl } from "@/lib/utils/normalize-website-url";
-import { assertUrlSafeForServerFetch } from "@/lib/utils/safe-fetch-url";
+import { assertUrlSafeForServerFetch, fetchWithSafeRedirects } from "@/lib/utils/safe-fetch-url";
 
 export type AuditResult = {
   performanceScore: number;
@@ -63,7 +63,7 @@ export async function runAudit(url: string): Promise<AuditResult> {
 
   let html = "";
   try {
-    const htmlRes = await fetch(targetUrl, { cache: "no-store" });
+    const htmlRes = await fetchWithSafeRedirects(targetUrl, { cache: "no-store", signal: AbortSignal.timeout(8000) });
     if (htmlRes.ok) html = await htmlRes.text();
   } catch {
     html = "";

@@ -1,5 +1,6 @@
-import { describe, it, expect } from "vitest";
-import { assertUrlSafeForServerFetch } from "@/lib/utils/safe-fetch-url";
+import { describe, it, expect, vi, afterEach } from "vitest";
+import { assertUrlSafeForServerFetch, fetchWithSafeRedirects } from "@/lib/utils/safe-fetch-url";
+import { PublicError } from "@/lib/public-error";
 
 describe("assertUrlSafeForServerFetch", () => {
   // --- Valid / allowed URLs ---
@@ -129,5 +130,38 @@ describe("assertUrlSafeForServerFetch", () => {
     expect(() =>
       assertUrlSafeForServerFetch("http://[2001:db8::1]")
     ).not.toThrow();
+  });
+});
+
+describe("fetchWithSafeRedirects", () => {
+  const redirect = (location: string) => ({ status: 302, headers: new Headers({ location }) });
+  const ok = { status: 200, headers: new Headers(), ok: true, text: async () => "<html></html>" };
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  it("follows a redirect between public hosts", async () => {
+    const fetchMock = vi.fn().mockResolvedValueOnce(redirect("https://www.example.com/")).mockResolvedValueOnce(ok);
+    vi.stubGlobal("fetch", fetchMock);
+    const res = await fetchWithSafeRedirects("https://example.com/");
+    expect(res).toBe(ok);
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(fetchMock.mock.calls[0][1]).toMatchObject({ redirect: "manual" });
+  });
+
+  it.each(["http://169.254.169.254/latest/meta-data", "http://localhost:3000/", "http://[::1]/", "/\\10.0.0.5/"])(
+    "refuses a redirect to %s without requesting it",
+    async (target) => {
+      const fetchMock = vi.fn().mockResolvedValueOnce(redirect(target));
+      vi.stubGlobal("fetch", fetchMock);
+      await expect(fetchWithSafeRedirects("https://example.com/")).rejects.toThrow(PublicError);
+      expect(fetchMock).toHaveBeenCalledTimes(1);
+    }
+  );
+
+  it("stops after too many redirects", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(redirect("https://example.com/again")));
+    await expect(fetchWithSafeRedirects("https://example.com/")).rejects.toThrow("Too many redirects");
   });
 });

@@ -57,3 +57,22 @@ export function assertUrlSafeForServerFetch(urlString: string): void {
     throw new PublicError("Host not allowed");
   }
 }
+
+const MAX_REDIRECTS = 5;
+
+/**
+ * GET a visitor-supplied URL, following redirects by hand so every hop is checked against
+ * assertUrlSafeForServerFetch. Default fetch redirects would validate only the first URL, letting a
+ * public page bounce the server to an internal address. Throws PublicError when a hop is unsafe.
+ */
+export async function fetchWithSafeRedirects(urlString: string, init: RequestInit = {}): Promise<Response> {
+  let current = urlString;
+  for (let hop = 0; hop <= MAX_REDIRECTS; hop += 1) {
+    assertUrlSafeForServerFetch(current);
+    const response = await fetch(current, { ...init, redirect: "manual" });
+    const location = response.status >= 300 && response.status < 400 ? response.headers?.get?.("location") : null;
+    if (!location) return response;
+    current = new URL(location, current).toString();
+  }
+  throw new PublicError("Too many redirects");
+}

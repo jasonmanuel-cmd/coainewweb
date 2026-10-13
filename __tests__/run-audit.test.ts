@@ -172,3 +172,18 @@ describe("runAudit – network scenarios", () => {
     expect(result).toBeDefined();
   });
 });
+
+describe("runAudit – redirects", () => {
+  it("does not follow a public URL that redirects to an internal address", async () => {
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValueOnce(makePsiFetch(0.9))
+      .mockResolvedValueOnce({ status: 302, headers: new Headers({ location: "http://169.254.169.254/latest/meta-data" }) });
+    vi.stubGlobal("fetch", fetchMock);
+    const result = await runAudit("https://example.com");
+    // PageSpeed call + the first page request; the internal address is never requested.
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(fetchMock.mock.calls[1][1]).toMatchObject({ redirect: "manual" });
+    expect(result.schemaScore).toBe(0);
+  });
+});
