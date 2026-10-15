@@ -41,3 +41,7 @@ coverage/
 tsconfig.tsbuildinfo
 # Local images / user uploads (keep individual PNGs tracked if intentional)
 public/uploads/
+
+# 21st.dev registry cache + local dev preview log
+.21st/
+preview.log
