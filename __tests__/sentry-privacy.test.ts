@@ -2,7 +2,14 @@ import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 
-const CONFIGS = ["instrumentation-client.ts", "sentry.server.config.ts", "sentry.edge.config.ts"];
+// The browser SDK is initialised lazily from components/SentryLazyInit.tsx (it used to
+// live in instrumentation-client.ts, but that put a ~430KB chunk in the critical bundle).
+// Server runtimes are configured separately.
+const CONFIGS = [
+  "components/SentryLazyInit.tsx",
+  "sentry.server.config.ts",
+  "sentry.edge.config.ts"
+];
 
 /**
  * Sentry 11 replaced `sendDefaultPii` with `dataCollection`, whose defaults collect cookies, headers,

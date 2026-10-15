@@ -5,6 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { AppChrome } from "@/components/AppChrome";
 import { JsonLd } from "@/components/JsonLd";
 import { CipherChat } from "@/components/revamp/CipherChat";
+import { SentryLazyInit } from "@/components/SentryLazyInit";
 import { organizationJsonLd, webSiteJsonLd } from "@/lib/schema";
 import { SITE_DESCRIPTION, SITE_URL } from "@/lib/site";
 import "@fontsource-variable/inter/wght.css";
@@ -72,7 +73,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </noscript>
         <Script
           id="gtm"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`
           }}
@@ -81,11 +82,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <JsonLd data={webSiteJsonLd()} />
         <AppChrome>{children}</AppChrome>
         <CipherChat />
+        <SentryLazyInit />
         <SpeedInsights />
         {/* Simple Analytics: privacy-first, honors Do Not Track */}
         <Script
           src="https://scripts.simpleanalyticscdn.com/latest.js"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           data-collect-dnt="true"
         />
         <noscript>
@@ -96,9 +98,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             referrerPolicy="no-referrer-when-downgrade"
           />
         </noscript>
-        <script
+        <Script
           src="https://trtc.io/knocket-sdk/sdk.js?identifier=9368e40215abec47a6&v=1791814761160"
-          async
+          strategy="lazyOnload"
         />
       </body>
     </html>
