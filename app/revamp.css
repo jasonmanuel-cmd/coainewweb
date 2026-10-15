@@ -3320,6 +3320,22 @@ textarea.m-form-control {
   color: var(--steel-blue-dim);
 }
 
+/* Generic single-column heading pair used on the thank-you page. */
+.section-title {
+  font-family: var(--font-headline);
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--tracking-headline);
+  color: var(--text-primary);
+}
+
+.section-sub {
+  margin-top: var(--space-4);
+  color: var(--text-muted);
+  font-size: var(--text-body-lg);
+  line-height: var(--lh-body);
+}
+
 /* ==========================================================================
    JAX WAITLIST NOTE
    ========================================================================== */

@@ -55,6 +55,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className="coai-site">
+        {/* Marks JS as active before content parses, so .reveal sections hidden
+            by CSS never stay hidden for non-JS clients. See globals.css. */}
+        <script
+          dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }}
+        />
         <a className="skip-link" href="#main-content">Skip to content</a>
         <noscript>
           <iframe

@@ -20,6 +20,42 @@ type PageSpeedInsightsResponse = {
   };
 };
 
+const REDIRECT_STATUSES = new Set([301, 302, 303, 307, 308]);
+const MAX_REDIRECT_HOPS = 4;
+
+/** Guarded so tests on DOMs without AbortSignal.timeout still run. */
+function htmlFetchTimeout(): AbortSignal | undefined {
+  return typeof AbortSignal.timeout === "function" ? AbortSignal.timeout(15_000) : undefined;
+}
+
+/**
+ * Fetch a user-supplied URL without ever following a redirect to an
+ * unvalidated host: every hop is re-checked with assertUrlSafeForServerFetch,
+ * so a public site cannot bounce the server into a private network target
+ * (SSRF via redirect — the pre-PR-#21 fetch followed redirects silently).
+ */
+async function fetchWithSafeRedirects(url: string): Promise<Response> {
+  let current = url;
+  for (let hop = 0; hop <= MAX_REDIRECT_HOPS; hop++) {
+    assertUrlSafeForServerFetch(current);
+    const response = await fetch(current, {
+      cache: "no-store",
+      redirect: "manual",
+      signal: htmlFetchTimeout()
+    });
+    const status = response.status;
+    if (!REDIRECT_STATUSES.has(status)) return response;
+    const location = response.headers?.get?.("location");
+    if (!location) return response; // malformed redirect; treat as the final answer
+    try {
+      current = new URL(location, current).toString();
+    } catch {
+      return response; // unresolvable Location header; stop following
+    }
+  }
+  throw new Error(`Too many redirects (>${MAX_REDIRECT_HOPS}) fetching ${url}`);
+}
+
 export async function runAudit(url: string): Promise<AuditResult> {
   let targetUrl: string;
   try {
@@ -63,7 +99,8 @@ export async function runAudit(url: string): Promise<AuditResult> {
 
   let html = "";
   try {
-    const htmlRes = await fetch(targetUrl, { cache: "no-store" });
+    // Manual redirects with per-hop host validation (SSRF hardening).
+    const htmlRes = await fetchWithSafeRedirects(targetUrl);
     if (htmlRes.ok) html = await htmlRes.text();
   } catch {
     html = "";

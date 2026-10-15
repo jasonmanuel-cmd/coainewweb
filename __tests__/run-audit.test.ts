@@ -35,6 +35,9 @@ describe("runAudit – invalid URL", () => {
   });
 
   it("returns an error result for a garbage URL", async () => {
+    // Hermetic: never touch the network from tests (happy-dom's fetch does not
+    // settle reliably with abort signals on unresolvable hosts).
+    vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new Error("no network")));
     const result = await runAudit("$$not-a-url");
     expect(result.performanceScore).toBe(0);
   });
@@ -170,5 +173,58 @@ describe("runAudit – network scenarios", () => {
     // Use a public URL — assertUrlSafeForServerFetch is called before the second fetch
     const result = await runAudit("https://example.com");
     expect(result).toBeDefined();
+  });
+
+  it("does not follow a redirect that points at a private host (SSRF via redirect)", async () => {
+    const fetchMock = vi.fn().mockImplementation(() => {
+      callCountRef.count++;
+      if (callCountRef.count === 1) return Promise.resolve(makePsiFetch(0.9));
+      // First HTML hop is a public URL that 302s at the cloud metadata endpoint.
+      return Promise.resolve({
+        ok: false,
+        status: 302,
+        headers: { get: () => "http://169.254.169.254/latest" },
+        text: async () => ""
+      });
+    });
+    const callCountRef = { count: 0 };
+    vi.stubGlobal("fetch", fetchMock);
+
+    const result = await runAudit("https://example.com");
+    // PSI call + one HTML hop only; the private redirect target is never fetched.
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(fetchMock.mock.calls.map((c) => String(c[0]))).not.toContain("http://169.254.169.254/latest");
+    // The audit degrades gracefully instead of leaking the redirect chain.
+    expect(result).toBeDefined();
+    expect(result.schemaScore).toBe(0);
+  });
+
+  it("follows redirects between public hosts", async () => {
+    const richHtml = `
+      <html>
+        <head>
+          <meta name="description" content="test">
+          <link rel="canonical" href="https://www.example.com">
+          <script type="application/ld+json">{"@type":"LocalBusiness"}</script>
+        </head>
+        <body><p>ProfessionalService</p></body>
+      </html>
+    `;
+    const callCountRef = { count: 0 };
+    vi.stubGlobal("fetch", vi.fn().mockImplementation(() => {
+      callCountRef.count++;
+      if (callCountRef.count === 1) return Promise.resolve(makePsiFetch(0.95));
+      if (callCountRef.count === 2)
+        return Promise.resolve({
+          ok: false,
+          status: 301,
+          headers: { get: () => "https://www.example.com/" },
+          text: async () => ""
+        });
+      return Promise.resolve(makeHtmlFetch(richHtml));
+    }));
+
+    const result = await runAudit("https://example.com");
+    expect(result.schemaScore).toBe(100);
   });
 });

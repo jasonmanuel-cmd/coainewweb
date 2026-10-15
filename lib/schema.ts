@@ -103,12 +103,9 @@ export function webSiteJsonLd() {
     name: ORG_NAME,
     url: SITE_URL,
     publisher: { "@id": ORG_ID },
-    inLanguage: "en-US",
-    potentialAction: {
-      "@type": "SearchAction",
-      target: { "@type": "EntryPoint", urlTemplate: `${SITE_URL}/?s={search_term_string}` },
-      "query-input": "required name=search_term_string"
-    }
+    inLanguage: "en-US"
+    // No SearchAction: this site has no site search, so advertising one in
+    // schema would mislead crawlers (God Mode audit, SEO fixes #2).
   };
 }
 

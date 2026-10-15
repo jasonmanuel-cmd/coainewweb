@@ -122,3 +122,39 @@ Workflow used for every change: draft PR → preview build → explicit "merge i
 ```
 npm ci && npx tsc --noEmit && npx vitest run && npm audit && npx next build
 ```
+
+---
+
+## 6. 2026-10-14 — design-system completion + SSRF hardening (local branch, not yet PR'd)
+
+Scope decided with the owner: full upgrade pass — dependencies, UI/design-system completion, and the remaining in-repo audit fixes (God Mode §"P0/Phase 1–2" + PROJECT-RECORD §3 items that are code-side).
+
+**Changes:**
+
+1. **Design-system coverage completed.** A class-coverage scan (className tokens referenced by components vs. CSS selectors) found 8 real gaps left after the rebuild; all are now styled:
+   - `app/globals.css` — `.btn-secondary` (thank-you page; mirrors `.ui-btn--secondary`) and `.reveal`/`.reveal-visible` (the Reveal scroll-animation component had **no CSS at all** — it was a silent no-op; now a 24px fade/slide, gated on `html.js` so non-JS clients always see content, with a `prefers-reduced-motion` override).
+   - `app/layout.tsx` — inline script adding `js` to `<html>` before content parses (pairs with the `.reveal` gating; no flash, no hidden content without JS).
+   - `components/ui/ui.css` — `.ui-stat` base class (children existed, container didn't).
+   - `app/cinematic.css` — `.breadcrumb-sep` (pricing breadcrumb separator) and `.cinematic-home` (homepage `<main>` overflow guard).
+   - `app/revamp.css` — `.section-title`/`.section-sub` (thank-you page heading pair).
+   - Scan now reports **0 uncovered tokens** (previous run: 407 tokens, 8 uncovered).
+2. **New CI guard:** `__tests__/css-coverage.test.ts` — fails the suite if any className token referenced by a component has no CSS selector (God Mode audit, Phase 2: "Fail CI if a page uses an unrecognized design-system class"). Extraction covers plain strings, ternary branches (`cond ? "cls-a" : "cls-b"`), and template-literal static parts; ternary comparison literals (e.g. `cat === "all"`) are deliberately excluded.
+3. **SSRF via redirect closed** (PROJECT-RECORD §3 #5): `lib/audit/run-audit.ts` HTML fetch now follows redirects manually (`redirect: "manual"`) and validates **every hop** with `assertUrlSafeForServerFetch` (≤4 hops, 15s timeout). A public site can no longer 302 the server at `169.254.169.254` or a LAN host. Regression tests added in `__tests__/run-audit.test.ts` (redirect-to-private-host is never fetched; public→public redirects still work).
+4. **Unverifiable "661+" portfolio stat replaced** (§3 #7): now `661 · Bakersfield Home Area Code` — a fact checkable against the published phone number, not an invented reach metric.
+5. **404 recovery links** (God Mode audit): `app/not-found.tsx` now offers Go Home / Services / Work / Pricing / Call — the "hasn't built it yet" personality line stays.
+6. **WebSite `SearchAction` removed from schema** (`lib/schema.ts`): `/?s=` was advertised in JSON-LD but no site search exists (God Mode SEO fix #2).
+
+**Checked while scoping (no change needed):** FAQ accordion already SSR + `aria-expanded`/`aria-controls` (rebuild fixed the old client-gated FAQ); `LegalShell`/`MarketingLayout`/`PricingShell` all render `<main id="main-content">` (landmark finding was pre-rebuild); homepage is already a server component; `serviceJsonLd` already takes an optional price (the "$1,997 everywhere" schema issue was fixed in the rebuild); no three-column mobile conversion bar remains in the tree.
+
+**Not done (owner decisions, unchanged):** Vercel env vars/domains (§3 #2–#4), privacy-page copy vs. remaining trackers (§8), Sentry DSN-to-env (#10), hero watermark opacity (#11), city-page unique content and photography (Phase 3/4 work).
+
+**Validation (2026-10-14, this branch):**
+
+| Check | Result |
+|---|---|
+| `tsc --noEmit` | exit 0 |
+| `vitest run` | 21 files, **202/202 passed** (199 before: +2 SSRF-redirect tests, +1 css-coverage guard) |
+| `next build` | exit 0 — all 34 routes, TypeScript clean |
+| Dependency set | unchanged from #12–#21 (Next 16.4.0, React 19.3.0, zod 4.6.5, @sentry/nextjs 11.6.0); no lockfile edits |
+
+**Install note (this machine):** this sandbox's egress stalls large registry downloads (`EIDLETIMEOUT` on `npm ci`). Fixed locally by curl-resuming the two uncached tarballs (`next@16.4.0`, `@next/swc-win32-x64-msvc@16.4.0`) into `npm cache add`, then `npm ci --offline`; the SWC binary was additionally extracted into `node_modules\@next\swc-win32-x64-msvc` (silently skipped as an optional dep offline). If `node_modules` ever needs a clean rebuild on a network-healthy machine, plain `npm ci` works.

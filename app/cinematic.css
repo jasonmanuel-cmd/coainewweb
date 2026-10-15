@@ -1150,6 +1150,9 @@
 .m-wd-ownership { background: #0e1813 !important; }
 .breadcrumb { display: flex; gap: 10px; width: min(100% - 48px,1240px); margin: 0 auto; padding: 22px 0; color: #6f8a7c; font: 500 .64rem/1 var(--font-mono); text-transform: uppercase; }
 .breadcrumb a { color: var(--steel-blue); text-decoration: none; }
+.breadcrumb-sep { color: #4d6157; user-select: none; }
+/* Homepage main wrapper — one overflow guard for every section inside it. */
+.cinematic-home { position: relative; overflow-x: clip; }
 
 @media (max-width: 880px) {
   .services-command-heading,.services-map-layout,.services-build-layout,.services-cost-layout { grid-template-columns: 1fr; }

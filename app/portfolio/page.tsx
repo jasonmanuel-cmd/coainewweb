@@ -69,8 +69,8 @@ export default function PortfolioPage() {
           <div className="m-lbl">Client-Owned Builds</div>
         </div>
         <div className="m-stat-pill">
-          <div className="m-num">661+</div>
-          <div className="m-lbl">Local + National Reach</div>
+          <div className="m-num">661</div>
+          <div className="m-lbl">Bakersfield Home Area Code</div>
         </div>
       </div>
 

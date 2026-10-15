@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CONTACT } from "@/lib/site";
 
 export default function NotFound() {
   return (
@@ -9,9 +10,23 @@ export default function NotFound() {
       <p className="m-error-sub">
         That page doesn&apos;t exist. If you think it should, call Jason - he probably just hasn&apos;t built it yet.
       </p>
-      <Link href="/" className="m-btn-primary">
-        Go Home
-      </Link>
+      <div className="m-error-actions">
+        <Link href="/" className="m-btn-primary">
+          Go Home
+        </Link>
+        <Link href="/services" className="m-btn-ghost">
+          Services
+        </Link>
+        <Link href="/portfolio" className="m-btn-ghost">
+          Work
+        </Link>
+        <Link href="/pricing" className="m-btn-ghost">
+          Pricing
+        </Link>
+        <a href={`tel:${CONTACT.phoneE164}`} className="m-btn-ghost">
+          Call {CONTACT.phoneDisplay}
+        </a>
+      </div>
     </div>
   );
 }
