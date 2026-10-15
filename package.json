@@ -21,7 +21,7 @@
     "@marsidev/react-turnstile": "^1.6.1",
     "@sentry/nextjs": "11.6.0",
     "@supabase/supabase-js": "^2.49.8",
-    "@upstash/ratelimit": "^2.0.8",
+    "@upstash/ratelimit": "^2.2.0",
     "@upstash/redis": "^1.37.0",
     "@vercel/speed-insights": "^2.0.0",
     "lucide-react": "^1.16.0",
