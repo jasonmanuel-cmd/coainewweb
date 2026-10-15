@@ -1,7 +1,8 @@
 # COAI website — project record
 
-**As of:** 2026-10-12 · **Repo:** `jasonmanuel-cmd/coainewweb` · **Production base:** `main` @ `57d66ee`
-**Working branch (agreed):** `claude/sleepy-dijkstra-rh9grl` — carries open PR #21 plus the follow-up commits listed in §1.
+**As of:** 2026-10-15 · **Repo:** `jasonmanuel-cmd/coainewweb` · **Production base:** `main` @ `1e8a9c4`
+**Working branch (agreed):** `perf/lighthouse-critical-path` — PR #28, Lighthouse critical-path work (§7).
+Earlier work below was carried on `claude/sleepy-dijkstra-rh9grl` (PR #21) and later design-system/SSRF changes (§6).
 
 This file is the running record of the remediation work started from `SITE-GOD-MODE-AUDIT-2026-10-10.md`.
 Everything below was measured or observed in this session unless it is explicitly listed as **not verified**.
@@ -122,6 +123,80 @@ Workflow used for every change: draft PR → preview build → explicit "merge i
 ```
 npm ci && npx tsc --noEmit && npx vitest run && npm audit && npx next build
 ```
+
+---
+
+## 7. 2026-10-15 — Lighthouse critical-path remediation (branch `perf/lighthouse-critical-path`, PR #28)
+
+Scope: raise Lighthouse to >90 on mobile and desktop (desktop was already 92; the field Speed Insights dashboard showed Real Experience Score 23 with FCP 4.99s / LCP 5.85s / CLS 0.25 on `/`).
+
+### 1. Changes made and files affected
+
+| File | Change |
+|---|---|
+| `app/cinematic.css` | Hero layers re-indexed from negative to positive z-index; entrance animations no longer start at `opacity:0`; 60px drop-shadow removed from the LCP element; infinite blur animation made compositor-only opacity; `backdrop-filter` disabled on touch devices |
+| `components/SentryLazyInit.tsx` | **New.** Loads the Sentry browser SDK on first interaction (60s backstop) instead of in the critical bundle |
+| `instrumentation-client.ts` | Client Sentry init removed (moved to the above); `onRouterTransitionStart` export dropped |
+| `app/layout.tsx` | Mounts `SentryLazyInit`; GTM + Simple Analytics + knocket moved to `lazyOnload` |
+| `components/revamp/CipherChat.tsx` | Vapi widget script deferred from mount to `requestIdleCallback` |
+| `app/page.tsx` | Explicit `fetchPriority="high"` on the hero image |
+| `app/icon.png` | 165KB → 56KB 512×512 PNG |
+| `__tests__/sentry-privacy.test.ts` | Guard repointed at `components/SentryLazyInit.tsx` |
+
+**Root cause of the bad LCP:** the hero background sat at `z-index: -4` inside an `isolation: isolate` container. Chrome does not treat negative-z-index layers as LCP candidates, so Lighthouse was scoring a decorative watermark instead of the hero. Second cause: entrance animations started at `opacity: 0` with a 2.25s cumulative stagger, which gated the hero's paint — measured LCP render delay was **2321ms**, matching that stagger almost exactly.
+
+### 2. Checks performed and actual results
+
+| Check | Result |
+|---|---|
+| `tsc --noEmit` | exit 0 |
+| `vitest run` | 21 files, **202/202 passed** |
+| `next build` | exit 0, all routes |
+| Lighthouse desktop | **97, 98** (from 92) |
+| Lighthouse mobile | **66, 72, 66, 58** → ~66 (from 62). **Not >90.** |
+| LCP element after fix | `img.cinematic-hero-art` (was `img.cinematic-hero-mark`) |
+| LCP render delay | 2321ms → ~900ms |
+| Sentry chunk in initial HTML | absent; confirmed never fetched during the Lighthouse trace |
+| Privacy guard bites | Flipping `cookies: false`→`true` in the new file fails `sentry-privacy.test.ts` (verified deliberately) |
+| `git diff main...HEAD` secret scan | No new secrets. The Sentry DSN is a **relocation** of the string already on `main`; a DSN is public by design (see §3 #10) |
+
+**Measurement caveat — earlier numbers in this session are unreliable.** 35 leaked Chrome processes accumulated (~4GB RAM), and mobile TBT climbed monotonically 374→558→680→794ms across consecutive runs. After killing them, runs were repeated 3–4× per configuration. Treat mobile as **~66 ±7**; do not read the exact value.
+
+**Three things I got wrong and corrected mid-session:**
+1. I moved the watermark to a CSS `background-image` believing it would remove it from LCP candidacy. It did not — CSS backgrounds *are* LCP candidates, and a background can only be discovered *after* the render-blocking CSS parses, so it lengthened the critical path. Reverted to `<img>`.
+2. `experimental.inlineCss` was tried and **reverted**: it scored worse (56/62/62 vs 65/66/64) because parsing 135KB of inline CSS raised TBT, and it bloats every route's HTML with no caching.
+3. `vercel.json` was deleted by an overly broad `Remove-Item v*.json` cleanup glob, restored via `git checkout`. Flagged because it shows cleanup globs are unsafe in this repo (several `*.json` files live at root).
+
+### 3. Remaining problems
+
+| # | Problem | Next step |
+|---|---|---|
+| 1 | **Mobile is ~66, not >90.** Remaining cost is ~650ms render-blocking CSS (two global stylesheets, 27KB gzipped, imported from the root layout) and ~2s of hydration on the document. | Critical-CSS delivery + reducing client component count. See §4. |
+| 2 | **Sentry no longer reports early errors.** Errors thrown in the first moments after load are not captured (init waits for first interaction or 60s). | Owner decision — see §5. |
+| 3 | **19–20 console errors on the homepage** were observed via Playwright during this work and **not diagnosed**. | Investigate before deploy; may be a real bug. |
+| 4 | The hero watermark glow (60px drop-shadow) was removed rather than moved to a pseudo-element. Visual change. | Owner taste call. |
+| 5 | The Speed Insights field score is a **28-day rolling window**; it will not reflect these fixes for ~4 weeks after deploy. | None — expected. |
+| 6 | `onRouterTransitionStart` export removed with the Sentry client init. Route-transition spans are no longer sent. | Accepted alongside #2. |
+
+### 4. Next concrete action
+
+1. **Diagnose the 19–20 homepage console errors** — cheap, and possibly a real bug.
+2. **Reduce hydration on the homepage.** ~2s of document JS execution is the single largest untouched cost. The homepage ships four client components (`RevenueCalculator`, `CipherChat`, `RevampNavbar`, `SentryLazyInit`); converting `RevenueCalculator` to a server component with a small client island is the natural start and has no visual cost.
+3. Only then consider critical-CSS delivery for render-blocking CSS (problem #1). Note that full `inlineCss` was already tried and made things worse — this needs selective above-the-fold inlining, not a global switch.
+
+### 5. Decisions and corrections
+
+**Decisions**
+- **Sentry client SDK is lazy-loaded, not removed.** Approved by the owner after being shown the measured cost. Loaded on first interaction with a 60s backstop so bounce traffic never pays for it. Reversible by deleting `components/SentryLazyInit.tsx` and restoring `Sentry.init()` in `instrumentation-client.ts`.
+- **The privacy guard was repointed, not relaxed.** `sentry-privacy.test.ts` still asserts all five `dataCollection` opt-outs; only the file under test changed. Deliberately verified by breaking the new file and confirming the test fails.
+- **Decorative effects were removed rather than optimised** on the LCP element (drop-shadow, infinite blur). Rationale: filters on an LCP candidate must be rasterised before paint counts.
+- **Work was pushed to a branch and PR'd, not to `main`.** PR #28; the owner merges.
+
+**Corrections to my own earlier reasoning this session**
+1. Believed negative-z-index layers were invisible — they are painted; Chrome simply will not score them as LCP. The visual site was never broken, only the metric.
+2. Believed a CSS `background-image` would remove the watermark from LCP candidacy — it does not, and it serialised image discovery behind the render-blocking CSS.
+3. Believed a single Lighthouse run was a reliable measurement — it is not on this machine. All conclusions above come from 3–4 repeated runs after cleaning leaked processes.
+4. Reported mobile "75, 75, 75" at one point against a stale server; that number did not survive a clean restart.
 
 ---
 

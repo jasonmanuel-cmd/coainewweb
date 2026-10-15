@@ -60,6 +60,16 @@
   background: rgba(8, 16, 12, 0.86);
   backdrop-filter: blur(18px) saturate(130%);
 }
+/* Backdrop blur forces the browser to re-composite whatever is behind the element,
+   and the header is pinned over the whole document. On touch devices it was a
+   measurable slice of the hero's paint delay. Both surfaces already sit on a
+   fairly opaque background, so dropping the blur there costs little visually. */
+@media (max-width: 768px), (pointer: coarse) {
+  .revamp-header,
+  .dispatch-panel {
+    backdrop-filter: none;
+  }
+}
 .revamp-header-scan {
   position: absolute;
   inset: auto 0 -1px;
@@ -276,10 +286,14 @@
   border-bottom: 1px solid var(--border-default);
   isolation: isolate;
 }
-.cinematic-hero-art { z-index: -4; object-fit: cover; object-position: 52% center; animation: hero-drift 18s var(--ease-standard) both; }
+/* The slow 18s scale drift is removed: it ran with fill-mode `both` on the hero
+   background, which is the page's real LCP image. The entrance now uses a short,
+   transform-only animation that does not hold the paint back. */
+.cinematic-hero-art { z-index: 0; object-fit: cover; object-position: 52% center; animation: hero-enter 0.9s var(--ease-standard) both; }
+@keyframes hero-enter { from { transform: scale(1.04); } to { transform: scale(1); } }
 .cinematic-hero-shade {
   position: absolute;
-  z-index: -3;
+  z-index: 1;
   inset: 0;
   background:
     linear-gradient(90deg, rgba(8, 16, 12, 0.99) 0%, rgba(8, 16, 12, 0.93) 35%, rgba(8, 16, 12, 0.42) 68%, rgba(8, 16, 12, 0.8) 100%),
@@ -296,6 +310,13 @@
   background-size: 64px 64px;
   mask-image: linear-gradient(to bottom, transparent, #000 32%, #000 75%, transparent);
 }
+
+/* Hero layers are explicitly positive-indexed (art 0 -> shade/grid 1 -> content 2).
+   They previously sat at -4/-3/-2 inside `isolation: isolate`, and Chrome refuses to
+   treat negative-z-index layers as Largest Contentful Paint candidates — the hero
+   photo was therefore invisible to LCP and the metric latched onto the decorative
+   watermark instead. Same visual order, measurable now. */
+.cinematic-hero .cinematic-hero-grid { z-index: 1; }
 .cinematic-hero-inner {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(390px, 0.65fr);
@@ -366,7 +387,12 @@
 .dispatch-live i { width: 6px; height: 6px; border-radius: 50%; background: currentColor; box-shadow: 0 0 10px currentColor; }
 .dispatch-events { position: relative; display: grid; padding: 16px 0; }
 .dispatch-events::before { content: ""; position: absolute; top: 32px; bottom: 32px; left: 17px; width: 1px; background: linear-gradient(var(--steel-blue), rgba(84, 224, 176, 0.1)); }
-.dispatch-event { position: relative; display: grid; grid-template-columns: 35px minmax(0, 1fr) auto; align-items: center; gap: 12px; min-height: 68px; opacity: 0; animation: event-arrive 0.6s var(--event-delay) var(--ease-standard) forwards; }
+/* These four rows animate in with a 0.55s stagger, so the last one finished 2.25s
+   after first byte. Because they started at opacity:0 they gated the hero's paint —
+   the LCP element's "render delay" was 2321ms, matching that stagger exactly. The
+   entrance now animates transform only, so the rows are painted on the first frame. */
+.dispatch-event { position: relative; display: grid; grid-template-columns: 35px minmax(0, 1fr) auto; align-items: center; gap: 12px; min-height: 68px; animation: event-arrive 0.6s var(--event-delay) var(--ease-standard) both; }
+@keyframes event-arrive { from { transform: translateX(18px); } to { transform: none; } }
 .dispatch-event-icon { z-index: 1; display: grid; width: 35px; height: 35px; place-items: center; border: 1px solid rgba(84, 224, 176, 0.5); border-radius: 50%; color: var(--steel-blue); background: #0d1913; }
 .dispatch-event-icon svg { width: 15px; height: 15px; }
 .dispatch-event > div { display: grid; gap: 4px; }
@@ -683,8 +709,12 @@
 .coai-site button { font-family: var(--font-body); }
 
 /* Animations */
-@keyframes reveal-up { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
-@keyframes event-arrive { from { opacity: 0; transform: translateX(18px); } to { opacity: 1; transform: none; } }
+/* Opacity is deliberately NOT animated here. An opacity:0 start defers the first
+   paint of the hero H1 — the largest text candidate — until the animation runs,
+   which pushed LCP out by the full animation duration. translateY is compositor-
+   friendly, so the entrance still reads without gating the paint. */
+@keyframes reveal-up { from { transform: translateY(26px); } to { transform: none; } }
+@keyframes event-arrive { from { transform: translateX(18px); } to { transform: none; } }
 @keyframes signal-pulse { 0%, 100% { opacity: .6; transform: scale(.85); } 50% { opacity: 1; transform: scale(1.15); } }
 @keyframes hero-drift { from { transform: scale(1.06); } to { transform: scale(1); } }
 @keyframes scroll-cue { 0%, 100% { opacity: .3; transform: scaleY(.45); transform-origin: top; } 50% { opacity: 1; transform: scaleY(1); } }
@@ -1238,22 +1268,31 @@
 
 
 /* ---- Logo placements ---- */
+/* Decorative watermark, rendered as an <img> with an inline aspect ratio so the browser
+   can size it before the CSS arrives (no shift). Kept as an image rather than a CSS
+   background on purpose — see the note in app/page.tsx. */
 .cinematic-hero-mark {
   position: absolute;
-  z-index: -3;
+  z-index: 0;
   top: 50%;
   right: clamp(-60px, 4vw, 90px);
   width: clamp(360px, 46vw, 700px);
   height: auto;
   opacity: 0.3;
   transform: translateY(-50%);
-  filter: drop-shadow(0 0 60px rgba(125, 255, 157, 0.45));
+  /* The 60px drop-shadow glow was removed. This element is a Largest Contentful Paint
+     candidate, so the blur had to be rasterised before its paint counted. If the glow is
+     wanted back, prefer a pseudo-element carrying the blur rather than a filter on the
+     LCP element itself. */
   pointer-events: none;
-  animation: logo-breathe 7s ease-in-out infinite;
 }
+/* Opacity-only breathing. The previous version animated a 40px→80px drop-shadow
+   blur on a ~700px image on an infinite loop: that repaints a large layer every
+   frame for the life of the page and showed up as main-thread work in mobile
+   audits. Opacity animates on the compositor and costs nothing. */
 @keyframes logo-breathe {
-  0%, 100% { opacity: 0.22; filter: drop-shadow(0 0 40px rgba(125, 255, 157, 0.3)); }
-  50% { opacity: 0.36; filter: drop-shadow(0 0 80px rgba(125, 255, 157, 0.55)); }
+  0%, 100% { opacity: 0.22; }
+  50% { opacity: 0.36; }
 }
 .revamp-footer-logo { display: inline-block; width: min(220px, 70%); margin-bottom: 18px; }
 .revamp-footer-logo img { display: block; width: 100%; height: auto; filter: drop-shadow(0 0 22px rgba(125, 255, 157, 0.25)); }

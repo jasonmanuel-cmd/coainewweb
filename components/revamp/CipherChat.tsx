@@ -74,15 +74,28 @@ export function CipherChat() {
       return;
     }
 
-    const script = document.createElement("script");
-    script.id = VAPI_SCRIPT_ID;
-    script.src = VAPI_SCRIPT_SRC;
-    script.defer = true;
-    script.addEventListener("load", start, { once: true });
-    // On error the fallback launcher stays in place; nothing else to do.
-    document.head.appendChild(script);
+    // Defer the third-party bundle until the browser is idle. Fetching and running it
+    // on mount competed with hydration for main-thread time and was a measurable part
+    // of total blocking time; the launcher button is already interactive without it.
+    const idle: (cb: () => void) => void =
+      typeof (window as Window & { requestIdleCallback?: (cb: () => void) => void }).requestIdleCallback === "function"
+        ? (cb) => (window as Window & { requestIdleCallback: (cb: () => void) => void }).requestIdleCallback(cb)
+        : (cb) => window.setTimeout(cb, 2000);
+
+    let cancelled = false;
+    idle(() => {
+      if (cancelled) return;
+      const script = document.createElement("script");
+      script.id = VAPI_SCRIPT_ID;
+      script.src = VAPI_SCRIPT_SRC;
+      script.defer = true;
+      script.addEventListener("load", start, { once: true });
+      // On error the fallback launcher stays in place; nothing else to do.
+      document.head.appendChild(script);
+    });
 
     return () => {
+      cancelled = true;
       if ((window as VapiWindow).openCipherChat === openChat) delete (window as VapiWindow).openCipherChat;
     };
   }, [openChat]);

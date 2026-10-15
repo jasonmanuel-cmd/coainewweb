@@ -39,6 +39,11 @@ const faqs = [
   ["What happens after launch?", `Thirty days of optimization are included. After that, Revenue Continuity is an optional ${formatUsd(CONTINUITY_MONTHLY)}/month for monitoring, testing, and one monthly improvement priority—or you can keep the delivered system without an ongoing retainer.`]
 ];
 
+// Hero layer note: the decorative watermark is deliberately an Image, not a CSS
+// background. A background image can only be discovered after the render-blocking CSS
+// has been fetched and parsed, which put it on a strictly longer critical path than the
+// hero art and dominated simulated LCP. As an Image the browser sees it in the HTML and
+// fetches it in parallel.
 export default function HomePage() {
   return (
     <main id="main-content" className="cinematic-home">
@@ -51,6 +56,7 @@ export default function HomePage() {
           alt=""
           fill
           priority
+          fetchPriority="high"
           quality={88}
           sizes="100vw"
         />
