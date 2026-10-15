@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Button, Card, ComparisonTable, Tag } from "@/components/ui";
+import { Button, Card, Tag } from "@/components/ui";
+import { PricingMatrix } from "@/components/marketing/PricingMatrix";
 import { OFFERS, THIRD_PARTY_COSTS } from "@/lib/site";
 import "@/components/revamp/home.css";
 
@@ -31,35 +32,6 @@ const NOT_INCLUDED = [
   "Around-the-clock human dispatch"
 ] as const;
 
-const PRICE_COLUMNS = ["Offer", "Price", "What it is", "Recurring"] as const;
-
-const PRICE_ROWS = [
-  [
-    OFFERS.scorecard.name,
-    OFFERS.scorecard.price,
-    OFFERS.scorecard.summary,
-    `Otherwise ${OFFERS.scorecard.alt.toLowerCase()}`
-  ],
-  [
-    OFFERS.tradecall.name,
-    `${OFFERS.tradecall.price} flat`,
-    OFFERS.tradecall.summary,
-    `${OFFERS.tradecall.terms}. Hosting and SMS billed by the vendor, not COAI.`
-  ],
-  [
-    "Bilingual build (EN/ES)",
-    OFFERS.tradecall.bilingual,
-    "Full Spanish translation with hreflang markup and translation QA.",
-    "Included in the build"
-  ],
-  [
-    OFFERS.continuity.name,
-    `${OFFERS.continuity.price}/${OFFERS.continuity.period}`,
-    OFFERS.continuity.summary,
-    `Monthly, ${OFFERS.continuity.terms}`
-  ]
-] as const;
-
 export function PricingPageBody() {
   return (
     <>
@@ -80,7 +52,11 @@ export function PricingPageBody() {
         <div className="home-container">
           <span className="home-eyebrow">01 — The whole price list</span>
           <h2 className="home-h2">Three offers. That is all we sell.</h2>
-          <ComparisonTable columns={PRICE_COLUMNS} rows={PRICE_ROWS} />
+          <p className="home-lede">
+            Compare the three side by side — pricing, payment terms, what the build installs, and what is
+            deliberately left out of every offer.
+          </p>
+          <PricingMatrix included={INCLUDED} notIncluded={NOT_INCLUDED} />
         </div>
       </section>
 

@@ -220,6 +220,23 @@ ul, ol {
   transform: scale(0.98);
 }
 
+/* Used on the thank-you page next to .btn-primary; mirrors .ui-btn--secondary. */
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+}
+
+.btn-secondary:hover {
+  background: var(--charcoal-60);
+  color: var(--jobsite-white);
+  border-color: var(--steel-blue);
+}
+
+.btn-secondary:active {
+  transform: scale(0.98);
+}
+
 .btn-ghost {
   background: transparent;
   color: var(--text-primary);
@@ -240,6 +257,40 @@ ul, ol {
 .btn[disabled] {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+/* ==========================================================================
+   Reveal on scroll (components/revamp/Reveal.tsx) — content always stays in the
+   server HTML; the transition is purely visual. Hidden by default only for
+   motion-capable clients, so no-JS crawlers and reduced-motion users always
+   see the content.
+   ========================================================================== */
+
+.reveal {
+  transition:
+    opacity var(--t-mid) var(--ease-standard),
+    transform var(--t-mid) var(--ease-standard);
+}
+
+/* Hidden state only applies when JS is running (html.js is set by an inline
+   script in the root layout). Without JS there is no observer, so content
+   must stay visible. */
+html.js .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+html.js .reveal.reveal-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .reveal,
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* ==========================================================================
