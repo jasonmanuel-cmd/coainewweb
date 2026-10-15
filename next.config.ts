@@ -17,10 +17,14 @@ const nextConfig: NextConfig = {
     const csp = [
       "default-src 'self'",
       `script-src 'self' 'unsafe-inline'${developmentEval} https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com https://challenges.cloudflare.com https://scripts.simpleanalyticscdn.com https://cdn.jsdelivr.net https://trtc.io`,
-      "style-src 'self' 'unsafe-inline'",
+      // knocket-sdk/sdk.css is served from the same host as its script.
+      "style-src 'self' 'unsafe-inline' https://trtc.io",
       "img-src 'self' data: blob: https:",
-      "font-src 'self' data:",
-      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://www.googletagmanager.com https://vitals.vercel-insights.com https://*.vercel-insights.com https://challenges.cloudflare.com https://queue.simpleanalyticscdn.com https://api.vapi.ai https://*.vapi.ai wss://*.vapi.ai https://*.daily.co wss://*.daily.co https://cdn.jsdelivr.net",
+      // The Vapi widget loads its Lucide icon font from unpkg (lucide-static).
+      "font-src 'self' data: https://unpkg.com",
+      // api.trtc.io serves the knocket portal API; wss:// is included for its socket
+      // transport. vapi/daily/jsdelivr were already required by the chat widget.
+      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://www.googletagmanager.com https://vitals.vercel-insights.com https://*.vercel-insights.com https://challenges.cloudflare.com https://queue.simpleanalyticscdn.com https://api.vapi.ai https://*.vapi.ai wss://*.vapi.ai https://*.daily.co wss://*.daily.co https://cdn.jsdelivr.net https://api.trtc.io wss://api.trtc.io",
       "worker-src 'self' blob:",
       "media-src 'self' blob: data:",
       "frame-src https://www.googletagmanager.com https://challenges.cloudflare.com https://*.daily.co",

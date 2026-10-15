@@ -1,0 +1,48 @@
+name: CI
+
+# Nothing ran on pull requests or on main before this workflow existed, which is how two
+# untested Dependabot upgrades (lucide-react 1.16 -> 1.55, @types/node 22 -> 26) landed
+# on main unverified, and how a broken CSP could ship while every check stayed green.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# A superseded run for the same ref should not consume capacity.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: typecheck, test, build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # `npm audit` is informational only: a new advisory should surface as a warning,
+      # not block every unrelated PR.
+      - name: Audit dependencies
+        continue-on-error: true
+        run: npm audit --audit-level=high || true
+
+      - name: Typecheck
+        run: npx tsc --noEmit
+
+      - name: Test
+        run: npx vitest run
+
+      # Builds last because it is the slowest step and the least likely to be the only
+      # failure. `npm ci` above is what keeps this honest.
+      - name: Build
+        run: npm run build
