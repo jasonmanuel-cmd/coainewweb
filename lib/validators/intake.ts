@@ -24,9 +24,9 @@ const websiteField = z
 export const intakeSubmissionSchema = z.object({
   turnstileToken: z.string().optional().default(""),
   form_type: z.string().max(80).optional().default("diagnostic_intake"),
-  first_name: z.string().min(1).max(200),
+  first_name: z.string().trim().min(1).max(200),
   business_name: z.string().min(1).max(300),
-  phone: z.string().min(7).max(80),
+  phone: z.string().trim().min(7).max(80).refine(value => value.replace(/\D/g, "").length >= 7, "Enter a valid phone number."),
   sms_consent: smsConsentField,
   email: z.string().email().max(320),
   business_website: websiteField,

@@ -69,10 +69,10 @@ export default function HomePage() {
             <h1 id="hero-title">On the job?<br /><em>Keep leads moving.</em></h1>
             <p className="cinematic-hero-lede">COAI connects your website, missed-call replies, and follow-up so customer requests reach you with the job details attached. Built around your tools, with a clear handoff to you.</p>
             <div className="cinematic-hero-actions">
-              <Link className="revamp-btn-primary" href="/demo">
-                See how lead response works <ArrowUpRight aria-hidden="true" />
+              <Link className="revamp-btn-primary" href="/intake?pkg=2">
+                Discuss my build <ArrowUpRight aria-hidden="true" />
               </Link>
-              <Link className="revamp-btn-ghost" href="/intake?pkg=2">Discuss my build <ArrowRight aria-hidden="true" /></Link>
+              <Link className="revamp-btn-ghost" href="/demo">See how lead response works <ArrowRight aria-hidden="true" /></Link>
             </div>
             <div className="cinematic-hero-trust" aria-label="Offer highlights">
               <span><Check aria-hidden="true" /> {DELIVERY_TIMELINE} standard turnaround</span>

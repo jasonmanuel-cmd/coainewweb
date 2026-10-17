@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import { getSupabaseAdmin } from "@/lib/supabase/client";
 import { PublicError } from "@/lib/public-error";
+import { passwordLoginConfigured, validHqSession } from "./password";
 
 export const HQ_COOKIE = "coai_hq_session";
 export function isHqOwner(id: string): boolean {
@@ -9,6 +10,10 @@ export function isHqOwner(id: string): boolean {
 export async function requireHqOwner() {
   const token = (await cookies()).get(HQ_COOKIE)?.value;
   if (!token) throw new PublicError("Sign in to your owner account.", 401);
+  if (passwordLoginConfigured()) {
+    if (!validHqSession(token)) throw new PublicError("Sign in again to access HQ.", 401);
+    return;
+  }
   const db = getSupabaseAdmin();
   if (!db) throw new PublicError("HQ is awaiting database setup.", 503);
   const { data, error } = await db.auth.getUser(token);

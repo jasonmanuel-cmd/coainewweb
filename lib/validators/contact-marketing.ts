@@ -29,9 +29,9 @@ export const smsConsentField = z.enum(["yes", "no"]).optional().default("no");
 export const contactMarketingSchema = z.object({
   turnstileToken: z.string().optional().default(""),
   form_type: z.string().max(80).optional().default("contact"),
-  first_name: z.string().min(1).max(200),
+  first_name: z.string().trim().min(1).max(200),
   business_name: z.string().min(1).max(300),
-  phone: z.string().max(80).optional().default(""),
+  phone: z.string().trim().min(7).max(80).refine(value => value.replace(/\D/g, "").length >= 7, "Enter a valid phone number."),
   sms_consent: smsConsentField,
   email: z.string().email(),
   business_website: websiteField,

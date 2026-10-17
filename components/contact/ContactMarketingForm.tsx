@@ -118,13 +118,13 @@ export function ContactMarketingForm({
           <input id="cf-company" name="company" type="text" tabIndex={-1} autoComplete="off" />
         </div>
         <div className="m-form-group">
-          <label htmlFor="cf-first-name">First Name</label>
+          <label htmlFor="cf-first-name">Name</label>
           <input
             id="cf-first-name"
             name="first_name"
-            placeholder="First name"
+            placeholder="Your name"
             required
-            autoComplete="given-name"
+            autoComplete="name"
           />
         </div>
         <div className="m-form-group">
