@@ -89,7 +89,7 @@ export default function PortfolioPage() {
         </p>
         <div className="m-cta-actions">
           <Link href="/intake" className="m-btn-primary">
-            Run My Free Diagnostic →
+            Request my leak score →
           </Link>
           <Link href="/pricing" className="m-btn-ghost">
             View Packages

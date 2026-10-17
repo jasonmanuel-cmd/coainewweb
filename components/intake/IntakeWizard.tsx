@@ -349,7 +349,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
             <div className="m-step-label">Request Your Audit</div>
             <h2 className="m-step-title">{buildInquiry ? "Tell us where to follow up about your build." : "Where should we send your baseline report?"}</h2>
             <p className="m-step-sub">
-              Submit and you&rsquo;ll get immediate confirmation. <strong>Jason follows up the same business day</strong> when a request arrives during published business hours.
+              Submit and you&rsquo;ll get confirmation after delivery is accepted. <strong>Jason reviews inquiries during published business hours.</strong> Qualification, scope, and timing are confirmed before work begins.
             </p>
 
             {/* Urgency banner */}
