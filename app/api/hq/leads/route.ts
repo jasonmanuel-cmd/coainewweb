@@ -6,12 +6,14 @@ import { PublicError } from "@/lib/public-error";
 import { hasJsonContentType, isSameSiteRequest } from "@/lib/security/request-guards";
 import { listRedisLeads, updateRedisLead, usesRedisCrm } from "@/lib/crm/redis-store";
 import { getSupabaseAdmin } from "@/lib/supabase/client";
+import { listNeonLeads,updateNeonLead,usesNeonCrm } from "@/lib/crm/neon-store";
 
 export async function GET(request: Request) {
   try {
     await requireHqOwner();
     const url = new URL(request.url); const page = Math.max(0, Math.min(10000, Number(url.searchParams.get("page")) || 0));
     const stage = url.searchParams.get("stage"); const search = (url.searchParams.get("q") ?? "").slice(0, 150);
+    if(usesNeonCrm()) return privateJson(await listNeonLeads(page,stage,search));
     if (usesRedisCrm()) {
       const leads=(await listRedisLeads()).filter(row => (!stage || row.stage===stage) && (!search || [row.first_name,row.business_name,row.email,row.phone].join(" ").toLowerCase().includes(search.toLowerCase())));
       return privateJson({leads:leads.slice(Math.floor(page)*50,Math.floor(page)*50+50),total:leads.length,page:Math.floor(page)});
@@ -32,6 +34,10 @@ export async function PATCH(request: Request) {
     await requireHqOwner(); const body = update.safeParse(await request.json());
     if (!body.success) throw new PublicError("Check the lead stage, notes and follow-up date.", 400);
     const { id, updated_at, ...fields } = body.data;
+    if(usesNeonCrm()) {
+      if(!(await updateNeonLead(id,updated_at,fields))) throw new PublicError("This lead changed in another tab. Reload it before saving.",409);
+      return privateJson({ok:true});
+    }
     if (usesRedisCrm()) {
       if (!(await updateRedisLead(id,updated_at,fields))) throw new PublicError("This lead changed in another tab. Reload it before saving.",409);
       return privateJson({ok:true});

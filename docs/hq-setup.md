@@ -1,5 +1,15 @@
 # COAI HQ
 
+## Current provider: Neon
+
+Use `CRM_STORAGE=neon` and the existing Vercel-managed server-only `DATABASE_URL` from `neon-byzantine-lamp`. Migration `neon/001_hq.sql` creates a private `coai_hq` schema, lead records, aggregate daily counters and a technical health-probe table. It does not seed sample data. Public schema privileges are revoked; RLS is enabled. The server uses the database owner connection only after HQ authorization checks. Database credentials never enter client code.
+
+The existing private password, signed HttpOnly sessions, required CTA name/phone/email fields and no-sample-data rule remain. Neon handles filtering and pagination in SQL; values are bound parameters. Lead retry suppression does not overwrite owner notes. Updates check the original timestamp to prevent stale writes. The health write check is an atomic insert/read/delete transaction in a separate technical table, never the lead inbox.
+
+Apply the migration and verify schema permissions, health checks and the empty inbox before setting `COAI_CRM_ENABLED=true`. Deploy again after changing flags, then verify the authenticated production health endpoint and lead API. Keep the capture flag false if those checks fail. No real email receipt is claimed solely from database health checks.
+
+The Redis and Supabase sections below document previous alternatives; neither is required for Neon mode. Supabase billing and Upstash terms are unrelated to this active connection. No new database plan was purchased for the Neon switch.
+
 ## Current deployment: Redis and private owner password
 
 The current release supports `CRM_STORAGE=redis`, using the project's existing server-only Upstash credentials. This avoids depending on the paused Supabase project. Owner login uses `HQ_PASSWORD_HASH` (salted scrypt) plus `HQ_SESSION_SECRET` (random session-signing key). These belong only in server environment variables; never commit a password or hash into client code. Signed, HttpOnly sessions expire within one hour. Rotate the signing key to revoke all sessions. The Supabase configuration below remains an alternative, not a prerequisite for Redis mode.
