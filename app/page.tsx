@@ -6,7 +6,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { RevenueCalculator } from "@/components/revamp/RevenueCalculator";
 import { REVAMP_PROJECTS } from "@/components/revamp/revampData";
 import { serviceJsonLd } from "@/lib/schema";
-import { BUILD_PRICE, CONTINUITY_MONTHLY, CTA_BOOKING_URL, DELIVERY_TIMELINE, SITE_DESCRIPTION, formatUsd } from "@/lib/site";
+import { BUILD_PRICE, CONTINUITY_MONTHLY, DELIVERY_TIMELINE, SITE_DESCRIPTION, formatUsd } from "@/lib/site";
 import { PORTFOLIO_STATS, countWord } from "@/lib/portfolio-stats";
 import { SYSTEM_CAPABILITY_COUNT } from "@/lib/systems";
 
@@ -65,14 +65,14 @@ export default function HomePage() {
         <div className="cinematic-hero-grid" aria-hidden="true" />
         <div className="cinematic-container cinematic-hero-inner">
           <div className="cinematic-hero-copy">
-            <span className="revamp-kicker"><i aria-hidden="true" /> Revenue infrastructure for local service businesses</span>
-            <h1 id="hero-title">The job is yours.<br /><em>Answer first.</em></h1>
-            <p className="cinematic-hero-lede">The website is one piece. COAI builds the systems around it to catch the inquiry, clarify the job, and keep the next action moving.</p>
+            <span className="revamp-kicker"><i aria-hidden="true" /> Lead response for contractors and local service businesses</span>
+            <h1 id="hero-title">On the job?<br /><em>Keep leads moving.</em></h1>
+            <p className="cinematic-hero-lede">COAI connects your website, missed-call replies, and follow-up so customer requests reach you with the job details attached. Built around your tools, with a clear handoff to you.</p>
             <div className="cinematic-hero-actions">
-              <Link className="revamp-btn-primary" href={CTA_BOOKING_URL}>
-                Get your job-call leak score <ArrowUpRight aria-hidden="true" />
+              <Link className="revamp-btn-primary" href="/demo">
+                See how lead response works <ArrowUpRight aria-hidden="true" />
               </Link>
-              <Link className="revamp-btn-ghost" href="/demo">Try the lead-response demo <ArrowRight aria-hidden="true" /></Link>
+              <Link className="revamp-btn-ghost" href="/intake?pkg=2">Discuss my build <ArrowRight aria-hidden="true" /></Link>
             </div>
             <div className="cinematic-hero-trust" aria-label="Offer highlights">
               <span><Check aria-hidden="true" /> {DELIVERY_TIMELINE} standard turnaround</span>
@@ -85,9 +85,9 @@ export default function HomePage() {
             <div className="dispatch-header">
               <div>
                 <span className="dispatch-label">Example workflow</span>
-                <strong>Lead → Booked</strong>
+                <strong>Inquiry → Owner handoff</strong>
               </div>
-              <span className="dispatch-live"><i aria-hidden="true" /> Active</span>
+              <span className="dispatch-live"><i aria-hidden="true" /> Example</span>
             </div>
             <div className="dispatch-events">
               {workflow.map((event, index) => {

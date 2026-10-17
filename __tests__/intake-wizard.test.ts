@@ -47,7 +47,8 @@ it("lets a build buyer skip the estimate and recover from a failed submission wi
     expect(button).toBeDefined(); await act(async () => button!.click());
   }
   await click("Trades & Contractors"); await click("No website");
-  await click("Skip the estimate");
+  expect(host.textContent).not.toContain("Skip the estimate and request my scorecard");
+  await click("Continue to my build inquiry");
   expect(host.querySelector<HTMLInputElement>('[name="business_website"]')!.value).toBe("none");
   expect(host.textContent).toContain("$997 to start / $1,000 at launch");
   for (const [name, value] of Object.entries({ first_name: "Demo", business_name: "Example Contractor", phone: "6615550100", email: "demo@example.com" })) {

@@ -170,10 +170,10 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
         {/* Urgency banner */}
         <div className="m-urgency-banner">
           <span className="m-urgency-text">
-            {OFFERS.scorecard.name} — {OFFERS.scorecard.turnaround}
+            {buildInquiry ? OFFERS.tradecall.name : `${OFFERS.scorecard.name} — ${OFFERS.scorecard.turnaround}`}
           </span>
           <span className="m-urgency-sub">
-            {OFFERS.scorecard.price}. {OFFERS.scorecard.alt}.
+            {buildInquiry ? `${OFFERS.tradecall.price} flat · ${OFFERS.tradecall.terms}` : `${OFFERS.scorecard.price}. ${OFFERS.scorecard.alt}.`}
           </span>
         </div>
 
@@ -198,7 +198,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
                   {step > i ? "✓" : i}
                 </div>
                 <span className={`m-step-tracker-label ${step >= i ? "m-step-tracker-label--active" : ""}`}>
-                  {i === 1 ? "Your Setup" : i === 2 ? "Your Baseline" : "Your Report"}
+                  {i === 1 ? "Your Setup" : i === 2 ? "Optional Estimate" : buildInquiry ? "Your Inquiry" : "Your Report"}
                 </span>
                 {i < 3 && (
                   <div className={`m-step-tracker-line ${step > i ? "m-step-tracker-line--active" : ""}`} />
@@ -216,7 +216,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
             <div className="m-step-label">Quick Snapshot</div>
             <h1 className="m-step-title">Tell us about your business</h1>
             <p className="m-step-sub">
-              Finish this in about <strong>60 seconds</strong>. No spam, no pressure &mdash; just a real baseline of where you&rsquo;re leaking revenue.
+              {buildInquiry ? "Share your setup, then leave your contact details. Jason will review the fit and scope before you commit. The revenue estimate is optional." : <>Finish this in about <strong>60 seconds</strong>. Use your own inputs to estimate revenue at risk, or skip ahead to request a scorecard.</>}
             </p>
 
             <div className="m-intake-field-group">
@@ -255,15 +255,15 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
 
             <button
               type="button"
-              className="m-btn-next m-btn-next--block"
+              className={buildInquiry ? "m-btn-back" : "m-btn-next m-btn-next--block"}
               disabled={!step1Complete}
               onClick={() => goStep(2)}
             >
               Estimate revenue at risk →
             </button>
 
-            <button type="button" className="m-btn-back" disabled={!step1Complete} onClick={() => goStep(3)}>
-              Skip the estimate and request my scorecard
+            <button type="button" className={buildInquiry ? "m-btn-next m-btn-next--block" : "m-btn-back"} disabled={!step1Complete} onClick={() => goStep(3)}>
+              {buildInquiry ? "Continue to my build inquiry →" : "Skip the estimate and request my scorecard"}
             </button>
 
             {/* Trust bar */}
@@ -346,7 +346,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
 
         {step === 3 ? (
           <div className="m-step-panel">
-            <div className="m-step-label">Request Your Audit</div>
+            <div className="m-step-label">{buildInquiry ? "Discuss Your Build" : "Request Your Scorecard"}</div>
             <h2 className="m-step-title">{buildInquiry ? "Tell us where to follow up about your build." : "Where should we send your baseline report?"}</h2>
             <p className="m-step-sub">
               Submit and you&rsquo;ll get confirmation after delivery is accepted. <strong>Jason reviews inquiries during published business hours.</strong> Qualification, scope, and timing are confirmed before work begins.

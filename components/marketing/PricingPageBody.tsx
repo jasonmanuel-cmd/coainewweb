@@ -41,8 +41,8 @@ export function PricingPageBody() {
           <h1 className="home-hero__title">One price list. No surprises after signature.</h1>
           <p className="home-hero__sub">
             Fixed scope, fixed price. You approve the proposal before a line of code is written, and every
-            third-party cost is on the table before you sign. This page is the single source of truth — if a
-            number appears somewhere else on this site, it comes from here.
+            third-party cost is on the table before you sign. Start with a scorecard if you need help finding
+            the gap, or discuss the build if you already know what needs fixing. Ongoing support is optional.
           </p>
         </div>
       </section>
