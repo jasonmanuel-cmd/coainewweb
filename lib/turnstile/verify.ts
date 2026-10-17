@@ -16,7 +16,8 @@ export async function verifyTurnstileToken(token: string | undefined, remoteip?:
   const res = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body
+    body,
+    signal: AbortSignal.timeout(8_000)
   });
 
   const data = (await res.json()) as { success?: boolean; "error-codes"?: string[] };

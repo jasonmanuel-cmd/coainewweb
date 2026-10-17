@@ -10,7 +10,7 @@ import { SITE_URL } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: "Run My Diagnostic",
   description:
-    "Run your free digital growth diagnostic. See your visibility score, revenue leak estimate, and priority fix list.",
+    "Request a job-call leak scorecard. Free for qualified owner-operators; eligibility, any audit fee, and timing are confirmed before work begins.",
   path: "/intake"
 });
 
