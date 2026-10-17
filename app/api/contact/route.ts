@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { apiErrorResponse } from "@/lib/api-errors";
 import { FORMSPREE_CONTACT } from "@/lib/forms";
+import { deliverForm } from "@/lib/form-delivery";
 import { getClientIp, hasJsonContentType, isSameSiteRequest } from "@/lib/security/request-guards";
 import { verifyTurnstileToken } from "@/lib/turnstile/verify";
 import { takeRateLimitToken } from "@/lib/utils/rate-limit";
@@ -31,23 +32,15 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Human verification failed." }, { status: 400 });
     }
 
-    const fd = new FormData();
+    const fields: Record<string, string> = {};
     for (const [key, value] of Object.entries(parsed)) {
       if (key === "turnstileToken" || key === "company") continue;
       if (value !== undefined && value !== null && value !== "") {
-        fd.set(key, String(value));
+        fields[key] = String(value);
       }
     }
 
-    const fr = await fetch(FORMSPREE_CONTACT, {
-      method: "POST",
-      body: fd,
-      headers: { Accept: "application/json" }
-    });
-
-    if (!fr.ok) {
-      return NextResponse.json({ error: "Form delivery failed." }, { status: 502 });
-    }
+    await deliverForm(FORMSPREE_CONTACT, fields);
 
     return NextResponse.json({ ok: true });
   } catch (error) {

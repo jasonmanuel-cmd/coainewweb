@@ -148,7 +148,7 @@ export default function ShafterWebsiteDesignPage() {
         </p>
         <div className="m-cta-row">
           <Link href="/intake" className="m-btn-primary">
-            Get My Free Shafter Audit →
+            Request my Shafter leak score →
           </Link>
           <a href={`tel:${CONTACT.phoneE164}`} className="m-btn-ghost">
             Call {CONTACT.phoneDisplay}

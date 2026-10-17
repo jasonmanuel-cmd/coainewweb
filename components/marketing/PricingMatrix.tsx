@@ -88,7 +88,7 @@ export function PricingMatrix({ included, notIncluded }: PricingMatrixProps) {
       stage: OFFERS.tradecall.stage,
       price: `${OFFERS.tradecall.price} flat`,
       priceNote: OFFERS.tradecall.terms,
-      cta: { label: "Book your build", href: "/intake" },
+      cta: { label: "Discuss my build", href: "/intake?pkg=2" },
       featured: true
     },
     {

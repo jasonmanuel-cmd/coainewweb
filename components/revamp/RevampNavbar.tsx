@@ -104,8 +104,8 @@ export function RevampNavbar() {
             </div>
           </div>
 
-          <Link className="revamp-nav-cta" href="/contact">
-            <span>Book your build</span>
+          <Link className="revamp-nav-cta" href="/intake?pkg=2">
+            <span>Discuss your build</span>
             <span aria-hidden="true">↗</span>
           </Link>
         </div>

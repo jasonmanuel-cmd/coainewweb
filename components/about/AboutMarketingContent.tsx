@@ -173,7 +173,7 @@ export function AboutMarketingContent() {
         </p>
         <div className="m-cta-row">
           <Link href="/intake" className="m-btn-primary">
-            Run My Free Diagnostic →
+            Request my leak score →
           </Link>
           <Link href="/portfolio" className="m-btn-ghost">
             See Our Work

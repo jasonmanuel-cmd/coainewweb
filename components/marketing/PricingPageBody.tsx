@@ -144,8 +144,8 @@ export function PricingPageBody() {
             <Button href="/intake" variant="primary" size="lg">
               Get my leak score
             </Button>
-            <Button href="/faq" variant="inverse" size="lg">
-              Read the FAQ
+            <Button href="/demo" variant="inverse" size="lg">
+              Try the lead-response demo
             </Button>
           </div>
         </div>

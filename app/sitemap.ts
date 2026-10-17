@@ -7,15 +7,16 @@ import { SITE_URL } from "@/lib/site";
  * signal. Update the entry when the page's content actually changes.
  */
 const LAST_MODIFIED: Record<string, string> = {
-  "/": "2026-10-10",
-  "/pricing": "2026-10-10",
+  "/": "2026-10-17",
+  "/demo": "2026-10-17",
+  "/pricing": "2026-10-17",
   "/faq": "2026-10-10",
   "/services": "2026-10-10",
   "/systems": "2026-10-10",
   "/portfolio": "2026-10-10",
   "/about": "2026-10-10",
   "/contact": "2026-10-10",
-  "/intake": "2026-10-10",
+  "/intake": "2026-10-17",
   "/privacy": "2026-10-10",
   "/cookies": "2026-10-10",
   "/sms-terms": "2026-10-10",
@@ -38,6 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     "/",
+    "/demo",
     "/services",
     "/systems",
     "/website-design",

@@ -148,7 +148,7 @@ export default function DelanoWebsiteDesignPage() {
         </p>
         <div className="m-cta-row">
           <Link href="/intake" className="m-btn-primary">
-            Get My Free Delano Audit →
+            Request my Delano leak score →
           </Link>
           <a href={`tel:${CONTACT.phoneE164}`} className="m-btn-ghost">
             Call {CONTACT.phoneDisplay}

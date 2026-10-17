@@ -1,10 +1,11 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { getClientIp, isSameSiteRequest, hasJsonContentType } from "@/lib/security/request-guards";
 
-function makeRequest(headers: Record<string, string> = {}): Request {
+function makeRequest(headers: Record<string, string> = {}, url = "https://chaoticallyorganizedai.com/api/intake"): Request {
   // Use a plain object mock to avoid the Fetch spec's "forbidden header" restrictions
   // (e.g. the `origin` header is stripped by real Request constructors).
   return {
+    url,
     headers: {
       get: (name: string) => headers[name.toLowerCase()] ?? null
     }
@@ -86,7 +87,7 @@ describe("isSameSiteRequest", () => {
     vi.unstubAllEnvs();
   });
 
-  it("returns true when origin matches NEXT_PUBLIC_SITE_URL", () => {
+  it("accepts a matching request origin", () => {
     const req = makeRequest({ origin: SITE });
     expect(isSameSiteRequest(req)).toBe(true);
   });
@@ -122,15 +123,26 @@ describe("isSameSiteRequest", () => {
     expect(isSameSiteRequest(req)).toBe(false);
   });
 
-  it("returns true when NEXT_PUBLIC_SITE_URL is not set", () => {
+  it("still rejects a foreign origin when NEXT_PUBLIC_SITE_URL is not set", () => {
     vi.stubEnv("NEXT_PUBLIC_SITE_URL", "");
     const req = makeRequest({ origin: "https://evil.com" });
-    expect(isSameSiteRequest(req)).toBe(true);
+    expect(isSameSiteRequest(req)).toBe(false);
   });
 
-  it("returns true when NEXT_PUBLIC_SITE_URL is an invalid URL", () => {
+  it("still rejects a foreign origin when NEXT_PUBLIC_SITE_URL is invalid", () => {
     vi.stubEnv("NEXT_PUBLIC_SITE_URL", "not-a-valid-url");
     const req = makeRequest({ origin: "https://evil.com" });
-    expect(isSameSiteRequest(req)).toBe(true);
+    expect(isSameSiteRequest(req)).toBe(false);
+  });
+
+  it("accepts the actual production www host even with a stale domain setting", () => {
+    vi.stubEnv("NEXT_PUBLIC_SITE_URL", "https://old-domain.example");
+    expect(isSameSiteRequest(makeRequest({ origin: "https://www.chaoticallyorganizedai.com" }, "https://www.chaoticallyorganizedai.com/api/intake"))).toBe(true);
+  });
+
+  it("accepts same-origin previews without allowing a different deployment", () => {
+    const preview = "https://example-preview.vercel.app";
+    expect(isSameSiteRequest(makeRequest({ origin: preview }, `${preview}/api/intake`))).toBe(true);
+    expect(isSameSiteRequest(makeRequest({ origin: "https://different-preview.vercel.app" }, `${preview}/api/intake`))).toBe(false);
   });
 });

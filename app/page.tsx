@@ -72,7 +72,7 @@ export default function HomePage() {
               <Link className="revamp-btn-primary" href={CTA_BOOKING_URL}>
                 Get your job-call leak score <ArrowUpRight aria-hidden="true" />
               </Link>
-              <a className="revamp-btn-ghost" href="#system">See the system <ArrowRight aria-hidden="true" /></a>
+              <Link className="revamp-btn-ghost" href="/demo">Try the lead-response demo <ArrowRight aria-hidden="true" /></Link>
             </div>
             <div className="cinematic-hero-trust" aria-label="Offer highlights">
               <span><Check aria-hidden="true" /> {DELIVERY_TIMELINE} standard turnaround</span>
