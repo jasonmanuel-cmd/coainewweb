@@ -366,13 +366,13 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
               </div>
 
               <div className="m-field">
-                <label htmlFor="intake-first-name">First Name</label>
+                <label htmlFor="intake-first-name">Name</label>
                 <input
                   id="intake-first-name"
                   name="first_name"
-                  placeholder="First name"
+                  placeholder="Your name"
                   required
-                  autoComplete="given-name"
+                  autoComplete="name"
                 />
               </div>
 

@@ -75,7 +75,7 @@ export default function PrivacyPage() {
             <li><strong>Sentry</strong> — captures sampled application errors and limited performance diagnostics.</li>
             <li><strong>Vercel</strong> — hosts and delivers the website and associated server functions.</li>
           </ul>
-          <p>When CRM storage is enabled, Supabase stores submitted inquiry details and owner follow-up records. A first-party counter records daily totals for selected public pages without cookies, visitor identifiers, query strings or contact details. That counter honors Do Not Track and Global Privacy Control. It does not identify anonymous visitors. These providers process information under their own privacy terms and our applicable service settings.</p>
+          <p>When CRM storage is enabled, our configured database provider (Upstash or Supabase) stores submitted inquiry details and owner follow-up records. A first-party counter records daily totals for selected public pages without cookies, visitor identifiers, query strings or contact details. That counter honors Do Not Track and Global Privacy Control. It does not identify anonymous visitors. These providers process information under their own privacy terms and our applicable service settings.</p>
         </section>
 
         <section className="m-legal-section">

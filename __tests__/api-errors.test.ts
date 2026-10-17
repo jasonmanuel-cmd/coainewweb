@@ -28,7 +28,7 @@ function jsonRequest(url: string, body: unknown, raw = false) {
   });
 }
 
-const contactBody = { first_name: "Jane", business_name: "Acme", email: "jane@example.com", business_website: "https://acme.com" };
+const contactBody = { first_name: "Jane", business_name: "Acme", phone: "6615550100", email: "jane@example.com", business_website: "https://acme.com" };
 const registerBody = { url: "https://acme.com", phone: "6615551234", email: "jane@example.com" };
 
 async function readJson(response: Response) {

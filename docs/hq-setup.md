@@ -1,5 +1,15 @@
 # COAI HQ
 
+## Current deployment: Redis and private owner password
+
+The current release supports `CRM_STORAGE=redis`, using the project's existing server-only Upstash credentials. This avoids depending on the paused Supabase project. Owner login uses `HQ_PASSWORD_HASH` (salted scrypt) plus `HQ_SESSION_SECRET` (random session-signing key). These belong only in server environment variables; never commit a password or hash into client code. Signed, HttpOnly sessions expire within one hour. Rotate the signing key to revoke all sessions. The Supabase configuration below remains an alternative, not a prerequisite for Redis mode.
+
+The fictional sample workspace has been removed entirely. The inbox displays stored inquiries only. The main homepage CTA leads to `/intake?pkg=2`; intake and contact require name, phone digits and a valid email on the server as well as the form.
+
+Redis uses private `coai:hq:v1:` keys and atomic scripts for retry suppression and concurrent edit checks. No lead TTL is applied automatically. Daily counters expire after 90 days. The initial single-owner inbox reads the lead hash to filter/search; move to an indexed store if volume makes that costly. Configure backups and periodic retention review in the owner account. `/api/hq/health` requires login; POST performs a short-lived write/read/delete probe outside the lead collection. No fixture/test lead is required for that probe.
+
+Enable `COAI_CRM_ENABLED=true` only after authenticated storage checks pass. This flag does not require Supabase when Redis mode is selected. Verify the public CTA path and server-side required fields. A storage health check is separate from confirming an actual new lead and email receipt; do not claim receipt unless observed.
+
 Private owner CRM at `/hq`. `coaibakersfield.com/hq` follows the existing path-preserving redirect to `www.chaoticallyorganizedai.com/hq`.
 
 ## What is included
