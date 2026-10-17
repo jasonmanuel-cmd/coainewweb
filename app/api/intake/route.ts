@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { apiErrorResponse } from "@/lib/api-errors";
 import { FORMSPREE_INTAKE } from "@/lib/forms";
 import { deliverForm } from "@/lib/form-delivery";
+import { captureCrmLead } from "@/lib/crm/capture";
 import { getClientIp, hasJsonContentType, isSameSiteRequest } from "@/lib/security/request-guards";
 import { verifyTurnstileToken } from "@/lib/turnstile/verify";
 import { takeRateLimitToken } from "@/lib/utils/rate-limit";
@@ -43,6 +44,7 @@ export async function POST(request: Request) {
     }
 
     fields._subject = `${parsed.package_interest === "2" ? "COAI build inquiry" : "COAI leak-score request"}: ${parsed.business_name}`;
+    await captureCrmLead("intake", fields);
     await deliverForm(FORMSPREE_INTAKE, fields);
 
     return NextResponse.json({ ok: true });

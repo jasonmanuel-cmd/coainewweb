@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
-  const disallow = ["/home", "/sentry-example-page", "/api/"];
+  const disallow = ["/home", "/sentry-example-page", "/api/", "/hq"];
   // Affirmatively allow the AI search/answer crawlers rather than relying on the wildcard.
   const aiAgents = [
     "Amazonbot", "Applebot-Extended", "Bingbot", "Bytespider",

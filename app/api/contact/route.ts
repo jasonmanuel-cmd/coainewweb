@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { apiErrorResponse } from "@/lib/api-errors";
 import { FORMSPREE_CONTACT } from "@/lib/forms";
 import { deliverForm } from "@/lib/form-delivery";
+import { captureCrmLead } from "@/lib/crm/capture";
 import { getClientIp, hasJsonContentType, isSameSiteRequest } from "@/lib/security/request-guards";
 import { verifyTurnstileToken } from "@/lib/turnstile/verify";
 import { takeRateLimitToken } from "@/lib/utils/rate-limit";
@@ -40,6 +41,7 @@ export async function POST(request: Request) {
       }
     }
 
+    await captureCrmLead("contact", fields);
     await deliverForm(FORMSPREE_CONTACT, fields);
 
     return NextResponse.json({ ok: true });

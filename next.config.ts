@@ -45,6 +45,15 @@ const nextConfig: NextConfig = {
             value: "camera=(), microphone=(self), geolocation=(), browsing-topics=()"
           }
         ]
+      },
+      {
+        source: "/hq/:path*",
+        headers: [
+          { key: "Cache-Control", value: "private, no-store" },
+          { key: "X-Robots-Tag", value: "noindex, nofollow" },
+          { key: "Referrer-Policy", value: "no-referrer" },
+          { key: "Content-Security-Policy", value: `default-src 'self'; script-src 'self' 'unsafe-inline'${developmentEval}; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'` }
+        ]
       }
     ];
   },
