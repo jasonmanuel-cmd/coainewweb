@@ -48,6 +48,7 @@ const WEBSITE_OPTIONS = [
 ];
 
 export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
+  const buildInquiry = packageInterest === "2";
   const router = useRouter();
   const [sessionId, setSessionId] = useState(newSessionId);
   const [step, setStep] = useState(1);
@@ -55,6 +56,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [turnstileToken, setTurnstileToken] = useState("");
+  const [verificationAttempt, setVerificationAttempt] = useState(0);
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
   const [data, setData] = useState<IntakeData>({
     industry: "",
@@ -111,7 +113,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
     setSubmitting(true);
     const form = e.currentTarget;
     const fd = new FormData(form);
-    fd.set("form_type", "diagnostic_intake");
+    fd.set("form_type", buildInquiry ? "build_inquiry" : "diagnostic_intake");
     if (packageInterest) fd.set("package_interest", packageInterest);
     fd.set("industry", data.industry);
     fd.set("website_type", data.website);
@@ -131,16 +133,21 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
       const r = await fetch("/api/intake", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ ...payload, turnstileToken })
+        body: JSON.stringify({ ...payload, turnstileToken }),
+        signal: AbortSignal.timeout(25_000)
       });
       if (!r.ok) {
         const j = (await r.json().catch(() => null)) as { error?: string } | null;
         setSubmitError(j?.error || "Could not submit. Please try again or call us.");
+        setTurnstileToken("");
+        setVerificationAttempt((attempt) => attempt + 1);
         setSubmitting(false);
         return;
       }
     } catch {
       setSubmitError("Network error. Please try again or call us.");
+      setTurnstileToken("");
+      setVerificationAttempt((attempt) => attempt + 1);
       setSubmitting(false);
       return;
     }
@@ -151,7 +158,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
       // Ignore storage errors
     }
 
-    router.push(`/intake/confirmation?session=${encodeURIComponent(sessionId)}`);
+    router.push(`/intake/confirmation?session=${encodeURIComponent(sessionId)}${buildInquiry ? "&intent=build" : ""}`);
   }
 
   const step1Complete = Boolean(data.industry && data.website);
@@ -163,10 +170,10 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
         {/* Urgency banner */}
         <div className="m-urgency-banner">
           <span className="m-urgency-text">
-            {OFFERS.scorecard.name} — {OFFERS.scorecard.turnaround}
+            {buildInquiry ? OFFERS.tradecall.name : `${OFFERS.scorecard.name} — ${OFFERS.scorecard.turnaround}`}
           </span>
           <span className="m-urgency-sub">
-            {OFFERS.scorecard.price}. {OFFERS.scorecard.alt}.
+            {buildInquiry ? `${OFFERS.tradecall.price} flat · ${OFFERS.tradecall.terms}` : `${OFFERS.scorecard.price}. ${OFFERS.scorecard.alt}.`}
           </span>
         </div>
 
@@ -191,7 +198,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
                   {step > i ? "✓" : i}
                 </div>
                 <span className={`m-step-tracker-label ${step >= i ? "m-step-tracker-label--active" : ""}`}>
-                  {i === 1 ? "Your Setup" : i === 2 ? "Your Baseline" : "Your Report"}
+                  {i === 1 ? "Your Setup" : i === 2 ? "Optional Estimate" : buildInquiry ? "Your Inquiry" : "Your Report"}
                 </span>
                 {i < 3 && (
                   <div className={`m-step-tracker-line ${step > i ? "m-step-tracker-line--active" : ""}`} />
@@ -209,7 +216,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
             <div className="m-step-label">Quick Snapshot</div>
             <h1 className="m-step-title">Tell us about your business</h1>
             <p className="m-step-sub">
-              Finish this in about <strong>60 seconds</strong>. No spam, no pressure &mdash; just a real baseline of where you&rsquo;re leaking revenue.
+              {buildInquiry ? "Share your setup, then leave your contact details. Jason will review the fit and scope before you commit. The revenue estimate is optional." : <>Finish this in about <strong>60 seconds</strong>. Use your own inputs to estimate revenue at risk, or skip ahead to request a scorecard.</>}
             </p>
 
             <div className="m-intake-field-group">
@@ -248,11 +255,15 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
 
             <button
               type="button"
-              className="m-btn-next m-btn-next--block"
+              className={buildInquiry ? "m-btn-back" : "m-btn-next m-btn-next--block"}
               disabled={!step1Complete}
               onClick={() => goStep(2)}
             >
-              See Your Revenue Leak →
+              Estimate revenue at risk →
+            </button>
+
+            <button type="button" className={buildInquiry ? "m-btn-next m-btn-next--block" : "m-btn-back"} disabled={!step1Complete} onClick={() => goStep(3)}>
+              {buildInquiry ? "Continue to my build inquiry →" : "Skip the estimate and request my scorecard"}
             </button>
 
             {/* Trust bar */}
@@ -281,7 +292,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
             <div className="m-step-label">Revenue Analysis</div>
             <h2 className="m-step-title">What are missed calls costing you?</h2>
             <p className="m-step-sub">
-              Quick sliders &mdash; estimates are fine. We&rsquo;ll turn this into a real dollar number you can act on.
+              Optional estimates help frame the conversation. This calculation illustrates revenue at risk; it does not measure actual lost sales.
             </p>
 
             <div className="m-slider-group">
@@ -309,7 +320,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
             </div>
 
             <div className="m-result-revenue">
-              <div className="m-r-label">Estimated Monthly Revenue Leak</div>
+              <div className="m-r-label">Illustrative Monthly Revenue at Risk</div>
               <div className="m-r-num">${leak.toLocaleString()}</div>
               <div className="m-r-sub">Based on your own inputs (not hardcoded defaults)</div>
             </div>
@@ -335,15 +346,16 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
 
         {step === 3 ? (
           <div className="m-step-panel">
-            <div className="m-step-label">Request Your Audit</div>
-            <h2 className="m-step-title">Where should we send your baseline report?</h2>
+            <div className="m-step-label">{buildInquiry ? "Discuss Your Build" : "Request Your Scorecard"}</div>
+            <h2 className="m-step-title">{buildInquiry ? "Tell us where to follow up about your build." : "Where should we send your baseline report?"}</h2>
             <p className="m-step-sub">
-              Submit and you&rsquo;ll get immediate confirmation. <strong>Jason follows up the same business day</strong> when a request arrives during published business hours.
+              Submit and you&rsquo;ll get confirmation after delivery is accepted. <strong>Jason reviews inquiries during published business hours.</strong> Qualification, scope, and timing are confirmed before work begins.
             </p>
 
             {/* Urgency banner */}
             <div className="m-intake-urgency">
               <strong>Scope check:</strong> qualification, timing, and any paid audit fee are confirmed before work begins.
+              {buildInquiry ? <p>{OFFERS.tradecall.name}: {OFFERS.tradecall.price} flat, {OFFERS.tradecall.terms}. This is an inquiry, not a purchase or booking.</p> : null}
             </div>
 
             <form onSubmit={onFormSubmit} className="m-intake-form">
@@ -354,13 +366,13 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
               </div>
 
               <div className="m-field">
-                <label htmlFor="intake-first-name">First Name</label>
+                <label htmlFor="intake-first-name">Name</label>
                 <input
                   id="intake-first-name"
                   name="first_name"
-                  placeholder="First name"
+                  placeholder="Your name"
                   required
-                  autoComplete="given-name"
+                  autoComplete="name"
                 />
               </div>
 
@@ -385,6 +397,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
                 <input
                   id="intake-web"
                   name="business_website"
+                  defaultValue={data.website === "No website" ? "none" : undefined}
                   type="text"
                   inputMode="url"
                   placeholder="https://yourbusiness.com"
@@ -397,6 +410,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
               <SmsConsentField idPrefix="intake" />
 
               <TurnstileField
+                key={verificationAttempt}
                 className="m-field"
                 onToken={setTurnstileToken}
                 onExpire={() => setTurnstileToken("")}
@@ -405,11 +419,13 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
                 <p className="m-field-hint m-field-hint--error">Complete the verification above to submit.</p>
               ) : null}
               {submitError ? (
-                <p className="m-field-hint m-field-hint--error">{submitError}</p>
+                <p role="alert" className="m-field-hint m-field-hint--error">
+                  {submitError} <a href={`tel:${CONTACT.phoneE164}`}>Call {CONTACT.phoneDisplay}</a> or <a href={`mailto:${CONTACT.email}`}>email Jason</a>.
+                </p>
               ) : null}
 
               <div className="m-intake-footer-note">
-                <span>🔒 Your data stays yours — never shared or sold</span>
+                <span>Used to respond to your inquiry. <a href="/privacy">Read the privacy policy.</a></span>
               </div>
 
               <div className="m-step-nav">
@@ -421,7 +437,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
                   className="m-btn-next m-btn-next--block"
                   disabled={submitting || (Boolean(siteKey) && !turnstileToken)}
                 >
-                  {submitting ? "Submitting..." : "Get My Free Baseline Report →"}
+                  {submitting ? "Submitting..." : buildInquiry ? "Discuss my build →" : "Request my leak score →"}
                 </button>
               </div>
             </form>

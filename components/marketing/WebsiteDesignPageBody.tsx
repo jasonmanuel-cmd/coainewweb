@@ -294,7 +294,7 @@ export function WebsiteDesignPageBody() {
         </p>
         <div className="m-cta-row">
           <Link href="/intake" className="m-btn-primary-marketing">
-            Run My Free Diagnostic →
+            Request my leak score →
           </Link>
           <Link href="/pricing" className="m-btn-ghost-marketing">
             View Pricing

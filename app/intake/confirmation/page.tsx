@@ -4,18 +4,19 @@ import { JsonLd } from "@/components/JsonLd";
 import { MarketingLayout } from "@/components/marketing/MarketingLayout";
 import { pageMetadata } from "@/lib/metadata";
 import { breadcrumbJsonLd } from "@/lib/schema";
-import { CONTACT, SITE_URL } from "@/lib/site";
+import { BUSINESS_HOURS_LABEL, CONTACT, OFFERS, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   ...pageMetadata({
     title: "Diagnostic Submitted",
-    description: "Your diagnostic intake was received. Jason follows up within 2 hours during business windows.",
+    description: "Your request was received. Jason will confirm eligibility, scope, and timing before work begins.",
     path: "/intake/confirmation"
   }),
   robots: { index: false }
 };
 
-export default function IntakeConfirmationPage() {
+export default async function IntakeConfirmationPage({ searchParams }: { searchParams: Promise<{ intent?: string }> }) {
+  const buildInquiry = (await searchParams).intent === "build";
   const crumbs = breadcrumbJsonLd([
     { name: "Home", path: "/" },
     { name: "Growth diagnostic", path: "/intake" },
@@ -41,21 +42,24 @@ export default function IntakeConfirmationPage() {
           <h1>
             You&apos;re in.
             <br />
-            <span className="m-text-green">We have your diagnostic request.</span>
+            <span className="m-text-green">{buildInquiry ? "We have your build inquiry." : "We have your diagnostic request."}</span>
           </h1>
           <p className="m-hero-sub">
-            Jason follows up within <strong>2 hours</strong> during business windows. If this is urgent, call now and
-            reference your diagnostic submission.
+            Jason will review your request and confirm eligibility, scope, and timing before work begins.
+            {buildInquiry ? ` No purchase or appointment has been made. ${OFFERS.tradecall.name} is ${OFFERS.tradecall.price} flat, ${OFFERS.tradecall.terms}, after scope approval.` : ` Scorecards are ${OFFERS.scorecard.price.toLowerCase()}; ${OFFERS.scorecard.alt.toLowerCase()}. The usual scorecard turnaround is ${OFFERS.scorecard.turnaround} after qualification.`}
+          </p>
+          <p className="m-hero-sub">
+            Business hours: {BUSINESS_HOURS_LABEL}. For a time-sensitive question, call or email directly.
           </p>
           <div className="m-cta-row m-cta-row--center">
             <a href={`tel:${CONTACT.phoneE164}`} className="m-btn-primary">
               Call {CONTACT.phoneDisplay}
             </a>
             <Link href="/pricing" className="m-btn-ghost">
-              View Packages
+              Review pricing and scope
             </Link>
-            <a href="https://g.page/r/CXxbvj7-CCGrEBM/review" target="_blank" rel="noopener noreferrer" className="m-btn-ghost m-btn--green">
-              Leave a Google review
+            <a href={`mailto:${CONTACT.email}`} className="m-btn-ghost">
+              Email Jason
             </a>
           </div>
         </div>

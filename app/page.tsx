@@ -15,19 +15,19 @@ import { PORTFOLIO_STATS, countWord } from "@/lib/portfolio-stats";
 import { SYSTEM_CAPABILITY_COUNT } from "@/lib/systems";
 
 const HOME_PAGE_DESCRIPTION =
-  "Custom websites for Bakersfield and Kern County businesses—built for mobile, local search, clear conversion paths, and full ownership.";
+  "Custom websites and lead-response systems for Bakersfield and Kern County businesses—built for mobile, local search, fast follow-up, and full ownership.";
 
 export const metadata: Metadata = {
-  title: "Custom Website Builds for Local Businesses",
+  title: "Custom Websites & Lead Response Systems for Local Businesses",
   description: HOME_PAGE_DESCRIPTION,
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Custom Website Builds for Local Businesses",
+    title: "Custom Websites & Lead Response Systems for Local Businesses",
     description: HOME_PAGE_DESCRIPTION
   },
   twitter: {
     card: "summary_large_image",
-    title: "Custom Website Builds for Local Businesses",
+    title: "Custom Websites & Lead Response Systems for Local Businesses",
     description: HOME_PAGE_DESCRIPTION
   }
 };
@@ -35,10 +35,10 @@ export const metadata: Metadata = {
 const proofMarks = ["ASPEN II HOMES", "HARBISON STANDARD", "THE PITTS", "T&M HAULING", "PHIL’S", "EDWIN WARD", "HOME GROW MONEY", "WILLAM DEAN", "POISON WELL", "MASTER GLASS"];
 
 const workflow = [
-  { time: "01", title: "Buyer path mapped", detail: "Audience · offer · next step", icon: MessageSquareText },
-  { time: "02", title: "Visual system shaped", detail: "Brand · hierarchy · trust", icon: Sparkles },
-  { time: "03", title: "Built + tested", detail: "Mobile · speed · search", icon: Zap },
-  { time: "04", title: "Launched + handed off", detail: "Domain · code · ownership", icon: Check }
+  { time: "01", title: "Lead detected", detail: "Missed call · Service request", icon: PhoneIncoming },
+  { time: "02", title: "Response sent", detail: "Approved message · Delivery confirmed", icon: Zap },
+  { time: "03", title: "Job qualified", detail: "Urgency, ZIP and service captured", icon: MessageSquareText },
+  { time: "04", title: "Estimate routed", detail: "Calendar path · Owner notified", icon: Check }
 ];
 
 const systemCards = [
@@ -50,6 +50,7 @@ const systemCards = [
 
 const faqs = [
   ["Is every website custom?", "Yes. Each build starts with your audience, offer, brand, and the action you want customers to take. The layout and code are shaped around your business—not dropped into a one-size-fits-all theme."],
+  ["Is this another chatbot, and do I need to replace my tools?", "No. A chatbot is one interface; COAI connects response, qualification, booking, follow-up, and reporting into an owned revenue system. Where practical, we connect to tools you already use instead of replacing them."],
   ["Will I own my website?", "Yes. Your agreed handoff includes the website assets, code, account access, and operating documentation needed to run the build. You are not locked into a COAI-only platform."],
   ["How quickly can we launch?", `The standard flagship website and revenue-system build takes ${DELIVERY_TIMELINE} from signed scope, depending on content, access, integrations, and approval speed. You receive a clear plan before work begins.`],
   ["What happens after launch?", `Thirty days of optimization are included. After that, Revenue Continuity is an optional ${formatUsd(CONTINUITY_MONTHLY)}/month for monitoring, testing, and one monthly improvement priority—or you can keep the delivered system without an ongoing retainer.`]
@@ -63,7 +64,7 @@ const faqs = [
 export default function HomePage() {
   return (
     <main id="main-content" className="cinematic-home">
-      <JsonLd data={serviceJsonLd("Custom Website & Revenue System Build", SITE_DESCRIPTION, "/", BUILD_PRICE)} />
+      <JsonLd data={serviceJsonLd("Custom Website & Lead Response System Build", SITE_DESCRIPTION, "/", BUILD_PRICE)} />
 
       <section className="cinematic-hero" aria-labelledby="hero-title">
         <Image
@@ -83,14 +84,14 @@ export default function HomePage() {
         <HeroSignalField />
         <div className="cinematic-container cinematic-hero-inner">
           <div className="cinematic-hero-copy">
-            <span className="revamp-kicker"><i aria-hidden="true" /> Custom websites + digital systems for growing businesses</span>
+            <span className="revamp-kicker"><i aria-hidden="true" /> Custom websites + lead response systems for local businesses</span>
             <h1 id="hero-title">Built to stand out.<br /><em>Designed to convert.</em></h1>
-            <p className="cinematic-hero-lede">Custom websites with a point of view—and a clear path to the next customer. COAI pairs standout design with fast, search-ready code and the lead systems that make each click count.</p>
+            <p className="cinematic-hero-lede">Custom websites with a point of view—and a clear path to the next customer. COAI pairs fast, search-ready design with missed-call response and follow-up that keeps the next step moving.</p>
             <div className="cinematic-hero-actions">
-              <Link className="revamp-btn-primary" href="/website-design">
-                Build my website <ArrowUpRight aria-hidden="true" />
+              <Link className="revamp-btn-primary" href="/intake?pkg=2">
+                Discuss my build <ArrowUpRight aria-hidden="true" />
               </Link>
-              <a className="revamp-btn-ghost" href="#portfolio">Explore the work <ArrowRight aria-hidden="true" /></a>
+              <Link className="revamp-btn-ghost" href="/demo">See the lead response demo <ArrowRight aria-hidden="true" /></Link>
             </div>
             <div className="cinematic-hero-trust" aria-label="Website build highlights">
               <span><Check aria-hidden="true" /> Custom, never cookie-cutter</span>
@@ -99,13 +100,13 @@ export default function HomePage() {
             </div>
           </div>
 
-          <aside className="dispatch-panel" aria-label="COAI website design and build process">
+          <aside className="dispatch-panel" aria-label="Example lead response workflow">
             <div className="dispatch-header">
               <div>
-                <span className="dispatch-label">The COAI build method</span>
-                <strong>Brief → Built</strong>
+                <span className="dispatch-label">Example workflow</span>
+                <strong>Inquiry → Owner handoff</strong>
               </div>
-              <span className="dispatch-live"><i aria-hidden="true" /> 4 stages</span>
+              <span className="dispatch-live"><i aria-hidden="true" /> Example</span>
             </div>
             <div className="dispatch-events">
               {workflow.map((event, index) => {
@@ -120,9 +121,9 @@ export default function HomePage() {
               })}
             </div>
             <div className="dispatch-result">
-              <span>Every build aims for</span>
-              <strong>A sharper first impression</strong>
-              <span className="dispatch-value">OWNED</span>
+              <span>Qualified handoff</span>
+              <strong>Estimate request routed</strong>
+              <span className="dispatch-value">COMPLETE</span>
             </div>
           </aside>
         </div>
@@ -136,10 +137,10 @@ export default function HomePage() {
             {proofMarks.map((mark) => <span key={mark}>{mark}</span>)}
           </div>
           <div className="proof-stats">
+            <div><strong>{formatUsd(BUILD_PRICE)}</strong><span>flat flagship build</span></div>
             <div><strong>{PORTFOLIO_STATS.projectCount}</strong><span>public project links</span></div>
-            <div><strong>{PORTFOLIO_STATS.industryCount}</strong><span>industries represented</span></div>
+            <div><strong>30 days</strong><span>optimization included</span></div>
             <div><strong>100%</strong><span>ownership transferred</span></div>
-            <div><strong>Mobile</strong><span>first by design</span></div>
           </div>
         </div>
       </section>

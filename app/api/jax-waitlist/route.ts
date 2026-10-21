@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { apiErrorResponse } from "@/lib/api-errors";
 import { FORMSPREE_CONTACT } from "@/lib/forms";
+import { captureCrmLead } from "@/lib/crm/capture";
 import { getClientIp, hasJsonContentType, isSameSiteRequest } from "@/lib/security/request-guards";
 import { verifyTurnstileToken } from "@/lib/turnstile/verify";
 import { takeRateLimitToken } from "@/lib/utils/rate-limit";
@@ -26,6 +27,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Human verification failed." }, { status: 400 });
     }
 
+    await captureCrmLead("waitlist", { email: parsed.email, sms_consent: "no" });
     const fr = await fetch(FORMSPREE_CONTACT, {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },

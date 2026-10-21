@@ -47,7 +47,7 @@ export default function KernCountyWebsiteDesignPage() {
           </p>
           <div className="m-cta-row">
             <Link href="/intake" className="m-btn-primary">
-              Run My Free Diagnostic →
+              Request my leak score →
             </Link>
             <Link href="/website-design" className="m-btn-ghost">
               Website Design Hub
@@ -134,17 +134,16 @@ export default function KernCountyWebsiteDesignPage() {
       <div className="m-bottom-cta">
         <div className="m-section-label">Start Here</div>
         <h2>
-          Run the free diagnostic.
+          Request your job-call leak score.
           <br />
-          <span className="m-text-green">See your actual numbers.</span>
+          <span className="m-text-green">Review the observations and assumptions.</span>
         </h2>
         <p>
-          30 minutes. Real data. Clear roadmap. Whether you hire us or not, you leave with actionable intelligence about
-          your digital presence.
+          We review your public site and business profile. Eligibility, any audit fee, and timing are confirmed before work begins. You keep the findings whether you hire us or not.
         </p>
         <div className="m-cta-row">
           <Link href="/intake" className="m-btn-primary">
-            Run My Free Diagnostic →
+            Request my leak score →
           </Link>
           <Link href="/pricing" className="m-btn-ghost">
             See Pricing
