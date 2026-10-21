@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
+import { REVAMP_PROJECTS } from "@/components/revamp/revampData";
 import { PORTFOLIO_CASES } from "@/lib/portfolio-cases";
 import { PORTFOLIO_STATS, countWord } from "@/lib/portfolio-stats";
 import { organizationJsonLd } from "@/lib/schema";
@@ -63,5 +64,58 @@ describe("one source of truth for business facts", () => {
       /2[–-]4 weeks|two to four weeks/i.test(read(file))
     );
     expect(offenders).toEqual([]);
+  });
+});
+
+const customerSites = [
+  { title: "Aspen II Homes", url: "https://aspen2homes.com/", image: "/projects/aspen-ii-homes.webp" },
+  { title: "Harbison Standard", url: "https://www.harbisonstandard.com/", image: "/projects/harbison-standard.webp" },
+  { title: "The Pitts", url: "https://www.thepitts805.com/", image: "/projects/the-pitts.webp" },
+  { title: "T&M Hauling", url: "https://www.tandmbak.com/", image: "/projects/tm-hauling.webp" }
+];
+
+describe("customer portfolio updates", () => {
+  it("includes all four supplied customer sites in the homepage and full portfolio data", () => {
+    for (const site of customerSites) {
+      const homepageProject = REVAMP_PROJECTS.find((project) => project.title === site.title);
+      const portfolioCase = PORTFOLIO_CASES.find((item) => item.client === site.title);
+      expect(homepageProject?.href).toBe(site.url);
+      expect(portfolioCase?.liveUrl).toBe(site.url);
+      expect(homepageProject?.previewImage).toBe(site.image);
+      expect(portfolioCase?.previewImage).toBe(site.image);
+      expect(fs.existsSync(path.join(ROOT, "public", site.image.slice(1)))).toBe(true);
+    }
+  });
+
+  it("uses the supplied Lead Engine screenshot in the product feature", () => {
+    const homepage = read("app", "page.tsx");
+    expect(homepage).toContain('src="/projects/coai-lead-engine.webp"');
+    expect(fs.existsSync(path.join(ROOT, "public/projects/coai-lead-engine.webp"))).toBe(true);
+  });
+
+  it("uses Phil’s supplied screenshot in the full portfolio", () => {
+    expect(PORTFOLIO_CASES.find((item) => item.id === "phils")?.previewImage).toBe(
+      "/projects/phils-cheesesteaks.webp"
+    );
+    expect(fs.existsSync(path.join(ROOT, "public/projects/phils-cheesesteaks.webp"))).toBe(true);
+  });
+
+  it("removes Signature 954 from the public site and portfolio source", () => {
+    const files = [...sourceFiles("app"), ...sourceFiles("components"), ...sourceFiles("lib")];
+    const source = files.map((file) => read(file)).join("\n");
+    expect(source).not.toMatch(/signature\s*954|signature954/i);
+  });
+
+  it("promotes the COAI Lead Engine with live product links", () => {
+    const homepage = read("app", "page.tsx");
+    expect(homepage).toContain("COAI Lead Engine");
+    expect(homepage).toContain('href="https://www.coaihq.online/"');
+    expect(homepage).toContain('href="https://www.coaihq.online/app"');
+  });
+
+  it("links to the supplied Google review without creating review copy", () => {
+    const portfolio = read("app", "portfolio/page.tsx");
+    expect(portfolio).toContain("https://share.google/LlU3imoz7ANEnd1eM");
+    expect(portfolio).toContain("Open the Google review at its source");
   });
 });

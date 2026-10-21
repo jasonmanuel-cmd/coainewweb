@@ -56,10 +56,11 @@ const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? "GTM-NMKLXR5R";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className="coai-site">
-        {/* Marks JS as active before content parses, so .reveal sections hidden
-            by CSS never stay hidden for non-JS clients. See globals.css. */}
+        {/* Set the progressive-enhancement flag before hydration so reveal content
+            never stays hidden for non-JS clients. The intentional html attribute
+            mutation is covered by suppressHydrationWarning above. */}
         <script
           dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }}
         />

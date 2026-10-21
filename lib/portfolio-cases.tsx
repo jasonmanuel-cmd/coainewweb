@@ -7,7 +7,9 @@ export type PortfolioCategory =
   | "contracting"
   | "apparel"
   | "photo"
-  | "music";
+  | "music"
+  | "real-estate"
+  | "home-services";
 
 export type PortfolioCase = {
   id: string;
@@ -20,10 +22,121 @@ export type PortfolioCase = {
   description: ReactNode;
   built: string[];
   liveUrl: string;
+  previewImage?: string;
+  previewAlt?: string;
 };
 
 /** Case cards — copy aligned to live client-owned builds */
 export const PORTFOLIO_CASES: PortfolioCase[] = [
+  {
+    id: "aspen-ii",
+    category: "contracting",
+    accentClass: "m-accent-contracting",
+    tagClass: "m-tag-contracting",
+    industryLabel: "Residential Homebuilding",
+    client: "Aspen II Homes",
+    location: "Tehachapi, CA · Building locally since 1994",
+    description: (
+      <>
+        Aspen II Homes is a <strong>Tehachapi home builder with roots dating to 1994</strong>, currently presenting
+        Sunset Retreat and six semi-custom plans. The site connects prospective buyers with release availability, floor
+        plan details, financing information, and a direct inquiry path—while making clear that pricing and availability
+        should be confirmed with the builder.
+      </>
+    ),
+    built: [
+      "Homebuilder Landing Page",
+      "Community Release Details",
+      "Six-Plan Catalog",
+      "Financing Information",
+      "Availability Path",
+      "Buyer Contact CTA"
+    ],
+    liveUrl: "https://aspen2homes.com/",
+    previewImage: "/projects/aspen-ii-homes.webp",
+    previewAlt: "Aspen II Homes homepage featuring Sunset Retreat in Tehachapi"
+  },
+  {
+    id: "harbison-standard",
+    category: "real-estate",
+    accentClass: "m-accent-property",
+    tagClass: "m-tag-property",
+    industryLabel: "Real Estate & Development",
+    client: "Harbison Standard",
+    location: "Tehachapi · Bakersfield · Kern County",
+    description: (
+      <>
+        Harbison Standard brings together <strong>real estate, development, and investing</strong> across Tehachapi,
+        Bakersfield, and Kern County. A values-led brand story and clear service overviews lead into Nathanael&apos;s
+        profile, video content, and direct contact options.
+      </>
+    ),
+    built: [
+      "Brand Story",
+      "Service Overview",
+      "Founder Profile",
+      "Video Integration",
+      "Service-Area Messaging",
+      "Contact Pathways"
+    ],
+    liveUrl: "https://www.harbisonstandard.com/",
+    previewImage: "/projects/harbison-standard.webp",
+    previewAlt: "Harbison Standard homepage with its Kern County landscape hero"
+  },
+  {
+    id: "the-pitts",
+    category: "music",
+    accentClass: "m-accent-music",
+    tagClass: "m-tag-music",
+    industryLabel: "Independent Music",
+    client: "The Pitts",
+    location: "Official Artist EPK · The 805",
+    description: (
+      <>
+        The official site for <strong>The Pitts and their nine-track debut album, Jamestown</strong>, gives fans album and
+        track details with links to streaming platforms. Artist profiles, a lyric video, downloadable press assets, and
+        a direct booking contact make the site useful for both listeners and promoters.
+      </>
+    ),
+    built: [
+      "Band Profiles",
+      "Album & Tracklist",
+      "Streaming Links",
+      "Lyric Video",
+      "Downloadable Press Kit",
+      "Booking Contact"
+    ],
+    liveUrl: "https://www.thepitts805.com/",
+    previewImage: "/projects/the-pitts.webp",
+    previewAlt: "The Pitts official website featuring the Jamestown album"
+  },
+  {
+    id: "tm-hauling",
+    category: "home-services",
+    accentClass: "m-accent-services",
+    tagClass: "m-tag-services",
+    industryLabel: "Junk Removal & Hauling",
+    client: "T&M Hauling",
+    location: "Bakersfield, CA · Serving Kern County",
+    description: (
+      <>
+        T&M Hauling is a <strong>Bakersfield father-and-son junk removal crew</strong>. The site makes its services and
+        estimate process easy to scan, with call and text-photo actions, a before-and-after gallery, neighborhood
+        coverage, and answers to common customer questions.
+      </>
+    ),
+    built: [
+      "Service Catalogue",
+      "Estimate Request Form",
+      "Call & Text CTAs",
+      "Before-and-After Gallery",
+      "Neighborhood Coverage",
+      "Customer FAQ"
+    ],
+    liveUrl: "https://www.tandmbak.com/",
+    previewImage: "/projects/tm-hauling.webp",
+    previewAlt: "T&M Hauling homepage showing the Bakersfield father-and-son crew"
+  },
   {
     id: "phils",
     category: "food",
@@ -49,7 +162,9 @@ export const PORTFOLIO_CASES: PortfolioCase[] = [
       "Mobile-First",
       "Review Aggregation"
     ],
-    liveUrl: "https://phils-cheesesteaks-and-more.com"
+    liveUrl: "https://phils-cheesesteaks-and-more.com",
+    previewImage: "/projects/phils-cheesesteaks.webp",
+    previewAlt: "Phil’s Cheesesteaks homepage with pickup ordering and Bakersfield location details"
   },
   {
     id: "edwin",
@@ -77,33 +192,6 @@ export const PORTFOLIO_CASES: PortfolioCase[] = [
       "Mobile Optimized"
     ],
     liveUrl: "https://edwinwardconsulting.com"
-  },
-  {
-    id: "sig954",
-    category: "contracting",
-    accentClass: "m-accent-contracting",
-    tagClass: "m-tag-contracting",
-    industryLabel: "General Contracting",
-    client: "Signature 954",
-    location: "Miami, FL · Area Code 954",
-    description: (
-      <>
-        Signature 954 is a <strong>Miami-area contracting company</strong> delivering premium construction and
-        renovation work across South Florida&apos;s competitive trades market. COAI built a high-impact project showcase
-        site with a portfolio-forward layout, service category pages, and a quote request funnel engineered for{" "}
-        <strong>high-ticket residential and commercial contracts</strong>. Built to signal premium positioning in a
-        market where the website is the first impression before the bid.
-      </>
-    ),
-    built: [
-      "Project Showcase",
-      "Quote Request Funnel",
-      "Service Pages",
-      "Local SEO",
-      "Vercel Deploy",
-      "Fast Load Architecture"
-    ],
-    liveUrl: "https://signature954.vercel.app"
   },
   {
     id: "hgm",

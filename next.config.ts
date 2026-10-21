@@ -3,6 +3,11 @@ import type { NextConfig } from "next";
 import { ALIAS_HOSTS, CANONICAL_ORIGIN } from "./lib/site";
 
 const nextConfig: NextConfig = {
+  // Arena's proxied live preview host needs access to Next's dev-only HMR/font endpoints.
+  allowedDevOrigins: [
+    "3000-ihasn9avthxmrjf3y974r.e2b.app",
+    "3000-iujhwggudnzs6zopwi5s5.e2b.app"
+  ],
   // Pin tracing to this app when a parent directory has another lockfile (avoids wrong root on CI/Vercel).
   outputFileTracingRoot: process.cwd(),
   images: {

@@ -12,10 +12,10 @@ import { ORG_ID, SITE_URL } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: { absolute: "Portfolio - Proof of Work | COAI" },
   description:
-    "Real websites built by Chaotically Organized AI for real Bakersfield-area operators. See the work, read the outcomes.",
+    "Websites built by Chaotically Organized AI for builders, service businesses, artists, and local operators across Kern County and beyond.",
   path: "/portfolio",
   published: "2026-01-15",
-  modified: "2026-10-10",
+  modified: "2026-10-21",
 });
 
 export default function PortfolioPage() {
@@ -95,6 +95,14 @@ export default function PortfolioPage() {
             View Packages
           </Link>
         </div>
+        <a
+          className="m-review-source"
+          href="https://share.google/LlU3imoz7ANEnd1eM"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Open the Google review at its source <span aria-hidden="true">↗</span>
+        </a>
       </div>
     </MarketingLayout>
   );
