@@ -4,18 +4,19 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Check, ChevronDown, X } from "lucide-react";
 import { Reveal } from "@/components/revamp/Reveal";
+import { BUILD_INCLUDED, MATRIX_GROUPS, NOT_INCLUDED, PACKAGES } from "@/lib/pricing";
 import { DELIVERY_TIMELINE, OFFERS } from "@/lib/site";
 import "./pricing-matrix.css";
 
 /**
- * Offer comparison matrix for the pricing page.
+ * Package comparison matrix for the pricing page: the base website build and
+ * the three packages side by side.
  *
  * Adapted from the 21st.dev "Dark Matrix Pricing Table" (arihantcodes): plan
  * columns with per-offer CTAs, sectioned feature groups, dashed dividers,
  * check/cross values, a featured flagship column, and a mobile offer picker —
- * re-skinned to COAI doctrine. Every number still comes from OFFERS in
- * lib/site.ts; the included/excluded lists are passed in from the pricing
- * page's single source of truth.
+ * re-skinned to COAI doctrine. Every number and list comes from lib/site.ts
+ * (OFFERS) and lib/pricing.ts; nothing here is a price literal.
  */
 
 type MatrixValue = boolean | string;
@@ -40,13 +41,6 @@ interface MatrixPlan {
   featured?: boolean;
 }
 
-interface PricingMatrixProps {
-  /** What the flagship build installs — from the pricing page source of truth. */
-  included: readonly string[];
-  /** What is deliberately excluded from every offer. */
-  notIncluded: readonly string[];
-}
-
 function MatrixValueCell({ value }: { value: MatrixValue }) {
   if (value === true) {
     return (
@@ -67,71 +61,63 @@ function MatrixValueCell({ value }: { value: MatrixValue }) {
   return <span className="pm-value-text">{value}</span>;
 }
 
-export function PricingMatrix({ included, notIncluded }: PricingMatrixProps) {
-  /* Three offer columns need ~760px. Under that, the matrix renders the
-     selected offer's column against the row labels instead of showing one
-     and a half columns behind a horizontal scroll. Defaults to the flagship. */
-  const [shownPlan, setShownPlan] = useState(1);
+export function PricingMatrix() {
+  /* Four columns need ~900px. Under that, the matrix renders the selected
+     offer's column against the row labels instead of showing one and a half
+     columns behind a horizontal scroll. Defaults to the most popular package. */
+  const [shownPlan, setShownPlan] = useState(2);
 
   const plans: MatrixPlan[] = [
     {
-      id: "scorecard",
-      name: OFFERS.scorecard.name,
-      stage: OFFERS.scorecard.stage,
-      price: OFFERS.scorecard.price,
-      priceNote: OFFERS.scorecard.alt,
-      cta: { label: "Get my leak score", href: "/intake" }
+      id: "website",
+      name: OFFERS.website.name,
+      stage: OFFERS.website.stage,
+      price: `${OFFERS.website.price} flat`,
+      priceNote: OFFERS.website.terms,
+      cta: { label: "Discuss my website", href: "/intake?pkg=website" }
     },
-    {
-      id: "tradecall",
-      name: OFFERS.tradecall.name,
-      stage: OFFERS.tradecall.stage,
-      price: `${OFFERS.tradecall.price} flat`,
-      priceNote: OFFERS.tradecall.terms,
-      cta: { label: "Discuss my build", href: "/intake?pkg=2" },
-      featured: true
-    },
-    {
-      id: "continuity",
-      name: OFFERS.continuity.name,
-      stage: OFFERS.continuity.stage,
-      price: `${OFFERS.continuity.price}/${OFFERS.continuity.period}`,
-      priceNote: OFFERS.continuity.terms,
-      cta: { label: "Ask about continuity", href: "/contact" }
-    }
+    ...PACKAGES.map((pkg) => ({
+      id: `package-${pkg.id}`,
+      name: pkg.name,
+      stage: pkg.stage,
+      price: pkg.total,
+      priceNote: pkg.totalNote,
+      cta: { label: `Discuss ${pkg.name}`, href: `/intake?pkg=${pkg.id}` },
+      featured: pkg.id === "2"
+    }))
   ];
 
   const groups: MatrixGroup[] = [
     {
       label: "Pricing and terms",
       rows: [
-        {
-          label: "Price",
-          values: [
-            OFFERS.scorecard.price,
-            `${OFFERS.tradecall.price} flat`,
-            `${OFFERS.continuity.price}/${OFFERS.continuity.period}`
-          ]
-        },
+        { label: "Price (website included)", values: [`${OFFERS.website.price} flat`, ...PACKAGES.map((pkg) => pkg.total)] },
+        { label: "Monthly", values: ["Optional care plan", ...PACKAGES.map((pkg) => pkg.recurring)] },
         {
           label: "Payment",
-          values: [OFFERS.scorecard.alt, OFFERS.tradecall.terms, OFFERS.continuity.terms]
+          values: [OFFERS.website.terms, ...PACKAGES.map(() => "Milestones set in the written scope")]
         },
         {
           label: "Turnaround",
-          values: [OFFERS.scorecard.turnaround, DELIVERY_TIMELINE, "Begins after the included optimization period"]
+          values: [DELIVERY_TIMELINE, ...PACKAGES.map(() => "Quoted in the written scope")]
         },
-        { label: "Bilingual build (EN/ES)", values: ["Not applicable", OFFERS.tradecall.bilingual, false] },
-        { label: "Contract lock-in", values: ["None", "None", "None"] }
+        { label: "Contract lock-in", values: ["None", "None", "None", "None"] }
       ]
     },
     {
-      label: "What the build installs",
-      rows: included.map((item) => ({ label: item, values: [false, true, "Monitored"] as MatrixValue[] }))
+      label: "The website (every offer)",
+      rows: BUILD_INCLUDED.map((item) => ({ label: item, values: [true, true, true, true] as MatrixValue[] }))
     },
+    ...MATRIX_GROUPS.map((group) => ({
+      label: group.label,
+      rows: group.items.map((item) => ({
+        label: item,
+        values: [false, group.from <= 1, group.from <= 2, group.from <= 3] as MatrixValue[]
+      }))
+    })),
     {
       label: "Deliberately not included — in any offer",
-      rows: notIncluded.map((item) => ({ label: item, values: [false, false, false] as MatrixValue[] }))
+      rows: NOT_INCLUDED.map((item) => ({ label: item, values: [false, false, false, false] as MatrixValue[] }))
     }
   ];
 
@@ -142,7 +128,7 @@ export function PricingMatrix({ included, notIncluded }: PricingMatrixProps) {
     <Reveal className="pm">
       <div className="pm-picker">
         <label htmlFor="pm-offer-select">
-          <span className="pm-picker__label">Offer</span>
+          <span className="pm-picker__label">Package</span>
           <span className="pm-picker__control">
             <select
               id="pm-offer-select"
@@ -162,8 +148,8 @@ export function PricingMatrix({ included, notIncluded }: PricingMatrixProps) {
       <div className="pm-scroll">
         <table className="pm-table">
           <caption className="pm-sr-only">
-            The three COAI offers compared: the Job-Call Leak Scorecard, the TradeCall Revenue Infrastructure Build,
-            and Revenue Continuity.
+            The COAI website build and the three packages compared: Digital Foundation, Lead Machine, and Customer
+            Lifecycle.
           </caption>
           <thead>
             <tr>

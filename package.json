@@ -26,17 +26,17 @@
     "@upstash/redis": "^1.37.0",
     "@vercel/speed-insights": "^2.0.0",
     "lucide-react": "^1.55.0",
-    "next": "16.4.0",
+    "next": "16.4.3",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "sharp": "0.35.5",
-    "zod": "^4.6.5"
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@types/node": "^26.6.5",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.3.0",
-    "happy-dom": "^20.14.6",
+    "happy-dom": "^21.0.4",
     "typescript": "^5.8.2",
     "vitest": "5.0.3"
   }

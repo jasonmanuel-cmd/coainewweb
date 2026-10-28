@@ -47,8 +47,7 @@ describe("public site integrity", () => {
   });
 
   it("keeps offer and timeline facts in one typed source", () => {
-    expect(OFFERS.tradecall.price).toBe("$1,997");
-    expect(OFFERS.continuity.price).toBe("$197");
+    expect(OFFERS.website.price).toBe("$1,997");
     expect(DELIVERY_TIMELINE).toBe("2–3 weeks");
   });
 

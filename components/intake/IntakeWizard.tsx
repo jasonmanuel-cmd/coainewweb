@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { SmsConsentField } from "@/components/forms/SmsConsentField";
 import { TurnstileField } from "@/components/security/TurnstileField";
+import { describeInterest, isBuildInterest } from "@/lib/pricing";
 import { CONTACT, GOOGLE_BUSINESS_PROFILE_URL, OFFERS } from "@/lib/site";
 
 type IntakeWizardProps = {
@@ -48,7 +49,8 @@ const WEBSITE_OPTIONS = [
 ];
 
 export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
-  const buildInquiry = packageInterest === "2";
+  const buildInquiry = isBuildInterest(packageInterest);
+  const interest = describeInterest(packageInterest);
   const router = useRouter();
   const [sessionId, setSessionId] = useState(newSessionId);
   const [step, setStep] = useState(1);
@@ -158,7 +160,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
       // Ignore storage errors
     }
 
-    router.push(`/intake/confirmation?session=${encodeURIComponent(sessionId)}${buildInquiry ? "&intent=build" : ""}`);
+    router.push(`/intake/confirmation?session=${encodeURIComponent(sessionId)}${buildInquiry ? "&intent=build" : ""}${buildInquiry && packageInterest ? `&pkg=${encodeURIComponent(packageInterest)}` : ""}`);
   }
 
   const step1Complete = Boolean(data.industry && data.website);
@@ -170,10 +172,10 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
         {/* Urgency banner */}
         <div className="m-urgency-banner">
           <span className="m-urgency-text">
-            {buildInquiry ? OFFERS.tradecall.name : `${OFFERS.scorecard.name} — ${OFFERS.scorecard.turnaround}`}
+            {interest ? interest.name : `${OFFERS.scorecard.name} — ${OFFERS.scorecard.turnaround}`}
           </span>
           <span className="m-urgency-sub">
-            {buildInquiry ? `${OFFERS.tradecall.price} flat · ${OFFERS.tradecall.terms}` : `${OFFERS.scorecard.price}. ${OFFERS.scorecard.alt}.`}
+            {interest ? interest.priceLine : `${OFFERS.scorecard.price}. ${OFFERS.scorecard.alt}.`}
           </span>
         </div>
 
@@ -355,7 +357,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
             {/* Urgency banner */}
             <div className="m-intake-urgency">
               <strong>Scope check:</strong> qualification, timing, and any paid audit fee are confirmed before work begins.
-              {buildInquiry ? <p>{OFFERS.tradecall.name}: {OFFERS.tradecall.price} flat, {OFFERS.tradecall.terms}. This is an inquiry, not a purchase or booking.</p> : null}
+              {interest ? <p>{interest.name}: {interest.priceLine}. This is an inquiry, not a purchase or booking.</p> : null}
             </div>
 
             <form onSubmit={onFormSubmit} className="m-intake-form">
