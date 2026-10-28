@@ -17,7 +17,7 @@ beforeEach(async () => {
   vi.spyOn(window, "scrollTo").mockImplementation(() => undefined);
   window.localStorage.clear(); navigate.mockClear();
   host = document.createElement("div"); document.body.append(host); root = createRoot(host);
-  await act(async () => root.render(React.createElement(IntakeWizard, { packageInterest: "2" })));
+  await act(async () => root.render(React.createElement(IntakeWizard, { packageInterest: "website" })));
 });
 
 it("prevents duplicate contact sends and preserves the form when delivery fails", async () => {
@@ -65,7 +65,7 @@ it("lets a build buyer skip the estimate and recover from a failed submission wi
   expect(submit.disabled).toBe(true); // failed requests require a fresh verification token
   const [, options] = network.mock.calls[0] as unknown as [string, RequestInit];
   const body = JSON.parse(options.body as string);
-  expect(body.package_interest).toBe("2");
+  expect(body.package_interest).toBe("website");
   expect(body.form_type).toBe("build_inquiry");
   expect(body.sms_consent).toBe("no");
   expect(options.signal).toBeDefined();

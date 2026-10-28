@@ -2,6 +2,7 @@ import Link from "next/link";
 import { LeadResponseDemo } from "@/components/demo/LeadResponseDemo";
 import { MarketingLayout } from "@/components/marketing/MarketingLayout";
 import { pageMetadata } from "@/lib/metadata";
+import { PACKAGES, getAddOn } from "@/lib/pricing";
 import { DELIVERY_TIMELINE, OFFERS } from "@/lib/site";
 
 export const metadata = pageMetadata({
@@ -23,7 +24,7 @@ export default function DemoPage() {
       <LeadResponseDemo />
       <div className="lead-demo">
         <h2>A working example starts the conversation. Your scope comes next.</h2>
-        <p>{OFFERS.tradecall.name}: {OFFERS.tradecall.price} flat, {OFFERS.tradecall.terms}. Standard turnaround is {DELIVERY_TIMELINE} from signed scope, subject to access and approvals.</p>
+        <p>{OFFERS.website.name}: {OFFERS.website.price} flat, {OFFERS.website.terms}. Standard website turnaround is {DELIVERY_TIMELINE} from signed scope, subject to access and approvals. Missed-call text-back like this demo is {getAddOn("missed-call-sms").price} as an add-on, or part of the {PACKAGES[1].name} package.</p>
         <p>Hosting and phone/SMS costs are separate. Review the complete inclusions and exclusions before deciding.</p>
         <Link className="m-btn-ghost" href="/pricing">Review pricing and scope</Link>
       </div>

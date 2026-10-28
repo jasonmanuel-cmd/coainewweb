@@ -1,6 +1,6 @@
 # Chaotically Organized AI (COAI)
 
-> Industrial-Strength Revenue Infrastructure for Bakersfield contractors. COAI installs a call-first website, automated missed-call acknowledgement, Google Business Profile cleanup, and lead routing the client owns. Serving HVAC, plumbing, electrical, roofing, and other high-call service businesses in Bakersfield and Kern County, CA. Founder: Jason Robert Manuel.
+> Custom websites, design, and growth systems for Bakersfield service businesses. COAI builds a call-first custom-coded website and the systems around it (missed-call text-back, review requests, booking, follow-up, retention, and reporting), all deployed into accounts the client owns. Serving HVAC, plumbing, electrical, roofing, and other high-call service businesses in Bakersfield and Kern County, CA. Founder: Jason Robert Manuel.
 
 ## Contact
 - Phone: (661) 683-0228
@@ -11,8 +11,8 @@
 
 ## Core Pages
 - [Home](https://www.chaoticallyorganizedai.com/): What leaks, what gets installed, who owns it
-- [Pricing](https://www.chaoticallyorganizedai.com/pricing): Single source of truth for all prices
-- [Services](https://www.chaoticallyorganizedai.com/services): Buyer journey, flagship scope, and exclusions
+- [Pricing](https://www.chaoticallyorganizedai.com/pricing): Single source of truth for all prices: website, three packages, and every add-on
+- [Services](https://www.chaoticallyorganizedai.com/services): What we build, the three stages, packages, and exclusions
 - [Systems Catalog](https://www.chaoticallyorganizedai.com/systems): Public capability map across capture, qualification, conversion, discovery, retention, and measurement
 - [Portfolio](https://www.chaoticallyorganizedai.com/portfolio): Live client sites
 - [About](https://www.chaoticallyorganizedai.com/about): Founder background and accountability
@@ -29,11 +29,17 @@
 COAI organizes its public systems catalog around a simple path: catch the inquiry, convert the guest, and keep the relationship. The catalog contains optional capabilities—not package promises. A statement of work names every included module before approval. AI is used only where it serves a defined business function, with approved facts and human escalation for judgment calls.
 
 ## Offers
-COAI sells three commercial offers and nothing else.
+COAI sells a free scorecard, a custom website, three packages that build on it, individually priced add-ons, and optional website care plans.
 
 1. Job-Call Leak Scorecard — free for qualified owner-operators, otherwise $350 Structural Audit credited to the build. Delivered in 24–48 hours. A one-page scorecard with three observed leaks, the assumptions behind them, screenshots, and one recommended first control.
-2. TradeCall Revenue Infrastructure Build — $1,997 flat ($997 to start, $1,000 at launch). Call-first website, one aligned business identity, Google Business Profile cleanup, missed-call text-back, lead pipeline and owner alert, ownership handoff, launch QA, and a 30-day baseline scorecard. Bilingual EN/ES add-on +$400. Standard turnaround 2–3 weeks from signed scope.
-3. Revenue Continuity — $197/month, cancel anytime. Routing, form, and SMS test log; response-time report; uncontacted-lead review; monthly scorecard; minor site and profile corrections; one improvement priority per month.
+2. Custom Website Build — $1,997 flat ($997 to start, $1,000 at launch). Custom-coded, call-first, mobile-first website; one aligned business identity; tested contact paths; launch QA; documented ownership handoff; 30 days of post-launch fixes. Standard turnaround 2–3 weeks from signed scope.
+3. Package 1, Digital Foundation — $3,647 total (website plus $1,650 of add-ons). No required monthly fee.
+4. Package 2, Lead Machine — approximately $6,441 total, plus $294–$500/month for the automation, depending on what is implemented. Includes missed-call text-back, review system, AI chatbot, lead follow-up, and quote recovery.
+5. Package 3, Customer Lifecycle — $6,997–$9,497 total ($5,000–$7,500 setup for all systems plus the website), plus $597–$997/month, depending on what is implemented. Adds reactivation, service reminders, referrals, CRM, analytics, and campaigns.
+6. Individual add-ons — priced one at a time (missed-call text-back $450, review system $450, and others listed on the pricing page).
+7. Website care plans — $100, $200, or $500 per month. Optional.
+
+Package totals are scoped and fixed in writing before work begins. COAI does not promise rankings, lead volume, review counts, or AI citations.
 
 ## Not Included
 Ad spend, custom integrations, ongoing content beyond scope, carrier/SMS/AI usage fees, hosting, advanced CRM migration, and 24-hour human dispatch are not included in the build price.

@@ -1,4 +1,5 @@
-﻿import type { Metadata } from "next";
+﻿import { isBuildInterest } from "@/lib/pricing";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { IntakeWizard } from "@/components/intake/IntakeWizard";
 import { JsonLd } from "@/components/JsonLd";
@@ -23,7 +24,7 @@ export default async function IntakePage({
   const sp = await searchParams;
   const raw = sp.pkg;
   const pkg = Array.isArray(raw) ? raw[0] : raw;
-  const packageInterest = pkg && ["1", "2", "3"].includes(pkg) ? pkg : undefined;
+  const packageInterest = isBuildInterest(pkg) ? pkg : undefined;
 
   const crumbs = breadcrumbJsonLd([
     { name: "Home", path: "/" },

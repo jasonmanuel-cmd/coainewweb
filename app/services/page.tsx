@@ -6,15 +6,15 @@ import { pageMetadata } from "@/lib/metadata";
 import { articleJsonLd, breadcrumbJsonLd, serviceJsonLd } from "@/lib/schema";
 
 const serviceDescription =
-  "Job-call leak audits, missed-call recovery, call-first website builds, lead qualification, lifecycle follow-up, and reporting systems for Bakersfield operators. You own the accounts, code, and data.";
+  "Custom website design and development, local search and AI answer-engine setup, missed-call text-back, booking, follow-up, CRM, AI systems, and reporting for Bakersfield and Kern County operators. You own the accounts, code, and data.";
 
 export const metadata: Metadata = pageMetadata({
   title: { absolute: "Services | Chaotically Organized AI - Bakersfield 661" },
   description:
-    "Explore COAI's service path and public systems catalog for capturing inquiries, qualifying jobs, recovering quotes, retaining customers, and measuring revenue leaks.",
+    "Custom websites, three packages, and individually priced systems for local search, AI answer visibility, lead capture, follow-up, retention, and reporting. See everything COAI builds.",
   path: "/services",
   published: "2026-01-20",
-  modified: "2026-10-10",
+  modified: "2026-10-28",
 });
 
 export default function ServicesPage() {
@@ -27,12 +27,12 @@ export default function ServicesPage() {
     description: serviceDescription,
     path: "/services",
     datePublished: "2026-01-01",
-    dateModified: "2026-10-10"
+    dateModified: "2026-10-28"
   });
 
   return (
     <MarketingLayout activeHref="/services">
-      <JsonLd data={serviceJsonLd("Revenue infrastructure services", serviceDescription)} />
+      <JsonLd data={serviceJsonLd("Website design and growth systems", serviceDescription)} />
       <JsonLd data={article} />
       <JsonLd data={crumbs} />
       <ServicesMarketingContent />

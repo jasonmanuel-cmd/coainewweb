@@ -4,6 +4,7 @@ import { describe, expect, it } from "vitest";
 import { REVAMP_PROJECTS } from "@/components/revamp/revampData";
 import { PORTFOLIO_CASES } from "@/lib/portfolio-cases";
 import { PORTFOLIO_STATS, countWord } from "@/lib/portfolio-stats";
+import { PACKAGES } from "@/lib/pricing";
 import { organizationJsonLd } from "@/lib/schema";
 import { BUSINESS_HOURS, CONTACT, DELIVERY_TIMELINE, OFFERS } from "@/lib/site";
 
@@ -23,8 +24,8 @@ describe("one source of truth for business facts", () => {
 
   it("llms.txt matches the typed contact, price and timeline facts", () => {
     expect(llms).toContain(CONTACT.email);
-    expect(llms).toContain(OFFERS.tradecall.price);
-    expect(llms).toContain(OFFERS.continuity.price);
+    expect(llms).toContain(OFFERS.website.price);
+    for (const pkg of PACKAGES) expect(llms).toContain(pkg.total.replace("≈ ", ""));
     expect(llms).toContain("Monday–Friday");
     expect(llms).not.toMatch(/@coaibakersfield\.com/i);
   });

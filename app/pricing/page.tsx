@@ -2,23 +2,26 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { PricingShell } from "@/components/pricing/PricingShell";
 import { PricingPageBody } from "@/components/marketing/PricingPageBody";
+import { ADDON_COUNT } from "@/lib/pricing";
 import { pageMetadata } from "@/lib/metadata";
-import { articleJsonLd, breadcrumbJsonLd, serviceJsonLd } from "@/lib/schema";
+import { articleJsonLd, breadcrumbJsonLd, pricingCatalogJsonLd, serviceJsonLd } from "@/lib/schema";
 import { OFFERS, SITE_URL } from "@/lib/site";
 
+const PRICING_DESCRIPTION = `Custom websites from ${OFFERS.website.price} flat, three packages that add missed-call text-back, booking, follow-up, CRM, and AI systems, and ${ADDON_COUNT} individually priced add-ons. Every third-party cost published before you sign.`;
+
 export const metadata: Metadata = pageMetadata({
-  title: `Pricing — ${OFFERS.tradecall.name} | COAI`,
-  description: `${OFFERS.tradecall.name} at ${OFFERS.tradecall.price} flat, ${OFFERS.tradecall.terms}. ${OFFERS.continuity.name} optional at ${OFFERS.continuity.price}/month. Every third-party cost published before you sign.`,
+  title: "Pricing — websites, packages, and add-ons | COAI",
+  description: PRICING_DESCRIPTION,
   path: "/pricing",
   published: "2026-01-20",
-  modified: "2026-08-02",
+  modified: "2026-10-28",
 });
 
 const pricingService = serviceJsonLd(
-  OFFERS.tradecall.name,
-  `${OFFERS.tradecall.summary} ${OFFERS.tradecall.price} flat.`,
+  OFFERS.website.name,
+  `${OFFERS.website.summary} ${OFFERS.website.price} flat.`,
   "/pricing",
-  OFFERS.tradecall.priceNumeric
+  OFFERS.website.priceNumeric
 );
 
 export default function PricingPage() {
@@ -27,11 +30,11 @@ export default function PricingPage() {
     { name: "Pricing", path: "/pricing" }
   ]);
   const pricingArticle = articleJsonLd({
-    headline: `${OFFERS.tradecall.name} pricing — ${OFFERS.tradecall.price} flat | COAI`,
-    description: `Three offers and nothing else: ${OFFERS.scorecard.name}, ${OFFERS.tradecall.name} at ${OFFERS.tradecall.price} flat, and optional ${OFFERS.continuity.name} at ${OFFERS.continuity.price} per month. Exclusions and third-party costs published.`,
+    headline: "COAI pricing: websites, packages, and add-ons",
+    description: PRICING_DESCRIPTION,
     path: "/pricing",
     datePublished: "2026-01-20",
-    dateModified: "2026-08-02",
+    dateModified: "2026-10-28",
   });
 
   const webPage = {
@@ -46,6 +49,7 @@ export default function PricingPage() {
       <JsonLd data={pricingArticle} />
       <JsonLd data={webPage} />
       <JsonLd data={pricingService} />
+      <JsonLd data={pricingCatalogJsonLd()} />
       <JsonLd data={crumbs} />
       <PricingPageBody />
     </PricingShell>

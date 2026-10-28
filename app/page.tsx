@@ -10,24 +10,26 @@ import { SpotlightGrid } from "@/components/revamp/SpotlightGrid";
 import { ZoomableScreenshot } from "@/components/revamp/ZoomableScreenshot";
 import { REVAMP_PROJECTS } from "@/components/revamp/revampData";
 import { serviceJsonLd } from "@/lib/schema";
-import { BUILD_PRICE, CONTINUITY_MONTHLY, DELIVERY_TIMELINE, SITE_DESCRIPTION, formatUsd } from "@/lib/site";
+import { PackageCards } from "@/components/marketing/PackageCards";
+import { ADDON_COUNT, PACKAGES, getAddOn } from "@/lib/pricing";
+import { BUILD_PRICE, DELIVERY_TIMELINE, SITE_DESCRIPTION, formatUsd } from "@/lib/site";
 import { PORTFOLIO_STATS, countWord } from "@/lib/portfolio-stats";
 import { SYSTEM_CAPABILITY_COUNT } from "@/lib/systems";
 
 const HOME_PAGE_DESCRIPTION =
-  "Custom websites and lead-response systems for Bakersfield and Kern County businesses—built for mobile, local search, fast follow-up, and full ownership.";
+  "Custom, hand-coded websites and the systems around them—local search, AI answer visibility, missed-call text-back, booking, and follow-up—for Bakersfield and Kern County businesses, with full ownership.";
 
 export const metadata: Metadata = {
-  title: "Custom Websites & Lead Response Systems for Local Businesses",
+  title: "Custom Websites & Growth Systems for Local Businesses",
   description: HOME_PAGE_DESCRIPTION,
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Custom Websites & Lead Response Systems for Local Businesses",
+    title: "Custom Websites & Growth Systems for Local Businesses",
     description: HOME_PAGE_DESCRIPTION
   },
   twitter: {
     card: "summary_large_image",
-    title: "Custom Websites & Lead Response Systems for Local Businesses",
+    title: "Custom Websites & Growth Systems for Local Businesses",
     description: HOME_PAGE_DESCRIPTION
   }
 };
@@ -52,8 +54,8 @@ const faqs = [
   ["Is every website custom?", "Yes. Each build starts with your audience, offer, brand, and the action you want customers to take. The layout and code are shaped around your business—not dropped into a one-size-fits-all theme."],
   ["Is this another chatbot, and do I need to replace my tools?", "No. A chatbot is one interface; COAI connects response, qualification, booking, follow-up, and reporting into an owned revenue system. Where practical, we connect to tools you already use instead of replacing them."],
   ["Will I own my website?", "Yes. Your agreed handoff includes the website assets, code, account access, and operating documentation needed to run the build. You are not locked into a COAI-only platform."],
-  ["How quickly can we launch?", `The standard flagship website and revenue-system build takes ${DELIVERY_TIMELINE} from signed scope, depending on content, access, integrations, and approval speed. You receive a clear plan before work begins.`],
-  ["What happens after launch?", `Thirty days of optimization are included. After that, Revenue Continuity is an optional ${formatUsd(CONTINUITY_MONTHLY)}/month for monitoring, testing, and one monthly improvement priority—or you can keep the delivered system without an ongoing retainer.`]
+  ["How quickly can we launch?", `The standard website build takes ${DELIVERY_TIMELINE} from signed scope, depending on content, access, integrations, and approval speed. Systems added through a package are scoped with their own timeline in the written plan, and you receive it before work begins.`],
+  ["What happens after launch?", `Thirty days of post-launch fixes are included with every website. After that, optional website care plans start at ${getAddOn("care-basic").price} per month—or you can keep the delivered site with no ongoing retainer. Systems that run continuously, like a CRM or follow-up, show their monthly cost up front.`]
 ];
 
 // Hero layer note: the decorative watermark is deliberately an Image, not a CSS
@@ -64,7 +66,7 @@ const faqs = [
 export default function HomePage() {
   return (
     <main id="main-content" className="cinematic-home">
-      <JsonLd data={serviceJsonLd("Custom Website & Lead Response System Build", SITE_DESCRIPTION, "/", BUILD_PRICE)} />
+      <JsonLd data={serviceJsonLd("Custom Website Design & Growth Systems", SITE_DESCRIPTION, "/", BUILD_PRICE)} />
 
       <section className="cinematic-hero" aria-labelledby="hero-title">
         <Image
@@ -84,14 +86,14 @@ export default function HomePage() {
         <HeroSignalField />
         <div className="cinematic-container cinematic-hero-inner">
           <div className="cinematic-hero-copy">
-            <span className="revamp-kicker"><i aria-hidden="true" /> Custom websites + lead response systems for local businesses</span>
+            <span className="revamp-kicker"><i aria-hidden="true" /> Custom websites + growth systems for local businesses</span>
             <h1 id="hero-title">Built to stand out.<br /><em>Designed to convert.</em></h1>
-            <p className="cinematic-hero-lede">Custom websites with a point of view—and a clear path to the next customer. COAI pairs fast, search-ready design with missed-call response and follow-up that keeps the next step moving.</p>
+            <p className="cinematic-hero-lede">Custom websites with a point of view—and a clear path to the next customer. COAI pairs fast, search-ready design with the systems that win the job and keep the customer: missed-call text-back, booking, follow-up, reviews, and reporting.</p>
             <div className="cinematic-hero-actions">
-              <Link className="revamp-btn-primary" href="/intake?pkg=2">
-                Discuss my build <ArrowUpRight aria-hidden="true" />
+              <Link className="revamp-btn-primary" href="/intake?pkg=website">
+                Discuss my website <ArrowUpRight aria-hidden="true" />
               </Link>
-              <Link className="revamp-btn-ghost" href="/demo">See the lead response demo <ArrowRight aria-hidden="true" /></Link>
+              <Link className="revamp-btn-ghost" href="/pricing#packages">See packages and prices <ArrowRight aria-hidden="true" /></Link>
             </div>
             <div className="cinematic-hero-trust" aria-label="Website build highlights">
               <span><Check aria-hidden="true" /> Custom, never cookie-cutter</span>
@@ -137,9 +139,9 @@ export default function HomePage() {
             {proofMarks.map((mark) => <span key={mark}>{mark}</span>)}
           </div>
           <div className="proof-stats">
-            <div><strong>{formatUsd(BUILD_PRICE)}</strong><span>flat flagship build</span></div>
+            <div><strong>{formatUsd(BUILD_PRICE)}</strong><span>custom website, flat</span></div>
             <div><strong>{PORTFOLIO_STATS.projectCount}</strong><span>public project links</span></div>
-            <div><strong>30 days</strong><span>optimization included</span></div>
+            <div><strong>30 days</strong><span>post-launch fixes included</span></div>
             <div><strong>100%</strong><span>ownership transferred</span></div>
           </div>
         </div>
@@ -266,21 +268,39 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="cinematic-section" id="packages" aria-labelledby="packages-title">
+        <div className="cinematic-container">
+          <div className="section-heading section-heading-wide">
+            <div>
+              <span className="section-index">[ 04 / PACKAGES ]</span>
+              <h2 id="packages-title">Pick your starting point.<br />Build up from there.</h2>
+            </div>
+            <p>Every package starts with a custom website and adds the systems that win the job and keep the customer. Prices include the website; larger systems are scoped and fixed in writing before work begins.</p>
+          </div>
+          <PackageCards headingId="packages-title" compact />
+          <div className="system-catalog-link">
+            <span>Prefer one piece at a time? {ADDON_COUNT} add-ons, each priced.</span>
+            <Link className="text-link" href="/pricing#addons">Compare packages and see every price <ArrowRight aria-hidden="true" /></Link>
+          </div>
+        </div>
+      </section>
+
       <section className="ownership-section cinematic-section" aria-labelledby="ownership-title">
         <div className="cinematic-container ownership-layout">
           <div className="ownership-copy">
-            <span className="section-index">[ 04 / OWNERSHIP ]</span>
+            <span className="section-index">[ 05 / OWNERSHIP ]</span>
             <ShieldCheck aria-hidden="true" />
             <h2 id="ownership-title">No hostage tech.<br />No mystery fees.</h2>
             <p>You receive the delivered assets, workflow map, operating documentation, and access required to run what you paid for.</p>
           </div>
           <div className="ownership-ledger">
-            <div><span>TradeCall flagship system build</span><strong>{formatUsd(BUILD_PRICE)}</strong></div>
-            <div><span>Optimization period</span><strong>30 days included</strong></div>
-            <div><span>Revenue Continuity</span><strong>{formatUsd(CONTINUITY_MONTHLY)}/mo · optional</strong></div>
+            <div><span>Custom Website Build</span><strong>{formatUsd(BUILD_PRICE)} flat</strong></div>
+            <div><span>Packages, website included</span><strong>From {PACKAGES[0].total}</strong></div>
+            <div><span>Post-launch fixes</span><strong>30 days included</strong></div>
+            <div><span>Website care</span><strong>From {getAddOn("care-basic").price} · optional</strong></div>
             <div><span>Contract lock-in</span><strong>None</strong></div>
             <div><span>Your ownership</span><strong className="ledger-pass"><Check aria-hidden="true" /> Confirmed</strong></div>
-            <Link href="/pricing">Review the full offer <ArrowRight aria-hidden="true" /></Link>
+            <Link href="/pricing">Review every price <ArrowRight aria-hidden="true" /></Link>
           </div>
         </div>
       </section>
@@ -299,7 +319,7 @@ export default function HomePage() {
       <section className="faq-section cinematic-section" aria-labelledby="faq-title">
         <div className="cinematic-container faq-layout">
           <div className="section-heading section-heading-sticky">
-            <span className="section-index">[ 05 / STRAIGHT ANSWERS ]</span>
+            <span className="section-index">[ 06 / STRAIGHT ANSWERS ]</span>
             <h2 id="faq-title">Before you book.</h2>
             <p>Still comparing options? The complete FAQ covers integrations, security, support, and fit.</p>
             <Link className="text-link" href="/faq">Read every answer <ArrowRight aria-hidden="true" /></Link>

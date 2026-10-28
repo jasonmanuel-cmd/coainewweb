@@ -51,7 +51,7 @@ export function RevampNavbar() {
           <Image className="revamp-logo-mark" src="/coai-mark.webp" alt="" width={46} height={46} priority />
           <span className="revamp-logo-copy">
             <strong>COAI</strong>
-            <small>Revenue Infrastructure</small>
+            <small>Websites + Systems</small>
           </span>
         </Link>
 
@@ -104,7 +104,7 @@ export function RevampNavbar() {
             </div>
           </div>
 
-          <Link className="revamp-nav-cta" href="/intake?pkg=2">
+          <Link className="revamp-nav-cta" href="/intake?pkg=website">
             <span>Discuss your build</span>
             <span aria-hidden="true">↗</span>
           </Link>

@@ -55,16 +55,19 @@ export const CONTACT = {
 } as const;
 
 /**
- * Single source of truth for every published price.
+ * Single source of truth for the headline offers.
  *
- * One buyer journey: find the leak -> fix the leak -> run the system.
- * Nothing else may quote a price. If a number is not in here, it does not
- * belong on the site. Retired offers (Trades Starter Pack, AI Lead Machine,
- * Operational Ecosystem, Signal Foundation, Sentinel Automation) are gone —
- * do not reintroduce them.
+ * The buyer journey: find the leak (scorecard) -> build the website -> add the
+ * systems that win and keep the customer (packages and add-ons).
+ * The full price menu — packages, individual add-ons and care plans from the
+ * 8/12/26 COAI price sheet — lives in `lib/pricing.ts`, which builds on these
+ * numbers. If a price is not in one of those two files it does not belong on
+ * the site. Retired offers (Trades Starter Pack, AI Lead Machine, Operational
+ * Ecosystem, Signal Foundation, Sentinel Automation, TradeCall Revenue
+ * Infrastructure Build, Revenue Continuity) are gone — do not reintroduce them.
  */
 export const OFFERS = {
-  /** Wedge — qualify the contractor and show one real leak before proposing a system. */
+  /** Entry point — qualify the business and show real leaks before proposing a build. */
   scorecard: {
     stage: "Find the leak",
     name: "Job-Call Leak Scorecard",
@@ -74,26 +77,15 @@ export const OFFERS = {
     summary:
       "A one-page scorecard with three observed leaks, the assumptions behind them, screenshots, and one recommended first control."
   },
-  /** Flagship — the installation of the contractor's revenue intake layer. */
-  tradecall: {
-    stage: "Fix the leak",
-    name: "TradeCall Revenue Infrastructure Build",
+  /** Foundation — the custom website every package is built on. */
+  website: {
+    stage: "Build the foundation",
+    name: "Custom Website Build",
     price: "$1,997",
     priceNumeric: "1997",
     terms: "$997 to start / $1,000 at launch",
-    bilingual: "+$400",
     summary:
-      "Call-first website, one aligned business identity, Google Business Profile cleanup, missed-call text-back, lead pipeline and owner alert, ownership handoff, launch QA, and a 30-day baseline scorecard."
-  },
-  /** Recurring — keeps the revenue intake system working. Not "maintenance". */
-  continuity: {
-    stage: "Run the system",
-    name: "Revenue Continuity",
-    price: "$197",
-    period: "month",
-    terms: "cancel anytime",
-    summary:
-      "Routing, form, and SMS test log. Response-time report. Uncontacted-lead review. Monthly scorecard, minor site and profile corrections, and one improvement priority."
+      "A custom-coded, call-first, mobile-first website with one aligned business identity, tested contact paths, launch QA, a documented ownership handoff, and 30 days of post-launch fixes."
   }
 } as const;
 
@@ -113,13 +105,13 @@ export const GEO = {
 } as const;
 
 export const SITE_DESCRIPTION =
-  "COAI installs a call-first website, automated missed-call acknowledgement, Google Business Profile cleanup, and lead routing you own — for Bakersfield and Kern County contractors. Built by Jason Robert Manuel, a contractor who codes. You control the domain, hosting, source code, analytics, and lead data.";
+  "COAI designs and builds custom, hand-coded websites and the systems around them — local search and AI answer visibility, missed-call text-back, booking, follow-up, CRM and reporting — for Bakersfield and Kern County service businesses. Built by Jason Robert Manuel, a contractor who codes. You control the domain, hosting, source code, analytics, and lead data."
 
 /** Category descriptor. Sits beneath the buyer-facing outcome line, never in front of it. */
-export const CATEGORY = "Industrial-Strength Revenue Infrastructure";
+export const CATEGORY = "Custom Websites, Design & Growth Systems";
 
 /** Buyer-facing outcome line. Lead with this — a contractor does not shop for "infrastructure". */
-export const BUYER_OUTCOME = "Stop losing ready-to-book jobs while you're on the job.";
+export const BUYER_OUTCOME = "A website that wins the job, and the systems that keep the customer.";
 
 export const BRAND_TAGLINE = "Where Chaos Meets Clarity";
 
@@ -165,8 +157,7 @@ export const DELIVERY_TIMELINE = "2–3 weeks";
 export const SITE_NAME = ORG_NAME;
 export const PRIMARY_EMAIL = CONTACT.email;
 export const CTA_BOOKING_URL = "/intake";
-export const BUILD_PRICE = Number(OFFERS.tradecall.priceNumeric);
-export const CONTINUITY_MONTHLY = Number(OFFERS.continuity.price.replace(/[^0-9]/g, ""));
+export const BUILD_PRICE = Number(OFFERS.website.priceNumeric);
 export function formatUsd(value: number): string {
   return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(value);
 }

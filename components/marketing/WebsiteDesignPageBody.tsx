@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { PackageCards } from "@/components/marketing/PackageCards";
 import { Reveal } from "@/components/revamp/Reveal";
+import { OFFERS } from "@/lib/site";
 
 export function WebsiteDesignPageBody() {
   return (
@@ -20,8 +22,8 @@ export function WebsiteDesignPageBody() {
             crawlable local information, and a documented ownership handoff.
           </p>
           <div className="m-hero-cta-row">
-            <Link href="/intake" className="m-btn-primary-marketing">
-              Start My Build →
+            <Link href="/intake?pkg=website" className="m-btn-primary-marketing">
+              Discuss my website →
             </Link>
             <Link href="/portfolio" className="m-btn-ghost-marketing">
               See Client Sites
@@ -56,8 +58,8 @@ export function WebsiteDesignPageBody() {
               ],
               [
                 "03",
-                "Schema Baked In, Not Bolted On",
-                "Eligible LocalBusiness, Service, FAQ, and breadcrumb data is written into the build from the approved business facts — not injected later by a generic plugin."
+                "Structured Data Done Properly",
+                "Page-level metadata and clean semantic markup are part of every build. Full LocalBusiness, Service, and FAQ schema is written from your approved business facts as part of the Google Business and schema add-on."
               ],
               [
                 "04",
@@ -107,10 +109,9 @@ export function WebsiteDesignPageBody() {
                   "You own the customer data — always",
                   "No monthly platform fee paid to COAI",
                   "Hosting account remains in your control",
-                  "Schema matched to eligible page content",
                   "Performance measured before handoff",
                   "Any developer can pick it up and maintain it",
-                  "One-time cost, no dependency"
+                  "Fixed build price, no platform dependency"
                 ].map((t) => (
                   <li key={t}>
                     <span className="m-check">✓</span> {t}
@@ -122,15 +123,15 @@ export function WebsiteDesignPageBody() {
               <div className="m-col-header m-col-red">✕ Wix / Squarespace / GoDaddy</div>
               <ul className="m-compare-list-wd">
                 {[
-                  "Platform owns your site — you rent it",
-                  "Can&apos;t move it if you leave",
+                  "You rent the platform your site lives on",
+                  "Hard to move if you leave",
                   "Data lives on their servers",
-                  "Monthly fee forever — price can increase",
-                  "Account can be suspended without notice",
-                  "Limited schema control",
-                  "Performance capped by their infrastructure",
-                  "Locked into their ecosystem",
-                  "Recurring cost with no equity build"
+                  "Monthly fee, and the platform sets the price",
+                  "Account governed by their terms of service",
+                  "Less control over markup and schema",
+                  "Performance bound by their platform",
+                  "Tied to their ecosystem",
+                  "Recurring cost with no asset to take with you"
                 ].map((t) => (
                   <li key={t}>
                     <span className="m-cross">✗</span> {t}
@@ -207,10 +208,10 @@ export function WebsiteDesignPageBody() {
               <div className="m-col-header m-col-red">✕ Before Migration</div>
               <ul className="m-compare-list-wd">
                 {[
-                  "Typical 3-6 second load times",
+                  "Load times vary with plugins and hosting",
                   "Monthly plugin and theme updates",
-                  "Security vulnerabilities accumulate",
-                  "Hosting + plugins = $50-200+/mo",
+                  "Outdated plugins are a common security risk",
+                  "Hosting, plugin, and theme costs add up",
                   "Admin overhead just to keep it running",
                   "Locked into WP ecosystem"
                 ].map((t) => (
@@ -281,6 +282,23 @@ export function WebsiteDesignPageBody() {
       </Reveal>
 
       <Reveal>
+      <section className="m-marketing-section" id="packages">
+        <div className="m-container-narrow">
+          <div className="m-section-label">Websites + Systems</div>
+          <h2 className="m-h2-marketing" id="wd-packages-title">
+            Start with the site. <span className="m-text-steel">Build up from there.</span>
+          </h2>
+          <p className="m-wd-lead">
+            The {OFFERS.website.name} is {OFFERS.website.price} flat ({OFFERS.website.terms}). Three packages add the
+            systems that win and keep the customer, including missed-call text-back, review requests, booking, and
+            follow-up.
+          </p>
+          <PackageCards compact headingId="wd-packages-title" />
+        </div>
+      </section>
+      </Reveal>
+
+      <Reveal>
       <div className="m-bottom-cta">
         <div className="m-section-label">Let&apos;s Build</div>
         <h2 className="m-bottom-cta-h2">
@@ -289,15 +307,14 @@ export function WebsiteDesignPageBody() {
           <span className="m-text-steel">Your asset.</span>
         </h2>
         <p>
-          Run the diagnostic first — 30 minutes, free, no pitch. See exactly what your current presence is costing you
-          and what a rebuild would change.
+          Start with the free leak score, or go straight to a custom website from {OFFERS.website.price} flat. Add only the systems you need, or take a full package.
         </p>
         <div className="m-cta-row">
           <Link href="/intake" className="m-btn-primary-marketing">
             Request my leak score →
           </Link>
-          <Link href="/pricing" className="m-btn-ghost-marketing">
-            View Pricing
+          <Link href="/pricing#packages" className="m-btn-ghost-marketing">
+            View packages and pricing
           </Link>
         </div>
       </div>
