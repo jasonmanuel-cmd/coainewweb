@@ -2,6 +2,7 @@ import { neon } from "@neondatabase/serverless";
 import { randomUUID } from "node:crypto";
 import { PublicError } from "@/lib/public-error";
 import type { CrmLead } from "./types";
+import { type FollowUpQueue, utcToday } from "./follow-up";
 export const usesNeonCrm=()=>process.env.CRM_STORAGE==="neon";
 function sql() {
   const url=process.env.DATABASE_URL;
@@ -13,12 +14,21 @@ export async function storeNeonLead(lead: Omit<CrmLead,"id"|"stage"|"notes"|"fol
     values(${key},${lead.first_name},${lead.business_name},${lead.email},${lead.phone},${lead.business_website},${lead.source},${lead.intent},${lead.industry},${lead.sms_consent},${lead.consent_version},${JSON.stringify(lead.details)}::jsonb)
     on conflict(submission_key) do nothing`;
 }
-export async function listNeonLeads(page:number,stage:string|null,search:string) {
+export async function listNeonLeads(page:number,stage:string|null,search:string,queue:FollowUpQueue="all",today=utcToday()) {
   const offset=Math.floor(page)*50;
   const rows=await sql()`with filtered as (
       select * from coai_hq.leads where (${stage||""}='' or stage=${stage||""})
         and (${search}='' or position(lower(${search}) in search_text)>0)
-    ), paged as (select * from filtered order by created_at desc,id desc limit 50 offset ${offset})
+        and (${queue}='all'
+          or (${queue}='closed' and stage in ('won','lost','archived'))
+          or (stage not in ('won','lost','archived') and (
+            (${queue}='due' and follow_up_on<=${today}::date)
+            or (${queue}='overdue' and follow_up_on<${today}::date)
+            or (${queue}='upcoming' and follow_up_on>${today}::date)
+            or (${queue}='unscheduled' and follow_up_on is null))))
+    ), paged as (select * from filtered order by
+      case when ${queue} in ('due','overdue','upcoming') then follow_up_on end asc,
+      created_at desc,id desc limit 50 offset ${offset})
     select (select count(*)::int from filtered) as total,
       coalesce((select jsonb_agg(to_jsonb(paged)-'submission_key'-'search_text') from paged),'[]'::jsonb) as leads`;
   return {...rows[0],page:Math.floor(page)};
