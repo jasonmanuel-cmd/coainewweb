@@ -24,3 +24,15 @@ Default `npm run build` (Turbopack) failed in the sandbox because it could not c
 No production database access, hosted Neon driver integration, actual Supabase/Redis integration, owner login with real credentials, real form/CAPTCHA submission, Formspree send or inbox receipt verification, delivery dispatcher execution, push/PR, deployment, paid service, social profile edit, or customer outreach. These are not implied by passing mock tests, schema tests, or a local build. The retry worker is intentionally absent; see the draft design document.
 
 Both temporary loopback servers were stopped and agent-created QA tabs closed. The disposable database was removed. A static synthetic visual fixture remains outside the repository at `../coai-hq-visual.html`; it is not a production page or a functioning CRM.
+
+## Independent review follow-up
+
+A separate read-only reviewer inspected commit `ca25e4beadb47688961440d006a3fcdc9d28e4d9` for attribution privacy/injection, authorization, queue filtering/pagination/UTC dates, completion semantics, journal transaction/deduplication/failure behavior, and preservation of synchronous form delivery. The reviewer found one P2 issue: inherited PATCH validation accepted impossible dates because `Date.parse` normalized them. A local Node reproduction confirmed that `2026-02-31` becomes March 3. Redis could retain the original invalid string while SQL date storage rejects it.
+
+The local fix requires an exact ISO calendar-date round trip and rejects year 0000. Four invalid-date regression cases assert HTTP 400 before any storage mutation; valid leap-day and explicit clearing cases assert successful updates. Three further cases prove the Neon journal remains disabled for Redis, Supabase, and an unset backend even when its flag is true. No additional substantive defect was found in the bounded review. The reviewer did not inspect production configuration or execute aggregate tests; the implementation agent runs the checks below.
+
+The same reviewer separately inspected the fix and regression tests and confirmed the finding resolved, with no remaining concern in that focused diff. Reviewer activity remained read-only.
+
+Post-review targeted checks: **26 tests / 3 files passed** (`hq-security`, `follow-up-queue`, `notification-journal`). Final aggregate `npm test -- --maxWorkers=1`: **282 tests / 39 files passed**, 173.34 seconds. Final `npm run build -- --webpack`: **passed**, including TypeScript and 42 static generation steps. Sequential `npm run lint`: **passed**. `git diff --check`: **passed**. SQL/browser checks from the original draft were not repeated because this follow-up only changes server calendar-date validation, regression tests, and documentation; no schema or UI code changed.
+
+A standalone lint attempt overlapped the build's regeneration of `.next/types` and reported missing generated type files (TS6053). This validation-runner race was resolved by rerunning lint sequentially after the completed build. No source/config workaround was made for it.

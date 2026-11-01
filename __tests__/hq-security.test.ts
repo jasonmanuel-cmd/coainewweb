@@ -40,3 +40,16 @@ it("rejects stale edits rather than overwriting another tab's changes", async ()
   const request = { url: "https://example.com/api/hq/leads", headers: { get: (key: string) => key === "origin" ? "https://example.com" : "application/json" }, json: async () => ({ id: "1c1fb925-7947-4ba8-bbac-ed54f72ecb09", updated_at: "2026-10-17T12:00:00Z", stage: "contacted", notes: "Owner note", follow_up_on: null }) } as unknown as Request;
   expect((await PATCH(request)).status).toBe(409); expect(query.eq).toHaveBeenCalledWith("updated_at", "2026-10-17T12:00:00Z");
 });
+it.each(["2026-02-31", "2026-04-31", "2026-02-29", "0000-01-01"])("rejects impossible follow-up date %s before any storage update", async follow_up_on => {
+  state.token = "owner-token"; state.userId = "owner-uuid";
+  const request = { url: "https://example.com/api/hq/leads", headers: { get: (key: string) => key === "origin" ? "https://example.com" : "application/json" }, json: async () => ({ id: "1c1fb925-7947-4ba8-bbac-ed54f72ecb09", updated_at: "2026-10-17T12:00:00Z", stage: "contacted", notes: "Owner note", follow_up_on }) } as unknown as Request;
+  expect((await PATCH(request)).status).toBe(400); expect(from).not.toHaveBeenCalled();
+});
+it.each(["2024-02-29", null])("accepts valid leap dates and explicit date clearing: %s", async follow_up_on => {
+  state.token = "owner-token"; state.userId = "owner-uuid";
+  const query = { update: vi.fn(), eq: vi.fn(), select: vi.fn(), maybeSingle: vi.fn(async () => ({ data: { id: "lead" }, error: null })) };
+  query.update.mockReturnValue(query); query.eq.mockReturnValue(query); query.select.mockReturnValue(query); from.mockReturnValue(query);
+  const request = { url: "https://example.com/api/hq/leads", headers: { get: (key: string) => key === "origin" ? "https://example.com" : "application/json" }, json: async () => ({ id: "1c1fb925-7947-4ba8-bbac-ed54f72ecb09", updated_at: "2026-10-17T12:00:00Z", stage: "contacted", notes: "Owner note", follow_up_on }) } as unknown as Request;
+  expect((await PATCH(request)).status).toBe(200);
+  expect(query.update).toHaveBeenCalledWith({ stage: "contacted", notes: "Owner note", follow_up_on });
+});

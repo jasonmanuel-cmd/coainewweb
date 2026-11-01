@@ -2,7 +2,7 @@ import { afterEach, beforeEach, expect, it, vi } from "vitest";
 const query = vi.hoisted(() => vi.fn(async (..._args: unknown[]) => [{ id: "attempt" }]));
 vi.mock("@neondatabase/serverless", () => ({ neon: () => query }));
 vi.mock("@sentry/nextjs", () => ({ captureException: vi.fn() }));
-import { deliverCapturedForm, notificationDispatchEnabled } from "@/lib/crm/notifications";
+import { deliverCapturedForm, notificationDispatchEnabled, notificationJournalEnabled } from "@/lib/crm/notifications";
 beforeEach(() => {
   vi.stubEnv("CRM_STORAGE", "neon"); vi.stubEnv("COAI_CRM_ENABLED", "true");
   vi.stubEnv("DATABASE_URL", "postgres://synthetic-local-only");
@@ -16,6 +16,13 @@ it("keeps dispatch permanently off and leaves existing sends alone when recordin
   vi.stubEnv("COAI_NOTIFICATION_JOURNAL_ENABLED", "false");
   await deliverCapturedForm("https://provider.invalid", { email: "unit@example.com" }, "key");
   expect(notificationDispatchEnabled).toBe(false); expect(query).not.toHaveBeenCalled(); expect(fetch).toHaveBeenCalledTimes(1);
+});
+it.each(["redis", "supabase", ""])("cannot activate the Neon journal for backend %s even with the journal flag set", async backend => {
+  vi.stubEnv("CRM_STORAGE", backend);
+  expect(notificationJournalEnabled()).toBe(false);
+  await deliverCapturedForm("https://provider.invalid", {}, "synthetic-key");
+  expect(query).not.toHaveBeenCalled(); expect(fetch).toHaveBeenCalledTimes(1);
+  expect(notificationDispatchEnabled).toBe(false);
 });
 it("journals intent before send and provider acceptance afterward without storing payloads", async () => {
   await deliverCapturedForm("https://provider.invalid", { email: "unit@example.com" }, "key");

@@ -41,7 +41,9 @@ export async function GET(request: Request) {
     return privateJson({ leads: data, total: count, page: Math.floor(page) });
   } catch (error) { return crmError(error); }
 }
-const update = z.object({ id: z.string().uuid(), updated_at: z.string().datetime({ offset: true }), stage: z.enum(LEAD_STAGES), notes: z.string().max(10000), follow_up_on: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).refine(s => !Number.isNaN(Date.parse(s))).nullable() }).strict();
+const calendarDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/).refine(s =>
+  !s.startsWith("0000-") && !Number.isNaN(Date.parse(s)) && new Date(s).toISOString().slice(0, 10) === s);
+const update = z.object({ id: z.string().uuid(), updated_at: z.string().datetime({ offset: true }), stage: z.enum(LEAD_STAGES), notes: z.string().max(10000), follow_up_on: calendarDate.nullable() }).strict();
 export async function PATCH(request: Request) {
   try {
     if (!isSameSiteRequest(request) || !hasJsonContentType(request)) throw new PublicError("Forbidden", 403);
