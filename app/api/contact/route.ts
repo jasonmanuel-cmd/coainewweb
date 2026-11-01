@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import { apiErrorResponse } from "@/lib/api-errors";
 import { FORMSPREE_CONTACT } from "@/lib/forms";
-import { deliverForm } from "@/lib/form-delivery";
+import { deliverCapturedForm } from "@/lib/crm/notifications";
+import { sanitizeAttribution } from "@/lib/crm/attribution";
 import { captureCrmLead } from "@/lib/crm/capture";
 import { getClientIp, hasJsonContentType, isSameSiteRequest } from "@/lib/security/request-guards";
 import { verifyTurnstileToken } from "@/lib/turnstile/verify";
@@ -41,8 +42,12 @@ export async function POST(request: Request) {
       }
     }
 
-    await captureCrmLead("contact", fields);
-    await deliverForm(FORMSPREE_CONTACT, fields);
+    const context = sanitizeAttribution(fields);
+    delete fields.inbound_source; delete fields.contact_intent;
+    Object.assign(fields, context, sanitizeAttribution(raw.attribution));
+    fields._subject = ["COAI website contact", fields.inbound_source ? `from:${fields.inbound_source}` : "", fields.contact_intent ? `intent:${fields.contact_intent}` : ""].filter(Boolean).join(" · ");
+    const submissionKey = await captureCrmLead("contact", fields);
+    await deliverCapturedForm(FORMSPREE_CONTACT, fields, submissionKey);
 
     return NextResponse.json({ ok: true });
   } catch (error) {

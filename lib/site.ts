@@ -126,7 +126,7 @@ export const SAME_AS = [
   GOOGLE_BUSINESS_PROFILE_URL,
   "https://www.linkedin.com/company/chaoticallyorganizedai",
   "https://x.com/COAIBakersfield",
-  "https://www.facebook.com/profile.php?id=61574535114589"
+  "https://www.facebook.com/profile.php?id=61584775744622"
 ] as const;
 
 /**

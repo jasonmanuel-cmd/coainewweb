@@ -2,7 +2,8 @@ import { isBuildInterest } from "@/lib/pricing";
 import { NextResponse } from "next/server";
 import { apiErrorResponse } from "@/lib/api-errors";
 import { FORMSPREE_INTAKE } from "@/lib/forms";
-import { deliverForm } from "@/lib/form-delivery";
+import { deliverCapturedForm } from "@/lib/crm/notifications";
+import { sanitizeAttribution } from "@/lib/crm/attribution";
 import { captureCrmLead } from "@/lib/crm/capture";
 import { getClientIp, hasJsonContentType, isSameSiteRequest } from "@/lib/security/request-guards";
 import { verifyTurnstileToken } from "@/lib/turnstile/verify";
@@ -45,8 +46,9 @@ export async function POST(request: Request) {
     }
 
     fields._subject = `${isBuildInterest(parsed.package_interest) ? "COAI build inquiry" : "COAI leak-score request"}: ${parsed.business_name}`;
-    await captureCrmLead("intake", fields);
-    await deliverForm(FORMSPREE_INTAKE, fields);
+    Object.assign(fields, sanitizeAttribution(raw.attribution));
+    const submissionKey = await captureCrmLead("intake", fields);
+    await deliverCapturedForm(FORMSPREE_INTAKE, fields, submissionKey);
 
     return NextResponse.json({ ok: true });
   } catch (error) {

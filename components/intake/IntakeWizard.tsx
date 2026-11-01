@@ -1,4 +1,5 @@
 "use client";
+import { inquiryAttribution } from "@/lib/crm/attribution";
 
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -135,7 +136,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
       const r = await fetch("/api/intake", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ ...payload, turnstileToken }),
+        body: JSON.stringify({ ...payload, turnstileToken, attribution: inquiryAttribution() }),
         signal: AbortSignal.timeout(25_000)
       });
       if (!r.ok) {
