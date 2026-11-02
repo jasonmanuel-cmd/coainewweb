@@ -12,7 +12,9 @@ function deliveryFailure(): PublicError {
 /** Require acceptance by the form provider before reporting success to a visitor. */
 export async function deliverForm(endpoint: string, fields: Record<string, string>): Promise<void> {
   const body = new FormData();
-  for (const [key, value] of Object.entries(fields)) body.set(key, value);
+  for (const [key, value] of Object.entries(fields)) {
+    if (key !== "submission_id" && key !== "submission_key") body.set(key, value);
+  }
   let response: Response;
   try {
     response = await fetch(endpoint, {

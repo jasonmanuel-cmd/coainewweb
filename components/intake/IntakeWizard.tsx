@@ -1,5 +1,6 @@
 "use client";
 import { inquiryAttribution } from "@/lib/crm/attribution";
+import { finishSubmission, submissionIdentity } from "@/lib/forms/submission-identity";
 
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -136,7 +137,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
       const r = await fetch("/api/intake", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ ...payload, turnstileToken, attribution: inquiryAttribution() }),
+        body: JSON.stringify({ ...payload, submission_id: submissionIdentity("intake"), turnstileToken, attribution: inquiryAttribution() }),
         signal: AbortSignal.timeout(25_000)
       });
       if (!r.ok) {
@@ -161,6 +162,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
       // Ignore storage errors
     }
 
+    finishSubmission("intake");
     router.push(`/intake/confirmation?session=${encodeURIComponent(sessionId)}${buildInquiry ? "&intent=build" : ""}${buildInquiry && packageInterest ? `&pkg=${encodeURIComponent(packageInterest)}` : ""}`);
   }
 

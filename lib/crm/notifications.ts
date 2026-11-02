@@ -3,6 +3,7 @@ import { randomUUID } from "node:crypto";
 import { deliverForm } from "@/lib/form-delivery";
 import { PublicError } from "@/lib/public-error";
 import { usesNeonCrm } from "./neon-store";
+import { deliverIdempotently, idempotentDeliveryEnabled } from "./idempotent-delivery";
 
 export const notificationJournalEnabled = () => usesNeonCrm() && process.env.COAI_CRM_ENABLED === "true" && process.env.COAI_NOTIFICATION_JOURNAL_ENABLED === "true";
 // Deliberately no dispatch route, cron, worker or environment switch in this draft.
@@ -34,6 +35,7 @@ function recordingFailure() {
 
 /** Adds an optional journal around the existing synchronous send. Its errors never change provider response semantics. */
 export async function deliverCapturedForm(endpoint: string, fields: Record<string, string>, submissionKey?: string) {
+  if (idempotentDeliveryEnabled()) return deliverIdempotently(endpoint, fields, submissionKey);
   let attempt: string | undefined;
   if (submissionKey && notificationJournalEnabled()) {
     try { attempt = await beginAttempt(submissionKey); } catch { recordingFailure(); }

@@ -20,8 +20,15 @@ export async function captureCrmLead(source: "intake" | "contact" | "audit" | "w
     source, intent: isBuildInterest(fields.package_interest) ? "build" : source === "intake" ? "scorecard" : source,
     industry: fields.industry ?? "", sms_consent: fields.sms_consent === "yes" ? "yes" : "no", consent_version: "request-only-v1", details
   };
-  // Suppress same-payload retries within a ten-minute time bucket, without overwriting owner edits.
-  const submission_key = createHash("sha256").update(JSON.stringify([lead, Math.floor(Date.now() / 600_000)])).digest("hex");
+  // New clients retain a random identity across retries. Bind it to submitted contact/scope
+  // data so reusing an ID with changed details cannot suppress a different inquiry.
+  // Attribution/recovery metadata may change on reload and must not create a second lead.
+  // Older clients without an ID retain the legacy bucket behavior during rolling upgrades.
+  const identity = fields.submission_id;
+  const content = { ...lead, details: Object.fromEntries(detailKeys.filter(k => fields[k]).map(k => [k, fields[k]])) };
+  const submission_key = createHash("sha256").update(JSON.stringify(identity
+    ? ["submission-v1", identity, content]
+    : [lead, Math.floor(Date.now() / 600_000)])).digest("hex");
   if(usesNeonCrm()) {await storeNeonLead({...lead,sms_consent:lead.sms_consent as "yes"|"no"},submission_key);return submission_key;}
   if (usesRedisCrm()) {
     const now=new Date().toISOString();
