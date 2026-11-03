@@ -2,16 +2,19 @@
 
 import { useState } from "react";
 import { TurnstileField } from "@/components/security/TurnstileField";
+import { finishSubmission, submissionIdentity } from "@/lib/forms/submission-identity";
 
 export function JaxWaitlistForm() {
   const [email, setEmail] = useState("");
   const [done, setDone] = useState(false);
   const [disabled, setDisabled] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState("");
+  const [verificationAttempt, setVerificationAttempt] = useState(0);
   const [error, setError] = useState<string | null>(null);
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
   async function joinWaitlist() {
+    if (disabled) return;
     const trimmed = email.trim();
     if (!trimmed || !trimmed.includes("@")) {
       window.alert("Enter a valid email.");
@@ -27,19 +30,25 @@ export function JaxWaitlistForm() {
       const r = await fetch("/api/jax-waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ email: trimmed, turnstileToken })
+        body: JSON.stringify({ email: trimmed, submission_id: submissionIdentity("waitlist"), turnstileToken }),
+        signal: AbortSignal.timeout(25_000)
       });
       if (!r.ok) {
         const j = (await r.json().catch(() => null)) as { error?: string } | null;
         setError(j?.error || "Could not join waitlist.");
         setDisabled(false);
+        setTurnstileToken("");
+        setVerificationAttempt(n => n + 1);
         return;
       }
     } catch {
       setError("Network error. Try again.");
       setDisabled(false);
+      setTurnstileToken("");
+      setVerificationAttempt(n => n + 1);
       return;
     }
+    finishSubmission("waitlist");
     setDone(true);
     setEmail("");
     setTurnstileToken("");
@@ -65,6 +74,7 @@ export function JaxWaitlistForm() {
         </button>
       </div>
       <TurnstileField
+        key={verificationAttempt}
         className="m-jax-waitlist-note"
         onToken={(t) => {
           setTurnstileToken(t);

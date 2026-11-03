@@ -26,6 +26,9 @@ export async function POST(request: Request) {
 
     const raw = await request.json();
     const parsed = contactMarketingSchema.parse(raw);
+    if (process.env.COAI_IDEMPOTENT_DELIVERY_ENABLED === "true" && !parsed.submission_id) {
+      return NextResponse.json({ error: "Refresh this page before submitting your inquiry." }, { status: 400 });
+    }
     if (parsed.company.trim()) {
       // Honeypot filled: silently accept to avoid teaching bots.
       return NextResponse.json({ ok: true });
@@ -47,6 +50,7 @@ export async function POST(request: Request) {
     Object.assign(fields, context, sanitizeAttribution(raw.attribution));
     fields._subject = ["COAI website contact", fields.inbound_source ? `from:${fields.inbound_source}` : "", fields.contact_intent ? `intent:${fields.contact_intent}` : ""].filter(Boolean).join(" · ");
     const submissionKey = await captureCrmLead("contact", fields);
+    delete fields.submission_id;
     await deliverCapturedForm(FORMSPREE_CONTACT, fields, submissionKey);
 
     return NextResponse.json({ ok: true });

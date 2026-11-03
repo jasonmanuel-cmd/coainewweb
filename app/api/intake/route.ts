@@ -27,6 +27,9 @@ export async function POST(request: Request) {
 
     const raw = await request.json();
     const parsed = intakeSubmissionSchema.parse(raw);
+    if (process.env.COAI_IDEMPOTENT_DELIVERY_ENABLED === "true" && !parsed.submission_id) {
+      return NextResponse.json({ error: "Refresh this page before submitting your inquiry." }, { status: 400 });
+    }
 
     if (parsed.company.trim()) {
       // Honeypot filled: silently accept to avoid teaching bots.
@@ -48,6 +51,7 @@ export async function POST(request: Request) {
     fields._subject = `${isBuildInterest(parsed.package_interest) ? "COAI build inquiry" : "COAI leak-score request"}: ${parsed.business_name}`;
     Object.assign(fields, sanitizeAttribution(raw.attribution));
     const submissionKey = await captureCrmLead("intake", fields);
+    delete fields.submission_id;
     await deliverCapturedForm(FORMSPREE_INTAKE, fields, submissionKey);
 
     return NextResponse.json({ ok: true });

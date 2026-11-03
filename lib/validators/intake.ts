@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { smsConsentField } from "./contact-marketing";
+import { smsConsentField, submissionIdField } from "./contact-marketing";
 
 const websiteField = z
   .string()
@@ -22,6 +22,7 @@ const websiteField = z
   });
 
 export const intakeSubmissionSchema = z.object({
+  submission_id: submissionIdField,
   turnstileToken: z.string().optional().default(""),
   form_type: z.string().max(80).optional().default("diagnostic_intake"),
   first_name: z.string().trim().min(1).max(200),

@@ -5,6 +5,7 @@ import { SmsConsentField } from "@/components/forms/SmsConsentField";
 import { TurnstileField } from "@/components/security/TurnstileField";
 import { CONTACT } from "@/lib/site";
 import { inquiryAttribution } from "@/lib/crm/attribution";
+import { finishSubmission, submissionIdentity } from "@/lib/forms/submission-identity";
 
 export type ContactMarketingFormProps = {
   /** `1` | `2` | `3` — preselects package interest from pricing or deep links */
@@ -62,6 +63,7 @@ export function ContactMarketingForm({
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           ...entries,
+          submission_id: submissionIdentity("contact"),
           attribution: inquiryAttribution(),
           turnstileToken,
           _subject: subjectBits.join(" · ")
@@ -69,6 +71,7 @@ export function ContactMarketingForm({
         signal: AbortSignal.timeout(25_000)
       });
       if (r.ok) {
+        finishSubmission("contact");
         setDone(true);
         form.reset();
         setTurnstileToken("");

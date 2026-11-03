@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { apiErrorResponse } from "@/lib/api-errors";
 import { FORMSPREE_CONTACT } from "@/lib/forms";
 import { captureCrmLead } from "@/lib/crm/capture";
+import { deliverCapturedForm } from "@/lib/crm/notifications";
 import { getClientIp, hasJsonContentType, isSameSiteRequest } from "@/lib/security/request-guards";
 import { verifyTurnstileToken } from "@/lib/turnstile/verify";
 import { takeRateLimitToken } from "@/lib/utils/rate-limit";
@@ -23,20 +24,15 @@ export async function POST(request: Request) {
 
     const raw = await request.json();
     const parsed = jaxWaitlistSchema.parse(raw);
+    if (process.env.COAI_IDEMPOTENT_DELIVERY_ENABLED === "true" && !parsed.submission_id) {
+      return NextResponse.json({ error: "Please refresh the page before submitting your inquiry." }, { status: 400 });
+    }
     if (!(await verifyTurnstileToken(parsed.turnstileToken, ip))) {
       return NextResponse.json({ error: "Human verification failed." }, { status: 400 });
     }
 
-    await captureCrmLead("waitlist", { email: parsed.email, sms_consent: "no" });
-    const fr = await fetch(FORMSPREE_CONTACT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({ email: parsed.email, form_type: "jax_waitlist" })
-    });
-
-    if (!fr.ok) {
-      return NextResponse.json({ error: "Waitlist signup failed." }, { status: 502 });
-    }
+    const submissionKey = await captureCrmLead("waitlist", { email: parsed.email, sms_consent: "no", submission_id: parsed.submission_id ?? "" });
+    await deliverCapturedForm(FORMSPREE_CONTACT, { email: parsed.email, form_type: "jax_waitlist" }, submissionKey);
 
     return NextResponse.json({ ok: true });
   } catch (error) {

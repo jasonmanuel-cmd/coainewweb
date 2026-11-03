@@ -25,8 +25,10 @@ const websiteField = z
  * to. Defaults to "no" — an absent value is never treated as consent.
  */
 export const smsConsentField = z.enum(["yes", "no"]).optional().default("no");
+export const submissionIdField = z.uuid().optional();
 
 export const contactMarketingSchema = z.object({
+  submission_id: submissionIdField,
   turnstileToken: z.string().optional().default(""),
   form_type: z.string().max(80).optional().default("contact"),
   first_name: z.string().trim().min(1).max(200),
@@ -43,6 +45,7 @@ export const contactMarketingSchema = z.object({
 });
 
 export const jaxWaitlistSchema = z.object({
+  submission_id: submissionIdField,
   turnstileToken: z.string().optional().default(""),
   email: z.string().email().max(320)
 });
