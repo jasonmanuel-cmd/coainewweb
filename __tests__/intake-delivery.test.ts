@@ -65,9 +65,11 @@ describe("intake acceptance and failure boundaries", () => {
     expect((await POST(request(valid))).status).toBe(429);
     expect(network).not.toHaveBeenCalled();
   });
-  it("silently ignores the honeypot without contacting the provider", async () => {
+  it.each(["company", "contact_reference"])("rejects the %s honeypot without claiming delivery", async (field) => {
     const network = vi.fn(); vi.stubGlobal("fetch", network);
-    expect((await POST(request({ ...valid, company: "spam" }))).status).toBe(200);
+    const response = await POST(request({ ...valid, [field]: "spam" }));
+    expect(response.status).toBe(400);
+    expect(await response.json()).not.toHaveProperty("ok");
     expect(network).not.toHaveBeenCalled();
   });
 });

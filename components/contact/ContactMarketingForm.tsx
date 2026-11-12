@@ -119,8 +119,8 @@ export function ContactMarketingForm({
           aria-hidden="true"
           className="m-sr-only-field"
         >
-          <label htmlFor="cf-company">Company</label>
-          <input id="cf-company" name="company" type="text" tabIndex={-1} autoComplete="off" />
+          <label htmlFor="cf-reference">Leave this field blank</label>
+          <input id="cf-reference" name="contact_reference" type="text" tabIndex={-1} autoComplete="off" data-lpignore="true" data-1p-ignore="true" />
         </div>
         <div className="m-form-group">
           <label htmlFor="cf-first-name">Name</label>
@@ -134,7 +134,7 @@ export function ContactMarketingForm({
         </div>
         <div className="m-form-group">
           <label htmlFor="cf-business-name">Business Name</label>
-          <input id="cf-business-name" name="business_name" placeholder="Your business name" required />
+          <input id="cf-business-name" name="business_name" placeholder="Your business name" autoComplete="organization" required />
         </div>
         <div className="m-form-group">
           <label htmlFor="cf-phone">Phone</label>

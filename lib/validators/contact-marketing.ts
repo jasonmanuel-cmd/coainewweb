@@ -38,6 +38,7 @@ export const contactMarketingSchema = z.object({
   email: z.string().email(),
   business_website: websiteField,
   company: z.string().max(200).optional().default(""),
+  contact_reference: z.string().max(200).optional().default(""),
   package_interest: z.string().max(100).optional().default(""),
   inbound_source: z.string().max(200).optional().default(""),
   contact_intent: z.string().max(200).optional().default(""),
