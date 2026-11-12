@@ -1,8 +1,8 @@
 /** Diagnostic intake form → chaoticallyorganizedai@gmail.com */
-export const FORMSPREE_INTAKE = "https://formspree.io/f/xwvzgggl";
+export const FORMSPREE_INTAKE = "https://formspree.io/f/xqpqkejd";
 
 /** Contact page + JAX waitlist → chaoticallyorganizedai@gmail.com */
-export const FORMSPREE_CONTACT = "https://formspree.io/f/mqeozzkw";
+export const FORMSPREE_CONTACT = "https://formspree.io/f/xqpqkejd";
 
 /** Send a lead notification email via Formspree (fire-and-forget, never throws) */
 export async function notifyLead(fields: Record<string, string>): Promise<void> {
