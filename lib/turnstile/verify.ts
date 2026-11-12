@@ -6,7 +6,10 @@ export async function verifyTurnstileToken(token: string | undefined, remoteip?:
   const secret = process.env.TURNSTILE_SECRET_KEY?.trim();
   if (!secret) return true;
 
-  if (!token || typeof token !== "string" || token.length < 10) return false;
+  if (!token || typeof token !== "string" || token.length < 10) {
+    console.warn("[turnstile] Token missing or malformed");
+    return false;
+  }
 
   const body = new URLSearchParams();
   body.set("secret", secret);
@@ -21,6 +24,13 @@ export async function verifyTurnstileToken(token: string | undefined, remoteip?:
   });
 
   const data = (await res.json()) as { success?: boolean; "error-codes"?: string[] };
+  if (data.success !== true) {
+    // Allowlisted diagnostic codes only: never log tokens, secrets, IPs or raw responses.
+    const knownCodes = new Set(["missing-input-secret", "invalid-input-secret", "missing-input-response", "invalid-input-response", "bad-request", "timeout-or-duplicate", "internal-error"]);
+    const codes = Array.isArray(data["error-codes"])
+      ? data["error-codes"].filter(code => knownCodes.has(code)) : [];
+    console.warn("[turnstile] Server verification rejected", codes.length ? codes.join(",") : "unconfirmed");
+  }
   return data.success === true;
 }
 
