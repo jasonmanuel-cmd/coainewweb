@@ -56,7 +56,10 @@ function validationResponse(error: ZodError): NextResponse {
  *   upstream response bodies, so they are never forwarded.
  */
 export function apiErrorResponse(error: unknown, options: { route: string; fallback: string }): NextResponse {
-  if (error instanceof ZodError) return validationResponse(error);
+  if (error instanceof ZodError) {
+    console.warn(`[api/${options.route}] Form validation rejected`);
+    return validationResponse(error);
+  }
   if (error instanceof PublicError) return NextResponse.json({ error: error.message }, { status: error.status });
   if (error instanceof SyntaxError) {
     return NextResponse.json({ error: "That request couldn't be read. Please try again." }, { status: 400 });

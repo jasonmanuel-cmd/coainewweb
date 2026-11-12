@@ -69,6 +69,18 @@ describe("verifyTurnstileToken", () => {
     expect(result).toBe(false);
   });
 
+  it("logs only known rejection codes, never submitted tokens, secrets or unknown response text", async () => {
+    vi.stubEnv("TURNSTILE_SECRET_KEY", "private-server-secret");
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => undefined);
+    vi.stubGlobal("fetch", vi.fn(async () => ({ json: async () => ({ success: false, "error-codes": ["timeout-or-duplicate", "private-provider-response"] }) })));
+    try {
+      expect(await verifyTurnstileToken("private-visitor-token", "1.2.3.4")).toBe(false);
+      const log = JSON.stringify(warn.mock.calls);
+      expect(log).toContain("timeout-or-duplicate");
+      expect(log).not.toMatch(/private-|1\.2\.3\.4/);
+    } finally { warn.mockRestore(); }
+  });
+
   it("does not include remoteip when it is 'unknown'", async () => {
     vi.stubEnv("TURNSTILE_SECRET_KEY", "0x4AAAAAAA_secret");
     const mockFetch = vi.fn().mockResolvedValue({
