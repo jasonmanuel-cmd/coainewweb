@@ -16,6 +16,7 @@ import {
   SERVED_CITIES,
   type CitySlug
 } from "./site";
+import { PACKAGES } from "./pricing";
 
 /**
  * Real, named client testimonials. Keep ratingCount/reviewCount in sync with the
@@ -79,7 +80,7 @@ export function organizationJsonLd() {
           email: CONTACT.email,
           availableLanguage: "English"
         },
-        priceRange: OFFERS.tradecall.price
+        priceRange: `From ${OFFERS.website.price}`
       },
       {
         "@type": "Person",
@@ -138,6 +139,36 @@ export function serviceJsonLd(serviceName: string, description: string, path?: s
   };
 }
 
+/**
+ * OfferCatalog for /pricing: the base website and the three packages, built from
+ * lib/pricing.ts so structured data can never disagree with the visible prices.
+ */
+export function pricingCatalogJsonLd() {
+  const offer = (name: string, description: string, low: number, high: number) => ({
+    "@type": "Offer",
+    name,
+    description,
+    priceCurrency: "USD",
+    ...(low === high
+      ? { price: String(low) }
+      : { priceSpecification: { "@type": "PriceSpecification", minPrice: low, maxPrice: high, priceCurrency: "USD" } }),
+    itemOffered: { "@type": "Service", name, provider: { "@id": ORG_ID }, areaServed: [...AREA_SERVED] }
+  });
+  const website = Number(OFFERS.website.priceNumeric);
+  return {
+    "@context": "https://schema.org",
+    "@type": "OfferCatalog",
+    name: "COAI websites and packages",
+    url: `${SITE_URL}/pricing`,
+    itemListElement: [
+      offer(OFFERS.website.name, OFFERS.website.summary, website, website),
+      ...PACKAGES.map((pkg) =>
+        offer(`${pkg.name} package`, `${pkg.tagline} ${pkg.breakdown}.`, pkg.numeric.low, pkg.numeric.high)
+      )
+    ]
+  };
+}
+
 /** Generate Service schema scoped to a specific city — for location pages. */
 export function localServiceJsonLd(slug: CitySlug) {
   const city = SERVED_CITIES[slug];
@@ -162,7 +193,7 @@ export function localServiceJsonLd(slug: CitySlug) {
     ],
     offers: {
       "@type": "Offer",
-      price: OFFERS.tradecall.priceNumeric,
+      price: OFFERS.website.priceNumeric,
       priceCurrency: "USD"
     }
   };

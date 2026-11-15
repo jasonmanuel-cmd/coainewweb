@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { BadgeCheck, MapPin, Phone } from "lucide-react";
 import { ContactMarketingForm } from "@/components/contact/ContactMarketingForm";
+import { sanitizeAttribution } from "@/lib/crm/attribution";
 import { JsonLd } from "@/components/JsonLd";
 import { MarketingLayout } from "@/components/marketing/MarketingLayout";
 import { pageMetadata } from "@/lib/metadata";
@@ -20,6 +21,7 @@ export default async function ContactPage({
   searchParams: Promise<{ package?: string; from?: string; intent?: string }>;
 }) {
   const sp = await searchParams;
+  const context = sanitizeAttribution({ inbound_source: sp.from, contact_intent: sp.intent });
   const pkg = sp.package;
   const initialPackage = pkg && ["1", "2", "3"].includes(pkg) ? pkg : undefined;
   const contactPage = {
@@ -122,8 +124,8 @@ export default async function ContactPage({
 
         <ContactMarketingForm
           initialPackage={initialPackage}
-          inboundSource={sp.from}
-          contactIntent={sp.intent}
+          inboundSource={context.inbound_source}
+          contactIntent={context.contact_intent}
         />
       </div>
     </MarketingLayout>

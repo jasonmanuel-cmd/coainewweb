@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BUSINESS_HOURS_LABEL, CTA_BOOKING_URL, PRIMARY_EMAIL, SITE_NAME, SITE_URL } from "@/lib/site";
+import { BUSINESS_HOURS_LABEL, PRIMARY_EMAIL, SITE_NAME, SITE_URL } from "@/lib/site";
 
 const systemLinks = [
   ["Systems Catalog", "/systems"],
@@ -23,10 +23,10 @@ export function RevampFooter() {
       <div className="revamp-footer-cta">
         <div>
           <span className="revamp-kicker"><i aria-hidden="true" /> Deployment window open</span>
-          <h2>Ready to stop losing the calls you already paid to earn?</h2>
+          <h2>Ready for a website that looks as good as your work?</h2>
         </div>
-        <Link href={CTA_BOOKING_URL} className="revamp-btn-primary revamp-btn-light">
-          Get your leak score <span aria-hidden="true">↗</span>
+        <Link href="/website-design" className="revamp-btn-primary revamp-btn-light">
+          Plan your website build <span aria-hidden="true">↗</span>
         </Link>
       </div>
 

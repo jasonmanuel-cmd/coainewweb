@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import { apiErrorResponse } from "@/lib/api-errors";
 import { FORMSPREE_CONTACT } from "@/lib/forms";
+import { deliverCapturedForm } from "@/lib/crm/notifications";
+import { sanitizeAttribution } from "@/lib/crm/attribution";
+import { captureCrmLead } from "@/lib/crm/capture";
 import { getClientIp, hasJsonContentType, isSameSiteRequest } from "@/lib/security/request-guards";
 import { verifyTurnstileToken } from "@/lib/turnstile/verify";
 import { takeRateLimitToken } from "@/lib/utils/rate-limit";
@@ -23,31 +26,32 @@ export async function POST(request: Request) {
 
     const raw = await request.json();
     const parsed = contactMarketingSchema.parse(raw);
-    if (parsed.company.trim()) {
-      // Honeypot filled: silently accept to avoid teaching bots.
-      return NextResponse.json({ ok: true });
+    if (process.env.COAI_IDEMPOTENT_DELIVERY_ENABLED === "true" && !parsed.submission_id) {
+      return NextResponse.json({ error: "Refresh this page before submitting your inquiry." }, { status: 400 });
+    }
+    if (parsed.company.trim() || parsed.contact_reference.trim()) {
+      console.warn("[contact] Form rejected by spam check");
+      return NextResponse.json({ error: "We couldn't submit this form. Refresh the page, enter your details manually, and try again." }, { status: 400 });
     }
     if (!(await verifyTurnstileToken(parsed.turnstileToken, ip))) {
       return NextResponse.json({ error: "Human verification failed." }, { status: 400 });
     }
 
-    const fd = new FormData();
+    const fields: Record<string, string> = {};
     for (const [key, value] of Object.entries(parsed)) {
-      if (key === "turnstileToken" || key === "company") continue;
+      if (key === "turnstileToken" || key === "company" || key === "contact_reference") continue;
       if (value !== undefined && value !== null && value !== "") {
-        fd.set(key, String(value));
+        fields[key] = String(value);
       }
     }
 
-    const fr = await fetch(FORMSPREE_CONTACT, {
-      method: "POST",
-      body: fd,
-      headers: { Accept: "application/json" }
-    });
-
-    if (!fr.ok) {
-      return NextResponse.json({ error: "Form delivery failed." }, { status: 502 });
-    }
+    const context = sanitizeAttribution(fields);
+    delete fields.inbound_source; delete fields.contact_intent;
+    Object.assign(fields, context, sanitizeAttribution(raw.attribution));
+    fields._subject = ["COAI website contact", fields.inbound_source ? `from:${fields.inbound_source}` : "", fields.contact_intent ? `intent:${fields.contact_intent}` : ""].filter(Boolean).join(" · ");
+    const submissionKey = await captureCrmLead("contact", fields);
+    delete fields.submission_id;
+    await deliverCapturedForm(FORMSPREE_CONTACT, fields, submissionKey);
 
     return NextResponse.json({ ok: true });
   } catch (error) {

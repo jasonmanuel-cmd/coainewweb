@@ -1,0 +1,27 @@
+.lead-demo { max-width: 1120px; margin: 0 auto; padding: 0 24px 72px; }
+.lead-demo__notice { padding: 18px 20px; border: 1px solid #36584d; border-radius: 12px; color: #c2d7ce; background: #10231c; line-height: 1.65; }
+.lead-demo__steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding: 24px 0; margin: 0; list-style: none; }
+.lead-demo__steps li { padding: 14px; border-bottom: 2px solid #31463d; color: #a8beb3; font-size: .9rem; }
+.lead-demo__steps li[aria-current="step"] { color: #a7f3d0; border-color: #5ee3a2; }
+.lead-demo__steps span { display: block; font-family: monospace; margin-bottom: 8px; }
+.lead-demo__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+.lead-demo__panel { padding: clamp(22px, 3vw, 36px); border: 1px solid #31463d; border-radius: 18px; background: #0d1914; color: #d5e4dc; }
+.lead-demo__panel h2 { color: #f1faf5; font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; margin: 10px 0 18px; }
+.lead-demo__panel p { line-height: 1.65; margin-bottom: 20px; }
+.lead-demo__label { color: #a7f3d0; font-family: monospace; font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; }
+.lead-demo__message { background: #173127; padding: 18px; border-radius: 12px; margin: 24px 0; border: 1px solid #466a58; }
+.lead-demo__message p { margin: 10px 0; }
+.lead-demo__message small { color: #b5cbbb; }
+.lead-demo__form { display: grid; gap: 12px; margin-top: 22px; }
+.lead-demo__form label { font-weight: 600; }
+.lead-demo__form select { width: 100%; min-height: 48px; padding: 12px; background: #14231c; color: #f1faf5; border: 1px solid #607d6e; border-radius: 8px; font: inherit; }
+.lead-demo__form select:focus-visible, .lead-demo button:focus-visible, .lead-demo a:focus-visible { outline: 3px solid #a7f3d0; outline-offset: 4px; }
+.lead-demo__empty { padding: 22px 0; color: #a8beb3; }
+.lead-demo__handoff h3 { color: #a7f3d0; margin: 24px 0 16px; }
+.lead-demo__handoff dl { margin: 0 0 20px; }
+.lead-demo__handoff dl div { border-bottom: 1px solid #31463d; padding: 12px 0; }
+.lead-demo__handoff dt { color: #a8beb3; font-size: .85rem; margin-bottom: 5px; }
+.lead-demo__handoff dd { margin: 0; overflow-wrap: anywhere; }
+.lead-demo__actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
+.lead-demo .m-btn-primary, .lead-demo .m-btn-ghost { white-space: normal; text-align: center; }
+@media (max-width: 760px) { .lead-demo__grid { grid-template-columns: 1fr; } .lead-demo__steps { grid-template-columns: 1fr 1fr; } .lead-demo { padding-inline: 16px; } }

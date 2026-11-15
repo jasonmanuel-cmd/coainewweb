@@ -1,9 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SmsConsentField } from "@/components/forms/SmsConsentField";
 import { TurnstileField } from "@/components/security/TurnstileField";
 import { CONTACT } from "@/lib/site";
+import { inquiryAttribution } from "@/lib/crm/attribution";
+import { finishSubmission, submissionIdentity } from "@/lib/forms/submission-identity";
 
 export type ContactMarketingFormProps = {
   /** `1` | `2` | `3` — preselects package interest from pricing or deep links */
@@ -27,8 +29,14 @@ export function ContactMarketingForm({
 }: ContactMarketingFormProps) {
   const [done, setDone] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [verificationAttempt, setVerificationAttempt] = useState(0);
   const [formError, setFormError] = useState<string | null>(null);
+  const errorRef = useRef<HTMLParagraphElement>(null);
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+  useEffect(() => {
+    if (formError) errorRef.current?.focus();
+  }, [formError]);
 
   const [pkgHidden, setPkgHidden] = useState("");
   useEffect(() => {
@@ -38,6 +46,7 @@ export function ContactMarketingForm({
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (submitting) return;
     setFormError(null);
     const form = e.currentTarget;
     if (siteKey && !turnstileToken) {
@@ -51,17 +60,22 @@ export function ContactMarketingForm({
 
     const fd = new FormData(form);
     const entries = Object.fromEntries(fd.entries()) as Record<string, string>;
+    setSubmitting(true);
     try {
       const r = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           ...entries,
+          submission_id: submissionIdentity("contact"),
+          attribution: inquiryAttribution(),
           turnstileToken,
           _subject: subjectBits.join(" · ")
-        })
+        }),
+        signal: AbortSignal.timeout(25_000)
       });
       if (r.ok) {
+        finishSubmission("contact");
         setDone(true);
         form.reset();
         setTurnstileToken("");
@@ -69,15 +83,21 @@ export function ContactMarketingForm({
       }
       const errJson = (await r.json().catch(() => null)) as { error?: string } | null;
       setFormError(errJson?.error || "Something went wrong. Try again or call us.");
+      setTurnstileToken("");
+      setVerificationAttempt((attempt) => attempt + 1);
     } catch {
       setFormError("Network error. Try again or call us.");
+      setTurnstileToken("");
+      setVerificationAttempt((attempt) => attempt + 1);
+    } finally {
+      setSubmitting(false);
     }
   }
 
   if (done) {
     return (
       <div className="m-contact-success">
-        <p>✓ MESSAGE RECEIVED — Jason will respond same business day.</p>
+        <p role="status">✓ MESSAGE RECEIVED — Jason reviews inquiries during published business hours.</p>
       </div>
     );
   }
@@ -90,7 +110,7 @@ export function ContactMarketingForm({
     <div className="m-contact-form-wrap" id="contact-form">
       <h2 className="m-contact-form-title">Send a Message</h2>
       <p className="m-contact-form-sub">
-        Submissions go to <strong>{CONTACT.email}</strong> via our form handler. Jason responds same business day. If
+        Submissions go to <strong>{CONTACT.email}</strong> via our form handler. Jason reviews inquiries during published business hours. If
         it&apos;s urgent, call directly — {CONTACT.phoneDisplay}.
       </p>
       <form id="contact-form-fields" onSubmit={handleSubmit}>
@@ -103,22 +123,22 @@ export function ContactMarketingForm({
           aria-hidden="true"
           className="m-sr-only-field"
         >
-          <label htmlFor="cf-company">Company</label>
-          <input id="cf-company" name="company" type="text" tabIndex={-1} autoComplete="off" />
+          <label htmlFor="cf-reference">Leave this field blank</label>
+          <input id="cf-reference" name="contact_reference" type="text" tabIndex={-1} autoComplete="off" data-lpignore="true" data-1p-ignore="true" />
         </div>
         <div className="m-form-group">
-          <label htmlFor="cf-first-name">First Name</label>
+          <label htmlFor="cf-first-name">Name</label>
           <input
             id="cf-first-name"
             name="first_name"
-            placeholder="First name"
+            placeholder="Your name"
             required
-            autoComplete="given-name"
+            autoComplete="name"
           />
         </div>
         <div className="m-form-group">
           <label htmlFor="cf-business-name">Business Name</label>
-          <input id="cf-business-name" name="business_name" placeholder="Your business name" required />
+          <input id="cf-business-name" name="business_name" placeholder="Your business name" autoComplete="organization" required />
         </div>
         <div className="m-form-group">
           <label htmlFor="cf-phone">Phone</label>
@@ -145,16 +165,14 @@ export function ContactMarketingForm({
         </div>
         <SmsConsentField idPrefix="cf" />
         <TurnstileField
+          key={verificationAttempt}
           className="m-form-group"
-          onToken={(t) => {
-            setTurnstileToken(t);
-            setFormError(null);
-          }}
+          onToken={setTurnstileToken}
           onExpire={() => setTurnstileToken("")}
         />
-        {formError ? <p className="m-form-note m-form-error">{formError}</p> : null}
-        <button type="submit" className="m-submit-btn">
-          Send Message →
+        {formError ? <p ref={errorRef} tabIndex={-1} role="alert" className="m-form-note m-form-error">{formError} <a href={`tel:${CONTACT.phoneE164}`}>Call {CONTACT.phoneDisplay}</a> or <a href={`mailto:${CONTACT.email}`}>email Jason</a>.</p> : null}
+        <button type="submit" className="m-submit-btn" disabled={submitting || (Boolean(siteKey) && !turnstileToken)}>
+          {submitting ? "Sending..." : "Send Message →"}
         </button>
         <p className="m-form-note">Or skip the form and call {CONTACT.phoneDisplay} during published business hours.</p>
       </form>

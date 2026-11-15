@@ -6,16 +6,64 @@ export type RevampProject = {
   logo: string;
   result: string;
   metric: string;
+  previewImage?: string;
+  previewAlt?: string;
 };
 
 /** Verified live URLs; keep synchronized with lib/portfolio-cases.tsx. */
 export const REVAMP_PROJECTS: RevampProject[] = [
+  {
+    title: "Aspen II Homes",
+    category: "Residential Homebuilding",
+    description: "A Tehachapi homebuilder site connecting the current community release, six semi-custom plans, financing details, and buyer inquiries.",
+    href: "https://aspen2homes.com/",
+    logo: "ASPEN II",
+    previewImage: "/projects/aspen-ii-homes.webp",
+    previewAlt: "Aspen II Homes homepage featuring Sunset Retreat in Tehachapi",
+    result: "Live",
+    metric: "Home plans + buyer path"
+  },
+  {
+    title: "Harbison Standard",
+    category: "Real Estate & Development",
+    description: "A values-led site for real estate, development, and investing, with service overviews, founder content, video, and contact paths.",
+    href: "https://www.harbisonstandard.com/",
+    logo: "HARBISON",
+    previewImage: "/projects/harbison-standard.webp",
+    previewAlt: "Harbison Standard homepage with its Kern County landscape hero",
+    result: "Live",
+    metric: "Brand story + client paths"
+  },
+  {
+    title: "The Pitts",
+    category: "Independent Music",
+    description: "An official artist EPK for the band’s Jamestown album, bringing together streaming, track details, press assets, and booking contact.",
+    href: "https://www.thepitts805.com/",
+    logo: "THE PITTS",
+    previewImage: "/projects/the-pitts.webp",
+    previewAlt: "The Pitts official website featuring the Jamestown album",
+    result: "Live",
+    metric: "Album + booking journey"
+  },
+  {
+    title: "T&M Hauling",
+    category: "Junk Removal & Hauling",
+    description: "A Bakersfield hauling site with clear service information, fast estimate paths, before-and-after proof, and local coverage.",
+    href: "https://www.tandmbak.com/",
+    logo: "T&M",
+    previewImage: "/projects/tm-hauling.webp",
+    previewAlt: "T&M Hauling homepage showing the Bakersfield father-and-son crew",
+    result: "Live",
+    metric: "Service calls + estimates"
+  },
   {
     title: "Phil’s Cheesesteaks & More",
     category: "Food & Beverage",
     description: "A conversion-first restaurant site with a mobile menu, online ordering paths, local business signals, and review proof.",
     href: "https://phils-cheesesteaks-and-more.com",
     logo: "PHIL’S",
+    previewImage: "/projects/phils-cheesesteaks.webp",
+    previewAlt: "Phil’s Cheesesteaks homepage with pickup ordering and Bakersfield location details",
     result: "Live",
     metric: "Ordering and local discovery"
   },
@@ -27,15 +75,6 @@ export const REVAMP_PROJECTS: RevampProject[] = [
     logo: "EWC",
     result: "Live",
     metric: "Trust and lead intake"
-  },
-  {
-    title: "Signature 954",
-    category: "General Contracting",
-    description: "A premium contractor showcase designed around project credibility, service clarity, and quote requests.",
-    href: "https://signature954.vercel.app",
-    logo: "S954",
-    result: "Live preview",
-    metric: "Project and quote funnel"
   },
   {
     title: "Home Grow Money",

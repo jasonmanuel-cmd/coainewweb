@@ -1,4 +1,5 @@
-﻿import type { Metadata } from "next";
+﻿import { isBuildInterest } from "@/lib/pricing";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { IntakeWizard } from "@/components/intake/IntakeWizard";
 import { JsonLd } from "@/components/JsonLd";
@@ -10,7 +11,7 @@ import { SITE_URL } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: "Run My Diagnostic",
   description:
-    "Run your free digital growth diagnostic. See your visibility score, revenue leak estimate, and priority fix list.",
+    "Request a job-call leak scorecard. Free for qualified owner-operators; eligibility, any audit fee, and timing are confirmed before work begins.",
   path: "/intake"
 });
 
@@ -23,7 +24,7 @@ export default async function IntakePage({
   const sp = await searchParams;
   const raw = sp.pkg;
   const pkg = Array.isArray(raw) ? raw[0] : raw;
-  const packageInterest = pkg && ["1", "2", "3"].includes(pkg) ? pkg : undefined;
+  const packageInterest = isBuildInterest(pkg) ? pkg : undefined;
 
   const crumbs = breadcrumbJsonLd([
     { name: "Home", path: "/" },

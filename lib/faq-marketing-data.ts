@@ -1,3 +1,4 @@
+import { ADDON_COUNT, CARE_PLANS, PACKAGES, getAddOn } from "./pricing";
 import { BUSINESS_HOURS_LABEL, CONTACT, FOUNDER, OFFERS, THIRD_PARTY_COSTS } from "./site";
 
 /**
@@ -5,7 +6,7 @@ import { BUSINESS_HOURS_LABEL, CONTACT, FOUNDER, OFFERS, THIRD_PARTY_COSTS } fro
  *
  * Because this text is emitted as structured data, AI search engines quote it
  * verbatim. Rules:
- * - Every price references OFFERS. Never write a price literal here.
+ * - Every price references OFFERS (lib/site.ts) or lib/pricing.ts. Never write a price literal here.
  * - No statistic without a named source.
  * - No availability claim that contradicts BUSINESS_HOURS_LABEL.
  * - No phone number other than CONTACT.phoneDisplay presented as company NAP.
@@ -26,20 +27,35 @@ export const FAQ_MARKETING_SECTIONS: FaqMarketingSection[] = [
     items: [
       {
         question: "What does it cost to work with COAI?",
-        answer: `We sell three things. The ${OFFERS.scorecard.name} is free for qualified owner-operators; ${OFFERS.scorecard.alt.toLowerCase()}. The ${OFFERS.tradecall.name} is ${OFFERS.tradecall.price} flat — ${OFFERS.tradecall.terms}. A bilingual English/Spanish build adds ${OFFERS.tradecall.bilingual}. ${OFFERS.continuity.name} is an optional ${OFFERS.continuity.price} per month, ${OFFERS.continuity.terms}.\n\nThe diagnostic call and the proposal are free. You only pay once a written scope is agreed and work begins. The pricing page is the single source of truth for every number.`
+        answer: `Every project starts with a custom website. The ${OFFERS.website.name} is ${OFFERS.website.price} flat — ${OFFERS.website.terms}. From there you choose a package or individual add-ons: ${PACKAGES.map((pkg) => `${pkg.name} ${pkg.total}`).join(", ")} (each includes the website). The ${OFFERS.scorecard.name} is free for qualified owner-operators; ${OFFERS.scorecard.alt.toLowerCase()}.\n\nThe diagnostic call and the proposal are free. You only pay once a written scope is agreed and work begins. The pricing page lists every package and all ${ADDON_COUNT} add-ons and is the single source of truth for every number.`
       },
       {
         question: "Are there monthly fees or retainers?",
-        answer: `No mandatory retainer. The build is a one-time fixed-price engagement and you own the result.\n\nTwo costs do continue after launch, and you pay them directly to the vendor rather than to COAI: ${HOSTING.item.toLowerCase()} at ${HOSTING.cost} (${HOSTING.paidTo}), and ${MESSAGING.item.toLowerCase()} at ${MESSAGING.cost} (${MESSAGING.paidTo}). ${OFFERS.continuity.name} at ${OFFERS.continuity.price} per month is optional and never required.`
+        answer: `There is no mandatory retainer on the website itself: it is a one-time fixed-price engagement and you own the result. Some systems run continuously (for example the CRM, follow-up, or an AI voice receptionist), and each shows its monthly cost on the pricing page. Website care plans — ${CARE_PLANS.map((plan) => `${plan.name} ${plan.price}`).join(", ")} — are optional.\n\nTwo third-party costs continue after launch, and you pay them directly to the vendor rather than to COAI: ${HOSTING.item.toLowerCase()} at ${HOSTING.cost} (${HOSTING.paidTo}), and ${MESSAGING.item.toLowerCase()} at ${MESSAGING.cost} (${MESSAGING.paidTo}).`
+      },
+      {
+        question: "What packages do you offer?",
+        answer: `Three, each built on the ${OFFERS.website.name}. ${PACKAGES.map((pkg) => `${pkg.name} (${pkg.total}): ${pkg.tagline}`).join(" ")}\n\nMissed-call text-back is part of ${PACKAGES[1].name}, or ${getAddOn("missed-call-sms").price} on its own.`
+      },
+      {
+        question: "Can I buy one add-on instead of a package?",
+        answer: `Yes. Every system is priced individually — for example Google Business + Schema is ${getAddOn("gbp-schema").price}, the Customer Review System is ${getAddOn("review-system").price}, and Online Booking is ${getAddOn("online-booking").price}. Add-ons attach to a website build. The pricing page lists all ${ADDON_COUNT}.`
+      },
+      {
+        question: "Are the package prices fixed?",
+        answer: "The scope and price are fixed in writing before work starts. Digital Foundation is a set list of items. Lead Machine is approximate because the exact systems vary with what is implemented, and Customer Lifecycle is a range for the same reason. Monthly amounts for systems that run continuously depend on exactly what is implemented. You approve the final number before a line of code is written."
+      },
+      {
+        question: "Do you promise rankings, leads, or AI citations?",
+        answer: "No. We build the structure, speed, and systems, and we measure the result against the written scope. Search rankings, AI answer-engine citations, call volume, and revenue depend on factors no vendor controls, so we do not promise them."
       },
       {
         question: "What is not included in the build price?",
-        answer:
-          "Ad spend, custom third-party integrations, ongoing content beyond the agreed scope, carrier and SMS usage fees, hosting, advanced CRM migration, and around-the-clock human dispatch are not included. Actual third-party costs are listed in writing before you sign, not discovered afterward."
+        answer: "Ad spend, custom third-party integrations, ongoing content beyond the agreed scope, carrier, SMS, and AI usage fees, hosting, advanced CRM migration, and around-the-clock human dispatch are not included in any offer. Actual third-party costs are listed in writing before you sign, not discovered afterward."
       },
       {
         question: "Do you offer payment plans?",
-        answer: `The standard split is built in: ${OFFERS.tradecall.terms}. Milestone-based structures are available on larger builds — typically 50% to start and 50% on delivery, or a three-milestone split. We work with operators, not against them.`
+        answer: `The standard website split is built in: ${OFFERS.website.terms}. Packages and larger builds use milestone-based structures set in the written scope — typically 50% to start and 50% on delivery, or a three-milestone split. We work with operators, not against them.`
       }
     ]
   },
@@ -120,7 +136,7 @@ export const FAQ_MARKETING_SECTIONS: FaqMarketingSection[] = [
       },
       {
         question: "Do you offer Spanish-language builds?",
-        answer: `Yes. Bilingual English/Spanish builds are available for ${OFFERS.tradecall.bilingual} and are worth considering for most Kern County service businesses — a monolingual site simply cannot be read by part of your market. We build dual-language systems with proper hreflang markup and translation QA.`
+        answer: `Yes. Bilingual Spanish is ${getAddOn("bilingual").price} on top of a website build (it is also part of the ${PACKAGES[1].name} package) and is worth considering for most Kern County service businesses — a monolingual site simply cannot be read by part of your market. We build dual-language pages with proper hreflang markup and translation QA.`
       }
     ]
   },
@@ -130,11 +146,11 @@ export const FAQ_MARKETING_SECTIONS: FaqMarketingSection[] = [
     items: [
       {
         question: "What does ongoing support cost after launch?",
-        answer: `${OFFERS.continuity.name} is ${OFFERS.continuity.price} per month, ${OFFERS.continuity.terms}. It covers the routing, form, and SMS test log, a response-time report, an uncontacted-lead review, a monthly scorecard, minor site and profile corrections, and one improvement priority each month.\n\nLarger as-needed work is scoped and quoted in writing before it begins. There is no mandatory maintenance fee — you can take full ownership at launch and never pay us again.`
+        answer: `Optional website care plans: ${CARE_PLANS.map((plan) => `${plan.name} ${plan.price} (${plan.summary.replace(/\.$/, "").toLowerCase()})`).join("; ")}.\n\nLarger as-needed work is scoped and quoted in writing before it begins. There is no mandatory maintenance fee — you can take full ownership at launch and never pay us for care again.`
       },
       {
         question: "Is every capability in the systems catalog included in the standard build?",
-        answer: `No. The systems catalog is a diagnostic map, not a package inclusion list. The standard ${OFFERS.tradecall.name} remains ${OFFERS.tradecall.price} with the exact baseline published on the pricing page. Advanced integrations and lifecycle modules are scoped separately only when the diagnostic identifies a practical use for them. Your statement of work names every included system before you approve it.`
+        answer: `No. The systems catalog is a diagnostic map, not a package inclusion list. The ${OFFERS.website.name} is ${OFFERS.website.price}, and the systems in the catalog are added through the three packages or as individually priced add-ons on the pricing page. Your statement of work names every included system before you approve it.`
       },
       {
         question: "Can you migrate my existing Wix, Squarespace, or WordPress site?",
@@ -189,13 +205,11 @@ export const FAQ_MARKETING_SECTIONS: FaqMarketingSection[] = [
     items: [
       {
         question: "What does Chaotically Organized AI (COAI) do for Bakersfield contractors?",
-        answer:
-          `COAI installs custom revenue infrastructure for trade contractors, including a call-first website, missed-call acknowledgement, lead routing, and Google Business Profile cleanup. The system costs a flat ${OFFERS.tradecall.price} to build and creates a tested response path for calls the owner cannot answer on a job site.`
+        answer: `COAI designs and builds custom, hand-coded websites for Bakersfield contractors and the systems around them: local search and AI answer-engine structure, missed-call text-back, online booking, follow-up, a CRM, and reporting. Websites start at ${OFFERS.website.price} flat, and the systems are added through packages or individual add-ons.`
       },
       {
         question: `How much does a contractor website and lead system cost with COAI?`,
-        answer:
-          `The ${OFFERS.tradecall.name} costs a flat ${OFFERS.tradecall.price} (${OFFERS.tradecall.terms}) with full client account ownership. Optional ${OFFERS.continuity.name} costs ${OFFERS.continuity.price} per month and covers testing, a response-time report, an uncontacted-lead review, minor corrections, and one improvement priority. It is not required to keep the delivered build.`
+        answer: `The ${OFFERS.website.name} costs a flat ${OFFERS.website.price} (${OFFERS.website.terms}) with full client account ownership. Packages that add lead-capture and follow-up systems: ${PACKAGES.map((pkg) => `${pkg.name} ${pkg.total}`).join(", ")}, each including the website. All ${ADDON_COUNT} add-ons are also priced individually on the pricing page. Nothing is required to keep the delivered website.`
       },
       {
         question: "How fast does the missed-call text-back system respond to prospective clients?",

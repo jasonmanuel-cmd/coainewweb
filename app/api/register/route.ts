@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { apiErrorResponse } from "@/lib/api-errors";
 import { runAudit } from "@/lib/audit/run-audit";
 import { notifyLead } from "@/lib/forms";
+import { captureCrmLead } from "@/lib/crm/capture";
 import { getClientIp, hasJsonContentType, isSameSiteRequest } from "@/lib/security/request-guards";
 import { getSupabaseAdmin } from "@/lib/supabase/client";
 import { verifyTurnstileToken } from "@/lib/turnstile/verify";
@@ -43,6 +44,7 @@ export async function POST(request: Request) {
     const leadId = createId("lead");
     const audit = await runAudit(parsed.url);
 
+    await captureCrmLead("audit", { first_name: parsed.businessName || "", business_name: parsed.businessName || parsed.companyName || "", email: parsed.email, phone: parsed.phone, business_website: parsed.url, sms_consent: "no" });
     const supabase = getSupabaseAdmin();
     if (supabase) {
       const leadInsert = await supabase.from("leads").insert({

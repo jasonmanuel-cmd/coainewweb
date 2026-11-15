@@ -1,5 +1,7 @@
 # COAI website — project record
 
+> Historical snapshot: the status, PR states and version counts below are dated October 2026. They are preserved as evidence, not current deployment instructions. In particular, do not execute the old "merge PR #21" next action or assume the old redirect-fetch or origin-guard descriptions still match source. For current setup use [launch setup](../README_SETUP.md), [HQ setup](hq-setup.md), and the [November 12 drift report](../2026-11-12_DRIFT_REPORT.md). Verify the actual deployment and receipt before claiming a live integration works.
+
 **As of:** 2026-10-15 · **Repo:** `jasonmanuel-cmd/coainewweb` · **Production base:** `main` @ `1e8a9c4`
 **Working branch (agreed):** `fix/csp-origins-and-ci` — PR #30, CSP repair + first CI (§8). **Open, not merged.**
 PR #28 (`perf/lighthouse-critical-path`, §7) was squash-merged into `main` by the owner on 2026-10-15 and verified live in production.

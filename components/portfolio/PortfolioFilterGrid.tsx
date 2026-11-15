@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import type { PortfolioCategory } from "@/lib/portfolio-cases";
@@ -9,10 +10,12 @@ const FILTERS: { id: PortfolioCategory; label: string }[] = [
   { id: "all", label: "All Work" },
   { id: "food", label: "Food & Beverage" },
   { id: "finance", label: "Finance" },
-  { id: "contracting", label: "Contracting" },
+  { id: "contracting", label: "Building & Trades" },
   { id: "apparel", label: "Apparel" },
   { id: "photo", label: "Photography" },
-  { id: "music", label: "Music" }
+  { id: "music", label: "Music" },
+  { id: "real-estate", label: "Real Estate" },
+  { id: "home-services", label: "Home Services" }
 ];
 
 export function PortfolioFilterGrid() {
@@ -40,6 +43,17 @@ export function PortfolioFilterGrid() {
             className={`m-case-card ${cat === "all" || cat === c.category ? "m-case-card--visible" : "m-case-card--hidden"}`}
           >
             <div className={`m-card-accent ${c.accentClass}`} />
+            {c.previewImage && (
+              <div className="m-card-preview">
+                <Image
+                  className="m-card-preview-image"
+                  src={c.previewImage}
+                  alt={c.previewAlt ?? `${c.client} website screenshot`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </div>
+            )}
             <div className="m-card-header">
               <div className="m-outcome-badge m-badge-live">● Live</div>
               <div className={`m-card-industry-tag ${c.tagClass}`}>{c.industryLabel}</div>

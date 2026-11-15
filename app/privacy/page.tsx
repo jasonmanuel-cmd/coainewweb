@@ -25,7 +25,7 @@ export default function PrivacyPage() {
         <div className="m-legal-top">
           <div className="m-legal-type">Legal Document</div>
           <h1>Privacy Policy</h1>
-          <div className="m-legal-date">Last Updated: October 10, 2026 · {LEGAL_NAME} · Bakersfield, CA</div>
+          <div className="m-legal-date">Last Updated: October 17, 2026 · {LEGAL_NAME} · Bakersfield, CA</div>
         </div>
 
         <section className="m-legal-section">
@@ -58,6 +58,7 @@ export default function PrivacyPage() {
             <li>Respond to inquiries, prepare diagnostics, and provide requested services.</li>
             <li>Operate, secure, debug, and improve this website.</li>
             <li>Measure aggregate traffic and site performance.</li>
+            <li>Maintain inquiry records, owner notes, pipeline stages, and follow-up dates in a private CRM.</li>
             <li>Maintain records, prevent abuse, and comply with legal obligations.</li>
           </ul>
           <p>We do not sell personal information or use it for cross-context behavioral advertising.</p>
@@ -74,7 +75,7 @@ export default function PrivacyPage() {
             <li><strong>Sentry</strong> — captures sampled application errors and limited performance diagnostics.</li>
             <li><strong>Vercel</strong> — hosts and delivers the website and associated server functions.</li>
           </ul>
-          <p>These providers process information under their own privacy terms and our applicable service settings.</p>
+          <p>When CRM storage is enabled, our configured database provider (Neon, Upstash or Supabase) stores submitted inquiry details and owner follow-up records. A first-party counter records daily totals for selected public pages without cookies, visitor identifiers, query strings or contact details. That counter honors Do Not Track and Global Privacy Control. It does not identify anonymous visitors. These providers process information under their own privacy terms and our applicable service settings.</p>
         </section>
 
         <section className="m-legal-section">

@@ -28,7 +28,7 @@ function jsonRequest(url: string, body: unknown, raw = false) {
   });
 }
 
-const contactBody = { first_name: "Jane", business_name: "Acme", email: "jane@example.com", business_website: "https://acme.com" };
+const contactBody = { first_name: "Jane", business_name: "Acme", phone: "6615550100", email: "jane@example.com", business_website: "https://acme.com" };
 const registerBody = { url: "https://acme.com", phone: "6615551234", email: "jane@example.com" };
 
 async function readJson(response: Response) {
@@ -78,8 +78,8 @@ describe("API error responses never leak internals", () => {
     const response = await POST(jsonRequest("http://localhost/api/contact", contactBody));
     const body = await readJson(response);
 
-    expect(response.status).toBe(500);
-    expect(body.error).toBe("We couldn't send your message right now. Please try again or call us.");
+    expect(response.status).toBe(502);
+    expect(body.error).toBe("We couldn't confirm delivery. Please try again or contact us directly.");
     expect(JSON.stringify(body)).not.toMatch(/ENOTFOUND|internal\.example/);
     expect(console.error).toHaveBeenCalledTimes(1);
     expect(captureException).toHaveBeenCalledTimes(1);

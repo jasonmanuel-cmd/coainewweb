@@ -13,7 +13,7 @@ export const metadata: Metadata = pageMetadata({
     "Call-first website design for Bakersfield service businesses. Custom code, not templates. You control the domain, hosting, source code, analytics, and lead data. WordPress migration, speed work, and emergency repairs available.",
   path: "/website-design",
   published: "2026-02-01",
-  modified: "2026-04-15",
+  modified: "2026-10-28",
 });
 
 export default function WebsiteDesignPage() {

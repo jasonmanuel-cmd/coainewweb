@@ -3,6 +3,7 @@ import { contactMarketingSchema, jaxWaitlistSchema } from "@/lib/validators/cont
 
 const validBase = {
   first_name: "Jane",
+  phone: "6615550100",
   business_name: "Acme Corp",
   email: "jane@example.com",
   business_website: "https://acme.com"
@@ -12,6 +13,13 @@ const validBase = {
 // contactMarketingSchema
 // ---------------------------------------------------------------------------
 describe("contactMarketingSchema", () => {
+  it.each(["first_name", "phone", "email"])("requires %s on a CTA inquiry", (key) => {
+    expect(contactMarketingSchema.safeParse({ ...validBase, [key]: undefined }).success).toBe(false);
+    expect(contactMarketingSchema.safeParse({ ...validBase, [key]: "" }).success).toBe(false);
+  });
+  it("rejects a phone containing no digits", () => {
+    expect(contactMarketingSchema.safeParse({ ...validBase, phone: "not-a-phone" }).success).toBe(false);
+  });
   it("accepts a minimal valid payload", () => {
     const result = contactMarketingSchema.safeParse(validBase);
     expect(result.success).toBe(true);

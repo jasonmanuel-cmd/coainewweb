@@ -3,6 +3,11 @@ import type { NextConfig } from "next";
 import { ALIAS_HOSTS, CANONICAL_ORIGIN } from "./lib/site";
 
 const nextConfig: NextConfig = {
+  // Arena's proxied live preview host needs access to Next's dev-only HMR/font endpoints.
+  allowedDevOrigins: [
+    "3000-ihasn9avthxmrjf3y974r.e2b.app",
+    "3000-iujhwggudnzs6zopwi5s5.e2b.app"
+  ],
   // Pin tracing to this app when a parent directory has another lockfile (avoids wrong root on CI/Vercel).
   outputFileTracingRoot: process.cwd(),
   images: {
@@ -48,6 +53,15 @@ const nextConfig: NextConfig = {
             key: "Permissions-Policy",
             value: "camera=(), microphone=(self), geolocation=(), browsing-topics=()"
           }
+        ]
+      },
+      {
+        source: "/hq/:path*",
+        headers: [
+          { key: "Cache-Control", value: "private, no-store" },
+          { key: "X-Robots-Tag", value: "noindex, nofollow" },
+          { key: "Referrer-Policy", value: "no-referrer" },
+          { key: "Content-Security-Policy", value: `default-src 'self'; script-src 'self' 'unsafe-inline'${developmentEval}; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'` }
         ]
       }
     ];

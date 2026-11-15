@@ -9,13 +9,13 @@ export function getClientIp(request: Request): string {
 }
 
 export function isSameSiteRequest(request: Request): boolean {
-  const site = process.env.NEXT_PUBLIC_SITE_URL?.trim();
-  if (!site) return true;
   let expected: string;
   try {
-    expected = new URL(site).origin;
+    // Use the actual request origin so a stale canonical setting cannot block
+    // real visitors, localhost, or a branch preview. Cross-origin posts still fail.
+    expected = new URL(request.url).origin;
   } catch {
-    return true;
+    return false;
   }
 
   const origin = request.headers.get("origin");

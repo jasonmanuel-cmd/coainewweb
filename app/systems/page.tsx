@@ -66,7 +66,7 @@ export default function SystemsPage() {
           </p>
           <div className="systems-hero-actions">
             <Link href="/intake" className="revamp-btn-primary">Find my first leak <ArrowRight aria-hidden="true" /></Link>
-            <Link href="/pricing" className="revamp-btn-ghost">See the flagship scope</Link>
+            <Link href="/pricing" className="revamp-btn-ghost">See packages and pricing</Link>
           </div>
           <div className="systems-hero-stats" aria-label="Catalog summary">
             <div><strong>{SYSTEM_CHAPTER_COUNT}</strong><span>operating chapters</span></div>
@@ -135,7 +135,7 @@ export default function SystemsPage() {
             <span className="section-index">[ SCOPE CONTROL ]</span>
             <h2 id="systems-scope-title">A catalog is not a promise that every module is included.</h2>
             <p>
-              The standard {OFFERS.tradecall.name} remains {OFFERS.tradecall.price} with the exact baseline published on the
+              The {OFFERS.website.name} is {OFFERS.website.price}, and the packages and add-ons built on it are priced on the
               pricing page. Advanced integrations and lifecycle modules are quoted only when the diagnostic finds a real use
               for them. Your statement of work names every included system before you approve it.
             </p>

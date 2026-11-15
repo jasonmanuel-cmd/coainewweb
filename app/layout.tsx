@@ -3,6 +3,8 @@ import Script from "next/script";
 import { type ReactNode } from "react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { AppChrome } from "@/components/AppChrome";
+import { PublicOnly } from "@/components/PublicOnly";
+import { PublicActivity } from "@/components/hq/PublicActivity";
 import { JsonLd } from "@/components/JsonLd";
 import { CipherChat } from "@/components/revamp/CipherChat";
 import { SentryLazyInit } from "@/components/SentryLazyInit";
@@ -54,15 +56,16 @@ const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? "GTM-NMKLXR5R";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className="coai-site">
-        {/* Marks JS as active before content parses, so .reveal sections hidden
-            by CSS never stay hidden for non-JS clients. See globals.css. */}
+        {/* Set the progressive-enhancement flag before hydration so reveal content
+            never stays hidden for non-JS clients. The intentional html attribute
+            mutation is covered by suppressHydrationWarning above. */}
         <script
           dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }}
         />
         <a className="skip-link" href="#main-content">Skip to content</a>
-        <noscript>
+        <PublicOnly><noscript>
           <iframe
             src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
             height="0"
@@ -79,9 +82,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           }}
         />
         <JsonLd data={organizationJsonLd()} />
-        <JsonLd data={webSiteJsonLd()} />
+        <JsonLd data={webSiteJsonLd()} /></PublicOnly>
         <AppChrome>{children}</AppChrome>
-        <CipherChat />
+        <PublicOnly><PublicActivity /><CipherChat />
         <SentryLazyInit />
         <SpeedInsights />
         {/* Simple Analytics: privacy-first, honors Do Not Track */}
@@ -101,7 +104,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Script
           src="https://trtc.io/knocket-sdk/sdk.js?identifier=9368e40215abec47a6&v=1791814761160"
           strategy="lazyOnload"
-        />
+        /></PublicOnly>
       </body>
     </html>
   );
