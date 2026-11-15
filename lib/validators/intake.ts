@@ -32,6 +32,7 @@ export const intakeSubmissionSchema = z.object({
   email: z.string().email().max(320),
   business_website: websiteField,
   company: z.string().max(200).optional().default(""),
+  contact_reference: z.string().max(200).optional().default(""),
   package_interest: z.string().max(100).optional().default(""),
   industry: z.string().max(200).optional().default(""),
   website_type: z.string().max(200).optional().default(""),

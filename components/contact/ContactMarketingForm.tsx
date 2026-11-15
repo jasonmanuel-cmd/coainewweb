@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SmsConsentField } from "@/components/forms/SmsConsentField";
 import { TurnstileField } from "@/components/security/TurnstileField";
 import { CONTACT } from "@/lib/site";
@@ -32,7 +32,11 @@ export function ContactMarketingForm({
   const [submitting, setSubmitting] = useState(false);
   const [verificationAttempt, setVerificationAttempt] = useState(0);
   const [formError, setFormError] = useState<string | null>(null);
+  const errorRef = useRef<HTMLParagraphElement>(null);
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+  useEffect(() => {
+    if (formError) errorRef.current?.focus();
+  }, [formError]);
 
   const [pkgHidden, setPkgHidden] = useState("");
   useEffect(() => {
@@ -119,8 +123,8 @@ export function ContactMarketingForm({
           aria-hidden="true"
           className="m-sr-only-field"
         >
-          <label htmlFor="cf-company">Company</label>
-          <input id="cf-company" name="company" type="text" tabIndex={-1} autoComplete="off" />
+          <label htmlFor="cf-reference">Leave this field blank</label>
+          <input id="cf-reference" name="contact_reference" type="text" tabIndex={-1} autoComplete="off" data-lpignore="true" data-1p-ignore="true" />
         </div>
         <div className="m-form-group">
           <label htmlFor="cf-first-name">Name</label>
@@ -134,7 +138,7 @@ export function ContactMarketingForm({
         </div>
         <div className="m-form-group">
           <label htmlFor="cf-business-name">Business Name</label>
-          <input id="cf-business-name" name="business_name" placeholder="Your business name" required />
+          <input id="cf-business-name" name="business_name" placeholder="Your business name" autoComplete="organization" required />
         </div>
         <div className="m-form-group">
           <label htmlFor="cf-phone">Phone</label>
@@ -163,13 +167,10 @@ export function ContactMarketingForm({
         <TurnstileField
           key={verificationAttempt}
           className="m-form-group"
-          onToken={(t) => {
-            setTurnstileToken(t);
-            setFormError(null);
-          }}
+          onToken={setTurnstileToken}
           onExpire={() => setTurnstileToken("")}
         />
-        {formError ? <p role="alert" className="m-form-note m-form-error">{formError} <a href={`tel:${CONTACT.phoneE164}`}>Call {CONTACT.phoneDisplay}</a> or <a href={`mailto:${CONTACT.email}`}>email Jason</a>.</p> : null}
+        {formError ? <p ref={errorRef} tabIndex={-1} role="alert" className="m-form-note m-form-error">{formError} <a href={`tel:${CONTACT.phoneE164}`}>Call {CONTACT.phoneDisplay}</a> or <a href={`mailto:${CONTACT.email}`}>email Jason</a>.</p> : null}
         <button type="submit" className="m-submit-btn" disabled={submitting || (Boolean(siteKey) && !turnstileToken)}>
           {submitting ? "Sending..." : "Send Message →"}
         </button>

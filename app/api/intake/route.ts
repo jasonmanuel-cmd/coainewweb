@@ -31,9 +31,9 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Refresh this page before submitting your inquiry." }, { status: 400 });
     }
 
-    if (parsed.company.trim()) {
-      // Honeypot filled: silently accept to avoid teaching bots.
-      return NextResponse.json({ ok: true });
+    if (parsed.company.trim() || parsed.contact_reference.trim()) {
+      console.warn("[intake] Form rejected by spam check");
+      return NextResponse.json({ error: "We couldn't submit this form. Refresh the page, enter your details manually, and try again." }, { status: 400 });
     }
 
     if (!(await verifyTurnstileToken(parsed.turnstileToken, ip))) {
@@ -42,7 +42,7 @@ export async function POST(request: Request) {
 
     const fields: Record<string, string> = {};
     for (const [key, value] of Object.entries(parsed)) {
-      if (key === "turnstileToken" || key === "company") continue;
+      if (key === "turnstileToken" || key === "company" || key === "contact_reference") continue;
       if (value !== undefined && value !== null && value !== "") {
         fields[key] = String(value);
       }
