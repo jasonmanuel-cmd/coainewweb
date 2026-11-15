@@ -366,8 +366,8 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
             <form onSubmit={onFormSubmit} className="m-intake-form">
               <input type="hidden" name="form_type" value="diagnostic_intake" />
               <div className="m-sr-only-field" aria-hidden>
-                <label htmlFor="intake-company">Company</label>
-                <input id="intake-company" name="company" type="text" tabIndex={-1} autoComplete="off" />
+                <label htmlFor="intake-reference">Leave this field blank</label>
+                <input id="intake-reference" name="contact_reference" type="text" tabIndex={-1} autoComplete="off" data-lpignore="true" data-1p-ignore="true" />
               </div>
 
               <div className="m-field">
@@ -383,7 +383,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
 
               <div className="m-field">
                 <label htmlFor="intake-business-name">Business Name</label>
-                <input id="intake-business-name" name="business_name" placeholder="Your business name" required />
+                <input id="intake-business-name" name="business_name" placeholder="Your business name" autoComplete="organization" required />
               </div>
 
               <div className="m-field-row">
