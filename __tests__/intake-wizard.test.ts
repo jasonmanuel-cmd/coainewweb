@@ -50,7 +50,7 @@ it("lets a build buyer skip the estimate and recover from a failed submission wi
   expect(host.textContent).not.toContain("Skip the estimate and request my scorecard");
   await click("Continue to my build inquiry");
   expect(host.querySelector<HTMLInputElement>('[name="business_website"]')!.value).toBe("none");
-  expect(host.textContent).toContain("$997 to start / $1,000 at launch");
+  expect(host.textContent).toContain("$297/month; implementation payment schedule agreed in writing");
   for (const [name, value] of Object.entries({ first_name: "Demo", business_name: "Example Contractor", phone: "6615550100", email: "demo@example.com" })) {
     host.querySelector<HTMLInputElement>(`[name="${name}"]`)!.value = value;
   }

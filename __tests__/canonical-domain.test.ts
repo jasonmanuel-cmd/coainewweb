@@ -37,8 +37,6 @@ describe("canonical domain", () => {
   it("never lists the canonical host as an alias (would redirect-loop)", async () => {
     const { ALIAS_HOSTS, CANONICAL_ORIGIN } = await loadSite();
     expect(ALIAS_HOSTS).not.toContain(new URL(CANONICAL_ORIGIN).hostname);
-    expect([...ALIAS_HOSTS]).toEqual(
-      expect.arrayContaining(["chaoticallyorganizedai.com", "coaibakersfield.com", "www.coaibakersfield.com"])
-    );
+    expect([...ALIAS_HOSTS]).toEqual(["chaoticallyorganizedai.com"]);
   });
 });

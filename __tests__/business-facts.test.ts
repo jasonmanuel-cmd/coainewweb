@@ -4,7 +4,6 @@ import { describe, expect, it } from "vitest";
 import { REVAMP_PROJECTS } from "@/components/revamp/revampData";
 import { PORTFOLIO_CASES } from "@/lib/portfolio-cases";
 import { PORTFOLIO_STATS, countWord } from "@/lib/portfolio-stats";
-import { PACKAGES } from "@/lib/pricing";
 import { organizationJsonLd } from "@/lib/schema";
 import { BUSINESS_HOURS, CONTACT, DELIVERY_TIMELINE, OFFERS } from "@/lib/site";
 
@@ -22,10 +21,12 @@ function sourceFiles(dir: string): string[] {
 describe("one source of truth for business facts", () => {
   const llms = read("public", "llms.txt");
 
-  it("llms.txt matches the typed contact, price and timeline facts", () => {
+  it("llms.txt matches the approved public offers and contact facts", () => {
     expect(llms).toContain(CONTACT.email);
     expect(llms).toContain(OFFERS.website.price);
-    for (const pkg of PACKAGES) expect(llms).toContain(pkg.total.replace("≈ ", ""));
+    expect(llms).toContain("Revenue Diagnostic: $500");
+    expect(llms).toContain("Revenue Engine: $1,997 implementation plus $297/month");
+    expect(llms).toContain("Revenue Infrastructure: $4,997+ implementation plus $597–$997/month");
     expect(llms).toContain("Monday–Friday");
     expect(llms).not.toMatch(/@coaibakersfield\.com/i);
   });
@@ -88,9 +89,7 @@ describe("customer portfolio updates", () => {
     }
   });
 
-  it("uses the supplied Lead Engine screenshot in the product feature", () => {
-    const homepage = read("app", "page.tsx");
-    expect(homepage).toContain('src="/projects/coai-lead-engine.webp"');
+  it("retains the supplied Lead Engine screenshot for portfolio use", () => {
     expect(fs.existsSync(path.join(ROOT, "public/projects/coai-lead-engine.webp"))).toBe(true);
   });
 
@@ -107,11 +106,11 @@ describe("customer portfolio updates", () => {
     expect(source).not.toMatch(/signature\s*954|signature954/i);
   });
 
-  it("promotes the COAI Lead Engine with live product links", () => {
+  it("points the homepage to the approved three-offer presentation", () => {
     const homepage = read("app", "page.tsx");
-    expect(homepage).toContain("COAI Lead Engine");
-    expect(homepage).toContain('href="https://www.coaihq.online/"');
-    expect(homepage).toContain('href="https://www.coaihq.online/app"');
+    const presentation = read("components", "marketing", "RestructurePage.tsx");
+    expect(homepage).toContain("RestructurePage");
+    expect(presentation).toContain("RESTRUCTURE_OFFERS.map");
   });
 
   it("links to the supplied Google review without creating review copy", () => {

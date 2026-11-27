@@ -8,19 +8,16 @@ import { useEffect, useId, useState } from "react";
 import { CONTACT } from "@/lib/site";
 
 const MORE_LINKS = [
-  ["Pricing", "/pricing", "One build. Clear ownership."],
-  ["Portfolio", "/portfolio", "Revenue systems in the field."],
-  ["About", "/about", "Built in Bakersfield."],
+  ["About", "/about", "Meet the founder."],
   ["FAQ", "/faq", "Straight answers."],
-  ["JAX Preview", "/jax", "Pre-deployment brief."],
-  ["AI Disclosure", "/ai-disclosure", "Controls and escalation."],
+  ["Portfolio", "/portfolio", "Selected work."],
   ["Contact", "/contact", "Start a conversation."]
 ] as const;
 
 const PRIMARY_LINKS = [
-  ["Proof", "/#proof"],
-  ["Systems", "/systems"],
-  ["Services", "/services"]
+  ["Offers", "/#offers"],
+  ["Services", "/services"],
+  ["Pricing", "/pricing"]
 ] as const;
 
 export function RevampNavbar() {
@@ -53,7 +50,7 @@ export function RevampNavbar() {
           <Image className="revamp-logo-mark" src="/coai-mark.webp" alt="" width={46} height={46} priority />
           <span className="revamp-logo-copy">
             <strong>COAI</strong>
-            <small>Websites + Systems</small>
+            <small>Revenue systems</small>
           </span>
         </Link>
 
@@ -111,8 +108,8 @@ export function RevampNavbar() {
             <span>Call<span className="revamp-nav-call-number"> {CONTACT.phoneDisplay}</span></span>
           </a>
 
-          <Link className="revamp-nav-cta" href="/intake?pkg=website">
-            <span>Discuss your build</span>
+          <Link className="revamp-nav-cta" href="/contact?intent=diagnostic">
+            <span>Discuss your diagnostic</span>
             <span aria-hidden="true">↗</span>
           </Link>
         </div>

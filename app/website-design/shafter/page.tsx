@@ -85,7 +85,7 @@ export default function ShafterWebsiteDesignPage() {
           </div>
           <div className="m-cta-row" style={{ marginTop: "2rem" }}>
             <Link href="/intake" className="m-btn-primary">
-              Free Shafter Diagnostic →
+              Discuss the $500 Revenue Diagnostic →
             </Link>
             <Link href="/pricing" className="m-btn-ghost">
               See Pricing
@@ -143,7 +143,7 @@ export default function ShafterWebsiteDesignPage() {
           <span className="m-text-green">that makes contacting you easier?</span>
         </h2>
         <p>
-          Free 20-minute diagnostic. We check your current site, Google profile, and lead flow - and hand you a written
+          The $500 Revenue Diagnostic reviews your customer path and provides a written
           report. No pitch, no pressure, just the truth.
         </p>
         <div className="m-cta-row">

@@ -1,60 +1,23 @@
-# Chaotically Organized AI (COAI)
+# Chaotically Organized AI
 
-> Custom websites, design, and growth systems for Bakersfield service businesses. COAI builds a call-first custom-coded website and the systems around it (missed-call text-back, review requests, booking, follow-up, retention, and reporting), all deployed into accounts the client owns. Serving HVAC, plumbing, electrical, roofing, and other high-call service businesses in Bakersfield and Kern County, CA. Founder: Jason Robert Manuel.
+COAI helps service businesses nationwide capture inquiries, follow up, and operate customer workflows. Bakersfield and Kern County have a dedicated local acquisition site at https://coaibakersfield.com/.
+
+## Approved offers
+- Revenue Diagnostic: $500, with $200 upfront and $300 at delivery. Written findings and priority plan.
+- Revenue Engine: $1,997 implementation plus $297/month. Lead capture, follow-up, handoff, and reporting under a written scope.
+- Revenue Infrastructure: $4,997+ implementation plus $597–$997/month. Complex workflow, CRM integration, training, and management under a written scope.
+
+Existing customer agreements remain unchanged unless separately amended. Third-party subscriptions and ad spend require separate approval. No ranking, lead-volume, or revenue result is guaranteed.
+
+## Public pages
+- https://www.chaoticallyorganizedai.com/
+- https://www.chaoticallyorganizedai.com/pricing
+- https://www.chaoticallyorganizedai.com/services
+- https://www.chaoticallyorganizedai.com/faq
+- https://www.chaoticallyorganizedai.com/contact
 
 ## Contact
 - Phone: (661) 683-0228
 - Email: chaoticallyorganizedai@gmail.com
 - Booking: https://calendar.app.google/EPr6vGFuVZ7e7pEa7
-- Location: Bakersfield, CA. COAI is a remote / service-area business — work is done remotely and on the client's site. There is no public walk-in office, so no street address is published.
-- Hours: Monday–Friday, 9:00 a.m.–5:00 p.m. Pacific
-- This is the only company phone number. Any other number appearing in COAI material is a product demo line, not company contact information.
-
-## Core Pages
-- [Home](https://www.chaoticallyorganizedai.com/): What leaks, what gets installed, who owns it
-- [Pricing](https://www.chaoticallyorganizedai.com/pricing): Single source of truth for all prices: website, three packages, and every add-on
-- [Services](https://www.chaoticallyorganizedai.com/services): What we build, the three stages, packages, and exclusions
-- [Systems Catalog](https://www.chaoticallyorganizedai.com/systems): Public capability map across capture, qualification, conversion, discovery, retention, and measurement
-- [Portfolio](https://www.chaoticallyorganizedai.com/portfolio): Live client sites
-- [About](https://www.chaoticallyorganizedai.com/about): Founder background and accountability
-- [FAQ](https://www.chaoticallyorganizedai.com/faq): Ownership, handoff, recurring costs, timelines
-- [Contact](https://www.chaoticallyorganizedai.com/contact): Direct line and booking
-- [Intake](https://www.chaoticallyorganizedai.com/intake): Request the Job-Call Leak Scorecard
-- [Privacy](https://www.chaoticallyorganizedai.com/privacy)
-- [Cookie Notice](https://www.chaoticallyorganizedai.com/cookies)
-- [Terms](https://www.chaoticallyorganizedai.com/terms)
-- [SMS Terms](https://www.chaoticallyorganizedai.com/sms-terms): Consent, STOP/HELP, message rates
-- [AI Disclosure](https://www.chaoticallyorganizedai.com/ai-disclosure): How the AI receptionist works, recording, and human escalation
-
-## Operating Model
-COAI organizes its public systems catalog around a simple path: catch the inquiry, convert the guest, and keep the relationship. The catalog contains optional capabilities—not package promises. A statement of work names every included module before approval. AI is used only where it serves a defined business function, with approved facts and human escalation for judgment calls.
-
-## Offers
-COAI sells a free scorecard, a custom website, three packages that build on it, individually priced add-ons, and optional website care plans.
-
-1. Job-Call Leak Scorecard — free for qualified owner-operators, otherwise $350 Structural Audit credited to the build. Delivered in 24–48 hours. A one-page scorecard with three observed leaks, the assumptions behind them, screenshots, and one recommended first control.
-2. Custom Website Build — $1,997 flat ($997 to start, $1,000 at launch). Custom-coded, call-first, mobile-first website; one aligned business identity; tested contact paths; launch QA; documented ownership handoff; 30 days of post-launch fixes. Standard turnaround 2–3 weeks from signed scope.
-3. Package 1, Digital Foundation — $3,647 total (website plus $1,650 of add-ons). No required monthly fee.
-4. Package 2, Lead Machine — approximately $6,441 total, plus $294–$500/month for the automation, depending on what is implemented. Includes missed-call text-back, review system, AI chatbot, lead follow-up, and quote recovery.
-5. Package 3, Customer Lifecycle — $6,997–$9,497 total ($5,000–$7,500 setup for all systems plus the website), plus $597–$997/month, depending on what is implemented. Adds reactivation, service reminders, referrals, CRM, analytics, and campaigns.
-6. Individual add-ons — priced one at a time (missed-call text-back $450, review system $450, and others listed on the pricing page).
-7. Website care plans — $100, $200, or $500 per month. Optional.
-
-Package totals are scoped and fixed in writing before work begins. COAI does not promise rankings, lead volume, review counts, or AI citations.
-
-## Not Included
-Ad spend, custom integrations, ongoing content beyond scope, carrier/SMS/AI usage fees, hosting, advanced CRM migration, and 24-hour human dispatch are not included in the build price.
-
-## Recurring Third-Party Costs
-These are paid by the client directly to the vendor, never to COAI.
-- Hosting: $20–30/month (Vercel, in the client's own account)
-- Phone/SMS: $15–50/month per number (Twilio, in the client's own account)
-
-## Ownership
-The client controls the domain registrar, hosting account, source code repository, analytics, Search Console, Google Business Profile, and all lead data. COAI deploys into the client's accounts, documents the setup, and hands over admin access. There is no platform lock-in and no monthly platform fee to COAI.
-
-## Stack
-Next.js with TypeScript, deployed on Vercel. Full source access and written handoff documentation.
-
-## Service Area
-Bakersfield, Delano, Shafter, Kern County, California.
+- Business hours: Monday–Friday, 9:00 a.m.–5:00 p.m. Pacific

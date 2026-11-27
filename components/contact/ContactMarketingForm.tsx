@@ -55,7 +55,7 @@ export function ContactMarketingForm({
       return;
     }
 
-    const subjectBits = ["COAI website contact"];
+    const subjectBits = ["COAI offer inquiry"];
     if (inboundSource) subjectBits.push(`from:${inboundSource}`);
     if (contactIntent) subjectBits.push(`intent:${contactIntent}`);
 
@@ -105,7 +105,7 @@ export function ContactMarketingForm({
     );
   }
 
-  const subjectBits = ["COAI website contact"];
+  const subjectBits = ["COAI offer inquiry"];
   if (inboundSource) subjectBits.push(`from:${inboundSource}`);
   if (contactIntent) subjectBits.push(`intent:${contactIntent}`);
 

@@ -81,7 +81,7 @@ export function organizationJsonLd() {
           email: CONTACT.email,
           availableLanguage: "English"
         },
-        priceRange: `From ${OFFERS.website.price}`
+        priceRange: `From ${OFFERS.scorecard.price}`
       },
       {
         "@type": "Person",

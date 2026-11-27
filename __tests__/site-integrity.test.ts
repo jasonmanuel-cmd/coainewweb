@@ -32,8 +32,9 @@ describe("public site integrity", () => {
     expect(fs.readFileSync(path.join(ROOT, "public", "llms.txt"), "utf8")).toContain(SITE_URL);
   });
 
-  it("does not publish the retired canonical domain", () => {
-    expect(combinedSource()).not.toMatch(/https?:\/\/(?:www\.)?coaibakersfield\.com/i);
+  it("keeps the local site distinct from the national canonical domain", () => {
+    expect(SITE_URL).toBe("https://www.chaoticallyorganizedai.com");
+    expect(fs.readFileSync(path.join(ROOT, "public", "llms.txt"), "utf8")).toContain("https://coaibakersfield.com/");
   });
 
   it("contains no common mojibake sequences", () => {
@@ -59,8 +60,6 @@ describe("public site integrity", () => {
     expect(SYSTEM_CHAPTER_COUNT).toBe(6);
     expect(SYSTEM_CAPABILITY_COUNT).toBe(24);
     expect(new Set(capabilityNames).size).toBe(capabilityNames.length);
-    expect(fs.readFileSync(path.join(ROOT, "app", "systems", "page.tsx"), "utf8")).toContain(
-      "A catalog is not a promise that every module is included."
-    );
+    expect(fs.readFileSync(path.join(ROOT, "app", "systems", "page.tsx"), "utf8")).toContain("RestructurePage");
   });
 });

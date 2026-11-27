@@ -4,8 +4,8 @@ export const ATTRIBUTION_VALUES: Record<string, readonly string[]> = {
   utm_medium: ["social", "organic", "paid-social", "referral", "email"],
   utm_campaign: ["coai-contact", "coai-intake"],
   utm_content: ["profile", "post", "story", "bio"],
-  inbound_source: ["diagnostic", "pricing", "facebook", "instagram", "google", "linkedin", "youtube", "referral"],
-  contact_intent: ["packages", "jason", "audit", "build", "scorecard"],
+  inbound_source: ["diagnostic", "pricing", "coaibakersfield", "facebook", "instagram", "google", "linkedin", "youtube", "referral"],
+  contact_intent: ["packages", "jason", "audit", "build", "scorecard", "diagnostic", "revenue-engine", "infrastructure"],
   landing_page: ["/", "/demo", "/pricing", "/intake", "/contact"],
   referrer_source: ["facebook", "instagram", "google", "linkedin", "youtube"]
 };

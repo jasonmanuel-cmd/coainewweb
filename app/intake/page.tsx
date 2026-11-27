@@ -11,7 +11,7 @@ import { SITE_URL } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: "Run My Diagnostic",
   description:
-    "Request a job-call leak scorecard. Free for qualified owner-operators; eligibility, any audit fee, and timing are confirmed before work begins.",
+    "Request a $500 Revenue Diagnostic. $200 is due upfront after the written scope is agreed; $300 is due at delivery.",
   path: "/intake"
 });
 

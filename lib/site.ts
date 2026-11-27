@@ -1,12 +1,12 @@
 /**
  * The one public origin. Canonical tags, Open Graph, JSON-LD, sitemap, robots and
- * llms.txt all derive from SITE_URL, and every alias host 301s here (next.config.ts).
+ * llms.txt all derive from SITE_URL, and national-domain aliases 301 here (next.config.ts).
  * Changing the primary domain means changing this constant, not an env var.
  */
 export const CANONICAL_ORIGIN = "https://www.chaoticallyorganizedai.com";
 
-/** Hosts that must permanently redirect to CANONICAL_ORIGIN, path and query preserved. */
-export const ALIAS_HOSTS = ["chaoticallyorganizedai.com", "coaibakersfield.com", "www.coaibakersfield.com"] as const;
+/** National host aliases only. The Bakersfield domain remains a separate local site. */
+export const ALIAS_HOSTS = ["chaoticallyorganizedai.com"] as const;
 
 /**
  * NEXT_PUBLIC_SITE_URL is deliberately NOT trusted in deployed builds: a stale value in
@@ -70,20 +70,20 @@ export const OFFERS = {
   /** Entry point — qualify the business and show real leaks before proposing a build. */
   scorecard: {
     stage: "Find the leak",
-    name: "Job-Call Leak Scorecard",
-    price: "Free for qualified owner-operators",
-    alt: "$350 Structural Audit otherwise, credited to the build",
-    turnaround: "24–48 hours",
+    name: "Revenue Diagnostic",
+    price: "$500",
+    alt: "$200 upfront; $300 at delivery",
+    turnaround: "Timing agreed in writing",
     summary:
       "A one-page scorecard with three observed leaks, the assumptions behind them, screenshots, and one recommended first control."
   },
   /** Foundation — the custom website every package is built on. */
   website: {
     stage: "Build the foundation",
-    name: "Custom Website Build",
+    name: "Revenue Engine",
     price: "$1,997",
     priceNumeric: "1997",
-    terms: "$997 to start / $1,000 at launch",
+    terms: "+ $297/month; implementation payment schedule agreed in writing",
     summary:
       "A custom-coded, call-first, mobile-first website with one aligned business identity, tested contact paths, launch QA, a documented ownership handoff, and 30 days of post-launch fixes."
   }
@@ -105,10 +105,10 @@ export const GEO = {
 } as const;
 
 export const SITE_DESCRIPTION =
-  "COAI designs and builds custom, hand-coded websites and the systems around them — local search and AI answer visibility, missed-call text-back, booking, follow-up, CRM and reporting — for Bakersfield and Kern County service businesses. Built by Jason Robert Manuel, a contractor who codes. You control the domain, hosting, source code, analytics, and lead data."
+  "Chaotically Organized AI helps service businesses nationwide capture inquiries, follow up consistently, and manage customer workflows. Start with a $500 Revenue Diagnostic, then choose Revenue Engine or Revenue Infrastructure under a written scope.";
 
 /** Category descriptor. Sits beneath the buyer-facing outcome line, never in front of it. */
-export const CATEGORY = "Custom Websites, Design & Growth Systems";
+export const CATEGORY = "Lead Capture & Revenue Systems";
 
 /** Buyer-facing outcome line. Lead with this — a contractor does not shop for "infrastructure". */
 export const BUYER_OUTCOME = "A website that wins the job, and the systems that keep the customer.";

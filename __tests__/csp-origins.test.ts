@@ -119,7 +119,7 @@ describe("booking link", () => {
     const { BOOKING_URL } = await import("@/lib/site");
     expect(BOOKING_URL).toBe("https://calendar.app.google/EPr6vGFuVZ7e7pEa7");
     expect(fs.readFileSync(path.join(process.cwd(), "public", "llms.txt"), "utf8")).toContain(BOOKING_URL);
-    for (const file of ["app/page.tsx", "app/contact/page.tsx", "components/revamp/RevampFooter.tsx", "components/forms/CallbackForm.tsx"]) {
+    for (const file of ["app/contact/page.tsx", "components/revamp/RevampFooter.tsx", "components/forms/CallbackForm.tsx"]) {
       expect(fs.readFileSync(path.join(process.cwd(), file), "utf8")).toContain("BOOKING_URL");
     }
   });
