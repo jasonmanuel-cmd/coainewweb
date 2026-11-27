@@ -162,36 +162,9 @@ export const PORTFOLIO_CASES: PortfolioCase[] = [
       "Mobile-First",
       "Review Aggregation"
     ],
-    liveUrl: "https://phils-cheesesteaks-and-more.com",
+    liveUrl: "https://www.bakersfieldcheesesteak.com",
     previewImage: "/projects/phils-cheesesteaks.webp",
     previewAlt: "Phil’s Cheesesteaks homepage with pickup ordering and Bakersfield location details"
-  },
-  {
-    id: "edwin",
-    category: "finance",
-    accentClass: "m-accent-finance",
-    tagClass: "m-tag-finance",
-    industryLabel: "Credit Restoration",
-    client: "Edwin Ward Consulting",
-    location: "Credit Restoration Services · USA",
-    description: (
-      <>
-        Edwin Ward helps individuals <strong>repair, rebuild, and take ownership of their credit profile</strong> — one
-        of the most high-trust, high-stakes service categories in financial consulting. COAI built a credibility-forward
-        site with a clear service breakdown, transparent process flow, and a lead intake funnel designed to convert
-        skeptical clients who have been burned by credit repair scams before.{" "}
-        <strong>Trust architecture was the core design brief.</strong>
-      </>
-    ),
-    built: [
-      "Trust-First Layout",
-      "Lead Intake Form",
-      "Service Breakdown",
-      "Process Timeline",
-      "Schema Markup",
-      "Mobile Optimized"
-    ],
-    liveUrl: "https://edwinwardconsulting.com"
   },
   {
     id: "hgm",
@@ -219,60 +192,6 @@ export const PORTFOLIO_CASES: PortfolioCase[] = [
       "Vercel Deploy"
     ],
     liveUrl: "https://homegrowmoney.com"
-  },
-  {
-    id: "willam",
-    category: "photo",
-    accentClass: "m-accent-photo",
-    tagClass: "m-tag-photo",
-    industryLabel: "Photography & Tattoo",
-    client: "Willam Dean",
-    location: "Real Estate Photography · Tattoo Artist",
-    description: (
-      <>
-        Willam Dean operates in two visually-driven worlds — <strong>real estate photography</strong> where sharp
-        imagery moves listings faster, and <strong>custom tattoo artistry</strong> where the portfolio is the entire
-        pitch. COAI built a dual-identity portfolio site that lets both audiences land in the right place without
-        confusion. Real estate agents and brokers get a clean gallery and booking path. Tattoo clients get a curated flash
-        and custom work showcase with a consultation intake. <strong>One URL, two audiences.</strong>
-      </>
-    ),
-    built: [
-      "Dual Portfolio",
-      "Gallery System",
-      "Booking Intake",
-      "Real Estate Focus",
-      "Tattoo Showcase",
-      "Netlify Deploy"
-    ],
-    liveUrl: "https://willamdean.netlify.app"
-  },
-  {
-    id: "pwr",
-    category: "music",
-    accentClass: "m-accent-music",
-    tagClass: "m-tag-music",
-    industryLabel: "Independent Music",
-    client: "Poison Well Records",
-    location: "Independent Punk Label · USA",
-    description: (
-      <>
-        Poison Well Records is an <strong>independent punk label</strong> — raw, confrontational, and completely
-        outside the major label machine. COAI built a site that matches the genre&apos;s energy without flinching:
-        dark, high-contrast, built for the community not the algorithm. Roster pages, release archives, merch linkage,
-        and a booking/contact system give the label a <strong>digital home it actually owns</strong> — no
-        streaming platform dependency, no social media landlord. The underground, structured.
-      </>
-    ),
-    built: [
-      "Roster Pages",
-      "Release Archive",
-      "Merch Integration",
-      "Booking System",
-      "High-Contrast UI",
-      "Netlify Deploy"
-    ],
-    liveUrl: "https://poisonwellrecord.netlify.app"
   },
   {
     id: "mgs",
