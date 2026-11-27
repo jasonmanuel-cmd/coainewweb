@@ -60,21 +60,12 @@ export const REVAMP_PROJECTS: RevampProject[] = [
     title: "Phil’s Cheesesteaks & More",
     category: "Food & Beverage",
     description: "A conversion-first restaurant site with a mobile menu, online ordering paths, local business signals, and review proof.",
-    href: "https://phils-cheesesteaks-and-more.com",
+    href: "https://www.bakersfieldcheesesteak.com",
     logo: "PHIL’S",
     previewImage: "/projects/phils-cheesesteaks.webp",
     previewAlt: "Phil’s Cheesesteaks homepage with pickup ordering and Bakersfield location details",
     result: "Live",
     metric: "Ordering and local discovery"
-  },
-  {
-    title: "Edwin Ward Consulting",
-    category: "Credit Restoration",
-    description: "A trust-forward service site with transparent process education and a focused lead-intake journey.",
-    href: "https://edwinwardconsulting.com",
-    logo: "EWC",
-    result: "Live",
-    metric: "Trust and lead intake"
   },
   {
     title: "Home Grow Money",
@@ -84,24 +75,6 @@ export const REVAMP_PROJECTS: RevampProject[] = [
     logo: "HGM",
     result: "Live",
     metric: "Independent storefront"
-  },
-  {
-    title: "Willam Dean",
-    category: "Photography & Tattoo",
-    description: "One portfolio architecture that gives two distinct audiences a clear gallery and inquiry path.",
-    href: "https://willamdean.netlify.app",
-    logo: "WD",
-    result: "Live preview",
-    metric: "Dual-audience portfolio"
-  },
-  {
-    title: "Poison Well Records",
-    category: "Independent Music",
-    description: "A high-contrast label site for roster, release, merchandise, and booking information without platform dependency.",
-    href: "https://poisonwellrecord.netlify.app",
-    logo: "PWR",
-    result: "Live preview",
-    metric: "Owned label platform"
   },
   {
     title: "Master Glass Solutions",

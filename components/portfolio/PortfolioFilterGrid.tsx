@@ -6,7 +6,7 @@ import { useState } from "react";
 import type { PortfolioCategory } from "@/lib/portfolio-cases";
 import { PORTFOLIO_CASES } from "@/lib/portfolio-cases";
 
-const FILTERS: { id: PortfolioCategory; label: string }[] = [
+const ALL_FILTERS: { id: PortfolioCategory; label: string }[] = [
   { id: "all", label: "All Work" },
   { id: "food", label: "Food & Beverage" },
   { id: "finance", label: "Finance" },
@@ -17,6 +17,9 @@ const FILTERS: { id: PortfolioCategory; label: string }[] = [
   { id: "real-estate", label: "Real Estate" },
   { id: "home-services", label: "Home Services" }
 ];
+
+// Only offer a filter chip when at least one case would show under it.
+const FILTERS = ALL_FILTERS.filter((f) => f.id === "all" || PORTFOLIO_CASES.some((c) => c.category === f.id));
 
 export function PortfolioFilterGrid() {
   const [cat, setCat] = useState<PortfolioCategory>("all");

@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   }
 };
 
-const proofMarks = ["ASPEN II HOMES", "HARBISON STANDARD", "THE PITTS", "T&M HAULING", "PHIL’S", "EDWIN WARD", "HOME GROW MONEY", "WILLAM DEAN", "POISON WELL", "MASTER GLASS"];
+const proofMarks = ["ASPEN II HOMES", "HARBISON STANDARD", "THE PITTS", "T&M HAULING", "PHIL’S", "HOME GROW MONEY", "MASTER GLASS"];
 
 const workflow = [
   { time: "01", title: "Lead detected", detail: "Missed call · Service request", icon: PhoneIncoming },
