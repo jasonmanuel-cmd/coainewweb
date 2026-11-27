@@ -71,11 +71,14 @@ describe("analytics and social wiring", () => {
     expect(read("next.config.ts")).not.toMatch(/trtc\.io/i);
   });
 
-  it("loads the Google tag once, with a config call", () => {
+  it("puts one Google tag in <head> as a plain script, using the hard-coded ID", () => {
     const layout = read("app", "layout.tsx");
+    const site = read("lib", "site.ts");
+    expect(site).toContain('GOOGLE_TAG_ID = "G-ZYCPQEBGTN"');
     expect(layout.match(/googletagmanager\.com\/gtag\/js/g)?.length).toBe(1);
+    expect(layout).toMatch(/<head>[\s\S]*<script async src=\{`https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=\$\{GOOGLE_TAG_ID\}`\}[\s\S]*<\/head>/);
     expect(layout).toContain("gtag('config'");
-    expect(layout).toContain("G-ZYCPQEBGTN");
+    expect(layout).not.toMatch(/NEXT_PUBLIC_GA_MEASUREMENT_ID/);
   });
 });
 
@@ -85,5 +88,14 @@ describe("organization sameAs", () => {
     expect(SAME_AS.some((u) => /x\.com|twitter\.com|linkedin\.com\/company/.test(u))).toBe(false);
     expect(SAME_AS.some((u) => u.includes("facebook.com/profile.php?id=61584598503488"))).toBe(true);
     expect(SAME_AS.some((u) => u.includes("instagram.com/chaoticallyorganizedai661"))).toBe(true);
+  });
+});
+
+describe("footer social links", () => {
+  it("point at the same verified profiles as the schema", async () => {
+    const { SOCIAL_LINKS, SAME_AS, FOUNDER_SAME_AS } = await import("@/lib/site");
+    const known = new Set<string>([...SAME_AS, ...FOUNDER_SAME_AS]);
+    expect(SOCIAL_LINKS.map((l) => l.id)).toEqual(["facebook", "instagram", "linkedin"]);
+    for (const link of SOCIAL_LINKS) expect(known.has(link.href)).toBe(true);
   });
 });

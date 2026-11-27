@@ -17,7 +17,7 @@ Copy `.env.example` to `.env.local` and set:
 - `NEXT_PUBLIC_SUPABASE_URL` — full URL including `https://` (e.g. `https://xxxx.supabase.co`; a malformed value is ignored so the audit form still works without DB writes)
 - `SUPABASE_SERVICE_ROLE_KEY`
 - `PAGESPEED_API_KEY`
-- `NEXT_PUBLIC_GA_MEASUREMENT_ID` (GA4, e.g. `G-XXXXXXXXXX`)
+- Google tag (GA4) ID is `GOOGLE_TAG_ID` in `lib/site.ts`, not an environment variable. Any `NEXT_PUBLIC_GA_MEASUREMENT_ID` set in Vercel is ignored and can be deleted.
 - `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` — optional; enables **distributed** rate limits across Vercel instances (create a Redis database in [Upstash](https://upstash.com/) and paste REST credentials)
 - `NEXT_PUBLIC_TURNSTILE_SITE_KEY` / `TURNSTILE_SECRET_KEY` — Cloudflare Turnstile for contact, intake, legacy audit registration and JAX waitlist. If `TURNSTILE_SECRET_KEY` is set, these server routes reject requests without a valid token; configure the matching public and server keys.
 - For optional HQ capture, select and verify one backend using [HQ setup](docs/hq-setup.md). The example selects `CRM_STORAGE=neon`, but source defaults do not establish production configuration. Keep `COAI_CRM_ENABLED=false` until storage and owner access pass verification. Keep notification-journal and idempotent-delivery flags off until their separate migration/rollout requirements are met.

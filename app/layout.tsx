@@ -9,7 +9,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { CipherChat } from "@/components/revamp/CipherChat";
 import { SentryLazyInit } from "@/components/SentryLazyInit";
 import { organizationJsonLd, webSiteJsonLd } from "@/lib/schema";
-import { SITE_DESCRIPTION, SITE_URL } from "@/lib/site";
+import { GOOGLE_TAG_ID, SITE_DESCRIPTION, SITE_URL } from "@/lib/site";
 import "@fontsource-variable/inter/wght.css";
 import "@fontsource/barlow-condensed/500.css";
 import "@fontsource/barlow-condensed/600.css";
@@ -53,11 +53,17 @@ export const viewport: Viewport = {
 };
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? "GTM-NMKLXR5R";
-const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-ZYCPQEBGTN";
+// Plain <script> tags in <head> (not next/script) so the Google tag is present in the raw HTML,
+// which is what Google's tag detection reads. Config is skipped on the private /hq workspace.
+const GOOGLE_TAG_INIT = `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());if(!/^\\/hq(\\/|$)/.test(location.pathname)){gtag('config','${GOOGLE_TAG_ID}');}`;
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_TAG_ID}`} />
+        <script dangerouslySetInnerHTML={{ __html: GOOGLE_TAG_INIT }} />
+      </head>
       <body className="coai-site">
         {/* Set the progressive-enhancement flag before hydration so reveal content
             never stays hidden for non-JS clients. The intentional html attribute
@@ -80,15 +86,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`
-          }}
-        />
-        {/* Google tag (GA4). gtag.js loads async; config is required for hits to be sent. */}
-        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
-        <Script
-          id="google-tag"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}');`
           }}
         />
         <JsonLd data={organizationJsonLd()} />
