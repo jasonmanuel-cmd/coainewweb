@@ -78,6 +78,7 @@ describe("confirmation email", () => {
     expect(body.text).toContain("Hi Sam Bcc: x@y.z,");
     expect(body.text).not.toMatch(/\bwithin \d+|guarantee/i);
     expect(body).not.toHaveProperty("html");
+    expect(body.text).toContain("https://calendar.app.google/EPr6vGFuVZ7e7pEa7");
   });
 
   it("never throws or logs the address when the provider fails", async () => {

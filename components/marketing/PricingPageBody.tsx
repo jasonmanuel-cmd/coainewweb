@@ -5,7 +5,7 @@ import { CallbackForm } from "@/components/forms/CallbackForm";
 import { PackageCards } from "@/components/marketing/PackageCards";
 import { PricingMatrix } from "@/components/marketing/PricingMatrix";
 import { ADDON_COUNT, BUILD_INCLUDED, NOT_INCLUDED } from "@/lib/pricing";
-import { DELIVERY_TIMELINE, OFFERS, THIRD_PARTY_COSTS } from "@/lib/site";
+import { BOOKING_URL, DELIVERY_TIMELINE, OFFERS, THIRD_PARTY_COSTS } from "@/lib/site";
 import "@/components/revamp/home.css";
 
 /**
@@ -186,7 +186,8 @@ export function PricingPageBody() {
           <span className="home-eyebrow">Prefer to talk?</span>
           <h2 className="home-h2" id="pricing-callback-title">Leave a number and get a call back.</h2>
           <p className="home-lede">
-            Questions about which package fits? Name and phone is all we need. Jason calls back during business hours.
+            Questions about which package fits? Name and phone is all we need. Jason calls back during business hours,
+            or you can <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">book a time</a> yourself.
           </p>
           <CallbackForm headingId="pricing-callback-title" />
         </div>

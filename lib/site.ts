@@ -126,6 +126,9 @@ export const GOOGLE_BUSINESS_PROFILE_URL = "https://share.google/QASlHnjE2K6FzdN
  *  once shadowed it and the wrong property received the data. */
 export const GOOGLE_TAG_ID = "G-ZYCPQEBGTN";
 
+/** Self-serve booking page (Google Calendar appointment schedule). */
+export const BOOKING_URL = "https://calendar.app.google/EPr6vGFuVZ7e7pEa7";
+
 /** Microsoft Clarity project (session recordings and heatmaps). */
 export const CLARITY_PROJECT_ID = "zkbwp1z1cu";
 

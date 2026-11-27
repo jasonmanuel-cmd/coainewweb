@@ -27,11 +27,12 @@ describe("contact-action tracking", () => {
         <a id="m" href="mailto:a@b.co">Mail</a>
         <a id="s" href="https://www.instagram.com/chaoticallyorganizedai661/">IG</a>
         <a id="i" href="/intake?pkg=website">Go</a>
+        <a id="b" href="https://calendar.app.google/EPr6vGFuVZ7e7pEa7">Book</a>
         <a id="x" href="/about">About</a>
       </div>
     ));
-    for (const id of ["t", "m", "s", "i", "x"]) await act(async () => { host.querySelector<HTMLAnchorElement>(`#${id}`)!.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true })); });
-    expect(dl.map((e) => e.event)).toEqual(["phone_click", "email_click", "social_click", "cta_click"]);
+    for (const id of ["t", "m", "s", "i", "b", "x"]) await act(async () => { host.querySelector<HTMLAnchorElement>(`#${id}`)!.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true })); });
+    expect(dl.map((e) => e.event)).toEqual(["phone_click", "email_click", "social_click", "cta_click", "booking_click"]);
     expect(dl[2]).toMatchObject({ network: "instagram", page: "/pricing" });
     expect(JSON.stringify(dl)).not.toContain("a@b.co");
   });

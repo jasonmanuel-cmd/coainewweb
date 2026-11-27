@@ -14,7 +14,7 @@ import { CallbackForm } from "@/components/forms/CallbackForm";
 import { ClientReviews } from "@/components/marketing/ClientReviews";
 import { PackageCards } from "@/components/marketing/PackageCards";
 import { ADDON_COUNT, PACKAGES, getAddOn } from "@/lib/pricing";
-import { BUILD_PRICE, BUSINESS_HOURS_LABEL, CONTACT, DELIVERY_TIMELINE, SITE_DESCRIPTION, formatUsd } from "@/lib/site";
+import { BOOKING_URL, BUILD_PRICE, BUSINESS_HOURS_LABEL, CONTACT, DELIVERY_TIMELINE, SITE_DESCRIPTION, formatUsd } from "@/lib/site";
 import { PORTFOLIO_STATS, countWord } from "@/lib/portfolio-stats";
 import { SYSTEM_CAPABILITY_COUNT } from "@/lib/systems";
 
@@ -100,6 +100,7 @@ export default function HomePage() {
             <p className="hero-call-line">
               Prefer to talk? <a href={`tel:${CONTACT.phoneE164}`}>Call {CONTACT.phoneDisplay}</a>
               <span> · {BUSINESS_HOURS_LABEL}</span>
+              <span> · </span><a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">Book a time</a>
             </p>
             <div className="cinematic-hero-trust" aria-label="Website build highlights">
               <span><Check aria-hidden="true" /> Custom, never cookie-cutter</span>
@@ -331,7 +332,8 @@ export default function HomePage() {
             <h2 id="callback-title">Want a call instead of a form?</h2>
             <p>
               Leave your name and number and Jason calls you back during business hours ({BUSINESS_HOURS_LABEL}). Or call now:{" "}
-              <a href={`tel:${CONTACT.phoneE164}`}>{CONTACT.phoneDisplay}</a>.
+              <a href={`tel:${CONTACT.phoneE164}`}>{CONTACT.phoneDisplay}</a>. Or{" "}
+              <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">pick a time that works for you</a>.
             </p>
           </div>
           <CallbackForm />
