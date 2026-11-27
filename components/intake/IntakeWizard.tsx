@@ -1,6 +1,7 @@
 "use client";
 import { inquiryAttribution } from "@/lib/crm/attribution";
 import { finishSubmission, submissionIdentity } from "@/lib/forms/submission-identity";
+import { trackEvent } from "@/lib/analytics/client";
 
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -102,7 +103,12 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
     setData((prev) => ({ ...prev, [key]: value }));
   }, []);
 
+  useEffect(() => {
+    trackEvent("intake_start", { intent: buildInquiry ? "build" : "scorecard" });
+  }, [buildInquiry]);
+
   const goStep = useCallback((n: number) => {
+    trackEvent("intake_step", { step: n });
     setStep(n);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
@@ -142,6 +148,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
       });
       if (!r.ok) {
         const j = (await r.json().catch(() => null)) as { error?: string } | null;
+        trackEvent("intake_error", { status: r.status });
         setSubmitError(j?.error || "Could not submit. Please try again or call us.");
         setTurnstileToken("");
         setVerificationAttempt((attempt) => attempt + 1);
@@ -149,6 +156,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
         return;
       }
     } catch {
+      trackEvent("intake_error", { status: 0 });
       setSubmitError("Network error. Please try again or call us.");
       setTurnstileToken("");
       setVerificationAttempt((attempt) => attempt + 1);
@@ -163,6 +171,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
     }
 
     finishSubmission("intake");
+    trackEvent("intake_submit", { intent: buildInquiry ? "build" : "scorecard" });
     router.push(`/intake/confirmation?session=${encodeURIComponent(sessionId)}${buildInquiry ? "&intent=build" : ""}${buildInquiry && packageInterest ? `&pkg=${encodeURIComponent(packageInterest)}` : ""}`);
   }
 
@@ -363,7 +372,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
               {interest ? <p>{interest.name}: {interest.priceLine}. This is an inquiry, not a purchase or booking.</p> : null}
             </div>
 
-            <form onSubmit={onFormSubmit} className="m-intake-form">
+            <form onSubmit={onFormSubmit} className="m-intake-form" data-clarity-mask="True">
               <input type="hidden" name="form_type" value="diagnostic_intake" />
               <div className="m-sr-only-field" aria-hidden>
                 <label htmlFor="intake-reference">Leave this field blank</label>

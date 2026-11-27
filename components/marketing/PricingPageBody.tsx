@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button, Card, Tag } from "@/components/ui";
 import { AddOnMenu } from "@/components/marketing/AddOnMenu";
+import { CallbackForm } from "@/components/forms/CallbackForm";
 import { PackageCards } from "@/components/marketing/PackageCards";
 import { PricingMatrix } from "@/components/marketing/PricingMatrix";
 import { ADDON_COUNT, BUILD_INCLUDED, NOT_INCLUDED } from "@/lib/pricing";
@@ -176,6 +177,18 @@ export function PricingPageBody() {
             ranking, an AI citation, a rating, or a revenue figure — see the{" "}
             <Link href="/terms">terms</Link> for what we do and do not warrant.
           </p>
+        </div>
+      </section>
+
+      {/* Short path */}
+      <section className="home-section">
+        <div className="home-container home-container--narrow">
+          <span className="home-eyebrow">Prefer to talk?</span>
+          <h2 className="home-h2" id="pricing-callback-title">Leave a number and get a call back.</h2>
+          <p className="home-lede">
+            Questions about which package fits? Name and phone is all we need. Jason calls back during business hours.
+          </p>
+          <CallbackForm headingId="pricing-callback-title" />
         </div>
       </section>
 

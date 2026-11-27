@@ -3,13 +3,16 @@ import Script from "next/script";
 import { type ReactNode } from "react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { AppChrome } from "@/components/AppChrome";
+import { Analytics } from "@vercel/analytics/next";
+import { ClickTracker } from "@/components/analytics/ClickTracker";
+import { MobileCallBar } from "@/components/analytics/MobileCallBar";
 import { PublicOnly } from "@/components/PublicOnly";
 import { PublicActivity } from "@/components/hq/PublicActivity";
 import { JsonLd } from "@/components/JsonLd";
 import { CipherChat } from "@/components/revamp/CipherChat";
 import { SentryLazyInit } from "@/components/SentryLazyInit";
 import { organizationJsonLd, webSiteJsonLd } from "@/lib/schema";
-import { GOOGLE_TAG_ID, SITE_DESCRIPTION, SITE_URL } from "@/lib/site";
+import { CLARITY_PROJECT_ID, GOOGLE_TAG_ID, SITE_DESCRIPTION, SITE_URL } from "@/lib/site";
 import "@fontsource-variable/inter/wght.css";
 import "@fontsource/barlow-condensed/500.css";
 import "@fontsource/barlow-condensed/600.css";
@@ -57,12 +60,17 @@ const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? "GTM-NMKLXR5R";
 // which is what Google's tag detection reads. Config is skipped on the private /hq workspace.
 const GOOGLE_TAG_INIT = `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());if(!/^\\/hq(\\/|$)/.test(location.pathname)){gtag('config','${GOOGLE_TAG_ID}');}`;
 
+// Microsoft Clarity. Skipped on the private /hq workspace and for visitors who send
+// Do Not Track or Global Privacy Control, matching how the site's own counter behaves.
+const CLARITY_INIT = `(function(){var n=navigator;if(/^\\/hq(\\/|$)/.test(location.pathname)||n.doNotTrack==="1"||n.globalPrivacyControl)return;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","${CLARITY_PROJECT_ID}");})();`;
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
         <script async src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_TAG_ID}`} />
         <script dangerouslySetInnerHTML={{ __html: GOOGLE_TAG_INIT }} />
+        <script dangerouslySetInnerHTML={{ __html: CLARITY_INIT }} />
       </head>
       <body className="coai-site">
         {/* Set the progressive-enhancement flag before hydration so reveal content
@@ -94,6 +102,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <PublicOnly><PublicActivity /><CipherChat />
         <SentryLazyInit />
         <SpeedInsights />
+        <Analytics />
+        <ClickTracker />
+        <MobileCallBar />
         {/* Simple Analytics: privacy-first, honors Do Not Track */}
         <Script
           src="https://scripts.simpleanalyticscdn.com/latest.js"

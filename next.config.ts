@@ -21,13 +21,13 @@ const nextConfig: NextConfig = {
     const developmentEval = process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : "";
     const csp = [
       "default-src 'self'",
-      `script-src 'self' 'unsafe-inline'${developmentEval} https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com https://challenges.cloudflare.com https://scripts.simpleanalyticscdn.com https://cdn.jsdelivr.net`,
+      `script-src 'self' 'unsafe-inline'${developmentEval} https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com https://challenges.cloudflare.com https://scripts.simpleanalyticscdn.com https://cdn.jsdelivr.net https://www.clarity.ms https://scripts.clarity.ms`,
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https:",
       // The Vapi widget loads its Lucide icon font from unpkg (lucide-static).
       "font-src 'self' data: https://unpkg.com",
       // vapi/daily/jsdelivr are required by the chat widget.
-      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://www.googletagmanager.com https://vitals.vercel-insights.com https://*.vercel-insights.com https://challenges.cloudflare.com https://queue.simpleanalyticscdn.com https://api.vapi.ai https://*.vapi.ai wss://*.vapi.ai https://*.daily.co wss://*.daily.co https://cdn.jsdelivr.net",
+      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://www.googletagmanager.com https://vitals.vercel-insights.com https://*.vercel-insights.com https://challenges.cloudflare.com https://queue.simpleanalyticscdn.com https://api.vapi.ai https://*.vapi.ai wss://*.vapi.ai https://*.daily.co wss://*.daily.co https://cdn.jsdelivr.net https://*.clarity.ms https://c.bing.com",
       "worker-src 'self' blob:",
       "media-src 'self' blob: data:",
       "frame-src https://www.googletagmanager.com https://challenges.cloudflare.com https://*.daily.co",

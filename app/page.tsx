@@ -10,9 +10,11 @@ import { SpotlightGrid } from "@/components/revamp/SpotlightGrid";
 import { ZoomableScreenshot } from "@/components/revamp/ZoomableScreenshot";
 import { REVAMP_PROJECTS } from "@/components/revamp/revampData";
 import { serviceJsonLd } from "@/lib/schema";
+import { CallbackForm } from "@/components/forms/CallbackForm";
+import { ClientReviews } from "@/components/marketing/ClientReviews";
 import { PackageCards } from "@/components/marketing/PackageCards";
 import { ADDON_COUNT, PACKAGES, getAddOn } from "@/lib/pricing";
-import { BUILD_PRICE, DELIVERY_TIMELINE, SITE_DESCRIPTION, formatUsd } from "@/lib/site";
+import { BUILD_PRICE, BUSINESS_HOURS_LABEL, CONTACT, DELIVERY_TIMELINE, SITE_DESCRIPTION, formatUsd } from "@/lib/site";
 import { PORTFOLIO_STATS, countWord } from "@/lib/portfolio-stats";
 import { SYSTEM_CAPABILITY_COUNT } from "@/lib/systems";
 
@@ -20,16 +22,16 @@ const HOME_PAGE_DESCRIPTION =
   "Custom, hand-coded websites and the systems around them—local search, AI answer visibility, missed-call text-back, booking, and follow-up—for Bakersfield and Kern County businesses, with full ownership.";
 
 export const metadata: Metadata = {
-  title: "Custom Websites & Growth Systems for Local Businesses",
+  title: "Bakersfield Custom Websites from $1,997 Flat",
   description: HOME_PAGE_DESCRIPTION,
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Custom Websites & Growth Systems for Local Businesses",
+    title: "Bakersfield Custom Websites from $1,997 Flat",
     description: HOME_PAGE_DESCRIPTION
   },
   twitter: {
     card: "summary_large_image",
-    title: "Custom Websites & Growth Systems for Local Businesses",
+    title: "Bakersfield Custom Websites from $1,997 Flat",
     description: HOME_PAGE_DESCRIPTION
   }
 };
@@ -87,7 +89,7 @@ export default function HomePage() {
         <div className="cinematic-container cinematic-hero-inner">
           <div className="cinematic-hero-copy">
             <span className="revamp-kicker"><i aria-hidden="true" /> Custom websites + growth systems for local businesses</span>
-            <h1 id="hero-title">Built to stand out.<br /><em>Designed to convert.</em></h1>
+            <h1 id="hero-title">Custom websites for Bakersfield businesses.<br /><em>From {formatUsd(BUILD_PRICE)} flat.</em></h1>
             <p className="cinematic-hero-lede">Custom websites with a point of view—and a clear path to the next customer. COAI pairs fast, search-ready design with the systems that win the job and keep the customer: missed-call text-back, booking, follow-up, reviews, and reporting.</p>
             <div className="cinematic-hero-actions">
               <Link className="revamp-btn-primary" href="/intake?pkg=website">
@@ -95,6 +97,10 @@ export default function HomePage() {
               </Link>
               <Link className="revamp-btn-ghost" href="/pricing#packages">See packages and prices <ArrowRight aria-hidden="true" /></Link>
             </div>
+            <p className="hero-call-line">
+              Prefer to talk? <a href={`tel:${CONTACT.phoneE164}`}>Call {CONTACT.phoneDisplay}</a>
+              <span> · {BUSINESS_HOURS_LABEL}</span>
+            </p>
             <div className="cinematic-hero-trust" aria-label="Website build highlights">
               <span><Check aria-hidden="true" /> Custom, never cookie-cutter</span>
               <span><Check aria-hidden="true" /> Mobile-first + search-ready</span>
@@ -305,6 +311,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <ClientReviews />
+
       <section className="testimonial-section cinematic-section" aria-labelledby="testimonial-title">
         <div className="cinematic-container">
           <span className="section-index">[ OPERATOR SIGNAL ]</span>
@@ -313,6 +321,20 @@ export default function HomePage() {
             <p id="testimonial-title">“Jason took the time to truly understand what our business needed, then built a system that made the whole operation feel more organized and intentional.”</p>
             <footer><strong>Shelly Graham</strong><span>Clear Choice Tax Solutions · Bakersfield</span></footer>
           </blockquote>
+        </div>
+      </section>
+
+      <section className="callback-section cinematic-section" id="callback" aria-labelledby="callback-title">
+        <div className="cinematic-container callback-layout">
+          <div className="section-heading">
+            <span className="section-index">[ SHORTEST PATH ]</span>
+            <h2 id="callback-title">Want a call instead of a form?</h2>
+            <p>
+              Leave your name and number and Jason calls you back during business hours ({BUSINESS_HOURS_LABEL}). Or call now:{" "}
+              <a href={`tel:${CONTACT.phoneE164}`}>{CONTACT.phoneDisplay}</a>.
+            </p>
+          </div>
+          <CallbackForm />
         </div>
       </section>
 
