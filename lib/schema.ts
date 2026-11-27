@@ -10,6 +10,7 @@ import {
   ORG_NAME,
   OFFERS,
   SAME_AS,
+  FOUNDER_SAME_AS,
   SITE_URL,
   AREA_SERVED,
   WEBSITE_ID,
@@ -89,6 +90,7 @@ export function organizationJsonLd() {
         jobTitle: FOUNDER.role,
         email: FOUNDER.email,
         url: `${SITE_URL}/about`,
+        sameAs: [...FOUNDER_SAME_AS],
         description: "Founder of Chaotically Organized AI, Bakersfield CA. 15+ years in operations, trades, and events.",
         worksFor: { "@id": ORG_ID }
       }

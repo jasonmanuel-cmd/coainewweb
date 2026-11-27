@@ -53,6 +53,7 @@ export const viewport: Viewport = {
 };
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? "GTM-NMKLXR5R";
+const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-ZYCPQEBGTN";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -81,6 +82,15 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`
           }}
         />
+        {/* Google tag (GA4). gtag.js loads async; config is required for hits to be sent. */}
+        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
+        <Script
+          id="google-tag"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}');`
+          }}
+        />
         <JsonLd data={organizationJsonLd()} />
         <JsonLd data={webSiteJsonLd()} /></PublicOnly>
         <AppChrome>{children}</AppChrome>
@@ -101,10 +111,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             referrerPolicy="no-referrer-when-downgrade"
           />
         </noscript>
-        <Script
-          src="https://trtc.io/knocket-sdk/sdk.js?identifier=9368e40215abec47a6&v=1791814761160"
-          strategy="lazyOnload"
-        /></PublicOnly>
+</PublicOnly>
       </body>
     </html>
   );
