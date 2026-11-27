@@ -1,4 +1,4 @@
-type FormScope = "contact" | "intake" | "waitlist";
+type FormScope = "contact" | "intake" | "waitlist" | "callback";
 const memory = new Map<FormScope, string>();
 const key = (scope: FormScope) => `coai:submission:${scope}:v1`;
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;

@@ -6,6 +6,7 @@ import { TurnstileField } from "@/components/security/TurnstileField";
 import { CONTACT } from "@/lib/site";
 import { inquiryAttribution } from "@/lib/crm/attribution";
 import { finishSubmission, submissionIdentity } from "@/lib/forms/submission-identity";
+import { trackEvent } from "@/lib/analytics/client";
 
 export type ContactMarketingFormProps = {
   /** `1` | `2` | `3` — preselects package interest from pricing or deep links */
@@ -76,12 +77,14 @@ export function ContactMarketingForm({
       });
       if (r.ok) {
         finishSubmission("contact");
+        trackEvent("contact_submit", { intent: contactIntent ?? "general" });
         setDone(true);
         form.reset();
         setTurnstileToken("");
         return;
       }
       const errJson = (await r.json().catch(() => null)) as { error?: string } | null;
+      trackEvent("contact_error", { status: r.status });
       setFormError(errJson?.error || "Something went wrong. Try again or call us.");
       setTurnstileToken("");
       setVerificationAttempt((attempt) => attempt + 1);
@@ -113,7 +116,7 @@ export function ContactMarketingForm({
         Submissions go to <strong>{CONTACT.email}</strong> via our form handler. Jason reviews inquiries during published business hours. If
         it&apos;s urgent, call directly — {CONTACT.phoneDisplay}.
       </p>
-      <form id="contact-form-fields" onSubmit={handleSubmit}>
+      <form id="contact-form-fields" onSubmit={handleSubmit} data-clarity-mask="True">
         <input type="hidden" name="form_type" value="contact" />
         <input type="hidden" name="inbound_source" value={inboundSource ?? ""} />
         <input type="hidden" name="contact_intent" value={contactIntent ?? ""} />

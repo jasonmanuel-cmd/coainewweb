@@ -47,8 +47,9 @@ export default function PrivacyPage() {
           </ul>
           <p>
             Website tools may also collect IP address, browser and device details, referring page, pages viewed,
-            approximate region, performance timing, and error diagnostics. We do not ask analytics or error-monitoring
-            providers to record routine session video, and our Sentry configuration disables default PII collection.
+            approximate region, performance timing, and error diagnostics. We use Microsoft Clarity to record anonymized
+            sessions and heatmaps (how visitors scroll, click and tap) so we can improve the site; Clarity masks typed text
+            and form fields. Our Sentry configuration disables default PII collection.
           </p>
         </section>
 
@@ -71,7 +72,8 @@ export default function PrivacyPage() {
             <li><strong>Formspree</strong> — processes contact and intake form submissions.</li>
             <li><strong>Cloudflare Turnstile</strong> — detects automated or abusive form traffic.</li>
             <li><strong>Google Analytics via Google Tag Manager</strong> — measures website use and traffic sources.</li>
-            <li><strong>Vercel Speed Insights</strong> — measures real-user page performance.</li>
+            <li><strong>Microsoft Clarity</strong> — records anonymized sessions and heatmaps to show where visitors get stuck. Not loaded when your browser sends Do Not Track or Global Privacy Control.</li>
+            <li><strong>Vercel Web Analytics and Speed Insights</strong> — measure visits and real-user page performance.</li>
             <li><strong>Sentry</strong> — captures sampled application errors and limited performance diagnostics.</li>
             <li><strong>Vercel</strong> — hosts and delivers the website and associated server functions.</li>
           </ul>
@@ -82,8 +84,8 @@ export default function PrivacyPage() {
           <h2>5. Cookies and Controls</h2>
           <p>
             Google Analytics may use first-party identifiers to distinguish visits. Security and form tools may set
-            strictly necessary cookies or use equivalent storage. We do not run Microsoft Clarity, routine session
-            replay, or a separate advertising pixel. See our <a href="/cookies">Cookie Notice</a> for browser controls
+            strictly necessary cookies or use equivalent storage. Microsoft Clarity may set first-party cookies to
+            group page views into sessions. We do not run a separate advertising pixel. See our <a href="/cookies">Cookie Notice</a> for browser controls
             and opt-out links.
           </p>
         </section>

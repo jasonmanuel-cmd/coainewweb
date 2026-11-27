@@ -1,9 +1,11 @@
 "use client";
 
+import { Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useState } from "react";
+import { CONTACT } from "@/lib/site";
 
 const MORE_LINKS = [
   ["Pricing", "/pricing", "One build. Clear ownership."],
@@ -103,6 +105,11 @@ export function RevampNavbar() {
               </button>
             </div>
           </div>
+
+          <a className="revamp-nav-call" href={`tel:${CONTACT.phoneE164}`} aria-label={`Call ${CONTACT.phoneDisplay}`}>
+            <Phone aria-hidden="true" />
+            <span>Call<span className="revamp-nav-call-number"> {CONTACT.phoneDisplay}</span></span>
+          </a>
 
           <Link className="revamp-nav-cta" href="/intake?pkg=website">
             <span>Discuss your build</span>

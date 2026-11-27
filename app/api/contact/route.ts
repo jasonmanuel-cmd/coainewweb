@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { apiErrorResponse } from "@/lib/api-errors";
+import { sendLeadConfirmation } from "@/lib/autoreply";
 import { FORMSPREE_CONTACT } from "@/lib/forms";
 import { deliverCapturedForm } from "@/lib/crm/notifications";
 import { sanitizeAttribution } from "@/lib/crm/attribution";
@@ -52,6 +53,7 @@ export async function POST(request: Request) {
     const submissionKey = await captureCrmLead("contact", fields);
     delete fields.submission_id;
     await deliverCapturedForm(FORMSPREE_CONTACT, fields, submissionKey);
+    await sendLeadConfirmation({ email: fields.email, firstName: fields.first_name, kind: "contact" });
 
     return NextResponse.json({ ok: true });
   } catch (error) {

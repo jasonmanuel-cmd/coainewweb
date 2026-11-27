@@ -126,6 +126,9 @@ export const GOOGLE_BUSINESS_PROFILE_URL = "https://share.google/QASlHnjE2K6FzdN
  *  once shadowed it and the wrong property received the data. */
 export const GOOGLE_TAG_ID = "G-ZYCPQEBGTN";
 
+/** Microsoft Clarity project (session recordings and heatmaps). */
+export const CLARITY_PROJECT_ID = "zkbwp1z1cu";
+
 const FACEBOOK_URL = "https://www.facebook.com/profile.php?id=61584598503488";
 const INSTAGRAM_URL = "https://www.instagram.com/chaoticallyorganizedai661/";
 const FOUNDER_LINKEDIN_URL = "https://www.linkedin.com/in/jason-manuel-52a2963b4/";

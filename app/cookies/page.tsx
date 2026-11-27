@@ -26,8 +26,10 @@ export default function CookiesPage() {
           <h2>What We Use</h2>
           <p>
             This site uses essential storage for security and form handling, Google Analytics through Google Tag Manager
-            to understand site use, Vercel Speed Insights to measure page performance, and Sentry to diagnose sampled
-            application errors. We do not run advertising pixels, Microsoft Clarity, or routine session replay.
+            to understand site use, Vercel Web Analytics and Speed Insights to measure visits and page performance, Microsoft Clarity to record
+            anonymized sessions and heatmaps so we can see where visitors get stuck, and Sentry to diagnose sampled
+            application errors. Clarity masks typed text and form fields and is not loaded for visitors who send a Do Not
+            Track or Global Privacy Control signal. We do not run advertising pixels.
           </p>
         </section>
         <section className="m-legal-section">
@@ -36,7 +38,9 @@ export default function CookiesPage() {
             You can block or delete cookies in your browser settings. Blocking essential security storage may prevent a
             form from working. You can also install the{" "}
             <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noreferrer">Google Analytics Opt-out Browser Add-on</a>.
-            Browser privacy extensions can block additional measurement requests.
+            See{" "}
+            <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noreferrer">Microsoft&apos;s privacy statement</a>{" "}
+            for how Clarity data is handled. Browser privacy extensions can block additional measurement requests.
           </p>
         </section>
         <section className="m-legal-section">

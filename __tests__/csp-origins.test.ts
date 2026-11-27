@@ -18,6 +18,9 @@ const REQUIRED: Array<[directive: string, origin: string, why: string]> = [
   ["connect-src", "https://api.vapi.ai", "Vapi chat widget API"],
   ["script-src", "https://www.googletagmanager.com", "Google Tag Manager and the Google tag (gtag.js)"],
   ["connect-src", "https://www.google-analytics.com", "Google tag measurement requests"],
+  ["script-src", "https://www.clarity.ms", "Microsoft Clarity loader"],
+  ["script-src", "https://scripts.clarity.ms", "Microsoft Clarity recorder"],
+  ["connect-src", "https://*.clarity.ms", "Microsoft Clarity collection endpoints"],
   ["script-src", "https://scripts.simpleanalyticscdn.com", "Simple Analytics"],
   ["connect-src", "https://queue.simpleanalyticscdn.com", "Simple Analytics noscript pixel"],
   ["frame-src", "https://challenges.cloudflare.com", "Cloudflare Turnstile"]
@@ -79,6 +82,17 @@ describe("analytics and social wiring", () => {
     expect(layout).toMatch(/<head>[\s\S]*<script async src=\{`https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=\$\{GOOGLE_TAG_ID\}`\}[\s\S]*<\/head>/);
     expect(layout).toContain("gtag('config'");
     expect(layout).not.toMatch(/NEXT_PUBLIC_GA_MEASUREMENT_ID/);
+  });
+});
+
+describe("Microsoft Clarity", () => {
+  it("is loaded once from <head>, never on /hq and never for DNT or GPC visitors", () => {
+    const layout = fs.readFileSync(path.join(process.cwd(), "app", "layout.tsx"), "utf8");
+    expect(layout.match(/clarity\.ms\/tag\//g)?.length).toBe(1);
+    expect(layout).toContain("CLARITY_PROJECT_ID");
+    expect(layout).toContain("doNotTrack");
+    expect(layout).toContain("globalPrivacyControl");
+    expect(layout).toMatch(/<head>[\s\S]*CLARITY_INIT[\s\S]*<\/head>/);
   });
 });
 
