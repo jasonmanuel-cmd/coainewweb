@@ -126,8 +126,12 @@ export const SAME_AS = [
   GOOGLE_BUSINESS_PROFILE_URL,
   "https://www.linkedin.com/company/chaoticallyorganizedai",
   "https://x.com/COAIBakersfield",
-  "https://www.facebook.com/profile.php?id=61584775744622"
+  "https://www.facebook.com/profile.php?id=61584598503488",
+  "https://www.instagram.com/chaoticallyorganizedai661/"
 ] as const;
+
+/** Founder's personal profile — belongs on the Person node, not the Organization. */
+export const FOUNDER_SAME_AS = ["https://www.linkedin.com/in/jason-manuel-52a2963b4/"] as const;
 
 /**
  * Map / place URL for schema `hasMap` (often the same as your public GBP link).

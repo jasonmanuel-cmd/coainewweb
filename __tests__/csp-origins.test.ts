@@ -6,33 +6,18 @@ import { describe, expect, it } from "vitest";
  * The Content-Security-Policy is built at build time in next.config.ts and shipped as a
  * static header. Because it is static, nothing fails at build time when a third-party
  * widget loads a resource the policy does not allow: the script executes and then the
- * browser silently blocks its stylesheet, font or API calls. That is how the knocket
- * (trtc.io) widget ended up non-functional in production while every check stayed green.
+ * browser silently blocks its stylesheet, font or API calls.
  *
  * Each entry below is an origin that a script in the app actually requests, mapped to the
  * directive that must permit it. Adding a third-party script to the app without adding
  * its origins here should fail this test.
  */
 const REQUIRED: Array<[directive: string, origin: string, why: string]> = [
-  [
-    "script-src",
-    "https://trtc.io",
-    "knocket SDK script (app/layout.tsx)"
-  ],
-  [
-    "style-src",
-    "https://trtc.io",
-    "knocket SDK stylesheet - was missing, so the widget rendered unstyled and its API calls were blocked"
-  ],
-  [
-    "connect-src",
-    "https://api.trtc.io",
-    "knocket portal API - was missing, so the widget could never initialise"
-  ],
   ["font-src", "https://unpkg.com", "Vapi chat widget loads the lucide-static icon font from unpkg"],
   ["script-src", "https://cdn.jsdelivr.net", "Vapi chat widget is served from jsDelivr"],
   ["connect-src", "https://api.vapi.ai", "Vapi chat widget API"],
-  ["script-src", "https://www.googletagmanager.com", "Google Tag Manager"],
+  ["script-src", "https://www.googletagmanager.com", "Google Tag Manager and the Google tag (gtag.js)"],
+  ["connect-src", "https://www.google-analytics.com", "Google tag measurement requests"],
   ["script-src", "https://scripts.simpleanalyticscdn.com", "Simple Analytics"],
   ["connect-src", "https://queue.simpleanalyticscdn.com", "Simple Analytics noscript pixel"],
   ["frame-src", "https://challenges.cloudflare.com", "Cloudflare Turnstile"]
@@ -76,5 +61,20 @@ describe("Content-Security-Policy permits every third-party origin the app loads
     const source = fs.readFileSync(path.join(process.cwd(), "next.config.ts"), "utf8");
     expect(source).toContain(`"object-src 'none'"`);
     expect(source).toContain(`"base-uri 'self'"`);
+  });
+});
+describe("analytics and social wiring", () => {
+  const read = (...p: string[]) => fs.readFileSync(path.join(process.cwd(), ...p), "utf8");
+
+  it("loads no trtc.io (knocket) script and allows none in the CSP", () => {
+    expect(read("app", "layout.tsx")).not.toMatch(/trtc\.io|knocket/i);
+    expect(read("next.config.ts")).not.toMatch(/trtc\.io/i);
+  });
+
+  it("loads the Google tag once, with a config call", () => {
+    const layout = read("app", "layout.tsx");
+    expect(layout.match(/googletagmanager\.com\/gtag\/js/g)?.length).toBe(1);
+    expect(layout).toContain("gtag('config'");
+    expect(layout).toContain("G-ZYCPQEBGTN");
   });
 });
