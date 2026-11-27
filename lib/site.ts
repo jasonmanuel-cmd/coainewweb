@@ -122,6 +122,10 @@ export const GOOGLE_BUSINESS_PROFILE_URL = "https://share.google/QASlHnjE2K6FzdN
  * SameAs — Google Business Profile, Facebook and Instagram. Add others only when you have verified public URLs.
  * @see https://developers.google.com/search/docs/appearance/structured-data/organization
  */
+/** Google tag (GA4) measurement ID. Hard-coded on purpose: a stale NEXT_PUBLIC_ env value on Vercel
+ *  once shadowed it and the wrong property received the data. */
+export const GOOGLE_TAG_ID = "G-ZYCPQEBGTN";
+
 const FACEBOOK_URL = "https://www.facebook.com/profile.php?id=61584598503488";
 const INSTAGRAM_URL = "https://www.instagram.com/chaoticallyorganizedai661/";
 const FOUNDER_LINKEDIN_URL = "https://www.linkedin.com/in/jason-manuel-52a2963b4/";
