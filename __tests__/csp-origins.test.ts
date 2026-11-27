@@ -78,3 +78,12 @@ describe("analytics and social wiring", () => {
     expect(layout).toContain("G-ZYCPQEBGTN");
   });
 });
+
+describe("organization sameAs", () => {
+  it("lists only verified profiles", async () => {
+    const { SAME_AS } = await import("@/lib/site");
+    expect(SAME_AS.some((u) => /x\.com|twitter\.com|linkedin\.com\/company/.test(u))).toBe(false);
+    expect(SAME_AS.some((u) => u.includes("facebook.com/profile.php?id=61584598503488"))).toBe(true);
+    expect(SAME_AS.some((u) => u.includes("instagram.com/chaoticallyorganizedai661"))).toBe(true);
+  });
+});
