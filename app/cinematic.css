@@ -588,6 +588,10 @@
 .revamp-footer-brand > p { max-width: 420px; color: #849c90; font-size: 0.85rem; }
 .revamp-footer-status { display: flex; align-items: center; gap: 8px; color: #7f988c; font: 500 0.61rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; }
 .revamp-footer-status i { width: 6px; height: 6px; border-radius: 50%; background: var(--pass-green); box-shadow: 0 0 10px var(--pass-green); }
+.revamp-footer-social { display: flex; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.revamp-footer-social a { display: inline-grid; place-items: center; width: 40px; height: 40px; border: 1px solid var(--border-default); border-radius: var(--radius-sm); color: #839b8f; text-decoration: none; transition: color .15s ease, border-color .15s ease; }
+.revamp-footer-social a:hover { color: var(--steel-blue); border-color: var(--steel-blue); }
+.revamp-footer-social a:focus-visible { outline: 2px solid var(--steel-blue); outline-offset: 2px; }
 .revamp-footer-column { display: grid; align-content: start; justify-items: start; gap: 13px; }
 .revamp-footer-column h3 { margin-bottom: 10px; color: white; font: 600 0.65rem/1 var(--font-mono); letter-spacing: 0.11em; text-transform: uppercase; }
 .revamp-footer-column a, .revamp-footer-column > span { color: #839b8f; font-size: 0.78rem; line-height: 1.45; text-decoration: none; }

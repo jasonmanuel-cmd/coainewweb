@@ -122,14 +122,21 @@ export const GOOGLE_BUSINESS_PROFILE_URL = "https://share.google/QASlHnjE2K6FzdN
  * SameAs — Google Business Profile, Facebook and Instagram. Add others only when you have verified public URLs.
  * @see https://developers.google.com/search/docs/appearance/structured-data/organization
  */
-export const SAME_AS = [
-  GOOGLE_BUSINESS_PROFILE_URL,
-  "https://www.facebook.com/profile.php?id=61584598503488",
-  "https://www.instagram.com/chaoticallyorganizedai661/"
-] as const;
+const FACEBOOK_URL = "https://www.facebook.com/profile.php?id=61584598503488";
+const INSTAGRAM_URL = "https://www.instagram.com/chaoticallyorganizedai661/";
+const FOUNDER_LINKEDIN_URL = "https://www.linkedin.com/in/jason-manuel-52a2963b4/";
+
+export const SAME_AS = [GOOGLE_BUSINESS_PROFILE_URL, FACEBOOK_URL, INSTAGRAM_URL] as const;
 
 /** Founder's personal profile — belongs on the Person node, not the Organization. */
-export const FOUNDER_SAME_AS = ["https://www.linkedin.com/in/jason-manuel-52a2963b4/"] as const;
+export const FOUNDER_SAME_AS = [FOUNDER_LINKEDIN_URL] as const;
+
+/** Footer social icons. Same URLs as the schema above, so the two cannot drift apart. */
+export const SOCIAL_LINKS = [
+  { id: "facebook", label: "Chaotically Organized AI on Facebook", href: FACEBOOK_URL },
+  { id: "instagram", label: "Chaotically Organized AI on Instagram", href: INSTAGRAM_URL },
+  { id: "linkedin", label: "Jason Manuel on LinkedIn", href: FOUNDER_LINKEDIN_URL }
+] as const;
 
 /**
  * Map / place URL for schema `hasMap` (often the same as your public GBP link).

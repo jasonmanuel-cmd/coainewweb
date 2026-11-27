@@ -87,3 +87,12 @@ describe("organization sameAs", () => {
     expect(SAME_AS.some((u) => u.includes("instagram.com/chaoticallyorganizedai661"))).toBe(true);
   });
 });
+
+describe("footer social links", () => {
+  it("point at the same verified profiles as the schema", async () => {
+    const { SOCIAL_LINKS, SAME_AS, FOUNDER_SAME_AS } = await import("@/lib/site");
+    const known = new Set<string>([...SAME_AS, ...FOUNDER_SAME_AS]);
+    expect(SOCIAL_LINKS.map((l) => l.id)).toEqual(["facebook", "instagram", "linkedin"]);
+    for (const link of SOCIAL_LINKS) expect(known.has(link.href)).toBe(true);
+  });
+});
