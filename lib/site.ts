@@ -119,13 +119,11 @@ export const BRAND_TAGLINE = "Where Chaos Meets Clarity";
 export const GOOGLE_BUSINESS_PROFILE_URL = "https://share.google/QASlHnjE2K6FzdNfJ";
 
 /**
- * SameAs — start with GBP; add LinkedIn, YouTube, etc. when you have public URLs.
+ * SameAs — Google Business Profile, Facebook and Instagram. Add others only when you have verified public URLs.
  * @see https://developers.google.com/search/docs/appearance/structured-data/organization
  */
 export const SAME_AS = [
   GOOGLE_BUSINESS_PROFILE_URL,
-  "https://www.linkedin.com/company/chaoticallyorganizedai",
-  "https://x.com/COAIBakersfield",
   "https://www.facebook.com/profile.php?id=61584598503488",
   "https://www.instagram.com/chaoticallyorganizedai661/"
 ] as const;
