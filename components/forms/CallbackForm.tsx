@@ -6,7 +6,7 @@ import { TurnstileField } from "@/components/security/TurnstileField";
 import { trackEvent } from "@/lib/analytics/client";
 import { inquiryAttribution } from "@/lib/crm/attribution";
 import { finishSubmission, submissionIdentity } from "@/lib/forms/submission-identity";
-import { BUSINESS_HOURS_LABEL, CONTACT } from "@/lib/site";
+import { BOOKING_URL, BUSINESS_HOURS_LABEL, CONTACT } from "@/lib/site";
 import "./callback-form.css";
 
 /** Two-field "call me back" request: the shortest path from a visitor to Jason's phone. */
@@ -68,7 +68,8 @@ export function CallbackForm({ headingId = "callback-title" }: { headingId?: str
     return (
       <div className="cb-wrap">
         <p role="status" className="cb-success">
-          ✓ Request received. Jason returns calls during published business hours ({BUSINESS_HOURS_LABEL}).
+          ✓ Request received. Jason returns calls during published business hours ({BUSINESS_HOURS_LABEL}).{" "}
+          Want a set time instead? <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">Book a call</a>.
         </p>
       </div>
     );
@@ -96,7 +97,10 @@ export function CallbackForm({ headingId = "callback-title" }: { headingId?: str
         </div>
         <TurnstileField key={verificationAttempt} className="cb-verify" onToken={setTurnstileToken} onExpire={() => setTurnstileToken("")} />
         {error ? <p ref={errorRef} tabIndex={-1} role="alert" className="cb-error">{error}</p> : null}
-        <p className="cb-note">We use your number only to return this call. No sales list, no texts.</p>
+        <p className="cb-note">
+          We use your number only to return this call. No sales list, no texts. Prefer a set time?{" "}
+          <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">Book a call</a>.
+        </p>
       </form>
     </div>
   );

@@ -5,7 +5,7 @@ import { MarketingLayout } from "@/components/marketing/MarketingLayout";
 import { pageMetadata } from "@/lib/metadata";
 import { breadcrumbJsonLd } from "@/lib/schema";
 import { describeInterest } from "@/lib/pricing";
-import { BUSINESS_HOURS_LABEL, CONTACT, OFFERS, SITE_URL } from "@/lib/site";
+import { BOOKING_URL, BUSINESS_HOURS_LABEL, CONTACT, OFFERS, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   ...pageMetadata({
@@ -57,6 +57,9 @@ export default async function IntakeConfirmationPage({ searchParams }: { searchP
           <div className="m-cta-row m-cta-row--center">
             <a href={`tel:${CONTACT.phoneE164}`} className="m-btn-primary">
               Call {CONTACT.phoneDisplay}
+            </a>
+            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="m-btn-ghost">
+              Book a call
             </a>
             <Link href="/pricing" className="m-btn-ghost">
               Review pricing and scope

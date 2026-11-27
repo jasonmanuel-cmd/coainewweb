@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { trackEvent } from "@/lib/analytics/client";
+import { BOOKING_URL } from "@/lib/site";
 
 /**
  * One delegated click listener that records the contact actions that matter:
@@ -24,6 +25,7 @@ export function ClickTracker() {
 
       if (href.startsWith("tel:")) trackEvent("phone_click", { page: pathname, place });
       else if (href.startsWith("mailto:")) trackEvent("email_click", { page: pathname, place });
+      else if (href.startsWith(BOOKING_URL)) trackEvent("booking_click", { page: pathname, place });
       else if (/^https?:\/\/(www\.)?(facebook|instagram|linkedin)\.com\//.test(href)) {
         trackEvent("social_click", { page: pathname, network: new URL(href).hostname.replace(/^www\./, "").split(".")[0] });
       } else if (href.startsWith("/intake")) trackEvent("cta_click", { page: pathname, place, target: "intake" });

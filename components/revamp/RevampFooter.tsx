@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BUSINESS_HOURS_LABEL, CONTACT, PRIMARY_EMAIL, SITE_NAME, SITE_URL, SOCIAL_LINKS } from "@/lib/site";
+import { BOOKING_URL, BUSINESS_HOURS_LABEL, CONTACT, PRIMARY_EMAIL, SITE_NAME, SITE_URL, SOCIAL_LINKS } from "@/lib/site";
 
 const systemLinks = [
   ["Systems Catalog", "/systems"],
@@ -79,6 +79,7 @@ export function RevampFooter() {
         <div className="revamp-footer-column revamp-footer-contact">
           <h3>Direct line</h3>
           <a className="revamp-footer-phone" href={`tel:${CONTACT.phoneE164}`}>{CONTACT.phoneDisplay}</a>
+          <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">Book a call</a>
           <a href={`mailto:${PRIMARY_EMAIL}`}>{PRIMARY_EMAIL}</a>
           <span>{BUSINESS_HOURS_LABEL}</span>
           <span>Bakersfield · Kern County · California</span>

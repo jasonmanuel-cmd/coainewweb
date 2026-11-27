@@ -1,4 +1,4 @@
-import { BUSINESS_HOURS_LABEL, CONTACT } from "@/lib/site";
+import { BOOKING_URL, BUSINESS_HOURS_LABEL, CONTACT } from "@/lib/site";
 
 /**
  * One plain-text confirmation to the person who just submitted a request.
@@ -24,7 +24,9 @@ export function confirmationMessage(firstName: string, kind: "contact" | "intake
       "",
       `Jason reviews inquiries during published business hours (${BUSINESS_HOURS_LABEL}). Scope, timing and any fees are confirmed with you before any work begins.`,
       "",
-      `Want to talk sooner? Call ${CONTACT.phoneDisplay}. To add details, just reply to this email.`,
+      `Want to talk sooner? Call ${CONTACT.phoneDisplay}, or pick a time that works for you: ${BOOKING_URL}`,
+      "",
+      "To add details, just reply to this email.",
       "",
       "— Chaotically Organized AI, Bakersfield, CA",
       "",

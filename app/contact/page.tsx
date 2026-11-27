@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BadgeCheck, MapPin, Phone } from "lucide-react";
+import { BadgeCheck, CalendarClock, MapPin, Phone } from "lucide-react";
 import { ContactMarketingForm } from "@/components/contact/ContactMarketingForm";
 import { sanitizeAttribution } from "@/lib/crm/attribution";
 import { JsonLd } from "@/components/JsonLd";
 import { MarketingLayout } from "@/components/marketing/MarketingLayout";
 import { pageMetadata } from "@/lib/metadata";
 import { breadcrumbJsonLd } from "@/lib/schema";
-import { BUSINESS_HOURS_LABEL, CONTACT, GOOGLE_BUSINESS_PROFILE_URL, LEGAL_NAME, SITE_URL } from "@/lib/site";
+import { BOOKING_URL, BUSINESS_HOURS_LABEL, CONTACT, GOOGLE_BUSINESS_PROFILE_URL, LEGAL_NAME, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Contact — direct line to Jason",
@@ -65,6 +65,12 @@ export default async function ContactPage({
               <span className="m-info-icon"><Phone aria-hidden="true" /></span>
               <span className="m-info-text">
                 <Link href={`tel:${CONTACT.phoneE164}`}>{CONTACT.phoneDisplay}</Link>
+              </span>
+            </div>
+            <div className="m-info-line">
+              <span className="m-info-icon"><CalendarClock aria-hidden="true" /></span>
+              <span className="m-info-text">
+                <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">Book a call</a>
               </span>
             </div>
             <div className="m-info-line">

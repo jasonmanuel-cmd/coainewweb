@@ -15,3 +15,5 @@
 .cb-note { margin: 0; color: var(--text-muted); font-size: 0.8rem; }
 .cb-verify { margin: 0; }
 @media (max-width: 720px) { .cb-row { grid-template-columns: minmax(0, 1fr); } }
+.cb-success a, .cb-note a { color: white; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.cb-success a:hover, .cb-note a:hover { color: var(--steel-blue); }
