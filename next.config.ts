@@ -74,16 +74,20 @@ const nextConfig: NextConfig = {
         destination: `${CANONICAL_ORIGIN}/:path*`,
         permanent: true
       })),
+      // Retire the legacy public catalog; private /hq and API routes are unchanged.
+      ...["/services","/systems","/website-design/:path*","/portfolio","/demo","/jax"].map((source) => ({ source, destination: "/#solutions", permanent: true })),
+      { source: "/faq", destination: "/#faq", permanent: true },
+      { source: "/contact", destination: "/intake", permanent: true },
       // Legacy redirects
-      { source: "/jax-coming-soon", destination: "/jax", permanent: true },
+      { source: "/jax-coming-soon", destination: "/#solutions", permanent: true },
       { source: "/privacy-policy", destination: "/privacy", permanent: true },
       { source: "/terms-of-service", destination: "/terms", permanent: true },
-      { source: "/case-studies", destination: "/portfolio", permanent: true },
+      { source: "/case-studies", destination: "/#solutions", permanent: true },
       { source: "/dashboard", destination: "/", permanent: true },
       { source: "/register", destination: "/intake", permanent: true },
       { source: "/home", destination: "/", permanent: true },
       { source: "/index.html", destination: "/", permanent: true },
-      { source: "/contact.html", destination: "/contact", permanent: true }
+      { source: "/contact.html", destination: "/intake", permanent: true }
     ];
   },
   async rewrites() {
