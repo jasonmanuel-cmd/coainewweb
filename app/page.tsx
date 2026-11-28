@@ -4,6 +4,7 @@ import { ArrowRight, Check, PhoneIncoming, Search, Workflow, ShieldCheck, ChartN
 import { CONTACT, SITE_URL, ORG_ID } from "@/lib/site";
 import { JsonLd } from "@/components/JsonLd";
 import { LAUNCH_OFFERS, LAUNCH_FAQS } from "@/lib/coai-launch";
+import { CoaiIntro, CoaiBrandArtwork } from "@/components/revamp/CoaiIntro";
 import { RevenueCalculator } from "@/components/revamp/RevenueCalculator";
 
 export const metadata: Metadata = {
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
  return <main id="main-content" className="coai-launch">
+  <CoaiIntro />
   <JsonLd data={{"@context":"https://schema.org","@type":"OfferCatalog",name:"COAI business infrastructure solutions",url:SITE_URL+"/#solutions",itemListElement:LAUNCH_OFFERS.map(o=>({"@type":"Offer",name:o.name,description:o.description+" "+o.billing,url:SITE_URL+"/#"+o.id,itemOffered:{"@type":"Service",name:o.name,provider:{"@id":ORG_ID}}}))}} />
   <section className="cl-hero">
    <div className="cl-shell cl-hero-grid">
@@ -30,6 +32,7 @@ export default function HomePage() {
   <section className="cl-shell cl-section" id="process"><p className="cl-kicker">HOW WE WORK</p><h2>Find the leak. Fix the leak. Run the system.</h2>
    <div className="cl-three">{[{icon:Search,title:"Find the leak",text:"Follow the journey from search to website to call or quote. Identify actual problems and establish a baseline."},{icon:Workflow,title:"Fix the leak",text:"Repair the agreed issues and connect the right tools. Test the customer journey before handoff."},{icon:ChartNoAxesCombined,title:"Run the system",text:"Monitor the agreed workflows, report measurable activity and improve what is actually working."}].map(({icon:Icon,title,text})=><article className="cl-process" key={title}><Icon size={30} aria-hidden/><h3>{title}</h3><p>{text}</p></article>)}</div>
   </section>
+  <CoaiBrandArtwork />
   <section className="cl-band" id="solutions"><div className="cl-shell cl-section"><p className="cl-kicker">THREE SOLUTIONS</p><h2>Clear scope. Transparent pricing.</h2><p className="cl-intro">Start with a diagnosis or discuss an implementation that fits your business. No purchase is made by submitting an inquiry.</p>
    <div className="cl-three cl-offers">{LAUNCH_OFFERS.map(o=><article className={"cl-card"+(o.id==="revenue-engine"?" cl-core":"")} key={o.id} id={o.id}><p className="cl-stage">{o.stage}{o.id==="revenue-engine"?" · Core offer":""}</p><h3>{o.name}</h3><strong className="cl-price">{o.price}</strong><p className="cl-billing">{o.billing}</p><p>{o.description}</p><ul>{o.includes.map(i=><li key={i}><Check size={18} aria-hidden/><span>{i}</span></li>)}</ul><Link className="cl-button" href={o.pkg?"/intake?pkg="+o.pkg:"/intake"}>{o.cta}<ArrowRight size={17} aria-hidden/></Link></article>)}</div>
    <p className="cl-fine">Written scope, usage limits, third-party charges and payment milestones are confirmed before work begins. Communications features require applicable consent and carrier approval. Additional work is separately quoted.</p></div></section>
