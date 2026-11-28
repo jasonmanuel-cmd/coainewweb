@@ -1,48 +1,5 @@
 import type { Metadata } from "next";
-import { AboutMarketingContent } from "@/components/about/AboutMarketingContent";
-import { JsonLd } from "@/components/JsonLd";
-import { MarketingLayout } from "@/components/marketing/MarketingLayout";
-import { pageMetadata } from "@/lib/metadata";
-import { articleJsonLd, breadcrumbJsonLd } from "@/lib/schema";
-import { ORG_ID, SITE_URL } from "@/lib/site";
-
-export const metadata: Metadata = pageMetadata({
-  title: { absolute: "About | Chaotically Organized AI - Bakersfield 661" },
-  description:
-    "Jason Robert Manuel, founder and CEO of Chaotically Organized AI. A contractor who codes, building revenue intake systems for Bakersfield operators.",
-  path: "/about",
-  published: "2026-01-15",
-  modified: "2026-10-10",
-});
-
-export default function AboutPage() {
-  const crumbs = breadcrumbJsonLd([
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" }
-  ]);
-  const aboutArticle = articleJsonLd({
-    headline: "About Chaotically Organized AI — Jason Robert Manuel",
-    description:
-      "Jason Robert Manuel, founder and CEO of Chaotically Organized AI. A contractor who codes, building call-first websites and lead recovery for Bakersfield, CA operators.",
-    path: "/about",
-    datePublished: "2026-01-15",
-    dateModified: "2026-10-10",
-  });
-
-  const aboutPage = {
-    "@context": "https://schema.org",
-    "@type": "AboutPage",
-    name: "About Chaotically Organized AI",
-    url: `${SITE_URL}/about`,
-    mainEntity: { "@id": ORG_ID }
-  };
-
-  return (
-    <MarketingLayout activeHref="/about">
-      <JsonLd data={aboutArticle} />
-      <JsonLd data={aboutPage} />
-      <JsonLd data={crumbs} />
-      <AboutMarketingContent />
-    </MarketingLayout>
-  );
-}
+import Link from "next/link";
+import { CONTACT, LEGAL_NAME } from "@/lib/site";
+export const metadata: Metadata = {title:"About COAI",description:"Meet Chaotically Organized AI, a Bakersfield business infrastructure provider for contractors and service businesses.",alternates:{canonical:"/about"}};
+export default function AboutPage(){return <main id="main-content" className="coai-launch"><section className="cl-shell cl-section"><p className="cl-kicker">ABOUT COAI</p><h1 style={{color:"#0f2a44",fontSize:"clamp(36px,5vw,60px)"}}>Built for real businesses.</h1><p>{LEGAL_NAME} is a Bakersfield-based business infrastructure company. Our founder brings practical experience in the trades, operations and AI-assisted technology implementation.</p><p>We focus on diagnosing the customer journey, connecting the right tools and verifying agreed systems before handoff. Every implementation has a written scope and defined responsibilities.</p><div className="cl-actions"><Link className="cl-button" href="/intake">Start a diagnostic</Link><a href={"tel:"+CONTACT.phoneE164}>{CONTACT.phoneDisplay}</a></div></section></main>}
