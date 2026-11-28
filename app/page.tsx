@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Check, PhoneIncoming, Search, Workflow, ShieldCheck, ChartNoAxesCombined } from "lucide-react";
-import { CONTACT } from "@/lib/site";
+import { CONTACT, SITE_URL, ORG_ID } from "@/lib/site";
+import { JsonLd } from "@/components/JsonLd";
 import { LAUNCH_OFFERS, LAUNCH_FAQS } from "@/lib/coai-launch";
 import { RevenueCalculator } from "@/components/revamp/RevenueCalculator";
 
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
  return <main id="main-content" className="coai-launch">
+  <JsonLd data={{"@context":"https://schema.org","@type":"OfferCatalog",name:"COAI business infrastructure solutions",url:SITE_URL+"/#solutions",itemListElement:LAUNCH_OFFERS.map(o=>({"@type":"Offer",name:o.name,description:o.description+" "+o.billing,url:SITE_URL+"/#"+o.id,itemOffered:{"@type":"Service",name:o.name,provider:{"@id":ORG_ID}}}))}} />
   <section className="cl-hero">
    <div className="cl-shell cl-hero-grid">
     <div><p className="cl-eyebrow">INTELLIGENT BUSINESS INFRASTRUCTURE</p>
