@@ -70,3 +70,22 @@
 @media(max-width:850px){.cl-hero-grid,.cl-split,.cl-three{grid-template-columns:1fr}.cl-nav-inner{flex-wrap:wrap;gap:10px;padding:14px 0}.cl-nav-links{gap:12px}.cl-footer-grid{grid-template-columns:1fr 1fr}.cl-card{padding:22px}}
 @media(max-width:480px){.cl-shell{width:calc(100% - 32px)}.cl-nav-links{gap:12px;width:100%}.cl-nav-links .cl-button{font-size:13px;padding:9px 12px;min-height:42px}.cl-nav-links>a:not(.cl-button){font-size:13px}.cl-actions .cl-button{width:100%}.cl-footer-grid{grid-template-columns:1fr}.cl-flow{padding:16px}.cl-hero{padding:48px 0}.cl-footer-bottom{padding-bottom:55px}}
 @media(prefers-reduced-motion:reduce){.cl-button{transition:none}.cl-button:hover{transform:none}}
+
+
+/* Optional brand film: native modal, direct-entry homepage, fail open. */
+.cl-intro{position:fixed;inset:0;width:100%;max-width:none;height:100%;max-height:none;margin:0;padding:0;border:0;background:#081b2d;color:white;overflow:hidden;z-index:10000;color-scheme:dark}
+.cl-intro[open]{display:grid;place-items:center}
+.cl-intro::backdrop{background:#081b2d}
+.cl-intro video{width:100%;height:100%;object-fit:contain;position:absolute;inset:0;background:#081b2d}
+.cl-intro-controls{position:absolute;top:max(16px,env(safe-area-inset-top));right:max(16px,env(safe-area-inset-right));display:flex;gap:10px;flex-wrap:wrap;z-index:1}
+.cl-intro-controls button{font:700 14px Arial,Helvetica,sans-serif;border:1px solid #cbd5e1;border-radius:6px;padding:12px 16px;min-height:44px;background:#0f2a44;color:white;cursor:pointer}
+.cl-intro-controls .cl-intro-skip{background:#c2410c;border-color:#c2410c}
+.cl-intro-controls button:focus-visible{outline:3px solid #f59e0b;outline-offset:3px}
+.cl-intro-note{position:absolute;bottom:max(20px,env(safe-area-inset-bottom));left:12px;right:12px;margin:0;text-align:center;color:#fff;background:#081b2dbb;padding:8px;font:700 14px Arial,Helvetica,sans-serif}
+.cl-wordmark.cl-brand-lockup{flex-direction:row;align-items:center;gap:10px}
+.cl-brand-lockup>span{display:flex;flex-direction:column}
+.cl-brand-mark{object-fit:contain;width:50px;height:50px;border-radius:5px;flex:none}
+.cl-brand-art{margin:0 auto 30px;width:min(1160px,calc(100% - 40px));overflow:hidden;border-radius:10px;border:1px solid #d9e0e7}
+.cl-brand-art[hidden]{display:none}
+.cl-brand-art img{width:100%;height:auto;display:block}
+@media(max-width:480px){.cl-brand-mark{width:44px;height:44px}.cl-intro-controls{left:12px;right:12px;justify-content:flex-end}.cl-intro-controls button{padding:10px 12px}}
