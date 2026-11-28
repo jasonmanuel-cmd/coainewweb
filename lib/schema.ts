@@ -1,5 +1,4 @@
 import {
-  BUSINESS_HOURS,
   CONTACT,
   FOUNDER,
   GEO,
@@ -66,12 +65,6 @@ export function organizationJsonLd() {
         },
         hasMap: HAS_MAP_URL,
         sameAs: [...SAME_AS],
-        openingHoursSpecification: BUSINESS_HOURS.days.map((day) => ({
-          "@type": "OpeningHoursSpecification",
-          dayOfWeek: day,
-          opens: BUSINESS_HOURS.weekday.opens,
-          closes: BUSINESS_HOURS.weekday.closes
-        })),
         founder: { "@id": FOUNDER_ID },
         areaServed: [...AREA_SERVED],
         contactPoint: {
@@ -81,7 +74,7 @@ export function organizationJsonLd() {
           email: CONTACT.email,
           availableLanguage: "English"
         },
-        priceRange: `From ${OFFERS.website.price}`
+        priceRange: "From $200"
       },
       {
         "@type": "Person",
