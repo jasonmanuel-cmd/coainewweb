@@ -520,9 +520,7 @@ export function isBuildInterest(value: string | undefined | null): boolean {
 
 /** Human description of an intake interest, for confirmation copy. */
 export function describeInterest(value: string | undefined | null): { name: string; priceLine: string } | null {
-  if (value === "website") {
-    return { name: OFFERS.website.name, priceLine: `${OFFERS.website.price} flat, ${OFFERS.website.terms}` };
-  }
-  const pkg = PACKAGES.find((entry) => entry.id === value);
-  return pkg ? { name: `${pkg.name} package`, priceLine: `${pkg.total} (${pkg.totalNote}), ${pkg.recurring} after launch` } : null;
+  if (value === "3") return { name: "Intelligent Business Infrastructure", priceLine: "from $4,997 + $597–$997/month" };
+  if (value === "2" || value === "1" || value === "website") return { name: "COAI Revenue Engine", priceLine: "$1,997 + $297/month" };
+  return null;
 }

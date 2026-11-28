@@ -7,9 +7,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { ClickTracker } from "@/components/analytics/ClickTracker";
 import { MobileCallBar } from "@/components/analytics/MobileCallBar";
 import { PublicOnly } from "@/components/PublicOnly";
-import { PublicActivity } from "@/components/hq/PublicActivity";
 import { JsonLd } from "@/components/JsonLd";
-import { CipherChat } from "@/components/revamp/CipherChat";
 import { SentryLazyInit } from "@/components/SentryLazyInit";
 import { organizationJsonLd, webSiteJsonLd } from "@/lib/schema";
 import { CLARITY_PROJECT_ID, GOOGLE_TAG_ID, SITE_DESCRIPTION, SITE_URL } from "@/lib/site";
@@ -25,6 +23,7 @@ import "./tokens.css";
 import "./globals.css";
 import "./revamp.css";
 import "./cinematic.css";
+import "./coai-launch.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -49,8 +48,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  colorScheme: "dark",
-  themeColor: "#08100c",
+  colorScheme: "light dark",
+  themeColor: "#0F2A44",
   width: "device-width",
   initialScale: 1
 };
@@ -99,7 +98,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <JsonLd data={organizationJsonLd()} />
         <JsonLd data={webSiteJsonLd()} /></PublicOnly>
         <AppChrome>{children}</AppChrome>
-        <PublicOnly><PublicActivity /><CipherChat />
+        <PublicOnly>
         <SentryLazyInit />
         <SpeedInsights />
         <Analytics />

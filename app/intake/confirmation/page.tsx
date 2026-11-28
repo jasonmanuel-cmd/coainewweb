@@ -5,7 +5,7 @@ import { MarketingLayout } from "@/components/marketing/MarketingLayout";
 import { pageMetadata } from "@/lib/metadata";
 import { breadcrumbJsonLd } from "@/lib/schema";
 import { describeInterest } from "@/lib/pricing";
-import { BOOKING_URL, BUSINESS_HOURS_LABEL, CONTACT, OFFERS, SITE_URL } from "@/lib/site";
+import { BOOKING_URL, CONTACT, OFFERS, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   ...pageMetadata({
@@ -49,10 +49,10 @@ export default async function IntakeConfirmationPage({ searchParams }: { searchP
           </h1>
           <p className="m-hero-sub">
             Jason will review your request and confirm eligibility, scope, and timing before work begins.
-            {buildInquiry ? ` No purchase or appointment has been made. ${interest?.name} is ${interest?.priceLine}, after scope approval.` : ` Scorecards are ${OFFERS.scorecard.price.toLowerCase()}; ${OFFERS.scorecard.alt.toLowerCase()}. The usual scorecard turnaround is ${OFFERS.scorecard.turnaround} after qualification.`}
+            {buildInquiry ? ` No purchase or appointment has been made. ${interest?.name} is ${interest?.priceLine}, after scope approval.` : ` The diagnostic is ${OFFERS.scorecard.price}; ${OFFERS.scorecard.alt}. Timing is confirmed before work begins.`}
           </p>
           <p className="m-hero-sub">
-            Business hours: {BUSINESS_HOURS_LABEL}. For a time-sensitive question, call or email directly.
+            For a time-sensitive question, call or email directly.
           </p>
           <div className="m-cta-row m-cta-row--center">
             <a href={`tel:${CONTACT.phoneE164}`} className="m-btn-primary">

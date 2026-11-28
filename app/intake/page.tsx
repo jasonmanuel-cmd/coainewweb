@@ -11,7 +11,7 @@ import { SITE_URL } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: "Run My Diagnostic",
   description:
-    "Request a job-call leak scorecard. Free for qualified owner-operators; eligibility, any audit fee, and timing are confirmed before work begins.",
+    "Request the $200 digital diagnostic or discuss a scoped COAI implementation. Pricing and timing are confirmed before work begins.",
   path: "/intake"
 });
 
@@ -44,13 +44,13 @@ export default async function IntakePage({
       <JsonLd data={crumbs} />
       <IntakeWizard packageInterest={packageInterest} />
       <div className="m-cta-row m-cta-row--centered">
-        <Link href="/services" className="m-btn-ghost">
+        <Link href="/#solutions" className="m-btn-ghost">
           Services
         </Link>
-        <Link href="/pricing" className="m-btn-ghost">
+        <Link href="/#solutions" className="m-btn-ghost">
           Pricing
         </Link>
-        <Link href="/contact" className="m-btn-ghost">
+        <Link href="/#contact" className="m-btn-ghost">
           Contact
         </Link>
       </div>

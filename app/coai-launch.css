@@ -1,0 +1,72 @@
+/* COAI 2.0 public marketing surface; private /hq styles remain unchanged. */
+.coai-launch,.cl-nav,.cl-footer{--cl-navy:#0f2a44;--cl-paper:#f7f8fa;--cl-ink:#1a1f2b;--cl-slate:#4a5568;--cl-orange:#c2410c;--cl-teal:#0e7490;--cl-line:#d9e0e7;font-family:Arial,Helvetica,sans-serif;color:var(--cl-ink);line-height:1.6;color-scheme:light}
+.coai-launch{background:var(--cl-paper);overflow:hidden;font-size:16px}
+.cl-shell{width:min(1160px,calc(100% - 40px));margin-inline:auto}
+.cl-hero,.cl-end{background:var(--cl-navy);color:white}
+.cl-hero{position:relative;background-image:linear-gradient(120deg,#0f2a44 45%,#183e5a 100%);padding:clamp(64px,8vw,118px) 0}
+.cl-hero-grid,.cl-split{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(28px,5vw,72px);align-items:center}
+.coai-launch h1,.coai-launch h2,.coai-launch h3{font-family:Arial,Helvetica,sans-serif;line-height:1.12;letter-spacing:-.035em;margin:0 0 18px;color:var(--cl-navy);text-transform:none}
+.coai-launch h1{font-size:clamp(40px,5.4vw,74px);font-weight:750;color:white;max-width:720px}
+.coai-launch h2{font-size:clamp(30px,4vw,48px);font-weight:750}
+.coai-launch h3{font-size:22px;letter-spacing:-.02em}
+.cl-hero p,.cl-end p{color:#cbd5e1}
+.coai-launch .cl-eyebrow{font-size:12px;letter-spacing:.15em;font-weight:700;color:#f59e0b;margin:0 0 20px}
+.cl-lede{font-size:clamp(17px,2vw,21px);max-width:620px;margin:0 0 28px}
+.cl-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:25px 0}
+.cl-button{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#c2410c;color:#fff!important;font-size:15px;font-weight:700;text-decoration:none;border:1px solid #c2410c;border-radius:6px;padding:13px 18px;min-height:48px;line-height:1.35;transition:background .16s,transform .16s}
+.cl-button:hover{background:#9a3412;transform:translateY(-1px)}
+.cl-button.cl-outline{background:transparent;border-color:#cbd5e1;color:white!important}
+.cl-button.cl-outline:hover{background:#ffffff15}
+.cl-location{font-size:13px}
+.cl-flow{padding:22px;background:#122f49;border:1px solid #567188;border-radius:12px;box-shadow:0 18px 46px #081b2c55}
+.cl-flow-label{font-size:11px;letter-spacing:.12em;color:#f59e0b;font-weight:700}
+.cl-flow-row{display:flex;gap:15px;align-items:center;padding:13px 0;border-bottom:1px solid #496278;color:white}
+.cl-flow-row>span{font-size:13px;font-weight:700;color:#f59e0b}
+.cl-flow-row>div{flex:1;min-width:0}
+.cl-flow-row strong,.cl-flow-row small{display:block}
+.cl-flow-row small,.cl-flow p{font-size:12px;color:#cbd5e1}
+.cl-flow p{margin:15px 0 0}
+.cl-section{padding-block:clamp(48px,7vw,88px)}
+.cl-kicker{color:#0e7490;font-weight:700;font-size:12px;letter-spacing:.14em;margin:0 0 10px}
+.cl-intro,.cl-fine,.cl-process p,.cl-card p,.cl-split p,.cl-faq p{color:var(--cl-slate)}
+.cl-three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:30px}
+.cl-process,.cl-card,.cl-trust,.cl-calculator{background:white;border:1px solid var(--cl-line);border-radius:10px;padding:26px}
+.cl-process svg,.cl-trust svg{color:var(--cl-teal);margin-bottom:16px}
+.cl-band{background:#edf1f5}
+.cl-card{display:flex;flex-direction:column;align-items:stretch}
+.cl-card.cl-core{border:2px solid var(--cl-teal)}
+.cl-card .cl-stage{color:var(--cl-teal);font-size:12px;font-weight:700;letter-spacing:.06em;margin:0 0 16px}
+.cl-price{font-size:40px;color:var(--cl-navy);line-height:1.1;letter-spacing:-.04em}
+.cl-card .cl-billing{font-weight:700;margin:8px 0 12px;font-size:14px}
+.cl-card ul{padding:0;margin:15px 0 26px;list-style:none;display:grid;gap:12px}
+.cl-card li{display:flex;align-items:flex-start;gap:9px;font-size:14px;color:var(--cl-ink)}
+.cl-card li svg{color:var(--cl-teal);flex-shrink:0;margin-top:3px}
+.cl-card .cl-button{margin-top:auto}
+.cl-fine{font-size:13px;margin:22px 0 0}
+.cl-calculator .signal-calc{background:white!important;color:var(--cl-ink)!important;border:0!important;padding:0!important}
+.cl-calculator .signal-calc span,.cl-calculator .signal-calc strong,.cl-calculator .signal-calc small,.cl-calculator .signal-calc p{color:var(--cl-ink)!important}
+.cl-calculator .signal-calc input,.cl-calculator .signal-calc__output>div{background:var(--cl-paper)!important;color:var(--cl-ink)!important;border:1px solid var(--cl-line)!important}
+.cl-faq{max-width:850px;margin-top:24px}
+.cl-faq details{border-bottom:1px solid var(--cl-line);padding:18px 0}
+.cl-faq summary{cursor:pointer;font-weight:700;color:var(--cl-navy)}
+.cl-faq p{margin:10px 0 0}
+.cl-end h2,.cl-end a:not(.cl-button){color:white}
+.cl-end p{max-width:650px}
+.cl-nav{background:white;border-bottom:1px solid #d9e0e7;position:relative;z-index:20}
+.cl-nav-inner{display:flex;align-items:center;justify-content:space-between;gap:22px;min-height:78px}
+.cl-wordmark{display:inline-flex;flex-direction:column;text-decoration:none;color:#0f2a44!important;line-height:1.2;flex-shrink:0}
+.cl-wordmark strong{font-size:30px;font-weight:800;letter-spacing:-.06em}
+.cl-wordmark b{color:#c2410c}
+.cl-wordmark small{font-size:11px;letter-spacing:.02em;color:#4a5568}
+.cl-nav-links{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.cl-nav-links>a:not(.cl-button){color:#0f2a44!important;font-weight:600;text-decoration:none;font-size:14px}
+.cl-footer{background:#0f2a44;color:#cbd5e1;padding:40px 0 24px}
+.cl-footer a{color:#fff;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.cl-footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:28px}
+.cl-footer h2,.cl-footer h3{color:white;font-size:18px;margin:0 0 10px}
+.cl-footer p{margin:6px 0}
+.cl-footer-bottom{border-top:1px solid #567188;padding-top:16px;margin-top:28px;font-size:13px}
+.coai-launch :focus-visible,.cl-nav :focus-visible,.cl-footer :focus-visible{outline:3px solid #f59e0b;outline-offset:3px}
+@media(max-width:850px){.cl-hero-grid,.cl-split,.cl-three{grid-template-columns:1fr}.cl-nav-inner{flex-wrap:wrap;gap:10px;padding:14px 0}.cl-nav-links{gap:12px}.cl-footer-grid{grid-template-columns:1fr 1fr}.cl-card{padding:22px}}
+@media(max-width:480px){.cl-shell{width:calc(100% - 32px)}.cl-nav-links{gap:12px;width:100%}.cl-nav-links .cl-button{font-size:13px;padding:9px 12px;min-height:42px}.cl-nav-links>a:not(.cl-button){font-size:13px}.cl-actions .cl-button{width:100%}.cl-footer-grid{grid-template-columns:1fr}.cl-flow{padding:16px}.cl-hero{padding:48px 0}.cl-footer-bottom{padding-bottom:55px}}
+@media(prefers-reduced-motion:reduce){.cl-button{transition:none}.cl-button:hover{transform:none}}
