@@ -70,17 +70,17 @@ export const OFFERS = {
   /** Entry point — qualify the business and show real leaks before proposing a build. */
   scorecard: {
     stage: "Find the leak",
-    name: "Revenue Diagnostic",
+    name: "Digital Diagnostic & Repair",
     price: "$500",
-    alt: "$200 upfront; $300 at delivery",
+    alt: "$200 upfront; $300 upon completion of agreed repairs",
     turnaround: "Timing agreed in writing",
     summary:
-      "A one-page scorecard with three observed leaks, the assumptions behind them, screenshots, and one recommended first control."
+      "A functionality, conversion, listing, discoverability, and lead-path review with defined priority repairs and a final report."
   },
   /** Foundation — the custom website every package is built on. */
   website: {
     stage: "Build the foundation",
-    name: "Revenue Engine",
+    name: "COAI Revenue Engine",
     price: "$1,997",
     priceNumeric: "1997",
     terms: "+ $297/month; implementation payment schedule agreed in writing",

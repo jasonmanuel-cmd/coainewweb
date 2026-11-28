@@ -5,18 +5,20 @@ Prepared November 27, 2026 on `preview/coai-three-offers-2026-11-27`.
 ## Public scope
 
 - National canonical: `https://www.chaoticallyorganizedai.com`.
-- Three new-customer offers: $500 Revenue Diagnostic ($200 upfront), $1,997 + $297/month Revenue Engine, $4,997+ + $597–$997/month Revenue Infrastructure.
+- Three new-customer offers: $500 Digital Diagnostic & Repair ($200 upfront, $300 on completion), $1,997 + $297/month COAI Revenue Engine, and $4,997+ + $597–$997/month Intelligent Business Infrastructure.
 - Existing customer contracts, CRM endpoints, stored data, billing integrations, legal pages, portfolio, and domain canonical remain intact.
 - Bakersfield is no longer an application-level redirect alias in this repository. The separate local repository has its own self-canonical pages.
 
-## Hosting gate
+## Hosting findings
 
-At preparation time, both Bakersfield hosts returned a Vercel 307 redirect to the national site. The connected Vercel account showed no projects, so the domain-to-project assignment and preview deployment could not be verified or changed. Do not promote this branch until hosting ownership and domain routing are confirmed. The local domain should serve the local repository directly, with one chosen host redirecting to the other and all canonical/sitemap signals agreeing.
+The Vercel project `jasons-projects-1d845fc4/coaibakersfield` (`prj_aAZxm3OQXXEiPBI5y5cBr6TZDVhl`) is connected to `jasonmanuel-cmd/coainewweb`, production branch `main`. It currently owns both national and Bakersfield domains. Vercel domain settings issue 307 redirects from both Bakersfield hosts to `www.chaoticallyorganizedai.com`, independent of application redirect rules. The national preview branch built successfully in this project. Its preview deployment is accessible through the Vercel team; check the branch deployment after each push.
+
+The local acquisition repository needs a separate Vercel project and a deliberate domain move after its preview has been reviewed. Do not remove either Bakersfield domain from the existing project until the replacement project is ready and the cutover plan is approved. Preserve one chosen local canonical host and redirect the other local host to it.
 
 ## Before promotion
 
-1. Confirm the Vercel project and Git repository attached to each domain; inspect its production and preview settings.
-2. Open both branch previews and test desktop/mobile layout, navigation, and all three offer links.
+1. Open the national branch preview and test desktop/mobile layout, navigation, and all three offer links.
+2. Create and review a separate local project preview; then confirm the domain cutover plan and rollback owner.
 3. Submit a labeled synthetic inquiry through the national `/contact` form and verify CRM storage and owner receipt. Remove or mark the test record afterward. No form was submitted during preparation.
 4. Crawl existing public URLs and compare status, canonical, sitemap, robots, and structured data. Preserve needed redirects and watch Search Console after launch.
 5. Confirm new-customer agreement and billing language with the owner before accepting payments. Existing signed agreements continue unchanged.

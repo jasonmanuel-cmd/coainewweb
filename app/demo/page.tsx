@@ -22,7 +22,7 @@ export default function DemoPage() {
       <LeadResponseDemo />
       <div className="lead-demo">
         <h2>A working example starts the conversation. Your scope comes next.</h2>
-        <p>The Revenue Engine starts at $1,997 plus $297 per month. The exact lead response workflow, third-party costs, and timing are confirmed in a written scope before work begins.</p>
+        <p>The COAI Revenue Engine starts at $1,997 plus $297 per month. The exact lead response workflow, third-party costs, and timing are confirmed in a written scope before work begins.</p>
         <Link className="m-btn-ghost" href="/pricing">Review pricing and scope</Link>
       </div>
     </MarketingLayout>

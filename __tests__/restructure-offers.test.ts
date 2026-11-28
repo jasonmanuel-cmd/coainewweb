@@ -4,7 +4,7 @@ import { RESTRUCTURE_OFFERS } from "@/lib/restructure-offers";
 describe("approved public offers", () => {
   it("publishes the three approved prices and payment terms", () => {
     expect(RESTRUCTURE_OFFERS.map((offer) => offer.name)).toEqual([
-      "Revenue Diagnostic", "Revenue Engine", "Revenue Infrastructure"
+      "Digital Diagnostic & Repair", "COAI Revenue Engine", "Intelligent Business Infrastructure"
     ]);
     expect(RESTRUCTURE_OFFERS.map((offer) => [offer.price, offer.ongoing])).toEqual([
       ["$500", "One-time engagement"],

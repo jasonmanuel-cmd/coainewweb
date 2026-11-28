@@ -11,7 +11,7 @@ import { SITE_URL } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: "Run My Diagnostic",
   description:
-    "Request a $500 Revenue Diagnostic. $200 is due upfront after the written scope is agreed; $300 is due at delivery.",
+    "Request a $500 Digital Diagnostic & Repair. $200 is due upfront after the written scope is agreed; $300 is due upon completion of agreed work.",
   path: "/intake"
 });
 
