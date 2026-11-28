@@ -230,7 +230,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
             <div className="m-step-label">Quick Snapshot</div>
             <h1 className="m-step-title">Tell us about your business</h1>
             <p className="m-step-sub">
-              {buildInquiry ? "Share your setup, then leave your contact details. Jason will review the fit and scope before you commit. The revenue estimate is optional." : <>Finish this in about <strong>60 seconds</strong>. Use your own inputs to estimate revenue at risk, or skip ahead to request a scorecard.</>}
+              {buildInquiry ? "Share your setup, then leave your contact details. Jason will review the fit and scope before you commit. The revenue estimate is optional." : <>Finish this in about <strong>60 seconds</strong>. Use your own inputs to estimate revenue at risk, or skip ahead to request a diagnostic.</>}
             </p>
 
             <div className="m-intake-field-group">
@@ -277,7 +277,7 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
             </button>
 
             <button type="button" className={buildInquiry ? "m-btn-next m-btn-next--block" : "m-btn-back"} disabled={!step1Complete} onClick={() => goStep(3)}>
-              {buildInquiry ? "Continue to my build inquiry →" : "Skip the estimate and request my scorecard"}
+              {buildInquiry ? "Continue to my build inquiry →" : "Skip the estimate and request my diagnostic"}
             </button>
 
             {/* Trust bar */}
@@ -294,9 +294,9 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
                 {CONTACT.phoneDisplay}
               </a>
               <div className="m-alt-cta-sub">
-                &ldquo;Jason helped me build a website... also created a phone AI system to help direct callers.&rdquo;
+                We test the agreed inquiry and follow-up pathways before handoff.
               </div>
-              <div className="m-alt-cta-author">— Christopher Moore, Google Review ★★★★★</div>
+              <div className="m-alt-cta-author">COAI · Scope confirmed before implementation</div>
             </div>
           </div>
         ) : null}
@@ -360,10 +360,10 @@ export function IntakeWizard({ packageInterest }: IntakeWizardProps) {
 
         {step === 3 ? (
           <div className="m-step-panel">
-            <div className="m-step-label">{buildInquiry ? "Discuss Your Build" : "Request Your Scorecard"}</div>
+            <div className="m-step-label">{buildInquiry ? "Discuss Your Build" : "Request Your Diagnostic"}</div>
             <h2 className="m-step-title">{buildInquiry ? "Tell us where to follow up about your build." : "Where should we send your baseline report?"}</h2>
             <p className="m-step-sub">
-              Submit and you&rsquo;ll get confirmation after delivery is accepted. <strong>Jason reviews inquiries during published business hours.</strong> Qualification, scope, and timing are confirmed before work begins.
+              Submit and you&rsquo;ll get confirmation after delivery is accepted. <strong>Jason reviews inquiries before any work begins.</strong> Qualification, scope, and timing are confirmed before work begins.
             </p>
 
             {/* Urgency banner */}
