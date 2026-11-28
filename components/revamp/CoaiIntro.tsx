@@ -82,3 +82,8 @@ export function CoaiBrandArtwork(){
     <img src="/brand/coai-banner.webp" alt="Chaotically Organized AI — Intelligent Business Infrastructure" width={1600} height={678} loading="lazy" onLoad={()=>setLoaded(true)} onError={()=>setLoaded(false)}/>
   </figure>;
 }
+
+export function CoaiFullLogo(){
+  const [loaded,setLoaded]=useState(false);
+  return <img src="/brand/coai-logo.webp" alt="Chaotically Organized AI — Intelligent Business Infrastructure" width={1100} height={733} loading="lazy" style={{display:loaded?"block":"none",width:"min(100%,520px)",height:"auto",margin:"20px 0",borderRadius:"8px"}} onLoad={()=>setLoaded(true)} onError={()=>setLoaded(false)}/>;
+}
