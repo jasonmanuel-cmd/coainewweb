@@ -44,7 +44,7 @@ export default function DelanoWebsiteDesignPage() {
             structure and schema clarity. Stop losing leads to a slow, outdated site.
           </p>
           <div className="m-cta-row">
-            <Link href="/intake" className="m-btn-primary">
+            <Link href="/start?intent=diagnostic" className="m-btn-primary">
               Run Delano Diagnostic →
             </Link>
             <Link href="/website-design/kern-county" className="m-btn-ghost">
@@ -84,8 +84,8 @@ export default function DelanoWebsiteDesignPage() {
             </p>
           </div>
           <div className="m-cta-row" style={{ marginTop: "2rem" }}>
-            <Link href="/intake" className="m-btn-primary">
-              Discuss the $500 Revenue Diagnostic →
+            <Link href="/start?intent=diagnostic" className="m-btn-primary">
+              Start the COAI Diagnostic & Repair →
             </Link>
             <Link href="/pricing" className="m-btn-ghost">
               See Pricing
@@ -143,11 +143,11 @@ export default function DelanoWebsiteDesignPage() {
           <span className="m-text-green">that actually brings in calls?</span>
         </h2>
         <p>
-          The $500 Revenue Diagnostic reviews your customer path and provides a written
-          report. No pitch, no pressure, just the truth.
+          The $500 COAI Digital Diagnostic & Repair reviews your customer path and includes agreed priority repairs and a final
+          report. A $200 diagnostic-only option is also available.
         </p>
         <div className="m-cta-row">
-          <Link href="/intake" className="m-btn-primary">
+          <Link href="/start?intent=diagnostic" className="m-btn-primary">
             Request my Delano leak score →
           </Link>
           <a href={`tel:${CONTACT.phoneE164}`} className="m-btn-ghost">

@@ -10,14 +10,15 @@ import { CONTACT } from "@/lib/site";
 const MORE_LINKS = [
   ["About", "/about", "Meet the founder."],
   ["FAQ", "/faq", "Straight answers."],
-  ["Portfolio", "/portfolio", "Selected work."],
+  ["Customer work", "/case-studies", "Documented projects."],
+  ["Industries", "/industries", "Service businesses."],
   ["Contact", "/contact", "Start a conversation."]
 ] as const;
 
 const PRIMARY_LINKS = [
-  ["Offers", "/#offers"],
-  ["Services", "/services"],
-  ["Pricing", "/pricing"]
+  ["Diagnostic", "/diagnostic"],
+  ["Revenue Engine", "/revenue-engine"],
+  ["Infrastructure", "/infrastructure"]
 ] as const;
 
 export function RevampNavbar() {
@@ -46,11 +47,11 @@ export function RevampNavbar() {
     <header className="revamp-header">
       <div className="revamp-header-scan" aria-hidden="true" />
       <nav className="revamp-nav" aria-label="Primary navigation">
-        <Link className="revamp-logo" href="/" aria-label="Chaotically Organized AI — home">
+        <Link className="revamp-logo" href="/" aria-label="COAI — home">
           <Image className="revamp-logo-mark" src="/coai-mark.webp" alt="" width={46} height={46} priority />
           <span className="revamp-logo-copy">
             <strong>COAI</strong>
-            <small>Revenue systems</small>
+            <small>Intelligent Business Infrastructure</small>
           </span>
         </Link>
 
@@ -108,8 +109,8 @@ export function RevampNavbar() {
             <span>Call<span className="revamp-nav-call-number"> {CONTACT.phoneDisplay}</span></span>
           </a>
 
-          <Link className="revamp-nav-cta" href="/contact?intent=diagnostic">
-            <span>Discuss your diagnostic</span>
+          <Link className="revamp-nav-cta" href="/start?intent=diagnostic">
+            <span>Start Your Diagnostic</span>
             <span aria-hidden="true">↗</span>
           </Link>
         </div>

@@ -84,8 +84,7 @@ export default function PortfolioPage() {
           <span className="m-text-green">digital infrastructure?</span>
         </h2>
         <p>
-          Every business here started with a 30-minute diagnostic call and a clear scope. No fluff, no retainers. Just a
-          system you own outright.
+          Start with a written diagnostic scope, then choose the implementation and monthly management your business needs.
         </p>
         <div className="m-cta-actions">
           <Link href="/intake" className="m-btn-primary">

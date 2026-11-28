@@ -3,13 +3,15 @@ import Link from "next/link";
 import { BOOKING_URL, BUSINESS_HOURS_LABEL, CONTACT, PRIMARY_EMAIL, SITE_NAME, SITE_URL, SOCIAL_LINKS } from "@/lib/site";
 
 const systemLinks = [
-  ["Three offers", "/pricing"],
-  ["Services", "/services"],
-  ["Portfolio", "/portfolio"]
+  ["Diagnostic", "/diagnostic"],
+  ["Revenue Engine", "/revenue-engine"],
+  ["Infrastructure", "/infrastructure"],
+  ["Customer work", "/case-studies"]
 ] as const;
 
 const companyLinks = [
   ["About", "/about"],
+  ["Industries", "/industries"],
   ["FAQ", "/faq"],
   ["AI Disclosure", "/ai-disclosure"],
   ["Contact", "/contact"]
@@ -41,8 +43,8 @@ export function RevampFooter() {
           <span className="revamp-kicker"><i aria-hidden="true" /> Start with a clear plan</span>
           <h2>Ready to find the next revenue gap?</h2>
         </div>
-        <Link href="/contact?intent=diagnostic" className="revamp-btn-primary revamp-btn-light">
-          Discuss the diagnostic <span aria-hidden="true">↗</span>
+        <Link href="/start?intent=diagnostic" className="revamp-btn-primary revamp-btn-light">
+          Start Your Diagnostic <span aria-hidden="true">↗</span>
         </Link>
       </div>
 
@@ -51,7 +53,7 @@ export function RevampFooter() {
           <Link className="revamp-footer-logo" href="/" aria-label="Chaotically Organized AI — home">
             <Image src="/coai-logo.webp" alt="Chaotically Organized AI" width={910} height={741} sizes="220px" />
           </Link>
-          <p>Lead capture, follow-up, and revenue systems for service businesses nationwide.</p>
+          <p>Intelligent Business Infrastructure for service businesses nationwide.</p>
           <div className="revamp-footer-status"><i aria-hidden="true" /> Systems online · Bakersfield, California</div>
           <ul className="revamp-footer-social" aria-label="Social profiles">
             {SOCIAL_LINKS.map((link) => (

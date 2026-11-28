@@ -70,12 +70,12 @@ export const OFFERS = {
   /** Entry point — qualify the business and show real leaks before proposing a build. */
   scorecard: {
     stage: "Find the leak",
-    name: "Digital Diagnostic & Repair",
+    name: "COAI Digital Diagnostic & Repair",
     price: "$500",
     alt: "$200 upfront; $300 upon completion of agreed repairs",
-    turnaround: "Timing agreed in writing",
+    turnaround: "Target 7–14 days, subject to scope and access",
     summary:
-      "A functionality, conversion, listing, discoverability, and lead-path review with defined priority repairs and a final report."
+      "A functionality, conversion, listing, discoverability, and lead-path review with defined priority repairs and a final report. A diagnostic-only option is $200."
   },
   /** Foundation — the custom website every package is built on. */
   website: {
@@ -105,7 +105,7 @@ export const GEO = {
 } as const;
 
 export const SITE_DESCRIPTION =
-  "Chaotically Organized AI helps service businesses nationwide capture inquiries, follow up consistently, and manage customer workflows. Start with a $500 Revenue Diagnostic, then choose Revenue Engine or Revenue Infrastructure under a written scope.";
+  "COAI finds and repairs the digital gaps costing service businesses customers, then builds connected systems for discoverability, lead capture, recovery, and follow-up.";
 
 /** Category descriptor. Sits beneath the buyer-facing outcome line, never in front of it. */
 export const CATEGORY = "Lead Capture & Revenue Systems";

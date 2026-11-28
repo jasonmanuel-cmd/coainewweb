@@ -6,7 +6,7 @@ export const ATTRIBUTION_VALUES: Record<string, readonly string[]> = {
   utm_content: ["profile", "post", "story", "bio"],
   inbound_source: ["diagnostic", "pricing", "coaibakersfield", "facebook", "instagram", "google", "linkedin", "youtube", "referral"],
   contact_intent: ["packages", "jason", "audit", "build", "scorecard", "diagnostic", "revenue-engine", "infrastructure"],
-  landing_page: ["/", "/demo", "/pricing", "/intake", "/contact"],
+  landing_page: ["/", "/diagnostic", "/revenue-engine", "/infrastructure", "/industries", "/case-studies", "/start", "/demo", "/pricing", "/intake", "/contact"],
   referrer_source: ["facebook", "instagram", "google", "linkedin", "youtube"]
 };
 

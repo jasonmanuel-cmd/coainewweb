@@ -24,7 +24,7 @@ describe("one source of truth for business facts", () => {
   it("llms.txt matches the approved public offers and contact facts", () => {
     expect(llms).toContain(CONTACT.email);
     expect(llms).toContain(OFFERS.website.price);
-    expect(llms).toContain("Digital Diagnostic & Repair: $500");
+    expect(llms).toContain("COAI Digital Diagnostic & Repair: $500");
     expect(llms).toContain("COAI Revenue Engine: $1,997 implementation plus $297/month");
     expect(llms).toContain("Intelligent Business Infrastructure: $4,997+ implementation plus $597–$997/month");
     expect(llms).toContain("Monday–Friday");

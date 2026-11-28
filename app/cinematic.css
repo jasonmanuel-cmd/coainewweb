@@ -185,6 +185,11 @@
 .revamp-nav-links > .revamp-nav-call svg { width: 16px; height: 16px; }
 .revamp-nav-call-number { display: none; }
 @media (min-width: 1280px) { .revamp-nav-call-number { display: inline; } }
+@media (min-width: 881px) and (max-width: 1450px) {
+  .revamp-nav-call-number { display: none; }
+  .revamp-nav-links { gap: 12px; }
+  .revamp-nav-links > .revamp-nav-cta { gap: 8px; padding-inline: 12px; }
+}
 .revamp-nav-links > .revamp-nav-cta:hover { color: var(--cta-text); background: var(--cta-bg-hover); transform: translateY(-2px); }
 .revamp-menu-toggle { display: none; }
 
