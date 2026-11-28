@@ -6,7 +6,7 @@
 export const CANONICAL_ORIGIN = "https://www.chaoticallyorganizedai.com";
 
 /** Hosts that must permanently redirect to CANONICAL_ORIGIN, path and query preserved. */
-export const ALIAS_HOSTS = ["chaoticallyorganizedai.com", "coaibakersfield.com", "www.coaibakersfield.com"] as const;
+export const ALIAS_HOSTS = ["chaoticallyorganizedai.com", "coaibakersfield.com", "www.coaibakersfield.com", "chaoticallyorganizedai.org", "www.chaoticallyorganizedai.org"] as const;
 
 /**
  * NEXT_PUBLIC_SITE_URL is deliberately NOT trusted in deployed builds: a stale value in
@@ -70,12 +70,12 @@ export const OFFERS = {
   /** Entry point — qualify the business and show real leaks before proposing a build. */
   scorecard: {
     stage: "Find the leak",
-    name: "Job-Call Leak Scorecard",
-    price: "Free for qualified owner-operators",
-    alt: "$350 Structural Audit otherwise, credited to the build",
-    turnaround: "24–48 hours",
+    name: "Digital Diagnostic & Repair",
+    price: "$200 diagnostic",
+    alt: "$300 for agreed repairs, $500 total",
+    turnaround: "7–14 days for diagnostic and agreed repairs, subject to access",
     summary:
-      "A one-page scorecard with three observed leaks, the assumptions behind them, screenshots, and one recommended first control."
+      "An evidence-backed diagnostic of the customer journey with prioritized findings and optional agreed repairs."
   },
   /** Foundation — the custom website every package is built on. */
   website: {
@@ -104,16 +104,15 @@ export const GEO = {
   longitude: -119.0187
 } as const;
 
-export const SITE_DESCRIPTION =
-  "COAI designs and builds custom, hand-coded websites and the systems around them — local search and AI answer visibility, missed-call text-back, booking, follow-up, CRM and reporting — for Bakersfield and Kern County service businesses. Built by Jason Robert Manuel, a contractor who codes. You control the domain, hosting, source code, analytics, and lead data."
+export const SITE_DESCRIPTION = "COAI provides intelligent business infrastructure for contractors and service businesses: digital diagnostics, connected customer inquiry and follow-up systems, and advanced operational integrations in Bakersfield, Kern County and nationwide."
 
 /** Category descriptor. Sits beneath the buyer-facing outcome line, never in front of it. */
-export const CATEGORY = "Custom Websites, Design & Growth Systems";
+export const CATEGORY = "Intelligent Business Infrastructure";
 
 /** Buyer-facing outcome line. Lead with this — a contractor does not shop for "infrastructure". */
-export const BUYER_OUTCOME = "A website that wins the job, and the systems that keep the customer.";
+export const BUYER_OUTCOME = "Stop losing the customers you have already earned.";
 
-export const BRAND_TAGLINE = "Where Chaos Meets Clarity";
+export const BRAND_TAGLINE = "Find the leak. Fix the leak. Run the system.";
 
 /** Google Business Profile (Maps / share link). Keep in sync with GBP dashboard. */
 export const GOOGLE_BUSINESS_PROFILE_URL = "https://share.google/QASlHnjE2K6FzdNfJ";
@@ -167,7 +166,7 @@ export const BUSINESS_HOURS = {
 } as const;
 
 /** Human-readable hours — keep aligned with GBP and `BUSINESS_HOURS`. */
-export const BUSINESS_HOURS_LABEL = "Monday–Friday, 9:00 AM–5:00 PM Pacific";
+export const BUSINESS_HOURS_LABEL = "Contact us to arrange a time";
 
 /** Canonical delivery language. Never publish a faster range without a signed scope. */
 export const DELIVERY_TIMELINE = "2–3 weeks";
